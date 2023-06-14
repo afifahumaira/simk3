@@ -1,0 +1,940 @@
+@extends ('layouts.layout')
+
+@section('content')
+    <div class="page-title d-flex flex-column gap-1 mx-5 my-5  ">
+
+        <div class="page-title d-flex flex-column  gap-1 mx-5 my-5  ">
+            <div id="kt_app_content"
+                class="app-content  rounded bg-light  mb-20 px-5 shadow"style="box-shadow: 2px 4px 20px 2px rgba(0, 0, 0, 0.1);">
+                <div class="app-toolbar-wrapper d-flex flex-stack flex-wrap gap-4 w-100 mb-5 px-5 border-bottom border-5">
+                    <!--begin::Page title-->
+                    <h2>HIRARC</h2>
+                    <a href="{{ route('hirarc.index') }}" type="button"
+                        class="btn text-white btn-sm btn-secondary d-flex justify-content-center align-items-center mb-2"
+                        data-bs-toggle="modal" data-bs-target="#staticBackdrop" style="background: #505050; width:90px"><i
+                            class="bi bi-chevron-left text-white"></i>Kembali</a>
+                    <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false"
+                        tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered ">
+                            <div class="modal-content">
+                                {{-- <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="staticBackdropLabel">Modal title</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                      </div> --}}
+                                <div class="modal-body mt-5 d-flex justify-content-center align-items-center">
+                                    <h2 class="mt-5 text-center" style="color: #16243D; font-size: 20px font-weight:700">
+                                        keluar dari tambah data?
+                                        <p class="mb-0 mt-2 text-center "
+                                            style="color: #DC3545; font-weight:400; font-size:14px"> data yang dimasukkan
+                                            belum tersimpan </p>
+                                    </h2>
+                                </div>
+                                <div class="modal-footer d-flex justify-content-center border-0">
+                                    <a href="{{ route('hirarc.index') }}" type="button"
+                                        class="btn btn-success text-white d-flex justify-content-center align-items-center text-center rounded-1"
+                                        style="width:76px; height:31px; background: #29CC6A;">Ya</a>
+                                    <button type="button"
+                                        class="btn btn-secondary text-center d-flex align-items-center rounded-1"
+                                        data-bs-dismiss="modal" style="width:76px; height:31px; ">Tidak</button>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="page-title  gap-1 mx-5 my-5  ">
+                    <div id="kt_app_content"
+                        class="app-content flex-column-fluid rounded   mb-20 px-5 shadow"style="box-shadow: 2px 4px 20px 2px rgba(0, 0, 0, 0.1);">
+
+                        <div class="card ">
+                            <div class="card-header d-flex align-items-center fs-3 fw-normal">
+                                <div class="pull-left">
+                                    <strong>Tambah Data HIRARC</strong>
+                                </div>
+                            </div>
+                            <div class="card-body">
+                                <form>
+                                    <div class="mb-3">
+                                        <label for="departemen" class="form-label ">Pilih Departemen:</label>
+                                        <select id="departemen" class="form-select" onchange="updateLoc()"
+                                            data-control="select2" data-hide-search="true">
+                                            <option value="">Pilih Departemen</option>
+                                            <option value="Teknik Komputer">Teknik Komputer</option>
+                                            <option value="Teknik Lingkungan">Teknik Lingkungan</option>
+                                            <option value="Teknik Geodesi">Teknik Geodesi</option>
+                                            <option value="Teknik Perkapalan">Teknik Perkapalan</option>
+                                        </select>
+                                    </div>
+
+                                    <div class="mb-3">
+                                        <label for="lokasi" class="form-label">Pilih Lokasi:</label>
+                                        <select id="lokasi" class="form-select" data-control="select2"
+                                            data-hide-search="true" onchange="updateAdditionalForm()">
+                                            <option value="">Pilih Departemen terlebih dahulu</option>
+                                        </select>
+                                    </div>
+
+                                    <div id="additionalForm">
+                                        <div class="mb-3">
+                                            <label for="aktifitas" class="form-label">Pilih Aktifitas:</label>
+                                            <select id="aktifitas" class="form-select" data-control="select2"
+                                                data-hide-search="true" onchange="updateFormB()">
+                                                <option value="">Pilih Lokasi terlebih dahulu</option>
+                                            </select>
+                                        </div>
+                                    </div>
+
+                                    <div id="formB">
+                                        <div class="mb-3">
+                                            <label for="formBSelect" class="form-label">Hazard</label>
+                                            <select id="formBSelect" class="form-select" data-control="select2"
+                                                data-hide-search="true" data-kt-placement="bottom"
+                                                onchange="updateRisiko()">
+                                                <option value="">Pilih Aktifitas terlebih dahulu</option>
+                                            </select>
+                                        </div>
+                                    </div>
+
+                                    <div class=" mt-5 d-flex justify-content-between border-gray-300 border-top-dashed"
+                                        id="tambahResiko" style="font-family: Roboto">
+                                        <p class=" mb-0" style="color:rgba(22, 36, 61, 0.4);"> Masukkan data resiko dengan
+                                            lengkap</p>
+                                        <a type="button" class="text-end text-decoration-underline" style="color:#233EAE"
+                                            onclick="addKomponen()"> + Tambah Resiko </a>
+                                    </div>
+                                    <div id="tesRisiko" class="tesRisiko1">
+                                        <div id="risiko">
+                                            <div class="mb-3">
+                                                <label for="risikoSelect" class="col-sm-2 col-form-label pt-0">Risiko
+                                                </label>
+                                                <select class="form-select fs-6 w-100 Risiko1" id="risikoSelect"
+                                                    data-control="select2" data-hide-search="true"
+                                                    data-kt-placement="bottom">
+                                                    <option value="">Pilih Hazard terlebih dahulu</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div id="risiko-sekarang">
+                                            <label class="col-sm-2 col-form-label pb-0 mb-0">Risiko Saat Ini</label>
+                                            <div class="d-flex justify-content-center align-items-center ">
+                                                <a href="" type="button" class="btn " data-bs-toggle="modal"
+                                                    data-bs-target="#preControl">Pre Control</a>
+                                                <div class="modal fade" id="preControl" data-bs-backdrop="static"
+                                                    data-bs-keyboard="false" tabindex="-1"
+                                                    aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                                                    <div class="modal-dialog">
+                                                        <div class="modal-content">
+                                                            <div class="modal-header">
+                                                                <h1 class="modal-title fs-5" id="staticBackdropLabel">Pre
+                                                                    Control</h1>
+                                                                <button type="button" class="btn-close"
+                                                                    data-bs-dismiss="modal" aria-label="Close"></button>
+                                                            </div>
+                                                            <div class="modal-body">
+                                                                <form>
+                                                                    <div class="form-group my-5">
+                                                                        <label class="ps-3" for="select1">Keparahan
+                                                                            (severity)</label>
+                                                                        <select class="form-control" id="select1"
+                                                                            data-control="select2"
+                                                                            data-hide-search="true">
+                                                                            <option value="1">Tergores, sayatan kecil,
+                                                                                kerugian sebesar Rp.12313123 1</option>
+                                                                            <option value="2">Cidera menyebabkan absen
+                                                                                maks. 3 hari</option>
+                                                                            <option value="3">kit hati, kerugian
+                                                                                infinity
+                                                                                brow</option>
+                                                                            <option value="4">prenzone, kerugian kek
+                                                                                di
+                                                                                snap thanos buang</option>
+                                                                        </select>
+                                                                    </div>
+                                                                    <div class="form-group ">
+                                                                        <label class="ps-3" for="select2">Paparan
+                                                                            (Exposure)</label>
+                                                                        <select class="form-control" id="select2"
+                                                                            data-control="select2"
+                                                                            data-hide-search="true">
+                                                                            <option value="1"> sue kabeh</option>
+                                                                            <option value="2">tenanan ik </option>
+                                                                            <option value="3">anjay ampe kapan brow
+                                                                            </option>
+                                                                        </select>
+                                                                    </div>
+                                                                    <div class="form-group my-5">
+                                                                        <label class="ps-3" for="select3">Kemungkinan
+                                                                            Terjadi (Probability)</label>
+                                                                        <select class="form-control" id="select3"
+                                                                            data-control="select2"
+                                                                            data-hide-search="true">
+                                                                            <option value="1">Gada bro temen tok
+                                                                            </option>
+                                                                            <option value="2">gabisa gausah ngarep
+                                                                            </option>
+                                                                            <option value="3">ngimpi </option>
+                                                                        </select>
+                                                                    </div>
+                                                                </form>
+                                                                <div class="container mt-5">
+                                                                    <div class="hitung d-flex justify-content-center">
+                                                                        <button type="button" id="hitung"
+                                                                            class="btn text-center d-flex align-items-center justify-content-center btn-primary btn-sm"
+                                                                            style="background: #000957">Hitung</button>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="row d-flex justify-content-center">
+                                                                    <div class="col-md-6 col-lg-6 d-flex justify-content-center align-items-center mb-5 mb-lg-0"
+                                                                        data-aos="fade-up" data-aos-delay="100">
+                                                                        <div class="icon-box d-flex align-items-center">
+                                                                            <h4 class="title fw-bold"
+                                                                                style="font-size: 24px">
+                                                                                180<br /></h4>
+
+                                                                        </div>
+                                                                    </div>
+
+                                                                </div>
+                                                            </div>
+                                                            <div class="modal-footer d-flex justify-content-end">
+                                                                <button type="button"
+                                                                    class="btn text-center d-flex justify-content-center "
+                                                                    data-bs-toggle="modal" data-bs-target="#simpanPre"
+                                                                    style="width: 68px; height: 28px; background:#29CC6A; color:#ffffff;">Simpan</button>
+                                                                <button type="button"
+                                                                    class="btn text-center d-flex justify-content-center border-0"
+                                                                    style="width: 68px; height: 28px; background:#868E96; color:#ffffff;"
+                                                                    data-bs-dismiss="modal">Tutup</button>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <a href="#" class="btn d-flex justify-content-center "
+                                                    type="button" data-bs-toggle="modal" data-bs-target="#solusi">
+                                                    Solusi
+                                                </a>
+                                                <div class="modal fade" id="solusi" data-bs-backdrop="static"
+                                                    data-bs-keyboard="false" tabindex="-1"
+                                                    aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                                                    <div class="modal-dialog">
+                                                        <div class="modal-content">
+                                                            <div class="modal-header">
+                                                                <h1 class="modal-title fs-5" id="staticBackdropLabel">Pre
+                                                                    Control</h1>
+                                                                <button type="button" class="btn-close"
+                                                                    data-bs-dismiss="modal" aria-label="Close"></button>
+                                                            </div>
+                                                            <div class="modal-body">
+                                                                <form>
+                                                                    <div class="form-group my-5">
+                                                                        <label class="ps-3"
+                                                                            for="select1">Kontrol</label>
+                                                                        <select class="form-control" id="select1"
+                                                                            data-control="select2"
+                                                                            data-hide-search="true">
+                                                                            <option value="1">Eliminasi</option>
+                                                                            <option value="2">Substitusi</option>
+                                                                            <option value="3">Rekayasa Teknik</option>
+                                                                            <option value="4">Alat Pelindung Diri
+                                                                            </option>
+                                                                        </select>
+                                                                    </div>
+                                                                    <div class="form-group ">
+                                                                        <label class="ps-3" for="select2">Solusi
+                                                                            Penanganan</label>
+                                                                        <select class="form-control" id="select2"
+                                                                            data-control="select2"
+                                                                            data-hide-search="true">
+                                                                            <option value="1"> Re-design</option>
+                                                                            <option value="2">Pemberian Pengaman Mesin
+                                                                            </option>
+                                                                            <option value="3">Re-design</option>
+                                                                        </select>
+                                                                    </div>
+
+
+                                                                </form>
+
+                                                            </div>
+                                                            <div class="modal-footer d-flex justify-content-end">
+                                                                <button type="button"
+                                                                    class="btn text-center d-flex justify-content-center "
+                                                                    data-bs-toggle="modal" data-bs-target="#simpanSolusi"
+                                                                    style="width: 68px; height: 28px; background:#29CC6A; color:#ffffff;">Simpan</button>
+                                                                <button type="button"
+                                                                    class="btn text-center d-flex justify-content-center border-0"
+                                                                    style="width: 68px; height: 28px; background:#868E96; color:#ffffff;"
+                                                                    data-bs-dismiss="modal">Tutup</button>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+
+                                                <a href="#" type="button" class="btn " data-bs-toggle="modal"
+                                                    data-bs-target="#postControl">Post Control</a>
+                                                <div class="modal fade" id="postControl" data-bs-backdrop="static"
+                                                    data-bs-keyboard="false" tabindex="-1"
+                                                    aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                                                    <div class="modal-dialog">
+                                                        <div class="modal-content">
+                                                            <div class="modal-header">
+                                                                <h1 class="modal-title fs-5" id="staticBackdropLabel">Pre
+                                                                    Control</h1>
+                                                                <button type="button" class="btn-close"
+                                                                    data-bs-dismiss="modal" aria-label="Close"></button>
+                                                            </div>
+                                                            <div class="modal-body">
+                                                                <form>
+                                                                    <div class="form-group my-5">
+                                                                        <label class="ps-3" for="select1">Keparahan
+                                                                            (severity)</label>
+                                                                        <select class="form-control" id="select1"
+                                                                            data-control="select2"
+                                                                            data-hide-search="true">
+                                                                            <option value="1">Tergores, sayatan kecil,
+                                                                                kerugian sebesar Rp.12313123 1</option>
+                                                                            <option value="2">Cidera menyebabkan absen
+                                                                                maks. 3 hari</option>
+                                                                            <option value="3">kit hati, kerugian
+                                                                                infinity
+                                                                                brow</option>
+                                                                            <option value="4">prenzone, kerugian kek
+                                                                                di
+                                                                                snap thanos buang</option>
+                                                                        </select>
+                                                                    </div>
+                                                                    <div class="form-group ">
+                                                                        <label class="ps-3" for="select2">Paparan
+                                                                            (Exposure)</label>
+                                                                        <select class="form-control" id="select2"
+                                                                            data-control="select2"
+                                                                            data-hide-search="true">
+                                                                            <option value="1"> sue kabeh</option>
+                                                                            <option value="2">tenanan ik </option>
+                                                                            <option value="3">anjay ampe kapan brow
+                                                                            </option>
+                                                                        </select>
+                                                                    </div>
+                                                                    <div class="form-group my-5">
+                                                                        <label class="ps-3" for="select3">Kemungkinan
+                                                                            Terjadi (Probability)</label>
+                                                                        <select class="form-control" id="select3"
+                                                                            data-control="select2"
+                                                                            data-hide-search="true">
+                                                                            <option value="1">Gada bro temen tok
+                                                                            </option>
+                                                                            <option value="2">gabisa gausah ngarep
+                                                                            </option>
+                                                                            <option value="3">ngimpi </option>
+                                                                        </select>
+                                                                    </div>
+                                                                </form>
+                                                                <div class="container mt-5">
+                                                                    <div class="hitung d-flex justify-content-center">
+                                                                        <button type="button" id="hitung"
+                                                                            class="btn text-center d-flex align-items-center justify-content-center btn-primary btn-sm"
+                                                                            style="background: #000957">Hitung</button>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="row d-flex justify-content-center">
+                                                                    <div class="col-md-6 col-lg-6 d-flex justify-content-center align-items-center mb-5 mb-lg-0"
+                                                                        data-aos="fade-up" data-aos-delay="100">
+                                                                        <div class="icon-box d-flex align-items-center">
+                                                                            <h4 class="title fw-bold"
+                                                                                style="font-size: 24px">
+                                                                                180<br /></h4>
+
+                                                                        </div>
+                                                                    </div>
+
+                                                                </div>
+                                                            </div>
+                                                            <div class="modal-footer d-flex justify-content-end">
+                                                                <a type="button"
+                                                                    class="btn text-center d-flex justify-content-center "
+                                                                    data-bs-toggle="modal" data-bs-target="#simpanPost"
+                                                                    style="width: 68px; height: 28px; background:#29CC6A; color:#ffffff;">Simpan</a>
+                                                                <button type="button"
+                                                                    class="btn text-center d-flex justify-content-center border-0"
+                                                                    style="width: 68px; height: 28px; background:#868E96; color:#ffffff;"
+                                                                    data-bs-dismiss="modal">Tutup</button>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    {{-- MODAL RISIKO SAAT INI --}}
+                                    <div class="modal fade" id="simpanPost" data-bs-keyboard="false" tabindex="-1"
+                                        aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                                        <div class="modal-dialog modal-dialog-centered ">
+                                            <div class="modal-content">
+
+                                                <div class="modal-body mt-5 ">
+                                                    <div class="d-flex justify-content-center align-items-center">
+                                                        <i class="bi bi-person-check text-center"
+                                                            style="font-size: 60px; color:#16243D"></i>
+                                                    </div>
+                                                    <p class="mb-0 mt-2 text-center "
+                                                        style="color: #16243D; font-weight:400; font-size:14px"> Data
+                                                        berhasil diperbaharui! </p>
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="modal fade" id="simpanPre" data-bs-keyboard="false" tabindex="-1"
+                                        aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                                        <div class="modal-dialog modal-dialog-centered ">
+                                            <div class="modal-content">
+
+                                                <div class="modal-body mt-5 ">
+                                                    <div class="d-flex justify-content-center align-items-center">
+                                                        <i class="bi bi-person-check text-center"
+                                                            style="font-size: 60px; color:#16243D"></i>
+                                                    </div>
+                                                    <p class="mb-0 mt-2 text-center "
+                                                        style="color: #16243D; font-weight:400; font-size:14px"> Data
+                                                        berhasil diperbaharui! </p>
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="modal fade" id="simpanSolusi" data-bs-keyboard="false" tabindex="-1"
+                                        aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                                        <div class="modal-dialog modal-dialog-centered ">
+                                            <div class="modal-content">
+
+                                                <div class="modal-body mt-5 ">
+                                                    <div class="d-flex justify-content-center align-items-center">
+                                                        <i class="bi bi-person-check text-center"
+                                                            style="font-size: 60px; color:#16243D"></i>
+                                                    </div>
+                                                    <p class="mb-0 mt-2 text-center "
+                                                        style="color: #16243D; font-weight:400; font-size:14px"> Data
+                                                        berhasil diperbaharui! </p>
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                    {{-- End MODAL RISIKO SAAT INI --}}
+                                    <div id="komponenContainer">
+                                        <!-- Komponen akan ditambahkan di sini -->
+                                    </div>
+                                </form>
+
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="container ">
+                        <div class=" d-flex justify-content-center">
+                            <button type="submit"
+                                class="btn btn-success text-white d-flex justify-content-center align-items-center "
+                                style="background: #29CC6A; height: 38px; margin : 10px 20px 30px 20px; font-size:14px; border-radius: 5px;"
+                                data-bs-toggle="modal" data-bs-target="#simpandata" onclick="showDiv()">Simpan
+                                Data</button>
+                            <div class="modal fade" id="simpandata" data-bs-keyboard="false" tabindex="-1"
+                                aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                                <div class="modal-dialog modal-dialog-centered ">
+                                    <div class="modal-content">
+                                        {{-- <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="staticBackdropLabel">Modal title</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                  </div> --}}
+                                        <div class="modal-body mt-5 ">
+                                            <div class="d-flex justify-content-center align-items-center">
+                                                <i class="bi bi-person-check text-center"
+                                                    style="font-size: 60px; color:#16243D"></i>
+                                            </div>
+                                            <p class="mb-0 mt-2 text-center "
+                                                style="color: #16243D; font-weight:400; font-size:14px"> Data berhasil
+                                                diperbaharui! </p>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                            <a href="{{ route('tambah-hirarc.index') }}" type="submit"
+                                class="btn btn-secondary text-white d-flex align-items-center justify-content-center"
+                                data-bs-toggle="modal" data-bs-target="#resetform"
+                                style="background: #868E96; margin : 10px 20px 30px 20px; width: 124.33px;
+            height: 38px; font-size:14px; border-radius: 5px;">Reset</a>
+                            <div class="modal fade" id="resetform" data-bs-backdrop="static" data-bs-keyboard="false"
+                                tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                                <div class="modal-dialog modal-dialog-centered ">
+                                    <div class="modal-content">
+                                        {{-- <div class="modal-header">
+                                    <h1 class="modal-title fs-5" id="staticBackdropLabel">Modal title</h1>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                  </div> --}}
+                                        <div class="modal-body mt-5 d-flex justify-content-center align-items-center">
+                                            <h2 class="mt-5 text-center"
+                                                style="color: #16243D; font-size: 20px font-weight:700">keluar dari tambah
+                                                data?
+                                                <p class="mb-0 mt-2 text-center "
+                                                    style="color: #DC3545; font-weight:400; font-size:14px"> data yang
+                                                    dimasukkan belum tersimpan </p>
+                                            </h2>
+                                        </div>
+                                        <div class="modal-footer d-flex justify-content-center border-0">
+                                            <a href="{{ route('tambah-hirarc.index') }}" type="button"
+                                                class="btn btn-success text-white d-flex justify-content-center align-items-center text-center rounded-1"
+                                                style="width:76px; height:31px; background: #29CC6A;">Ya</a>
+                                            <button type="button"
+                                                class="btn btn-secondary text-center d-flex align-items-center rounded-1"
+                                                data-bs-dismiss="modal" style="width:76px; height:31px; ">Tidak</button>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--end::Content container-->
+
+        </div>
+    </div>
+@stop
+
+@section('custom-css')
+    <style>
+        #risiko-sekarang .btn {
+            box-sizing: border-box;
+            border: 1px solid #009B3E;
+            border-radius: 5px;
+            width: 122px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            font-family: 'Roboto';
+            font-size: 14px;
+            font-weight: 400;
+            color: #009B3E;
+            text-align: center;
+            margin: 10px 20px 30px 20px;
+        }
+
+        #risiko-sekarang #preControl .hitung .btn,
+        #risiko-sekarang #solusi .hitung .btn,
+        #risiko-sekarang #postControl .hitung .btn {
+            border: none !important;
+            color: #ffffff;
+        }
+
+        #risiko-sekarang #preControl .icon-box {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 20px;
+            padding: 15px;
+            border-radius: 6px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.15);
+            width: 144px;
+            height: 99px;
+        }
+    </style>
+@stop
+
+@section('customscript')
+    <script>
+        var komponenCount = 1; // Variabel untuk menghitung jumlah komponen
+        // var risikoOption = "";
+
+        function addKomponen() {
+            komponenCount++; // Tambahkan jumlah komponen
+            var risikoSelect1 = document.getElementById("risikoSelect");
+            var risikoOption1 = risikoSelect1.options;
+            console.log(risikoOption1);
+
+            // Buat elemen komponen baru
+
+            var komponenElement = document.createElement("div");
+
+            komponenElement.className = " ";
+            komponenElement.innerHTML = `
+
+<div id="risiko" >
+    <div class="mb-3 ">              
+    <label for="risikoSelect" class="col-sm-2 col-form-label pt-0 ms-3 " >Risiko ${komponenCount} </label>
+    <select name="Risiko2" id="Risiko2" class="form-select fs-6 w-100 Risiko2"   data-control="select2" data-hide-search="true" data-kt-placement="bottom" >
+      <option value="">Pilih Hazard terlebih dahulu</option>
+    </select>
+    </div>
+  </div>
+  <div id="risiko-sekarang" >
+    <label  class="col-sm-2 col-form-label pb-0 mb-0" >Risiko Saat Ini</label>
+      <div class="d-flex justify-content-center align-items-center ">
+          {{-- <button  type ="button" class="btn " data-toggle="modal" data-target="#prekontrol">Pre Control</button> --}}
+          <a href=""  type="button" class="btn " data-bs-toggle="modal" data-bs-target="#preControl">Pre Control</a>
+          <div class="modal fade" id="preControl" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h1 class="modal-title fs-5" id="staticBackdropLabel">Pre Control</h1>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                  <form>
+                    <div class="form-group my-5">
+                      <label class="ps-3" for="select1">Keparahan (severity)</label>
+                      <select class="form-control" id="select1" data-control="select2" data-hide-search="true">
+                        <option value="1">Tergores, sayatan kecil, kerugian sebesar Rp.12313123 1</option>
+                        <option value="2">Cidera menyebabkan absen maks. 3 hari</option>
+                        <option value="3">kit hati, kerugian infinity brow</option>
+                        <option value="4">prenzone, kerugian kek di snap thanos buang</option>
+                      </select>
+                    </div>
+                    <div class="form-group ">
+                      <label class="ps-3" for="select2">Paparan (Exposure)</label>
+                      <select class="form-control" id="select2" data-control="select2" data-hide-search="true">
+                        <option value="1"> sue kabeh</option>
+                        <option value="2">tenanan ik </option>
+                        <option value="3">anjay ampe kapan brow </option>
+                      </select>
+                    </div>
+                    <div class="form-group my-5">
+                      <label class="ps-3" for="select3">Kemungkinan Terjadi (Probability)</label>
+                      <select class="form-control" id="select3" data-control="select2" data-hide-search="true">
+                        <option value="1">Gada bro temen tok </option>
+                        <option value="2">gabisa gausah ngarep</option>
+                        <option value="3">ngimpi </option>
+                      </select>
+                    </div>
+                  </form>
+                  <div class="container mt-5">
+                    <div class="hitung d-flex justify-content-center">
+                      <button type="button" id="hitung" class="btn text-center d-flex align-items-center justify-content-center btn-primary btn-sm" style="background: #000957" >Hitung</button>
+                    </div>
+                  </div>
+                      <div class="row d-flex justify-content-center">
+                        <div class="col-md-6 col-lg-6 d-flex justify-content-center align-items-center mb-5 mb-lg-0" data-aos="fade-up" data-aos-delay="100">
+                          <div class="icon-box d-flex align-items-center">
+                            <h4 class="title fw-bold" style="font-size: 24px">180<br /></h4>
+                            
+                          </div>
+                        </div>
+                     
+                  </div>
+                </div>
+                <div class="modal-footer d-flex justify-content-end">
+                  <button type="button" class="btn text-center d-flex justify-content-center " style="width: 68px; height: 28px; background:#29CC6A; color:#ffffff;" >Simpan</button>
+                  <button type="button" class="btn text-center d-flex justify-content-center border-0" style="width: 68px; height: 28px; background:#868E96; color:#ffffff;" data-bs-dismiss="modal">Tutup</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <a  href="#" class="btn d-flex justify-content-center " type="button" data-bs-toggle="modal" data-bs-target="#solusi"> Solusi
+          </a>
+          <div class="modal fade" id="solusi" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h1 class="modal-title fs-5" id="staticBackdropLabel">Pre Control</h1>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                  <form>
+                    <div class="form-group my-5">
+                      <label class="ps-3" for="select1">Kontrol</label>
+                      <select class="form-control" id="select1" data-control="select2" data-hide-search="true">
+                        <option value="1">Eliminasi</option>
+                        <option value="2">Substitusi</option>
+                        <option value="3">Rekayasa Teknik</option>
+                        <option value="4">Alat Pelindung Diri</option>
+                      </select>
+                    </div>
+                    <div class="form-group ">
+                      <label class="ps-3" for="select2">Solusi Penanganan</label>
+                      <select class="form-control" id="select2" data-control="select2" data-hide-search="true">
+                        <option value="1"> Re-design</option>
+                        <option value="2">Pemberian Pengaman Mesin</option>
+                        <option value="3">Re-design</option>
+                      </select>
+                    </div>
+                    
+
+                  </form>
+                  {{-- <div class="container mt-5">
+                    <div class="hitung d-flex justify-content-center">
+                      <button type="button" id="hitung" class="btn text-center d-flex align-items-center justify-content-center btn-primary btn-sm" style="background: #000957" >Hitung</button>
+                    </div>
+                  </div>
+                      <div class="row d-flex justify-content-center">
+                        <div class="col-md-6 col-lg-6 d-flex justify-content-center align-items-center mb-5 mb-lg-0" data-aos="fade-up" data-aos-delay="100">
+                          <div class="icon-box d-flex align-items-center">
+                            <h4 class="title fw-bold" style="font-size: 24px">180<br /></h4>
+                            
+                          </div>
+                        </div>
+                     
+                  </div> --}}
+                </div>
+                <div class="modal-footer d-flex justify-content-end">
+                  <button type="button" class="btn text-center d-flex justify-content-center " style="width: 68px; height: 28px; background:#29CC6A; color:#ffffff;" >Simpan</button>
+                  <button type="button" class="btn text-center d-flex justify-content-center border-0" style="width: 68px; height: 28px; background:#868E96; color:#ffffff;" data-bs-dismiss="modal">Tutup</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <a href="#" type ="button" class="btn " data-bs-toggle="modal" data-bs-target="#postControl">Post Control</a>
+          <div class="modal fade" id="postControl" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h1 class="modal-title fs-5" id="staticBackdropLabel">Pre Control</h1>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                  <form>
+                    <div class="form-group my-5">
+                      <label class="ps-3" for="select1">Keparahan (severity)</label>
+                      <select class="form-control" id="select1" data-control="select2" data-hide-search="true">
+                        <option value="1">Tergores, sayatan kecil, kerugian sebesar Rp.12313123 1</option>
+                        <option value="2">Cidera menyebabkan absen maks. 3 hari</option>
+                        <option value="3">kit hati, kerugian infinity brow</option>
+                        <option value="4">prenzone, kerugian kek di snap thanos buang</option>
+                      </select>
+                    </div>
+                    <div class="form-group ">
+                      <label class="ps-3" for="select2">Paparan (Exposure)</label>
+                      <select class="form-control" id="select2" data-control="select2" data-hide-search="true">
+                        <option value="1"> sue kabeh</option>
+                        <option value="2">tenanan ik </option>
+                        <option value="3">anjay ampe kapan brow </option>
+                      </select>
+                    </div>
+                    <div class="form-group my-5">
+                      <label class="ps-3" for="select3">Kemungkinan Terjadi (Probability)</label>
+                      <select class="form-control" id="select3" data-control="select2" data-hide-search="true">
+                        <option value="1">Gada bro temen tok </option>
+                        <option value="2">gabisa gausah ngarep</option>
+                        <option value="3">ngimpi </option>
+                      </select>
+                    </div>
+                  </form>
+                  <div class="container mt-5">
+                    <div class="hitung d-flex justify-content-center">
+                      <button type="button" id="hitung" class="btn text-center d-flex align-items-center justify-content-center btn-primary btn-sm" style="background: #000957" >Hitung</button>
+                    </div>
+                  </div>
+                      <div class="row d-flex justify-content-center">
+                        <div class="col-md-6 col-lg-6 d-flex justify-content-center align-items-center mb-5 mb-lg-0" data-aos="fade-up" data-aos-delay="100">
+                          <div class="icon-box d-flex align-items-center">
+                            <h4 class="title fw-bold" style="font-size: 24px">180<br /></h4>
+                            
+                          </div>
+                        </div>
+                     
+                  </div>
+                </div>
+                <div class="modal-footer d-flex justify-content-end">
+                  <button type="button" class="btn text-center d-flex justify-content-center " style="width: 68px; height: 28px; background:#29CC6A; color:#ffffff;" >Simpan</button>
+                  <button type="button" class="btn text-center d-flex justify-content-center border-0" style="width: 68px; height: 28px; background:#868E96; color:#ffffff;" data-bs-dismiss="modal">Tutup</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+  </div>
+`;
+
+            // Tambahkan elemen komponen ke dalam container
+            var komponenContainer = document.getElementById("komponenContainer");
+            komponenContainer.appendChild(komponenElement);
+            var selectElements = komponenElement.getElementsByClassName("Risiko2");
+            var selectElement = selectElements[0];
+            for (var i = 0; i < risikoOption1.length; i++) {
+                var option = risikoOption1[i];
+                var newOption = document.createElement("option");
+                newOption.value = option.value;
+                newOption.text = option.text;
+                selectElement.add(newOption);
+            }
+            selectElement.select2();
+
+        }
+
+        // function showDiv() {
+        //   var div = $("#risiko-sekarang");
+        //   div.slideDown("slow");
+        // }
+
+        function updateLoc() {
+            var departemenSelect = document.getElementById("departemen");
+            var lokasiSelect = document.getElementById("lokasi");
+            var selectedDepartemen = departemenSelect.value;
+            // Hapus semua opsi sebelumnya dari dropdown lokasi
+            while (lokasiSelect.options.length > 0) {
+                lokasiSelect.remove(0);
+            }
+            if (selectedDepartemen === "Teknik Komputer") {
+                var loc = ["Lab Jarkom", "RPLBK", "Mulmed", "Embedded", "A201", "A202", "Ruang Sidang", "TU", "Ruang Kahim",
+                    "RBC", "Kamar Mandi"
+                ];
+            } else if (selectedDepartemen === "Teknik Lingkungan") {
+                var loc = ["Lab LT.2", "Lab LT.3", "Lab LT.1", "Lab LT.1", "Lab LT.2", "Lapangan Tekling",
+                    "Mushola Tekling", "Warnet Tekling"
+                ];
+            } else if (selectedDepartemen === "Teknik Geodesi") {
+                var loc = ["Dekanat lama LT.1", "Dekanat lama LT.2", "Dekanat lama", "LT.3"];
+            } else if (selectedDepartemen === "Teknik Perkapalan") {
+                var loc = ["GKB LT.1", "GKB LT.2", "GKB LT.3", "GKB LT.4", "GKB LT.5", "Kantin", "DLL", "Toilet", "warnet"];
+            }
+
+            for (var i = 0; i < loc.length; i++) {
+                var option = document.createElement("option");
+                option.text = loc[i];
+                option.value = loc[i];
+                lokasiSelect.add(option);
+            }
+        }
+
+        function updateAdditionalForm() {
+            var lokasiSelect = document.getElementById("lokasi");
+            var additionalForm = document.getElementById("additionalForm");
+            var selectedLokasi = lokasiSelect.value;
+
+            // Jika lokasi dipilih, tampilkan form tambahan
+            if (selectedLokasi !== "") {
+                var aktifitasSelect = document.getElementById("aktifitas");
+
+                // Hapus opsi aktifitas sebelumnya
+                while (aktifitasSelect.options.length > 0) {
+                    aktifitasSelect.remove(0);
+                }
+
+                // Tambahkan opsi aktifitas yang sesuai dengan lokasi yang dipilih
+                if (selectedLokasi === "RPLBK") {
+                    var aktifitas = ["Tekkom", "Komputer", "Laptop", "Pajil", "Akbar", "Dime", "Wicak", "Iqbal", "Mouse",
+                        "Kibord"
+                    ];
+                } else if (selectedLokasi === "Lab Jarkom") {
+                    var aktifitas = ["GKB LT.1", "GKB LT.2", "GKB LT.3", "GKB LT.4", "GKB LT.5", "Kantin", "DLL", "Toilet",
+                        "warnet"
+                    ];
+                } else if (selectedLokasi === "Mulmed") {
+                    var aktifitas = ["A201", "A202", "Embedded", "TU", "Ruang Kahim", "RBC", "Kamar Mandi"];
+                } else if (selectedLokasi === "Embedded") {
+                    var aktifitas = ["GKB LT.1", "GKB LT.2", "GKB LT.3", "GKB LT.4", "GKB LT.5", "Kantin", "DLL", "Toilet",
+                        "warnet"
+                    ];
+                }
+
+                for (var i = 0; i < aktifitas.length; i++) {
+                    var option = document.createElement("option");
+                    option.text = aktifitas[i];
+                    option.value = aktifitas[i];
+                    aktifitasSelect.add(option);
+                }
+                // Tampilkan form tambahan
+
+            }
+        }
+
+        function updateFormB() {
+            var aktifitasSelect = document.getElementById("aktifitas");
+            var formBSelect = document.getElementById("formBSelect");
+            var formB = document.getElementById("formB");
+            var selectedAktifitas = aktifitasSelect.value;
+
+            // Hapus semua opsi sebelumnya dari dropdown formBSelect
+            while (formBSelect.options.length > 0) {
+                formBSelect.remove(0);
+            }
+
+            // Jika aktifitas dipilih, tampilkan form B dan tambahkan opsi yang sesuai
+            if (selectedAktifitas !== "") {
+                var options;
+
+                if (selectedAktifitas === "Komputer") {
+                    options = ["rev", "pacarnya akbar", "akbar di frenzon", "pajil kena php", "wicak jomblo"];
+                } else if (selectedAktifitas === "Laptop") {
+                    options = ["stasiun akbar", "pacarnya dime", "akbar di frenzon", "pajil kena php", "iqbal terluka"];
+                } else if (selectedAktifitas === "Pajil") {
+                    options = ["akbar ngimpi", "pacarnya helmi", "akbar di frenzon", "pajil tersakiti", "wicak terluka"];
+                }
+
+                // Tambahkan opsi formBSelect yang sesuai
+                for (var i = 0; i < options.length; i++) {
+                    var option = document.createElement("option");
+                    option.text = options[i];
+                    option.value = options[i];
+                    formBSelect.add(option);
+                }
+
+                // Tampilkan formB
+
+            }
+        }
+
+        function updateRisiko() {
+            var formBSelect = document.getElementById("formBSelect");
+            var risikoSelect = document.getElementById("risikoSelect");
+            // var Risiko2Select = document.getElementById("Risiko2");
+            // risikoSelect.select2();
+            var selectedFormB = formBSelect.value;
+
+            // Hapus semua opsi sebelumnya dari dropdown risikoSelect
+            while (risikoSelect.options.length > 0) {
+                risikoSelect.remove(0);
+            }
+
+            if (selectedFormB === "rev") {
+                var risiko = ["aku terjatuh dan tak bisa bangkit lagi", "aku tenggelam dalam lautan luka dalam",
+                    "aku tersesat dan tak tahu arah jalan pulang", "pergilah kau pergi dari dunia",
+                    "have you ever seen a rain"
+                ];
+                // var Risiko2 = ["2aku terjatuh dan tak bisa bangkit lagi", "aku tenggelam dalam lautan luka dalam2",
+                //     "aku tersesat dan tak tahu arah jalan pulang2", "2pergilah kau pergi dari dunia",
+                //     "have you ever seen a rain2"
+                // ];
+            } else if (selectedFormB === "pacarnya akbar") {
+                var risiko = ["akbar berkelana ke kota suka suka", "wanitaa racun duniaaa",
+                    "karna dia butakan semuaaaaaaa, RACUUUUNNNNNN!!!", "ku berkelana kenegara sepak bola ",
+                    "bukan real madrid karna dia dibantai cityyy wohoo, woo uooo",
+                    "madrid pulaangg, demittt nangiiisss", "madrid maaaadrriiidd, abis kena bantaaaii"
+                ];
+                // var Risiko2 = ["2akbar berkelana ke kota suka suka", "2wanitaa racun duniaaa",
+                //     "karna dia butakan semuaaaaaaa, RACUUUUNNNNNN!!!2", "2ku berkelana kenegara sepak bola 2",
+                //     "2bukan real madrid karna dia dibantai cityyy wohoo, woo uooo",
+                //     "2madrid pulaangg, demittt nangiiisss", "2madrid maaaadrriiidd, abis kena bantaaaii"
+                // ];
+            } else if (selectedFormB === "akbar di frenzon") {
+                var risiko = ["stasiun balapaaann", "makan kaefci", "mecidi enak bget", "starbak kapitalis",
+                    "mending kopi kenangan, yang kenangan mantan2", "thai thea nya juga enak2", "kalo janjiw ga oke2"
+                ];
+                // var Risiko2 = ["stasiun balapaaann2", "2makan kaefci", "2mecidi enak bget", "starbak kapitalis",
+                //     "mending kopi kenangan, yang kenangan mantan2", "2thai thea nya juga enak", "kalo janjiw ga oke2"
+                // ];
+            } else if (selectedFormB === "pajil kena php") {
+                var risiko = ["dori rasa ayam", "kenapa ayam rasa ayam", "dori don itu apaa", "dori itu bukan ayam",
+                    "Risiko 5"
+                ];
+                // var Risiko2 = ["dori rasa ayam2", "kenapa ayam rasa ayam2", "dori don itu apaa2", "dori itu bukan ayam2",
+                //     "Risiko 52"
+                // ];
+            } else if (selectedFormB === "wicak jomblo") {
+                var risiko = ["2", "3", "1"];
+                // var Risiko2 = ["32", "51", "72", "42", "82"];
+            }
+
+            for (var i = 0; i < risiko.length; i++) {
+                var option = document.createElement("option");
+                option.text = risiko[i];
+                option.value = risiko[i];
+                risikoSelect.add(option);
+            }
+        }
+    </script>
+@stop
