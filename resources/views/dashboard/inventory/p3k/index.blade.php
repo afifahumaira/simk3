@@ -1,4 +1,4 @@
-@extends ('layouts.layout')
+{{-- @extends ('layouts.layout')
 
 @section('content')
     <div class="page-title d-flex flex-column gap-1 mx-5 my-5  ">
