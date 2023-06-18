@@ -69,48 +69,49 @@
                             <th scope="col">Action</th>
                         </tr>
                     </thead>
-                    @foreach($datas as $data)
-                    <tbody>
-                        <tr>
-                            <th scope="row" class="text-center">{{ ++$index }}</th>
-                            <td>{{ $data->name_file }}</td>
-                            <td><a href=""class="text-decoration-underline">{{ $data->file }}</a></td>
-                            <td>
-                                <a href="{{ route('daftardokumen.ubah', $data['id']) }}" type="button" class="btn  btn-sm bg-primary"
-                                    style="width:20px;"><i
-                                        class="bi bi-pencil-square text-dark d-flex justify-content-center align-items-center"></i></a>
-                                <button type="button" class="btn  btn-sm" style="width:20px; background:#DC3545" data-bs-toggle="modal" data-bs-target="#deletemas<?= $data['id'] ?>"><i
-                                        class="bi bi-trash text-dark d-flex justify-content-center align-items-center"></i></button>
-                                        <div class="modal fade" id="deletemas<?= $data['id'] ?>" tabindex="-1"
-                                                role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                                <div class="modal-dialog" role="document">
-                                                    <div class="modal-content">
-                                                        <div class="modal-header">
-                                                            <h5 class="modal-title">Delete dokumen</h5>
-                                                            <button type="button" class="close" data-bs-dismiss="modal"
-                                                                aria-label="Close">
-                                                                <span aria-hidden="true">&times;</span>
-                                                            </button>
-                                                        </div>
-                                                        <div class="modal-body">
-                                                            <div class="col-md-6">
-                                                                <form method="POST"
-                                                                    action="{{ route('daftardokumen.destroy',$data['id']) }}">
-                                                                    @csrf
-                                                                    <h6>Apakah Anda Yakin?</h6>
-                                                                    <input type="submit" class="btn btn-success"
-                                                                        value="Okay" name="delete"></input>
-                                                                    <button type="button" class="btn btn-secondary"
-                                                                        data-bs-dismiss="modal">Close</button>
-                                                                </form>
-                                                            </div>
-                                                        </div>
+                    @foreach ($datas as $data)
+                        <tbody>
+                            <tr>
+                                <th scope="row" class="text-center">{{ ++$index }}</th>
+                                <td>{{ $data->name_file }}</td>
+                                <td><a href=""class="text-decoration-underline">{{ $data->file }}</a></td>
+                                <td>
+                                    <a href="{{ route('daftardokumen.ubah', $data['id']) }}" type="button"
+                                        class="btn  btn-sm bg-primary" style="width:20px;"><i
+                                            class="bi bi-pencil-square text-dark d-flex justify-content-center align-items-center"></i></a>
+                                    <button type="button" class="btn  btn-sm" style="width:20px; background:#DC3545"
+                                        data-bs-toggle="modal" data-bs-target="#deletemas<?= $data['id'] ?>"><i
+                                            class="bi bi-trash text-dark d-flex justify-content-center align-items-center"></i></button>
+                                    <div class="modal fade" id="deletemas<?= $data['id'] ?>" tabindex="-1" role="dialog"
+                                        aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                        <div class="modal-dialog" role="document">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title">Delete dokumen</h5>
+                                                    <button type="button" class="close" data-bs-dismiss="modal"
+                                                        aria-label="Close">
+                                                        <span aria-hidden="true">&times;</span>
+                                                    </button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <div class="col-md-6">
+                                                        <form method="POST"
+                                                            action="{{ route('daftardokumen.destroy', $data['id']) }}">
+                                                            @csrf
+                                                            <h6>Apakah Anda Yakin?</h6>
+                                                            <input type="submit" class="btn btn-success" value="Okay"
+                                                                name="delete"></input>
+                                                            <button type="button" class="btn btn-secondary"
+                                                                data-bs-dismiss="modal">Close</button>
+                                                        </form>
                                                     </div>
                                                 </div>
                                             </div>
-                            </td>
-                        </tr>
-                        @endforeach
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+                    @endforeach
                     </tbody>
                 </table>
                 <div class="d-flex align-items-end justify-content-between pt-5 ">

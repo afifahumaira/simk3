@@ -61,10 +61,15 @@
                                         <label class="col-form-label">Status</label>
                                         <div class="w-100">
                                             <div class="form-group label-floating is-empty is-focused">
-                                                <select name="status" class="form-select fs-6  w-100" data-control="select2" data-hide-search="true" data-placeholder="Status" id="status">
-                                                    <option value="1" {{ $lap->status == 1 ? 'selected' : '' }}>Pending</option>
-                                                    <option value="2" {{ $lap->status == 2 ? 'selected' : '' }}>Investigasi</option>
-                                                    <option value="3" {{ $lap->status == 3 ? 'selected' : '' }}>Sukses</option>
+                                                <select name="status" class="form-select fs-6  w-100"
+                                                    data-control="select2" data-hide-search="true" data-placeholder="Status"
+                                                    id="status">
+                                                    <option value="1" {{ $lap->status == 1 ? 'selected' : '' }}>Pending
+                                                    </option>
+                                                    <option value="2" {{ $lap->status == 2 ? 'selected' : '' }}>
+                                                        Investigasi</option>
+                                                    <option value="3" {{ $lap->status == 3 ? 'selected' : '' }}>Sukses
+                                                    </option>
                                                 </select>
                                             </div>
                                         </div>
@@ -73,9 +78,12 @@
                                         <label class="col-form-label">P2K3</label>
                                         <div class=" w-100">
                                             <div class="form-group label-floating is-empty is-focused">
-                                                <select name="p2k3_id" class="form-select fs-6 w-100" data-control="select2" data-hide-search="true" data-placeholder="P2K3" required>
+                                                <select name="p2k3_id" class="form-select fs-6 w-100" data-control="select2"
+                                                    data-hide-search="true" data-placeholder="P2K3" required>
                                                     @foreach ($p2k3s as $p2k3)
-                                                        <option value="{{ $p2k3->id }}" {{ $lap->p2k3_id == $p2k3->id ? 'selected' : '' }}>{{ $p2k3->nama != '' ? $p2k3->nama : 'Pilih P2K3' }}</option>
+                                                        <option value="{{ $p2k3->id }}"
+                                                            {{ $lap->p2k3_id == $p2k3->id ? 'selected' : '' }}>
+                                                            {{ $p2k3->nama != '' ? $p2k3->nama : 'Pilih P2K3' }}</option>
                                                     @endforeach
                                                 </select>
                                             </div>
@@ -94,7 +102,8 @@
                                     <div class="ps-3 pe-5">
                                         <label class="col-form-label">Waktu Kejadian</label>
                                         <div class=" w-100">
-                                            <input type="date" id="date" name="waktu_kejadian" class="form-control tanggalPicker" value="{{ $lap->waktu_kejadian }}">
+                                            <input type="date" id="date" name="waktu_kejadian"
+                                                class="form-control tanggalPicker" value="{{ $lap->waktu_kejadian }}">
                                         </div>
                                     </div>
 
@@ -104,7 +113,9 @@
                                             <select name="departemen_id" class="form-select fs-6 w-100"
                                                 data-control="select2" data-hide-search="true" data-placeholder="Lokasi">
                                                 @foreach ($departments as $dep)
-                                                    <option value="{{ $dep->id }}" {{ $lap->departemen_id == $dep->id ? 'selected' : '' }}>{{ $dep->name }}</option>
+                                                    <option value="{{ $dep->id }}"
+                                                        {{ $lap->departemen_id == $dep->id ? 'selected' : '' }}>
+                                                        {{ $dep->name }}</option>
                                                 @endforeach
                                             </select>
                                         </div>
@@ -113,8 +124,8 @@
                                     <div class="ps-3 pe-5">
                                         <label class="col-form-label">Lokasi Rinci</label>
                                         <div class=" w-100">
-                                            <input type="text" class="form-control" name="lokasi_rinci" id="lokasi_rinci"
-                                                value="{{ $lap->lokasi_rinci }}">
+                                            <input type="text" class="form-control" name="lokasi_rinci"
+                                                id="lokasi_rinci" value="{{ $lap->lokasi_rinci }}">
                                         </div>
                                     </div>
 
@@ -124,13 +135,25 @@
                                             <select name="jenis_insiden" class="form-select fs-6 w-100"
                                                 data-control="select2" data-hide-search="true"
                                                 data-placeholder="Jenis Insiden">
-                                                <option value="Pingsan" {{ $lap->jenis_insiden == "Pingsan" ? 'selected' : '' }}>Pingsan</option>
-                                                <option value="Serangan Jantung" {{ $lap->jenis_insiden == "Serangan Jantung" ? 'selected' : '' }}>Serangan Jantung</option>
-                                                <option value="Asma" {{ $lap->jenis_insiden == "Asma" ? 'selected' : '' }}>Asma</option>
-                                                <option value="Pendarahan" {{ $lap->jenis_insiden == "Pendarahan" ? 'selected' : '' }}>Pendarahan</option>
-                                                <option value="Keracunan" {{ $lap->jenis_insiden == "Keracunan" ? 'selected' : '' }}>Keracunan</option>
-                                                <option value="Cidera" {{ $lap->jenis_insiden == "Cidera" ? 'selected' : '' }}>Cidera</option>
-                                                <option value="Lainnya" {{ $lap->jenis_insiden == "Lainnya" ? 'selected' : '' }}>Lainnya</option>
+                                                <option value="Pingsan"
+                                                    {{ $lap->jenis_insiden == 'Pingsan' ? 'selected' : '' }}>Pingsan
+                                                </option>
+                                                <option value="Serangan Jantung"
+                                                    {{ $lap->jenis_insiden == 'Serangan Jantung' ? 'selected' : '' }}>
+                                                    Serangan Jantung</option>
+                                                <option value="Asma"
+                                                    {{ $lap->jenis_insiden == 'Asma' ? 'selected' : '' }}>Asma</option>
+                                                <option value="Pendarahan"
+                                                    {{ $lap->jenis_insiden == 'Pendarahan' ? 'selected' : '' }}>Pendarahan
+                                                </option>
+                                                <option value="Keracunan"
+                                                    {{ $lap->jenis_insiden == 'Keracunan' ? 'selected' : '' }}>Keracunan
+                                                </option>
+                                                <option value="Cidera"
+                                                    {{ $lap->jenis_insiden == 'Cidera' ? 'selected' : '' }}>Cidera</option>
+                                                <option value="Lainnya"
+                                                    {{ $lap->jenis_insiden == 'Lainnya' ? 'selected' : '' }}>Lainnya
+                                                </option>
                                             </select>
                                         </div>
                                     </div>
@@ -153,17 +176,19 @@
                                     <div class="ps-3 pe-5">
                                         <label class="col-form-label">Foto Kejadian</label>
                                         <div class=" w-100">
-                                            <a class="d-block overlay" data-fslightbox="lightbox-basic" href="{{ asset('storage/laporan_insiden/gambarkejadian/'. $lap->gambar) }}">
+                                            <a class="d-block overlay" data-fslightbox="lightbox-basic"
+                                                href="{{ asset('storage/laporan_insiden/gambarkejadian/' . $lap->gambar) }}">
                                                 <div class="overlay-wrapper bgi-no-repeat bgi-position-center bgi-size-cover card-rounded min-h-175px"
-                                                    style="background-image:url('{{ asset('storage/laporan_insiden/gambarkejadian/'. $lap->gambar) }}')">
+                                                    style="background-image:url('{{ asset('storage/laporan_insiden/gambarkejadian/' . $lap->gambar) }}')">
                                                 </div>
                                                 <div class="overlay-layer card-rounded bg-dark bg-opacity-25 shadow">
                                                     <i class="bi bi-eye-fill text-white fs-3x"></i>
                                                 </div>
                                             </a>
-                                            <input type="hidden" class="form-control" name="gambar_old" value="{{ $lap->gambar }}">
-                                            <input type="file" class="form-control mt-3" name="gambar" id="gambar"
-                                                accept="image/png, image/jpeg">
+                                            <input type="hidden" class="form-control" name="gambar_old"
+                                                value="{{ $lap->gambar }}">
+                                            <input type="file" class="form-control mt-3" name="gambar"
+                                                id="gambar" accept="image/png, image/jpeg">
                                         </div>
                                     </div>
                             </div>
@@ -184,14 +209,16 @@
                                 <div class="ps-3 pe-5">
                                     <label class="col-form-label">Nama Pelapor</label>
                                     <div class=" w-100">
-                                        <input type="text" class="form-control" name="nama_pelapor" value="{{ $lap->nama_pelapor }}">
+                                        <input type="text" class="form-control" name="nama_pelapor"
+                                            value="{{ $lap->nama_pelapor }}">
                                     </div>
                                 </div>
 
                                 <div class="ps-3 pe-5">
                                     <label for="inputEmail3" class="col-form-label">Email Pelapor</label>
                                     <div class=" w-100">
-                                        <input type="email" class="form-control" name="email_pelapor" value="{{ $lap->email_pelapor }}">
+                                        <input type="email" class="form-control" name="email_pelapor"
+                                            value="{{ $lap->email_pelapor }}">
                                     </div>
                                 </div>
 
@@ -199,30 +226,35 @@
                                     <label for="inputNomertelepon3" class="col-form-label">No. Telp
                                         Pelapor</label>
                                     <div class=" w-100">
-                                        <input type="number" class="form-control" name="nomer_telepon_pelapor" value="{{ $lap->nomer_telepon_pelapor }}">
+                                        <input type="number" class="form-control" name="nomer_telepon_pelapor"
+                                            value="{{ $lap->nomer_telepon_pelapor }}">
                                     </div>
                                 </div>
 
                                 <div class="ps-3 pe-5">
                                     <label for="inputUnit" class="col-form-label">Unit</label>
                                     <div class=" w-100">
-                                        <input type="text" class="form-control" name="unit_pelapor" value="{{ $lap->unit_pelapor }}">
+                                        <input type="text" class="form-control" name="unit_pelapor"
+                                            value="{{ $lap->unit_pelapor }}">
                                     </div>
                                 </div>
                                 <div class="ps-3 pe-5">
                                     <label for="inputfotokejadian" class="col-form-label">Foto Tanda
                                         Pengenal</label>
                                     <div class=" w-100">
-                                        <a class="d-block overlay" data-fslightbox="lightbox-basic" href="{{ asset('storage/laporan_insiden/tanda_pengenal/'. $lap->tanda_pengenal) }}">
+                                        <a class="d-block overlay" data-fslightbox="lightbox-basic"
+                                            href="{{ asset('storage/laporan_insiden/tanda_pengenal/' . $lap->tanda_pengenal) }}">
                                             <div class="overlay-wrapper bgi-no-repeat bgi-position-center bgi-size-cover card-rounded min-h-175px"
-                                                style="background-image:url('{{ asset('storage/laporan_insiden/tanda_pengenal/'. $lap->tanda_pengenal) }}')">
+                                                style="background-image:url('{{ asset('storage/laporan_insiden/tanda_pengenal/' . $lap->tanda_pengenal) }}')">
                                             </div>
                                             <div class="overlay-layer card-rounded bg-dark bg-opacity-25 shadow">
                                                 <i class="bi bi-eye-fill text-white fs-3x"></i>
                                             </div>
                                         </a>
-                                        <input type="hidden" class="form-control" name="tanda_pengenal_old" value="{{ $lap->tanda_pengenal }}">
-                                        <input type="file" class="form-control mt-3" name="tanda_pengenal" accept="image/png, image/jpeg">
+                                        <input type="hidden" class="form-control" name="tanda_pengenal_old"
+                                            value="{{ $lap->tanda_pengenal }}">
+                                        <input type="file" class="form-control mt-3" name="tanda_pengenal"
+                                            accept="image/png, image/jpeg">
                                     </div>
                                 </div>
                             </div>
@@ -243,7 +275,8 @@
                                 <div class="ps-3 pe-5">
                                     <label class="col-form-label">Nama Korban</label>
                                     <div class=" w-100">
-                                        <input type="text" class="form-control" name="nama_korban" value="{{ $lap->nama_korban }}">
+                                        <input type="text" class="form-control" name="nama_korban"
+                                            value="{{ $lap->nama_korban }}">
 
                                     </div>
                                 </div>
@@ -251,7 +284,8 @@
                                 <div class="ps-3 pe-5">
                                     <label for="inputEmail3" class="col-form-label">Email Korban</label>
                                     <div class=" w-100">
-                                        <input type="email" class="form-control" name="email_korban" value="{{ $lap->email_korban }}">
+                                        <input type="email" class="form-control" name="email_korban"
+                                            value="{{ $lap->email_korban }}">
 
                                     </div>
                                 </div>
@@ -260,14 +294,16 @@
                                     <label for="inputNomertelepon3" class="col-form-label">No. Telp
                                         Korban</label>
                                     <div class=" w-100">
-                                        <input type="number" class="form-control" name="nomer_telepon_korban" value="{{ $lap->nomer_telepon_korban }}">
+                                        <input type="number" class="form-control" name="nomer_telepon_korban"
+                                            value="{{ $lap->nomer_telepon_korban }}">
                                     </div>
                                 </div>
 
                                 <div class="ps-3 pe-5">
                                     <label for="inputUnit" class="col-form-label">Unit</label>
                                     <div class=" w-100">
-                                        <input type="text" class="form-control" name="unit_korban" value="{{ $lap->unit_korban }}">
+                                        <input type="text" class="form-control" name="unit_korban"
+                                            value="{{ $lap->unit_korban }}">
                                     </div>
                                 </div>
                             </div>
@@ -279,7 +315,8 @@
                         <div class=" d-flex justify-content-center">
                             <button type="submit"
                                 class="btn btn-success text-white d-flex justify-content-center align-items-center "
-                                style="background: #29CC6A;height: 38px; margin : 10px 20px 30px 20px; font-size:14px; border-radius: 5px;">Simpan Data</button>
+                                style="background: #29CC6A;height: 38px; margin : 10px 20px 30px 20px; font-size:14px; border-radius: 5px;">Simpan
+                                Data</button>
                             {{-- <a href="{{ route('laporan-insiden.tambah') }}" type="submit"
                                 class="btn btn-secondary text-white d-flex align-items-center justify-content-center"
                                 data-bs-toggle="modal" data-bs-target="#resetform"
@@ -322,7 +359,7 @@
 @stop
 
 @section('customscript')
-<script src="{{ asset('plugins/custom/fslightbox/fslightbox.bundle.js') }}"></script>
+    <script src="{{ asset('plugins/custom/fslightbox/fslightbox.bundle.js') }}"></script>
     <script>
         $(document).ready(function() {
             $(".tanggalPicker").flatpickr({

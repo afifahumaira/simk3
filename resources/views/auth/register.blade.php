@@ -60,12 +60,13 @@
                                     @csrf
                                     <div class="form-group mb-3">
                                         <input id="name" name="name" required="" autofocus=""
-                                            type="text" name="name" :value="old('Nama Pengguna')" required
-                                            autofocus class="form-control border-0 shadow-sm px-4">
+                                            type="text" placeholder="Nama Pengguna" name="name"
+                                            :value="old('Nama Pengguna')" required autofocus
+                                            class="form-control border-0 shadow-sm px-4">
                                     </div>
                                     <div class="form-group mb-3">
-                                        <input id="email" type="email" type="email" name="email"
-                                            :value="old('email')" required autofocus=""
+                                        <input id="email" type="email" type="email" placeholder="Email"
+                                            name="email" :value="old('email')" required autofocus=""
                                             class="form-control border-0 shadow-sm px-4">
                                     </div>
                                     <div class="form-group mb-3">

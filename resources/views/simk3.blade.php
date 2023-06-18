@@ -67,8 +67,10 @@
                         <li class="dropdown">
                             <a href="#"><span>Pelaporan</span> <i class="bi bi-chevron-down"></i></a>
                             <ul>
-                                <li><a class="nav-link scrollto active" href="{{ route('laporaninsidens') }}">Lapor Insiden</a></li>
-                                <li><a class="nav-link scrollto active" href="{{ route('potensibahayas') }}">Potensi Bahaya</a></li>
+                                <li><a class="nav-link scrollto active" href="{{ route('laporaninsidens') }}">Lapor
+                                        Insiden</a></li>
+                                <li><a class="nav-link scrollto active" href="{{ route('potensibahayas') }}">Potensi
+                                        Bahaya</a></li>
                             </ul>
                         </li>
 
@@ -81,7 +83,7 @@
                         <li>
                             <img src="Arsha/assets/img/Vector_12.png" alt="" class="Vector img-fluid ps-2" />
                         </li>
-                        <li><a id="login" href="{{ url('/regist') }}">Daftar</a></li>
+                        <li><a id="login" href="{{ url('/register') }}">Daftar</a></li>
                         <li><a id="login" href="{{ url('/login') }}">Masuk</a></li>
 
                     </ul>
@@ -107,11 +109,11 @@
                         <li class="dropdown">
                             <a href="#"><span>Pelaporan</span> <i class="bi bi-chevron-down"></i></a>
                             <ul>
-                                <li><a class="nav-link scrollto active"
-                                        href="{{ route('laporaninsidens') }}">Lapor Insiden</a>
+                                <li><a class="nav-link scrollto active" href="{{ route('laporaninsidens') }}">Lapor
+                                        Insiden</a>
                                 </li>
-                                <li><a class="nav-link scrollto active"
-                                        href="{{ route('potensibahayas') }}">Potensi Bahaya</a></li>
+                                <li><a class="nav-link scrollto active" href="{{ route('potensibahayas') }}">Potensi
+                                        Bahaya</a></li>
                             </ul>
                         </li>
 
@@ -149,7 +151,7 @@
     <section id="hero" class="d-flex align-items-center ">
 
         <div class="container ">
-            <div class="row rounded-4 m-5">
+            <div class="row m-5">
                 <div class="col-lg-6 d-flex flex-column justify-content-center pt-4 pt-lg-0 order-2 order-lg-1"
                     data-aos="fade-up" data-aos-delay="200">
                     <h1>Sistem Informasi<br> Manajemen K3<br> Fakultas Teknik UNDIP</h1>
@@ -240,7 +242,7 @@
 
                     </div>
                     <div class="row row-sm-6 d-flex justify-content-center gap-4">
-                        <div class="col-md-6 col-lg-4 bg-white align-items-center border rounded-start  mb-0 h-100 w-25 "
+                        <div class="col-md-6 col-lg-4  bg-white align-items-center border rounded-start  mb-0 h-100 w-25 "
                             data-aos="fade-up" data-aos-delay="100">
                             <div class=" border border-1  rounded-2 ms-2 m-3 d-flex justify-content-center "
                                 style="width: fit-content; height:fit-content">
@@ -257,7 +259,7 @@
                             </div>
                         </div>
                         <!-- align-items-stretch -->
-                        <div class="col-md-6 col-lg-4 col-sm-6 bg-white border border-1 rounded-0 h-100 w-25"
+                        <div class="col-md-6 col-lg-4  bg-white border border-1 rounded-0 h-100 w-25"
                             data-aos="fade-up" data-aos-delay="100">
                             <div class=" border border-1  rounded-2 ms-2 m-3 d-flex justify-content-center "
                                 style="width: fit-content; height:fit-content">
@@ -273,7 +275,7 @@
                             <!-- </div> -->
                         </div>
 
-                        <div class="col-md-6 col-lg-2 col-sm-6 bg-white mb-5 mb-lg-0 h-100 w-25 border rounded-end"
+                        <div class="col-md-6 col-lg-4  bg-white mb-5 mb-lg-0 h-100 w-25 border rounded-end"
                             data-aos="fade-up" data-aos-delay="100">
                             <!-- <div class="icon-box d-flex align-items-center rounded-4" > -->
                             <div class=" border border-1  rounded-2  ms-2 m-3 d-flex justify-content-center "
@@ -294,7 +296,7 @@
                     </div>
                 </div>
                 <div class="row mb-5 d-flex justify-content-center gap-4">
-                    <div class="col-md-6 col-lg-2 col-sm-6  bg-white  mb-5 mb-lg-0 h-100 w-25 border rounded-start"
+                    <div class="col-md-6 col-lg-6  bg-white  mb-5 mb-lg-0 h-100 w-25 border rounded-start"
                         data-aos="fade-up" data-aos-delay="100">
                         <!-- <div class="icon-box d-flex align-items-center rounded-4" > -->
                         <div class=" border border-1  rounded-2 ms-2 m-3 d-flex justify-content-center "
@@ -314,7 +316,7 @@
                         </div>
                     </div>
 
-                    <div class="col-md-6 col-lg-2 col-sm-6 bg-white align-items-center border rounded-end  mb-0 w-25 "
+                    <div class="col-md-6 col-lg-6  bg-white align-items-center border rounded-end  mb-0 w-25 "
                         data-aos="fade-up" data-aos-delay="100">
                         <!-- <div class="icon-box d-flex align-items-center rounded-4"  > -->
                         <div class=" border border-1   rounded-2 ms-2 m-3 d-flex justify-content-center "

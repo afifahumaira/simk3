@@ -44,7 +44,6 @@ License: For each use you must have a valid license purchased only from above li
     <link href="{{ asset('plugins/global/plugins.bundle.css') }}" rel="stylesheet" type="text/css" />
     <link href="{{ asset('css/style.bundle.css') }}" rel="stylesheet" type="text/css" />
     <style>
-
         h2 {
             font-family: Roboto Flex !important;
             font-size: 24px !important;
@@ -56,8 +55,21 @@ License: For each use you must have a valid license purchased only from above li
             font-size: 16px !important;
         }
 
-        #kt_app_content {
+        thead {
+            font-family: Roboto Flex;
+            font-size: 16px;
+            color: #16243D;
+            font-weight: 700;
+        }
+
+        tbody {
             font-size: 16px !important;
+            font-family: Roboto !important;
+            font-weight: 400 !important;
+        }
+
+        #kt_app_content {
+            font-size: 12px !important;
             font-family: Roboto !important;
             font-weight: 400 !important;
         }
@@ -75,26 +87,24 @@ License: For each use you must have a valid license purchased only from above li
             background-color: #DC3545 !Important;
             border: solid 1px #DC3545 !Important;
         }
-        .pagination > li > a:focus,
-        .pagination > li > a:hover,
-        .pagination > li > span:focus,
-        .pagination > li:not(.active) > span:hover
-        {
+
+        .pagination>li>a:focus,
+        .pagination>li>a:hover,
+        .pagination>li>span:focus,
+        .pagination>li:not(.active)>span:hover {
             color: #DC3545 !important;
             background-color: #eee;
             border-color: #ddd;
         }
 
-        .pagination > .active > a
-        {
+        .pagination>.active>a {
             color: white;
             background-color: #DC3545 !Important;
             border: solid 1px #DC3545 !Important;
         }
 
-        .pagination > .active > a:hover
-        {
-            color:white !important;
+        .pagination>.active>a:hover {
+            color: white !important;
             background-color: #DC3545 !Important;
             border: solid 1px #DC3545;
         }

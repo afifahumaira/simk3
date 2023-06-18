@@ -129,8 +129,6 @@ class LaporanInsidenController extends Controller
             'email_pelapor' => 'required',
             'nomer_telepon_pelapor' => 'required',
             'unit_pelapor' => 'required',
-            'gambar' => 'required',
-            'tanda_pengenal' => 'required',
         ]);
 
         $gambarName = '';

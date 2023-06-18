@@ -62,7 +62,7 @@
                 <thead>
                     <tr>
                         <th scope="col" class="text-center col-1">No</th>
-                        <th scope="col" class="col-4">Lokasi</th>
+                        <th scope="col" class="col-4">ID_Aktifitas</th>
                         <th scope="col" class="">Aktifitas</th>
                         <th scope="col" class="col-1">Action</th>
                     </tr>
@@ -70,13 +70,14 @@
                 <tbody>
                     @foreach ($locations as $loc)
                         <tr>
-                            <td scope="row" class="text-center">{{ ($locations->currentpage()-1) * $locations ->perpage() + $loop->index + 1 }}</td>
+                            <td scope="row" class="text-center">
+                                {{ ($locations->currentpage() - 1) * $locations->perpage() + $loop->index + 1 }}</td>
                             <td>{{ $loc->departemen->name }} ({{ $loc->name }})</td>
                             <td>{{ $loc->countActivities() }} Aktifitas terdata</td>
                             <td>
-                                <a href="{{ route('aktifitas.detail', $loc->id) }}"
-                                type="button" class="btn  btn-sm bg-warning " style="width:20px;"><i
-                                    class="bi bi-eye text-dark d-flex justify-content-center align-items-center"></i></a>
+                                <a href="{{ route('aktifitas.detail', $loc->id) }}" type="button"
+                                    class="btn  btn-sm bg-warning " style="width:20px;"><i
+                                        class="bi bi-eye text-dark d-flex justify-content-center align-items-center"></i></a>
                             </td>
                         </tr>
                     @endforeach

@@ -62,7 +62,7 @@
                 <thead px-3>
                     <tr>
                         <th scope="col" class="text-center col-1">No</th>
-                        <th scope="col" class="col-4">Lokasi</th>
+                        <th scope="col" class="col-4">ID_Hazard</th>
                         <th scope="col" class="">Hazard</th>
                         <th scope="col" class="col-1">Action</th>
                     </tr>
@@ -70,13 +70,14 @@
                 <tbody>
                     @foreach ($activities as $act)
                         <tr>
-                            <td scope="row" class="text-center">{{ ($activities->currentpage()-1) * $activities ->perpage() + $loop->index + 1 }}</td>
+                            <td scope="row" class="text-center">
+                                {{ ($activities->currentpage() - 1) * $activities->perpage() + $loop->index + 1 }}</td>
                             <td>{{ $act->name }}</td>
                             <td>{{ $act->countHazards() }} Hazard terdata</td>
                             <td>
-                                <a href="{{ route('hazard.detail', $act->id) }}"
-                                type="button" class="btn  btn-sm bg-warning " style="width:20px;"><i
-                                    class="bi bi-eye text-dark d-flex justify-content-center align-items-center"></i></a>
+                                <a href="{{ route('hazard.detail', $act->id) }}" type="button"
+                                    class="btn  btn-sm bg-warning " style="width:20px;"><i
+                                        class="bi bi-eye text-dark d-flex justify-content-center align-items-center"></i></a>
                             </td>
                         </tr>
                     @endforeach

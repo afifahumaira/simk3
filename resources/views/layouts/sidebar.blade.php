@@ -112,6 +112,7 @@
                     <!--end:Menu sub--> 
                 </div>
                 <!--end:Menu item--> --}}
+
                 <!--begin:Menu item-->
                 <div data-kt-menu-trigger="click" class="menu-item menu-accordion">
                     <!--begin:Menu link-->
@@ -154,8 +155,9 @@
                     <!--end:Menu sub-->
                 </div>
                 <!--end:Menu item-->
+
                 <!--begin:Menu item-->
-                <div data-kt-menu-trigger="click" class="menu-item menu-accordion">
+                {{-- <div data-kt-menu-trigger="click" class="menu-item menu-accordion">
                     <!--begin:Menu link-->
                     <span class="menu-link">
                         <span class="menu-icon">
@@ -197,7 +199,7 @@
                         </div>
                     </div>
                     <!--end:Menu sub-->
-                </div>
+                </div> --}}
                 <!--end:Menu item-->
 
                 <!--begin:Menu item-->
@@ -349,7 +351,7 @@
                 <!--end:Menu item-->
                 <div class="menu-item here show menu-accordion">
                     <!--begin:Menu link-->
-                    <a href="{{ route('lokasi.index') }}" class="menu-link">
+                    <a href="{{ route('maps.index') }}" class="menu-link">
                         <span class="menu-icon">
                             <i class="bi bi-map text-white fs-3 "></i>
                         </span>
@@ -369,7 +371,9 @@
             {{-- End View Pengguna --}}
 
             {{-- View P2K3 --}}
-            @if (auth()->user()->hak_akses == 'p2k3')
+            @if (auth()->user()->hak_akses == 'p2k3' ||
+                    auth()->user()->hak_akses == 'k3_departemen' ||
+                    auth()->user()->hak_akses == 'pimpinan')
                 <!--begin:Menu item-->
 
                 <div class="menu-item here show menu-accordion ">
@@ -430,7 +434,7 @@
                 </div>
                 <!--end:Menu item-->
                 <!--begin:Menu item-->
-                <div data-kt-menu-trigger="click" class="menu-item menu-accordion">
+                {{-- <div data-kt-menu-trigger="click" class="menu-item menu-accordion">
                     <!--begin:Menu link-->
                     <span class="menu-link">
                         <span class="menu-icon">
@@ -470,11 +474,11 @@
 
                     </div>
                     <!--end:Menu sub-->
-                </div>
+                </div> --}}
                 <!--end:Menu item-->
 
                 <!--begin:Menu item-->
-                <div data-kt-menu-trigger="click" class="menu-item menu-accordion">
+                {{-- <div data-kt-menu-trigger="click" class="menu-item menu-accordion">
                     <!--begin:Menu link-->
                     <span class="menu-link">
                         <span class="menu-icon">
@@ -516,14 +520,14 @@
                         </div>
                     </div>
                     <!--end:Menu sub-->
-                </div>
+                </div> --}}
                 <!--end:Menu item-->
 
 
                 <!--begin:Menu item-->
                 <div class="menu-item here show menu-accordion">
                     <!--begin:Menu link-->
-                    <a href="{{ route('lokasi.index') }}" class="menu-link">
+                    <a href="{{ route('maps.index') }}" class="menu-link">
                         <span class="menu-icon">
                             <i class="bi bi-map text-white fs-3 "></i>
                         </span>
