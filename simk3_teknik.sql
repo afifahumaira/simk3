@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 06, 2023 at 02:36 PM
+-- Generation Time: Jun 30, 2023 at 04:56 PM
 -- Server version: 10.4.25-MariaDB
 -- PHP Version: 8.1.10
 
@@ -63,6 +63,48 @@ INSERT INTO `activities` (`id`, `lokasi`, `name`) VALUES
 (23, '60,61,62,63,64,65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80', 'Kegiatan praktikum dengan peraga batuan/mineral'),
 (24, '1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20', 'Preparasi sampel'),
 (25, '10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30', 'Pengamatan menggunakan mikroskop');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `activities_master`
+--
+
+CREATE TABLE `activities_master` (
+  `id_aktivitas` int(10) NOT NULL,
+  `name` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `activities_master`
+--
+
+INSERT INTO `activities_master` (`id_aktivitas`, `name`) VALUES
+(1, 'Kegiatan belajar mengajar'),
+(2, 'Kegiatan perawatan kebersihan ruang/ lingkungan'),
+(3, 'Perawatan rutin kabel LAN'),
+(4, 'Penggunaan listrik dan alat alat elektronik'),
+(5, 'Penggunaan ruang kelas, ruang administrasi dan kamar mandi'),
+(6, 'Penggunaan peralatan ruangan (ruang kantor & ruang kelas)'),
+(7, 'Barang-barang bekas dan sampah'),
+(8, 'Kegiatan praktikum mahasiswa menggunakan alat laboratorium'),
+(9, 'Memindahkan barang'),
+(10, 'Penggunaan  dan penyimpanan bahan kimia laboratorium'),
+(11, 'Penggunaan listrik alat alat laboratorium'),
+(12, 'Seminar/Kuliah gabungan'),
+(13, 'Bekerja, Rapat, Asistensi dengan mahasiswa'),
+(14, 'Bekerja, Layanan administrasi'),
+(15, 'Rapat, sidang'),
+(16, 'Membaca, mengerjakan tugas, pencarian literatur'),
+(17, 'Buang air kecil, Buang air besar '),
+(18, 'Ibadah/Sholat'),
+(19, 'Workshop ksatria hydros'),
+(20, 'Memarkir kendaraan'),
+(21, 'Kuliah tamu'),
+(22, 'Kegiatan praktikum Teknologi Bahan Konstruksi'),
+(23, 'Kegiatan praktikum dengan peraga batuan/mineral'),
+(24, 'Preparasi sampel'),
+(25, 'Pengamatan menggunakan mikroskop');
 
 -- --------------------------------------------------------
 
@@ -840,6 +882,114 @@ INSERT INTO `locations` (`id`, `departemen_id`, `name`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `location_master`
+--
+
+CREATE TABLE `location_master` (
+  `id_lokasi` int(10) NOT NULL,
+  `name` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `location_master`
+--
+
+INSERT INTO `location_master` (`id_lokasi`, `name`) VALUES
+(1, 'Laboratorium Komputasi'),
+(2, 'Studio Perancangan'),
+(3, 'Mushola'),
+(4, 'Ruang Kelas'),
+(5, 'Aula'),
+(6, 'Parkiran'),
+(7, 'Laboratorium Komputasi Proses'),
+(8, 'Parkiran'),
+(9, 'Ruang Kelas'),
+(10, 'Ruang Dosen'),
+(11, 'Ruang TU'),
+(12, 'Ruang Theater'),
+(13, 'Perpustakaan'),
+(14, 'Toilet'),
+(15, 'Ruang Seminar/Studio'),
+(16, 'Ruang ASPI'),
+(17, 'Musholla'),
+(18, 'Laboratorium Proses Produksi, CNC dan Metrology'),
+(19, 'Laboratorium Metalurgi Fisik'),
+(20, 'Laboratorium Thermofluida'),
+(21, 'Laboratorium Komputasi'),
+(22, 'Laboratorium Perancangan Teknik dan Tribology'),
+(23, 'Ruang Kelas'),
+(24, ' Laboratorium Komputer dan Informatika'),
+(25, 'Laboratorium Elektronika dan Mikroprocessor'),
+(26, 'Laboratorium Konversi Energi Listrik dan Sistem Tenaga'),
+(27, 'Laboratorium Teknik Kontrol Otomatis'),
+(28, ' Laboratorium Telekomunikasi dan Pengolahan Signal'),
+(29, 'Ruang kelas'),
+(30, 'Ruang Kelas 201'),
+(31, 'Ruang Kelas 202'),
+(32, 'Ruang Kelas 203'),
+(33, 'Ruang Kelas 204'),
+(34, 'Laboratorium OPSI'),
+(35, 'Laboratorium DSS'),
+(36, 'Laboratorium STUDIO'),
+(37, 'Laboratorium RSKE'),
+(38, 'Laboratorium TPS'),
+(39, 'Laboratorium Sistem Produksi'),
+(40, 'Ruang Multimedia'),
+(41, 'Office dan Classroom'),
+(42, 'Laboratorium Air'),
+(43, 'Laboratorium Teknik Pengelasan'),
+(44, 'Laboratorium Hidrodinamika'),
+(45, 'Laboratorium Konstruksi'),
+(46, 'Laboratorium Mesin'),
+(47, 'Laboratorium Komputer'),
+(48, 'Ruang Kelas'),
+(49, 'Laboratorium Geodinamik,Hidrogeologi dan Planologi'),
+(50, 'Laboratorium Geoteknik, Geotermal, dan Geofisika'),
+(51, 'Laboratorium Paleontologi, Geologi Foto, dan Geoptik'),
+(52, 'Laboratorium Sedimen, Geologi Minyak Bumi, dan Geokimia'),
+(53, 'Ruang Komputer atau Laboratorium Geokomputasi'),
+(54, 'Ruang Kelas'),
+(55, 'Ruang HMTG'),
+(56, 'Ruang Alat'),
+(57, 'Ruang Arsip'),
+(58, 'Ruang Panel'),
+(59, 'Toilet'),
+(60, 'Mushola'),
+(61, 'Laboratorium Pengukuran dan Pemetaan Dasar'),
+(62, 'Laboratorium Survei Hidrografi'),
+(63, 'Laboratorium Komputer dan Sistem Informasi Geografis'),
+(64, ' Laboratorium Fotogramteri dan Penginderaan Jauh dan Lab'),
+(65, 'Ruang Kelas'),
+(66, 'Ruang Kelas E201'),
+(67, 'Ruang Kelas D304'),
+(68, 'Ruang Kelas Ex Lab Multimedia'),
+(69, 'Ruang Kelas Ex Ruang Sidang'),
+(70, 'Laboratorium RPL'),
+(71, 'Laboratorium Sistem Tertanam'),
+(72, 'Laboratorium Jaringan'),
+(73, 'Laboratorium Multimedia'),
+(74, 'Perpustakaan'),
+(75, 'Ruang Kadep'),
+(76, 'Ruang TU'),
+(77, 'Ruang Sidang'),
+(78, 'Gedung Dekanat KWU'),
+(79, 'Laboratorium Mikrobiologi'),
+(80, 'Laboratorium Dasar Teknik Kimia 1 dan 2'),
+(81, 'Laboratorium Proses Teknik Kimia'),
+(82, 'Laboratorium Operasi Teknik Kimia'),
+(83, 'Laboratorium Bahan dan Konstruksi'),
+(84, 'Laboratorium Mekanika Tanah'),
+(85, 'Laboratorium Transportasi'),
+(86, 'Laboratorium Air'),
+(87, 'Ruang Kelas'),
+(88, 'Aula'),
+(89, 'Parkiran'),
+(90, 'Ruang Kelas'),
+(91, 'Laboratorium Udara');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `maps`
 --
 
@@ -1000,7 +1150,8 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (69, '2021_09_24_163957_create_p3ks_table', 55),
 (70, '2021_09_27_065932_create_home_simk3_table', 56),
 (71, '2021_09_27_174300_create_data_kosong_table', 57),
-(72, '2022_02_16_173934_deleted_table', 58);
+(72, '2022_02_16_173934_deleted_table', 58),
+(73, '2019_12_14_000001_create_personal_access_tokens_table', 59);
 
 -- --------------------------------------------------------
 
@@ -1145,6 +1296,31 @@ CREATE TABLE `password_resets` (
   `created_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
+--
+-- Dumping data for table `password_resets`
+--
+
+INSERT INTO `password_resets` (`email`, `token`, `created_at`) VALUES
+('admin@admin.com', '$2y$10$ftz/EQcljvimCZkCGekoUu0irLBqod8cksH.4N.uezoZAk6CS60Dy', '2023-06-13 04:43:21');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `personal_access_tokens`
+--
+
+CREATE TABLE `personal_access_tokens` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `tokenable_type` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `tokenable_id` bigint(20) UNSIGNED NOT NULL,
+  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `token` varchar(64) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `abilities` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `last_used_at` timestamp NULL DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
 -- --------------------------------------------------------
 
 --
@@ -1286,6 +1462,12 @@ ALTER TABLE `activities`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `activities_master`
+--
+ALTER TABLE `activities_master`
+  ADD PRIMARY KEY (`id_aktivitas`);
+
+--
 -- Indexes for table `apars`
 --
 ALTER TABLE `apars`
@@ -1412,6 +1594,12 @@ ALTER TABLE `locations`
   ADD KEY `locations_departement_id_foreign` (`departemen_id`);
 
 --
+-- Indexes for table `location_master`
+--
+ALTER TABLE `location_master`
+  ADD PRIMARY KEY (`id_lokasi`);
+
+--
 -- Indexes for table `maps`
 --
 ALTER TABLE `maps`
@@ -1451,6 +1639,14 @@ ALTER TABLE `p3k_inventories`
 --
 ALTER TABLE `password_resets`
   ADD KEY `password_resets_email_index` (`email`);
+
+--
+-- Indexes for table `personal_access_tokens`
+--
+ALTER TABLE `personal_access_tokens`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `personal_access_tokens_token_unique` (`token`),
+  ADD KEY `personal_access_tokens_tokenable_type_tokenable_id_index` (`tokenable_type`,`tokenable_id`);
 
 --
 -- Indexes for table `potensibahayas`
@@ -1597,7 +1793,7 @@ ALTER TABLE `maps`
 -- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=73;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=74;
 
 --
 -- AUTO_INCREMENT for table `p2k3s`
@@ -1618,6 +1814,12 @@ ALTER TABLE `p3k_inventories`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
+-- AUTO_INCREMENT for table `personal_access_tokens`
+--
+ALTER TABLE `personal_access_tokens`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT for table `potensibahayas`
 --
 ALTER TABLE `potensibahayas`
@@ -1633,7 +1835,7 @@ ALTER TABLE `risks`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- Constraints for dumped tables
