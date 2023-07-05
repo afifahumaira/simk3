@@ -19,7 +19,7 @@ class Location extends Model
     {
         $locationId = $this->id;
 
-        return Activitie::whereRaw("FIND_IN_SET($locationId, lokasi)")->count();
+        return Activitie::whereRaw("FIND_IN_SET($locationId, name)")->count();
     }
 
 }

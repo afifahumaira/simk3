@@ -61,8 +61,8 @@
             <table class="table table-bordered border-secondary px-3 py-3 mb-5 shadow">
                 <thead>
                     <tr>
+                        <th scope="col" class="text-center col-1">No</th>
                         <th scope="col" class="text-center col-1">ID Lokasi</th>
-                        <th scope="col" class="col-4">Departemen</th>
                         <th scope="col">Lokasi</th>
                         <th scope="col">Action</th>
                     </tr>
@@ -82,7 +82,7 @@
                     @endforeach
                 </tbody>
             </table>
-            {{ $locations->links('pagination::customb5') }}
+            
         </div>
     </div>
 @stop

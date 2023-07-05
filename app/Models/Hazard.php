@@ -15,6 +15,6 @@ class Hazard extends Model
     {
         $risk_id = $this->id;
 
-        return Risk::whereRaw("FIND_IN_SET($risk_id, hazards)")->count();
+        return Risk::whereRaw("FIND_IN_SET($risk_id, name)")->count();
     }
 }

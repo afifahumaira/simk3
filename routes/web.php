@@ -12,8 +12,9 @@ use App\Http\Controllers\AparInspeksiController;
 use App\Http\Controllers\P3kInspeksiController;
 use App\Http\Controllers\DaftardokumenController;
 use App\Http\Controllers\Simk3Controller;
-use App\Http\Controllers\LokasidepartemenController;
+use App\Http\Controllers\LokasiMasterController;
 use App\Http\Controllers\AktifitasController;
+use App\Http\Controllers\AktifitasMasterController;
 use App\Http\Controllers\HazardController;
 use App\Http\Controllers\InvestigasiController;
 use App\Http\Controllers\MapsController;
@@ -196,24 +197,24 @@ Route::group(['middleware' => ['auth']], function() {
     // // // // Data Master // // // //
     // 13. Lokasi Departemen
     Route::prefix('lokasi-departemen')->name('lokasi-departemen.')->group(function(){
-        Route::get('/', [LokasidepartemenController::class, 'index'])->name('index');
-        Route::get('tambah', [LokasidepartemenController::class, 'tambah'])->name('tambah');
-        Route::get('edit/{id}', [LokasidepartemenController::class, 'edit'])->name('edit');
-        Route::get('detail/{id}', [LokasidepartemenController::class, 'detail'])->name('detail');
-        Route::post('update/{id}', [LokasidepartemenController::class, 'update'])->name('update');
-        Route::post('delete/{id}', [LokasidepartemenController::class, 'delete'])->name('delete');
-        Route::post('simpan', [LokasidepartemenController::class, 'simpan'])->name('simpan');
+        Route::get('/', [LokasiMasterController::class, 'index'])->name('index');
+        Route::get('tambah', [LokasiMasterController::class, 'tambah'])->name('tambah');
+        Route::get('edit/{id}', [LokasiMasterController::class, 'edit'])->name('edit');
+        Route::get('detail/{id}', [LokasiMasterController::class, 'detail'])->name('detail');
+        Route::post('update/{id}', [LokasiMasterController::class, 'update'])->name('update');
+        Route::post('delete/{id}', [LokasiMasterController::class, 'delete'])->name('delete');
+        Route::post('simpan', [LokasiMasterController::class, 'simpan'])->name('simpan');
     });
 
     // 14. Aktifitas
     Route::prefix('aktifitas')->name('aktifitas.')->group(function(){
-        Route::get('/', [AktifitasController::class, 'index'])->name('index');
-        Route::get('tambah', [AktifitasController::class, 'tambah'])->name('tambah');
-        Route::get('edit/{id}/{id_act}', [AktifitasController::class, 'edit'])->name('edit');
-        Route::get('detail/{id}', [AktifitasController::class, 'detail'])->name('detail');
-        Route::post('simpan', [AktifitasController::class, 'simpan'])->name('simpan');
-        Route::post('update/{id}', [AktifitasController::class, 'update'])->name('update');
-        Route::post('delete/{id}/{id_act}', [AktifitasController::class, 'delete'])->name('delete');
+        Route::get('/', [AktifitasMasterController::class, 'index'])->name('index');
+        Route::get('tambah', [AktifitasMasterController::class, 'tambah'])->name('tambah');
+        Route::get('edit/{id}/{id_act}', [AktifitasMasterController::class, 'edit'])->name('edit');
+        Route::get('detail/{id}', [AktifitasMasterController::class, 'detail'])->name('detail');
+        Route::post('simpan', [AktifitasMasterController::class, 'simpan'])->name('simpan');
+        Route::post('update/{id}', [AktifitasMasterController::class, 'update'])->name('update');
+        Route::post('delete/{id}/{id_act}', [AktifitasMasterController::class, 'delete'])->name('delete');
     });
 
     // 15. Hazard

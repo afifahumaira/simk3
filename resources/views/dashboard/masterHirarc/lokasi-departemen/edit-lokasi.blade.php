@@ -55,17 +55,7 @@
                                     </div>
                                 </div>
                                 <div class="card-body">
-                                        <div class="mb-3">
-                                            <label for="departemen_id" class="form-label ">Pilih Departemen:</label>
-                                            <select id="departemen_id" name="departemen_id" class="form-select" data-control="select2"
-                                                data-hide-search="true" data-placeholder="Pilih Departemen">
-                                                <option value="">Pilih Departemen</option>
-                                                @foreach ($departments as $dep)
-                                                    <option value="{{ $dep->id }}" {{ $loc->departemen_id == $dep->id ? 'selected' : '' }}>{{ $dep->name }}</option>
-                                                @endforeach
-                                            </select>
-                                        </div>
-
+                                        
                                         <div class="mb-3">
                                             <label for="inputNomertelepon3" class="col-sm-2 col-form-label">Lokasi</label>
                                             <div class="col-sm-10 w-100">

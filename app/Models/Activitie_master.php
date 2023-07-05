@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Activitie extends Model
+class Activitie_master extends Model
 {
     use HasFactory;
 
@@ -23,7 +23,7 @@ class Activitie extends Model
     {
         $activity_id = $this->id;
 
-        return Hazard::whereRaw("FIND_IN_SET($activity_id, name)")->count();
+        return Hazard::whereRaw("FIND_IN_SET($activity_id, aktifitas)")->count();
     }
 
 }
