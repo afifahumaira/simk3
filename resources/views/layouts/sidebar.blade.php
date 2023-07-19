@@ -218,7 +218,7 @@
                         <!--begin:Menu item-->
                         <div class="menu-item menu-accordion">
                             <!--begin:Menu link-->
-                            <a href="{{ route('lokasi-departemen.index') }}" class="menu-link">
+                            <a href="{{ route('lokasimaster.index') }}" class="menu-link">
                                 <span class="menu-bullet">
                                     <i class="bi bi-pin-map text-white fs-3 "></i>
                                 </span>
@@ -231,7 +231,7 @@
                         <!--begin:Menu item-->
                         <div class="menu-item menu-accordion">
                             <!--begin:Menu link-->
-                            <a href="{{ route('aktifitas.index') }}" class="menu-link">
+                            <a href="{{ route('aktifitasmaster.index') }}" class="menu-link">
                                 <span class="menu-bullet">
                                     <i class="bi bi-activity text-white fs-3"></i>
                                 </span>

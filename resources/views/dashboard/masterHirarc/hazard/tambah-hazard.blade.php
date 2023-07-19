@@ -59,15 +59,7 @@
                                     </div>
                                 </div>
 
-                                <div class="mb-3">
-                                    <label for="aktifitas" class="form-label ">Pilih Aktifitas:</label>
-                                    <select id="aktifitas" name="aktifitas[]" class="form-select" data-control="select2" data-placeholder="Pilih Aktifitas" multiple>
-                                        <option value="">Pilih Aktifitas</option>
-                                        @foreach ($activities as $act)
-                                            <option value="{{ $act->id }}">{{ $act->name }}</option>
-                                        @endforeach
-                                    </select>
-                                </div>
+                                
                             </div>
                         </div>
 
@@ -119,7 +111,7 @@
 @section('customscript')
 <script>
     $(document).ready(function() {
-        $('#aktifitas').select2({
+        $('#hazards').select2({
             closeOnSelect: false
         });
     });

@@ -5,16 +5,15 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Location_master extends Model
+class Location_masters extends Model
 {
     public $timestamps = false;
     protected $guarded;
 
-    public function lokasi()
+    public function location_masters()
     {
-        return $this->belongsTo('App\Models\Lokasi_master');
+        return $this->belongsTo('App\Models\Location_masters');
     }
 
-   
 
 }

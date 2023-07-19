@@ -62,29 +62,26 @@
                 <thead px-3>
                     <tr>
                         <th scope="col" class="text-center col-1">No</th>
-                        <th scope="col" class="col-4">ID_Hazard</th>
+                        
                         <th scope="col" class="">Hazard</th>
                         <th scope="col" class="col-1">Action</th>
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach ($activities as $act)
+                    @foreach ($hazards as $hzd)
                         <tr>
                             <td scope="row" class="text-center">
-                                {{ ($activities->currentpage() - 1) * $activities->perpage() + $loop->index + 1 }}</td>
-                            <td>{{ $act->name }}</td>
-                            <td>{{ $act->countHazards() }} Hazard terdata</td>
-                            <td>
-                                <a href="{{ route('hazard.detail', $act->id) }}" type="button"
-                                    class="btn  btn-sm bg-warning " style="width:20px;"><i
-                                        class="bi bi-eye text-dark d-flex justify-content-center align-items-center"></i></a>
-                            </td>
+                                {{ ($hazards->currentpage() - 1) * $hazards->perpage() + $loop->index + 1 }}</td>
+                                
+                                <td>{{ $hzd->name }}</td>
+                            
+                            
                         </tr>
                     @endforeach
                 </tbody>
             </table>
 
-            {{ $activities->links('pagination::customb5') }}
+            {{ $hazards->links('pagination::customb5') }}
             <!--end::Content container-->
         </div>
     </div>

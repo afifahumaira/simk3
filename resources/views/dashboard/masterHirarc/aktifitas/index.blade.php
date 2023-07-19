@@ -53,41 +53,37 @@
                     <!--end::Wrapper-->
                 </div>
                 <!--end::Main wrapper-->
-                <a href="{{ route('aktifitas.tambah') }}" type="button" class="btn btn-primary btn-sm"
+                <a href="{{ route('aktifitasmaster.tambah') }}" type="button" class="btn btn-primary btn-sm"
                     style="background: #233EAE">Tambah Data +</a>
                 <!--end::Title-->
             </div>
             <!--begin::Content container-->
             <table class="table table-bordered border-secondary px-3 py-3 mb-10 shadow">
-                <thead>
+                <thead px-3>
                     <tr>
-                        <th scope="col" class="text-center col-1">No</th>
-                        <th scope="col" class="col-4">ID_Aktifitas</th>
+                        
+                        <th scope="col" class="">No</th>
                         <th scope="col" class="">Aktifitas</th>
                         <th scope="col" class="col-1">Action</th>
                     </tr>
                 </thead>
                 <tbody>
-                    
-                    {{-- <tr>
-                        <th scope="row" class="text-center">1</th>
-                        <td>Laboratorium Komputasi</td>
-                        <td>3 Aktifitas terdata</td>
-                        <td class="d-flex justify-content-center"><a href="{{ route('aktifitas.detail') }}"
-                                type="button" class="btn  btn-sm bg-warning " style="width:20px;"><i
-                                    class="bi bi-eye text-dark d-flex justify-content-center align-items-center"></i></a>
-                            <a href="{{ route('edit-aktifitas.edit_aktifitas') }}" type="button"
-                                class="btn  btn-sm bg-primary" style="width:20px;"><i
-                                    class="bi bi-pencil-square text-dark d-flex justify-content-center align-items-center"></i></a>
-                            <button type="button" class="btn  btn-sm" style="width:20px; background:#DC3545"><i
-                                    class="bi bi-trash text-dark d-flex justify-content-center align-items-center"></i></button>
-                        </td>
-                    </tr> --}}
+                    @foreach ($activities as $act)
+                        <tr>
+                            <td scope="row" class="text-center">
+                                {{ ($activities->currentpage() - 1) * $activities->perpage() + $loop->index + 1 }}</td>
+                                
+                                <td>{{ $act->name }}</td>
+                            
+                            
+                        </tr>
+                    @endforeach
                 </tbody>
             </table>
 
-            
+            {{ $activities->links('pagination::customb5') }}
             <!--end::Content container-->
         </div>
     </div>
 @stop
+

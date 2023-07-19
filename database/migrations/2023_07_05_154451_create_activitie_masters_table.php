@@ -14,8 +14,8 @@ return new class extends Migration
     public function up()
     {
         Schema::create('activitie_masters', function (Blueprint $table) {
-            $table->id_aktifitas();
-            $table->name();
+            $table->id('id_aktifitas');
+            $table->varchar('name');
             $table->timestamps();
         });
     }

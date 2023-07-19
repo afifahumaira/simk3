@@ -53,7 +53,7 @@
                     <!--end::Wrapper-->
                 </div>
                 <!--end::Main wrapper-->
-                <a href="{{ route('lokasi-departemen.index') }}" type="button"
+                <a href="{{ route('lokasimaster.index') }}" type="button"
                     class="btn  btn-sm btn-primary d-flex justify-content-center align-items-center mb-2"
                     style="background: #233EAE; width:90px"><i class="bi bi-chevron-left"></i>Kembali</a>
 
@@ -76,7 +76,7 @@
                             <td>{{ $loc->departemen->name }}</td>
                             <td>{{ $loc->name }}</td>
                             <td>
-                                <a href="{{ route('lokasi-departemen.edit', $loc->id) }}" type="button"
+                                <a href="{{ route('lokasimaster.edit', $loc->id) }}" type="button"
                                     class="btn btn-sm btn-primary px-4"><i
                                         class="bi bi-pencil-square pe-0"></i></a>
                                 <button type="button" class="btn btn-danger btn-sm px-4" data-bs-toggle="modal" data-bs-target="#deleteForm{{ $loc->id }}"><i class="bi bi-trash pe-0"></i></button>
@@ -86,7 +86,7 @@
                                     <div class="modal-dialog modal-dialog-centered ">
                                         <div class="modal-content">
 
-                                            <form method="POST" action="{{ route('lokasi-departemen.delete', $loc->id) }}">
+                                            <form method="POST" action="{{ route('lokasimaster.delete', $loc->id) }}">
                                                 @csrf
                                                 <div class="modal-body mt-5 d-flex justify-content-center align-items-center">
                                                     <h2 class="mt-5 text-center"

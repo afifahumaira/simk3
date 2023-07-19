@@ -10,37 +10,37 @@ use Alert;
 class HazardController extends Controller
 {
     public function index() {
-        $activities = Activitie::paginate(10);
-        return view('dashboard.masterHirarc.hazard.index', compact('activities'));
+        $hazards = Hazard::paginate(10);
+        return view('dashboard.masterHirarc.hazard.index', compact('hazards'));
     }
 
     public function tambah() {
-        $activities = Activitie::paginate(10);
-        return view('dashboard.masterHirarc.hazard.tambah-hazard', compact('activities'));
+        $hazards = Hazard::paginate(10);
+        return view('dashboard.masterHirarc.hazard.tambah-hazard', compact('hazards'));
     }
 
-    public function edit($id, $id_haz) {
-        $haz = Hazard::find($id_haz);
-        $activities = Activitie::paginate(10);
-        return view('dashboard.masterHirarc.hazard.edit-hazard', compact('activities', 'haz', 'id'));
+    public function edit($id, $id_hzd) {
+        $hzd = Hazard::find($id_hzd);
+        
+        return view('dashboard.masterHirarc.hazard.edit-hazard', compact('hzd', 'id'));
     }
 
     public function detail($id) {
-        $act = Activitie::find($id);
-        $hazards = Hazard::whereRaw("FIND_IN_SET($id, aktifitas)")->paginate(10);
-        return view('dashboard.masterHirarc.hazard.detail-hazard', compact('hazards', 'act', 'id'));
+        $hzd = Hazard::find($id);
+        
+        return view('dashboard.masterHirarc.hazard.detail-hazard', compact('hzd','id'));
     }
 
     public function simpan(Request $request) {
         $request->validate([
             'name' => 'required',
-            'aktifitas' => 'required'
+            
         ]);
 
-        $acts = implode(',', $request->aktifitas);
+        $acts = implode(',', $request->hazard);
 
         Hazard::create([
-            'aktifitas' => $acts,
+            
             'name' => $request->name,
         ]);
 
@@ -51,13 +51,13 @@ class HazardController extends Controller
     public function update($id, Request $request) {
         $request->validate([
             'name' => 'required',
-            'aktifitas' => 'required'
+            
         ]);
 
-        $acts = implode(',', $request->aktifitas);
+        $acts = implode(',', $request->hazard);
 
         Hazard::find($id)->update([
-            'aktifitas' => $acts,
+            
             'name' => $request->name,
         ]);
 
@@ -65,8 +65,8 @@ class HazardController extends Controller
         return redirect()->route('hazard.index');
     }
 
-    public function delete($id, $id_haz) {
-        Hazard::find($id_haz)->delete();
+    public function delete($id, $id_hzd) {
+        Hazard::find($id_hzd)->delete();
 
         Alert::success('Berhasil', 'Data Hazard berhasil dihapus!')->iconHtml('<i class="bi bi-person-check"></i>')->hideCloseButton();
         return redirect()->route('hazard.detail', $id);

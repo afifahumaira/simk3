@@ -2,30 +2,33 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Location_master;
+use App\Models\Departemen;
+use App\Models\Location;
+use App\Models\Location_masters;
 use Illuminate\Http\Request;
 use Alert;
 
 class LokasiMasterController extends Controller
 {
-    public function index(Request $request) {
-        $locations = Location_master::all()
-            ->where('name', 'LIKE', '%'.$request->search.'%');
+    public function index() {
+        $locations = Location_masters::paginate();
+            
         return view('dashboard.masterHirarc.lokasi-departemen.index', compact('locations'));
     }
 
     public function tambah() {
-        $locations = Location_master::all();
+        $locations = Location_masters::all();
         return view('dashboard.masterHirarc.lokasi-departemen.tambah-lokasi', compact('locations'));
     }
 
     public function edit($id) {
-        $loc = Location_master::find($id);
+        $loc = Location_masters::find($id);
+        
         return view('dashboard.masterHirarc.lokasi-departemen.edit-lokasi', compact('loc'));
     }
 
     public function detail($id, Request $request) {
-        $locations = Location_master::where('id_lokasi', $id)
+        $locations = Location_masters::where('id_lokasi', $id)
         ->where('name', 'LIKE', '%'.$request->search.'%')
         ->paginate(10);
         return view('dashboard.masterHirarc.lokasi-departemen.detail-lokasi', compact('locations'));
@@ -33,13 +36,13 @@ class LokasiMasterController extends Controller
 
     public function simpan(Request $request) {
         $request->validate([
-            'id_lokasi' => 'required',
-            'lokasi' => 'required'
+            
+            'name' => 'required'
         ]);
 
-        Location_master::create([
-            'id_lokasi' => $request->id_lokasi,
-            'name' => $request->lokasi,
+        Location::create([
+            
+            'name' => $request->name,
         ]);
 
         Alert::success('Berhasil', 'Data Lokasi berhasil disimpan!')->iconHtml('<i class="bi bi-person-check"></i>')->hideCloseButton();
@@ -48,21 +51,21 @@ class LokasiMasterController extends Controller
 
     public function update($id, Request $request) {
         $request->validate([
-            'lokasi' => 'required'
+            'name' => 'required'
         ]);
 
-        Location_master::find($id)->update([
-            'id_lokasi' => $request->id_lokasi,
-            'name' => $request->lokasi,
+        Location::find($id)->update([
+            
+            'name' => $request->name,
         ]);
 
         Alert::success('Berhasil', 'Data Lokasi berhasil diperbaharui!')->iconHtml('<i class="bi bi-person-check"></i>')->hideCloseButton();
-        return redirect()->route('lokasi-departemen.detail', $request->id_lokasi);
+        return redirect()->route('lokasi-departemen.detail', $request->departemen_id);
     }
 
     public function delete($id) {
-        $id_lokasi = Location_master::find($id)->id_lokasi;
-        Location_master::find($id)->delete();
+        $id_lokasi = Location_masters::find($id)->id_lokasi;
+        Location::find($id)->delete();
 
         Alert::success('Berhasil', 'Data Lokasi berhasil dihapus!')->iconHtml('<i class="bi bi-person-check"></i>')->hideCloseButton();
         return redirect()->route('lokasi-departemen.detail', $id_lokasi);

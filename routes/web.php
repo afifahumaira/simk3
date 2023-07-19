@@ -192,11 +192,12 @@ Route::group(['middleware' => ['auth']], function() {
     // LandingPage
     Route::prefix('simk3')->name('simk3.')->group(function(){
         Route::get('/', [Simk3Controller::class, 'index'])->name('index');
+        Route::get('dashoard', [Simk3Controller::class, 'dashboard'])->name('dashboard');
     });
 
     // // // // Data Master // // // //
     // 13. Lokasi Departemen
-    Route::prefix('lokasi-departemen')->name('lokasi-departemen.')->group(function(){
+    Route::prefix('lokasimaster')->name('lokasimaster.')->group(function(){
         Route::get('/', [LokasiMasterController::class, 'index'])->name('index');
         Route::get('tambah', [LokasiMasterController::class, 'tambah'])->name('tambah');
         Route::get('edit/{id}', [LokasiMasterController::class, 'edit'])->name('edit');
@@ -207,7 +208,7 @@ Route::group(['middleware' => ['auth']], function() {
     });
 
     // 14. Aktifitas
-    Route::prefix('aktifitas')->name('aktifitas.')->group(function(){
+    Route::prefix('aktifitasmaster')->name('aktifitasmaster.')->group(function(){
         Route::get('/', [AktifitasMasterController::class, 'index'])->name('index');
         Route::get('tambah', [AktifitasMasterController::class, 'tambah'])->name('tambah');
         Route::get('edit/{id}/{id_act}', [AktifitasMasterController::class, 'edit'])->name('edit');

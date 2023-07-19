@@ -28,7 +28,7 @@
 
                         <!--begin::Input-->
                         <input type="text" class="form-control form-control-lg form-control-solid px-15" name="search"
-                            value="{{ request()->get('search') }}" placeholder="Search " data-kt-search-element="input" />
+                            value="" placeholder="Search " data-kt-search-element="input" />
                         <!--end::Input-->
 
                         <!--begin::Spinner-->
@@ -53,36 +53,37 @@
                     <!--end::Wrapper-->
                 </div>
                 <!--end::Main wrapper-->
-                <a href="{{ route('lokasi-departemen.tambah') }}" type="button"
-                    class="btn btn-primary btn-sm" style="background: #233EAE">Tambah Data +</a>
+                <a href="{{ route('lokasimaster.tambah') }}" type="button" class="btn btn-primary btn-sm"
+                    style="background: #233EAE">Tambah Data +</a>
                 <!--end::Title-->
             </div>
             <!--begin::Content container-->
-            <table class="table table-bordered border-secondary px-3 py-3 mb-5 shadow">
-                <thead>
+            <table class="table table-bordered border-secondary px-3 py-3 mb-10 shadow">
+                <thead px-3>
                     <tr>
-                        <th scope="col" class="text-center col-1">No</th>
-                        <th scope="col" class="text-center col-1">ID Lokasi</th>
-                        <th scope="col">Lokasi</th>
-                        <th scope="col">Action</th>
+                        
+                        <th scope="col" class="">No</th>
+                        <th scope="col" class="">Lokasi</th>
+                        <th scope="col" class="col-1">Action</th>
                     </tr>
                 </thead>
                 <tbody>
                     @foreach ($locations as $loc)
                         <tr>
-                            <td scope="row" class="text-center">{{ ($locations->currentpage()-1) * $locations ->perpage() + $loop->index + 1 }}</td>
-                            <td>{{ $loc->name }}</td>
-                            <td>{{ $loc->location->count() }} Lokasi Terdata</td>
-                            <td>
-                                <a href="{{ route('lokasi-departemen.detail', $loc->id) }}" type="button"
-                                class="btn  btn-sm bg-warning " style="width:20px;"><i
-                                    class="bi bi-eye text-dark d-flex justify-content-center align-items-center"></i></a>
-                            </td>
+                            <td scope="row" class="text-center">
+                                {{ ($locations->currentpage() - 1) * $locations->perpage() + $loop->index + 1 }}</td>
+                                
+                                <td>{{ $loc->name }}</td>
+                            
+                            
                         </tr>
                     @endforeach
                 </tbody>
             </table>
-            
+
+            {{ $locations->links('pagination::customb5') }}
+            <!--end::Content container-->
         </div>
     </div>
 @stop
+

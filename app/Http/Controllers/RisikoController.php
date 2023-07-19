@@ -11,8 +11,8 @@ class RisikoController extends Controller
 {
 
     public function index() {
-        $hazards = Hazard::paginate(10);
-        return view('dashboard.masterHirarc.risiko.index', compact('hazards'));
+        $risks = Risk::paginate(10);
+        return view('dashboard.masterHirarc.risiko.index', compact('risks'));
     }
 
     public function tambah() {

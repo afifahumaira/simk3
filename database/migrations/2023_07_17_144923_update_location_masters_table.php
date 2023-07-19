@@ -13,11 +13,7 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('location_masters', function (Blueprint $table) {
-            $table->id('id_lokasi');
-            $table->varchar('name');
-            $table->timestamps();
-        });
+        //
     }
 
     /**
@@ -27,6 +23,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('location_masters');
+        //
     }
 };

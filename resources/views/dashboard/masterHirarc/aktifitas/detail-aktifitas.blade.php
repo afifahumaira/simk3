@@ -11,7 +11,7 @@
                 <!--begin::Main wrapper-->
 
                 <!--end::Main wrapper-->
-                <a href="{{ route('aktifitas.index') }} " type="button" class="btn text-white btn-secondary btn-sm mb-2"
+                <a href="{{ route('aktifitasmaster.index') }} " type="button" class="btn text-white btn-secondary btn-sm mb-2"
                     style="background: #505050"><i class="bi bi-chevron-left text-white"></i>Kembali</a>
                 <!--end::Title-->
             </div>
@@ -32,7 +32,7 @@
                             <td>{{ $loc->departemen->name }} ({{ $loc->name }})</td>
                             <td>{{ $act->name }}</td>
                             <td>
-                                <a href="{{ route('aktifitas.edit', ['id' => $id, 'id_act' => $act->id]) }}" type="button"
+                                <a href="{{ route('aktifitasmaster.edit', ['id' => $id, 'id_act' => $act->id]) }}" type="button"
                                     class="btn btn-sm btn-primary px-4"><i
                                         class="bi bi-pencil-square pe-0"></i></a>
                                 <button type="button" class="btn btn-danger btn-sm px-4" data-bs-toggle="modal" data-bs-target="#deleteForm{{ $act->id }}"><i class="bi bi-trash pe-0"></i></button>
@@ -42,7 +42,7 @@
                                     <div class="modal-dialog modal-dialog-centered ">
                                         <div class="modal-content">
 
-                                            <form method="POST" action="{{ route('aktifitas.delete', ['id' => $id, 'id_act' => $act->id]) }}">
+                                            <form method="POST" action="{{ route('aktifitasmaster.delete', ['id' => $id, 'id_act' => $act->id]) }}">
                                                 @csrf
                                                 <div class="modal-body mt-5 d-flex justify-content-center align-items-center">
                                                     <h2 class="mt-5 text-center"
@@ -71,7 +71,7 @@
                         <td>Laboratorium Komputasi</td>
                         <td>Perbaikan AC</td>
                         <td>
-                            <a href="{{ route('aktifitas.edit') }}" type="button"
+                            <a href="{{ route('aktifitasmaster.edit') }}" type="button"
                                 class="btn  btn-sm bg-primary" style="width:20px;"><i
                                     class="bi bi-pencil-square text-dark d-flex justify-content-center align-items-center"></i></a>
                             <a href="#" type="submit" class="btn  btn-sm" style="width:20px; background:#DC3545"><i

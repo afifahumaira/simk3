@@ -20,29 +20,29 @@
                 <thead px-3>
                     <tr>
                         <th scope="col" class="text-center col-1">No</th>
-                        <th scope="col" class="col 7">Aktifitas</th>
+                        
                         <th scope="col" class="w-50">Hazard</th>
                         <th scope="col" class="col-1">Action</th>
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach ($hazards as $haz)
+                    @foreach ($hzd as $haz)
                         <tr>
-                            <td scope="row" class="text-center">{{ ($hazards->currentpage()-1) * $hazards ->perpage() + $loop->index + 1 }}</td>
-                            <td>{{ $act->name }}</td>
+                            
+                            <td>{{ $haz->id_hzd }}</td>
                             <td>{{ $haz->name }}</td>
                             <td>
-                                <a href="{{ route('hazard.edit', ['id' => $id, 'id_haz' => $haz->id]) }}" type="button"
+                                <a href="{{ route('hazard.edit', ['id' => $id, 'id_hzd' => $hzd->id]) }}" type="button"
                                     class="btn btn-sm btn-primary px-4"><i
                                         class="bi bi-pencil-square pe-0"></i></a>
-                                <button type="button" class="btn btn-danger btn-sm px-4" data-bs-toggle="modal" data-bs-target="#deleteForm{{ $haz->id }}"><i class="bi bi-trash pe-0"></i></button>
+                                <button type="button" class="btn btn-danger btn-sm px-4" data-bs-toggle="modal" data-bs-target="#deleteForm{{ $hzd->id }}"><i class="bi bi-trash pe-0"></i></button>
 
-                                <div class="modal fade" id="deleteForm{{ $haz->id }}" data-bs-backdrop="static" data-bs-keyboard="false"
+                                <div class="modal fade" id="deleteForm{{ $hzd->id }}" data-bs-backdrop="static" data-bs-keyboard="false"
                                 tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
                                     <div class="modal-dialog modal-dialog-centered ">
                                         <div class="modal-content">
 
-                                            <form method="POST" action="{{ route('hazard.delete', ['id' => $id, 'id_haz' => $haz->id]) }}">
+                                            <form method="POST" action="{{ route('hazard.delete', ['id' => $id, 'id_hzd' => $hzd->id]) }}">
                                                 @csrf
                                                 <div class="modal-body mt-5 d-flex justify-content-center align-items-center">
                                                     <h2 class="mt-5 text-center"
