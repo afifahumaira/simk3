@@ -19,19 +19,20 @@ use Hash;
 use Validator;
 use Alert;
 use App\Models\Control;
-use App\Models\Hirarc_detail;
+use App\Models\Hirarcdetails;
 use App\Models\Hirarc_postrating;
 use App\Models\Hirarc_prerating;
 use App\Models\Control_children;
-use App\Models\Hirarc_detail_control;
+
 
 class HirarcController extends Controller
 {
     public function index(){
         $hirarcs = Hirarc::with(['departemen', 'user', 'location'])->paginate(10);
-
+        $hirarcds = Hirarcdetails::paginate(10);
+        
         return view('dashboard.hirarc.index')
-            ->with('hirarcs',$hirarcs);
+            ->with('hirarcs',$hirarcs,$hirarcds);
     }
 
     public function tambah($id = null) {

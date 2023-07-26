@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class Hirarc_detail extends Model
+class Hirarcdetails extends Model
 {
     use SoftDeletes;
     protected $guarded;
@@ -35,9 +35,9 @@ class Hirarc_detail extends Model
         return $this->belongsTo('App\Models\Control_children');
     }
 
-    public function hirarc_detail_control()
+    public function hirarcdetails()
     {
-        return $this->hasOne(Hirarc_detail_control::class, 'hirarc_detail_id', 'id');
+        return $this->hasOne(Hirarcdetails::class, 'hirarcdetails', 'id');
         // return $this->hasOne('App\Models\Hirarc_detail_control');
         // return $this->belongsTo('App\Models\Hirarc_detail_control');
     }

@@ -12,9 +12,9 @@ class Hirarc extends Model
 
     protected $guarded;
 
-    public function hirarc_detail()
+    public function hirarcdetails()
     {
-        return $this->hasMany(Hirarc_detail::class, 'hirarc_id', 'id');
+        return $this->hasMany(Hirarcdetails::class, 'current_severity', 'current_exposure');
     }
 
     public function prerating()

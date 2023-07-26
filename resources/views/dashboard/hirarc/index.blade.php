@@ -65,6 +65,19 @@
                         <th scope="col">Departemen</th>
                         <th scope="col">Lokasi</th>
                         <th scope="col">Tanggal Lapor</th>
+                        <th scope="col">Aktifitas</th>
+                        <th scope="col">Hazard</th>
+                        <th scope="col">Resiko</th>
+                        <th scope="col">Kesesuaian Dengan Aturan</th>
+                        <th scope="col">Kondisi</th>
+                        <th scope="col">Pengendalian</th>
+                        <th scope="col">Keparahan Saat Ini</th>
+                        <th scope="col">Paparan Saat Ini</th>
+                        <th scope="col">Probabilitas Kejadian Saat Ini</th>
+                        <th scope="col">Tingkat Resiko Saat Ini</th>
+                        <th scope="col">Kategori Saat Ini</th>
+                        <th scope="col">Penyebab Utama</th>
+                        <th scope="col">Usulan</th>
                         <th scope="col">Action</th>
                     </tr>
                 </thead>
@@ -75,6 +88,19 @@
                             <td>{{ $hirarc->departemen->name }}</td>
                             <td>{{ $hirarc->location->name }}</td>
                             <td>{{ $hirarc->created_at ? $hirarc->created_at->translatedFormat('d F Y') : '' }}</td>
+                            <td>{{ $hirarc->activity }}</td>
+                            <td>{{ $hirarc->hazard }}</td>
+                            <td>{{ $hirarc->risk }}</td>
+                            <td>{{ $hirarc->kesesuaian }}</td>
+                            <td>{{ $hirarc->kondisi }}</td>
+                            <td>{{ $hirarc->kendali }}</td>
+                            <td>{{ ($hirarc->hirarcdetails ? $hirarc->hirarcdetails->current_severity : '') }}</td>
+                            <td>{{ ($hirarc->hirarcdetails ? $hirarc->hirarcdetails->current_exposure : '') }}</td>
+                            <td>{{ ($hirarc->hirarcdetails ? $hirarc->hirarcdetails->current_probability : '') }}</td>
+                            <td>{{ ($hirarc->hirarcdetails ? $hirarc->hirarcdetails->current_risk_rating : '') }}</td>
+                            <td>{{ ($hirarc->hirarcdetails ? $hirarc->hirarcdetails->current_risk_category : '') }}</td>
+                            <td>{{ ($hirarc->hirarcdetails ? $hirarc->hirarcdetails->penyebab : '') }}</td>
+                            <td>{{ ($hirarc->hirarcdetails ? $hirarc->hirarcdetails->usulan : '') }}</td>
                             <td>
                                 <a href="{{ route('hirarc.lihat', $hirarc->id) }}" type="button" class="btn  btn-sm bg-warning "
                                 style="width:20px;"><i
