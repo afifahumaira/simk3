@@ -17,7 +17,7 @@ use Validator;
 class DaftarinvestigasiController extends Controller
 {
     public function index(){
-        $investigasi = Investigasi::all();
+        $investigasi = Investigasi::with(['departemen', 'p2k3'])->paginate(10);
         
         return view('dashboard.daftarinvestigasi.index')-> with('investigasi',$investigasi);
     }
@@ -29,6 +29,11 @@ class DaftarinvestigasiController extends Controller
             'message' => 'success',
             'data' => $investigasi,
         ], 200);
+    }
+
+    public function lihat($id) {
+        $investigasi = Investigasi::with(['departemen','p2k3'])->find($id);
+        return view('dashboard.daftarinvestigasi.lihat-investigasi', compact('investigasi'));
     }
 
 

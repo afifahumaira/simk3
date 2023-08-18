@@ -38,9 +38,7 @@ Route::get('/', function () {
     return view('simk3');
 });
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth'])->name('dashboard');
+Route::get('dashboard', [Simk3Controller::class, 'dashboard'])->middleware(['auth'])->name('dashboard');
 
 require __DIR__.'/auth.php';
 
@@ -222,7 +220,7 @@ Route::group(['middleware' => ['auth']], function() {
     Route::prefix('hazard')->name('hazard.')->group(function(){
         Route::get('/', [HazardController::class, 'index'])->name('index');
         Route::get('tambah', [HazardController::class, 'tambah'])->name('tambah');
-        Route::get('edit/{id}/{id_haz}', [HazardController::class, 'edit'])->name('edit');
+        Route::get('edit/{id}/{id_hzd}', [HazardController::class, 'edit'])->name('edit');
         Route::get('detail/{id}', [HazardController::class, 'detail'])->name('detail');
         Route::post('simpan', [HazardController::class, 'simpan'])->name('simpan');
         Route::post('update/{id}', [HazardController::class, 'update'])->name('update');

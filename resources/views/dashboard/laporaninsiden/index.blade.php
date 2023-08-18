@@ -50,7 +50,7 @@
                                 <th>Status</th>
                                 <th>Action</th>
                             @endif
-                            @if (auth()->user()->hak_akses == 'pengguna')
+                            @if (auth()->user()->hak_akses == 'tamu')
                                 <th>No</th>
                                 <th>Kode Insiden Lapor</th>
                                 <th>Waktu Kejadian</th>
@@ -89,11 +89,8 @@
                                         <button type="button" class="btn btn-success btn-sm py-2">Sukses</button>
                                     @endif
                                 </td>
+                                @if (auth()->user()->hak_akses == 'admin' || auth()->user()->hak_akses == 'p2k3' || auth()->user()->hak_akses == 'k3_departemen' || auth()->user()->hak_akses == 'pimpinan')
                                 <td align="center">
-                                    @if (auth()->user()->hak_akses == 'admin' ||
-                                            auth()->user()->hak_akses == 'p2k3' ||
-                                            auth()->user()->hak_akses == 'k3_departemen' ||
-                                            auth()->user()->hak_akses == 'pimpinan')
                                         <a href="{{ route('laporan-insiden.lihat', $lap->id) }}" type="button"
                                             class="btn btn-sm btn-warning px-4"><i class="bi bi-eye text-dark pe-0"></i></a>
                                         <a href="{{ route('laporan-insiden.ubah', $lap->id) }}" type="button"
@@ -132,8 +129,8 @@
                                                 </div>
                                             </div>
                                         </div>
-                                    @endif
-                                </td>
+                                    </td>
+                                @endif
                             </tr>
                         @endforeach
                     </tbody>

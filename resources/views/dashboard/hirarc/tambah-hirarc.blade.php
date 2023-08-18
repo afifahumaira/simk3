@@ -56,15 +56,16 @@
                                 <form action="{{ route('hirarc.simpan') }}" method="POST">
                                     @csrf
                                     <div class="mb-3">
-                                        <label for="departemen_id" class="form-label ">Pilih Departemen:</label>
-                                        <select id="departemen_id" name="departemen_id" class="form-select"
-                                            data-control="select2" data-hide-search="true"
-                                            data-placeholder="Pilih Departemen">
-                                            <option value="">Pilih Departemen</option>
-                                            @foreach ($departments as $dep)
-                                                <option value="{{ $dep->id }}" @if ($hirarc->count() > 0) @if($dep->id == $hirarc->departemen_id) selected @endif @endif>{{ $dep->name }}</option>
-                                            @endforeach
-                                        </select>
+                                        <label class="col-form-label">Pilih Departemen</label>
+                                        <div class=" w-100">
+                                            <select name="departemen_id" class="form-select fs-6 w-100"
+                                                data-control="select2" data-hide-search="true" data-placeholder="Pilih Departemen">
+                                                <option value="">Pilih Departemen</option>
+                                                @foreach ($departments as $dep)
+                                                    <option value="{{ $dep->id }}">{{ $dep->name }}</option>
+                                                @endforeach
+                                            </select>
+                                        </div>
                                     </div>
 
                                     <div class="mb-3">
@@ -72,9 +73,9 @@
                                         <select id="location_id" name="location_id" class="form-select"
                                             data-control="select2" data-hide-search="true">
                                             <option value="">Pilih Departemen terlebih dahulu</option>
-                                            @if ($hirarc->count() > 0)
-                                                <option value="{{ $hirarc->location_id }}" selected>{{ $hirarc->location->name }}</option>
-                                            @endif
+                                            @foreach ($location as $loc)
+                                                <option value="{{ $loc->id}}">{{ $loc->name }}</option>
+                                            @endforeach
                                         </select>
                                     </div>
 
@@ -103,14 +104,12 @@
                                                 <div class="modal-body mt-5 ">
                                                     <div id="additionalForm">
                                                         <div class="mb-3">
-                                                            <label for="aktifitas_id" class="form-label">Pilih
-                                                                Aktifitas:</label>
-                                                            <select id="aktifitas_id" name="aktifitas_id"
-                                                                class="form-select" data-control="select2"
-                                                                data-hide-search="true">
-                                                                <option value="">Pilih Lokasi terlebih dahulu
-                                                                </option>
-
+                                                            <label for="activitie_id" class="form-label">Pilih Aktifitas:</label>
+                                                            <select id="activitie_id" name="activitie" class="form-select" data-control="select2" data-hide-search="true">
+                                                                <option value="">Pilih Lokasi terlebih dahulu</option>
+                                                                @foreach ($activitie as $act)
+                                                                <option value="{{ $act->name}}">{{ $act->name }}</option>
+                                                                @endforeach
                                                             </select>
                                                         </div>
                                                     </div>
@@ -129,25 +128,29 @@
 
                                                     <div class="mb-3">
                                                         <label for="hazard_id_1" class="form-label">Hazard 1</label>
-                                                        <select id="hazard_id_1" name="hazard_id[]"
+                                                        <select id="hazard_id_1" name="hazard[]"
                                                             class="form-select selectHazard" data-id="1"
                                                             data-control="select2" data-kt-placement="bottom"
                                                             data-dropdown-parent="#modalTambah">
                                                             <option value="">Pilih Aktifitas terlebih dahulu
                                                             </option>
+                                                            @foreach ($hazard as $hazard)
+                                                            <option value="{{ $hazard->name}}">{{ $hazard->name }}</option>
+                                                            @endforeach
                                                         </select>
                                                     </div>
 
                                                     <div class="mb-3">
-                                                        <label for="risiko_id_1"
-                                                            class="col-sm-2 col-form-label pt-0">Risiko 1
-                                                        </label>
-                                                        <select class="form-select fs-6 w-100 selectRisiko"
-                                                            id="risiko_id_1" name="risiko_id[]" data-control="select2"
-                                                            data-kt-placement="bottom"
+                                                        <label for="risk_id_1" class="form-label">Resiko 1</label>
+                                                        <select id="risk_id_1" name="risk[]"
+                                                            class="form-select selectRisk" data-id="1"
+                                                            data-control="select2" data-kt-placement="bottom"
                                                             data-dropdown-parent="#modalTambah">
                                                             <option value="">Pilih Hazard terlebih dahulu
                                                             </option>
+                                                            @foreach ($risk as $risk)
+                                                            <option value="{{ $risk->name}}">{{ $risk->name }}</option>
+                                                            @endforeach
                                                         </select>
                                                     </div>
                                                     <div id="komponenBaru">

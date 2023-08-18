@@ -97,13 +97,13 @@
                                                 <div class="modal-body mt-5 ">
                                                     <div id="additionalForm">
                                                         <div class="mb-3">
-                                                            <label for="aktifitas_id" class="form-label">Pilih
+                                                            <label for="activitie_id" class="form-label">Pilih
                                                                 Aktifitas:</label>
-                                                            <select id="aktifitas_id" name="aktifitas_id"
+                                                            <select id="activitie_id" name="activitie"
                                                                 class="form-select" data-control="select2"
                                                                 data-hide-search="true">
-                                                                @foreach ($activities as $act)
-                                                                    <option value="{{ $act->id }}">{{ $act->name }}</option>
+                                                                @foreach ($activitie as $act)
+                                                                    <option value="{{ $act->name }}">{{ $act->name }}</option>
                                                                 @endforeach
                                                             </select>
                                                         </div>
@@ -177,23 +177,55 @@
                         <thead px-3>
                             <tr>
                                 <th scope="col">Aktifitas</th>
-                                <th scope="col">Bahaya (Hazard)</th>
-                                <th scope="col">Risiko</th>
-                                <th scope="col">Pre Control</th>
-                                <th scope="col">Solusi</th>
-                                <th scope="col">Past Control</th>
+                                <th scope="col">Hazard</th>
+                                <th scope="col">Resiko</th>
+                                <th scope="col">Kesesuaian Dengan Aturan</th>
+                                <th scope="col">Kondisi</th>
+                                <th scope="col">Pengendalian</th>
+                                <th scope="col">Keparahan Saat Ini</th>
+                                <th scope="col">Paparan Saat Ini</th>
+                                <th scope="col">Probabilitas Kejadian Saat Ini</th>
+                                <th scope="col">Tingkat Resiko Saat Ini</th>
+                                <th scope="col">Kategori Saat Ini</th>
+                                <th scope="col">Penyebab Utama</th>
+                                <th scope="col">Usulan</th>
+                                <th scope="col">Formulir yang Dibutuhkan</th>
+                                <th scope="col">SOP yang Dibutuhkan</th>
+                                <th scope="col">Keparahan Residual</th>
+                                <th scope="col">Paparan Residual</th>
+                                <th scope="col">Probabilitas Residual</th>
+                                <th scope="col">Tingkat Resiko Residual</th>
+                                <th scope="col">Kategori Residual</th>
+                                <th scope="col">Penanggung Jawab</th>
+                                <th scope="col">Status</th>
                                 <th scope="col"style="width: 10%">Action</th>
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach ($hirarc->hirarc_detail as $detail)
+                            @foreach ($hirarc as $hir)
                                 <tr>
-                                    <td>{{ $detail->activity->name }}</td>
-                                    <td>{{ $detail->hazard->name }}</td>
-                                    <td>{{ $detail->risk->name }}</td>
-                                    <td>{{ $detail->prerating->hasilprecontrol ?? '' }}</td>
-                                    <td>{{ $detail->hirarc_detail_control->control_child->name ?? '' }}</td>
-                                    <td>{{ $detail->postrating->hasilpostcontrol ?? '' }}</td>
+                                    <td>{{ $hir->activity }}</td>
+                                    <td>{{ $hir->hazard }}</td>
+                                    <td>{{ $hir->risk }}</td>
+                                    <td>{{ $hir->kesesuaian }}</td>
+                                    <td>{{ $hir->kondisi }}</td>
+                                    <td>{{ $hir->kendali }}</td>
+                                    <td>{{ $hir->current_severity }}</td>
+                                    <td>{{ $hir->current_exposure }}</td>
+                                    <td>{{ $hir->current_probability }}</td>
+                                    <td>{{ $hir->current_risk_rating }}</td>
+                                    <td>{{ $hir->current_risk_category }}</td>
+                                    <td>{{ $hir->penyebab }}</td>
+                                    <td>{{ $hir->usulan }}</td>
+                                    <td>{{ $hir->form_diperlukan }}</td>
+                                    <td>{{ $hir->sop }}</td>
+                                    <td>{{ $hir->residual_severity }}</td>
+                                    <td>{{ $hir->residual_exposure }}</td>
+                                    <td>{{ $hir->residual_probability }}</td>
+                                    <td>{{ $hir->residual_risk_rating }}</td>
+                                    <td>{{ $hir->residual_risk_category }}</td>
+                                    <td>{{ $hir->penanggung_jawab}}</td>
+                                    <td>{{ $hir->status }}</td>
                                     <td id="Edit" class="Edit "> <button href="" type="button"
                                         class="btn px-0 my-3" data-bs-toggle="modal" data-bs-target="#Editdata{{ $detail->id }}">Edit Data</button>
                                     </td>

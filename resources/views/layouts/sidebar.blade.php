@@ -303,7 +303,7 @@
             {{-- End View Admin --}}
 
             {{-- View tamu --}}
-            @if (auth()->user()->hak_akses == 'pengguna')
+            @if (auth()->user()->hak_akses == 'tamu')
                 <div class="menu-item here show menu-accordion ">
                     <!--begin:Menu link-->
                     <a href="{{ route('dashboard') }}" class="menu-link ">
@@ -335,19 +335,15 @@
                     </a>
                 </div>
                 <!--begin:Menu item-->
-                <div class=" ms-1 menu-item here show menu-accordion">
-                    <!--begin:Menu item-->
-
-                    <!--begin:Menu link-->
+                {{-- <div class=" ms-1 menu-item here show menu-accordion">
                     <a href="{{ route('p2k3.index') }}" class="menu-link">
                         <span class="menu-bullet">
                             <i class="bi bi-people-fill text-white fs-3"></i>
                         </span>
                         <span class="menu-title ms-3 text-white">P2K3</span>
-                        <!-- <span class="menu-arrow"></span> -->
                     </a>
 
-                </div>
+                </div> --}}
                 <!--end:Menu item-->
                 <div class="menu-item here show menu-accordion">
                     <!--begin:Menu link-->
@@ -545,6 +541,35 @@
                         <span class="menu-title text-white">Daftar Dokumen</span>
                     </a>
                 </div>
+                <div data-kt-menu-trigger="click" class="menu-item menu-accordion">
+                    <!--begin:Menu link-->
+                    <span class="menu-link">
+                        <span class="menu-icon">
+                            <i class="bi bi-people text-white fs-3"></i>
+                        </span>
+                        <span class="menu-title text-white">Users</span>
+                        <span class="menu-arrow"></span>
+                    </span>
+                    <!--end:Menu link-->
+                    <!--begin:Menu sub-->
+                    <div class="menu-sub menu-sub-accordion">
+                        <!--begin:Menu item-->
+                        <div class="menu-item menu-accordion">
+                            <!--begin:Menu link-->
+                            <a href="{{ route('p2k3.index') }}" class="menu-link">
+                                <span class="menu-bullet">
+                                    <i class="bi bi-person-fill text-white fs-3"></i>
+                                </span>
+                                <span class="menu-title text-white">P2K3</span>
+                                <!-- <span class="menu-arrow"></span> -->
+                            </a>
+                            <!--end:Menu link-->
+                        </div>
+                        <!--end:Menu item-->
+                       
+                    </div>
+                    <!--end:Menu sub-->
+                </div>
                 <!--end:Menu item-->
                 <!--begin:Menu item-->
                 <div class="menu-item here show menu-accordion">
@@ -559,6 +584,8 @@
             @endif
             {{-- End View P2K3 --}}
 
+
+            
             <!--end:Menu item-->
         </div>
         <!--end::Sidebar menu-->

@@ -13,7 +13,7 @@ class Departemen extends Model
     use HasFactory;
 
     protected $fillable = [
-        'name',
+        'name', 'departemen_id'
     ];
 
     public function apar():HasOne
@@ -22,7 +22,7 @@ class Departemen extends Model
     }
 
     public function location() {
-        return $this->hasMany(Location::class, 'departemen_id', 'id');
+        return $this->hasMany(Location_masters::class, 'departemen_id', 'id');
     }
 
 }

@@ -22,7 +22,7 @@ class LokasiMasterController extends Controller
     }
 
     public function edit($id) {
-        $loc = Location_masters::find($id);
+        $loc = Location_masters::findOrFail($id);
         
         return view('dashboard.masterHirarc.lokasi-departemen.edit-lokasi', compact('loc'));
     }

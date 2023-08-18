@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
-use App\Models\Activitie;
 use App\Models\Departemen;
 use App\Models\Hazard;
 use Illuminate\Http\Request;
@@ -18,78 +17,55 @@ use App\Models\VwInventory;
 use Hash;
 use Validator;
 use Alert;
+use App\Models\Activitie_master;
 use App\Models\Control;
-use App\Models\Hirarcdetails;
 use App\Models\Hirarc_postrating;
 use App\Models\Hirarc_prerating;
-use App\Models\Control_children;
-
+use App\Models\Location_masters;
 
 class HirarcController extends Controller
 {
     public function index(){
         $hirarcs = Hirarc::with(['departemen', 'user', 'location'])->paginate(10);
-        $hirarcds = Hirarcdetails::paginate(10);
-        
+                
         return view('dashboard.hirarc.index')
-            ->with('hirarcs',$hirarcs,$hirarcds);
+            ->with('hirarcs',$hirarcs);
     }
 
     public function tambah($id = null) {
         $departments = Departemen::all();
+        $locations = Location_masters::all();
+        $activities = Activitie_master::all();
+        $hazards = Hazard::all();
+        $risks = Risk::all();
 
         $hirarc = collect();
         if($id != null) {
-            $hirarc = Hirarc::with(['hirarc_detail'])->find($id);
+            $hirarc = Hirarc::with(['id'])->find($id);
         }
 
         $controls = Control::all();
 
         return view('dashboard.hirarc.tambah-hirarc')
                 ->with('hirarc', $hirarc)
-                ->with('controls', $controls)
-                ->with('departments', $departments);
-    }
-
-    public function getLocation($id) {
-        $locations = Location::where('departemen_id', $id)->get();
-
-        return response()->json($locations);
-    }
-
-    public function getAktifitas($id) {
-        $activities = Activitie::whereRaw("FIND_IN_SET($id, lokasi)")->get();
-
-        return response()->json($activities);
-    }
-
-    public function getHazard($id) {
-        $hazards = Hazard::whereRaw("FIND_IN_SET($id, aktifitas)")->get();
-
-        return response()->json($hazards);
-    }
-
-    public function getRisk($id) {
-        $risks = Risk::whereRaw("FIND_IN_SET($id, hazards)")->get();
-
-        return response()->json($risks);
-    }
-
-    public function getControlChildren($id) {
-        $controlchilds = Control_children::where('parent_id', $id)->get();
-
-        return response()->json($controlchilds);
+                ->with('location', $locations)
+                ->with('departments', $departments)
+                ->with('activitie', $activities)
+                ->with('hazard', $hazards)
+                ->with('risk', $risks)
+                ->with('control', $controls);
+                
     }
 
     public function edit($id) {
-        $hirarc = Hirarc::with(['departemen', 'user', 'location', 'hirarc_detail'])->find($id);
+        $hirarc = Hirarc::with(['departemen', 'user', 'location'])->find($id);
         $controls = Control::all();
-        $activities = Activitie::whereRaw("FIND_IN_SET($hirarc->location_id, lokasi)")->get();
+        $activities = Activitie_master::find($id);
         return view('dashboard.hirarc.edit-hirarc', compact('hirarc', 'controls', 'activities'));
     }
 
     public function lihat($id) {
-        $hirarc = Hirarc::with(['departemen', 'user', 'location', 'hirarc_detail'])->find($id);
+        $hirarc = Hirarc::with(['departemen', 'user', 'location'])->find($id);
         return view('dashboard.hirarc.lihat-hirarc', compact('hirarc'));
     }
 
@@ -106,25 +82,26 @@ class HirarcController extends Controller
         $request->validate([
             'departemen_id' => 'required',
             'location_id' => 'required',
-            'aktifitas_id' => 'required',
-            'hazard_id' => 'required',
-            'risiko_id' => 'required',
+            'activitie' => 'required',
+            'hazard' => 'required',
+            'risk' => 'required',
         ]);
 
         $hirarc = Hirarc::create([
             'departemen_id' => $request->departemen_id,
             'location_id' => $request->location_id,
-            'user_id' => auth()->user()->id
+            'user_id' => auth()->user()->id,
+            'activity' => $request->activitie,
+            'hazard' => $request->hazard,
+            'risk' => $request->risk
         ]);
 
-        for($i = 0; $i < count($request->hazard_id); $i++) {
-            Hirarc_detail::create([
-                'hirarc_id' => $hirarc->id,
-                'activity_id' => $request->aktifitas_id,
-                'hazard_id' => $request->hazard_id[$i],
-                'risk_id' => $request->risiko_id[$i],
-            ]);
-        }
+      //  for($i = 0; $i < count($request->hazard); $i++) {
+          //  Hirarc::create([             
+           //     'hazard' => $request->hazard[$i],
+             //   'risk' => $request->risk[$i],
+          //  ]);
+     //   }
 
         Alert::success('Berhasil', 'Data Hirarc berhasil disimpan!')->iconHtml('<i class="bi bi-person-check"></i>')->hideCloseButton();
         return redirect()->route('hirarc.tambah', $hirarc->id);
@@ -159,7 +136,7 @@ class HirarcController extends Controller
             'control_child_id' => 'required',
         ]);
 
-        Hirarc_detail_control::updateOrCreate([
+        Hirarc::updateOrCreate([
             'hirarc_id' => $id,
             'hirarc_detail_id' => $detail_id,
         ], [
@@ -194,7 +171,7 @@ class HirarcController extends Controller
 
     public function update($id, Request $request) {
         $request->validate([
-            'aktifitas_id' => 'required',
+            'activitie_id' => 'required',
             'hazard_id' => 'required',
             'risiko_id' => 'required',
         ]);
@@ -202,9 +179,9 @@ class HirarcController extends Controller
         $hirarc = Hirarc::find($id);
 
         for($i = 0; $i < count($request->hazard_id); $i++) {
-            Hirarc_detail::create([
+            Hirarc::create([
                 'hirarc_id' => $hirarc->id,
-                'activity_id' => $request->aktifitas_id,
+                'activitie_id' => $request->activitie_id,
                 'hazard_id' => $request->hazard_id[$i],
                 'risk_id' => $request->risiko_id[$i],
             ]);
@@ -216,9 +193,9 @@ class HirarcController extends Controller
 
     public function updateDetail($id, Request $request) {
 
-        Hirarc_detail::find($id)->update([
+        Hirarc::find($id)->update([
             'hirarc_id' => $request->hirarc_id,
-            'activity_id' => $request->aktifitas_id,
+            'activitie_id' => $request->activitie_id,
             'hazard_id' => $request->hazard_id,
             'risk_id' => $request->risiko_id,
         ]);

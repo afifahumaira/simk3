@@ -5,7 +5,7 @@
 
         <div id="kt_app_content"
             class="app-content flex-column-fluid rounded bg-light  mb-20 px-5 shadow"style="box-shadow: 2px 4px 20px 2px rgba(0, 0, 0, 0.1);">
-            <div class="app-toolbar-wrapper d-flex flex-stack flex-wrap gap-4 w-100 mb-5 px-5 border-bottom border-5">
+            <div class="app-toolbar-wrapper d-flex flex-stack flex-wrap gap-4 w-100 mb-5 px-5 border-bottom border-5 ">
                 <!--begin::Page title-->
                 <h2>HIRARC</h2>
                 <!--begin::Main wrapper-->
@@ -18,7 +18,7 @@
                         <!--begin::Hidden input(Added to disable form autocomplete)-->
                         <input type="hidden" />
                         <!--end::Hidden input-->
-
+<td></td>
                         <!--begin::Icon-->
                         <i
                             class="ki-duotone ki-magnifier fs-2 fs-lg-1 text-gray-500 position-absolute top-50 ms-5 translate-middle-y"><span
@@ -58,26 +58,13 @@
                 <!--end::Title-->
             </div>
             <!--begin::Content container-->
-            <table class="table table-bordered border-secondary px-3 py-3 mb-5 shadow">
+            <table class="table table-bordered border-secondary px-3 py-3 mb-5 shadow ">
                 <thead px-3>
                     <tr>
                         <th scope="col" class="text-center">No</th>
                         <th scope="col">Departemen</th>
                         <th scope="col">Lokasi</th>
                         <th scope="col">Tanggal Lapor</th>
-                        <th scope="col">Aktifitas</th>
-                        <th scope="col">Hazard</th>
-                        <th scope="col">Resiko</th>
-                        <th scope="col">Kesesuaian Dengan Aturan</th>
-                        <th scope="col">Kondisi</th>
-                        <th scope="col">Pengendalian</th>
-                        <th scope="col">Keparahan Saat Ini</th>
-                        <th scope="col">Paparan Saat Ini</th>
-                        <th scope="col">Probabilitas Kejadian Saat Ini</th>
-                        <th scope="col">Tingkat Resiko Saat Ini</th>
-                        <th scope="col">Kategori Saat Ini</th>
-                        <th scope="col">Penyebab Utama</th>
-                        <th scope="col">Usulan</th>
                         <th scope="col">Action</th>
                     </tr>
                 </thead>
@@ -88,19 +75,7 @@
                             <td>{{ $hirarc->departemen->name }}</td>
                             <td>{{ $hirarc->location->name }}</td>
                             <td>{{ $hirarc->created_at ? $hirarc->created_at->translatedFormat('d F Y') : '' }}</td>
-                            <td>{{ $hirarc->activity }}</td>
-                            <td>{{ $hirarc->hazard }}</td>
-                            <td>{{ $hirarc->risk }}</td>
-                            <td>{{ $hirarc->kesesuaian }}</td>
-                            <td>{{ $hirarc->kondisi }}</td>
-                            <td>{{ $hirarc->kendali }}</td>
-                            <td>{{ ($hirarc->hirarcdetails ? $hirarc->hirarcdetails->current_severity : '') }}</td>
-                            <td>{{ ($hirarc->hirarcdetails ? $hirarc->hirarcdetails->current_exposure : '') }}</td>
-                            <td>{{ ($hirarc->hirarcdetails ? $hirarc->hirarcdetails->current_probability : '') }}</td>
-                            <td>{{ ($hirarc->hirarcdetails ? $hirarc->hirarcdetails->current_risk_rating : '') }}</td>
-                            <td>{{ ($hirarc->hirarcdetails ? $hirarc->hirarcdetails->current_risk_category : '') }}</td>
-                            <td>{{ ($hirarc->hirarcdetails ? $hirarc->hirarcdetails->penyebab : '') }}</td>
-                            <td>{{ ($hirarc->hirarcdetails ? $hirarc->hirarcdetails->usulan : '') }}</td>
+                                                        
                             <td>
                                 <a href="{{ route('hirarc.lihat', $hirarc->id) }}" type="button" class="btn  btn-sm bg-warning "
                                 style="width:20px;"><i

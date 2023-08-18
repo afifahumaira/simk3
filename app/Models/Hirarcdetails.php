@@ -53,7 +53,7 @@ class Hirarcdetails extends Model
 
     public function hirarc()
     {
-        return $this->belongsTo(Hirarc::class);
+        return $this->belongsToMany(Hirarc::class);
     }
 
 }

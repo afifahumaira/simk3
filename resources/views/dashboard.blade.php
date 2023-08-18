@@ -77,53 +77,73 @@
                                 <div class="card-body d-flex justify-content-around flex-column">
                                     <p class="card-category d-flex justify-content-between " style="color: #BA001F">Total
                                         HIRARC</p>
-                                    <span class="card-title" style="font-size:24px">20</span>
+                                    <span class="card-title" style="font-size:24px">{{ $data['jumlah_hirarc'] }}</span>
                                 </div>
                             </div>
                         </div>
-                        <div class="col-lg-3 col-md-6 col-sm-6 ">
-
+                      
+                        <div class="col-lg-3 col-md-6 col-sm-6">
                             <div class="card card-stats h-100">
-                                <div class="card-body ">
-                                    <div class="numbers  d-flex justify-content-between">
-                                        <p class="card-category " style="color: #FF9600">Total Potensi Bahaya</p>
-                                        <span class="card-title">10</span>
-                                    </div>
-                                    <div class="d-flex justify-content-between ">
-                                        <button type="button" class="btn text-white btn-sm" style="background:#DC3545">5
-                                            Pending</button>
-                                        <button type="button" class="btn text-white btn-sm mx-2"
-                                            style="background:#0099FF">4
-                                            Ditindaklanjuti</button>
-                                        <button type="button" class="btn  text-white btn-sm" style="background:#29CC6A">5
-                                            Disetujui</button>
-                                    </div>
+                                <div class="card-body d-flex justify-content-around flex-column">
+                                    <p class="card-category  " style="color: #00876C ">Total Investigasi</p>
+                                    <span class="card-title mb-0" style="font-size:24px">{{ $data['jumlah_investigasi'] }}</span>
                                 </div>
                             </div>
                         </div>
                         <div class="col-lg-3 col-md-6 col-sm-6">
                             <div class="card card-stats h-100">
                                 <div class="card-body d-flex justify-content-around flex-column">
-                                    <p class="card-category  " style="color: #00876C ">Total Investigasi</p>
-                                    <span class="card-title mb-0" style="font-size:24px">11</span>
+                                    <p class="card-category  " style="color: #00876C ">Potensi Bahaya</p>
+                                    <span class="card-title mb-0" style="font-size:24px">{{ $data['jumlah_potensi_bahaya'] }}</span>
                                 </div>
                             </div>
                         </div>
                         <div class="col-lg-3 col-md-6 col-sm-6">
                             <div class="card card-stats h-100">
+                                <div class="card-body d-flex justify-content-around flex-column">
+                                    <p class="card-category  " style="color: #00876C ">Total Insiden</p>
+                                    <span class="card-title mb-0" style="font-size:24px">{{ $data['jumlah_insiden'] }}</span>
+                                </div>
+                            </div>
+                        </div>
+                       
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-6 col-md-6 col-sm-6 ">
+
+                            <div class="card card-stats h-100">
+                                <div class="card-body ">
+                                    <div class="numbers  d-flex justify-content-between">
+                                        <p class="card-category " style="color: #FF9600">Total Potensi Bahaya</p>
+                                        <span class="card-title"></span>
+                                    </div>
+                                    <div class="d-flex justify-content-between ">
+                                        <button type="button" class="btn text-white btn-sm" style="background:#DC3545">{{ $data['jumlah_potensi_bahaya_pending'] }} 
+                                            Pending</button>
+                                        <button type="button" class="btn text-white btn-sm mx-2"
+                                            style="background:#0099FF">{{ $data['jumlah_potensi_bahaya_tindaklanjut'] }} 
+                                            Ditindaklanjuti</button>
+                                        <button type="button" class="btn  text-white btn-sm" style="background:#29CC6A">{{ $data['jumlah_potensi_bahaya_sukses'] }}
+                                            Disetujui</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-6 col-md-6 col-sm-6">
+                            <div class="card card-stats h-100">
                                 <div class="card-body">
                                     <div class="numbers d-flex justify-content-between mb-2">
                                         <p class="card-category   " style="color: #0056B9 ">Total Lapor Insiden
                                         </p>
-                                        <span class="card-title">14</span>
+                                        <span class="card-title"></span>
                                     </div>
                                     <div class="d-flex justify-content-between ">
-                                        <button type="button" class="btn text-white btn-sm" style="background:#DC3545">5
+                                        <button type="button" class="btn text-white btn-sm" style="background:#DC3545">{{ $data['jumlah_insiden_pending'] }} 
                                             Pending</button>
                                         <button type="button" class="btn text-white btn-sm mx-2"
-                                            style="background:#0099FF">4
+                                            style="background:#0099FF">{{ $data['jumlah_insiden_tindaklanjut'] }} 
                                             Ditindaklanjuti</button>
-                                        <button type="button" class="btn  text-white btn-sm" style="background:#29CC6A">5
+                                        <button type="button" class="btn  text-white btn-sm" style="background:#29CC6A">{{ $data['jumlah_insiden_sukses'] }}
                                             Disetujui</button>
                                     </div>
                                 </div>
@@ -203,25 +223,23 @@
                 <!--begin::Row-->
                 <div class="row">
                     <div class="col-md-12">
-                        <div class="card card-bordered">
+                        {{-- <div class="card card-bordered">
 
                             <div class="card-body">
                                 <div class="app-toolbar-wrapper d-flex flex-stack flex-wrap gap-4 w-100 ">
-                                    <!--begin::Page title-->
+
                                     <div class="pull-left">
                                         <h1
                                             class="page-heading d-flex flex-column justify-content-center text-dark fw-bolder fs-2 lh-0"style="color: #16243D; font-family: Roboto Flex;">
                                             Total Laporan Insiden</h1>
-                                        <!--end::Title-->
+
                                     </div>
                                     <div class="card-toolbar">
-                                        <!--begin::Daterangepicker(defined in src/js/layout/app.js)-->
+                                     
                                         <div id="kalender" data-kt-daterangepicker="true"
                                             data-kt-daterangepicker-opens="left"
                                             class="cursor-pointer d-flex align-items-center px-4">
-                                            <!--begin::Display range-->
-
-                                            <!--end::Display range-->
+  
                                             <i class="ki-duotone ki-calendar-8 fs-1 ms-2 me-0">
                                                 <span class="path1"></span>
                                                 <span class="path2"></span>
@@ -231,12 +249,15 @@
                                                 <span class="path6"></span>
                                             </i>
                                         </div>
-                                        <!--end::Daterangepicker-->
                                     </div>
                                 </div>
                                 <div id="kt_apexcharts_3" style="height: 350px"></div>
                             </div>
+                        </div> --}}
+                        <div>
+                            <canvas id="myChart"></canvas>
                         </div>
+                          
                     </div>
                 </div>
             </div>
@@ -245,7 +266,8 @@
     </div>
 @stop
 
-@section('custom-css')
+
+{{-- @section('custom-css')
     <style>
         .card-body .card-category {
             font-size: 16px;
@@ -260,153 +282,57 @@
             font-weight: 700
         }
     </style>
-@stop
+@stop --}}
 
 @section('customscript')
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script>
-        var start = moment().subtract(29, "days");
-        var end = moment();
-        $(document).ready(function() {
-            $("#kalender").daterangepicker({
-                startDate: start,
-                endDate: end,
-                ranges: {
-                    "Last 30 Days": [moment().subtract(29, "days"), moment()],
-                    "This Month": [moment().startOf("month"), moment().endOf("month")],
-                    "Last Month": [moment().subtract(1, "month").startOf("month"), moment().subtract(1,
-                        "month").endOf("month")]
-                }
-            });
-        });
-        var element = document.getElementById("kt_apexcharts_3");
-
-        var height = parseInt(KTUtil.css(element, "height"));
-        var labelColor = KTUtil.getCssVariableValue("--bs-gray-500");
-        var borderColor = KTUtil.getCssVariableValue("--bs-gray-200");
-        var baseColor = KTUtil.getCssVariableValue("--bs-info");
-        var lightColor = KTUtil.getCssVariableValue("--bs-info-light");
-
-        //   if (!element) {
-        //     return;
-        //   }
-
-        var options = {
-            series: [{
-                name: "Laporan",
-                data: [3, 2, 2, 1, 3, 2, 1],
-            }, ],
-            chart: {
-                fontFamily: "inherit",
-                type: "area",
-                height: height,
-                toolbar: {
-                    show: false,
-                },
+        const ctx = document.getElementById('myChart');
+        
+        new Chart(ctx, {
+            type: 'bar',
+            data: {
+            labels: [
+                @for ($i = 0; $i < count($data['chart']['bulan']); $i++)
+                  '{{ $data['chart']['bulan'][$i]; }}',
+                @endfor 
+            ],
+            datasets: [{
+                label: '# Jumlah',
+                data: [
+                    @for ($i = 0; $i < count($data['chart']['jumlah']); $i++)
+                        '{{ $data['chart']['jumlah'][$i]; }}',
+                    @endfor 
+                ],
+                backgroundColor: [
+                    'rgba(255, 99, 132, 0.5)',
+                    'rgba(255, 159, 64, 0.5)',
+                    'rgba(255, 205, 86, 0.5)',
+                    'rgba(75, 192, 192, 0.5)',
+                    'rgba(54, 162, 235, 0.5)',
+                    'rgba(153, 102, 255, 0.5)',
+                    'rgba(201, 203, 207, 0.5)'
+                ],
+                borderColor: [
+                    'rgb(255, 99, 132)',
+                    'rgb(255, 159, 64)',
+                    'rgb(255, 205, 86)',
+                    'rgb(75, 192, 192)',
+                    'rgb(54, 162, 235)',
+                    'rgb(153, 102, 255)',
+                    'rgb(201, 203, 207)'
+                ],
+                borderWidth: 1
+              
+            }]
             },
-            plotOptions: {},
-            legend: {
-                show: false,
-            },
-            dataLabels: {
-                enabled: false,
-            },
-            fill: {
-                type: "solid",
-                opacity: 1,
-            },
-            stroke: {
-                curve: "smooth",
-                show: true,
-                width: 3,
-                colors: [baseColor],
-            },
-            xaxis: {
-                categories: ["Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug"],
-                axisBorder: {
-                    show: false,
-                },
-                axisTicks: {
-                    show: false,
-                },
-                labels: {
-                    style: {
-                        colors: labelColor,
-                        fontSize: "12px",
-                    },
-                },
-                crosshairs: {
-                    position: "front",
-                    stroke: {
-                        color: baseColor,
-                        width: 1,
-                        dashArray: 3,
-                    },
-                },
-                tooltip: {
-                    enabled: true,
-                    formatter: undefined,
-                    offsetY: 0,
-                    style: {
-                        fontSize: "12px",
-                    },
-                },
-            },
-            yaxis: {
-                labels: {
-                    style: {
-                        colors: labelColor,
-                        fontSize: "12px",
-                    },
-                },
-            },
-            states: {
-                normal: {
-                    filter: {
-                        type: "none",
-                        value: 0,
-                    },
-                },
-                hover: {
-                    filter: {
-                        type: "none",
-                        value: 0,
-                    },
-                },
-                active: {
-                    allowMultipleDataPointsSelection: false,
-                    filter: {
-                        type: "none",
-                        value: 0,
-                    },
-                },
-            },
-            tooltip: {
-                style: {
-                    fontSize: "12px",
-                },
+            options: {
+            scales: {
                 y: {
-                    formatter: function(val) {
-                        return val + " Insiden";
-                    },
-                },
-            },
-            colors: [lightColor],
-            grid: {
-                borderColor: borderColor,
-                strokeDashArray: 4,
-                yaxis: {
-                    lines: {
-                        show: true,
-                    },
-                },
-            },
-            markers: {
-                strokeColor: baseColor,
-                strokeWidth: 3,
-            },
-        };
-
-        var chart = new ApexCharts(element, options);
-        chart.render();
+                beginAtZero: true
+                }
+            }
+            }
+        });
     </script>
 @stop

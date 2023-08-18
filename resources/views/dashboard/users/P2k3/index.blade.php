@@ -69,7 +69,9 @@
                         <th scope="col">Jabatan</th>
                         <th scope="col">Departemen</th>
                         <th scope="col">Foto Profil</th>
+                        @if (auth()->user()->hak_akses == 'admin' || auth()->user()->hak_akses == 'p2k3' || auth()->user()->hak_akses == 'k3_departemen' || auth()->user()->hak_akses == 'pimpinan')
                         <th scope="col">Action</th>
+                        @endif
                     </tr>
                 </thead>
                 <tbody>
@@ -83,6 +85,7 @@
                         <td class="d-flex justify-content-center"><img
                                 src="{{ asset('berkas/'. $data->avatar) }}" class="rounded-4"
                                 style="width:auto; height:55px;"></td>
+                        @if (auth()->user()->hak_akses == 'admin' || auth()->user()->hak_akses == 'p2k3' || auth()->user()->hak_akses == 'k3_departemen' || auth()->user()->hak_akses == 'pimpinan')
                         <td style="text-align: center;"><a href="{{ route('p2k3.lihat', $data->id) }}" type="button"
                                 class="btn  btn-sm bg-warning " style="width:20px;"><i
                                     class="bi bi-eye text-dark d-flex justify-content-center align-items-center"></i></a>
@@ -93,6 +96,7 @@
                                 <i class="bi bi-trash text-dark d-flex justify-content-center align-items-center"></i>
                             </button>
                         </td>
+                        @endif
                     </tr>
                     <div class="modal fade" id="deleteModal{{ $data->id }}" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel{{ $data->id }}" aria-hidden="true">
                         <div class="modal-dialog" role="document">

@@ -48,7 +48,8 @@
                             <td>{{ $investigasi->laporinsiden->nama_pelapor }}</td>
                             <td>{{ $investigasi->departemen->name }}</td>
                             <td>{{ $investigasi->tenggat_waktu ? $investigasi->tenggat_waktu->translatedFormat('d F Y') : '' }}</td>
-                            <td>{{ $investigasi->p2k3->nama ?? '' }}</td>
+                            
+                            <td>{{ $investigasi->p2k3?->nama }}</td>
                             <td>
                                 <a href="{{ route('daftarinvestigasi.lihat', $investigasi->id) }}" type="button" class="btn btn-sm btn-warning px-4"><i
                                     class="bi bi-eye text-dark pe-0"></i></a>

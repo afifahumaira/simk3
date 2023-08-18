@@ -14,7 +14,7 @@ class Hirarc extends Model
 
     public function hirarcdetails()
     {
-        return $this->hasMany(Hirarcdetails::class, 'current_severity', 'current_exposure');
+        return $this->belongsToMany(Hirarcdetails::class);
     }
 
     public function prerating()
@@ -29,7 +29,7 @@ class Hirarc extends Model
 
     public function location()
     {
-        return $this->belongsTo(Location::class, 'location_id', 'id');
+        return $this->belongsTo(Location_masters::class, 'location_id', 'id', 'name');
     }
 
     public function user()
@@ -41,10 +41,22 @@ class Hirarc extends Model
         return $this->belongsTo(Departemen::class, 'departemen_id', 'id');
     }
 
-    // public function activity()
-    // {
-    //     return $this->belongsTo('App\Models\Activitie');
-    // }
+    public function activitie()
+    {
+        return $this->belongsTo(Activitie_master::class, 'activitie_id', 'id');
+    }
+
+    public function hazard()
+    {
+        return $this->belongsTo(Hazard::class, 'hazard_id', 'id');
+    }
+
+    public function risk()
+    {
+        return $this->belongsTo(Risk::class, 'risk_id', 'id');
+    }
+
+    
 
     // public function hazard()
     // {

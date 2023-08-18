@@ -80,7 +80,6 @@
                                                     <option value="{{ $dep->id }}">{{ $dep->name }}</option>
                                                 @endforeach
                                             </select>
-
                                         </div>
                                     </div>
 

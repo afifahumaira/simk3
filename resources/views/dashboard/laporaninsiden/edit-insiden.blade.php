@@ -66,8 +66,8 @@
                                                     id="status">
                                                     <option value="1" {{ $lap->status == 1 ? 'selected' : '' }}>Pending
                                                     </option>
-                                                    <option value="2" {{ $lap->status == 2 ? 'selected' : '' }}>
-                                                        Investigasi</option>
+                                                    <option value="2" {{ $lap->status == 2 ? 'selected' : '' }}>Investigasi
+                                                    </option>
                                                     <option value="3" {{ $lap->status == 3 ? 'selected' : '' }}>Sukses
                                                     </option>
                                                 </select>

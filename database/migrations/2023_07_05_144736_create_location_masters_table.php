@@ -14,7 +14,7 @@ return new class extends Migration
     public function up()
     {
         Schema::create('location_masters', function (Blueprint $table) {
-            $table->id('id_lokasi');
+            $table->id('id');
             $table->varchar('name');
             $table->timestamps();
         });

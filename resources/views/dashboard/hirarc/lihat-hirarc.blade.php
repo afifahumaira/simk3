@@ -43,22 +43,54 @@
                         <thead>
                             <tr>
                                 <th scope="col">Aktifitas</th>
-                                <th scope="col">Bahaya (Hazard)</th>
-                                <th scope="col">Risiko</th>
-                                <th scope="col">Pre Control</th>
-                                <th scope="col">Solusi</th>
-                                <th scope="col">Past Control</th>
+                                <th scope="col">Hazard</th>
+                                <th scope="col">Resiko</th>
+                                <th scope="col">Kesesuaian Dengan Aturan</th>
+                                <th scope="col">Kondisi</th>
+                                <th scope="col">Pengendalian</th>
+                                <th scope="col">Keparahan Saat Ini</th>
+                                <th scope="col">Paparan Saat Ini</th>
+                                <th scope="col">Probabilitas Kejadian Saat Ini</th>
+                                <th scope="col">Tingkat Resiko Saat Ini</th>
+                                <th scope="col">Kategori Saat Ini</th>
+                                <th scope="col">Penyebab Utama</th>
+                                <th scope="col">Usulan</th>
+                                <th scope="col">Formulir yang Dibutuhkan</th>
+                                <th scope="col">SOP yang Dibutuhkan</th>
+                                <th scope="col">Keparahan Residual</th>
+                                <th scope="col">Paparan Residual</th>
+                                <th scope="col">Probabilitas Residual</th>
+                                <th scope="col">Tingkat Resiko Residual</th>
+                                <th scope="col">Kategori Residual</th>
+                                <th scope="col">Penanggung Jawab</th>
+                                <th scope="col">Status</th>
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach ($hirarc->hirarc_detail as $detail)
+                            @foreach ($hirarc as $detail)
                                 <tr>
-                                    <td>{{ $detail->activity->name }}</td>
-                                    <td>{{ $detail->hazard->name }}</td>
-                                    <td>{{ $detail->risk->name }}</td>
-                                    <td>{{ $detail->prerating->hasilprecontrol ?? '' }}</td>
-                                    <td>{{ $detail->hirarc_detail_control->control_child->name ?? '' }}</td>
-                                    <td>{{ $detail->postrating->hasilpostcontrol ?? '' }}</td>
+                                    <td>{{ $hirarc->activity }}</td>
+                                    <td>{{ $hirarc->hazard }}</td>
+                                    <td>{{ $hirarc->risk }}</td>
+                                    <td>{{ $hirarc->kesesuaian }}</td>
+                                    <td>{{ $hirarc->kondisi }}</td>
+                                    <td>{{ $hirarc->kendali }}</td>
+                                    <td>{{ $hirarc->current_severity }}</td>
+                                    <td>{{ $hirarc->current_exposure }}</td>
+                                    <td>{{ $hirarc->current_probability }}</td>
+                                    <td>{{ $hirarc->current_risk_rating }}</td>
+                                    <td>{{ $hirarc->current_risk_category }}</td>
+                                    <td>{{ $hirarc->penyebab }}</td>
+                                    <td>{{ $hirarc->usulan }}</td>
+                                    <td>{{ $hirarc->form_diperlukan }}</td>
+                                    <td>{{ $hirarc->sop }}</td>
+                                    <td>{{ $hirarc->residual_severity }}</td>
+                                    <td>{{ $hirarc->residual_exposure }}</td>
+                                    <td>{{ $hirarc->residual_probability }}</td>
+                                    <td>{{ $hirarc->residual_risk_rating }}</td>
+                                    <td>{{ $hirarc->residual_risk_category }}</td>
+                                    <td>{{ $hirarc->penanggung_jawab}}</td>
+                                    <td>{{ $hirarc->status }}</td>
                                 </tr>
                             @endforeach
                         </tbody>

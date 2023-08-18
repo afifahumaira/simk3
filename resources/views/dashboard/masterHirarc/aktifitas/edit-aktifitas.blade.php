@@ -59,17 +59,7 @@
                                     </div>
                                 </div>
 
-                                <div class="mb-3">
-                                    <label for="departemen" class="form-label ">Pilih Lokasi:</label>
-                                    <select id="lokasi" name="lokasi[]" class="form-select" data-control="select2" data-placeholder="Pilih Lokasi" multiple>
-                                        <option value="">Pilih Lokasi</option>
-                                        @foreach ($locations as $loc)
-                                            <option value="{{ $loc->id }}" {{ in_array($loc->id, explode(",", $act->lokasi)) ? 'selected' : '' }}>{{ $loc->departemen->name }} ({{ $loc->name }})</option>
-                                        @endforeach
-                                    </select>
-                                </div>
-                            </div>
-                        </div>
+                               
 
                         <div class="container d-flex justify-content-center">
                             <div class=" d-flex justify-content-center">

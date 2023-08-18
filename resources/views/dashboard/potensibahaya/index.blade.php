@@ -68,7 +68,9 @@
                         <th scope="col">Nama Pelapor</th>
                         <th scope="col">Lokasi Kejadian</th>
                         <th scope="col">Status</th>
+                        @if (auth()->user()->hak_akses == 'admin' || auth()->user()->hak_akses == 'p2k3' || auth()->user()->hak_akses == 'k3_departemen' || auth()->user()->hak_akses == 'pimpinan')
                         <th scope="col">Action</th>
+                        @endif
                     </tr>
                 </thead>
                 <tbody>
@@ -86,6 +88,7 @@
                             @elseif ($data->status == "3")
                                 <button type="button" class="btn btn-success btn-sm py-2">Sukses</button>
                             @endif</td>
+                        @if (auth()->user()->hak_akses == 'admin' || auth()->user()->hak_akses == 'p2k3' || auth()->user()->hak_akses == 'k3_departemen' || auth()->user()->hak_akses == 'pimpinan')
                         <td>
                             <a href="{{ route('potensibahaya.lihat', $data['id']) }}" type="button"
                                 class="btn  btn-sm bg-warning " style="width:20px;"><i
@@ -98,6 +101,7 @@
                                 <i class="bi bi-trash text-dark d-flex justify-content-center align-items-center"></i>
                             </button>
                         </td>
+                        @endif
                     </tr>
 
                     <!-- Delete modal -->
