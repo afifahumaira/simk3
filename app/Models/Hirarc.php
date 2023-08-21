@@ -10,7 +10,7 @@ class Hirarc extends Model
 {
     use SoftDeletes;
 
-    protected $guarded;
+    protected $guarded = ['id'];
 
     public function hirarcdetails()
     {
@@ -43,17 +43,17 @@ class Hirarc extends Model
 
     public function activitie()
     {
-        return $this->belongsTo(Activitie_master::class, 'activitie_id', 'id');
+        return $this->belongsTo(Activitie_master::class, 'activitie_id', 'id', 'name');
     }
 
     public function hazard()
     {
-        return $this->belongsTo(Hazard::class, 'hazard_id', 'id');
+        return $this->belongsTo(Hazard::class, 'hazard_id', 'id', 'hazard');
     }
 
     public function risk()
     {
-        return $this->belongsTo(Risk::class, 'risk_id', 'id');
+        return $this->belongsTo(Risk::class, 'risk_id', 'id', 'hazard');
     }
 
     

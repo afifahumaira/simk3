@@ -83,11 +83,13 @@ Route::group(['middleware' => ['auth']], function() {
     Route::prefix('hirarc')->name('hirarc.')->group(function(){
         Route::get('/', [HirarcController::class, 'index'])->name('index');
         Route::get('tambah/{id?}', [HirarcController::class, 'tambah'])->name('tambah');
+        Route::get('tambahDetail/{id?}', [HirarcController::class, 'tambahDetail'])->name('tambahDetail');
         Route::post('simpan', [HirarcController::class, 'simpan'])->name('simpan');
+        Route::post('save', [HirarcController::class, 'save'])->name('save');
         Route::post('simpanPreControl/{id}/{detail_id}', [HirarcController::class, 'simpanPreControl'])->name('simpanPreControl');
         Route::post('simpanSolusi/{id}/{detail_id}', [HirarcController::class, 'simpanSolusi'])->name('simpanSolusi');
         Route::post('simpanPostControl/{id}/{detail_id}', [HirarcController::class, 'simpanPostControl'])->name('simpanPostControl');
-        Route::post('update/{id}', [HirarcController::class, 'update'])->name('update');
+        Route::put('update/{id}', [HirarcController::class, 'update'])->name('update');
         Route::post('updateDetail/{id}', [HirarcController::class, 'updateDetail'])->name('updateDetail');
         Route::post('delete/{id}', [HirarcController::class, 'delete'])->name('delete');
         Route::get('getControlChildren/{id}', [HirarcController::class, 'getControlChildren'])->name('getControlChildren');
@@ -96,6 +98,7 @@ Route::group(['middleware' => ['auth']], function() {
         Route::get('getHazard/{id}', [HirarcController::class, 'getHazard'])->name('getHazard');
         Route::get('getRisk/{id}', [HirarcController::class, 'getRisk'])->name('getRisk');
         Route::get('edit/{id}', [HirarcController::class, 'edit'])->name('edit');
+        Route::get('editDetail/{id}', [HirarcController::class, 'editDetail'])->name('editDetail');
         Route::get('lihat/{id}', [HirarcController::class, 'lihat'])->name('lihat');
     });
 

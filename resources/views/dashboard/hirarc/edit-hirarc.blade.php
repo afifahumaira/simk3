@@ -88,7 +88,7 @@
                                     <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable ">
                                         <div class="modal-content border rounded-4 ">
                                             <div class="modal-header">
-                                                <h1 class="modal-title" id="staticBackdropLabel">Tambah Data</h1>
+                                                <h1 class="modal-title" id="staticBackdropLabel">Edit Data</h1>
                                                 <button type="button" class="btn-close" data-bs-dismiss="modal"
                                                     aria-label="Close"></button>
                                             </div>
@@ -97,14 +97,12 @@
                                                 <div class="modal-body mt-5 ">
                                                     <div id="additionalForm">
                                                         <div class="mb-3">
-                                                            <label for="activitie_id" class="form-label">Pilih
-                                                                Aktifitas:</label>
-                                                            <select id="activitie_id" name="activitie"
-                                                                class="form-select" data-control="select2"
-                                                                data-hide-search="true">
-                                                                @foreach ($activitie as $act)
-                                                                    <option value="{{ $act->name }}">{{ $act->name }}</option>
-                                                                @endforeach
+                                                            <label for="activitie" class="form-label">Pilih Aktifitas:</label>
+                                                            <select id="activitie" name="activitie" class="form-select" data-control="select2" data-hide-search="true">
+                                                                <option value="">Pilih Lokasi terlebih dahulu</option>
+                                                                
+                                                                <option value="{{ $activitie->name}}">{{ $activitie->name }}</option>
+                                                                
                                                             </select>
                                                         </div>
                                                     </div>
@@ -112,9 +110,7 @@
                                                     <div class=" mt-5 d-flex justify-content-between" id="tambahResiko"
                                                         style="font-family: Roboto">
                                                         <p class=" mb-0" style="color:rgba(22, 36, 61, 0.4);">
-                                                            Masukkan
-                                                            data dengan
-                                                            lengkap</p>
+                                                            Masukkan data dengan lengkap</p>
                                                         <a type="button" id="addData"
                                                             class="text-end text-decoration-underline"
                                                             style="color:#233EAE" data-id="1"> + Tambah
@@ -123,25 +119,29 @@
 
                                                     <div class="mb-3">
                                                         <label for="hazard_id_1" class="form-label">Hazard 1</label>
-                                                        <select id="hazard_id_1" name="hazard_id[]"
+                                                        <select id="hazard_id_1" name="hazard[]"
                                                             class="form-select selectHazard" data-id="1"
                                                             data-control="select2" data-kt-placement="bottom"
                                                             data-dropdown-parent="#modalTambah">
                                                             <option value="">Pilih Aktifitas terlebih dahulu
                                                             </option>
+                                                            
+                                                            <option value="{{ $hazard->name}}">{{ $hazard->name }}</option>
+                                                            
                                                         </select>
                                                     </div>
 
                                                     <div class="mb-3">
-                                                        <label for="risiko_id_1"
-                                                            class="col-sm-2 col-form-label pt-0">Risiko 1
-                                                        </label>
-                                                        <select class="form-select fs-6 w-100 selectRisiko"
-                                                            id="risiko_id_1" name="risiko_id[]" data-control="select2"
-                                                            data-kt-placement="bottom"
+                                                        <label for="risk_id_1" class="form-label">Resiko 1</label>
+                                                        <select id="risk_id_1" name="risk[]"
+                                                            class="form-select selectRisk" data-id="1"
+                                                            data-control="select2" data-kt-placement="bottom"
                                                             data-dropdown-parent="#modalTambah">
                                                             <option value="">Pilih Hazard terlebih dahulu
                                                             </option>
+                                                            
+                                                            <option value="{{ $risk->name}}">{{ $risk->name }}</option>
+                                                            
                                                         </select>
                                                     </div>
                                                     <div id="komponenBaru">
@@ -157,10 +157,10 @@
                                                             data-bs-toggle="modal" data-bs-target="#simpandata">Simpan
                                                             Data</button>
 
-                                                        <a href="{{ route('hirarc.tambah') }}" type="submit"
+                                                        {{-- <a href="{{ route('hirarc.editDetail') }}" type="submit"
                                                             class="btn btn-secondary text-white d-flex align-items-center justify-content-center"
                                                             data-bs-toggle="modal" data-bs-target="#resetform"
-                                                            style="background: #868E96; margin : 10px 20px 30px 20px; width: 124.33px; height: 38px; font-size:14px; border-radius: 5px;">Reset</a>
+                                                            style="background: #868E96; margin : 10px 20px 30px 20px; width: 124.33px; height: 38px; font-size:14px; border-radius: 5px;">Reset</a> --}}
 
                                                     </div>
                                                 </div>
@@ -179,59 +179,23 @@
                                 <th scope="col">Aktifitas</th>
                                 <th scope="col">Hazard</th>
                                 <th scope="col">Resiko</th>
-                                <th scope="col">Kesesuaian Dengan Aturan</th>
-                                <th scope="col">Kondisi</th>
-                                <th scope="col">Pengendalian</th>
-                                <th scope="col">Keparahan Saat Ini</th>
-                                <th scope="col">Paparan Saat Ini</th>
-                                <th scope="col">Probabilitas Kejadian Saat Ini</th>
-                                <th scope="col">Tingkat Resiko Saat Ini</th>
-                                <th scope="col">Kategori Saat Ini</th>
-                                <th scope="col">Penyebab Utama</th>
-                                <th scope="col">Usulan</th>
-                                <th scope="col">Formulir yang Dibutuhkan</th>
-                                <th scope="col">SOP yang Dibutuhkan</th>
-                                <th scope="col">Keparahan Residual</th>
-                                <th scope="col">Paparan Residual</th>
-                                <th scope="col">Probabilitas Residual</th>
-                                <th scope="col">Tingkat Resiko Residual</th>
-                                <th scope="col">Kategori Residual</th>
-                                <th scope="col">Penanggung Jawab</th>
-                                <th scope="col">Status</th>
                                 <th scope="col"style="width: 10%">Action</th>
                             </tr>
                         </thead>
                         <tbody>
                             @foreach ($hirarc as $hir)
                                 <tr>
-                                    <td>{{ $hir->activity }}</td>
-                                    <td>{{ $hir->hazard }}</td>
-                                    <td>{{ $hir->risk }}</td>
-                                    <td>{{ $hir->kesesuaian }}</td>
-                                    <td>{{ $hir->kondisi }}</td>
-                                    <td>{{ $hir->kendali }}</td>
-                                    <td>{{ $hir->current_severity }}</td>
-                                    <td>{{ $hir->current_exposure }}</td>
-                                    <td>{{ $hir->current_probability }}</td>
-                                    <td>{{ $hir->current_risk_rating }}</td>
-                                    <td>{{ $hir->current_risk_category }}</td>
-                                    <td>{{ $hir->penyebab }}</td>
-                                    <td>{{ $hir->usulan }}</td>
-                                    <td>{{ $hir->form_diperlukan }}</td>
-                                    <td>{{ $hir->sop }}</td>
-                                    <td>{{ $hir->residual_severity }}</td>
-                                    <td>{{ $hir->residual_exposure }}</td>
-                                    <td>{{ $hir->residual_probability }}</td>
-                                    <td>{{ $hir->residual_risk_rating }}</td>
-                                    <td>{{ $hir->residual_risk_category }}</td>
-                                    <td>{{ $hir->penanggung_jawab}}</td>
-                                    <td>{{ $hir->status }}</td>
-                                    <td id="Edit" class="Edit "> <button href="" type="button"
-                                        class="btn px-0 my-3" data-bs-toggle="modal" data-bs-target="#Editdata{{ $detail->id }}">Edit Data</button>
+                                    <td>{{ $hirarc->activity }}</td>
+                                    <td>{{ $hirarc->hazard }}</td>
+                                    <td>{{ $hirarc->risk }}</td>
+                                    <td>
+                                        <a href="{{ route('hirarc.editDetail', $hirarc->id) }}" type="button" class="btn  btn-sm bg-primary"
+                                            style="width:20px;"><i
+                                                class="bi bi-pencil-square text-dark d-flex justify-content-center align-items-center"></i></a>
                                     </td>
                                 </tr>
 
-                                <div class="modal fade" id="Editdata{{ $detail->id }}" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                                {{-- <div class="modal fade" id="Editdata{{ $hirarc->id }}" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
                                     <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable ">
                                         <div class="modal-content border rounded-4 ">
                                             <div class="modal-header">
@@ -239,51 +203,47 @@
                                                 <button type="button" class="btn-close" data-bs-dismiss="modal"
                                                     aria-label="Close"></button>
                                             </div>
-                                            <form action="{{ route('hirarc.updateDetail', $detail->id) }}" method="POST">
+                                            <form action="{{ route('hirarc.update', $hirarc->id) }}" method="POST">
                                                 @csrf
-                                                <input type="hidden" name="hirarc_id" value="{{ $detail->hirarc_id }}">
+                                                <input type="hidden" name="hirarc_id" value="{{ $activitie->id }}">
                                                 <div class="modal-body mt-5">
+                                                    <div class="ps-3 pe-5">
+                                                        <label class="col-form-label">Aktifitas</label>
+                                                        <div class=" w-100">
+                                                            <input type="text" class="form-control" name="activitie"
+                                                                id="activitie_id" value="{{ $actitivite->name }}">{{ $activitie->name }}>
+                                                        </div>
+                                                    </div>
+
                                                     <div class="mb-3">
-                                                        <label for="aktifitas_id{{ $detail->id }}" class="form-label">Pilih
-                                                            Aktifitas:</label>
-                                                        <select id="aktifitas_id{{ $detail->id }}" name="aktifitas_id"
-                                                            class="form-select selectActivity" data-control="select2" data-hide-search="true" data-id="{{ $detail->id }}">
-                                                            @foreach ($activities as $act)
-                                                                <option value="{{ $act->id }}" {{ $act->id == $detail->activity_id ? 'selected' : '' }}>{{ $act->name }}</option>
-                                                            @endforeach
+                                                        <label for="hazard_id{{ $hazard->id }}" class="form-label">Hazard</label>
+                                                        <select id="hazard_id{{ $hazard->id }}" name="hazard_id" class="form-select selectHazard" data-id="{{ $hazard->id }}" data-control="select2" data-kt-placement="bottom" data-dropdown-parent="#Editdata{{ $hirarc->id }}">
+                                                            <option value="{{ $hazard->hazard_id }}">{{ $hazard->hazard->name }}</option>
                                                         </select>
                                                     </div>
 
                                                     <div class="mb-3">
-                                                        <label for="hazard_id{{ $detail->id }}" class="form-label">Hazard</label>
-                                                        <select id="hazard_id{{ $detail->id }}" name="hazard_id" class="form-select selectHazard" data-id="{{ $detail->id }}" data-control="select2" data-kt-placement="bottom" data-dropdown-parent="#Editdata{{ $detail->id }}">
-                                                            <option value="{{ $detail->activity_id }}">{{ $detail->activity->name }}</option>
-                                                        </select>
-                                                    </div>
-
-                                                    <div class="mb-3">
-                                                        <label for="risiko_id{{ $detail->id }}" class="col-sm-2 col-form-label pt-0">Risiko
-                                                        </label>
-                                                        <select class="form-select fs-6 w-100 selectRisiko" id="risiko_id{{ $detail->id }}"
-                                                            name="risiko_id" data-control="select2" data-kt-placement="bottom"
-                                                            data-dropdown-parent="#Editdata{{ $detail->id }}">
-                                                            <option value="{{ $detail->risk_id }}">{{ $detail->risk->name }}</option>
+                                                        <label for="risk_id{{ $risk->id }}" class="col-sm-2 col-form-label pt-0">Risiko</label>
+                                                        <select class="form-select fs-6 w-100 selectRisiko" id="risk_id{{ $risk->id }}"
+                                                            name="risk_id" data-control="select2" data-kt-placement="bottom"
+                                                            data-dropdown-parent="#Editdata{{ $hirarc->id }}">
+                                                            <option value="{{ $risk->risk_id }}">{{ $risk->risk->name }}</option>
                                                         </select>
                                                     </div>
                                                     <div id="risiko-sekarang"
                                                         class="  mt-5 pt-3 d-flex justify-content-center align-items-center">
                                                         <a href="" type="button" class="btn" data-bs-toggle="modal"
-                                                            data-bs-target="#EditPreControl{{ $detail->id }}">Pre Control</a>
+                                                            data-bs-target="#EditPreControl{{ $hazard->id }}">Pre Control</a>
                                                         <a href="#" class="btn d-flex justify-content-center" type="button"
-                                                            data-bs-toggle="modal" data-bs-target="#EditSolusi{{ $detail->id }}">
+                                                            data-bs-toggle="modal" data-bs-target="#EditSolusi{{ $hazard->id }}">
                                                             Solusi
                                                         </a>
                                                         <a href="#" type="button" class="btn" data-bs-toggle="modal"
-                                                            data-bs-target="#EditPostControl{{ $detail->id }}">Post Control</a>
+                                                            data-bs-target="#EditPostControl{{ $hazard->id }}">Post Control</a>
                                                     </div>
-                                                </div>
+                                                </div> --}}
 
-                                                <div class="modal-footer d-flex justify-content-center border-0">
+                                                {{-- <div class="modal-footer d-flex justify-content-center border-0">
                                                     <div class=" d-flex justify-content-center">
                                                         <button type="submit" id="simpanAktifitas"
                                                             class="btn btn-success text-white d-flex justify-content-center align-items-center "
@@ -294,11 +254,11 @@
                                             </form>
                                         </div>
                                     </div>
-                                </div>
+                                </div> --}}
 
                                 {{-- MOODAL POST, SOLUSI, PRE CONTROL --}}
                                 {{-- Pre Control --}}
-                                <div class="modal fade" id="EditPreControl{{ $detail->id }}" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                                {{-- <div class="modal fade" id="EditPreControl{{ $detail->id }}" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
                                     <div class="modal-dialog">
                                         <div class="modal-content">
                                             <div class="modal-header">
@@ -391,7 +351,7 @@
                                     </div>
                                 </div>
                                 {{-- Solusi --}}
-                                <div class="modal fade" id="EditSolusi{{ $detail->id }}" data-bs-backdrop="static" data-bs-keyboard="false"
+                                {{-- <div class="modal fade" id="EditSolusi{{ $detail->id }}" data-bs-backdrop="static" data-bs-keyboard="false"
                                     tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
                                     <div class="modal-dialog">
                                         <div class="modal-content">
@@ -438,9 +398,9 @@
                                             </form>
                                         </div>
                                     </div>
-                                </div>
+                                </div> --}}
                                 {{-- Post Control --}}
-                                <div class="modal fade" id="EditPostControl{{ $detail->id }}" data-bs-backdrop="static" data-bs-keyboard="false"
+                                {{-- <div class="modal fade" id="EditPostControl{{ $detail->id }}" data-bs-backdrop="static" data-bs-keyboard="false"
                                     tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
                                     <div class="modal-dialog">
                                         <div class="modal-content">
@@ -542,7 +502,7 @@
             </div>
         </div>
     </div>
-@stop
+@stop --}} --}}
 
 @section('custom-css')
     <style>

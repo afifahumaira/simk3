@@ -9,7 +9,6 @@ class Hirarc_detail_control extends Model
 {
 
     protected $guarded;
-
     public $timestamps = false;
     // public $table = "hirarc_detail_controls";
 

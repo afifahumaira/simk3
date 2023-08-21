@@ -117,9 +117,7 @@
                                                     <div class=" mt-5 d-flex justify-content-between" id="tambahResiko"
                                                         style="font-family: Roboto">
                                                         <p class=" mb-0" style="color:rgba(22, 36, 61, 0.4);">
-                                                            Masukkan
-                                                            data dengan
-                                                            lengkap</p>
+                                                            Masukkan data dengan lengkap</p>
                                                         <a type="button" id="addData"
                                                             class="text-end text-decoration-underline"
                                                             style="color:#233EAE" data-id="1"> + Tambah
@@ -214,31 +212,34 @@
                     </div>
 
                     {{-- <div class="container "> --}}
-                    <table id="tabelTambahData" class="table table-bordered border-secondary px-3 py-3 mb-5 shadow @if($hirarc->count() > 0) @else d-none @endif"
-                    style="margin-top: 40px; margin-bottom:10px;">
-                        <thead px-3>
-                            <tr>
-                                <th scope="col">Aktifitas</th>
-                                <th scope="col">Bahaya (Hazard)</th>
-                                <th scope="col">Risiko</th>
-                                <th scope="col">Pre Control</th>
-                                <th scope="col">Solusi</th>
-                                <th scope="col">Past Control</th>
-                                <th scope="col"style="width: 10%">Action</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            @if ($hirarc->count() > 0)
-                                @foreach ($hirarc->hirarc_detail as $detail)
+                        <table class="table table-bordered border-secondary px-3 py-3 mb-5 shadow mt-10">
+                            <thead>
+                                <tr>
+                                    <th scope="col">Aktifitas</th>
+                                    <th scope="col">Hazard</th>
+                                    <th scope="col">Resiko</th>
+                                    <th scope="col">Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach ($hirarc as $detail)
                                     <tr>
-                                        <td>{{ $detail->activity->name }}</td>
-                                        <td>{{ $detail->hazard->name }}</td>
-                                        <td>{{ $detail->risk->name }}</td>
-                                        <td>{{ $detail->prerating->hasilprecontrol ?? '-' }}</td>
-                                        <td>{{ $detail->hirarc_detail_control->control_child->name ?? '-' }}</td>
-                                        <td>{{ $detail->postrating->hasilpostcontrol ?? '-' }}</td>
-                                        <td id="RisikoSaatini" class="RisikoSaatini">
-                                            @if (!$detail->prerating)
+                                        <td>{{ $hirarc->activity }}</td>
+                                        <td>{{ $hirarc->hazard }}</td>
+                                        <td>{{ $hirarc->risk }}</td>
+                                        <td>
+                                            <a href="{{ route('hirarc.tambahDetail', $hirarc->id) }}" type="button" class="btn  btn-sm bg-primary"
+                                                style="width:20px;"><i
+                                                    class="bi bi-pencil-square text-dark d-flex justify-content-center align-items-center"></i></a>
+                                        </td>
+                                    </tr>
+                                @endforeach
+                            </tbody>
+                        </table>
+
+                        
+
+                                            {{-- @if (!$detail->prerating)
                                                 <button href="" type="button" class="btn bg-hover-light-success text-hover-success px-0 my-3" data-bs-toggle="modal" data-bs-target="#PreControl{{ $detail->id }}">Tambah<br>Pre Control</button>
                                             @endif
                                             @if (!$detail->hirarc_detail_control)
@@ -246,13 +247,13 @@
                                             @endif
                                             @if (!$detail->postrating)
                                                 <button href="#" type="button" class="btn bg-hover-light-success text-hover-success px-1 py-1 my-3" data-bs-toggle="modal" data-bs-target="#PostControl{{ $detail->id }}">Tambah <br> Post Control</button>
-                                            @endif
+                                            @endif --}}
                                         </td>
                                     </tr>
 
                                     {{-- MOODAL POST, SOLUSI, PRE CONTROL --}}
                                     {{-- Pre Control --}}
-                                    <div class="modal fade" id="PreControl{{ $detail->id }}" data-bs-backdrop="static" data-bs-keyboard="false"
+                                    {{-- <div class="modal fade" id="PreControl{{ $detail->id }}" data-bs-backdrop="static" data-bs-keyboard="false"
                                     tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
                                         <div class="modal-dialog">
                                             <div class="modal-content">
@@ -350,7 +351,7 @@
                                         </div>
                                     </div>
                                     {{-- Solusi --}}
-                                    <div class="modal fade" id="Solusi{{ $detail->id }}" data-bs-backdrop="static" data-bs-keyboard="false"
+                                    {{-- <div class="modal fade" id="Solusi{{ $detail->id }}" data-bs-backdrop="static" data-bs-keyboard="false"
                                         tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
                                         <div class="modal-dialog">
                                             <div class="modal-content">
@@ -390,7 +391,7 @@
                                         </div>
                                     </div>
                                     {{-- Post Control --}}
-                                    <div class="modal fade" id="PostControl{{ $detail->id }}" data-bs-backdrop="static" data-bs-keyboard="false"
+                                    {{-- <div class="modal fade" id="PostControl{{ $detail->id }}" data-bs-backdrop="static" data-bs-keyboard="false"
                                         tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
                                         <div class="modal-dialog">
                                             <div class="modal-content">
@@ -487,7 +488,7 @@
                                         </div>
                                     </div>
                                     {{-- END MOODAL POST, SOLUSI, PRE CONTROL --}}
-                                @endforeach
+                                {{-- @endforeach
                             @endif
                         </tbody>
                     </table>
@@ -505,10 +506,10 @@
                             tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
                             <div class="modal-dialog modal-dialog-centered ">
                                 <div class="modal-content">
-                                    {{-- <div class="modal-header">
+                                    <div class="modal-header">
                                         <h1 class="modal-title fs-5" id="staticBackdropLabel">Modal title</h1>
                                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                      </div> --}}
+                                      </div>
                                     <div class="modal-body mt-5 d-flex justify-content-center align-items-center">
                                         <h2 class="mt-5 text-center"
                                             style="color: #16243D; font-size: 20px font-weight:700">
@@ -533,7 +534,7 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </div>   --}}
 
             <!--end::Content container-->
 

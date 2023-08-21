@@ -72,8 +72,8 @@
                     @foreach ($hirarcs as $hirarc)
                         <tr>
                             <td scope="row" class="text-center">{{ ($hirarcs->currentpage()-1) * $hirarcs ->perpage() + $loop->index + 1 }}</td>
-                            <td>{{ $hirarc->departemen->name }}</td>
-                            <td>{{ $hirarc->location->name }}</td>
+                            <td>{{ $hirarc->departemen?->name }}</td>
+                            <td>{{ $hirarc->location?->name }}</td>
                             <td>{{ $hirarc->created_at ? $hirarc->created_at->translatedFormat('d F Y') : '' }}</td>
                                                         
                             <td>
