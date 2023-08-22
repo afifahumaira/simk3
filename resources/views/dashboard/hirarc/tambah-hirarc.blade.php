@@ -59,7 +59,8 @@
                                         <label class="col-form-label">Pilih Departemen</label>
                                         <div class=" w-100">
                                             <select name="departemen_id" class="form-select fs-6 w-100"
-                                                data-control="select2" data-hide-search="true" data-placeholder="Pilih Departemen">
+                                                data-control="select2" data-hide-search="true"
+                                                data-placeholder="Pilih Departemen">
                                                 <option value="">Pilih Departemen</option>
                                                 @foreach ($departments as $dep)
                                                     <option value="{{ $dep->id }}">{{ $dep->name }}</option>
@@ -74,7 +75,7 @@
                                             data-control="select2" data-hide-search="true">
                                             <option value="">Pilih Departemen terlebih dahulu</option>
                                             @foreach ($location as $loc)
-                                                <option value="{{ $loc->id}}">{{ $loc->name }}</option>
+                                                <option value="{{ $loc->id }}">{{ $loc->name }}</option>
                                             @endforeach
                                         </select>
                                     </div>
@@ -104,11 +105,15 @@
                                                 <div class="modal-body mt-5 ">
                                                     <div id="additionalForm">
                                                         <div class="mb-3">
-                                                            <label for="activitie_id" class="form-label">Pilih Aktifitas:</label>
-                                                            <select id="activitie_id" name="activitie" class="form-select" data-control="select2" data-hide-search="true">
-                                                                <option value="">Pilih Lokasi terlebih dahulu</option>
+                                                            <label for="activitie_id" class="form-label">Pilih
+                                                                Aktifitas:</label>
+                                                            <select id="activitie_id" name="activitie" class="form-select"
+                                                                data-control="select2" data-hide-search="true">
+                                                                <option value="">Pilih Lokasi terlebih dahulu
+                                                                </option>
                                                                 @foreach ($activitie as $act)
-                                                                <option value="{{ $act->name}}">{{ $act->name }}</option>
+                                                                    <option value="{{ $act->name }}">{{ $act->name }}
+                                                                    </option>
                                                                 @endforeach
                                                             </select>
                                                         </div>
@@ -133,7 +138,8 @@
                                                             <option value="">Pilih Aktifitas terlebih dahulu
                                                             </option>
                                                             @foreach ($hazard as $hazard)
-                                                            <option value="{{ $hazard->name}}">{{ $hazard->name }}</option>
+                                                                <option value="{{ $hazard->name }}">{{ $hazard->name }}
+                                                                </option>
                                                             @endforeach
                                                         </select>
                                                     </div>
@@ -147,7 +153,8 @@
                                                             <option value="">Pilih Hazard terlebih dahulu
                                                             </option>
                                                             @foreach ($risk as $risk)
-                                                            <option value="{{ $risk->name}}">{{ $risk->name }}</option>
+                                                                <option value="{{ $risk->name }}">{{ $risk->name }}
+                                                                </option>
                                                             @endforeach
                                                         </select>
                                                     </div>
@@ -212,34 +219,36 @@
                     </div>
 
                     {{-- <div class="container "> --}}
-                        <table class="table table-bordered border-secondary px-3 py-3 mb-5 shadow mt-10">
-                            <thead>
+                    <table class="table table-bordered border-secondary px-3 py-3 mb-5 shadow mt-10">
+                        <thead>
+                            <tr>
+                                <th scope="col">Aktifitas</th>
+                                <th scope="col">Hazard</th>
+                                <th scope="col">Resiko</th>
+                                <th scope="col" class="col-2">Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach ($hirarc as $detail)
                                 <tr>
-                                    <th scope="col">Aktifitas</th>
-                                    <th scope="col">Hazard</th>
-                                    <th scope="col">Resiko</th>
-                                    <th scope="col">Action</th>
+                                    <td>{{ $hirarc->activity }}</td>
+                                    <td>{{ $hirarc->hazard }}</td>
+                                    <td>{{ $hirarc->risk }}</td>
+                                    <td>
+                                        <a href="{{ route('hirarc.tambahDetail', $hirarc->id) }}" type="button"
+                                            class="btn  btn-sm bg-primary" style="font-weight: 400; font-size: 16px">
+                                            Lengkapi data
+                                            {{-- <i class="bi bi-pencil-square text-dark d-flex justify-content-center align-items-center"></i> --}}
+                                        </a>
+                                    </td>
                                 </tr>
-                            </thead>
-                            <tbody>
-                                @foreach ($hirarc as $detail)
-                                    <tr>
-                                        <td>{{ $hirarc->activity }}</td>
-                                        <td>{{ $hirarc->hazard }}</td>
-                                        <td>{{ $hirarc->risk }}</td>
-                                        <td>
-                                            <a href="{{ route('hirarc.tambahDetail', $hirarc->id) }}" type="button" class="btn  btn-sm bg-primary"
-                                                style="width:20px;"><i
-                                                    class="bi bi-pencil-square text-dark d-flex justify-content-center align-items-center"></i></a>
-                                        </td>
-                                    </tr>
-                                @endforeach
-                            </tbody>
-                        </table>
+                            @endforeach
+                        </tbody>
+                    </table>
 
-                        
 
-                                            {{-- @if (!$detail->prerating)
+
+                    {{-- @if (!$detail->prerating)
                                                 <button href="" type="button" class="btn bg-hover-light-success text-hover-success px-0 my-3" data-bs-toggle="modal" data-bs-target="#PreControl{{ $detail->id }}">Tambah<br>Pre Control</button>
                                             @endif
                                             @if (!$detail->hirarc_detail_control)
@@ -248,12 +257,12 @@
                                             @if (!$detail->postrating)
                                                 <button href="#" type="button" class="btn bg-hover-light-success text-hover-success px-1 py-1 my-3" data-bs-toggle="modal" data-bs-target="#PostControl{{ $detail->id }}">Tambah <br> Post Control</button>
                                             @endif --}}
-                                        </td>
-                                    </tr>
+                    </td>
+                    </tr>
 
-                                    {{-- MOODAL POST, SOLUSI, PRE CONTROL --}}
-                                    {{-- Pre Control --}}
-                                    {{-- <div class="modal fade" id="PreControl{{ $detail->id }}" data-bs-backdrop="static" data-bs-keyboard="false"
+                    {{-- MOODAL POST, SOLUSI, PRE CONTROL --}}
+                    {{-- Pre Control --}}
+                    {{-- <div class="modal fade" id="PreControl{{ $detail->id }}" data-bs-backdrop="static" data-bs-keyboard="false"
                                     tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
                                         <div class="modal-dialog">
                                             <div class="modal-content">
@@ -351,7 +360,7 @@
                                         </div>
                                     </div>
                                     {{-- Solusi --}}
-                                    {{-- <div class="modal fade" id="Solusi{{ $detail->id }}" data-bs-backdrop="static" data-bs-keyboard="false"
+                    {{-- <div class="modal fade" id="Solusi{{ $detail->id }}" data-bs-backdrop="static" data-bs-keyboard="false"
                                         tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
                                         <div class="modal-dialog">
                                             <div class="modal-content">
@@ -391,7 +400,7 @@
                                         </div>
                                     </div>
                                     {{-- Post Control --}}
-                                    {{-- <div class="modal fade" id="PostControl{{ $detail->id }}" data-bs-backdrop="static" data-bs-keyboard="false"
+                    {{-- <div class="modal fade" id="PostControl{{ $detail->id }}" data-bs-backdrop="static" data-bs-keyboard="false"
                                         tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
                                         <div class="modal-dialog">
                                             <div class="modal-content">
@@ -488,7 +497,7 @@
                                         </div>
                                     </div>
                                     {{-- END MOODAL POST, SOLUSI, PRE CONTROL --}}
-                                {{-- @endforeach
+                    {{-- @endforeach
                             @endif
                         </tbody>
                     </table>
@@ -536,211 +545,211 @@
                 </div>
             </div>   --}}
 
-            <!--end::Content container-->
+                    <!--end::Content container-->
 
-        </div>
-    </div>
-@stop
+                </div>
+            </div>
+        @stop
 
-@section('custom-css')
-    <style>
-        #risiko-sekarang .btn {
-            box-sizing: border-box;
-            border: 1px solid #009B3E;
-            border-radius: 5px;
-            width: 122px;
-            height: 40px;
-            display: flex;
-            align-items: center;
-            font-family: 'Roboto';
-            font-size: 14px;
-            font-weight: 400;
-            color: #009B3E;
-            text-align: center;
-            margin: 10px 20px 30px 20px;
-        }
-
-        #RisikoSaatini .btn {
-            box-sizing: border-box;
-            border: 1px solid #009B3E;
-            border-radius: 5px;
-            /* height: 40px; */
-            width: 100%;
-            font-family: 'Roboto';
-            font-size: 14px;
-            font-weight: 400;
-            color: #009B3E;
-            /* text-align: center; */
-        }
-
-        #risiko-sekarang #postControl .hitung .btn,
-        #risiko-sekarang #solusi .hitung .btn,
-        #risiko-sekarang #postControl .hitung .btn {
-            border: none !important;
-            color: #ffffff;
-        }
-
-        #risiko-sekarang #preControl .icon-box {
-            display: flex;
-            justify-content: center;
-            margin-bottom: 20px;
-            padding: 15px;
-            border-radius: 6px;
-            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.15);
-            width: 144px;
-            height: 99px;
-        }
-    </style>
-@stop
-
-@section('customscript')
-    <script>
-        let hazards = [];
-        $(document).ready(function() {
-            $('#simpanAktifitas').on('click', function() {
-                // $('#tabelp3k').slideDown (500);
-                if ($('#tabelTambahData').is(":hidden")) {
-                    $('#tabelTambahData').slideDown('slow');
-                } else {
-                    $('#tabelTambahData').slideUp('slow');
-                    $('#tabelTambahData').slideDown('slow');
+        @section('custom-css')
+            <style>
+                #risiko-sekarang .btn {
+                    box-sizing: border-box;
+                    border: 1px solid #009B3E;
+                    border-radius: 5px;
+                    width: 122px;
+                    height: 40px;
+                    display: flex;
+                    align-items: center;
+                    font-family: 'Roboto';
+                    font-size: 14px;
+                    font-weight: 400;
+                    color: #009B3E;
+                    text-align: center;
+                    margin: 10px 20px 30px 20px;
                 }
-            });
 
-            $('#departemen_id').on('change', function() {
-                var select = $('#location_id');
-                select.closest("div").find(".select2-selection.select2-selection--single").addClass(
-                    'loading');
-                select.prop('disabled', 'disabled');
+                #RisikoSaatini .btn {
+                    box-sizing: border-box;
+                    border: 1px solid #009B3E;
+                    border-radius: 5px;
+                    /* height: 40px; */
+                    width: 100%;
+                    font-family: 'Roboto';
+                    font-size: 14px;
+                    font-weight: 400;
+                    color: #009B3E;
+                    /* text-align: center; */
+                }
 
-                let location_id = $(this).val();
-                var url = "{{ route('hirarc.getLocation', ':id') }}";
-                url = url.replace(':id', location_id);
-                $.ajax({
-                    url: url,
-                    type: "GET",
-                    dataType: "json",
-                    data: {
-                        location_id: location_id
-                    },
-                    success: function(data) {
-                        select.empty();
-                        select.append(
-                            '<option value="" selected disabled >Pilih Lokasi</option>');
-                        $('#aktifitas_id').empty();
-                        $('#aktifitas_id').append(
-                            '<option value="" selected disabled >Pilih Aktifitas</option>');
-                        $('#hazard_id').empty();
-                        $('#hazard_id').append(
-                            '<option value="" selected disabled >Pilih Hazard</option>');
-                        $('#risiko_id').empty();
-                        $('#risiko_id').append(
-                            '<option value="" selected disabled >Pilih Risiko</option>');
-                        $.each(data, function(key, value) {
-                            select.append('<option value="' + value.id + '">' + value
-                                .name + '</option>');
+                #risiko-sekarang #postControl .hitung .btn,
+                #risiko-sekarang #solusi .hitung .btn,
+                #risiko-sekarang #postControl .hitung .btn {
+                    border: none !important;
+                    color: #ffffff;
+                }
+
+                #risiko-sekarang #preControl .icon-box {
+                    display: flex;
+                    justify-content: center;
+                    margin-bottom: 20px;
+                    padding: 15px;
+                    border-radius: 6px;
+                    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.15);
+                    width: 144px;
+                    height: 99px;
+                }
+            </style>
+        @stop
+
+        @section('customscript')
+            <script>
+                let hazards = [];
+                $(document).ready(function() {
+                    $('#simpanAktifitas').on('click', function() {
+                        // $('#tabelp3k').slideDown (500);
+                        if ($('#tabelTambahData').is(":hidden")) {
+                            $('#tabelTambahData').slideDown('slow');
+                        } else {
+                            $('#tabelTambahData').slideUp('slow');
+                            $('#tabelTambahData').slideDown('slow');
+                        }
+                    });
+
+                    $('#departemen_id').on('change', function() {
+                        var select = $('#location_id');
+                        select.closest("div").find(".select2-selection.select2-selection--single").addClass(
+                            'loading');
+                        select.prop('disabled', 'disabled');
+
+                        let location_id = $(this).val();
+                        var url = "{{ route('hirarc.getLocation', ':id') }}";
+                        url = url.replace(':id', location_id);
+                        $.ajax({
+                            url: url,
+                            type: "GET",
+                            dataType: "json",
+                            data: {
+                                location_id: location_id
+                            },
+                            success: function(data) {
+                                select.empty();
+                                select.append(
+                                    '<option value="" selected disabled >Pilih Lokasi</option>');
+                                $('#aktifitas_id').empty();
+                                $('#aktifitas_id').append(
+                                    '<option value="" selected disabled >Pilih Aktifitas</option>');
+                                $('#hazard_id').empty();
+                                $('#hazard_id').append(
+                                    '<option value="" selected disabled >Pilih Hazard</option>');
+                                $('#risiko_id').empty();
+                                $('#risiko_id').append(
+                                    '<option value="" selected disabled >Pilih Risiko</option>');
+                                $.each(data, function(key, value) {
+                                    select.append('<option value="' + value.id + '">' + value
+                                        .name + '</option>');
+                                });
+                            },
+                            error: function(data) {
+
+                            }
+                        }).done(function(data) {
+                            select.prop('disabled', false);
+                            select.closest("div").find(".select2-selection.select2-selection--single")
+                                .removeClass('loading');
                         });
-                    },
-                    error: function(data) {
+                    });
 
-                    }
-                }).done(function(data) {
-                    select.prop('disabled', false);
-                    select.closest("div").find(".select2-selection.select2-selection--single")
-                        .removeClass('loading');
-                });
-            });
+                    $('#location_id').on('change', function() {
+                        var select = $('#aktifitas_id');
+                        select.closest("div").find(".select2-selection.select2-selection--single").addClass(
+                            'loading');
+                        select.prop('disabled', 'disabled');
 
-            $('#location_id').on('change', function() {
-                var select = $('#aktifitas_id');
-                select.closest("div").find(".select2-selection.select2-selection--single").addClass(
-                    'loading');
-                select.prop('disabled', 'disabled');
+                        let aktifitas_id = $(this).val();
+                        var url = "{{ route('hirarc.getAktifitas', ':id') }}";
+                        url = url.replace(':id', aktifitas_id);
+                        $.ajax({
+                            url: url,
+                            type: "GET",
+                            dataType: "json",
+                            data: {
+                                aktifitas_id: aktifitas_id
+                            },
+                            success: function(data) {
+                                select.empty();
+                                select.append(
+                                    '<option value="" selected disabled >Pilih Aktifitas</option>');
+                                $('#hazard_id').empty();
+                                $('#hazard_id').append(
+                                    '<option value="" selected disabled >Pilih Hazard</option>');
+                                $('#risiko_id').empty();
+                                $('#risiko_id').append(
+                                    '<option value="" selected disabled >Pilih Risiko</option>');
+                                $.each(data, function(key, value) {
+                                    select.append('<option value="' + value.id + '">' + value
+                                        .name + '</option>');
+                                });
+                            },
+                            error: function(data) {
 
-                let aktifitas_id = $(this).val();
-                var url = "{{ route('hirarc.getAktifitas', ':id') }}";
-                url = url.replace(':id', aktifitas_id);
-                $.ajax({
-                    url: url,
-                    type: "GET",
-                    dataType: "json",
-                    data: {
-                        aktifitas_id: aktifitas_id
-                    },
-                    success: function(data) {
-                        select.empty();
-                        select.append(
-                            '<option value="" selected disabled >Pilih Aktifitas</option>');
-                        $('#hazard_id').empty();
-                        $('#hazard_id').append(
-                            '<option value="" selected disabled >Pilih Hazard</option>');
-                        $('#risiko_id').empty();
-                        $('#risiko_id').append(
-                            '<option value="" selected disabled >Pilih Risiko</option>');
-                        $.each(data, function(key, value) {
-                            select.append('<option value="' + value.id + '">' + value
-                                .name + '</option>');
+                            }
+                        }).done(function(data) {
+                            select.prop('disabled', false);
+                            select.closest("div").find(".select2-selection.select2-selection--single")
+                                .removeClass('loading');
                         });
-                    },
-                    error: function(data) {
+                    });
 
-                    }
-                }).done(function(data) {
-                    select.prop('disabled', false);
-                    select.closest("div").find(".select2-selection.select2-selection--single")
-                        .removeClass('loading');
-                });
-            });
+                    $('#aktifitas_id').on('change', function() {
+                        $('div#komponenBaru').empty();
+                        $('#addData').attr('data-id', 1);
+                        var select = $('#hazard_id_1');
+                        select.closest("div").find(".select2-selection.select2-selection--single").addClass(
+                            'loading');
+                        select.prop('disabled', 'disabled');
 
-            $('#aktifitas_id').on('change', function() {
-                $('div#komponenBaru').empty();
-                $('#addData').attr('data-id', 1);
-                var select = $('#hazard_id_1');
-                select.closest("div").find(".select2-selection.select2-selection--single").addClass(
-                    'loading');
-                select.prop('disabled', 'disabled');
+                        let hazard_id = $(this).val();
+                        var url = "{{ route('hirarc.getHazard', ':id') }}";
+                        url = url.replace(':id', hazard_id);
+                        $.ajax({
+                            url: url,
+                            type: "GET",
+                            dataType: "json",
+                            data: {
+                                hazard_id: hazard_id
+                            },
+                            success: function(data) {
+                                hazards = data;
+                                select.empty();
+                                select.append(
+                                    '<option value="" selected disabled >Pilih Hazard</option>');
+                                $('#risiko_id_1').empty();
+                                $('#risiko_id_1').append(
+                                    '<option value="" selected disabled >Pilih Risiko</option>');
+                                $.each(data, function(key, value) {
+                                    select.append('<option value="' + value.id + '">' + value
+                                        .name + '</option>');
+                                });
+                            },
+                            error: function(data) {
 
-                let hazard_id = $(this).val();
-                var url = "{{ route('hirarc.getHazard', ':id') }}";
-                url = url.replace(':id', hazard_id);
-                $.ajax({
-                    url: url,
-                    type: "GET",
-                    dataType: "json",
-                    data: {
-                        hazard_id: hazard_id
-                    },
-                    success: function(data) {
-                        hazards = data;
-                        select.empty();
-                        select.append(
-                            '<option value="" selected disabled >Pilih Hazard</option>');
-                        $('#risiko_id_1').empty();
-                        $('#risiko_id_1').append(
-                            '<option value="" selected disabled >Pilih Risiko</option>');
-                        $.each(data, function(key, value) {
-                            select.append('<option value="' + value.id + '">' + value
-                                .name + '</option>');
+                            }
+                        }).done(function(data) {
+                            select.prop('disabled', false);
+                            select.closest("div").find(".select2-selection.select2-selection--single")
+                                .removeClass('loading');
                         });
-                    },
-                    error: function(data) {
+                    });
 
-                    }
-                }).done(function(data) {
-                    select.prop('disabled', false);
-                    select.closest("div").find(".select2-selection.select2-selection--single")
-                        .removeClass('loading');
-                });
-            });
+                    bindEvent(1);
 
-            bindEvent(1);
-
-            $('#addData').on('click', function() {
-                let btnAdd = $(this);
-                let data_id = btnAdd.attr("data-id");
-                let data_new_id = parseInt(data_id) + 1;
-                let komponendiv = $('div#komponenBaru');
-                let item = `
+                    $('#addData').on('click', function() {
+                        let btnAdd = $(this);
+                        let data_id = btnAdd.attr("data-id");
+                        let data_new_id = parseInt(data_id) + 1;
+                        let komponendiv = $('div#komponenBaru');
+                        let item = `
                     <div class="mb-3">
                         <label for="hazard_id_${data_new_id}" class="form-label">Hazard ${data_new_id}</label>
                         <select id="hazard_id_${data_new_id}" data-id="${data_new_id}" name="hazard_id[]" class="form-select"
@@ -765,118 +774,118 @@
                     </div>
                 `;
 
-                komponendiv.append(item);
-                btnAdd.attr("data-id", data_new_id);
-                var selectHazard = komponendiv.find("#hazard_id_" + data_new_id);
-                console.log(selectHazard);
-                hazards.forEach(data => {
-                    console.log(data);
-                    selectHazard.append('<option value="' + data.id + '">' + data.name +
-                        '</option>');
-                });
-                selectHazard.select2({
-
-                });
-                bindEvent(data_new_id);
-            });
-
-            $('.selectControl').on('change', function() {
-                var data_id = $(this).attr('data-id');
-                var select = $('#selectSolusi' + data_id);
-                select.closest("div").find(".select2-selection.select2-selection--single").addClass(
-                    'loading');
-                select.prop('disabled', 'disabled');
-
-                let control_id = $(this).val();
-                var url = "{{ route('hirarc.getControlChildren', ':id') }}";
-                url = url.replace(':id', control_id);
-                $.ajax({
-                    url: url,
-                    type: "GET",
-                    dataType: "json",
-                    success: function(data) {
-                        hazards = data;
-                        select.empty();
-                        select.append(
-                            '<option value="" selected disabled >Pilih Hazard</option>');
-                        $('#risiko_id_1').empty();
-                        $('#risiko_id_1').append(
-                            '<option value="" selected disabled >Pilih Risiko</option>');
-                        $.each(data, function(key, value) {
-                            select.append('<option value="' + value.id + '">' + value
-                                .name + '</option>');
-                        });
-                    },
-                    error: function(data) {
-
-                    }
-                }).done(function(data) {
-                    select.prop('disabled', false);
-                    select.closest("div").find(".select2-selection.select2-selection--single")
-                        .removeClass('loading');
-                });
-            });
-        });
-
-        function bindEvent(id) {
-            $('#hazard_id_' + id).on('change', function() {
-                let data_id = $(this).attr("data-id");
-                var select = $('#risiko_id_' + data_id);
-                select.closest("div").find(".select2-selection.select2-selection--single").addClass('loading');
-                select.prop('disabled', 'disabled');
-
-                let risiko_id = $(this).val();
-                var url = '{{ route('hirarc.getRisk', ':id') }}';
-                url = url.replace(':id', risiko_id);
-                $.ajax({
-                    url: url,
-                    type: "GET",
-                    dataType: "json",
-                    data: {
-                        risiko_id: risiko_id
-                    },
-                    success: function(data) {
-                        select.empty();
-                        select.append('<option value="" selected disabled >Pilih Risiko</option>');
-                        $.each(data, function(key, value) {
-                            select.append('<option value="' + value.id + '">' + value.name +
+                        komponendiv.append(item);
+                        btnAdd.attr("data-id", data_new_id);
+                        var selectHazard = komponendiv.find("#hazard_id_" + data_new_id);
+                        console.log(selectHazard);
+                        hazards.forEach(data => {
+                            console.log(data);
+                            selectHazard.append('<option value="' + data.id + '">' + data.name +
                                 '</option>');
                         });
-                        select.select2();
-                    },
-                    error: function(data) {
+                        selectHazard.select2({
 
-                    }
-                }).done(function(data) {
-                    select.prop('disabled', false);
-                    select.closest("div").find(".select2-selection.select2-selection--single").removeClass(
-                        'loading');
+                        });
+                        bindEvent(data_new_id);
+                    });
+
+                    $('.selectControl').on('change', function() {
+                        var data_id = $(this).attr('data-id');
+                        var select = $('#selectSolusi' + data_id);
+                        select.closest("div").find(".select2-selection.select2-selection--single").addClass(
+                            'loading');
+                        select.prop('disabled', 'disabled');
+
+                        let control_id = $(this).val();
+                        var url = "{{ route('hirarc.getControlChildren', ':id') }}";
+                        url = url.replace(':id', control_id);
+                        $.ajax({
+                            url: url,
+                            type: "GET",
+                            dataType: "json",
+                            success: function(data) {
+                                hazards = data;
+                                select.empty();
+                                select.append(
+                                    '<option value="" selected disabled >Pilih Hazard</option>');
+                                $('#risiko_id_1').empty();
+                                $('#risiko_id_1').append(
+                                    '<option value="" selected disabled >Pilih Risiko</option>');
+                                $.each(data, function(key, value) {
+                                    select.append('<option value="' + value.id + '">' + value
+                                        .name + '</option>');
+                                });
+                            },
+                            error: function(data) {
+
+                            }
+                        }).done(function(data) {
+                            select.prop('disabled', false);
+                            select.closest("div").find(".select2-selection.select2-selection--single")
+                                .removeClass('loading');
+                        });
+                    });
                 });
-            });
-        }
 
-        function hitungpreControl(id) {
-            var hasilpre = $('#hasilpre'+id);
-            var inputhasilpre = $('#inputhasilpre'+id);
-            var sel1 = $('#select_pre_severity_'+id).val();
-            var sel2 = $('#select_pre_exposure_'+id).val();
-            var sel3 = $('#select_pre_probability_'+id).val();
+                function bindEvent(id) {
+                    $('#hazard_id_' + id).on('change', function() {
+                        let data_id = $(this).attr("data-id");
+                        var select = $('#risiko_id_' + data_id);
+                        select.closest("div").find(".select2-selection.select2-selection--single").addClass('loading');
+                        select.prop('disabled', 'disabled');
 
-            var hasil = sel1 * sel2 * sel3;
-            hasilpre.html(hasil);
-            inputhasilpre.val(hasil);
-        }
+                        let risiko_id = $(this).val();
+                        var url = '{{ route('hirarc.getRisk', ':id') }}';
+                        url = url.replace(':id', risiko_id);
+                        $.ajax({
+                            url: url,
+                            type: "GET",
+                            dataType: "json",
+                            data: {
+                                risiko_id: risiko_id
+                            },
+                            success: function(data) {
+                                select.empty();
+                                select.append('<option value="" selected disabled >Pilih Risiko</option>');
+                                $.each(data, function(key, value) {
+                                    select.append('<option value="' + value.id + '">' + value.name +
+                                        '</option>');
+                                });
+                                select.select2();
+                            },
+                            error: function(data) {
 
-        function hitungpostControl(id) {
-            var hasilpost = $('#hasilpost'+id);
-            var inputhasilpost = $('#inputhasilpost'+id);
-            var sel1 = $('#select_post_severity_'+id).val();
-            var sel2 = $('#select_post_exposure_'+id).val();
-            var sel3 = $('#select_post_probability_'+id).val();
+                            }
+                        }).done(function(data) {
+                            select.prop('disabled', false);
+                            select.closest("div").find(".select2-selection.select2-selection--single").removeClass(
+                                'loading');
+                        });
+                    });
+                }
 
-            var hasil = sel1 * sel2 * sel3;
-            hasilpost.html(hasil);
-            inputhasilpost.val(hasil);
-        }
-    </script>
-@stop
+                function hitungpreControl(id) {
+                    var hasilpre = $('#hasilpre' + id);
+                    var inputhasilpre = $('#inputhasilpre' + id);
+                    var sel1 = $('#select_pre_severity_' + id).val();
+                    var sel2 = $('#select_pre_exposure_' + id).val();
+                    var sel3 = $('#select_pre_probability_' + id).val();
+
+                    var hasil = sel1 * sel2 * sel3;
+                    hasilpre.html(hasil);
+                    inputhasilpre.val(hasil);
+                }
+
+                function hitungpostControl(id) {
+                    var hasilpost = $('#hasilpost' + id);
+                    var inputhasilpost = $('#inputhasilpost' + id);
+                    var sel1 = $('#select_post_severity_' + id).val();
+                    var sel2 = $('#select_post_exposure_' + id).val();
+                    var sel3 = $('#select_post_probability_' + id).val();
+
+                    var hasil = sel1 * sel2 * sel3;
+                    hasilpost.html(hasil);
+                    inputhasilpost.val(hasil);
+                }
+            </script>
+        @stop

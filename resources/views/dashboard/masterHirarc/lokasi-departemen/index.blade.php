@@ -61,8 +61,8 @@
             <table class="table table-bordered border-secondary px-3 py-3 mb-10 shadow">
                 <thead px-3>
                     <tr>
-                        
-                        <th scope="col" class="">No</th>
+
+                        <th scope="col" class="text-center">No</th>
                         <th scope="col" class="">Lokasi</th>
                         <th scope="col" class="col-1">Action</th>
                     </tr>
@@ -72,10 +72,45 @@
                         <tr>
                             <td scope="row" class="text-center">
                                 {{ ($locations->currentpage() - 1) * $locations->perpage() + $loop->index + 1 }}</td>
-                                
-                                <td>{{ $loc->name }}</td>
-                            
-                            
+
+                            <td>{{ $loc->name }}</td>
+                            <td>
+                                <a href="{{ route('lokasimaster.edit', $loc->id) }}" type="button"
+                                    class="btn btn-sm btn-primary px-4"><i class="bi bi-pencil-square pe-0"></i></a>
+                                <button type="button" class="btn btn-danger btn-sm px-4" data-bs-toggle="modal"
+                                    data-bs-target="#deleteForm{{ $loc->id }}"><i
+                                        class="bi bi-trash pe-0"></i></button>
+
+                                <div class="modal fade" id="deleteForm{{ $loc->id }}" data-bs-backdrop="static"
+                                    data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel"
+                                    aria-hidden="true">
+                                    <div class="modal-dialog modal-dialog-centered ">
+                                        <div class="modal-content">
+
+                                            <form method="POST" action="{{ route('lokasimaster.delete', $loc->id) }}">
+                                                @csrf
+                                                <div
+                                                    class="modal-body mt-5 d-flex justify-content-center align-items-center">
+                                                    <h2 class="mt-5 text-center"
+                                                        style="color: #16243D; font-size: 20px font-weight:700">Yakin data
+                                                        ingin dihapus?
+                                                    </h2>
+                                                </div>
+                                                <div class="modal-footer d-flex justify-content-center border-0">
+                                                    <button type="submit"
+                                                        class="btn btn-success text-white d-flex justify-content-center align-items-center text-center rounded-1"
+                                                        style="width:76px; height:31px; background: #29CC6A;">Ya</button>
+                                                    <button type="button"
+                                                        class="btn btn-secondary text-center d-flex align-items-center rounded-1"
+                                                        data-bs-dismiss="modal"
+                                                        style="width:76px; height:31px; ">Tidak</button>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </td>
+
                         </tr>
                     @endforeach
                 </tbody>
@@ -86,4 +121,3 @@
         </div>
     </div>
 @stop
-

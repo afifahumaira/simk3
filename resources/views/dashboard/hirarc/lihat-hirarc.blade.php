@@ -4,7 +4,7 @@
     <div class="page-title d-flex flex-column gap-1 mx-5 my-5  ">
 
         <div id="kt_app_content"
-            class="app-content flex-column-fluid rounded bg-light  mb-20 px-5 shadow"style="box-shadow: 2px 4px 20px 2px rgba(0, 0, 0, 0.1);">
+            class="app-content  rounded bg-light  mb-20 px-5 shadow"style="box-shadow: 2px 4px 20px 2px rgba(0, 0, 0, 0.1);">
             <div class="app-toolbar-wrapper d-flex flex-stack flex-wrap gap-4 w-100 mb-5 px-5 border-bottom border-5">
                 <!--begin::Page title-->
                 <h2>Detail Data HIRARC</h2>
@@ -16,8 +16,8 @@
                 <!--end::Title-->
             </div>
             <!--begin::Content container-->
-            <div class="card">
-                <div class="card-body">
+            <div class="content card">
+                <div class="card-body table-responsive">
                     <table class="table table-bordered border-secondary rounded-5 px-3 py-3 mb-5 shadow">
                         <tbody>
                             <tr>
@@ -89,7 +89,7 @@
                                     <td>{{ $hirarc->residual_probability }}</td>
                                     <td>{{ $hirarc->residual_risk_rating }}</td>
                                     <td>{{ $hirarc->residual_risk_category }}</td>
-                                    <td>{{ $hirarc->penanggung_jawab}}</td>
+                                    <td>{{ $hirarc->penanggung_jawab }}</td>
                                     <td>{{ $hirarc->status }}</td>
                                 </tr>
                             @endforeach
