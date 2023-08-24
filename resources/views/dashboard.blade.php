@@ -143,7 +143,7 @@
                                         </div>
                                         <div class="text-white d-flex flex-column py-3 rounded-4 w-25 bg-primary">
                                             <div class="mb-4 d-flex justify-content-center py-2">
-                                                <i class="bi bi-person-check-fill text-white fs-2hx"></i>
+                                                <i class="bi bi bi-search text-white fs-2hx"></i>
                                             </div>
                                             <div class="fs-2hx d-flex justify-content-center"
                                                 style=" font-family: Roboto Flex;">
@@ -200,7 +200,7 @@
                                         </div>
                                         <div class="text-white d-flex flex-column py-3 rounded-4 w-25 bg-primary">
                                             <div class="mb-4 d-flex justify-content-center py-2">
-                                                <i class="bi bi-person-check-fill text-white fs-2hx"></i>
+                                                <i class="bi bi bi-search text-white fs-2hx"></i>
                                             </div>
                                             <div class="fs-2hx d-flex justify-content-center"
                                                 style=" font-family: Roboto Flex;">
@@ -307,7 +307,7 @@
                                         </div>
                                         <div class="text-white d-flex flex-column py-3 rounded-4 w-25 bg-primary">
                                             <div class="mb-4 d-flex justify-content-center py-2">
-                                                <i class="bi bi-person-check-fill text-white fs-2hx"></i>
+                                                <i class="bi bi bi-search text-white fs-2hx"></i>
                                             </div>
                                             <div class="fs-2hx d-flex justify-content-center"
                                                 style=" font-family: Roboto Flex;">
@@ -352,7 +352,7 @@
                                         <div class="text-white d-flex flex-column py-3 rounded-4 w-25"
                                             style="background:#DC3545">
                                             <div class="mb-4 d-flex justify-content-center py-2">
-                                                <i class="bi bi-person-check-fill text-white fs-2hx"></i>
+                                                <i class="bi bi-clipboard-x text-white fs-2hx"></i>
                                             </div>
                                             <div class="fs-2hx d-flex justify-content-center"
                                                 style=" font-family: Roboto Flex;">
