@@ -19,17 +19,18 @@ class HazardController extends Controller
         return view('dashboard.masterHirarc.hazard.tambah-hazard', compact('hazards'));
     }
 
-    public function edit($id, $id_hzd) {
-        $hzd = Hazard::find($id_hzd);
-        
-        return view('dashboard.masterHirarc.hazard.edit-hazard', compact('hzd', 'id'));
-    }
-
-    public function detail($id) {
+    public function edit($id) {
         $hzd = Hazard::find($id);
         
-        return view('dashboard.masterHirarc.hazard.detail-hazard', compact('hzd','id'));
+        return view('dashboard.masterHirarc.hazard.edit-hazard', compact('hzd'))
+        ->with('id', $hzd);
     }
+
+    // public function detail($id) {
+    //     $hzd = Hazard::find($id);
+        
+    //     return view('dashboard.masterHirarc.hazard.detail-hazard', compact('hzd'));
+    // }
 
     public function simpan(Request $request) {
         $request->validate([
@@ -54,8 +55,6 @@ class HazardController extends Controller
             
         ]);
 
-        $acts = implode(',', $request->hazard);
-
         Hazard::find($id)->update([
             
             'name' => $request->name,
@@ -65,11 +64,12 @@ class HazardController extends Controller
         return redirect()->route('hazard.index');
     }
 
-    public function delete($id, $id_hzd) {
-        Hazard::find($id_hzd)->delete();
+    public function delete($id) {
+        $hazards = Hazard::find($id);
+        $hazards->delete();
 
         Alert::success('Berhasil', 'Data Hazard berhasil dihapus!')->iconHtml('<i class="bi bi-person-check"></i>')->hideCloseButton();
-        return redirect()->route('hazard.detail', $id);
+        return redirect()->route('hazard.index', $id);
     }
 
 }

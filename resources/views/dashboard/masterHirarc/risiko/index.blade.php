@@ -75,10 +75,8 @@
 
                             <td>{{ $rks->name }}</td>
                             <td>
-                                <a href="" type="button" class="btn btn-sm btn-primary px-4"><i
-                                        class="bi bi-pencil-square pe-0"></i>
-                                    {{-- {{ route('risiko.edit', ['id' => $id, 'id_risk' => $rks->id]) }} --}}
-                                </a>
+                                <a href="{{ route('risiko.edit', $rks->id) }}" type="button"
+                                    class="btn btn-sm btn-primary px-4"><i class="bi bi-pencil-square pe-0"></i></a>
                                 <button type="button" class="btn btn-danger btn-sm px-4" data-bs-toggle="modal"
                                     data-bs-target="#deleteForm{{ $rks->id }}"><i
                                         class="bi bi-trash pe-0"></i></button>
@@ -89,8 +87,7 @@
                                     <div class="modal-dialog modal-dialog-centered ">
                                         <div class="modal-content">
 
-                                            <form method="POST" action="">
-                                                {{-- {{ route('risiko.delete', ['id' => $id, 'id_risk' => $rks->id]) }} --}}
+                                            <form method="POST" action="{{ route('risiko.delete', $rks->id) }}">
                                                 @csrf
                                                 <div
                                                     class="modal-body mt-5 d-flex justify-content-center align-items-center">

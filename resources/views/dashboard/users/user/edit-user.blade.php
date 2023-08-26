@@ -132,14 +132,12 @@
                                         </div>
                                     </div>
                                     <div class=" d-flex justify-content-center">
-                                        <button type="submit"
-                                                class="btn btn-success text-white d-flex justify-content-center align-items-center "
-                                                style="background: #29CC6A;
-                        height: 38px; margin : 10px 20px 30px 20px; font-size:14px; border-radius: 5px;">Simpan Data</button>
-                                        <a
+                                        <button type ="submit" class="btn btn-success text-white d-flex justify-content-center align-items-center " style="background: #29CC6A;
+        height: 38px; margin : 10px 20px 30px 20px; font-size:14px; border-radius: 5px;" data-bs-toggle="modal" data-bs-target="#simpandata" onclick="showDiv()">Simpan Data</button>
+                                        {{-- <a
                                             class="btn btn-secondary text-white d-flex align-items-center justify-content-center" onclick="reset()"
                                             style="background: #868E96; margin : 10px 20px 30px 20px; width: 124.33px;
-                     height: 38px; font-size:14px; border-radius: 5px;">Reset</a>
+                     height: 38px; font-size:14px; border-radius: 5px;">Reset</a> --}}
                                     </div>
                                 </form>
                             </div>

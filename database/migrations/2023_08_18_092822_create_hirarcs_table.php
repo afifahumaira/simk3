@@ -18,9 +18,9 @@ return new class extends Migration
             $table->foreignId('user_id')->nullable();
             $table->foreignId('departemen_id')->nullable();
             $table->foreignId('location_id')->nullable();
-            $table->varchar('activity');
-            $table->varchar('hazard');
-            $table->varchar('risk');
+            $table->varchar('activity')->nullable();
+            $table->varchar('hazard')->nullable();
+            $table->varchar('risk')->nullable();
             $table->varchar('kesesuaian');
             $table->varchar('kondisi');
             $table->varchar('kendali');

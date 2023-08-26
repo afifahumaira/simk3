@@ -32,10 +32,10 @@
                 <thead>
                     <tr>
                         <th scope="col" class="text-center">No</th>
-                        <th scope="col">Kategori</th>
-                        <th scope="col">Nama Pelapor</th>
+                        {{-- <th scope="col">Kategori</th> --}}
+                        {{-- <th scope="col">Nama Pelapor</th> --}}
                         <th scope="col">Lokasi Kejadian</th>
-                        <th scope="col">Tenggat Waktu</th>
+                        {{-- <th scope="col">Tenggat Waktu</th> --}}
                         <th scope="col">Penanggung Jawab</th>
                         <th scope="col">Action</th>
                     </tr>
@@ -44,12 +44,12 @@
                     @foreach ($investigasis as $investigasi)
                         <tr>
                             <td scope="row" class="text-center">{{ $loop->iteration }}</td>
-                            <td>{{ $investigasi->kategori }}</td>
-                            <td>{{ $investigasi->laporinsiden->nama_pelapor }}</td>
-                            <td>{{ $investigasi->departemen->name }}</td>
-                            <td>{{ $investigasi->tenggat_waktu ? $investigasi->tenggat_waktu->translatedFormat('d F Y') : '' }}</td>
+                            {{-- <td>{{ $investigasi->kategori }}</td> --}}
+                            {{-- <td>{{ $investigasi->laporinsiden->nama_pelapor }}</td> --}}
+                            <td>{{ $investigasi->departemen?->name }}</td>
+                            {{-- <td>{{ $investigasi->tenggat_waktu ? $investigasi->tenggat_waktu->translatedFormat('d F Y') : '' }}</td> --}}
+                            <td>{{ $investigasi->p2k3_id}}</td>
                             
-                            <td>{{ $investigasi->p2k3?->nama }}</td>
                             <td>
                                 <a href="{{ route('daftarinvestigasi.lihat', $investigasi->id) }}" type="button" class="btn btn-sm btn-warning px-4"><i
                                     class="bi bi-eye text-dark pe-0"></i></a>
@@ -91,9 +91,9 @@
             </table>
         </div>
     </div>
-    <div class="card-footer">
+    {{-- <div class="card-footer">
         {{ $investigasis->links('pagination::customb5') }}
-    </div>
+    </div> --}}
 </div>
 @stop
 

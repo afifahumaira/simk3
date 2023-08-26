@@ -74,10 +74,8 @@
                                 {{ ($hazards->currentpage() - 1) * $hazards->perpage() + $loop->index + 1 }}</td>
                             <td>{{ $hzd->name }}</td>
                             <td>
-                                <a href="" type="button" class="btn btn-sm btn-primary px-4"><i
-                                        class="bi bi-pencil-square pe-0"></i>
-                                    {{-- {{ route('hazard.edit', ['id' => $id, 'id_hzd' => $hzd->id]) }} --}}
-                                </a>
+                                <a href="{{ route('hazard.edit', $hzd->id) }}" type="button"
+                                    class="btn btn-sm btn-primary px-4"><i class="bi bi-pencil-square pe-0"></i></a>
                                 <button type="button" class="btn btn-danger btn-sm px-4" data-bs-toggle="modal"
                                     data-bs-target="#deleteForm{{ $hzd->id }}"><i
                                         class="bi bi-trash pe-0"></i></button>
@@ -88,8 +86,7 @@
                                     <div class="modal-dialog modal-dialog-centered ">
                                         <div class="modal-content">
 
-                                            <form method="POST" action="">
-                                                {{-- {{ route('hazard.delete', ['id' => $id, 'id_hzd' => $hzd->id]) }} --}}
+                                            <form method="POST" action="{{ route('hazard.delete', $hzd->id) }}">
                                                 @csrf
                                                 <div
                                                     class="modal-body mt-5 d-flex justify-content-center align-items-center">

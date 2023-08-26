@@ -24,7 +24,8 @@ class LokasiMasterController extends Controller
     public function edit($id) {
         $loc = Location_masters::findOrFail($id);
         
-        return view('dashboard.masterHirarc.lokasi-departemen.edit-lokasi', compact('loc'));
+        return view('dashboard.masterHirarc.lokasi-departemen.edit-lokasi', compact('loc'))
+        ->with('id', $loc);
     }
 
     public function detail($id, Request $request) {
@@ -40,7 +41,7 @@ class LokasiMasterController extends Controller
             'name' => 'required'
         ]);
 
-        Location::create([
+        Location_masters::create([
             
             'name' => $request->name,
         ]);
@@ -54,21 +55,21 @@ class LokasiMasterController extends Controller
             'name' => 'required'
         ]);
 
-        Location::find($id)->update([
+        Location_masters::find($id)->update([
             
             'name' => $request->name,
         ]);
 
         Alert::success('Berhasil', 'Data Lokasi berhasil diperbaharui!')->iconHtml('<i class="bi bi-person-check"></i>')->hideCloseButton();
-        return redirect()->route('lokasi-departemen.detail', $request->departemen_id);
+        return redirect()->route('lokasimaster.index');
     }
 
     public function delete($id) {
-        $id_lokasi = Location_masters::find($id)->id_lokasi;
-        Location::find($id)->delete();
+        $locations = Location_masters::find($id);
+        $locations->delete();
 
         Alert::success('Berhasil', 'Data Lokasi berhasil dihapus!')->iconHtml('<i class="bi bi-person-check"></i>')->hideCloseButton();
-        return redirect()->route('lokasi-departemen.detail', $id_lokasi);
+        return redirect()->route('lokasimaster.index', $id);
     }
 
 }

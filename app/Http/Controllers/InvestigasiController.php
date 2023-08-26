@@ -10,20 +10,20 @@ use Alert;
 class InvestigasiController extends Controller
 {
 
-    public function index(Request $request) {
+    public function index() {
 
-        $investigasis = Investigasi::with(['laporinsiden', 'departemen', 'p2k3'])
-        ->where('kategori', 'LIKE', '%'.$request->search.'%')
-        ->orWhereHas('laporinsiden', function($query) use ($request) {
-            $query->orWhere('nama_pelapor', 'LIKE', '%'.$request->search.'%');
-        })
-        ->orWhereHas('departemen', function($query) use ($request) {
-            $query->orWhere('name', 'LIKE', '%'.$request->search.'%');
-        })
-        ->orWhereHas('p2k3', function($query) use ($request) {
-            $query->orWhere('nama', 'LIKE', '%'.$request->search.'%');
-        })
-        ->paginate(10);
+        $investigasis = Investigasi::with(['laporinsiden', 'departemen', 'p2k3'])->paginate(10);
+        // ->where('kategori', 'LIKE', '%'.$request->search.'%')
+        // ->orWhereHas('laporinsiden', function($query) use ($request) {
+        //     $query->orWhere('nama_pelapor', 'LIKE', '%'.$request->search.'%');
+        // })
+        // ->orWhereHas('departemen', function($query) use ($request) {
+        //     $query->orWhere('name', 'LIKE', '%'.$request->search.'%');
+        // })
+        // ->orWhereHas('p2k3', function($query) use ($request) {
+        //     $query->orWhere('nama', 'LIKE', '%'.$request->search.'%');
+        // })
+        // ->paginate(10);
 
         return view('dashboard.daftarinvestigasi.index')
             ->with('investigasis', $investigasis);
@@ -35,9 +35,9 @@ class InvestigasiController extends Controller
     }
 
     public function lihat($id) {
-        $investigasi = Investigasi::with(['laporinsiden', 'departemen', 'p2k3'])->find($id);
-        return view('dashboard.daftarinvestigasi.Lihat-investigasi')
-                ->with('investigasi', $investigasi);
+        $investigasi = Investigasi::findorFail($id);
+        return view('dashboard.daftarinvestigasi.Lihat-investigasi', compact('investigasi'));
+                
     }
 
     public function ubah($id) {
@@ -76,17 +76,17 @@ class InvestigasiController extends Controller
     }
 
     public function update($id, Request $request) {
-        $request->validate([
-            'p2k3_id' => 'required',
-            'laporinsiden_id' => 'required',
-            'departemen_id' => 'required',
-            'kategori' => 'required',
-            'penyebab_langsung' => 'required',
-            'penyebab_tidak_langsung' => 'required',
-            'penyebab_dasar' => 'required',
-            'tenggat_waktu' => 'required',
-            'tindakan' => 'required',
-        ]);
+        // $request->validate([
+        //     'p2k3_id' => 'required',
+        //     'laporinsiden_id' => 'required',
+        //     'departemen_id' => 'required',
+        //     'kategori' => 'required',
+        //     'penyebab_langsung' => 'required',
+        //     'penyebab_tidak_langsung' => 'required',
+        //     'penyebab_dasar' => 'required',
+        //     'tenggat_waktu' => 'required',
+        //     'tindakan' => 'required',
+        // ]);
 
         Investigasi::find($id)->update([
             'p2k3_id' => $request->p2k3_id,

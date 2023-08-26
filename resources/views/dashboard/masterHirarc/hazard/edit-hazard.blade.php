@@ -9,7 +9,7 @@
                 <div class="app-toolbar-wrapper d-flex flex-stack flex-wrap gap-4 w-100 mb-5 px-5 border-bottom border-5">
                     <!--begin::Page title-->
                     <h2>Hazard</h2>
-                    <a href="{{ route('hazard.detail', $id) }}" type="button"
+                    <a href="{{ route('hazard.index') }}" type="button"
                         class="btn  btn-sm btn-primary d-flex justify-content-center align-items-center mb-2"
                         data-bs-toggle="modal" data-bs-target="#staticBackdrop" style="background: #233EAE; width:90px"><i
                             class="bi bi-chevron-left"></i>Kembali</a>
@@ -17,6 +17,10 @@
                         tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
                         <div class="modal-dialog modal-dialog-centered ">
                             <div class="modal-content">
+                                {{-- <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="staticBackdropLabel">Modal title</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                      </div> --}}
                                 <div class="modal-body mt-5 d-flex justify-content-center align-items-center">
                                     <h2 class="mt-5 text-center" style="color: #16243D; font-size: 20px font-weight:700">
                                         keluar dari tambah data?
@@ -26,7 +30,7 @@
                                     </h2>
                                 </div>
                                 <div class="modal-footer d-flex justify-content-center border-0">
-                                    <a href="{{ route('hazard.detail', $id) }}" type="button"
+                                    <a href="{{ route('hazard.index') }}" type="button"
                                         class="btn btn-success text-white d-flex justify-content-center align-items-center text-center rounded-1"
                                         style="width:76px; height:31px; background: #29CC6A;">Ya</a>
                                     <button type="button"
@@ -55,16 +59,14 @@
                                     </div>
                                 </div>
 
-                                
-                            </div>
-                        </div>
+                               
 
                         <div class="container d-flex justify-content-center">
                             <div class=" d-flex justify-content-center">
                                 <button type="submit"
                                     class="btn btn-success text-white d-flex justify-content-center align-items-center "
                                     style="background: #29CC6A;height: 38px; margin : 10px 20px 30px 20px; font-size:14px; border-radius: 5px;">Simpan Data</button>
-                                <a href="{{ route('hazard.edit', ['id' => $id, 'id_hzd' => $hzd->id]) }}" type="submit"
+                                <a href="{{ route('hazard.edit',  $hzd->id) }}" type="submit"
                                     class="btn btn-secondary text-white d-flex align-items-center justify-content-center"
                                     data-bs-toggle="modal" data-bs-target="#resetform"
                                     style="background: #868E96; margin : 10px 20px 30px 20px; width: 124.33px;height: 38px; font-size:14px; border-radius: 5px;">Reset</a>
@@ -82,7 +84,7 @@
                                                 </h2>
                                             </div>
                                             <div class="modal-footer d-flex justify-content-center border-0">
-                                                <a href="{{ route('hazard.edit', ['id' => $id, 'id_hzd' => $hzd->id]) }}" type="button"
+                                                <a href="{{ route('hazard.edit', $hzd->id) }}" type="button"
                                                     class="btn btn-success text-white d-flex justify-content-center align-items-center text-center rounded-1"
                                                     style="width:76px; height:31px; background: #29CC6A;">Ya</a>
                                                 <button type="button"
@@ -107,7 +109,7 @@
 @section('customscript')
 <script>
     $(document).ready(function() {
-        $('#hazards').select2({
+        $('#hazard').select2({
             closeOnSelect: false
         });
     });

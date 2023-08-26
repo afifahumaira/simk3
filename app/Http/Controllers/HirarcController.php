@@ -61,11 +61,15 @@ class HirarcController extends Controller
     }
 
     public function tambahDetail($id = null) {
-        $hirarc = Hirarc::all();
+        $hirarc = Hirarc::where('id',$id)->first();
+        $hazards = Hazard::where('id',$id)->get();
+        $risks = Risk::where('id',$id)->get();
 
         return view('dashboard.hirarc.tambah-hirarc-detail')
                 ->with('hirarc', $hirarc)
-                ->with('id', $id);
+                ->with('id', $id)
+                ->with('hazard', $hazards)
+                ->with('risk', $risks);
                 
     }
 
@@ -124,64 +128,83 @@ class HirarcController extends Controller
             
         ]);
 
-        foreach  ($request->hazard as $key => $hazard){
-            Hirarc::create([
-            'hazard' => $hazard[$key],
-            'risk' => $request->risk[$key],
-            ]);
-        }
+        // foreach  ($request->hazard as $key => $hazard){
+        //     Hirarc::create([
+        //     'hazard' => $hazard[$key],
+        //     'risk' => $request->risk[$key],
+        //     ]);
+        // }
 
-      //  for($i = 0; $i < count($request->hazard); $i++) {
-        //    Hirarc::create([             
-        //        'hazard' => $request->hazard[$i],
-        //        'risk' => $request->risk[$i],
-        //    ]);
-     //   }
+       for($i = 0; $i < count($request->hazard); $i++) {
+           Hirarc::create([             
+               'hazard' => $request->hazard[$i],
+               'risk' => $request->risk[$i],
+           ]);
+       }
 
         Alert::success('Berhasil', 'Data Hirarc berhasil disimpan!')->iconHtml('<i class="bi bi-person-check"></i>')->hideCloseButton();
         return redirect()->route('hirarc.tambah', $hirarc->id);
         }
 
-        public function save(Request $request) {
-            $validatedData = $request->validate([
-                'kesesuaian' => 'required',
-                'kondisi' => 'required',
-                'kendali' => 'required',
-                'current_severity' => 'required',
-                'current_exposure' => 'required',
-                'current_probability' => 'required',
-                'current_risk_rating' => 'required',
-                'current_risk_category' => 'required',
-                'penyebab' => 'required',
-                'usulan' => 'required',
-                'form_diperlukan' => 'required',
-                'sop' => 'required',
-                'residual_severity' => 'required',
-                'residual_exposure' => 'required',
-                'residual_probability' => 'required',
-                'residual_risk_rating' => 'required',
-                'residual_risk_category' => 'required',
-                'penanggung_jawab' => 'required',
-                'status' => 'required',
-            ]);
+        public function save($id, Request $request) {
+            // $validatedData = $request->validate([
+            //     'kesesuaian' => 'required',
+            //     'kondisi' => 'required',
+            //     'kendali' => 'required',
+            //     'current_severity' => 'required',
+            //     'current_exposure' => 'required',
+            //     'current_probability' => 'required',
+            //     'current_risk_rating' => 'required',
+            //     'current_risk_category' => 'required',
+            //     'penyebab' => 'required',
+            //     'usulan' => 'required',
+            //     'form_diperlukan' => 'required',
+            //     'sop' => 'required',
+            //     'residual_severity' => 'required',
+            //     'residual_exposure' => 'required',
+            //     'residual_probability' => 'required',
+            //     'residual_risk_rating' => 'required',
+            //     'residual_risk_category' => 'required',
+            //     'penanggung_jawab' => 'required',
+            //     'status' => 'required',
+            // ]);
     
-            $hirarc = Hirarc::create([
-                $validatedData
+            Hirarc::find($id)->update([
+                //$validatedData
+                'kesesuaian'      => $request->kesesuaian,
+                'kondisi'      => $request->kondisi,
+                'kendali'      => $request->kendali,
+                'current_severity'      => $request->current_severity,
+                'current_exposure'      => $request->current_exposure,
+                'current_probability'      => $request->current_probability,
+                'current_risk_rating'      => $request->current_risk_rating,
+                'current_risk_category'      => $request->current_risk_category,
+                'penyebab'      => $request->penyebab,
+                'usulan'      => $request->usulan,
+                'form_diperlukan'      => $request->form_diperlukan,
+                'sop'      => $request->sop,
+                'residual_severity'      => $request->residual_severity,
+                'residual_exposure'      => $request->residual_exposure,
+                'residual_probability'      => $request->residual_probability,
+                'residual_risk_rating'      => $request->residual_risk_rating,
+                'residual_risk_category'      => $request->residual_risk_category,
+                'penanggung_jawab'      => $request->penanggung_jawab,
+                'status'      => $request->status,
                 
             ]);
 
             Alert::success('Berhasil', 'Data Hirarc berhasil disimpan!')->iconHtml('<i class="bi bi-person-check"></i>')->hideCloseButton();
-        return redirect()->route('hirarc.index', $hirarc->id);
+        return redirect()->route('hirarc.tambah');
         }
 
         public function editDetail($id ) {
             // dd($id);
-            $departments = Departemen::where('id',$id)->get();
+            $departments = Departemen::all();
             $hirarc = Hirarc::where('id',$id)->first();
-            $locations = Location_masters::where('id',$id)->get();
-            $activities = Activitie_master::where('id',$id)->get();
-            $hazards = Hazard::where('id',$id)->get();
-            $risks = Risk::where('id',$id)->get();
+            $locations = Location_masters::all();
+            $activities = Activitie_master::all();
+            $hazards = Hazard::all();
+            $risks = Risk::all();
             
             
     
@@ -227,9 +250,9 @@ class HirarcController extends Controller
 
             Hirarc::find($id)->update([
                // $validatedData
-                'activity'      => $request->activity,
-                'hazard'      => $request->hazard,
-                'risk'      => $request->risk,
+                // 'activity'      => $request->activity,
+                // 'hazard'      => $request->hazard,
+                // 'risk'      => $request->risk,
                 'kesesuaian'      => $request->kesesuaian,
                 'kondisi'      => $request->kondisi,
                 'kendali'      => $request->kendali,

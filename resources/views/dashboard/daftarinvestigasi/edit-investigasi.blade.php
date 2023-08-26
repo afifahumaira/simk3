@@ -181,7 +181,7 @@
                                             </h2>
                                         </div>
                                         <div class="modal-footer d-flex justify-content-center border-0">
-                                            <a href="{{ route('daftarinvestigasi.ubah', $investigasi->id) }}" type="button"
+                                            <a href="{{ route('daftarinvestigasi.index') }}" type="button"
                                                 class="btn btn-success text-white d-flex justify-content-center align-items-center text-center rounded-1"
                                                 style="width:76px; height:31px; background: #29CC6A;">Ya</a>
                                             <button type="button"

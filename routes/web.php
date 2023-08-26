@@ -83,9 +83,9 @@ Route::group(['middleware' => ['auth']], function() {
     Route::prefix('hirarc')->name('hirarc.')->group(function(){
         Route::get('/', [HirarcController::class, 'index'])->name('index');
         Route::get('tambah/{id?}', [HirarcController::class, 'tambah'])->name('tambah');
-        Route::get('tambahDetail/{id?}', [HirarcController::class, 'tambahDetail'])->name('tambahDetail');
+        Route::get('tambahDetail/{id}', [HirarcController::class, 'tambahDetail'])->name('tambahDetail');
         Route::post('simpan', [HirarcController::class, 'simpan'])->name('simpan');
-        Route::post('save', [HirarcController::class, 'save'])->name('save');
+        Route::put('save', [HirarcController::class, 'save'])->name('save');
         Route::post('simpanPreControl/{id}/{detail_id}', [HirarcController::class, 'simpanPreControl'])->name('simpanPreControl');
         Route::post('simpanSolusi/{id}/{detail_id}', [HirarcController::class, 'simpanSolusi'])->name('simpanSolusi');
         Route::post('simpanPostControl/{id}/{detail_id}', [HirarcController::class, 'simpanPostControl'])->name('simpanPostControl');
@@ -212,33 +212,33 @@ Route::group(['middleware' => ['auth']], function() {
     Route::prefix('aktifitasmaster')->name('aktifitasmaster.')->group(function(){
         Route::get('/', [AktifitasMasterController::class, 'index'])->name('index');
         Route::get('tambah', [AktifitasMasterController::class, 'tambah'])->name('tambah');
-        Route::get('edit/{id}/{id_act}', [AktifitasMasterController::class, 'edit'])->name('edit');
+        Route::get('edit/{id}', [AktifitasMasterController::class, 'edit'])->name('edit');
         Route::get('detail/{id}', [AktifitasMasterController::class, 'detail'])->name('detail');
         Route::post('simpan', [AktifitasMasterController::class, 'simpan'])->name('simpan');
         Route::post('update/{id}', [AktifitasMasterController::class, 'update'])->name('update');
-        Route::post('delete/{id}/{id_act}', [AktifitasMasterController::class, 'delete'])->name('delete');
+        Route::post('delete/{id}', [AktifitasMasterController::class, 'delete'])->name('delete');
     });
 
     // 15. Hazard
     Route::prefix('hazard')->name('hazard.')->group(function(){
         Route::get('/', [HazardController::class, 'index'])->name('index');
         Route::get('tambah', [HazardController::class, 'tambah'])->name('tambah');
-        Route::get('edit/{id}/{id_hzd}', [HazardController::class, 'edit'])->name('edit');
+        Route::get('edit/{id}', [HazardController::class, 'edit'])->name('edit');
         Route::get('detail/{id}', [HazardController::class, 'detail'])->name('detail');
         Route::post('simpan', [HazardController::class, 'simpan'])->name('simpan');
         Route::post('update/{id}', [HazardController::class, 'update'])->name('update');
-        Route::post('delete/{id}/{id_haz}', [HazardController::class, 'delete'])->name('delete');
+        Route::post('delete/{id}', [HazardController::class, 'delete'])->name('delete');
     });
 
     // 16. Risiko
     Route::prefix('risiko')->name('risiko.')->group(function(){
         Route::get('/', [RisikoController::class, 'index'])->name('index');
         Route::get('tambah', [RisikoController::class, 'tambah'])->name('tambah');
-        Route::get('edit/{id}/{id_risk}', [RisikoController::class, 'edit'])->name('edit');
+        Route::get('edit/{id}', [RisikoController::class, 'edit'])->name('edit');
         Route::get('detail/{id}', [RisikoController::class, 'detail'])->name('detail');
         Route::post('simpan', [RisikoController::class, 'simpan'])->name('simpan');
         Route::post('update/{id}', [RisikoController::class, 'update'])->name('update');
-        Route::post('delete/{id}/{id_risk}', [RisikoController::class, 'delete'])->name('delete');
+        Route::post('delete/{id}', [RisikoController::class, 'delete'])->name('delete');
     });
 });
 

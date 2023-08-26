@@ -9,7 +9,7 @@
                 <div class="app-toolbar-wrapper d-flex flex-stack flex-wrap gap-4 w-100 mb-5 px-5 border-bottom border-5">
                     <!--begin::Page title-->
                     <h2>Aktifitas</h2>
-                    <a href="{{ route('aktifitasmaster.detail', $id) }}" type="button"
+                    <a href="{{ route('aktifitasmaster.index', $id) }}" type="button"
                         class="btn  btn-sm btn-primary d-flex justify-content-center align-items-center mb-2"
                         data-bs-toggle="modal" data-bs-target="#staticBackdrop" style="background: #233EAE; width:90px"><i
                             class="bi bi-chevron-left"></i>Kembali</a>
@@ -30,7 +30,7 @@
                                     </h2>
                                 </div>
                                 <div class="modal-footer d-flex justify-content-center border-0">
-                                    <a href="{{ route('aktifitasmaster.detail', $id) }}" type="button"
+                                    <a href="{{ route('aktifitasmaster.index', $id) }}" type="button"
                                         class="btn btn-success text-white d-flex justify-content-center align-items-center text-center rounded-1"
                                         style="width:76px; height:31px; background: #29CC6A;">Ya</a>
                                     <button type="button"
@@ -109,7 +109,7 @@
 @section('customscript')
 <script>
     $(document).ready(function() {
-        $('#lokasi').select2({
+        $('#aktifitas').select2({
             closeOnSelect: false
         });
     });

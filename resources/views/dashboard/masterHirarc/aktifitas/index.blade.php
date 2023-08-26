@@ -75,10 +75,8 @@
 
                             <td>{{ $act->name }}</td>
                             <td>
-                                <a href="" type="button" class="btn btn-sm btn-primary px-4"><i
-                                        class="bi bi-pencil-square pe-0"></i>
-                                    {{-- {{ route('aktifitasmaster.edit', ['id_act' => $act->id_aktivitas]) }} --}}
-                                </a>
+                                <a href="{{ route('aktifitasmaster.edit', $act->id) }}" type="button"
+                                    class="btn btn-sm btn-primary px-4"><i class="bi bi-pencil-square pe-0"></i></a>
                                 <button type="button" class="btn btn-danger btn-sm px-4" data-bs-toggle="modal"
                                     data-bs-target="#deleteForm{{ $act->id }}"><i
                                         class="bi bi-trash pe-0"></i></button>
@@ -89,8 +87,7 @@
                                     <div class="modal-dialog modal-dialog-centered ">
                                         <div class="modal-content">
 
-                                            <form method="POST" action="">
-                                                {{-- {{ route('aktifitasmaster.delete', ['id_act' => $act->id_aktivitas]) }} --}}
+                                            <form method="POST" action="{{ route('aktifitasmaster.delete', $act->id) }}">
                                                 @csrf
                                                 <div
                                                     class="modal-body mt-5 d-flex justify-content-center align-items-center">

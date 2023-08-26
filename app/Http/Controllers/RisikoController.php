@@ -20,28 +20,27 @@ class RisikoController extends Controller
         return view('dashboard.masterHirarc.risiko.tambah-risiko', compact('hazards'));
     }
 
-    public function edit($id, $id_risk) {
-        $risk = Risk::find($id_risk);
-        $hazards = Hazard::paginate(10);
-        return view('dashboard.masterHirarc.risiko.edit-risiko', compact('hazards', 'risk', 'id'));
+    public function edit($id) {
+        $risk = Risk::find($id);
+        
+        return view('dashboard.masterHirarc.risiko.edit-risiko', compact( 'risk'))
+        ->with('id', $risk);
     }
 
-    public function detail($id) {
-        $haz = Hazard::find($id);
-        $risikos = Risk::whereRaw("FIND_IN_SET($id, hazards)")->paginate(10);
-        return view('dashboard.masterHirarc.risiko.detail-risiko', compact('risikos', 'haz', 'id'));
-    }
+    // public function detail($id) {
+    //     $haz = Hazard::find($id);
+    //     $risikos = Risk::whereRaw("FIND_IN_SET($id, hazards)")->paginate(10);
+    //     return view('dashboard.masterHirarc.risiko.detail-risiko', compact('risikos', 'haz', 'id'));
+    // }
 
     public function simpan(Request $request) {
         $request->validate([
             'name' => 'required',
-            'hazards' => 'required'
+            
         ]);
 
-        $hazs = implode(',', $request->hazards);
-
         Risk::create([
-            'hazards' => $hazs,
+            
             'name' => $request->name,
         ]);
 
@@ -52,13 +51,11 @@ class RisikoController extends Controller
     public function update($id, Request $request) {
         $request->validate([
             'name' => 'required',
-            'hazards' => 'required'
+            
         ]);
 
-        $hazs = implode(',', $request->hazards);
-
         Risk::find($id)->update([
-            'hazards' => $hazs,
+            
             'name' => $request->name,
         ]);
 
@@ -66,11 +63,12 @@ class RisikoController extends Controller
         return redirect()->route('risiko.index');
     }
 
-    public function delete($id, $id_risk) {
-        Risk::find($id_risk)->delete();
+    public function delete($id) {
+        $risk = Risk::find($id);
+        $risk->delete();
 
         Alert::success('Berhasil', 'Data Risiko berhasil dihapus!')->iconHtml('<i class="bi bi-person-check"></i>')->hideCloseButton();
-        return redirect()->route('risiko.detail', $id);
+        return redirect()->route('risiko.index', $id);
     }
 
 }

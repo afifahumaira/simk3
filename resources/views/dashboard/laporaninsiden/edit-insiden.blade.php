@@ -231,13 +231,13 @@
                                     </div>
                                 </div>
 
-                                <div class="ps-3 pe-5">
+                                {{-- <div class="ps-3 pe-5">
                                     <label for="inputUnit" class="col-form-label">Unit</label>
                                     <div class=" w-100">
                                         <input type="text" class="form-control" name="unit_pelapor"
                                             value="{{ $lap->unit_pelapor }}">
                                     </div>
-                                </div>
+                                </div> --}}
                                 <div class="ps-3 pe-5">
                                     <label for="inputfotokejadian" class="col-form-label">Foto Tanda
                                         Pengenal</label>
@@ -299,13 +299,13 @@
                                     </div>
                                 </div>
 
-                                <div class="ps-3 pe-5">
+                                {{-- <div class="ps-3 pe-5">
                                     <label for="inputUnit" class="col-form-label">Unit</label>
                                     <div class=" w-100">
                                         <input type="text" class="form-control" name="unit_korban"
                                             value="{{ $lap->unit_korban }}">
                                     </div>
-                                </div>
+                                </div> --}}
                             </div>
                         </div>
                     </div>
