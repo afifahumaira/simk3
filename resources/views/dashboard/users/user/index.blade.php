@@ -64,58 +64,64 @@
                         <th scope="col">Nama</th>
                         <th scope="col">Email</th>
                         <th scope="col">Role</th>
-                        <th scope="col">Action</th>
+                        <th scope="col" class="col-2">Action</th>
                     </tr>
                 </thead>
                 <tbody>
-                @foreach($datas as $data)
-                    <tr>
-                        <td scope="row" class="text-center">{{ ($datas->currentpage()-1) * $datas ->perpage() + $loop->index + 1 }}</td>
-                        <td>
-                            {{$data->name}}
-                        </td>
-                        <td>
-                            {{$data->email}}
-                        </td>
-                        <td>
-                            {{$data->hak_akses}}
-                        </td>
-                        <td>
-                            <a href="{{ route('user.lihat', $data->id) }}" type="button" class="btn  btn-sm bg-warning "
-                                style="width:20px;"><i
-                                    class="bi bi-eye text-dark d-flex justify-content-center align-items-center"></i></a>
-                            <a href="{{ route('user.edit', $data->id) }}" type="button" class="btn  btn-sm bg-primary"
-                                style="width:20px;"><i
-                                    class="bi bi-pencil-square text-dark d-flex justify-content-center align-items-center"></i></a>
-                            <button type="button" class="btn btn-sm" style="width: 20px; background: #DC3545" data-bs-toggle="modal" data-bs-target="#deleteModal{{ $data->id }}">
-                                <i class="bi bi-trash text-dark d-flex justify-content-center align-items-center"></i>
-                            </button>
+                    @foreach ($datas as $data)
+                        <tr>
+                            <td scope="row" class="text-center">
+                                {{ ($datas->currentpage() - 1) * $datas->perpage() + $loop->index + 1 }}</td>
+                            <td>
+                                {{ $data->name }}
+                            </td>
+                            <td>
+                                {{ $data->email }}
+                            </td>
+                            <td>
+                                {{ $data->hak_akses }}
+                            </td>
+                            <td>
+                                <a href="{{ route('user.lihat', $data->id) }}" type="button"
+                                    class="btn  btn-sm bg-warning " style="width:20px;"><i
+                                        class="bi bi-eye text-dark d-flex justify-content-center align-items-center"></i></a>
+                                <a href="{{ route('user.edit', $data->id) }}" type="button" class="btn  btn-sm bg-primary"
+                                    style="width:20px;"><i
+                                        class="bi bi-pencil-square text-dark d-flex justify-content-center align-items-center"></i></a>
+                                <button type="button" class="btn btn-sm" style="width: 20px; background: #DC3545"
+                                    data-bs-toggle="modal" data-bs-target="#deleteModal{{ $data->id }}">
+                                    <i class="bi bi-trash text-dark d-flex justify-content-center align-items-center"></i>
+                                </button>
 
-                        </td>
-                    </tr>
-                    <div class="modal fade" id="deleteModal{{ $data->id }}" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel{{ $data->id }}" aria-hidden="true">
-                        <div class="modal-dialog" role="document">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <h5 class="modal-title" id="deleteModalLabel{{ $data->id }}">Confirm Deletion</h5>
-                                    <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
-                                        <span aria-hidden="true">&times;</span>
-                                    </button>
-                                </div>
-                                <div class="modal-body">
-                                    <p>Are you sure you want to delete this item?</p>
-                                </div>
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                                    <form action="{{ route('user.hapus',$data->id)}}" method="POST">
-                                        @csrf
-                                        <button type="submit" class="btn btn-danger">Delete</button>
-                                    </form>
+                            </td>
+                        </tr>
+                        <div class="modal fade" id="deleteModal{{ $data->id }}" tabindex="-1" role="dialog"
+                            aria-labelledby="deleteModalLabel{{ $data->id }}" data-bs-backdrop="static"
+                            aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-centered" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-body mt-5 d-flex justify-content-center align-items-center">
+                                        <h2 class="mt-5 text-center"
+                                            style="color: #16243D; font-size: 20px font-weight:700">
+                                            Yakin data
+                                            ingin dihapus?
+                                        </h2>
+                                    </div>
+                                    <div class="modal-footer d-flex justify-content-center border-0">
+                                        <form action="{{ route('user.hapus', $data->id) }}" method="POST">
+                                            @csrf
+                                            <button type="submit"
+                                                class="btn btn-success text-white d-flex justify-content-center align-items-center text-center rounded-1"
+                                                style="width:76px; height:31px; background: #29CC6A;">Ya</button>
+                                        </form>
+                                        <button type="button"
+                                            class="btn btn-secondary text-center d-flex align-items-center rounded-1"
+                                            data-bs-dismiss="modal" style="width:76px; height:31px; ">Tidak</button>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                @endforeach
+                    @endforeach
                 </tbody>
             </table>
 

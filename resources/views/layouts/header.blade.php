@@ -58,20 +58,24 @@
         </div>
         <div class="app-navbar-item d-flex align-items-stretch justify-content-end flex-lg-grow-1 me-5 me-lg-7 pe-5">
             <div class="d-flex justify-content-end me-5 px-5">
-                <div class="cursor-pointer symbol symbol-30px symbol-lg-40px"
+
+                {{-- <div class="cursor-pointer symbol symbol-30px symbol-lg-40px"
                     data-kt-menu-trigger="{default: 'click', lg: 'hover'}" data-kt-menu-attach="parent"
                     data-kt-menu-placement="bottom-end">
                     <i class="bi bi-bell-fill fs-1"></i>
-                </div>
+                </div> --}}
                 <!--begin::Notification menu-->
                 <div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-800 menu-state-bg menu-state-color fw-semibold ms-4 py-4 px-4 fs-6 w-400px"
                     data-kt-menu="true">
                     <!--begin::Alert-->
-                    <div class="alert alert-dismissible bg-light-primary border border-primary border-2 border-dashed d-flex flex-column flex-sm-row w-100 p-5">
+
+                    {{-- <div
+                        class="alert alert-dismissible bg-light-primary border border-primary border-2 border-dashed d-flex flex-column flex-sm-row w-100 p-5">
                         <!--begin::Wrapper-->
                         <div class="d-flex flex-row pe-0 pe-sm-10">
                             <!--begin::Title-->
-                            <i class="ki-duotone ki-notification-bing fs-2 text-primary me-4 mb-5 mb-sm-0"><span class="path1"></span><span class="path2"></span><span class="path3"></span></i>
+                            <i class="ki-duotone ki-notification-bing fs-2 text-primary me-4 mb-5 mb-sm-0"><span
+                                    class="path1"></span><span class="path2"></span><span class="path3"></span></i>
                             <h4 class="fw-semibold">Notifikasi 1</h4>
                             <!--end::Title-->
                         </div>
@@ -80,24 +84,26 @@
                     <!--end::Alert-->
 
                     <!--begin::Alert-->
-                    <div class="alert alert-dismissible bg-light-primary border border-primary border-2 border-dashed d-flex flex-column flex-sm-row w-100 p-5">
+                    <div
+                        class="alert alert-dismissible bg-light-primary border border-primary border-2 border-dashed d-flex flex-column flex-sm-row w-100 p-5">
                         <!--begin::Wrapper-->
                         <div class="d-flex flex-row pe-0 pe-sm-10">
                             <!--begin::Title-->
-                            <i class="ki-duotone ki-notification-bing fs-2 text-primary me-4 mb-5 mb-sm-0"><span class="path1"></span><span class="path2"></span><span class="path3"></span></i>
+                            <i class="ki-duotone ki-notification-bing fs-2 text-primary me-4 mb-5 mb-sm-0"><span
+                                    class="path1"></span><span class="path2"></span><span class="path3"></span></i>
                             <h4 class="fw-semibold">Notifikasi 2</h4>
                             <!--end::Title-->
                         </div>
                         <!--end::Wrapper-->
-                    </div>
+                    </div> --}}
                     <!--end::Alert-->
                 </div>
                 <!--end::Notification menu-->
             </div>
-            <div class="cursor-pointer symbol symbol-30px symbol-lg-40px"
+            <div class="cursor-pointer symbol symbol-30px symbol-lg-40px me-10 pe-10"
                 data-kt-menu-trigger="{default: 'click', lg: 'hover'}" data-kt-menu-attach="parent"
                 data-kt-menu-placement="bottom-end">
-                <i class="bi bi-person-circle fs-1"></i>
+                <i class="bi bi-person-circle fs-2qx"></i>
             </div>
             <!--begin::User account menu-->
             <div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-800 menu-state-bg menu-state-color fw-semibold me-5 py-4 fs-6 w-200px"
@@ -115,7 +121,8 @@
                             <div class="fw-bold d-flex align-items-center fs-5">
                                 {{ auth()->user()->name }}
                             </div>
-                            <a href="#" class="fw-semibold text-muted text-hover-primary fs-7">{{ auth()->user()->email }}</a>
+                            <a href="#"
+                                class="fw-semibold text-muted text-hover-primary fs-7">{{ auth()->user()->email }}</a>
                         </div>
                         <!--end::Username-->
                     </div>
@@ -125,9 +132,9 @@
                 <div class="separator my-2"></div>
                 <!--end::Menu separator-->
                 <!--begin::Menu item-->
-                <div class="menu-item px-5">
+                {{-- <div class="menu-item px-5">
                     <a href="#" class="menu-link px-5">Profile</a>
-                </div>
+                </div> --}}
                 <!--end::Menu item-->
                 <!--begin::Menu item-->
 

@@ -22,11 +22,12 @@
                     <tr>
                         <th>Status</th>
                         <td class="d-flex align-items-center">
-                            @if ($lap->status == "1")
-                                <button type="button" class="btn btn-danger btn-sm py-2" style="background:#DC3545">Pending</button>
-                            @elseif ($lap->status == "2")
+                            @if ($lap->status == '1')
+                                <button type="button" class="btn btn-danger btn-sm py-2"
+                                    style="background:#DC3545">Pending</button>
+                            @elseif ($lap->status == '2')
                                 <button type="button" class="btn btn-primary btn-sm py-2">Investigasi</button>
-                            @elseif ($lap->status == "3")
+                            @elseif ($lap->status == '3')
                                 <button type="button" class="btn btn-success btn-sm py-2">Sukses</button>
                             @endif
                         </td>
@@ -34,7 +35,7 @@
 
                     <tr>
                         <th>P2K3</th>
-                        <td>{{ $lap->p2k3->nama }}</td>
+                        {{-- <td>{{ $lap->p2k3->nama }}</td> --}}
                     </tr>
                     {{-- <tr>
                 <th>Kategori</th>
@@ -73,9 +74,10 @@
                     <tr>
                         <th>Foto Kejadian</th>
                         <td>
-                            <a class="d-block overlay" data-fslightbox="lightbox-basic" href="{{ asset('storage/laporan_insiden/gambarkejadian/'. $lap->gambar) }}">
+                            <a class="d-block overlay" data-fslightbox="lightbox-basic"
+                                href="{{ asset('storage/laporan_insiden/gambarkejadian/' . $lap->gambar) }}">
                                 <div class="overlay-wrapper bgi-no-repeat bgi-position-center bgi-size-cover card-rounded min-h-175px"
-                                    style="background-image:url('{{ asset('storage/laporan_insiden/gambarkejadian/'. $lap->gambar) }}')">
+                                    style="background-image:url('{{ asset('storage/laporan_insiden/gambarkejadian/' . $lap->gambar) }}')">
                                 </div>
                                 <div class="overlay-layer card-rounded bg-dark bg-opacity-25 shadow">
                                     <i class="bi bi-eye-fill text-white fs-3x"></i>
@@ -107,9 +109,10 @@
                     <tr>
                         <th>Foto Tanda Pengenal</th>
                         <td>
-                            <a class="d-block overlay" data-fslightbox="lightbox-basic" href="{{ asset('storage/laporan_insiden/tanda_pengenal/'. $lap->tanda_pengenal) }}">
+                            <a class="d-block overlay" data-fslightbox="lightbox-basic"
+                                href="{{ asset('storage/laporan_insiden/tanda_pengenal/' . $lap->tanda_pengenal) }}">
                                 <div class="overlay-wrapper bgi-no-repeat bgi-position-center bgi-size-cover card-rounded min-h-175px"
-                                    style="background-image:url('{{ asset('storage/laporan_insiden/tanda_pengenal/'. $lap->tanda_pengenal) }}')">
+                                    style="background-image:url('{{ asset('storage/laporan_insiden/tanda_pengenal/' . $lap->tanda_pengenal) }}')">
                                 </div>
                                 <div class="overlay-layer card-rounded bg-dark bg-opacity-25 shadow">
                                     <i class="bi bi-eye-fill text-white fs-3x"></i>
@@ -146,5 +149,5 @@
 @stop
 
 @section('customscript')
-<script src="{{ asset('plugins/custom/fslightbox/fslightbox.bundle.js') }}"></script>
+    <script src="{{ asset('plugins/custom/fslightbox/fslightbox.bundle.js') }}"></script>
 @stop

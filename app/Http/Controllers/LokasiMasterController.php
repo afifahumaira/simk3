@@ -10,8 +10,9 @@ use Alert;
 
 class LokasiMasterController extends Controller
 {
-    public function index() {
-        $locations = Location_masters::paginate();
+    public function index(Request $request) {
+        $locations = Location_masters::where('name', 'LIKE', '%'.$request->search.'%')
+        ->paginate(10);
             
         return view('dashboard.masterHirarc.lokasi-departemen.index', compact('locations'));
     }

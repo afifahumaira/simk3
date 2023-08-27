@@ -16,8 +16,11 @@ use Validator;
 
 class DaftarinvestigasiController extends Controller
 {
-    public function index(){
-        $investigasi = Investigasi::with(['departemen', 'p2k3'])->paginate(10);
+    public function index(Request $request){
+        $investigasi = Investigasi::with(['departemen', 'p2k3'])
+        
+        ->Where('p2k3_id', 'LIKE', '%'.$request->search.'%')
+        ->paginate(10);
         
         return view('dashboard.daftarinvestigasi.index')-> with('investigasi',$investigasi);
     }

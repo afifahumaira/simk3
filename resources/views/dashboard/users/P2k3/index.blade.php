@@ -29,8 +29,8 @@
                         <!--end::Icon-->
 
                         <!--begin::Input-->
-                        <input type="text" class="form-control form-control-lg form-control-solid px-15"
-                            name="search" value="" placeholder="Search " data-kt-search-element="input" />
+                        <input type="text" class="form-control form-control-lg form-control-solid px-15" name="search"
+                            value="" placeholder="Search " data-kt-search-element="input" />
                         <!--end::Input-->
 
                         <!--begin::Spinner-->
@@ -65,62 +65,76 @@
                     <tr>
                         <th scope="col" class="text-center">NO</th>
                         <th scope="col">Nama</th>
-                        <th scope="col">Email</th>
+                        {{-- <th scope="col">Email</th> --}}
                         <th scope="col">Jabatan</th>
                         <th scope="col">Departemen</th>
                         <th scope="col">Foto Profil</th>
-                        @if (auth()->user()->hak_akses == 'admin' || auth()->user()->hak_akses == 'p2k3' || auth()->user()->hak_akses == 'k3_departemen' || auth()->user()->hak_akses == 'pimpinan')
-                        <th scope="col">Action</th>
+                        @if (auth()->user()->hak_akses == 'admin' ||
+                                auth()->user()->hak_akses == 'p2k3' ||
+                                auth()->user()->hak_akses == 'k3_departemen' ||
+                                auth()->user()->hak_akses == 'pimpinan')
+                            <th scope="col" class="col-2">Action</th>
                         @endif
                     </tr>
                 </thead>
                 <tbody>
-                @foreach($datas as $data)
-                    <tr>
-                        <td scope="row" class="text-center">{{ ($datas->currentpage()-1) * $datas ->perpage() + $loop->index + 1 }}</td>
-                        <td>{{$data->nama}}</td>
-                        <td>{{$data->user->email}}</td>
-                        <td>{{$data->jabatan}}</td>
-                        <td>{{$data->departemen}}</td>
-                        <td class="d-flex justify-content-center"><img
-                                src="{{ asset('berkas/'. $data->avatar) }}" class="rounded-4"
-                                style="width:auto; height:55px;"></td>
-                        @if (auth()->user()->hak_akses == 'admin' || auth()->user()->hak_akses == 'p2k3' || auth()->user()->hak_akses == 'k3_departemen' || auth()->user()->hak_akses == 'pimpinan')
-                        <td style="text-align: center;"><a href="{{ route('p2k3.lihat', $data->id) }}" type="button"
-                                class="btn  btn-sm bg-warning " style="width:20px;"><i
-                                    class="bi bi-eye text-dark d-flex justify-content-center align-items-center"></i></a>
-                            <a href="{{ route('p2k3.edit', $data->id) }}" type="button" class="btn  btn-sm bg-primary"
-                                style="width:20px;"><i
-                                    class="bi bi-pencil-square text-dark d-flex justify-content-center align-items-center"></i></a>
-                            <button type="button" class="btn btn-sm" style="width: 20px; background: #DC3545" data-bs-toggle="modal" data-bs-target="#deleteModal{{ $data->id }}">
-                                <i class="bi bi-trash text-dark d-flex justify-content-center align-items-center"></i>
-                            </button>
-                        </td>
-                        @endif
-                    </tr>
-                    <div class="modal fade" id="deleteModal{{ $data->id }}" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel{{ $data->id }}" aria-hidden="true">
-                        <div class="modal-dialog" role="document">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <h5 class="modal-title" id="deleteModalLabel{{ $data->id }}">Confirm Deletion</h5>
-                                    <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
-                                        <span aria-hidden="true">&times;</span>
+                    @foreach ($datas as $data)
+                        <tr>
+                            <td scope="row" class="text-center">
+                                {{ ($datas->currentpage() - 1) * $datas->perpage() + $loop->index + 1 }}</td>
+                            <td>{{ $data->nama }}</td>
+                            {{-- <td>
+                                {{ $data->user->email }}
+                            </td> --}}
+                            <td>{{ $data->jabatan }}</td>
+                            <td>{{ $data->departemen }}</td>
+                            <td class="d-flex justify-content-center"><img src="{{ asset('berkas/' . $data->avatar) }}"
+                                    class="rounded-4" style="width:auto; height:55px;"></td>
+                            @if (auth()->user()->hak_akses == 'admin' ||
+                                    auth()->user()->hak_akses == 'p2k3' ||
+                                    auth()->user()->hak_akses == 'k3_departemen' ||
+                                    auth()->user()->hak_akses == 'pimpinan')
+                                <td style="text-align: center;"><a href="{{ route('p2k3.lihat', $data->id) }}"
+                                        type="button" class="btn  btn-sm bg-warning " style="width:20px;"><i
+                                            class="bi bi-eye text-dark d-flex justify-content-center align-items-center"></i></a>
+                                    <a href="{{ route('p2k3.edit', $data->id) }}" type="button"
+                                        class="btn  btn-sm bg-primary" style="width:20px;"><i
+                                            class="bi bi-pencil-square text-dark d-flex justify-content-center align-items-center"></i></a>
+                                    <button type="button" class="btn btn-sm" style="width: 20px; background: #DC3545"
+                                        data-bs-toggle="modal" data-bs-target="#deleteModal{{ $data->id }}">
+                                        <i
+                                            class="bi bi-trash text-dark d-flex justify-content-center align-items-center"></i>
                                     </button>
-                                </div>
-                                <div class="modal-body">
-                                    <p>Are you sure you want to delete this item?</p>
-                                </div>
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                                    <form action="{{ route('p2k3.hapus',$data->id)}}" method="POST">
-                                        @csrf
-                                        <button type="submit" class="btn btn-danger">Delete</button>
-                                    </form>
+                                </td>
+                            @endif
+                        </tr>
+                        <div class="modal fade" id="deleteModal{{ $data->id }}" tabindex="-1" role="dialog"
+                            aria-labelledby="deleteModalLabel{{ $data->id }}" data-bs-backdrop="static"
+                            aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-centered" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-body mt-5 d-flex justify-content-center align-items-center">
+                                        <h2 class="mt-5 text-center"
+                                            style="color: #16243D; font-size: 20px font-weight:700">
+                                            Yakin data
+                                            ingin dihapus?
+                                        </h2>
+                                    </div>
+                                    <div class="modal-footer d-flex justify-content-center border-0">
+                                        <form action="{{ route('p2k3.hapus', $data->id) }}" method="POST">
+                                            @csrf
+                                            <button type="submit"
+                                                class="btn btn-success text-white d-flex justify-content-center align-items-center text-center rounded-1"
+                                                style="width:76px; height:31px; background: #29CC6A;">Ya</button>
+                                        </form>
+                                        <button type="button"
+                                            class="btn btn-secondary text-center d-flex align-items-center rounded-1"
+                                            data-bs-dismiss="modal" style="width:76px; height:31px; ">Tidak</button>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                @endforeach
+                    @endforeach
                 </tbody>
             </table>
 
@@ -185,15 +199,15 @@
         }
 
         /* .team .member span::after {
-                  content: "";
-                  position: absolute;
-                  display: block;
-                  width: 50px;
-                  height: 1px;
-                  background: #cbd6e9;
-                  bottom: 0;
-                  left: 0;
-                } */
+                                                                                      content: "";
+                                                                                      position: absolute;
+                                                                                      display: block;
+                                                                                      width: 50px;
+                                                                                      height: 1px;
+                                                                                      background: #cbd6e9;
+                                                                                      bottom: 0;
+                                                                                      left: 0;
+                                                                                    } */
 
         .team .member p {
             /* margin: 10px 0 0 0; */

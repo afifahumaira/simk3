@@ -104,9 +104,20 @@
 
                                         <div class="ps-3 pe-5">
                                             <label class="col-sm-2 col-form-label">Foto Tanda Pengenal</label>
-                                            <div class="col-sm-10 w-100">
-                                                <input type="hidden" name="tanda_pengenal_old" value="{{ $data->tanda_pengenal }}">
-                                                <input type="file" class="form-control" name="tanda_pengenal" id="tanda_pengenal">
+                                            <div class=" w-100">
+                                                <a class="d-block overlay" data-fslightbox="lightbox-basic"
+                                                    href="{{ asset('storage/potensi_bahaya/tanda_pengenal/' . $data->tanda_pengenal) }}">
+                                                    <div class="overlay-wrapper bgi-no-repeat bgi-position-center bgi-size-cover card-rounded min-h-175px"
+                                                        style="background-image:url('{{ asset('storage/potensi_bahaya/tanda_pengenal/' . $data->tanda_pengenal) }}')">
+                                                    </div>
+                                                    <div class="overlay-layer card-rounded bg-dark bg-opacity-25 shadow">
+                                                        <i class="bi bi-eye-fill text-white fs-3x"></i>
+                                                    </div>
+                                                </a>
+                                                <input type="hidden" class="form-control" name="tanda_pengenal_old"
+                                                    value="{{ $data->tanda_pengenal }}">
+                                                <input type="file" class="form-control mt-3" name="tanda_pengenal"
+                                                    accept="image/png, image/jpeg">
                                             </div>
                                         </div>
 

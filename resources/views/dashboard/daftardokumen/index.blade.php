@@ -114,33 +114,9 @@
                     @endforeach
                     </tbody>
                 </table>
-                <div class="d-flex align-items-end justify-content-between pt-5 ">
-                    <div class="col-sm-12 col-md-5">
-                        <div class="dataTables_info" id="datatables_info" role="status" aria-live="polite">Showing 1 to 14
-                            of 14 entries</div>
-                    </div>
-                    <div class="col-sm-12 col-md-5 d-flex justify-content-end">
-                        <div class="dataTables_length d-flex align-items-center" id="datatables_length"><label
-                                class="me-2">Show </label>
-                            <select name="datatables_length" aria-controls="datatables"
-                                class="custom-select custom-select-sm form-control form-control-sm">
-                                <option value="10">10</option>
-                                <option value="25">25</option>
-                                <option value="50">50</option>
-                                <option value="100">100</option>
-                            </select>
-                        </div>
-                        <ul class="pagination d-flex align-items-end justify-content-end">
-                            <li class="page-item previous disabled"><a href="#" class="page-link"><i
-                                        class="previous"></i></a></li>
-                            <li class="page-item "><a href="#" class="page-link">1</a></li>
-                            <li class="page-item active"><a href="#" class="page-link">2</a></li>
-                            <li class="page-item "><a href="#" class="page-link">3</a></li>
-                            <li class="page-item next"><a href="#" class="page-link"><i class="next"></i></a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
+
+                {{ $datas->links('pagination::customb5') }}
+
                 <!--end::Content container-->
             </div>
         </div>

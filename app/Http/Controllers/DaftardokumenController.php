@@ -8,8 +8,9 @@ use App\Http\Controllers\Controller;
 
 class DaftardokumenController extends Controller
 {
-    public function index() {
-        $datas = Dokumen::all();
+    public function index(Request $request) {
+        $datas = Dokumen::where('name_file', 'LIKE', '%'.$request->search.'%')
+        ->paginate(10);
         $index = 0;
 // dd($datas);
         return view('dashboard.daftardokumen.index', [

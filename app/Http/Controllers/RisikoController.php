@@ -10,8 +10,9 @@ use App\Models\Risk;
 class RisikoController extends Controller
 {
 
-    public function index() {
-        $risks = Risk::paginate(10);
+    public function index(Request $request) {
+        $risks = Risk::where('name', 'LIKE', '%'.$request->search.'%')
+        ->paginate(10);
         return view('dashboard.masterHirarc.risiko.index', compact('risks'));
     }
 
