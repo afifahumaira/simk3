@@ -39,7 +39,7 @@ class HazardController extends Controller
             
         ]);
 
-        $acts = implode(',', $request->hazard);
+        //$acts = implode(',', $request->hazard);
 
         Hazard::create([
             

@@ -20,13 +20,13 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'id',
+        //'id',
         'name',
-        'hak_akses',
-        'avatar',
+        //'hak_akses',
+        //'avatar',
         'email',
         'password',
-        'departemen_id',
+        //'departemen_id',
     ];
 
     /**
@@ -53,10 +53,10 @@ class User extends Authenticatable
         return $this->belongsTo(Departemen::class);
     }
 
-    public function apar()
-    {
-        return $this->hasOne(Apar::class, 'user_id');
-    }
+    // public function apar()
+    // {
+    //     return $this->hasOne(Apar::class, 'user_id');
+    // }
 
     public function p2k3()
     {

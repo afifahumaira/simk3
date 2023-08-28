@@ -148,7 +148,7 @@
                                 <div class="ps-3 pe-5">
                                     <label class="col-sm-2 col-form-label">Institusi yang Dikunjungi</label>
                                     <div class="col-sm-10 w-100">
-                                        <input type="text" class="form-control" name="institusi" >
+                                        <input type="text" class="form-control" name="institusi" value="Fakultas Teknik">
 
                                     </div>
                                 </div>
@@ -190,23 +190,6 @@
 
                                     </div>
                                 </div>
-
-                                {{-- <div class="ps-3 pe-5">
-                                    <label class="col-sm-2 col-form-label">Unit Civitas Akademika</label>
-                                    <div class="col-sm-10 w-100">
-                                        <select class="form-select fs-6 w-100" data-control="select2"
-                                            data-hide-search="true" data-placeholder="- Pilih -"
-                                            data-kt-placement="bottom" style="--bs-link-hover-color-rgb: 25, 135, 84;"
-                                            id="" style="font-family: 'Inter';">
-                                            <option value="">- Pilih -</option>
-                                            <option value="Dosen">Dosen</option>
-                                            <option value="Karyawan">Karyawan</option>
-                                            <option value="Mahasiswa">Mahasiswa</option>
-                                            <option value="Tamu">Tamu</option>
-                                            <option value="Lainnya">Lainnya</option>
-                                        </select>
-                                    </div>
-                                </div> --}}
 
                                 <div class="ps-3 pe-5">
                                     <label for="inputEmail3" class="col-sm-2 col-form-label">Lokasi</label>
@@ -261,6 +244,15 @@
                                     <div class="col-sm-10 w-100">
                                         <input type="file" class="form-control" name="gambar" id="gambar" accept="image/png, image/jpeg">
 
+                                    </div>
+                                </div>
+                                <div class="ps-3 pe-5">
+                                    <label class="col-form-label">Status</label>
+                                    <div class=" w-100">
+                                        <div class="form-group label-floating is-empty is-focused">
+                                            <input class="form-control bg-secondary" name="status" id="status"
+                                                value="Pending" readonly>
+                                        </div>
                                     </div>
                                 </div>
                             </div>

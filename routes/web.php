@@ -43,7 +43,9 @@ Route::get('dashboard', [Simk3Controller::class, 'dashboard'])->middleware(['aut
 require __DIR__.'/auth.php';
 
 Route::get('laporaninsidens', [LaporanInsidenController::class, 'laporaninsiden'])->name('laporaninsidens');
+Route::post('save', [LaporanInsidenController::class, 'save'])->name('save');
 Route::get('potensibahayas', [PotensibahayaController::class, 'potensibahaya'])->name('potensibahayas');
+Route::post('simpan', [PotensibahayaController::class, 'simpan'])->name('simpan');
 
 Route::group(['middleware' => ['auth']], function() {
     // 1. Laporan Insiden
@@ -84,7 +86,7 @@ Route::group(['middleware' => ['auth']], function() {
         Route::get('/', [HirarcController::class, 'index'])->name('index');
         Route::get('tambah/{id?}', [HirarcController::class, 'tambah'])->name('tambah');
         Route::get('tambahDetail/{id}', [HirarcController::class, 'tambahDetail'])->name('tambahDetail');
-        Route::post('simpan', [HirarcController::class, 'simpan'])->name('simpan');
+        Route::post('simpan/{id}', [HirarcController::class, 'simpan'])->name('simpan');
         Route::put('save', [HirarcController::class, 'save'])->name('save');
         Route::post('simpanPreControl/{id}/{detail_id}', [HirarcController::class, 'simpanPreControl'])->name('simpanPreControl');
         Route::post('simpanSolusi/{id}/{detail_id}', [HirarcController::class, 'simpanSolusi'])->name('simpanSolusi');
@@ -185,8 +187,10 @@ Route::group(['middleware' => ['auth']], function() {
         Route::get('/', [DaftardokumenController::class, 'index'])->name('index');
         Route::get('ubah/{id}', [DaftardokumenController::class, 'ubah'])->name('ubah');
         Route::post('ubah/{id}', [DaftardokumenController::class, 'ubahstore'])->name('ubahstore');
-        Route::get('tambah', [DaftardokumenController::class, 'tambah'])->name('tambah');
+        Route::get('fortambah', [DaftardokumenController::class, 'tambah'])->name('tambah');
         Route::post('tambah', [DaftardokumenController::class, 'tambahdokumen'])->name('tambahdokumen');
+        Route::post('store', [DaftardokumenController::class, 'store'])->name('store');
+
         Route::post('destroy/{id}', [DaftardokumenController::class, 'destroy'])->name('destroy');
     });
 

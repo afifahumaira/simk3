@@ -194,7 +194,8 @@ class HirarcController extends Controller
             ]);
 
             Alert::success('Berhasil', 'Data Hirarc berhasil disimpan!')->iconHtml('<i class="bi bi-person-check"></i>')->hideCloseButton();
-        return redirect()->route('hirarc.tambah');
+        return redirect()->route('hirarc.tambah')
+        ->with('id', $id);
         }
 
         public function editDetail($id ) {
@@ -289,9 +290,16 @@ class HirarcController extends Controller
             return redirect()->back();
         }
     
-    }
+    
 
-   // public function simpanPreControl($id, $detail_id, Request $request) {
+   public function simpanPreControl($current_severity, $current_seposure, $current_probability, Request $request) {
+        $current_severity = Hirarc::get()->current_severity;
+        $current_exposure = Hirarc::get()->current_exposure;
+        $current_probability = Hirarc::get()->current_probability;
+
+        $precontrol = $current_severity * $current_exposure * $current_probability;
+
+        return $precontrol;
     //    $request->validate([
     //        'pre_severity' => 'required',
     //        'pre_exposure' => 'required',
@@ -312,8 +320,8 @@ class HirarcController extends Controller
     //    Alert::success('Berhasil', 'Data Pre Control berhasil disimpan!')->iconHtml('<i class="bi bi-person-check"></i>')->hideCloseButton();
     //    return redirect()->back();
 
-    //}
-
+    }
+}
    // public function simpanSolusi($id, $detail_id, Request $request) {
     //    $request->validate([
     //        'control_id' => 'required',

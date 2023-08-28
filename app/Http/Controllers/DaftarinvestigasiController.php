@@ -9,6 +9,8 @@ use App\Models\Inventory;
 use App\Models\Investigasi;
 use App\Models\LaporanInsiden;
 use App\Models\PotensiBahaya;
+use App\Models\P2k3;
+use App\Models\Departemen;
 
 
 use Hash;
@@ -17,10 +19,10 @@ use Validator;
 class DaftarinvestigasiController extends Controller
 {
     public function index(Request $request){
-        $investigasi = Investigasi::with(['departemen', 'p2k3'])
+        $investigasi = Investigasi::with(['departemen', 'p2k3'])->paginate(10);
         
-        ->Where('p2k3_id', 'LIKE', '%'.$request->search.'%')
-        ->paginate(10);
+        // ->Where('p2k3_id', 'LIKE', '%'.$request->search.'%')
+        // ->paginate(10);
         
         return view('dashboard.daftarinvestigasi.index')-> with('investigasi',$investigasi);
     }
@@ -71,44 +73,46 @@ class DaftarinvestigasiController extends Controller
 
     }
 
+    public function ubah($id) {
+        $departments = Departemen::all();
+        $investigasi = Investigasi::where('id',$id)->first();
+
+        $p2k3s = P2k3::all();
+        return view('dashboard.laporaninsiden.edit-insiden', compact('investigasi', 'departments', 'p2k3s'));
+    }
 
     public function update($id_investigasi, Request $request){
         
         $request->validate([
-            'kategori'      => 'required',
             'penyebab_langsung'      => 'required',
-            'penyebab_tak_langsung'      => 'required',
+            'penyeyab_tidak_langsung' => 'required',
             'tenggat_waktu'      => 'required',
             'tindakan'      => 'required',
-            'id_laporan_insiden'      => 'required',
-            'id_users'      => 'required',
+            
         ]);
 
         $data = array(
-            'kategori'      => $request->kategori,
+            
             'penyebab_langsung'      => $request->penyebab_langsung,
             'penyebab_tak_langsung'      => $request->penyebab_tak_langsung,
             'tenggat_waktu'      => $request->tenggat_waktu,
             'tindakan'      => $request->tindakan,
-            'id_laporan_insiden'      => $request->id_laporan_insiden,
-            'id_users'      => $request->id_users,
-            'id_inventory'      => $request->id_inventory,
+            
         );
 
-        Investigasi::where('id_investigasi', $id_investigasi)->update($data);
+        Investigasi::find($id_investigasi)->update($data);
 
-        return response()->json([
-            'message' => 'Data berhasil di Ubah',
-        ], 200);
+        Alert::success('Berhasil', 'Data Laporan Insiden berhasil diperbaharui!')->iconHtml('<i class="bi bi-person-check"></i>')->hideCloseButton();
+        return redirect()->route('daftarinvestigasi.index');
         
 
     }
 
-    public function delete($id_investigasi){
-        Investigasi::where('id_investigasi', $id_investigasi)->delete();
-        return response()->json([
-            'message' => 'Data berhasil di Hapus',
-        ], 200);
+    public function delete($id){
+        $investigasi = Investigasi::find($id);
+        $investigasi->delete();
+        Alert::success('Berhasil', 'Data Investigasi berhasil dihapus!')->iconHtml('<i class="bi bi-person-check"></i>')->hideCloseButton();
+        return redirect()->route('daftarinvestigasi.index');
 
     }
 }

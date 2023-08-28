@@ -43,6 +43,7 @@
                         enctype="multipart/form-data">
                         @csrf
 
+                        
                         <input type="hidden" value="{{ $data->nip_nim }}" name="nip_nim">
                         <div id="kt_app_content"
                             class="app-content flex-column-fluid rounded   mb-20 px-5 shadow"style="box-shadow: 2px 4px 20px 2px rgba(0, 0, 0, 0.1);">
@@ -119,6 +120,45 @@
                                         </div>
                                     </div>
 
+                                        <div class="ps-3 pe-5">
+                                            <label class="col-form-label">Status</label>
+                                            <div class="w-100">
+                                                <div class="form-group label-floating is-empty is-focused">
+                                                    <select name="status" class="form-select fs-6  w-100"
+                                                        data-control="select2" data-hide-search="true" data-placeholder="Status"
+                                                        id="status">
+                                                        <option value="1" {{ $data->status == 1 ? 'selected' : '' }}>Pending
+                                                        </option>
+                                                        <option value="2" {{ $data->status == 2 ? 'selected' : '' }}>Investigasi
+                                                        </option>
+                                                        <option value="3" {{ $data->status == 3 ? 'selected' : '' }}>Sukses
+                                                        </option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="ps-3 pe-5">
+                                            <label class="col-form-label">P2K3</label>
+                                            <div class=" w-100">
+                                                <div class="form-group label-floating is-empty is-focused">
+                                                    <select name="p2k3_id" class="form-select fs-6 w-100" data-control="select2"
+                                                        data-hide-search="true" data-placeholder="P2K3" required>
+                                                        @foreach ($p2k3s as $p2k3)
+                                                            <option value="{{ $p2k3->id }}"
+                                                                {{ $data->p2k3_id == $p2k3->id ? 'selected' : '' }}>
+                                                                {{ $p2k3->nama != '' ? $p2k3->nama : 'Pilih P2K3' }}</option>
+                                                        @endforeach
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="ps-3 pe-5">
+                                            <label class="col-sm-2 col-form-label">Nama Pelapor</label>
+                                            <div class="col-sm-10 w-100">
+                                                <input type="text" class="form-control" name="nama_pelapor"
+                                                    id="lokasi_rinci" value="{{ $data->nama_pelapor }}">
                                     <div class="ps-3 pe-5">
                                         <label class="col-sm-2 col-form-label">Tanggal Kejadian</label>
                                         <div class="col-sm-10 w-100">

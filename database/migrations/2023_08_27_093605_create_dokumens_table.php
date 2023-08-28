@@ -13,10 +13,12 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('location_masters', function (Blueprint $table) {
-            $table->id('id');
-            $table->varchar('name')->unique();
-            $table->timestamps();
+        Schema::create('dokumens', function (Blueprint $table) {
+            $table->id();
+            $table->string('nama_file');
+            $table->string('file');
+            $table->timestamps('created_at');
+            $table->timestamps('updated');
         });
     }
 
@@ -27,6 +29,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('location_masters');
+        Schema::dropIfExists('dokumens');
     }
 };

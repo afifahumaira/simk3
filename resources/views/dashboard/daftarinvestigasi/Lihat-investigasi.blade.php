@@ -27,10 +27,7 @@
                         <th style="width: 40%">Kategori</th>
                         <td>{{ $investigasi->kategori }}</td>
                     </tr>
-                    <tr>
-                        <th style="width: 40%">Nama Pelapor</th>
-                        <td>{{ $investigasi->laporinsiden->nama_pelapor }}</td>
-                    </tr>
+                    
                     <tr>
                         <th style="width: 40%">Lokasi Kejadian</th>
                         <td>{{ $investigasi->departemen->name }}</td>

@@ -22,7 +22,7 @@ class InvestigasiController extends Controller
         ->leftJoin('departemens', 'departemens.id', '=', 'investigasis.departemen_id')        
         ->leftJoin('p2k3s', 'p2k3s.id', '=', 'investigasis.p2k3_id')
         ->select(
-            'investigasis.id as investigasi_id',
+            'investigasis.id as id',
             'departemens.id as departemen_id',
             'departemens.name as departemen_name',
             'p2k3s.nama as p2k3_nama',
@@ -50,7 +50,7 @@ class InvestigasiController extends Controller
     }
 
     public function lihat($id) {
-        $investigasi = Investigasi::findorFail($id);
+        $investigasi = Investigasi::where('id',$id)->first();
         return view('dashboard.daftarinvestigasi.Lihat-investigasi', compact('investigasi'));
                 
     }
