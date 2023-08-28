@@ -62,7 +62,7 @@
                 <thead px-3>
                     <tr>
 
-                        <th scope="col" class="">No</th>
+                        <th scope="col" class="text-center">No</th>
                         <th scope="col" class="">Aktifitas</th>
                         <th scope="col" class="col-1">Action</th>
                     </tr>

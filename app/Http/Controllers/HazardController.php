@@ -9,8 +9,9 @@ use Alert;
 
 class HazardController extends Controller
 {
-    public function index() {
-        $hazards = Hazard::paginate(10);
+    public function index(Request $request) {
+        $hazards = Hazard::where('name', 'LIKE', '%'.$request->search.'%')
+        ->paginate(10);
         return view('dashboard.masterHirarc.hazard.index', compact('hazards'));
     }
 

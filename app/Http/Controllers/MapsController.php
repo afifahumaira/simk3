@@ -14,8 +14,11 @@ class MapsController extends Controller
         return view('dashboard.maps.index', compact('maps'));
     }
 
-    public function lihat() {
-        $maps = Map::orderBy('gedung')->paginate(10);
+    public function lihat(Request $request) {
+        $maps = Map::where('gedung', 'LIKE', '%'.$request->search.'%')
+        ->orWhere('lantai', 'LIKE', '%'.$request->search.'%')
+        ->paginate(10);
+
         return view('dashboard.maps.lihat', compact('maps'));
     }
 

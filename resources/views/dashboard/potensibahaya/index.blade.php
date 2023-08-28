@@ -3,7 +3,6 @@
 
 @section('content')
     <div class="page-title d-flex flex-column gap-1 mx-5 my-5  ">
-
         <div id="kt_app_content"
             class="app-content flex-column-fluid rounded bg-light  mb-20 px-5 shadow"style="box-shadow: 2px 4px 20px 2px rgba(0, 0, 0, 0.1);">
             <div class="app-toolbar-wrapper d-flex flex-stack flex-wrap gap-4 w-100 mb-5 px-5 border-bottom border-5">
@@ -68,65 +67,82 @@
                         <th scope="col">Nama Pelapor</th>
                         <th scope="col">Lokasi Kejadian</th>
                         <th scope="col">Status</th>
-                        @if (auth()->user()->hak_akses == 'admin' || auth()->user()->hak_akses == 'p2k3' || auth()->user()->hak_akses == 'k3_departemen' || auth()->user()->hak_akses == 'pimpinan')
-                        <th scope="col">Action</th>
+                        @if (auth()->user()->hak_akses == 'admin' ||
+                                auth()->user()->hak_akses == 'p2k3' ||
+                                auth()->user()->hak_akses == 'k3_departemen' ||
+                                auth()->user()->hak_akses == 'pimpinan')
+                            <th scope="col">Action</th>
                         @endif
                     </tr>
                 </thead>
                 <tbody>
-                @foreach ($datas as $data)
-                    <tr>
-                        <td scope="row" class="text-center">{{ ($datas->currentpage()-1) * $datas ->perpage() + $loop->index + 1 }}</td>
-                        <td>{{ $data->kode_potensibahaya }}</td>
-                        <td>{{ $data->waktu_kejadian }}</td>
-                        <td>{{ $data->nama_pelapor }}</td>
-                        <td>{{ $data->lokasi }}</td>
-                        <td>@if ($data->status == "1")
-                                <button type="button" class="btn btn-danger btn-sm py-2" style="background:#DC3545">Pending</button>
-                            @elseif ($data->status == "2")
-                                <button type="button" class="btn btn-primary btn-sm py-2">Investigasi</button>
-                            @elseif ($data->status == "3")
-                                <button type="button" class="btn btn-success btn-sm py-2">Sukses</button>
-                            @endif</td>
-                        @if (auth()->user()->hak_akses == 'admin' || auth()->user()->hak_akses == 'p2k3' || auth()->user()->hak_akses == 'k3_departemen' || auth()->user()->hak_akses == 'pimpinan')
-                        <td>
-                            <a href="{{ route('potensibahaya.lihat', $data['id']) }}" type="button"
-                                class="btn  btn-sm bg-warning " style="width:20px;"><i
-                                    class="bi bi-eye text-dark d-flex justify-content-center align-items-center"></i></a>
-                            <a href="{{ route('potensibahaya.edit', $data['id']) }}" type="button"
-                                class="btn  btn-sm bg-primary" style="width:20px;"><i
-                                    class="bi bi-pencil-square text-dark d-flex justify-content-center align-items-center"></i>
-                            </a>
-                            <button type="button" class="btn btn-sm" style="width: 20px; background: #DC3545" data-bs-toggle="modal" data-bs-target="#deleteModal{{ $data->id }}">
-                                <i class="bi bi-trash text-dark d-flex justify-content-center align-items-center"></i>
-                            </button>
-                        </td>
-                        @endif
-                    </tr>
-
-                    <!-- Delete modal -->
-                    <div class="modal fade" id="deleteModal{{ $data->id }}" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel{{ $data->id }}" aria-hidden="true">
-                        <div class="modal-dialog" role="document">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <h5 class="modal-title" id="deleteModalLabel{{ $data->id }}">Confirm Deletion</h5>
-                                    <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
-                                        <span aria-hidden="true">&times;</span>
+                    @foreach ($datas as $data)
+                        <tr>
+                            <td scope="row" class="text-center">
+                                {{ ($datas->currentpage() - 1) * $datas->perpage() + $loop->index + 1 }}</td>
+                            <td>{{ $data->kode_potensibahaya }}</td>
+                            <td>{{ $data->waktu_kejadian }}</td>
+                            <td>{{ $data->nama_pelapor }}</td>
+                            <td>{{ $data->lokasi }}</td>
+                            <td>
+                                @if ($data->status == '1')
+                                    <button type="button" class="btn btn-danger btn-sm py-2"
+                                        style="background:#DC3545">Pending</button>
+                                @elseif ($data->status == '2')
+                                    <button type="button" class="btn btn-primary btn-sm py-2">Investigasi</button>
+                                @elseif ($data->status == '3')
+                                    <button type="button" class="btn btn-success btn-sm py-2">Sukses</button>
+                                @endif
+                            </td>
+                            @if (auth()->user()->hak_akses == 'admin' ||
+                                    auth()->user()->hak_akses == 'p2k3' ||
+                                    auth()->user()->hak_akses == 'k3_departemen' ||
+                                    auth()->user()->hak_akses == 'pimpinan')
+                                <td>
+                                    <a href="{{ route('potensibahaya.lihat', $data['id']) }}" type="button"
+                                        class="btn  btn-sm bg-warning " style="width:20px;"><i
+                                            class="bi bi-eye text-dark d-flex justify-content-center align-items-center"></i></a>
+                                    <a href="{{ route('potensibahaya.edit', $data['id']) }}" type="button"
+                                        class="btn  btn-sm bg-primary" style="width:20px;"><i
+                                            class="bi bi-pencil-square text-dark d-flex justify-content-center align-items-center"></i>
+                                    </a>
+                                    <button type="button" class="btn btn-sm" style="width: 20px; background: #DC3545"
+                                        data-bs-toggle="modal" data-bs-target="#deleteModal{{ $data->id }}">
+                                        <i
+                                            class="bi bi-trash text-dark d-flex justify-content-center align-items-center"></i>
                                     </button>
-                                </div>
-                                <div class="modal-body">
-                                    <p>Are you sure you want to delete this item?</p>
-                                </div>
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                                    <form action="{{ route('potensibahaya.delete',$data['id'])}}" method="POST">
-                                        @csrf
-                                        <button type="submit" class="btn btn-danger">Delete</button>
-                                    </form>
+                                </td>
+                            @endif
+                        </tr>
+
+                        <!-- Delete modal -->
+                        <div class="modal fade" id="deleteModal{{ $data->id }}" tabindex="-1" role="dialog"
+                            aria-labelledby="deleteModalLabel{{ $data->id }}" data-bs-backdrop="static"
+                            aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-centered" role="document">
+                                <div class="modal-content">
+
+                                    <div class="modal-body mt-5 d-flex justify-content-center align-items-center">
+                                        <h2 class="mt-5 text-center"
+                                            style="color: #16243D; font-size: 20px font-weight:700">
+                                            Yakin data
+                                            ingin dihapus?
+                                        </h2>
+                                    </div>
+                                    <div class="modal-footer d-flex justify-content-center border-0">
+                                        <form action="{{ route('potensibahaya.delete', $data['id']) }}" method="POST">
+                                            @csrf
+                                            <button type="submit"
+                                                class="btn btn-success text-white d-flex justify-content-center align-items-center text-center rounded-1"
+                                                style="width:76px; height:31px; background: #29CC6A;">Ya</button>
+                                        </form>
+                                        <button type="button"
+                                            class="btn btn-secondary text-center d-flex align-items-center rounded-1"
+                                            data-bs-dismiss="modal" style="width:76px; height:31px; ">Tidak</button>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
                     @endforeach
 
                 </tbody>

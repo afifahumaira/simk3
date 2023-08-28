@@ -39,7 +39,8 @@
                     </div>
                 </div>
                 <div class="page-title  gap-1 mx-5 my-5  ">
-                    <form action="{{ route('potensibahaya.editstore', $data['id']) }}" method="POST">
+                    <form action="{{ route('potensibahaya.editstore', $data['id']) }}" method="POST"
+                        enctype="multipart/form-data">
                         @csrf
 
                         
@@ -53,20 +54,73 @@
                                     </div>
                                 </div>
                                 <div class="card-body">
-                                    <form class="lh-lg">
-                                        @csrf
-                                        <div class="ps-3 pe-5">
-                                            <label class="col-sm-2 col-form-label ">Kode Potensi Bahaya</label>
-                                            <div class="col-sm-10 w-100">
-                                                <div class="form-group label-floating is-empty is-focused">
-                                                    <input class="form-control bg-secondary" name="kode_potensibahaya"
-                                                        id="kode_laporinsiden" value="{{ $data->kode_potensibahaya }}"
-                                                        readonly>
-                                                </div>
+                                    <div class="ps-3 pe-5">
+                                        <label class="col-sm-2 col-form-label ">Kode Potensi Bahaya</label>
+                                        <div class="col-sm-10 w-100">
+                                            <div class="form-group label-floating is-empty is-focused">
+                                                <input class="form-control bg-secondary" name="kode_potensibahaya"
+                                                    id="kode_laporinsiden" value="{{ $data->kode_potensibahaya }}" readonly>
                                             </div>
-                                            {{-- <div class="form-group row"> --}}
                                         </div>
+                                        {{-- <div class="form-group row"> --}}
+                                    </div>
 
+                                    <div class="ps-3 pe-5">
+                                        <label class="col-sm-2 col-form-label">Nama Pelapor</label>
+                                        <div class="col-sm-10 w-100">
+                                            <input type="text" class="form-control" name="nama_pelapor" id="lokasi_rinci"
+                                                value="{{ $data->nama_pelapor }}">
+
+                                        </div>
+                                    </div>
+
+                                    <div class="ps-3 pe-5">
+                                        <label for="inputEmail3" class="col-sm-2 col-form-label">Email Pelapor</label>
+                                        <div class="col-sm-10 w-100">
+                                            <input type="email" class="form-control" value="{{ $data->email_pelapor }}"
+                                                name="email_pelapor" required>
+
+                                        </div>
+                                    </div>
+
+                                    <div class="ps-3 pe-5">
+                                        <label for="inputNomertelepon3" class="col-sm-2 col-form-label">NIP/NIM</label>
+                                        <div class="col-sm-10 w-100">
+                                            <input type="number" class="form-control " value="{{ $data->nip_nim }}"
+                                                name="nip_nim">
+
+                                        </div>
+                                    </div>
+
+                                    <div class="ps-3 pe-5">
+                                        <label for="inputNomertelepon3" class="col-sm-2 col-form-label">No. Telp
+                                            Pelapor</label>
+                                        <div class="col-sm-10 w-100">
+                                            <input type="number" class="form-control "
+                                                value="{{ $data->nomer_telepon_pelapor }}" name="nomer_telepon_pelapor">
+                                        </div>
+                                    </div>
+
+                                    <div class="ps-3 pe-5">
+                                        <label class="col-sm-2 col-form-label">Foto Tanda Pengenal</label>
+                                        <div class=" w-100">
+                                            <a class="d-block overlay" data-fslightbox="lightbox-basic"
+                                                href="{{ asset('storage/potensi_bahaya/tanda_pengenal/' . $data->tanda_pengenal) }}">
+                                                <div class="overlay-wrapper bgi-no-repeat bgi-position-center bgi-size-cover card-rounded min-h-175px"
+                                                    style="background-image:url('{{ asset('storage/potensi_bahaya/tanda_pengenal/' . $data->tanda_pengenal) }}')">
+                                                </div>
+                                                <div class="overlay-layer card-rounded bg-dark bg-opacity-25 shadow">
+                                                    <i class="bi bi-eye-fill text-white fs-3x"></i>
+                                                </div>
+                                            </a>
+                                            <input type="hidden" class="form-control" name="tanda_pengenal_old"
+                                                value="{{ $data->tanda_pengenal }}">
+                                            <input type="file" class="form-control mt-3" name="tanda_pengenal"
+                                                accept="image/png, image/jpeg">
+                                        </div>
+                                    </div>
+
+<<<<<<< HEAD
                                         <div class="ps-3 pe-5">
                                             <label class="col-form-label">Status</label>
                                             <div class="w-100">
@@ -106,82 +160,45 @@
                                             <div class="col-sm-10 w-100">
                                                 <input type="text" class="form-control" name="nama_pelapor"
                                                     id="lokasi_rinci" value="{{ $data->nama_pelapor }}">
+=======
+                                    <div class="ps-3 pe-5">
+                                        <label class="col-sm-2 col-form-label">Tanggal Kejadian</label>
+                                        <div class="col-sm-10 w-100">
+                                            <input type="date" id="date" class="form-control tanggalPicker"
+                                                value="{{ $data->waktu_kejadian }}" name="waktu_kejadian">
+>>>>>>> 3587406db95c66abb353b94410b79aef28aa9849
 
-                                            </div>
                                         </div>
+                                    </div>
 
-                                        <div class="ps-3 pe-5">
-                                            <label for="inputEmail3" class="col-sm-2 col-form-label">Email Pelapor</label>
-                                            <div class="col-sm-10 w-100">
-                                                <input type="email" class="form-control"
-                                                    value="{{ $data->email_pelapor }}" name="email_pelapor" required>
 
-                                            </div>
+                                    <div class="ps-3 pe-5">
+                                        <label class="col-sm-2 col-form-label">Kategori Pelapor</label>
+                                        <div class="col-sm-10 w-100">
+                                            <select class="form-select fs-6 w-100" data-control="select2"
+                                                data-hide-search="true" data-placeholder="- Pilih -"
+                                                style="--bs-link-hover-color-rgb: 25, 135, 84;" id=""
+                                                name="kategori_pelapor" style="font-family: 'Inter';">
+                                                <option value="">- Pilih -</option>
+                                                <option value="Dosen"
+                                                    {{ $data->kategori_pelapor == 'Dosen' ? 'selected' : '' }}>Dosen
+                                                </option>
+                                                <option value="Karyawan"
+                                                    {{ $data->kategori_pelapor == 'Karyawan' ? 'selected' : '' }}>
+                                                    Karyawan</option>
+                                                <option value="Mahasiswa"
+                                                    {{ $data->kategori_pelapor == 'Mahasiswa' ? 'selected' : '' }}>
+                                                    Mahasiswa</option>
+                                                <option value="Tamu"
+                                                    {{ $data->kategori_pelapor == 'Tamu' ? 'selected' : '' }}>Tamu
+                                                </option>
+                                                <option value="Lainnya"
+                                                    {{ $data->kategori_pelapor == 'Lainnya' ? 'selected' : '' }}>
+                                                    Lainnya</option>
+                                            </select>
+
                                         </div>
-
-                                        <div class="ps-3 pe-5">
-                                            <label for="inputNomertelepon3" class="col-sm-2 col-form-label">NIP/NIM</label>
-                                            <div class="col-sm-10 w-100">
-                                                <input type="number" class="form-control " value="{{ $data->nip_nim }}"
-                                                    name="nip_nim">
-
-                                            </div>
-                                        </div>
-
-                                        <div class="ps-3 pe-5">
-                                            <label for="inputNomertelepon3" class="col-sm-2 col-form-label">No. Telp
-                                                Pelapor</label>
-                                            <div class="col-sm-10 w-100">
-                                                <input type="number" class="form-control "
-                                                    value="{{ $data->nomer_telepon_pelapor }}" name="nomer_telepon_pelapor">
-                                            </div>
-                                        </div>
-
-                                        <div class="ps-3 pe-5">
-                                            <label class="col-sm-2 col-form-label">Foto Tanda Pengenal</label>
-                                            <div class="col-sm-10 w-100">
-                                                <input type="hidden" name="tanda_pengenal_old" value="{{ $data->tanda_pengenal }}">
-                                                <input type="file" class="form-control" name="tanda_pengenal" id="tanda_pengenal">
-                                            </div>
-                                        </div>
-
-                                        <div class="ps-3 pe-5">
-                                            <label class="col-sm-2 col-form-label">Tanggal Kejadian</label>
-                                            <div class="col-sm-10 w-100">
-                                                <input type="date" id="date" class="form-control tanggalPicker"
-                                                    value="{{ $data->waktu_kejadian }}" name="waktu_kejadian">
-
-                                            </div>
-                                        </div>
-
-
-                                        <div class="ps-3 pe-5">
-                                            <label class="col-sm-2 col-form-label">Kategori Pelapor</label>
-                                            <div class="col-sm-10 w-100">
-                                                <select class="form-select fs-6 w-100" data-control="select2"
-                                                    data-hide-search="true" data-placeholder="- Pilih -"
-                                                    style="--bs-link-hover-color-rgb: 25, 135, 84;" id=""
-                                                    name="kategori_pelapor" style="font-family: 'Inter';">
-                                                    <option value="">- Pilih -</option>
-                                                    <option value="Dosen"
-                                                        {{ $data->kategori_pelapor == 'Dosen' ? 'selected' : '' }}>Dosen
-                                                    </option>
-                                                    <option value="Karyawan"
-                                                        {{ $data->kategori_pelapor == 'Karyawan' ? 'selected' : '' }}>
-                                                        Karyawan</option>
-                                                    <option value="Mahasiswa"
-                                                        {{ $data->kategori_pelapor == 'Mahasiswa' ? 'selected' : '' }}>
-                                                        Mahasiswa</option>
-                                                    <option value="Tamu"
-                                                        {{ $data->kategori_pelapor == 'Tamu' ? 'selected' : '' }}>Tamu
-                                                    </option>
-                                                    <option value="Lainnya"
-                                                        {{ $data->kategori_pelapor == 'Lainnya' ? 'selected' : '' }}>
-                                                        Lainnya</option>
-                                                </select>
-
-                                            </div>
-                                        </div>
+                                    </div>
 
                                 </div>
                             </div>
@@ -319,8 +336,18 @@
                                     <div class="ps-3 pe-5">
                                         <label class="col-sm-2 col-form-label">Foto Kejadian</label>
                                         <div class="col-sm-10 w-100">
+                                            <a class="d-block overlay" data-fslightbox="lightbox-basic"
+                                                href="{{ asset('storage/potensi_bahaya/gambarkejadian/' . $data->gambar) }}">
+                                                <div class="overlay-wrapper bgi-no-repeat bgi-position-center bgi-size-cover card-rounded min-h-175px"
+                                                    style="background-image:url('{{ asset('storage/potensi_bahaya/gambarkejadian/' . $data->gambar) }}')">
+                                                </div>
+                                                <div class="overlay-layer card-rounded bg-dark bg-opacity-25 shadow">
+                                                    <i class="bi bi-eye-fill text-white fs-3x"></i>
+                                                </div>
+                                            </a>
                                             <input type="hidden" name="gambar_old" value="{{ $data->gambar }}">
-                                            <input type="file" class="form-control" name="gambar" id="gambar">
+                                            <input type="file" class="form-control" name=" $data->gambar"
+                                                id="foto_kejadian">
 
                                         </div>
                                     </div>
@@ -381,4 +408,8 @@
 
         </div>
     </div>
+@stop
+
+@section('customscript')
+    <script src="{{ asset('plugins/custom/fslightbox/fslightbox.bundle.js') }}"></script>
 @stop

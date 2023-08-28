@@ -8,8 +8,10 @@ use RealRashid\SweetAlert\Facades\Alert;
 
 class UserController extends Controller
 {
-    public function index() {
-        $datas = User::paginate(10);
+    public function index(Request $request) {
+        $datas = User::with([ 'p2k3', 'departemen'])
+        ->where('name', 'LIKE', '%'.$request->search.'%')
+        ->paginate(10);
 //        dd($datas);
         return view('dashboard.users.user.index', compact('datas'));
     }

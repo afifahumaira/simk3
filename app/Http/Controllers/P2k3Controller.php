@@ -17,8 +17,10 @@ use RealRashid\SweetAlert\Facades\Alert;
 
 class P2k3Controller extends Controller
 {
-    public function index() {
-        $datas = P2k3::paginate(10);
+    public function index(Request $request) {
+        $datas = P2k3::where('nama', 'LIKE', '%'.$request->search.'%')
+        ->orWhere('departemen', 'LIKE', '%'.$request->search.'%')
+        ->paginate(10);
         return view('dashboard.users.P2k3.index', compact('datas'));
     }
 

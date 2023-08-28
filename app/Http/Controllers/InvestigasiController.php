@@ -6,19 +6,34 @@ use App\Models\Investigasi;
 use App\Models\Laporinsiden;
 use Illuminate\Http\Request;
 use Alert;
+use Illuminate\Support\Facades\DB;
 
 class InvestigasiController extends Controller
 {
 
-    public function index() {
+    public function index(Request $request) {
+        // dd($request->search);
+        // $investigasis = Investigasi::with(['departemen' => function ($query) use ($request) {
+        //     $query->where('name' ,'LIKE', '%'.$request->search.'%');
+        //     }])
+        //     ->paginate(10);
 
-        $investigasis = Investigasi::with(['laporinsiden', 'departemen', 'p2k3'])->paginate(10);
+        $investigasis=DB::table('investigasis')
+        ->leftJoin('departemens', 'departemens.id', '=', 'investigasis.departemen_id')        
+        ->leftJoin('p2k3s', 'p2k3s.id', '=', 'investigasis.p2k3_id')
+        ->select(
+            'investigasis.id as investigasi_id',
+            'departemens.id as departemen_id',
+            'departemens.name as departemen_name',
+            'p2k3s.nama as p2k3_nama',
+            'investigasis.kategori'
+            )
+        ->where('investigasis.kategori', 'LIKE', '%'.$request->search.'%')
+        ->orWhere('departemens.name', 'LIKE', '%'.$request->search.'%')
+        ->paginate(10);
         // ->where('kategori', 'LIKE', '%'.$request->search.'%')
         // ->orWhereHas('laporinsiden', function($query) use ($request) {
         //     $query->orWhere('nama_pelapor', 'LIKE', '%'.$request->search.'%');
-        // })
-        // ->orWhereHas('departemen', function($query) use ($request) {
-        //     $query->orWhere('name', 'LIKE', '%'.$request->search.'%');
         // })
         // ->orWhereHas('p2k3', function($query) use ($request) {
         //     $query->orWhere('nama', 'LIKE', '%'.$request->search.'%');

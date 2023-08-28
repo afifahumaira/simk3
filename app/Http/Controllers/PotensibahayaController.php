@@ -20,8 +20,12 @@ use Illuminate\Support\Str;
 
 class PotensibahayaController extends Controller
 {
-    public function index(){
-        $datas = PotensiBahaya::paginate(10);
+    public function index(Request $request){
+        $datas = PotensiBahaya:: with(['p2k3', 'departemen'])
+        -> where('nama_pelapor', 'LIKE', '%'.$request->search.'%')
+        ->orWhere('lokasi', 'LIKE', '%'.$request->search.'%')
+        ->orWhere('waktu_kejadian', 'LIKE', '%'.$request->search.'%')
+        ->paginate(10);
 
         return view('dashboard.potensibahaya.index', compact('datas'));
     }

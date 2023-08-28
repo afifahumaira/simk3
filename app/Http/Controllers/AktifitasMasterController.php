@@ -9,8 +9,9 @@ use Alert;
 
 class AktifitasMasterController extends Controller
 {
-    public function index() {
-        $activities = Activitie_master::paginate(10);
+    public function index(Request $request) {
+        $activities = Activitie_master::where('name', 'LIKE', '%'.$request->search.'%')
+        ->paginate(10);
         
         return view('dashboard.masterHirarc.aktifitas.index', compact('activities'));
     }
