@@ -29,45 +29,45 @@ class DaftardokumenController extends Controller
     // ini belum upload pdf
     public function ubahstore($id, Request $request){
         $db = Dokumen::find($id);
-        if($request->hasFile('file')){
+        // dd($request);
+        if($request->file){
             $data = $request->validate([
-                'nama_file' => 'required',
+                'name_file' => 'required',
                 'file' => 'required',
-
             ]);
-
-            $input =$request->except([ 'file']);
-            $berkas = $request->file('file');
-            $nama_berkas = time()."_".$berkas->getClientOriginalName();
-            $tujuan_upload = 'berkas';
-            $berkas->move($tujuan_upload,$nama_berkas);
-            $input['file'] = $nama_berkas;
-            $success = Dokumen::where('id', $id)->whereNull('created_at')->update($input);
-            if($success) {
-
-                $input2['file'] = $nama_berkas;
-                $input2['nama_file'] = $request->nama_file;
-                //$user_id = $db->user_id;
-                //User::where('id', $user_id)->whereNull('deleted_at')->update($input2);
-                Alert::success('Berhasil', 'Data berhasil disimpan!')->iconHtml('<i class="bi-person-check"></i>')->hideCloseButton();
-                return redirect()->route('/daftardokumen');
+            if($db->file != null) {
+                $done = unlink(public_path().'/berkas/'.$db->file);
+                $file = $request->file('file');
+                $ext = $request->file('file')->getClientOriginalExtension();
+                $filename = ($request->name_file.".".$ext);
+                $file->move('berkas', $filename);
+                $data['file'] = $filename;
+                $success = Dokumen::where('id', $id)->update($data);
+                if($success) {
+                    Alert::success('Berhasil', 'Data berhasil Diperbarui!')->iconHtml('<i class="bi-person-check"></i>')->hideCloseButton();
+                    return redirect()->route('daftardokumen.index');
+                }
+            } else {
+                $file = $request->file('file');
+                $ext = $request->file('file')->getClientOriginalExtension();
+                $filename = ($request->name_file.".".$ext);
+                $file->move('berkas', $filename);
+                $data['file'] = $filename;
+                $success = Dokumen::where('id', $id)->update($data);
+                if($success) {
+                    Alert::success('Berhasil', 'Data berhasil Diperbarui!')->iconHtml('<i class="bi-person-check"></i>')->hideCloseButton();
+                    return redirect()->route('daftardokumen.index');
+                }
             }
-
         } else {
+            dd("gada file");
             $data = $request->validate([
-                'nama' => 'required',
-                'email' => 'required',
-                'jabatan' => 'required',
-                'departemen' => 'required',
+                'name_file' => 'required',
             ]);
-            $input =$request->except(['email', '_token']);
-            P2k3::where('id', $id)->whereNull('deleted_at')->update($input);
-            $user_id = $db->user_id;
-            $input2['email']= $request->email;
-            $input2['name'] = $request->nama;
-            User::where('id', $user_id)->whereNull('deleted_at')->update($input2);
+            // dd($data);
+            $success = Dokumen::where('id', $id)->update($data);
             Alert::success('Berhasil', 'Data Berhasil Diperbarui!')->iconHtml('<i class="bi-person-check"></i>')->hideCloseButton();
-            return redirect()->route('p2k3.index');
+            return redirect()->route('daftardokumen.index');
         }
     }
     //     Dokumen::find($id)->update([
@@ -134,8 +134,21 @@ class DaftardokumenController extends Controller
     // }
 
     public function destroy($id){
-        Dokumen::find($id)->delete();
-        return redirect('/daftardokumen');
+        $db = Dokumen::find($id);
+        if($db->file != null) {
+            $done = unlink(public_path().'/berkas/'.$db->file);
+            $done = Dokumen::find($id)->delete();
+            if ($done) {
+                Alert::success('Berhasil', 'Data berhasil Dihapus!')->iconHtml('<i class="bi-person-check"></i>')->hideCloseButton();
+                return redirect('/daftardokumen');
+            }
+        } else {
+            $done = Dokumen::find($id)->delete();
+            if ($done) {
+                Alert::success('Berhasil', 'Data berhasil Dihapus!')->iconHtml('<i class="bi-person-check"></i>')->hideCloseButton();
+                return redirect('/daftardokumen');
+            }
+        }
     }
 
 }
