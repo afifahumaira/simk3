@@ -320,7 +320,7 @@
                                     data-bs-toggle="modal" data-bs-target="#simpandata" onclick="showDiv()">Simpan
                                     Data
                                 </button>
-                                <a href="{{ route('potensibahaya.index') }}" type="submit"
+                                <a href="{{ route('potensibahaya.edit', $data->id) }}" type="submit"
                                     class="btn btn-secondary text-white d-flex align-items-center justify-content-center"
                                     data-bs-toggle="modal" data-bs-target="#resetform"
                                     style="background: #868E96; margin : 10px 20px 30px 20px; width: 124.33px; height: 38px; font-size:14px; border-radius: 5px;">Reset</a>
@@ -344,7 +344,7 @@
                                                 </h2>
                                             </div>
                                             <div class="modal-footer d-flex justify-content-center border-0">
-                                                <a href="{{ route('potensibahaya.index') }}" type="button"
+                                                <a href="{{ route('potensibahaya.edit', $data->id) }}" type="button"
                                                     class="btn btn-success text-white d-flex justify-content-center align-items-center text-center rounded-1"
                                                     style="width:76px; height:31px; background: #29CC6A;">Ya</a>
                                                 <button type="button"
