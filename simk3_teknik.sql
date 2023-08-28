@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 30, 2023 at 04:56 PM
+-- Generation Time: Aug 28, 2023 at 04:57 AM
 -- Server version: 10.4.25-MariaDB
 -- PHP Version: 8.1.10
 
@@ -67,19 +67,19 @@ INSERT INTO `activities` (`id`, `lokasi`, `name`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `activities_master`
+-- Table structure for table `activitie_masters`
 --
 
-CREATE TABLE `activities_master` (
-  `id_aktivitas` int(10) NOT NULL,
+CREATE TABLE `activitie_masters` (
+  `id` int(10) NOT NULL,
   `name` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `activities_master`
+-- Dumping data for table `activitie_masters`
 --
 
-INSERT INTO `activities_master` (`id_aktivitas`, `name`) VALUES
+INSERT INTO `activitie_masters` (`id`, `name`) VALUES
 (1, 'Kegiatan belajar mengajar'),
 (2, 'Kegiatan perawatan kebersihan ruang/ lingkungan'),
 (3, 'Perawatan rutin kabel LAN'),
@@ -328,6 +328,48 @@ INSERT INTO `hazards` (`id`, `name`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `hirarccontrols`
+--
+
+CREATE TABLE `hirarccontrols` (
+  `form_diperlukan` varchar(255) NOT NULL,
+  `sop` varchar(255) NOT NULL,
+  `residual_severity` varchar(255) NOT NULL,
+  `residual_exposure` varchar(255) NOT NULL,
+  `residual_probability` varchar(255) NOT NULL,
+  `residual_risk_rating` varchar(255) NOT NULL,
+  `residual_risk_category` varchar(255) NOT NULL,
+  `penanggung_jawab` varchar(255) NOT NULL,
+  `status` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `hirarcdetails`
+--
+
+CREATE TABLE `hirarcdetails` (
+  `current_severity` varchar(255) NOT NULL,
+  `current_exposure` varchar(255) NOT NULL,
+  `current_probability` varchar(255) NOT NULL,
+  `current_risk_rating` varchar(255) NOT NULL,
+  `current_risk_category` varchar(255) NOT NULL,
+  `penyebab` varchar(255) NOT NULL,
+  `usulan` varchar(255) NOT NULL,
+  `deleted_at` timestamp(6) NOT NULL DEFAULT current_timestamp(6) ON UPDATE current_timestamp(6)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `hirarcdetails`
+--
+
+INSERT INTO `hirarcdetails` (`current_severity`, `current_exposure`, `current_probability`, `current_risk_rating`, `current_risk_category`, `penyebab`, `usulan`, `deleted_at`) VALUES
+('1', '3', '6', '18', 'slight', 'kurang nya pengawasan', 'Administrative control: Safety induction sebelum praktikum\r\n', '0000-00-00 00:00:00.000000');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `hirarcs`
 --
 
@@ -336,6 +378,28 @@ CREATE TABLE `hirarcs` (
   `user_id` bigint(20) UNSIGNED NOT NULL,
   `departemen_id` bigint(20) UNSIGNED NOT NULL,
   `location_id` bigint(20) UNSIGNED NOT NULL,
+  `activity` varchar(255) NOT NULL,
+  `hazard` varchar(255) NOT NULL,
+  `risk` varchar(255) NOT NULL,
+  `kesesuaian` varchar(255) NOT NULL,
+  `kondisi` varchar(255) NOT NULL,
+  `kendali` varchar(255) NOT NULL,
+  `current_severity` varchar(255) NOT NULL,
+  `current_exposure` varchar(255) NOT NULL,
+  `current_probability` varchar(255) NOT NULL,
+  `current_risk_rating` varchar(255) NOT NULL,
+  `current_risk_category` varchar(255) NOT NULL,
+  `penyebab` varchar(255) NOT NULL,
+  `usulan` varchar(255) NOT NULL,
+  `form_diperlukan` varchar(255) NOT NULL,
+  `sop` varchar(255) NOT NULL,
+  `residual_severity` varchar(255) NOT NULL,
+  `residual_exposure` varchar(255) NOT NULL,
+  `residual_probability` varchar(255) NOT NULL,
+  `residual_risk_rating` varchar(255) NOT NULL,
+  `residual_risk_category` varchar(255) NOT NULL,
+  `penanggung_jawab` varchar(255) NOT NULL,
+  `status` varchar(255) NOT NULL,
   `created_at` timestamp NULL DEFAULT current_timestamp(),
   `updated_at` timestamp NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   `deleted_at` timestamp NULL DEFAULT NULL
@@ -345,96 +409,18 @@ CREATE TABLE `hirarcs` (
 -- Dumping data for table `hirarcs`
 --
 
-INSERT INTO `hirarcs` (`id`, `user_id`, `departemen_id`, `location_id`, `created_at`, `updated_at`, `deleted_at`) VALUES
-(1, 1, 1, 83, '2021-12-27 09:31:38', '2021-12-28 08:19:31', NULL),
-(2, 1, 3, 79, '2021-12-28 03:52:46', '2021-12-28 08:21:25', NULL),
-(3, 1, 3, 79, '2021-12-28 04:21:10', '2021-12-28 08:21:27', NULL),
-(4, 1, 8, 42, '2021-12-28 10:18:17', '2021-12-28 10:18:17', NULL),
-(5, 1, 2, 3, '2021-12-29 12:25:09', '2021-12-29 12:25:09', NULL),
-(6, 1, 3, 80, '2021-12-30 08:43:16', '2022-02-16 18:07:15', '2022-02-16 11:07:15'),
-(7, 9, 12, 70, '2023-05-29 10:28:13', '2023-05-29 10:30:14', '2023-05-29 03:30:14'),
-(8, 9, 12, 70, '2023-05-29 10:35:43', '2023-05-29 10:35:43', NULL);
-
--- --------------------------------------------------------
-
---
--- Table structure for table `hirarc_details`
---
-
-CREATE TABLE `hirarc_details` (
-  `id` bigint(20) UNSIGNED NOT NULL,
-  `hirarc_id` bigint(20) UNSIGNED NOT NULL,
-  `activity_id` bigint(20) UNSIGNED NOT NULL,
-  `hazard_id` bigint(20) UNSIGNED NOT NULL,
-  `risk_id` bigint(20) UNSIGNED NOT NULL,
-  `created_at` timestamp NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
-  `updated_at` timestamp NULL DEFAULT NULL,
-  `deleted_at` timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `hirarc_details`
---
-
-INSERT INTO `hirarc_details` (`id`, `hirarc_id`, `activity_id`, `hazard_id`, `risk_id`, `created_at`, `updated_at`, `deleted_at`) VALUES
-(1, 1, 14, 3, 15, '2021-12-27 02:31:44', NULL, NULL),
-(2, 1, 8, 10, 15, '2021-12-27 02:40:42', NULL, NULL),
-(5, 1, 1, 13, 17, '2021-12-27 03:22:03', NULL, NULL),
-(7, 1, 1, 2, 12, '2021-12-27 04:13:50', NULL, NULL),
-(11, 1, 2, 2, 16, '2021-12-27 06:16:30', NULL, NULL),
-(12, 1, 2, 2, 14, '2021-12-27 06:16:30', NULL, NULL),
-(13, 1, 5, 5, 15, '2021-12-27 06:25:45', NULL, NULL),
-(14, 1, 6, 10, 16, '2021-12-27 06:26:00', NULL, NULL),
-(15, 1, 2, 2, 16, '2021-12-27 06:28:35', NULL, NULL),
-(16, 1, 2, 2, 20, '2021-12-27 06:28:35', NULL, NULL),
-(17, 1, 6, 10, 14, '2021-12-27 09:09:00', NULL, NULL),
-(18, 2, 11, 3, 6, '2021-12-27 20:52:56', NULL, NULL),
-(19, 2, 11, 3, 21, '2021-12-27 20:52:56', NULL, NULL),
-(20, 2, 1, 2, 6, '2021-12-27 21:13:11', NULL, NULL),
-(21, 2, 1, 10, 8, '2021-12-27 21:14:46', NULL, NULL),
-(22, 2, 4, 5, 6, '2021-12-27 21:17:15', NULL, NULL),
-(23, 2, 2, 3, 5, '2021-12-27 21:17:51', NULL, NULL),
-(24, 3, 3, 5, 4, '2021-12-27 21:21:17', NULL, NULL),
-(28, 3, 3, 3, 15, '2021-12-27 21:34:10', NULL, NULL),
-(29, 3, 3, 3, 19, '2021-12-27 21:34:10', NULL, NULL),
-(31, 3, 2, 5, 4, '2021-12-27 23:14:47', NULL, NULL),
-(32, 3, 4, 4, 4, '2021-12-27 23:20:23', NULL, NULL),
-(34, 3, 4, 4, 2, '2021-12-27 23:20:23', NULL, NULL),
-(36, 3, 3, 4, 4, '2021-12-27 23:39:19', NULL, NULL),
-(37, 3, 5, 13, 10, '2021-12-27 23:48:28', NULL, NULL),
-(38, 3, 1, 3, 18, '2021-12-28 00:11:22', NULL, NULL),
-(39, 3, 3, 3, 8, '2021-12-28 00:31:15', NULL, NULL),
-(40, 1, 2, 8, 8, '2021-12-28 00:39:49', NULL, NULL),
-(42, 2, 1, 2, 9, '2021-12-28 00:49:51', NULL, NULL),
-(43, 4, 4, 9, 12, '2021-12-28 03:19:18', NULL, NULL),
-(44, 4, 4, 9, 16, '2021-12-28 03:19:18', NULL, NULL),
-(45, 4, 4, 9, 22, '2021-12-28 03:19:18', NULL, NULL),
-(46, 4, 3, 5, 14, '2021-12-28 03:31:54', NULL, NULL),
-(47, 4, 3, 5, 6, '2021-12-28 03:31:54', NULL, NULL),
-(48, 4, 3, 5, 19, '2021-12-28 03:31:54', NULL, NULL),
-(49, 4, 2, 4, 7, '2021-12-29 05:20:53', NULL, NULL),
-(50, 4, 2, 4, 15, '2021-12-29 05:20:53', NULL, NULL),
-(51, 4, 2, 4, 21, '2021-12-29 05:20:53', NULL, NULL),
-(52, 5, 16, 14, 15, '2021-12-29 05:25:16', NULL, NULL),
-(53, 5, 2, 7, 6, '2021-12-29 05:26:42', NULL, NULL),
-(55, 5, 2, 8, 6, '2021-12-29 05:28:18', NULL, NULL),
-(56, 6, 4, 5, 15, '2021-12-30 01:43:25', NULL, NULL),
-(57, 6, 4, 5, 5, '2021-12-30 01:43:25', NULL, NULL),
-(59, 6, 7, 2, 7, '2021-12-30 01:44:39', NULL, NULL),
-(60, 7, 1, 1, 1, '2023-05-29 03:28:26', NULL, NULL),
-(61, 7, 1, 1, 2, '2023-05-29 03:28:26', NULL, NULL),
-(62, 8, 1, 1, 1, '2023-05-29 03:35:59', NULL, NULL),
-(63, 8, 1, 1, 2, '2023-05-29 03:35:59', NULL, NULL),
-(64, 8, 1, 1, 3, '2023-05-29 03:35:59', NULL, NULL),
-(65, 8, 1, 1, 1, '2023-05-29 03:38:56', NULL, NULL),
-(66, 8, 1, 1, 2, '2023-05-29 03:38:56', NULL, NULL),
-(67, 8, 1, 1, 3, '2023-05-29 03:38:56', NULL, NULL),
-(68, 8, 1, 1, 1, '2023-05-29 03:43:32', NULL, NULL),
-(69, 8, 1, 1, 2, '2023-05-29 03:43:32', NULL, NULL),
-(70, 8, 1, 1, 3, '2023-05-29 03:43:32', NULL, NULL),
-(71, 8, 1, 1, 1, '2023-05-29 03:47:54', NULL, NULL),
-(72, 8, 1, 1, 2, '2023-05-29 03:47:54', NULL, NULL),
-(73, 8, 1, 1, 3, '2023-05-29 03:47:54', NULL, NULL);
+INSERT INTO `hirarcs` (`id`, `user_id`, `departemen_id`, `location_id`, `activity`, `hazard`, `risk`, `kesesuaian`, `kondisi`, `kendali`, `current_severity`, `current_exposure`, `current_probability`, `current_risk_rating`, `current_risk_category`, `penyebab`, `usulan`, `form_diperlukan`, `sop`, `residual_severity`, `residual_exposure`, `residual_probability`, `residual_risk_rating`, `residual_risk_category`, `penanggung_jawab`, `status`, `created_at`, `updated_at`, `deleted_at`) VALUES
+(1, 1, 1, 83, 'Penggunaan listrik alat alat laboratorium', 'Penggunaan listrik', 'Tersengat listrik', 'Yes', 'Normal', 'Pemberitahuan untuk hati-hati dalam penggunaan listrik', '1', '2', '3', '6', 'Slight', 'Kabel listrik usang', 'Pembaharuan kabel listrik', '-', '-', '3', '2', '1', '6', 'Slight', 'P2K3', 'Open', '2021-12-27 09:31:38', '2023-08-21 02:20:40', NULL),
+(2, 1, 3, 79, 'Kegiatan belajar mengajar', 'Kabel stop kontak berserakan', 'Dapat merusak alat-alat elektronik', 'Yes', 'Normal', 'Jas lab', '1', '1', '1', '1', 'Slight', 'Kurangnya pengetahuan', 'Screen guard', '', '-', '1', '0.5', '1', '0.5', 'Slight', 'K3 Departemen', 'Open', '2021-12-28 03:52:46', '2023-08-21 02:15:04', NULL),
+(4, 1, 8, 42, 'Praktikum', 'Terkena bahan kimia', 'Cidera', 'Yes', 'Normal', 'Mengenalkan bahaya kepada praktikan', '3', '-', '2', '6', 'Slight', 'Kurang pengetahuan', 'Memantau proses praktikum', '-', '-', '2', '-', '1', '2', 'Slight', 'K3 Departemen', 'Open', '2021-12-28 10:18:17', '2023-08-11 02:28:16', '2023-08-11 02:28:16'),
+(5, 1, 2, 3, 'Kegiatan belajar mengajar', 'Suhu ruangan panas', 'Tersengat listrik', 'Yes', 'Normal', 'Membuka seluruh pintu dan jendele', '1', '10', '3', '30', 'Low', 'Kurangnya ventilasi', 'Memberi AC', '', '-', '1', '0.5', '1', '0.5', 'Slight', 'K3 Departemen', 'Open', '2021-12-29 12:25:09', '2023-08-24 04:48:01', NULL),
+(6, 1, 9, 87, 'Kegiata belajar mengajar', 'Sambungan listrik paralel', 'Tegangan arus pendek', 'Yes', 'Normal', 'Membuat jalur kabel', '3', '10', '3', '90', 'Medium', 'Pengawasan yang tidak memadai', 'Menyampaikan bahaya elektrik', '-', '-', '1', '10', '1', '10', 'Slight', 'K3 Departemen', 'Open', '2021-12-30 08:43:16', '2023-08-04 09:39:37', '2022-02-16 11:07:15'),
+(7, 9, 12, 70, 'Praktikum', 'Listrik padam', 'Terbentur atau menabrak barang', 'N/A', 'Normal', 'Menggunakan genset kecil', '1', '6', '6', '36', 'Low', '-', '-', '-', '-', '1', '6', '1', '1', 'Slight', 'UPA FT', 'Open', '2023-05-29 10:28:13', '2023-08-04 09:44:19', '2023-05-29 03:30:14'),
+(55, 9, 4, 5, 'Kegiatan belajar mengajar', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '2023-08-21 03:25:20', '2023-08-24 12:01:18', NULL),
+(57, 9, 5, 2, 'Kegiatan praktikum dengan peraga batuan/mineral', 'Listrik padam', 'Terbentur', 'Yes', 'Normal', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '2023-08-24 05:02:43', '2023-08-25 02:09:28', NULL),
+(58, 0, 0, 0, '', 'T', 'dapat menyebabkan orang tersandung atau terluka serta gangguan estetika', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '2023-08-24 05:02:43', '2023-08-24 18:26:19', '2023-08-24 18:26:19'),
+(59, 9, 3, 3, 'Kegiatan perawatan kebersihan ruang/ lingkungan', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '2023-08-24 20:53:13', '2023-08-24 20:53:13', NULL),
+(60, 0, 0, 0, '', 'Tempat penyimpanan barang yang kurang memadai', 'Dapat menyebabkan seseorang tersandung atau terluka', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '2023-08-24 20:53:13', '2023-08-24 20:53:13', NULL);
 
 -- --------------------------------------------------------
 
@@ -443,64 +429,13 @@ INSERT INTO `hirarc_details` (`id`, `hirarc_id`, `activity_id`, `hazard_id`, `ri
 --
 
 CREATE TABLE `hirarc_detail_controls` (
+  `id` bigint(20) UNSIGNED NOT NULL,
   `hirarc_detail_id` bigint(20) UNSIGNED NOT NULL,
   `hirarc_id` bigint(20) UNSIGNED NOT NULL,
-  `control_child_id` bigint(20) UNSIGNED NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `hirarc_detail_controls`
---
-
-INSERT INTO `hirarc_detail_controls` (`hirarc_detail_id`, `hirarc_id`, `control_child_id`) VALUES
-(1, 1, 2),
-(2, 1, 10),
-(5, 1, 4),
-(7, 1, 1),
-(11, 1, 4),
-(12, 1, 2),
-(13, 1, 4),
-(14, 1, 4),
-(15, 1, 4),
-(16, 1, 2),
-(17, 1, 4),
-(18, 2, 5),
-(19, 2, 2),
-(20, 2, 5),
-(21, 2, 4),
-(22, 2, 2),
-(23, 2, 4),
-(24, 3, 5),
-(28, 3, 2),
-(29, 3, 2),
-(31, 3, 4),
-(32, 3, 2),
-(34, 3, 2),
-(36, 3, 4),
-(37, 3, 2),
-(38, 3, 12),
-(39, 3, 11),
-(40, 1, 4),
-(42, 3, 10),
-(43, 4, 5),
-(44, 4, 2),
-(45, 4, 2),
-(46, 4, 11),
-(47, 4, 2),
-(48, 4, 4),
-(49, 4, 5),
-(50, 4, 6),
-(51, 4, 2),
-(52, 5, 4),
-(53, 5, 2),
-(55, 5, 2),
-(56, 6, 2),
-(57, 6, 20),
-(59, 6, 2),
-(60, 7, 1),
-(61, 8, 1),
-(62, 8, 2),
-(63, 8, 19);
+  `control_child_id` bigint(20) UNSIGNED NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
 
@@ -541,18 +476,7 @@ INSERT INTO `hirarc_postratings` (`hirarc_detail_id`, `hirarc_id`, `post_severit
 (21, 2, 7, 2, 3, 42, '2021-12-27 21:15:03', '2021-12-27 21:15:03'),
 (22, 2, 3, 1, 1, 3, '2021-12-27 21:17:32', '2021-12-27 21:17:32'),
 (23, 2, 7, 1, 1, 7, '2021-12-27 21:19:15', '2021-12-27 21:19:15'),
-(24, 3, 7, 3, 3, 63, '2021-12-27 21:21:37', '2021-12-27 21:21:37'),
-(28, 3, 3, 1, 6, 18, '2021-12-27 21:38:09', '2021-12-27 21:38:09'),
-(29, 3, 3, 1, 6, 18, '2021-12-27 21:38:23', '2021-12-27 21:38:23'),
-(31, 3, 15, 3, 6, 270, '2021-12-27 23:15:02', '2021-12-27 23:15:02'),
-(32, 3, 7, 1, 3, 21, '2021-12-27 23:20:42', '2021-12-27 23:20:42'),
-(34, 3, 7, 2, 6, 84, '2021-12-27 23:21:31', '2021-12-27 23:21:31'),
-(36, 3, 7, 1, 6, 42, '2021-12-27 23:46:27', '2021-12-27 23:46:27'),
-(37, 3, 7, 1, 3, 21, '2021-12-27 23:48:45', '2021-12-27 23:48:45'),
-(38, 3, 3, 1, 3, 9, '2021-12-28 00:11:38', '2021-12-28 00:11:38'),
-(39, 3, 7, 1, 1, 7, '2021-12-28 00:33:49', '2021-12-28 00:33:49'),
 (40, 1, 7, 1, 3, 21, NULL, '2021-12-28 07:45:54'),
-(42, 3, 7, 3, 1, 21, '2021-12-28 00:54:49', '2021-12-28 00:54:49'),
 (43, 4, 7, 2, 3, 42, '2021-12-28 03:19:34', '2021-12-28 03:19:34'),
 (44, 4, 15, 2, 1, 30, '2021-12-28 03:21:34', '2021-12-28 10:27:49'),
 (45, 4, 7, 0.5, 1, 3.5, '2021-12-28 03:28:19', '2021-12-28 03:28:19'),
@@ -567,10 +491,7 @@ INSERT INTO `hirarc_postratings` (`hirarc_detail_id`, `hirarc_id`, `post_severit
 (55, 5, 7, 1, 3, 21, '2021-12-29 05:28:34', '2021-12-29 05:28:34'),
 (56, 6, 3, 2, 6, 36, '2021-12-30 01:43:56', '2021-12-30 01:43:56'),
 (57, 6, 3, 3, 6, 54, '2021-12-30 01:44:10', '2021-12-30 01:44:10'),
-(59, 6, 3, 2, 3, 18, '2021-12-30 01:45:16', '2021-12-30 01:45:16'),
-(60, 8, 1, 0.5, 1, 0.5, '2023-05-29 03:36:26', '2023-05-29 03:36:26'),
-(61, 8, 3, 1, 1, 3, '2023-05-29 03:37:52', '2023-05-29 03:37:52'),
-(62, 8, 40, 10, 10, 4000, '2023-05-29 03:38:36', '2023-05-29 03:38:36');
+(59, 6, 3, 2, 3, 18, '2021-12-30 01:45:16', '2021-12-30 01:45:16');
 
 -- --------------------------------------------------------
 
@@ -611,18 +532,7 @@ INSERT INTO `hirarc_preratings` (`hirarc_detail_id`, `hirarc_id`, `pre_severity`
 (21, 2, 15, 2, 1, 30, '2021-12-27 21:14:53', '2021-12-27 21:14:53'),
 (22, 2, 7, 1, 1, 7, '2021-12-27 21:17:23', '2021-12-27 21:17:23'),
 (23, 2, 15, 2, 1, 30, '2021-12-27 21:19:06', '2021-12-27 21:19:06'),
-(24, 3, 7, 2, 6, 84, '2021-12-27 21:21:29', '2021-12-27 21:21:29'),
-(28, 3, 7, 2, 3, 42, '2021-12-27 21:37:59', '2021-12-27 21:37:59'),
-(29, 3, 3, 0.5, 3, 4.5, '2021-12-27 21:38:15', '2021-12-27 21:38:15'),
-(31, 3, 40, 3, 10, 1200, '2021-12-27 23:14:54', '2021-12-27 23:14:54'),
-(32, 3, 15, 1, 6, 90, '2021-12-27 23:20:33', '2021-12-27 23:20:33'),
-(34, 3, 15, 2, 1, 30, '2021-12-27 23:21:23', '2021-12-27 23:21:23'),
-(36, 3, 1, 0.5, 3, 1.5, '2021-12-27 23:46:05', '2021-12-27 23:46:05'),
-(37, 3, 7, 3, 3, 63, '2021-12-27 23:48:37', '2021-12-27 23:48:37'),
-(38, 3, 7, 2, 6, 84, '2021-12-28 00:11:29', '2021-12-28 00:11:29'),
-(39, 3, 7, 1, 6, 42, '2021-12-28 00:33:41', '2021-12-28 00:33:41'),
 (40, 1, 7, 1, 3, 21, '2021-12-28 07:46:14', '2021-12-28 07:46:14'),
-(42, 3, 7, 0.5, 3, 10.5, '2021-12-28 00:54:41', '2021-12-28 00:54:41'),
 (43, 4, 3, 1, 6, 18, '2021-12-28 03:19:26', '2021-12-28 03:19:26'),
 (44, 4, 15, 3, 6, 270, '2021-12-28 03:19:39', '2021-12-28 10:27:55'),
 (45, 4, 40, 2, 1, 80, '2021-12-28 03:28:06', '2021-12-28 03:28:06'),
@@ -638,10 +548,7 @@ INSERT INTO `hirarc_preratings` (`hirarc_detail_id`, `hirarc_id`, `pre_severity`
 (56, 6, 7, 2, 6, 84, '2021-12-30 01:43:47', '2021-12-30 01:43:47'),
 (57, 6, 15, 2, 3, 90, '2021-12-30 01:44:03', '2021-12-30 01:44:03'),
 (59, 6, 3, 1, 3, 9, '2021-12-30 01:45:02', '2021-12-30 01:45:02'),
-(60, 7, 1, 0.5, 1, 0.5, '2023-05-29 03:28:40', '2023-05-29 03:28:40'),
-(61, 8, 1, 0.5, 1, 0.5, '2023-05-29 03:36:12', '2023-05-29 03:36:12'),
-(62, 8, 1, 1, 1, 1, '2023-05-29 03:37:30', '2023-05-29 03:37:30'),
-(63, 8, 40, 10, 10, 4000, '2023-05-29 03:38:16', '2023-05-29 03:38:16');
+(60, 7, 1, 0.5, 1, 0.5, '2023-05-29 03:28:40', '2023-05-29 03:28:40');
 
 -- --------------------------------------------------------
 
@@ -716,9 +623,13 @@ CREATE TABLE `investigasis` (
 --
 
 INSERT INTO `investigasis` (`id`, `p2k3_id`, `laporinsiden_id`, `departemen_id`, `kategori`, `penyebab_langsung`, `penyebab_tidak_langsung`, `penyebab_dasar`, `tenggat_waktu`, `tindakan`, `created_at`, `updated_at`, `deleted_at`) VALUES
-(13, 2, 1, 7, 'Minor Injury', 'Kepleset', 'Jatuh', 'Mengantuk', '2021-12-24', 'Menyelamatkan', '2021-12-23 07:20:40', '2022-01-01 03:40:32', NULL),
-(18, 2, 4, 4, 'Minor Injury', 'Kepleset', 'Jatuh', 'Mengantuk', '2022-01-01', 'Menyelamatkan', '2022-01-01 04:14:54', '2022-01-01 09:05:26', NULL),
-(20, 5, 2, 2, 'Minor Injury', 'kepleset', 'Jatuh', 'Mengantuk', '2022-01-13', 'Menyelamatkan', '2022-01-13 08:52:02', '2022-02-16 11:22:52', '2022-02-16 11:22:52');
+(13, 2, 3, 3, 'Minor Injury', 'Kepleset', 'Jatuh', 'Mengantuk', '2021-12-24', '', '2021-12-23 07:20:40', '2023-08-25 09:09:08', NULL),
+(18, 1, 6, 4, 'Minor Injury', 'Kepleset', 'Jatuh', 'Mengantuk', '2022-01-01', '', '2022-01-01 04:14:54', '2023-08-25 09:36:15', NULL),
+(20, 5, 2, 2, 'Minor Injury', 'kepleset', 'Jatuh', 'Mengantuk', '2022-01-13', 'Menyelamatkan', '2022-01-13 08:52:02', '2022-02-16 11:22:52', '2022-02-16 11:22:52'),
+(31, 10, 2, 2, 'Serangan Jantung', '', '', 'Pohon Tumbang', '0000-00-00', '', NULL, NULL, NULL),
+(32, 8, 3, 4, 'Asma', '', '', 'Pohon Tumbang', '0000-00-00', '', NULL, NULL, NULL),
+(33, NULL, 0, 0, 'Serangan Jantung yes', 'test', 'yes', 'Kebakaran', '0000-00-00', 'yes', NULL, '2023-08-27 10:57:09', '2023-08-27 10:57:09'),
+(34, NULL, 0, 0, 'Serangan Jantung', 'tset', 'test', 'tidak diketahui', '0000-00-00', 'test', NULL, '2023-08-27 10:57:14', '2023-08-27 10:57:14');
 
 -- --------------------------------------------------------
 
@@ -728,7 +639,7 @@ INSERT INTO `investigasis` (`id`, `p2k3_id`, `laporinsiden_id`, `departemen_id`,
 
 CREATE TABLE `laporinsidens` (
   `id` bigint(20) UNSIGNED NOT NULL,
-  `p2k3_id` bigint(20) UNSIGNED NOT NULL DEFAULT 0,
+  `p2k3_id` bigint(20) UNSIGNED DEFAULT 0,
   `user_id` bigint(20) UNSIGNED DEFAULT NULL,
   `kode_laporinsiden` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `tanda_pengenal` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -760,15 +671,21 @@ CREATE TABLE `laporinsidens` (
 --
 
 INSERT INTO `laporinsidens` (`id`, `p2k3_id`, `user_id`, `kode_laporinsiden`, `tanda_pengenal`, `waktu_kejadian`, `departemen_id`, `lokasi_rinci`, `jenis_insiden`, `jenis_insiden_box`, `kronologi`, `penyebab_insiden`, `penyebab_insiden_box`, `nama_pelapor`, `email_pelapor`, `nomer_telepon_pelapor`, `unit_pelapor`, `nama_korban`, `email_korban`, `nomer_telepon_korban`, `unit_korban`, `status`, `gambar`, `created_at`, `updated_at`, `deleted_at`) VALUES
-(1, 2, 1, 'INSDN-1', 'dimdimdum.png', '2022-01-08', 7, 'Gedung Serbaguna', 'Pendarahan', NULL, 'aaaa', 'Mengantuk*', NULL, 'dimdimdum', 'dimasaldi619@gmail.com', '08786786756', 'UNDIP', 'Ahmad', 'ahmad@gmail.com', NULL, NULL, 3, 'dimdimdum.png', '2021-08-10 07:48:50', '2022-02-01 04:14:21', NULL),
-(2, 5, 4, 'INSDN-2', 'king.png', '2021-10-20', 2, 'Gedung Serbaguna', 'Serangan Jantung', NULL, 'aaa', 'Pohon Tumbang', NULL, 'king', 'dimasaldi619@gmail.com', '089879789', 'UNDIP', NULL, NULL, NULL, NULL, 2, 'dimdimdum.png', '2021-09-21 07:53:32', '2022-02-01 05:48:31', NULL),
-(3, 0, 1, 'INSDN-3', '', '2021-08-18', 4, 'Gedung Serbaguna', 'Asma', NULL, 'aaaa', 'Pohon Tumbang', NULL, 'jack', 'bb@bb', '08676577', 'UNDIP', NULL, NULL, NULL, NULL, 1, 'jack.png', '2021-08-18 07:55:37', '2021-12-22 07:55:37', NULL),
-(4, 2, 1, 'INSDN-4', '', '2021-05-18', 6, 'Gedung Serbaguna', 'Serangan Jantung', NULL, 'aaaa', 'Kebakaran', NULL, 'min', 'dimasaldi619@gmail.com', '086776756755', 'Undip', NULL, NULL, NULL, NULL, 2, 'min.png', '2021-08-10 08:22:11', '2022-01-01 01:45:09', NULL),
-(5, 0, 1, 'INSDN-5', '', '2021-11-16', 1, 'Gedung Serbaguna', 'Asma', NULL, 'aaa', 'Pohon Tumbang', NULL, 'ayooo', 'bb@bb', '086786786', 'UNDIP', NULL, NULL, NULL, NULL, 1, 'ayooo.png', '2021-07-20 08:36:24', '2021-12-23 08:36:24', NULL),
-(6, 0, 1, 'INSDN-6', '', '2022-02-01', 1, 'Gedung Serbaguna', 'Asma', NULL, 'aaa', 'Pohon Tumbang', NULL, 'van', 'dimasaldi619@gmail.com', '0897548574', 'UNDIP', NULL, NULL, NULL, NULL, 1, 'van.png', '2021-06-15 09:23:57', '2022-01-31 19:43:23', NULL),
-(13, 0, 6, 'INSDN-7', 'Della.png', '2022-02-01', 2, 'Gedung Serbaguna', 'Serangan Jantung', NULL, 'Berjalan di samping trotoar', 'Kecelakaan Lalu lintas', NULL, 'Della', 'della.putryz@gmail.com', '08927387283', 'UNDIP', NULL, NULL, NULL, NULL, 1, 'Della.jpg', '2022-01-31 22:28:34', '2022-02-01 04:25:47', NULL),
-(14, 0, 1, 'INSDN-14', 'Zack.jpg', '2022-02-02', 3, 'Gedung Serbaguna', 'Serangan Jantung', NULL, 'aaa', 'Pohon Tumbang', NULL, 'Zack', 'zack@gmail.com', '08934873873', 'UNDIP', NULL, NULL, NULL, NULL, 1, 'Zack.png', '2022-01-31 22:41:12', '2022-02-01 00:58:56', NULL),
-(15, 0, 6, 'INSDN-15', 'Nice.png', '2022-02-01', 2, 'Gedung Serbaguna', 'Serangan Jantung', NULL, 'aaaa', 'Kebakaran', NULL, 'Nice', 'Nice@gmail.com', '0893274837483', 'Undip', NULL, NULL, NULL, NULL, 1, 'Nice.jpg', '2022-02-01 01:37:11', '2022-02-16 11:47:26', NULL);
+(1, 8, 1, 'INSDN-1', 'dimdimdum.png', '2022-01-08', 7, 'Gedung Serbaguna', 'Pendarahan', NULL, 'aaaa', 'Mengantuk*', NULL, 'dimdimdum', 'dimasaldi619@gmail.com', '08786786756', 'UNDIP', 'Ahmad', 'ahmad@gmail.com', NULL, NULL, 3, 'dimdimdum.png', '2021-08-10 07:48:50', '2023-08-25 02:07:31', NULL),
+(2, 10, 4, 'INSDN-2', 'king.png', '2021-10-20', 2, 'Gedung Serbaguna', 'Serangan Jantung', NULL, 'aaa', 'Pohon Tumbang', NULL, 'king', 'dimasaldi619@gmail.com', '089879789', 'UNDIP', NULL, NULL, NULL, NULL, 2, 'dimdimdum.png', '2021-09-21 07:53:32', '2023-08-25 02:43:33', NULL),
+(3, 8, 1, 'INSDN-3', '', '2021-08-18', 4, 'Gedung Serbaguna', 'Asma', NULL, 'aaaa', 'Pohon Tumbang', NULL, 'jack', 'bb@bb', '08676577', 'UNDIP', NULL, NULL, NULL, NULL, 2, 'jack.png', '2021-08-18 07:55:37', '2023-08-27 10:07:40', NULL),
+(4, 8, 1, 'INSDN-4', '', '2021-05-18', 6, 'Gedung Serbaguna', 'Serangan Jantung', NULL, 'aaaa', 'Kebakaran', NULL, 'min', 'dimasaldi619@gmail.com', '086776756755', 'Undip', NULL, NULL, NULL, NULL, 2, 'min.png', '2021-08-10 08:22:11', '2023-08-25 02:44:30', NULL),
+(5, 11, 1, 'INSDN-5', '', '2021-11-16', 1, 'Gedung Serbaguna', 'Asma', NULL, 'aaa', 'Pohon Tumbang', NULL, 'ayooo', 'bb@bb', '086786786', 'UNDIP', NULL, NULL, NULL, NULL, 1, 'ayooo.png', '2021-07-20 08:36:24', '2023-08-25 02:44:42', NULL),
+(6, 11, 1, 'INSDN-6', '', '2022-02-01', 1, 'Gedung Serbaguna', 'Asma', NULL, 'aaa', 'Pohon Tumbang', NULL, 'van', 'dimasaldi619@gmail.com', '0897548574', 'UNDIP', NULL, NULL, NULL, NULL, 1, 'van.png', '2021-06-15 09:23:57', '2023-08-25 02:44:53', NULL),
+(13, 10, 6, 'INSDN-7', 'Della.png', '2022-02-01', 2, 'Gedung Serbaguna', 'Serangan Jantung', NULL, 'Berjalan di samping trotoar', 'Kecelakaan Lalu lintas', NULL, 'Della', 'della.putryz@gmail.com', '08927387283', 'UNDIP', NULL, NULL, NULL, NULL, 1, 'Della.jpg', '2022-01-31 22:28:34', '2023-08-25 02:45:05', NULL),
+(14, 8, 1, 'INSDN-14', 'Zack.jpg', '2022-02-02', 3, 'Gedung Serbaguna', 'Serangan Jantung', NULL, 'aaa', 'Pohon Tumbang', NULL, 'Zack', 'zack@gmail.com', '08934873873', 'UNDIP', NULL, NULL, NULL, NULL, 1, 'Zack.png', '2022-01-31 22:41:12', '2023-08-25 07:27:23', NULL),
+(15, 11, 6, 'INSDN-15', 'Nice.png', '2022-02-01', 2, 'Gedung Serbaguna', 'Serangan Jantung', NULL, 'aaaa', 'Kebakaran', NULL, 'Nice', 'Nice@gmail.com', '0893274837483', 'Undip', NULL, NULL, NULL, NULL, 1, 'Nice.jpg', '2022-02-01 01:37:11', '2023-08-25 02:47:57', '2023-08-25 02:47:57'),
+(16, 11, 9, 'INSDN-15', '1692973392_QaPOHc9YP4.png', '2023-08-25', 4, 'Lab Komputer', 'Serangan Jantung', NULL, 'Tiba tiba korban kejang kejang saat praktikum', 'tidak diketahui', NULL, 'afifa', 'afifahumaira@students.undip.ac.id', '081234567890', '', NULL, NULL, NULL, NULL, 2, '1692973391_cc93BwrNt2.png', '2023-08-25 07:23:12', '2023-08-27 10:08:04', NULL),
+(17, 0, NULL, 'INSDN-16', '1693052167_vFCTHyai5s.png', '2023-08-26', 6, 'test', 'Asma', NULL, 'test', 'test', NULL, 'test', 'afifahumaira@students.undip.ac.id', '081234567890', '', NULL, NULL, NULL, NULL, 1, '1693052167_GKZHrnbvdZ.png', '2023-08-26 05:16:07', '2023-08-27 01:05:46', '2023-08-27 01:05:46'),
+(18, 0, NULL, 'INSDN-16', '1693052294_rE1noPnNlB.png', '2023-08-26', 6, 'test', 'Asma', NULL, 'test', 'test', NULL, 'test', 'afifahumaira@students.undip.ac.id', '081234567890', '', NULL, NULL, NULL, NULL, 1, '1693052294_AO6IVDZtJk.png', '2023-08-26 05:18:14', '2023-08-27 01:05:54', '2023-08-27 01:05:54'),
+(19, 0, NULL, 'INSDN-16', '1693052320_rkXn9Rif8F.png', '2023-08-26', 6, 'test', 'Asma', NULL, 'test', 'test', NULL, 'test', 'afifahumaira@students.undip.ac.id', '081234567890', '', NULL, NULL, NULL, NULL, 1, '1693052320_fqhrxZnwcx.png', '2023-08-26 05:18:40', '2023-08-27 01:06:01', '2023-08-27 01:06:01'),
+(20, NULL, 9, 'INSDN-16', '1693123611_SPJZsKSdWY.png', '2023-08-27', 1, 'test', 'Pingsan', NULL, 'test', 'test', NULL, 'test', 'afifahumaira@students.undip.ac.id', '081234567890', '', NULL, NULL, NULL, NULL, 1, '1693123611_IHRQcLZsKb.png', '2023-08-27 01:06:51', '2023-08-27 01:08:09', '2023-08-27 01:08:09'),
+(21, 0, 9, 'INSDN-16', '1693124016_zHF1RAiMVp.png', '2023-08-27', 1, 'test', 'Pingsan', NULL, 'test', 'test', NULL, 'test', 'afifahumaira@students.undip.ac.id', '081234567890', '', NULL, NULL, NULL, NULL, 1, '1693124016_sFaR8cqcDo.png', '2023-08-27 01:13:36', '2023-08-27 01:13:36', NULL);
 
 -- --------------------------------------------------------
 
@@ -787,7 +704,6 @@ CREATE TABLE `locations` (
 --
 
 INSERT INTO `locations` (`id`, `departemen_id`, `name`) VALUES
-(1, 1, 'Laboratorium Komputasi'),
 (2, 2, 'Studio Perancangan'),
 (3, 2, 'Mushola'),
 (4, 2, 'Ruang Kelas'),
@@ -877,24 +793,26 @@ INSERT INTO `locations` (`id`, `departemen_id`, `name`) VALUES
 (88, 1, 'Aula'),
 (89, 2, 'Parkiran'),
 (90, 3, 'Ruang Kelas'),
-(91, 8, 'Laboratorium Udara');
+(91, 8, 'Laboratorium Udara'),
+(92, 0, 'test'),
+(93, 0, 'test');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `location_master`
+-- Table structure for table `location_masters`
 --
 
-CREATE TABLE `location_master` (
-  `id_lokasi` int(10) NOT NULL,
+CREATE TABLE `location_masters` (
+  `id` int(10) NOT NULL,
   `name` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `location_master`
+-- Dumping data for table `location_masters`
 --
 
-INSERT INTO `location_master` (`id_lokasi`, `name`) VALUES
+INSERT INTO `location_masters` (`id`, `name`) VALUES
 (1, 'Laboratorium Komputasi'),
 (2, 'Studio Perancangan'),
 (3, 'Mushola'),
@@ -1134,7 +1052,6 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (53, '2021_09_06_054338_create_control_childrens_table', 39),
 (54, '2021_09_06_111127_create_locations_table', 40),
 (55, '2021_09_06_112712_create_locations_table', 41),
-(56, '2021_09_06_122449_create_hirarcs_details_table', 42),
 (57, '2021_09_06_123532_create_hirarcs_details_controls_table', 43),
 (58, '2021_09_06_124708_create_hirarc_detail_controls_table', 44),
 (59, '2021_09_06_125107_create_hirarc_detail_ratings_table', 45),
@@ -1151,7 +1068,15 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (70, '2021_09_27_065932_create_home_simk3_table', 56),
 (71, '2021_09_27_174300_create_data_kosong_table', 57),
 (72, '2022_02_16_173934_deleted_table', 58),
-(73, '2019_12_14_000001_create_personal_access_tokens_table', 59);
+(73, '2023_07_05_144736_create_location_masters_table', 59),
+(74, '2023_07_05_145749_update_name_column_in_location_masters_table', 60),
+(75, '2023_07_05_154451_create_activitie_masters_table', 61),
+(76, '2023_07_05_154909_update_name_column_in_activitie_masters_table', 62),
+(77, '2023_07_17_144923_update_location_masters_table', 63),
+(78, '2023_07_24_144515_create_hirarcdetails_table', 64),
+(79, '2023_08_18_092822_create_hirarcs_table', 65),
+(80, '2019_12_14_000001_create_personal_access_tokens_table', 60),
+(81, '2023_08_27_093605_create_dokumens_table', 66);
 
 -- --------------------------------------------------------
 
@@ -1176,10 +1101,10 @@ CREATE TABLE `p2k3s` (
 --
 
 INSERT INTO `p2k3s` (`id`, `user_id`, `nama`, `avatar`, `jabatan`, `departemen`, `created_at`, `updated_at`, `deleted_at`) VALUES
-(0, 0, '', '', '', '', NULL, NULL, NULL),
-(8, 1, 'Dimas Aldi', 'Dimas Aldi.jpg', 'Ketua', 'Teknik Komputer', '2021-08-26 06:55:26', '2022-01-12 12:02:34', NULL),
+(8, 1, 'Dimas Aldi', 'Dimas Aldi.jpg', 'Ketua', 'Teknik Komputer', '2021-08-26 06:55:26', '2023-08-25 08:59:27', NULL),
 (10, 2, 'Dimdim', 'Dimdim.jpg', 'Penanggung Jawab II', 'Teknik Komputer', '2021-08-26 06:56:41', '2021-08-26 06:57:49', NULL),
-(11, 5, 'Yanuar', 'Yanuar.png', 'Penanggung Jawab II', 'Teknik Sipil', '2021-08-26 06:58:15', '2021-08-26 06:58:15', NULL);
+(11, 5, 'Yanuar', 'Yanuar.png', 'Penanggung Jawab II', 'Teknik Kimia', '2021-08-26 06:58:15', '2023-08-25 08:59:38', NULL),
+(13, 11, 'Caca', '1692959028_Screenshot (6).png', 'P2K3', 'Teknik Industri', '2023-08-25 03:23:49', '2023-08-25 03:25:47', '2023-08-25 03:25:47');
 
 -- --------------------------------------------------------
 
@@ -1301,7 +1226,7 @@ CREATE TABLE `password_resets` (
 --
 
 INSERT INTO `password_resets` (`email`, `token`, `created_at`) VALUES
-('admin@admin.com', '$2y$10$ftz/EQcljvimCZkCGekoUu0irLBqod8cksH.4N.uezoZAk6CS60Dy', '2023-06-13 04:43:21');
+('admin@admin.com', '$2y$10$/J5pJ4oBAT5PfDsLsROaQOfI13o7jE.tRIkzvH5Kq83pC1hjhBCo6', '2023-08-26 05:58:00');
 
 -- --------------------------------------------------------
 
@@ -1311,9 +1236,9 @@ INSERT INTO `password_resets` (`email`, `token`, `created_at`) VALUES
 
 CREATE TABLE `personal_access_tokens` (
   `id` bigint(20) UNSIGNED NOT NULL,
-  `tokenable_type` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `tokenable_type` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
   `tokenable_id` bigint(20) UNSIGNED NOT NULL,
-  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `name` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
   `token` varchar(64) COLLATE utf8mb4_unicode_ci NOT NULL,
   `abilities` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `last_used_at` timestamp NULL DEFAULT NULL,
@@ -1362,7 +1287,7 @@ CREATE TABLE `potensibahayas` (
 --
 
 INSERT INTO `potensibahayas` (`id`, `p2k3_id`, `user_id`, `kode_potensibahaya`, `tanda_pengenal`, `nama_pelapor`, `email_pelapor`, `nip_nim`, `nomer_telepon_pelapor`, `waktu_kejadian`, `kategori_pelapor`, `kategori_pelapor_box`, `institusi`, `tujuan`, `departemen_id`, `unit_civitas_akademika_box`, `lokasi`, `potensi_bahaya`, `potensi_bahaya_box`, `deskripsi_potensi_bahaya`, `resiko_bahaya`, `usulan_perbaikan`, `gambar`, `status`, `created_at`, `updated_at`, `deleted_at`) VALUES
-(1, 2, 6, 'PTNSBHYA-1', '', 'Razer', '', '21120117130058', '086736473643', '2021-09-19', 'Mahasiswa', NULL, 'Fakultas Teknik', 'Teknik Komputer', 6, NULL, 'Teknik Kimia Kelas D240', 'bbbb*', NULL, 'Kursi roboh mengakibatkan mahasiswa terjatuh dari kursi', 'Kursi Rusak', 'Kursi di perbaiki', 'Razer.jpg', 3, '2021-09-20 09:22:53', '2022-02-01 04:40:36', NULL),
+(1, 2, 6, 'PTNSBHYA-1', '', 'Razer', 'dimasaldi619@gmail.com', '21120117130058', '086736473643', '2021-09-19', 'Mahasiswa', NULL, 'Fakultas Teknik', 'Teknik Komputer', 6, NULL, 'Teknik Kimia Kelas D240', NULL, NULL, 'Kursi roboh mengakibatkan mahasiswa terjatuh dari kursi', 'Kursi Rusak', 'Kursi di perbaiki', 'Razer.jpg', 3, '2021-09-20 09:22:53', '2023-08-25 03:19:19', NULL),
 (2, 2, 1, 'PTNSBHYA-2', '', 'Krez', '', '21120117130058', '086778677', '2021-12-23', 'Mahasiswa', NULL, 'Fakultas Teknik', 'aaaaa', 3, NULL, 'Teknik Kimia Kelas D250', 'Biologis', NULL, 'Lalalala', 'bbb', 'bbb', 'Krez.png', 2, '2021-12-23 09:17:11', '2022-01-01 06:39:31', NULL),
 (3, NULL, 1, 'PTNSBHYA-3', '', 'Miu', '', '21120117130051', '0897458475834', '2021-12-23', 'Mahasiswa', NULL, 'Fakultas Teknik', 'aa', 3, NULL, 'Teknik Kimia Kelas D250', 'Biologis', NULL, 'aa', 'aa', 'aa', 'Miu.png', 1, '2021-12-23 09:21:16', '2021-12-23 09:21:16', NULL),
 (4, NULL, 1, 'PTNSBHYA-4', '', 'bayu', '', '21120117130066', '0878676756', '2021-12-24', 'Karyawan', NULL, 'Fakultas Teknik', 'aaa', 4, NULL, 'Teknik Kimia Kelas D250', 'Biologis', NULL, 'aaa', 'aa', 'aa', 'bayu.png', 1, '2021-12-23 09:25:52', '2021-12-23 09:25:52', NULL),
@@ -1370,8 +1295,11 @@ INSERT INTO `potensibahayas` (`id`, `p2k3_id`, `user_id`, `kode_potensibahaya`, 
 (6, 0, 4, 'PTNSBHYA-6', 'king.jpg', 'king', 'king@gmail.com', '21120117130057', '085934583485734', '2021-12-30', 'Mahasiswa', NULL, 'Fakultas Teknik', 'ke rumah', 2, NULL, 'Teknik Kimia Kelas D250', 'Biologis', NULL, 'aaa', 'aa', 'aa', 'king.png', 1, '2021-12-30 01:41:16', '2022-02-01 05:49:54', NULL),
 (8, NULL, NULL, 'PTNSBHYA-7', 'Hizky.png', 'Hizky', '', '21120117130057', '08786786', '2022-02-01', 'Mahasiswa', NULL, 'Fakultas Teknik', 'aaaa', 3, NULL, 'Teknik Kimia Kelas D250', 'Biologis', NULL, 'aaa', 'aaa', 'aaa', 'Hizky.jpg', 1, '2022-02-01 03:44:59', '2022-02-01 03:44:59', NULL),
 (12, NULL, NULL, 'PTNSBHYA-9', 'Jexy.jpg', 'Jexy', '', '21120117130057', '08954758784', '2022-02-01', 'Tamu', NULL, 'Fakultas Teknik', 'aaa', 2, NULL, 'Teknik Arsitektur Kelas D203', 'Ergonomi', NULL, 'aa', 'aa', 'aa', 'Jexy.png', 1, '2022-02-01 03:52:04', '2022-02-01 03:52:04', NULL),
-(13, 0, 6, 'PTNSBHYA-13', 'Della Putri.png', 'Della Putri', 'della.putryz@gmail.com', '21120117130057', '08596594684', '2022-02-02', 'Tamu', NULL, 'Fakultas Teknik', 'aaa', 2, NULL, 'aaa', 'Kimiawi', NULL, 'aa', 'aa', 'aa', 'Della Putri.png', 1, '2022-02-01 04:48:52', '2022-02-01 05:28:43', NULL),
-(14, NULL, NULL, 'PTNSBHYA-14', 'Rui.png', 'Rui', 'Rui@gmail.com', '21120117130057', '0896756755', '2022-02-01', 'Mahasiswa', NULL, 'Fakultas Teknik', 'aaaaa', 2, NULL, 'Teknik Arsitektur Kelas D203', 'Ergonomi', NULL, 'aa', 'aa', 'aa', 'Rui.jpg', 1, '2022-02-01 05:54:15', '2022-02-16 11:35:11', '2022-02-16 11:35:11');
+(13, 0, 6, 'PTNSBHYA-13', 'Della Putri.png', 'Della Putri', 'della.putryz@gmail.com', '21120117130057', '08596594684', '2022-02-02', 'Tamu', NULL, 'Fakultas Teknik', 'aaa', 2, NULL, 'aaa', 'Kimiawi', NULL, 'aa', 'aa', 'aa', 'Della Putri.png', 1, '2022-02-01 04:48:52', '2023-08-25 03:03:48', '2023-08-25 03:03:48'),
+(14, NULL, NULL, 'PTNSBHYA-14', 'Rui.png', 'Rui', 'Rui@gmail.com', '21120117130057', '0896756755', '2022-02-01', 'Mahasiswa', NULL, 'Fakultas Teknik', 'aaaaa', 2, NULL, 'Teknik Arsitektur Kelas D203', 'Ergonomi', NULL, 'aa', 'aa', 'aa', 'Rui.jpg', 1, '2022-02-01 05:54:15', '2022-02-16 11:35:11', '2022-02-16 11:35:11'),
+(15, NULL, 9, 'PTNBHYA-14', '1692957653_FjsHi3Eyxb.png', 'afifa', 'afifahumaira@students.undip.ac.id', '21120000000', '081234567890', '2023-08-25', 'Mahasiswa', NULL, 'Teknik Komputer', 'Kuliah', NULL, 'Mahasiswa', 'Laboratorium Komputasi', 'Fisik', NULL, 'Tertimpa', 'Pingsan', 'diberi pagar di sekit area pembangunan', '1692957653_39J3thBWVp.png', 1, '2023-08-25 03:00:53', '2023-08-25 08:41:31', NULL),
+(16, 10, 9, 'PTNBHYA-15', '1693028121_snZath1fyu.png', 'sayid', 'user/Sayidmiqdad@gmail.com', '21122112', '0812123456789', '2023-08-26', 'Tamu', NULL, 'Fakultas Teknik', 'lihat-lihat', NULL, 'Tamu', 'Gedung baru', 'Psikologi', NULL, 'panick attack', 'Pingsan', 'dipindahkan', '1693028120_pF8UFesmRw.png', 2, '2023-08-25 22:35:21', '2023-08-26 01:01:32', NULL),
+(17, NULL, NULL, 'PTNBHYA-16', '1693054586_hqnqG9qNUG.png', 'test', 'user/Sayidmiqdad@gmail.com', '2112', '0812123456789', '2023-08-26', 'Mahasiswa', NULL, 'Fakultas Teknik', 'Kuliah', NULL, 'Tamu', 'test', 'Biologis', NULL, 'test', 'test', 'test', '1693054586_7PH0fID04B.png', 1, '2023-08-26 05:56:26', '2023-08-26 05:56:26', NULL);
 
 -- --------------------------------------------------------
 
@@ -1441,15 +1369,36 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `hak_akses`, `email`, `departemen_id`, `avatar`, `email_verified_at`, `password`, `remember_token`, `created_at`, `updated_at`, `deleted_at`) VALUES
-(0, '', '', '', NULL, 'default.png', NULL, '', NULL, NULL, NULL, NULL),
-(1, 'Dimas Aldi', 'admin', 'dimasaldi619@gmail.com', NULL, 'Dimas Aldi.png', NULL, '$2y$10$11LSY8EJbkIXo7t1e6Dyfu1HxrU6us51TJdnYkMEz1iyc.Ye7Pmqe', NULL, '2021-08-25 05:50:29', '2022-01-13 01:23:00', NULL),
+(1, 'Dimas Aldi', 'admin', 'dimasaldi619@gmail.com', NULL, 'Dimas Aldi.png', NULL, '$2y$10$11LSY8EJbkIXo7t1e6Dyfu1HxrU6us51TJdnYkMEz1iyc.Ye7Pmqe', NULL, '2021-08-25 05:50:29', '2023-08-25 08:59:27', NULL),
 (2, 'Dimdim', 'p2k3', 'dimasaldy999@gmail.com', NULL, 'default.png', NULL, '$2y$10$SE9cAAN4RZtDGGPY2fcxF.O2tQwZmY2qmYo5aRB/X6codeE6bkQSa', NULL, '2021-08-26 00:01:35', '2021-12-28 06:24:08', NULL),
 (3, 'Erik', 'pimpinan', 'erych.milanisty@gmail.com', NULL, 'default.png', NULL, '$2y$10$qDgQe4wUTa/arBLxwL0Uw.kVUUTk1aA.7CrmpyAhPZHGFzcW9iA1q', NULL, '2021-08-26 02:06:24', '2021-12-20 02:53:45', NULL),
 (4, 'Elang', 'k3_departemen', 'Elang999@gmail.com', 2, 'default.png', NULL, '$2y$10$ZD2a6wM2djnma.DW1KmGCuPejZM5L4uvh9uH9cpBNVXlqKNsbMQz.', NULL, '2021-08-26 06:48:03', '2021-12-21 04:03:47', NULL),
-(5, 'Yanuar', 'p2k3', 'yanuar999@gmail.com', NULL, 'default.png', NULL, '$2y$10$gD./WmFdjRp2brvc20f/6e/Ai5tkj4WaOu3sZ80reF3GZbE0SIV.O', NULL, '2021-08-26 06:48:30', '2021-08-26 06:50:28', NULL),
+(5, 'Yanuar', 'p2k3', 'yanuar999@gmail.com', NULL, 'default.png', NULL, '$2y$10$gD./WmFdjRp2brvc20f/6e/Ai5tkj4WaOu3sZ80reF3GZbE0SIV.O', NULL, '2021-08-26 06:48:30', '2023-08-25 08:59:38', NULL),
 (6, 'Della Putri', 'tamu', 'della.putryz@gmail.com', NULL, 'default.png', NULL, '$2y$10$uCljbVJB3AWa4Ft4n7hMHePAVe811JYS1mUhuRQGtwlMPgUQYGQRS', NULL, '2021-09-07 03:44:20', '2022-01-20 01:47:20', NULL),
 (7, 'Rizky Febian', 'tamu', 'rizkyfebian@gmail.com', NULL, 'default.png', NULL, '$2y$10$91yCL5U76muG5Aob7iTZRucrCz.JFSZT7kEJzQ58MZrWf51qkHena', NULL, '2022-01-01 08:17:23', '2022-02-16 10:52:15', '2022-02-16 10:52:15'),
-(9, 'admin', 'admin', 'admin@admin.com', 12, 'default.png', NULL, '$2a$12$nclzDODTdYwn8GVNKM/YK.Y1jYPJCamsXUZ9MKp4q8owcv2Dc.HTC', NULL, NULL, NULL, NULL);
+(9, 'admin', 'admin', 'admin@admin.com', 12, 'default.png', NULL, '$2a$12$nclzDODTdYwn8GVNKM/YK.Y1jYPJCamsXUZ9MKp4q8owcv2Dc.HTC', NULL, NULL, NULL, NULL),
+(11, 'Caca', 'K3 Departemen', 'buatapaaja311@gmail.com', 6, '1692959416_Screenshot (6).png', NULL, '$2y$10$dzqWkNrP79hB3VCJQcZo9O1CRzynRk/3np27D5MnqSIQnNQ2iI0n2', NULL, '2023-08-25 03:23:48', '2023-08-25 03:31:00', '2023-08-25 03:31:00'),
+(12, 'afifa', 'K3 Departemen', 'afifahumaira1@gmail.com', 4, 'default.png', NULL, '$2y$10$X4OLYA8IQsYJdzs8W0wJaOYvP3YxhAw6utkEB4oaXx.JFzcAqo5di', NULL, '2023-08-25 03:46:19', '2023-08-25 09:02:34', NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Stand-in structure for view `vw_dashboard`
+-- (See below for the actual view)
+--
+CREATE TABLE `vw_dashboard` (
+`bulan` varchar(9)
+,`jumlah` bigint(21)
+);
+
+-- --------------------------------------------------------
+
+--
+-- Structure for view `vw_dashboard`
+--
+DROP TABLE IF EXISTS `vw_dashboard`;
+
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `vw_dashboard`  AS SELECT monthname(`laporinsidens`.`created_at`) AS `bulan`, count(`laporinsidens`.`kronologi`) AS `jumlah` FROM `laporinsidens` GROUP BY month(`laporinsidens`.`created_at`)  ;
 
 --
 -- Indexes for dumped tables
@@ -1462,10 +1411,10 @@ ALTER TABLE `activities`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `activities_master`
+-- Indexes for table `activitie_masters`
 --
-ALTER TABLE `activities_master`
-  ADD PRIMARY KEY (`id_aktivitas`);
+ALTER TABLE `activitie_masters`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `apars`
@@ -1524,22 +1473,10 @@ ALTER TABLE `hirarcs`
   ADD KEY `hirarcs_ke_location` (`location_id`);
 
 --
--- Indexes for table `hirarc_details`
---
-ALTER TABLE `hirarc_details`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `hirarc_detail_ke_hirarcs` (`hirarc_id`),
-  ADD KEY `hirarc_detail_ke_activity_id` (`activity_id`),
-  ADD KEY `hirarc_detail_ke_hazard_id` (`hazard_id`),
-  ADD KEY `hirarc_detail_ke_risk_id` (`risk_id`);
-
---
 -- Indexes for table `hirarc_detail_controls`
 --
 ALTER TABLE `hirarc_detail_controls`
-  ADD PRIMARY KEY (`hirarc_detail_id`),
-  ADD KEY `hirarc_solusi_ke_hirarcs` (`hirarc_id`),
-  ADD KEY `hirarc_detail_control_ke_control_children` (`control_child_id`);
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `hirarc_postratings`
@@ -1594,10 +1531,10 @@ ALTER TABLE `locations`
   ADD KEY `locations_departement_id_foreign` (`departemen_id`);
 
 --
--- Indexes for table `location_master`
+-- Indexes for table `location_masters`
 --
-ALTER TABLE `location_master`
-  ADD PRIMARY KEY (`id_lokasi`);
+ALTER TABLE `location_masters`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `maps`
@@ -1682,6 +1619,12 @@ ALTER TABLE `activities`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
 
 --
+-- AUTO_INCREMENT for table `activitie_masters`
+--
+ALTER TABLE `activitie_masters`
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
+
+--
 -- AUTO_INCREMENT for table `apars`
 --
 ALTER TABLE `apars`
@@ -1709,7 +1652,7 @@ ALTER TABLE `departemens`
 -- AUTO_INCREMENT for table `dokumens`
 --
 ALTER TABLE `dokumens`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `failed_jobs`
@@ -1721,25 +1664,19 @@ ALTER TABLE `failed_jobs`
 -- AUTO_INCREMENT for table `hazards`
 --
 ALTER TABLE `hazards`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
 
 --
 -- AUTO_INCREMENT for table `hirarcs`
 --
 ALTER TABLE `hirarcs`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
-
---
--- AUTO_INCREMENT for table `hirarc_details`
---
-ALTER TABLE `hirarc_details`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=74;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=61;
 
 --
 -- AUTO_INCREMENT for table `hirarc_detail_controls`
 --
 ALTER TABLE `hirarc_detail_controls`
-  MODIFY `hirarc_detail_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=64;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `hirarc_postratings`
@@ -1769,37 +1706,43 @@ ALTER TABLE `inventories`
 -- AUTO_INCREMENT for table `investigasis`
 --
 ALTER TABLE `investigasis`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
 
 --
 -- AUTO_INCREMENT for table `laporinsidens`
 --
 ALTER TABLE `laporinsidens`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 
 --
 -- AUTO_INCREMENT for table `locations`
 --
 ALTER TABLE `locations`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=92;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=94;
+
+--
+-- AUTO_INCREMENT for table `location_masters`
+--
+ALTER TABLE `location_masters`
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=94;
 
 --
 -- AUTO_INCREMENT for table `maps`
 --
 ALTER TABLE `maps`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=65;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=66;
 
 --
 -- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=74;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=82;
 
 --
 -- AUTO_INCREMENT for table `p2k3s`
 --
 ALTER TABLE `p2k3s`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT for table `p3ks`
@@ -1823,19 +1766,19 @@ ALTER TABLE `personal_access_tokens`
 -- AUTO_INCREMENT for table `potensibahayas`
 --
 ALTER TABLE `potensibahayas`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- AUTO_INCREMENT for table `risks`
 --
 ALTER TABLE `risks`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- Constraints for dumped tables
@@ -1854,107 +1797,6 @@ ALTER TABLE `apars`
 --
 ALTER TABLE `control_childrens`
   ADD CONSTRAINT `control_childrens_parent_id_foreign` FOREIGN KEY (`parent_id`) REFERENCES `controls` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
-
---
--- Constraints for table `hirarcs`
---
-ALTER TABLE `hirarcs`
-  ADD CONSTRAINT `hirarcs_ke_departemen` FOREIGN KEY (`departemen_id`) REFERENCES `departemens` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `hirarcs_ke_location` FOREIGN KEY (`location_id`) REFERENCES `locations` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `hirarcs_ke_users` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
-
---
--- Constraints for table `hirarc_details`
---
-ALTER TABLE `hirarc_details`
-  ADD CONSTRAINT `hirarc_detail_ke_activity_id` FOREIGN KEY (`activity_id`) REFERENCES `activities` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `hirarc_detail_ke_hazard_id` FOREIGN KEY (`hazard_id`) REFERENCES `hazards` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `hirarc_detail_ke_hirarcs` FOREIGN KEY (`hirarc_id`) REFERENCES `hirarcs` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `hirarc_detail_ke_risk_id` FOREIGN KEY (`risk_id`) REFERENCES `risks` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
-
---
--- Constraints for table `hirarc_detail_controls`
---
-ALTER TABLE `hirarc_detail_controls`
-  ADD CONSTRAINT `hirarc_detail_control_ke_control_children` FOREIGN KEY (`control_child_id`) REFERENCES `control_childrens` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `hirarc_solusi_ke_hirarc_id` FOREIGN KEY (`hirarc_detail_id`) REFERENCES `hirarc_details` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `hirarc_solusi_ke_hirarcs` FOREIGN KEY (`hirarc_id`) REFERENCES `hirarcs` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
-
---
--- Constraints for table `hirarc_postratings`
---
-ALTER TABLE `hirarc_postratings`
-  ADD CONSTRAINT `postrating_ke_hirarc_details` FOREIGN KEY (`hirarc_detail_id`) REFERENCES `hirarc_details` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `postrating_ke_hirarc_id` FOREIGN KEY (`hirarc_id`) REFERENCES `hirarcs` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
-
---
--- Constraints for table `hirarc_preratings`
---
-ALTER TABLE `hirarc_preratings`
-  ADD CONSTRAINT `prerating_ke_hirarc_id` FOREIGN KEY (`hirarc_detail_id`) REFERENCES `hirarc_details` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `prerating_ke_hirarcs` FOREIGN KEY (`hirarc_id`) REFERENCES `hirarcs` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
-
---
--- Constraints for table `inventories`
---
-ALTER TABLE `inventories`
-  ADD CONSTRAINT `inventories_departemen_id_foreign_key` FOREIGN KEY (`departemen_id`) REFERENCES `departemens` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
-
---
--- Constraints for table `investigasis`
---
-ALTER TABLE `investigasis`
-  ADD CONSTRAINT `invesitgasi_ke_departemen` FOREIGN KEY (`departemen_id`) REFERENCES `departemens` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `invesitgasi_ke_laporinsiden` FOREIGN KEY (`laporinsiden_id`) REFERENCES `laporinsidens` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `investigasi_ke_p2k3s` FOREIGN KEY (`p2k3_id`) REFERENCES `p2k3s` (`user_id`) ON DELETE CASCADE ON UPDATE CASCADE;
-
---
--- Constraints for table `laporinsidens`
---
-ALTER TABLE `laporinsidens`
-  ADD CONSTRAINT `laporinsiden_ke_departemen_id` FOREIGN KEY (`departemen_id`) REFERENCES `departemens` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `laporinsiden_ke_p2k3s` FOREIGN KEY (`p2k3_id`) REFERENCES `p2k3s` (`user_id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `laporinsiden_ke_user_id` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
-
---
--- Constraints for table `locations`
---
-ALTER TABLE `locations`
-  ADD CONSTRAINT `locations_departement_id_foreign` FOREIGN KEY (`departemen_id`) REFERENCES `departemens` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
-
---
--- Constraints for table `p2k3s`
---
-ALTER TABLE `p2k3s`
-  ADD CONSTRAINT `penanggungjawabs_user_id_foreign` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
-
---
--- Constraints for table `p3ks`
---
-ALTER TABLE `p3ks`
-  ADD CONSTRAINT `p3ks_ke_departemen_id` FOREIGN KEY (`departemen_id`) REFERENCES `departemens` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `p3ks_p3k_inventory_id_foreign` FOREIGN KEY (`p3k_inventory_id`) REFERENCES `p3k_inventories` (`id`),
-  ADD CONSTRAINT `p3ks_user_id_foreign` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
-
---
--- Constraints for table `p3k_inventories`
---
-ALTER TABLE `p3k_inventories`
-  ADD CONSTRAINT `p3k_inventories_departemen_id_foreign_key` FOREIGN KEY (`departemen_id`) REFERENCES `departemens` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
-
---
--- Constraints for table `potensibahayas`
---
-ALTER TABLE `potensibahayas`
-  ADD CONSTRAINT `potensibahaya_ke_departemen_id` FOREIGN KEY (`departemen_id`) REFERENCES `departemens` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `potensibahaya_ke_p2k3s` FOREIGN KEY (`p2k3_id`) REFERENCES `p2k3s` (`user_id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `potensibahaya_ke_user_id` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
-
---
--- Constraints for table `users`
---
-ALTER TABLE `users`
-  ADD CONSTRAINT `user_ke_departemen` FOREIGN KEY (`departemen_id`) REFERENCES `departemens` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

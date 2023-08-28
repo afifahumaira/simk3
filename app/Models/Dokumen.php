@@ -10,5 +10,5 @@ class Dokumen extends Model
     use HasFactory;
     protected $table = "dokumens";
 
-    protected $fillable = ['nama_file', 'file'];
+    protected $fillable = ['name_file', 'file'];
 }
