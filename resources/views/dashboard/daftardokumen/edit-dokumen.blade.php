@@ -76,7 +76,8 @@
                                     <div class="ps-3 pe-5 mb-0 pb-0">
                                         <label class="d-flex col-sm-2 col-form-label">File (PDF)</label>
                                         <div class="col-sm-10 w-100 mt-0 pt-0">
-                                            <iframe src ="{{ asset('/laraview/#../berkas/'.$data->file) }}" width="1000px" height="600px"></iframe>
+                                            <iframe src ="{{asset('/laraview/#../berkas/'.$data->file) }}" width="100%" height="600px"></iframe>
+                                            {{-- <embed src="{{asset('/laraview/#../berkas/'.$data->file)}}" type="application/pdf" width="100%" height="600px" /> --}}
                                             <input type="file" class="form-control" name="file" id="file">
                                         </div>
                                     </div>
@@ -156,4 +157,7 @@
 
         </div>
     </div>
+    <script>
+
+    </script>
 @stop

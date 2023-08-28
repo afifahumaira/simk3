@@ -60,7 +60,6 @@ class DaftardokumenController extends Controller
                 }
             }
         } else {
-            dd("gada file");
             $data = $request->validate([
                 'name_file' => 'required',
             ]);
