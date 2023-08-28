@@ -8,5 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Dokumen extends Model
 {
     use HasFactory;
-    protected $guarded = ['id'];
+    protected $table = "dokumens";
+
+    protected $fillable = ['nama_file', 'file'];
 }

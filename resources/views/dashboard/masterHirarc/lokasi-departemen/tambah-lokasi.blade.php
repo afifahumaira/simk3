@@ -8,7 +8,7 @@
                 class="app-content  rounded bg-light  mb-20 px-5 shadow"style="box-shadow: 2px 4px 20px 2px rgba(0, 0, 0, 0.1);">
                 <div class="app-toolbar-wrapper d-flex flex-stack flex-wrap gap-4 w-100 mb-5 px-5 border-bottom border-5">
                     <!--begin::Page title-->
-                    <h2>Lokasi</h2>
+                    <h2>Risiko</h2>
                     <a href="{{ route('lokasimaster.index') }}" type="button"
                         class="btn  btn-sm btn-primary d-flex justify-content-center align-items-center mb-2"
                         data-bs-toggle="modal" data-bs-target="#staticBackdrop" style="background: #233EAE; width:90px"><i
@@ -22,8 +22,8 @@
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                       </div> --}}
                                 <div class="modal-body mt-5 d-flex justify-content-center align-items-center">
-                                    <h2 class="mt-5 text-center" style="color: #16243D; font-size: 20px; font-weight:700">
-                                        keluar dari tambah data?
+                                    <h2 class="mt-5 text-center" style="color: #16243D; font-size: 20px font-weight:700">
+                                        reset data yang akan dimasukkan?
                                         <p class="mb-0 mt-2 text-center "
                                             style="color: #DC3545; font-weight:400; font-size:14px"> data yang dimasukkan
                                             belum tersimpan </p>
@@ -44,25 +44,22 @@
                 </div>
                 <div class="page-title  gap-1 mx-5 my-5  ">
                     <form class="lh-lg" action="{{ route('lokasimaster.simpan') }}" method="POST">
-                        <div id="kt_app_content"
-                            class="app-content flex-column-fluid rounded   mb-20 px-5 shadow"style="box-shadow: 2px 4px 20px 2px rgba(0, 0, 0, 0.1);">
-
-                            <div class="card ">
-                                <div class="card-header d-flex align-items-center fs-3 fw-normal">
-                                    <div class="pull-left">
-                                        <strong>Tambah Data Lokasi</strong>
+                        @csrf
+                        <div class="card ">
+                            <div class="card-header d-flex align-items-center fs-3 fw-normal">
+                                <div class="pull-left">
+                                    <strong>Tambah Data Lokasi</strong>
+                                </div>
+                            </div>
+                            <div class="card-body">
+                                <div class="mb-3">
+                                    <label for="inputNomertelepon3" class="col-sm-2 col-form-label required">Lokasi</label>
+                                    <div class="col-sm-10 w-100">
+                                        <input type="text" class="form-control" name="name" required>
                                     </div>
                                 </div>
-                                <div class="card-body">
-                                        @csrf
-                                        <div class="mb-3">
-                                            <label for="inputNomertelepon3" class="col-sm-2 col-form-label">Lokasi</label>
-                                            <div class="col-sm-10 w-100">
-                                                <input type="text" class="form-control" name="lokasi">
-                                            </div>
-                                        </div>
 
-                                </div>
+                                
                             </div>
                         </div>
 
@@ -79,22 +76,16 @@
                                     tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
                                     <div class="modal-dialog modal-dialog-centered ">
                                         <div class="modal-content">
-                                            {{-- <div class="modal-header">
-                                    <h1 class="modal-title fs-5" id="staticBackdropLabel">Modal title</h1>
-                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                </div> --}}
                                             <div class="modal-body mt-5 d-flex justify-content-center align-items-center">
                                                 <h2 class="mt-5 text-center"
-                                                    style="color: #16243D; font-size: 20px; font-weight:700">keluar dari tambah
-                                                    data?
+                                                    style="color: #16243D; font-size: 20px font-weight:700">reset data yang akan dimasukkan
                                                     <p class="mb-0 mt-2 text-center "
                                                         style="color: #DC3545; font-weight:400; font-size:14px"> data yang
                                                         dimasukkan belum tersimpan </p>
                                                 </h2>
                                             </div>
                                             <div class="modal-footer d-flex justify-content-center border-0">
-                                                <a href="{{ route('lokasimaster.tambah') }}"
-                                                    type="button"
+                                                <a href="{{ route('lokasimaster.tambah') }}" type="button"
                                                     class="btn btn-success text-white d-flex justify-content-center align-items-center text-center rounded-1"
                                                     style="width:76px; height:31px; background: #29CC6A;">Ya</a>
                                                 <button type="button"
@@ -114,4 +105,14 @@
 
         </div>
     </div>
+@stop
+
+@section('customscript')
+<script>
+    $(document).ready(function() {
+        $('#lokasimaster').select2({
+            closeOnSelect: false
+        });
+    });
+</script>
 @stop

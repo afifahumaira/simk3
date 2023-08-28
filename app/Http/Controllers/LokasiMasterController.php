@@ -47,7 +47,7 @@ class LokasiMasterController extends Controller
         ]);
 
         Alert::success('Berhasil', 'Data Lokasi berhasil disimpan!')->iconHtml('<i class="bi bi-person-check"></i>')->hideCloseButton();
-        return redirect()->route('lokasi-departemen.index');
+        return redirect()->route('lokasimaster.index');
     }
 
     public function update($id, Request $request) {

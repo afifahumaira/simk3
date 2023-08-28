@@ -56,7 +56,7 @@
                                             class="font-italic text-muted">
                                             <u>Masuk</u></a></p>
                                 </div>
-                                <form method="POST" action="{{ route('register') }}">
+                                <form method="POST" action="/register">
                                     @csrf
                                     <div class="form-group mb-3">
                                         <input id="name" name="name" required="" autofocus=""
@@ -74,11 +74,11 @@
                                             required autocomplete="new-password"
                                             class="form-control border-0 shadow-sm px-4 text-primary">
                                     </div>
-                                    <div class="form-group mb-3">
+                                    {{-- <div class="form-group mb-3">
                                         <input id="password_confirmation" type="password" name="password_confirmation"
                                             placeholder="Konfirmasi Password" required=""
                                             class="form-control border-0 shadow-sm px-4 text-primary">
-                                    </div>
+                                    </div> --}}
                                     <!-- <div class="custom-control custom-checkbox mb-3">
                                     <input id="customCheck1" type="checkbox" checked class="custom-control-input">
                                     <label for="customCheck1" class="custom-control-label">Remember password</label>
@@ -87,7 +87,7 @@
                                   <u>Lupa password?</u></a></p></div> -->
                                     <button type="submit"
                                         class="btn btn-primary btn-block text-uppercase mb-2 mt-3 shadow-sm d-flex justify-content-center align-items-center mx-auto">
-                                        DAFTAR{{ __('DAFTAR') }} </button>
+                                        {{ __('DAFTAR') }} </button>
 
                                 </form>
                             </div>

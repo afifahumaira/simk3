@@ -53,9 +53,7 @@ class LaporanInsidenController extends Controller
         return view('dashboard.laporaninsiden.edit-insiden', compact('lap', 'departments', 'p2k3s'));
     }
 
-    public function laporaninsiden(){
-        return view('Frntend_simk3.laporaninsidens');
-    }
+    
 
     public function insert(Request $request) {
         $request->validate([
@@ -200,6 +198,77 @@ class LaporanInsidenController extends Controller
         return redirect()->route('laporan-insiden.index');
     }
 
+    public function laporaninsiden(){
+        $departments = Departemen::all();
+        $kode = Laporinsiden::generateCode();
+
+        return view('Frntend_simk3.laporaninsidens')
+                ->with('kode', $kode)
+                ->with('departments', $departments);
+        
+    }
+
+    public function save(Request $request) {
+        $request->validate([
+            'kode_laporinsiden' => 'required',
+            'waktu_kejadian' => 'required',
+            'departemen_id' => 'required',
+            'lokasi_rinci' => 'required',
+            'jenis_insiden' => 'required',
+            'kronologi' => 'required',
+            'penyebab_insiden' => 'required',
+            'nama_pelapor' => 'required',
+            'email_pelapor' => 'required',
+            'nomer_telepon_pelapor' => 'required',
+            //'unit_pelapor' => 'required',
+            'gambar' => 'required',
+            'tanda_pengenal' => 'required',
+        ]);
+
+        $gambar = $request->file('gambar');
+        // Generate a unique filename using the current timestamp
+        $gambarName = time() . '_' . Str::random(10) . '.' . $gambar->getClientOriginalExtension();
+        // Store the file in the desired folder
+        $gambar->storeAs('public/laporan_insiden/gambarkejadian', $gambarName);
+
+        $pengenalName = '';
+        if($request->hasFile('tanda_pengenal')) {
+            $pengenal = $request->file('tanda_pengenal');
+            // Generate a unique filename using the current timestamp
+            $pengenalName = time() . '_' . Str::random(10) . '.' . $pengenal->getClientOriginalExtension();
+            // Store the file in the desired folder
+            $pengenal->storeAs('public/laporan_insiden/tanda_pengenal', $pengenalName);
+        } else {
+            $pengenalName = '';
+        }
+
+        Laporinsiden::create([
+            //'user_id' => auth()->user()->id,
+            'kode_laporinsiden' => $request->kode_laporinsiden,
+            'tanda_pengenal' => $pengenalName,
+            'waktu_kejadian' => $request->waktu_kejadian,
+            'departemen_id' => $request->departemen_id,
+            'lokasi_rinci' => $request->lokasi_rinci,
+            'jenis_insiden' => $request->jenis_insiden,
+            // 'jenis_insiden_box' => $request->jenis_insiden_box,
+            'kronologi' => $request->kronologi,
+            'penyebab_insiden' => $request->penyebab_insiden,
+            // 'penyebab_insiden_box' => $request->penyebab_insiden_box,
+            'nama_pelapor' => $request->nama_pelapor,
+            'email_pelapor' => $request->email_pelapor,
+            'nomer_telepon_pelapor' => $request->nomer_telepon_pelapor,
+            //'unit_pelapor' => $request->unit_pelapor,
+            'nama_korban' => $request->nama_korban,
+            'email_korban' => $request->email_korban,
+            'nomer_telepon_korban' => $request->nomer_telepon_korban,
+           // 'unit_korban' => $request->unit_korban,
+            'status' => 1,
+            'gambar' => $gambarName,
+        ]);
+
+        Alert::success('Berhasil', 'Data Laporan Insiden berhasil disimpan!')->iconHtml('<i class="bi bi-person-check"></i>')->hideCloseButton();
+        return redirect()->route('dashboard');
+    }
 }
 
 

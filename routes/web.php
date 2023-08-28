@@ -43,7 +43,9 @@ Route::get('dashboard', [Simk3Controller::class, 'dashboard'])->middleware(['aut
 require __DIR__.'/auth.php';
 
 Route::get('laporaninsidens', [LaporanInsidenController::class, 'laporaninsiden'])->name('laporaninsidens');
+Route::post('save', [LaporanInsidenController::class, 'save'])->name('save');
 Route::get('potensibahayas', [PotensibahayaController::class, 'potensibahaya'])->name('potensibahayas');
+Route::post('simpan', [PotensibahayaController::class, 'simpan'])->name('simpan');
 
 Route::group(['middleware' => ['auth']], function() {
     // 1. Laporan Insiden

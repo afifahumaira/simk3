@@ -67,19 +67,19 @@
                                             class="form-control border-0 shadow-sm px-4 text-primary">
                                     </div>
 
-                                    <div class="text-center d-flex justify-content-end mt-4">
+                                    {{-- <div class="text-center d-flex justify-content-end mt-4">
                                         @if (Route::has('password.request'))
                                             <a class="underline text-sm text-gray-600 hover:text-gray-900"
                                                 href="{{ route('password.request') }}">
                                                 <p><u>Lupa password?</u></p>
                                             </a>
                                         @endif
-                                    </div>
+                                    </div> --}}
                                     <button type="submit"
                                         class="btn btn-primary btn-block text-uppercase mb-2 mt-3 shadow-sm d-flex justify-content-center align-items-center mx-auto">
                                         {{ __('MASUK') }} </button>
                                     <div class="text-center d-flex justify-content-center mt-2">
-                                        <p>Belum Memiliki akun?<a href="f-regist.html" class="font-italic text-muted">
+                                        <p>Belum Memiliki akun?<a href="{{ url('/register') }}" class="font-italic text-muted">
                                                 <u>Daftar disini</u></a></p>
                                     </div>
                                 </form>

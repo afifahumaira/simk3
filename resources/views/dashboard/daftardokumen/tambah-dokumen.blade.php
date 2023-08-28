@@ -39,7 +39,7 @@
             </div>
         </div>
       <div class="card-body">
-          <form  class="lh-lg" method="POST" action="{{ route('daftardokumen.tambahdokumen') }}">
+          <form  class="lh-lg" method="POST" action="{{ route('daftardokumen.tambahdokumen') }}" enctype="multipart/form-data">
             @csrf
             {{-- <div class="ps-3 pe-5">
                   <label class="col-sm-2 col-form-label ">Kode ID</label>
@@ -53,17 +53,18 @@
               <div class="ps-3 pe-5">
                   <label  class="col-sm-2 col-form-label  ">Nama</label>
                   <div class="col-sm-10 w-100">
-                    <input type="text" class="form-control" name="name_file" id="lokasi_rinci" value="">
+                    <input type="text" class="form-control" name="name_file" id="nama_file" value="">
                       
                   </div>
               </div>             
       
-      <div class="ps-3 pe-5 mb-0 pb-0" >
-        <label  class="d-flex col-sm-2 col-form-label">File (PDF)</label>
-        <div class="col-sm-10 w-100 mt-0 pt-0">
-          <input type="file" accept="application/pdf" class="form-control" name="file" id="file" >          
-      </div>
-      </div>   
+              <div class="ps-3 pe-5">
+                <label  class="col-sm-2 col-form-label">Fila</label>
+                <div class="col-sm-10 w-100">
+                    <input type="file" class="form-control" name="file" id="file" >
+
+                </div>
+            </div> 
 
   </div>
   </div>
