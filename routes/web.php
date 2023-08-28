@@ -187,8 +187,10 @@ Route::group(['middleware' => ['auth']], function() {
         Route::get('/', [DaftardokumenController::class, 'index'])->name('index');
         Route::get('ubah/{id}', [DaftardokumenController::class, 'ubah'])->name('ubah');
         Route::post('ubah/{id}', [DaftardokumenController::class, 'ubahstore'])->name('ubahstore');
-        Route::get('tambah', [DaftardokumenController::class, 'tambah'])->name('tambah');
+        Route::get('fortambah', [DaftardokumenController::class, 'tambah'])->name('tambah');
         Route::post('tambah', [DaftardokumenController::class, 'tambahdokumen'])->name('tambahdokumen');
+        Route::post('store', [DaftardokumenController::class, 'store'])->name('store');
+
         Route::post('destroy/{id}', [DaftardokumenController::class, 'destroy'])->name('destroy');
     });
 
