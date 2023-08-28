@@ -32,7 +32,7 @@
                     </tr>
                     <tr>
                         <th>P2K3</th>
-                        <td>{{ $data->p2k3->nama ?? ''}}</td>
+                        <td>{{ $data->p2k3?->nama ?? ''}}</td>
                     </tr>
                     <tr>
                         <th>Nama Pelapor</th>

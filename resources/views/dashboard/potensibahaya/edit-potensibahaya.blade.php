@@ -120,7 +120,6 @@
                                         </div>
                                     </div>
 
-<<<<<<< HEAD
                                         <div class="ps-3 pe-5">
                                             <label class="col-form-label">Status</label>
                                             <div class="w-100">
@@ -160,13 +159,11 @@
                                             <div class="col-sm-10 w-100">
                                                 <input type="text" class="form-control" name="nama_pelapor"
                                                     id="lokasi_rinci" value="{{ $data->nama_pelapor }}">
-=======
                                     <div class="ps-3 pe-5">
                                         <label class="col-sm-2 col-form-label">Tanggal Kejadian</label>
                                         <div class="col-sm-10 w-100">
                                             <input type="date" id="date" class="form-control tanggalPicker"
                                                 value="{{ $data->waktu_kejadian }}" name="waktu_kejadian">
->>>>>>> 3587406db95c66abb353b94410b79aef28aa9849
 
                                         </div>
                                     </div>
