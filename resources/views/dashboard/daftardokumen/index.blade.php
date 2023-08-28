@@ -74,7 +74,9 @@
                             <tr>
                                 <th scope="row" class="text-center">{{ ++$index }}</th>
                                 <td>{{ $data->name_file }}</td>
-                                <td><a href=""class="text-decoration-underline">{{('/berkas/'. $data->file)}}</a></td>
+                                <td><a href="{{ '/berkas/' . $data->file }}"
+                                        target="_blank"class="text-decoration-underline">{{ '/berkas/' . $data->file }}</a>
+                                </td>
                                 <td>
                                     <a href="{{ route('daftardokumen.ubah', $data['id']) }}" type="button"
                                         class="btn  btn-sm bg-primary" style="width:20px;"><i
