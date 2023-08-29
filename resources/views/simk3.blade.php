@@ -359,7 +359,8 @@
                 <div class="row d-flex justify-content-center">
                     <div class="col-md-6 col-lg-3 d-flex flex-lg-column-reverse align-items-stretch mt-lg-5 mb-0 mb-lg-0"
                         data-aos="fade-up" data-aos-delay="100">
-                        <a class="text-reset" href="https://www.youtube.com/channel/UCrCaScMTI-fBNuXaFPGG21A/videos">
+                        <a class="text-reset" href={{ asset('/vendor/Arsha/assets/doc/sop-praktikum.pdf') }}
+                            target="blank">
                             <div class="icon-box">
                                 <i class="bi bi-clipboard-data-fill"></i>
                                 <!-- <h4 class="judul text-reset">YouTube</h4> -->
@@ -370,7 +371,8 @@
 
                     <div class="col-md-6 col-lg-3 d-flex align-items-center  mb-5 mb-lg-3 rounded-circle"
                         data-aos="fade-up" data-aos-delay="100">
-                        <a class="text-reset " href="https://www.instagram.com/bakesbangpoldki.jakarta/">
+                        <a class="text-reset " href={{ asset('/vendor/Arsha/assets/doc/sop-AC.pdf') }}
+                            target="blank">
                             <div class="icon-box ">
                                 <i class="bi bi-building-add"></i>
                                 <!-- <h4 class="judul text-reset">Instagram</h4> -->
@@ -382,7 +384,8 @@
 
                     <div class="col-md-6 col-lg-3 d-flex flex-lg-column-reverse align-items-stretch mt-lg-3 mb-0 mb-lg-0"
                         data-aos="fade-up" data-aos-delay="100">
-                        <a class="text-reset" href="https://www.youtube.com/channel/UCrCaScMTI-fBNuXaFPGG21A/videos">
+                        <a class="text-reset" href={{ asset('/vendor/Arsha/assets/doc/sop-ruang.pdf') }}
+                            target="blank">
                             <div class="icon-box">
                                 <i class="bi bi-file-earmark-zip"></i>
                                 <!-- <h4 class="judul text-reset">YouTube</h4> -->

@@ -2,7 +2,6 @@
 
 @section('content')
     <div class="page-title d-flex flex-column gap-1 mx-5 my-5  ">
-
         <div id="kt_app_content"
             class="app-content flex-column-fluid rounded bg-light  mb-20 px-5 shadow"style="box-shadow: 2px 4px 20px 2px rgba(0, 0, 0, 0.1);">
             <div class="app-toolbar-wrapper d-flex flex-stack flex-wrap gap-4 w-100 mb-5 px-5 border-bottom border-5">
@@ -21,18 +20,20 @@
                     <tr>
                         <th>Status</th>
                         <td>
-                            @if ($data->status == "1")
-                                <button type="button" class="btn btn-danger btn-sm py-2" style="background:#DC3545">Pending</button>
-                            @elseif ($data->status == "2")
+                            @if ($data->status == '1')
+                                <button type="button" class="btn btn-danger btn-sm py-2"
+                                    style="background:#DC3545">Pending</button>
+                            @elseif ($data->status == '2')
                                 <button type="button" class="btn btn-primary btn-sm py-2">Investigasi</button>
-                            @elseif ($data->status == "3")
+                            @elseif ($data->status == '3')
                                 <button type="button" class="btn btn-success btn-sm py-2">Sukses</button>
-                            @endif</td>
+                            @endif
+                        </td>
                         <td>
                     </tr>
                     <tr>
                         <th>P2K3</th>
-                        <td>{{ $data->p2k3?->nama ?? ''}}</td>
+                        <td>{{ $data->p2k3_nama }}</td>
                     </tr>
                     <tr>
                         <th>Nama Pelapor</th>
@@ -65,9 +66,10 @@
                     <tr>
                         <th>Foto Tanda Pengenal</th>
                         <td>
-                            <a class="d-block overlay" data-fslightbox="lightbox-basic" href="{{ asset('storage/potensi_bahaya/tanda_pengenal/'. $data->tanda_pengenal) }}">
+                            <a class="d-block overlay" data-fslightbox="lightbox-basic"
+                                href="{{ asset('storage/potensi_bahaya/tanda_pengenal/' . $data->tanda_pengenal) }}">
                                 <div class="overlay-wrapper bgi-no-repeat bgi-position-center bgi-size-cover card-rounded min-h-175px"
-                                    style="background-image:url('{{ asset('storage/potensi_bahaya/tanda_pengenal/'. $data->tanda_pengenal) }}')">
+                                    style="background-image:url('{{ asset('storage/potensi_bahaya/tanda_pengenal/' . $data->tanda_pengenal) }}')">
                                 </div>
                                 <div class="overlay-layer card-rounded bg-dark bg-opacity-25 shadow">
                                     <i class="bi bi-eye-fill text-white fs-3x"></i>
@@ -110,9 +112,10 @@
                     <tr>
                         <th>Foto Kejadian</th>
                         <td>
-                            <a class="d-block overlay" data-fslightbox="lightbox-basic" href="{{ asset('storage/potensi_bahaya/gambarkejadian/'. $data->gambar) }}">
+                            <a class="d-block overlay" data-fslightbox="lightbox-basic"
+                                href="{{ asset('storage/potensi_bahaya/gambarkejadian/' . $data->gambar) }}">
                                 <div class="overlay-wrapper bgi-no-repeat bgi-position-center bgi-size-cover card-rounded min-h-175px"
-                                    style="background-image:url('{{ asset('storage/potensi_bahaya/gambarkejadian/'. $data->gambar) }}')">
+                                    style="background-image:url('{{ asset('storage/potensi_bahaya/gambarkejadian/' . $data->gambar) }}')">
                                 </div>
                                 <div class="overlay-layer card-rounded bg-dark bg-opacity-25 shadow">
                                     <i class="bi bi-eye-fill text-white fs-3x"></i>
@@ -129,5 +132,5 @@
 @stop
 
 @section('customscript')
-<script src="{{ asset('plugins/custom/fslightbox/fslightbox.bundle.js') }}"></script>
+    <script src="{{ asset('plugins/custom/fslightbox/fslightbox.bundle.js') }}"></script>
 @stop
