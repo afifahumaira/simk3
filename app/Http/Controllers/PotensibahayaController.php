@@ -244,7 +244,7 @@ class PotensibahayaController extends Controller
         ]);
 
         Alert::success('Berhasil', 'Data Potensi Bahaya berhasil disimpan!')->iconHtml('<i class="bi bi-person-check"></i>')->hideCloseButton();
-        return redirect()->route('dashboard');
+        return redirect()->route('simk3.index');
     }
 
 }

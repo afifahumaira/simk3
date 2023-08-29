@@ -267,7 +267,7 @@ class LaporanInsidenController extends Controller
         ]);
 
         Alert::success('Berhasil', 'Data Laporan Insiden berhasil disimpan!')->iconHtml('<i class="bi bi-person-check"></i>')->hideCloseButton();
-        return redirect()->route('dashboard');
+        return redirect()->route('simk3.index');
     }
 }
 

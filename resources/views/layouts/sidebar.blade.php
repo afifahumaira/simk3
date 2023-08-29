@@ -356,12 +356,12 @@
                 </div>
                 <div class="menu-item here show menu-accordion">
                     <!--begin:Menu link-->
-                    <span class="menu-link">
+                    <a href="{{ route('simk3.index') }}" class="menu-link">
                         <span class="menu-icon">
                             <i class="bi bi-house-door text-white fs-3"></i>
                         </span>
                         <span class="menu-title text-white">Back Home</span>
-                    </span>
+                    </a>
                 </div>
             @endif
             {{-- End View Pengguna --}}

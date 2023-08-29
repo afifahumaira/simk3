@@ -54,7 +54,8 @@
                                 </div>
                             </div>
                             <div class="card-body">
-                                <form class="lh-lg" method="POST" action="{{ route('daftarinvestigasi.update', $investigasi->id) }}"
+                                <form class="lh-lg" method="POST"
+                                    action="{{ route('daftarinvestigasi.update', $investigasi->id) }}"
                                     enctype="multipart/form-data">
                                     @csrf
                                     {{-- <div class="ps-3 pe-5">
@@ -77,7 +78,7 @@
                                         <div class="col-sm-10 w-100">
                                             <div class="form-group label-floating is-empty is-focused">
                                                 <input class="form-control bg-secondary" name="nama_departemen"
-                                                    id="nama_departemen" value="{{ $investigasi->departemen->name }}" >
+                                                    id="nama_departemen" value="{{ $investigasi->departemen->name }}">
                                             </div>
                                         </div>
                                     </div>
@@ -85,23 +86,24 @@
                                         <label class="col-form-label ">Kategori</label>
                                         <div class=" w-100">
                                             <div class="form-group label-floating is-empty is-focused">
-                                                <input class="form-control bg-secondary" name="kategori"
-                                                    id="kategori" value="{{ $investigasi->kategori }}" >
+                                                <input class="form-control bg-secondary" name="kategori" id="kategori"
+                                                    value="{{ $investigasi->kategori }}">
                                             </div>
                                         </div>
                                     </div>
                                     <div class="ps-3 pe-5">
                                         <label class="col-sm-2 col-form-label">Penyebab Langsung</label>
                                         <div class="col-sm-10 w-100">
-                                            <input type="text" class="form-control" name="penyebab_langsung" id="penyebab_langsung"
-                                                value="{{ $investigasi->penyebab_langsung }}">
-                                    
+                                            <input type="text" class="form-control" name="penyebab_langsung"
+                                                id="penyebab_langsung" value="{{ $investigasi->penyebab_langsung }}">
+
                                         </div>
                                     </div>
                                     <div class="ps-3 pe-5">
                                         <label class="col-sm-2 col-form-label">Penyebab Tidak Langsung</label>
                                         <div class="col-sm-10 w-100">
-                                            <input type="text" class="form-control" name="penyebab_tidak_langsung" id="penyebab_tidak_langsung"
+                                            <input type="text" class="form-control" name="penyebab_tidak_langsung"
+                                                id="penyebab_tidak_langsung"
                                                 value="{{ $investigasi->penyebab_tidak_langsung }}">
 
                                         </div>
@@ -109,16 +111,16 @@
                                     <div class="ps-3 pe-5">
                                         <label class="col-sm-2 col-form-label">Penyebab Dasar</label>
                                         <div class="col-sm-10 w-100">
-                                            <input type="text" class="form-control" name="penyebab_dasar" id="penyebab_dasar"
-                                                value="{{ $investigasi->penyebab_dasar }}" readonly>
+                                            <input type="text" class="form-control" name="penyebab_dasar"
+                                                id="penyebab_dasar" value="{{ $investigasi->penyebab_dasar }}" readonly>
 
                                         </div>
                                     </div>
                                     <div class="ps-3 pe-5">
                                         <label class="col-sm-2 col-form-label">Tenggat Waktu</label>
                                         <div class="col-sm-10 w-100">
-                                            <input type="text" class="form-control" name="tenggat_waktu" id="tenggat_waktu"
-                                                value="{{ $investigasi->tenggat_waktu }}">
+                                            <input type="text" class="form-control" name="tenggat_waktu"
+                                                id="tenggat_waktu" value="{{ $investigasi->tenggat_waktu }}">
 
                                         </div>
                                     </div>
@@ -128,37 +130,93 @@
                                             <input type="text" class="form-control" name="tindakan" id="tindakan"
                                                 value="{{ $investigasi->tenggat_waktu }}">
 
-                                        </div>
-                                    </div>
+                                            {{-- <div class="ps-3 pe-5">
+                                                <label for="inputEmail3" class="col-sm-2 col-form-label">Tindakan</label>
+                                                <div class="col-sm-10 w-100">
+                                                    <input type="text" class="form-control"
+                                                        value="{{ $investigasi->tindakan }}">
 
-                    <div class="container d-flex justify-content-center">
-                        <div class=" d-flex justify-content-center">
-                            <button type="submit"
-                                class="btn btn-success text-white d-flex justify-content-center align-items-center "
-                                style="background: #29CC6A;height: 38px; margin : 10px 20px 30px 20px; font-size:14px; border-radius: 5px;">Simpan
-                                Data</button>
-            
+                                                </div>
+                                            </div>
+
+                                            <div class="ps-3 pe-5">
+                                                <label class="col-sm-2 col-form-label ">P2K3</label>
+                                                <div class="col-sm-10 w-100">
+                                                    <div class="form-group label-floating is-empty is-focused">
+                                                        <input class="form-control bg-secondary" name="p2k3"
+                                                            id="p2k3" value="{{ $investigasi->p2k3->nama }}"
+                                                            readonly>
+                                                    </div>
+                                                </div> --}}
+
+                                            <div class="container d-flex justify-content-center">
+                                                <div class=" d-flex justify-content-center">
+                                                    <button type="submit"
+                                                        class="btn btn-success text-white d-flex justify-content-center align-items-center "
+                                                        style="background: #29CC6A;height: 38px; margin : 10px 20px 30px 20px; font-size:14px; border-radius: 5px;">Simpan
+                                                        Data</button>
+                                                    <a href="{{ route('daftarinvestigasi.ubah', $investigasi->id) }}"
+                                                        type="submit"
+                                                        class="btn btn-secondary text-white d-flex align-items-center justify-content-center"
+                                                        data-bs-toggle="modal" data-bs-target="#resetform"
+                                                        style="background: #868E96; margin : 10px 20px 30px 20px; width: 124.33px;height: 38px; font-size:14px; border-radius: 5px;">Reset</a>
+                                                    <div class="modal fade" id="resetform" data-bs-backdrop="static"
+                                                        data-bs-keyboard="false" tabindex="-1"
+                                                        aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                                                        <div class="modal-dialog modal-dialog-centered ">
+                                                            <div class="modal-content">
+                                                                {{-- <div class="modal-header">
+                                            <h1 class="modal-title fs-5" id="staticBackdropLabel">Modal title</h1>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                        </div> --}}
+                                                                <div
+                                                                    class="modal-body mt-5 d-flex justify-content-center align-items-center">
+                                                                    <h2 class="mt-5 text-center"
+                                                                        style="color: #16243D; font-size: 20px font-weight:700">
+                                                                        keluar dari edit
+                                                                        data?
+                                                                        <p class="mb-0 mt-2 text-center "
+                                                                            style="color: #DC3545; font-weight:400; font-size:14px">
+                                                                            data yang
+                                                                            dimasukkan belum tersimpan </p>
+                                                                    </h2>
+                                                                </div>
+                                                                <div
+                                                                    class="modal-footer d-flex justify-content-center border-0">
+                                                                    <a href="{{ route('daftarinvestigasi.ubah', $investigasi->id) }}"
+                                                                        type="button"
+                                                                        class="btn btn-success text-white d-flex justify-content-center align-items-center text-center rounded-1"
+                                                                        style="width:76px; height:31px; background: #29CC6A;">Ya</a>
+                                                                    <button type="button"
+                                                                        class="btn btn-secondary text-center d-flex align-items-center rounded-1"
+                                                                        data-bs-dismiss="modal"
+                                                                        style="width:76px; height:31px; ">Tidak</button>
+
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                </form>
+                            </div>
                         </div>
+                        <!--end::Content container-->
+
                     </div>
-                    </form>
                 </div>
-            </div>
-            <!--end::Content container-->
+            @stop
 
-        </div>
-    </div>
-@stop
-
-@section('customscript')
-    <script src="{{ asset('plugins/custom/fslightbox/fslightbox.bundle.js') }}"></script>
-    <script>
-        $(document).ready(function() {
-            $(".tanggalPicker").flatpickr({
-                altInput: true,
-                altFormat: "d F Y",
-                dateFormat: "Y-m-d",
-                locale: "id"
-            });
-        });
-    </script>
-@stop
+            @section('customscript')
+                <script src="{{ asset('plugins/custom/fslightbox/fslightbox.bundle.js') }}"></script>
+                <script>
+                    $(document).ready(function() {
+                        $(".tanggalPicker").flatpickr({
+                            altInput: true,
+                            altFormat: "d F Y",
+                            dateFormat: "Y-m-d",
+                            locale: "id"
+                        });
+                    });
+                </script>
+            @stop
