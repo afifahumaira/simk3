@@ -303,7 +303,7 @@
             {{-- End View Admin --}}
 
             {{-- View tamu --}}
-            @if (auth()->user()->hak_akses == 'pengguna')
+            @if (auth()->user()->hak_akses == 'tamu')
                 <div class="menu-item here show menu-accordion ">
                     <!--begin:Menu link-->
                     <a href="{{ route('dashboard') }}" class="menu-link ">

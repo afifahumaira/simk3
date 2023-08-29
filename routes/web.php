@@ -86,8 +86,8 @@ Route::group(['middleware' => ['auth']], function() {
         Route::get('/', [HirarcController::class, 'index'])->name('index');
         Route::get('tambah/{id?}', [HirarcController::class, 'tambah'])->name('tambah');
         Route::get('tambahDetail/{id}', [HirarcController::class, 'tambahDetail'])->name('tambahDetail');
-        Route::post('simpan/{id}', [HirarcController::class, 'simpan'])->name('simpan');
-        Route::put('save', [HirarcController::class, 'save'])->name('save');
+        Route::post('simpan', [HirarcController::class, 'simpan'])->name('simpan');
+        Route::put('save/{id}', [HirarcController::class, 'save'])->name('save');
         Route::post('simpanPreControl/{id}/{detail_id}', [HirarcController::class, 'simpanPreControl'])->name('simpanPreControl');
         Route::post('simpanSolusi/{id}/{detail_id}', [HirarcController::class, 'simpanSolusi'])->name('simpanSolusi');
         Route::post('simpanPostControl/{id}/{detail_id}', [HirarcController::class, 'simpanPostControl'])->name('simpanPostControl');

@@ -102,6 +102,7 @@
                                                     <button type="button" class="btn-close" data-bs-dismiss="modal"
                                                         aria-label="Close"></button>
                                                 </div>
+                                                
                                                 <div class="modal-body mt-5 ">
                                                     <div id="additionalForm">
                                                         <div class="mb-3">
@@ -229,13 +230,13 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach ($hirarc as $detail)
+                            @foreach ($hirarc as $hira)
                                 <tr>
-                                    <td>{{ $hirarc->activity }}</td>
-                                    <td>{{ $hirarc->hazard }}</td>
-                                    <td>{{ $hirarc->risk }}</td>
+                                    <td>{{ $hira->activity }}</td>
+                                    <td>{{ $hira->hazard }}</td>
+                                    <td>{{ $hira->risk }}</td>
                                     <td>
-                                        <a href="{{ route('hirarc.tambahDetail', $hirarc->id) }}" type="button"
+                                        <a href="{{ route('hirarc.tambahDetail', $hira->id) }}" type="button"
                                             class="btn  btn-sm bg-primary" style="font-weight: 400; font-size: 16px">
                                             Lengkapi data
                                             {{-- <i class="bi bi-pencil-square text-dark d-flex justify-content-center align-items-center"></i> --}}
@@ -632,6 +633,7 @@
                             data: {
                                 location_id: location_id
                             },
+                            console.log(data);
                             success: function(data) {
                                 select.empty();
                                 select.append(
@@ -855,7 +857,7 @@
                             },
                             error: function(data) {
 
-                            }
+                            }   
                         }).done(function(data) {
                             select.prop('disabled', false);
                             select.closest("div").find(".select2-selection.select2-selection--single").removeClass(

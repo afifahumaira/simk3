@@ -39,7 +39,7 @@ class HirarcController extends Controller
         $hazards = Hazard::all();
         $risks = Risk::all();
 
-        $hrcs = Hirarc::latest()->first();
+        $hrcs = Hirarc::all();
 
         $hirarc = collect();
         if($id != null) {
@@ -124,23 +124,25 @@ class HirarcController extends Controller
             'location_id' => $request->location_id,
             'user_id' => auth()->user()->id,
             'activity' => $request->activitie,
+            'hazard' => $request->hazard,
+            'risk' => $request->risk,
             
             
         ]);
 
         // foreach  ($request->hazard as $key => $hazard){
-        //     Hirarc::create([
+        //     Hirarc::update([
         //     'hazard' => $hazard[$key],
         //     'risk' => $request->risk[$key],
         //     ]);
         // }
 
-       for($i = 0; $i < count($request->hazard); $i++) {
-           Hirarc::create([             
-               'hazard' => $request->hazard[$i],
-               'risk' => $request->risk[$i],
-           ]);
-       }
+    //    for($i = 0; $i < count($request->hazard); $i++) {
+    //        Hirarc::create([             
+    //            'hazard' => $request->hazard[$i],
+    //            'risk' => $request->risk[$i],
+    //        ]);
+    //    }
 
         Alert::success('Berhasil', 'Data Hirarc berhasil disimpan!')->iconHtml('<i class="bi bi-person-check"></i>')->hideCloseButton();
         return redirect()->route('hirarc.tambah', $hirarc->id);
