@@ -21,7 +21,7 @@
                         <div class="col-lg-3 col-md-6 col-sm-6">
                             <div class="card card-stats h-100">
                                 <div class="card-body ">
-                                    <div class="numbers  d-flex justify-content-between">
+                                    <div class="numbers  d-flex justify-content-between" style="font-size: 16px">
                                         <p class="card-category " style="color: #FF9600">Total Potensi Bahaya</p>
                                         <span class="card-title">10</span>
                                     </div>
@@ -40,7 +40,7 @@
                         <div class="col-lg-3 col-md-6 col-sm-6">
                             <div class="card card-stats h-100">
                                 <div class="card-body d-flex justify-content-around flex-column">
-                                    <p class="card-category  " style="color: #00876C ">Total Investigasi</p>
+                                    <p class="card-category  " style="color: #00876C; font-size:16px ">Total Investigasi</p>
                                     <span class="card-title mb-0" style="font-size:24px">11</span>
                                 </div>
                             </div>
@@ -48,7 +48,7 @@
                         <div class="col-lg-3 col-md-6 col-sm-6">
                             <div class="card card-stats h-100">
                                 <div class="card-body">
-                                    <div class="numbers d-flex justify-content-between mb-2">
+                                    <div class="numbers d-flex justify-content-between mb-2" style="font-size: 16px">
                                         <p class="card-category   " style="color: #0056B9 ">Total Lapor Insiden
                                         </p>
                                         <span class="card-title">14</span>

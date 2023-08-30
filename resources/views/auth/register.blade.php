@@ -50,6 +50,17 @@
                                 <div class="d-flex justify-content-center">
                                     <h3 class="display-4  mb-5 pb-5">SIM K3 TEKNIK UNDIP</h3>
                                 </div>
+
+                                @if ($errors->any())
+                                    <div class="alert alert-danger">
+                                        <ul>
+                                            @foreach ($errors->all() as $error)
+                                                <li>{{ $error }}</li>
+                                            @endforeach
+                                        </ul>
+                                    </div>
+                                @endif
+
                                 <div class="">
                                     <h3 class="display-4 fs-3">DAFTAR</h3>
                                     <p>Sudah Memiliki akun?<a href="{{ route('login') }}"
@@ -74,11 +85,11 @@
                                             required autocomplete="new-password"
                                             class="form-control border-0 shadow-sm px-4 text-primary">
                                     </div>
-                                    {{-- <div class="form-group mb-3">
+                                    <div class="form-group mb-3">
                                         <input id="password_confirmation" type="password" name="password_confirmation"
                                             placeholder="Konfirmasi Password" required=""
                                             class="form-control border-0 shadow-sm px-4 text-primary">
-                                    </div> --}}
+                                    </div>
                                     <!-- <div class="custom-control custom-checkbox mb-3">
                                     <input id="customCheck1" type="checkbox" checked class="custom-control-input">
                                     <label for="customCheck1" class="custom-control-label">Remember password</label>

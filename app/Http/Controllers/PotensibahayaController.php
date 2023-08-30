@@ -16,6 +16,7 @@ use Hash;
 use Validator;
 use Alert;
 use App\Models\P2k3;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
 
 class PotensibahayaController extends Controller
@@ -26,8 +27,9 @@ class PotensibahayaController extends Controller
         ->orWhere('lokasi', 'LIKE', '%'.$request->search.'%')
         ->orWhere('waktu_kejadian', 'LIKE', '%'.$request->search.'%')
         ->paginate(10);
-
+        
         return view('dashboard.potensibahaya.index', compact('datas'));
+        
     }
 
     public function tambah() {
@@ -97,8 +99,19 @@ class PotensibahayaController extends Controller
     }
 
     public function lihat($id) {
+<<<<<<< HEAD
         $data = PotensiBahaya::find($id);
         return view('dashboard.potensibahaya.lihat-potensibahaya', compact('data'));
+=======
+        $data = PotensiBahaya::where('id',$id)->first();
+        $potensibahayas=DB::table('potensibahayas')
+        ->leftJoin('p2k3s', 'p2k3s.id', '=', 'potensibahayas.p2k3_id')
+        ->select(            
+            'p2k3s.nama as p2k3_nama'
+        );
+        return view('dashboard.potensibahaya.lihat-potensibahaya', compact('data'))
+        -> with('potensibahaya', $potensibahayas);
+>>>>>>> dbd5586d23a3dd42a4785078b3d856505e0b6a38
     }
 
     public function delete($id){

@@ -39,8 +39,9 @@
                     <div class="menu-content d-flex align-items-center px-3">
                         <!--begin::Avatar-->
                         <div class="symbol symbol-50px me-5 rounded-circle">
-                            <img alt="Logo" src="https://a.fsdn.com/allura/p/xampp/icon?1599843055?&w=90"
-                                class="rounded-circle" />
+                            {{-- <img alt="Logo" src="https://a.fsdn.com/allura/p/xampp/icon?1599843055?&w=90"
+                                class="rounded-circle" /> --}}
+                            <i class="bi bi-person-circle fs-3x ms-3 text-dark"></i>
                         </div>
                         <!--end::Avatar-->
                         <!--begin::Username-->
