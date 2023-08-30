@@ -21,6 +21,8 @@ use App\Http\Controllers\MapsController;
 use App\Http\Controllers\RisikoController;
 // use App\Http\Controllers\Lihat_InsidenController;
 use Illuminate\Support\Facades\Route;
+// use RealRashid\SweetAlert\Facades\Alert;
+use Illuminate\Console\View\Components\Alert;
 
 
 /*
@@ -46,6 +48,10 @@ Route::get('laporaninsidens', [LaporanInsidenController::class, 'laporaninsiden'
 Route::post('save', [LaporanInsidenController::class, 'save'])->name('save');
 Route::get('potensibahayas', [PotensibahayaController::class, 'potensibahaya'])->name('potensibahayas');
 Route::post('simpan', [PotensibahayaController::class, 'simpan'])->name('simpan');
+Route::prefix('simk3')->name('simk3.')->group(function(){
+    Route::get('lp', [Simk3Controller::class, 'index'])->name('index');
+    // Route::get('dashoard', [Simk3Controller::class, 'dashboard'])->name('dashboard');
+});
 
 Route::group(['middleware' => ['auth']], function() {
     // 1. Laporan Insiden
@@ -54,9 +60,11 @@ Route::group(['middleware' => ['auth']], function() {
         Route::get('tambah', [LaporanInsidenController::class, 'tambah'])->name('tambah');
         Route::get('lihat/{id}', [LaporanInsidenController::class, 'lihat'])->name('lihat');
         Route::get('ubah/{id}', [LaporanInsidenController::class, 'ubah'])->name('ubah');
+        
         Route::post('insert', [LaporanInsidenController::class, 'insert'])->name('insert');
         Route::post('update/{id}', [LaporanInsidenController::class, 'update'])->name('update');
         Route::post('delete/{id}', [LaporanInsidenController::class, 'delete'])->name('delete');
+        Route::post('save', [LaporanInsidenController::class, 'save'])->name('save');
     });
 
     // 2. Daftar Investigasi
@@ -196,7 +204,7 @@ Route::group(['middleware' => ['auth']], function() {
 
     // LandingPage
     Route::prefix('simk3')->name('simk3.')->group(function(){
-        Route::get('/', [Simk3Controller::class, 'index'])->name('index');
+        // Route::get('/', [Simk3Controller::class, 'index'])->name('index');
         Route::get('dashoard', [Simk3Controller::class, 'dashboard'])->name('dashboard');
     });
 
@@ -245,6 +253,7 @@ Route::group(['middleware' => ['auth']], function() {
         Route::post('delete/{id}', [RisikoController::class, 'delete'])->name('delete');
     });
 });
+
 
 Route::get('testfirestore', [FirebaseController::class, 'index'])->name('firestore.index');
 Route::get('insertdepartment', [FirebaseController::class, 'insertdepartment'])->name('firestore.insertdepartment');

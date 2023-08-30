@@ -187,7 +187,8 @@
                                     <label for="inputfotokejadian" class="col-form-label">Foto Tanda
                                         Pengenal</label>
                                     <div class=" w-100">
-                                        <input type="file" class="form-control" name="tanda_pengenal" accept="image/png, image/jpeg">
+                                        <input type="file" class="form-control" name="tanda_pengenal"
+                                            accept="image/png, image/jpeg">
                                     </div>
                                 </div>
                             </div>
@@ -242,7 +243,7 @@
 
                     <div class="container d-flex justify-content-center">
                         <div class=" d-flex justify-content-center">
-                            <button type="submit"
+                            <button type="submit" id="submitButton"
                                 class="btn btn-success text-white d-flex justify-content-center align-items-center "
                                 style="background: #29CC6A;height: 38px; margin : 10px 20px 30px 20px; font-size:14px; border-radius: 5px;">Simpan
                                 Data</button>
@@ -257,7 +258,8 @@
 
                                         <div class="modal-body mt-5 d-flex justify-content-center align-items-center">
                                             <h2 class="mt-5 text-center"
-                                                style="color: #16243D; font-size: 20px font-weight:700">Reset data yang akan dimasukkan?
+                                                style="color: #16243D; font-size: 20px font-weight:700">Reset data yang
+                                                akan dimasukkan?
                                                 <p class="mb-0 mt-2 text-center "
                                                     style="color: #DC3545; font-weight:400; font-size:14px"> data yang
                                                     dimasukkan belum tersimpan </p>
@@ -287,6 +289,7 @@
 @stop
 
 @section('customscript')
+    {{-- <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script> --}}
     <script>
         $(document).ready(function() {
             $(".tanggalPicker").flatpickr({
@@ -296,5 +299,27 @@
                 locale: "id"
             });
         });
+
+        // document.addEventListener('DOMContentLoaded', function() {
+        //     const submitButton = document.querySelector('#submitButton');
+
+        //     submitButton.addEventListener('click', function(event) {
+        //         event.preventDefault();
+
+        //         Swal.fire({
+        //             icon: 'success',
+        //             title: 'Berhasil',
+        //             text: 'Data Laporan Insiden berhasil disimpan!',
+        //             iconHtml: '<i class="bi bi-person-check"></i>',
+        //             showCloseButton: true
+        //         }).then(function(result) {
+        //             if (result.isConfirmed) {
+        //                 window.location.href = "{{ route('simk3.index') }}";
+        //             }
+        //         });
+        //     });
+        // });
     </script>
+
+
 @stop

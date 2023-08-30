@@ -61,7 +61,8 @@
                                         <label class="col-form-label">Departemen</label>
                                         <div class=" w-100">
                                             <select name="departemen_id" class="form-select fs-6 w-100"
-                                                data-control="select2" data-hide-search="true" data-placeholder="Departemen">
+                                                data-control="select2" data-hide-search="true"
+                                                data-placeholder="Departemen">
                                                 @foreach ($departments as $dep)
                                                     <option value="{{ $dep->id }}"
                                                         {{ $hirarc->departemen_id == $dep->id ? 'selected' : '' }}>
@@ -74,8 +75,8 @@
                                     <div class="ps-3 pe-5">
                                         <label class="col-form-label">Lokasi</label>
                                         <div class=" w-100">
-                                            <select name="location_id" class="form-select fs-6 w-100"
-                                                data-control="select2" data-hide-search="true" data-placeholder="Lokasi">
+                                            <select name="location_id" class="form-select fs-6 w-100" data-control="select2"
+                                                data-hide-search="true" data-placeholder="Lokasi">
                                                 @foreach ($locations as $loc)
                                                     <option value="{{ $loc->id }}"
                                                         {{ $hirarc->location_id == $loc->id ? 'selected' : '' }}>
@@ -88,8 +89,8 @@
                                     <div class="ps-3 pe-5">
                                         <label class="col-form-label">Aktifitas</label>
                                         <div class=" w-100">
-                                            <select name="activity" class="form-select fs-6 w-100"
-                                                data-control="select2" data-hide-search="true" data-placeholder="Aktifitas">
+                                            <select name="activity" class="form-select fs-6 w-100" data-control="select2"
+                                                data-hide-search="true" data-placeholder="Aktifitas">
                                                 @foreach ($activitie as $act)
                                                     <option value="{{ $act->name }}"
                                                         {{ $hirarc->activitie == $act->id ? 'selected' : '' }}>
@@ -102,8 +103,8 @@
                                     <div class="ps-3 pe-5">
                                         <label class="col-form-label">Hazard</label>
                                         <div class=" w-100">
-                                            <select name="hazard" class="form-select fs-6 w-100"
-                                                data-control="select2" data-hide-search="true" data-placeholder="Hazard">
+                                            <select name="hazard" class="form-select fs-6 w-100" data-control="select2"
+                                                data-hide-search="true" data-placeholder="Hazard">
                                                 @foreach ($hazard as $hazard)
                                                     <option value="{{ $hazard->name }}"
                                                         {{ $hirarc->hazard == $hazard->id ? 'selected' : '' }}>
@@ -116,8 +117,8 @@
                                     <div class="ps-3 pe-5">
                                         <label class="col-form-label">Resiko</label>
                                         <div class=" w-100">
-                                            <select name="risk" class="form-select fs-6 w-100"
-                                                data-control="select2" data-hide-search="true" data-placeholder="Resiko">
+                                            <select name="risk" class="form-select fs-6 w-100" data-control="select2"
+                                                data-hide-search="true" data-placeholder="Resiko">
                                                 @foreach ($risk as $risk)
                                                     <option value="{{ $risk->name }}"
                                                         {{ $hirarc->risk == $risk->id ? 'selected' : '' }}>
@@ -126,29 +127,29 @@
                                             </select>
                                         </div>
                                     </div>
-                                    
-                                    
+
+
                                     <div class="ps-3 pe-5">
                                         <label class="col-form-label">Kesesuaian dengan Aturan</label>
                                         <div class=" w-100">
-                                            <input type="text" class="form-control" name="kesesuaian"
-                                                id="kesesuaian" value="{{ $hirarc->kesesuaian }}">
+                                            <input type="text" class="form-control" name="kesesuaian" id="kesesuaian"
+                                                value="{{ $hirarc->kesesuaian }}">
                                         </div>
                                     </div>
 
                                     <div class="ps-3 pe-5">
                                         <label class="col-form-label">Kondisi</label>
                                         <div class=" w-100">
-                                            <input type="text" class="form-control" name="kondisi"
-                                                id="kondisi" value="{{ $hirarc->kondisi }}">{{ $hirarc->kondisi }}>
+                                            <input type="text" class="form-control" name="kondisi" id="kondisi"
+                                                value="{{ $hirarc->kondisi }}">{{ $hirarc->kondisi }}>
                                         </div>
                                     </div>
-                                    
+
                                     <div class="ps-3 pe-5">
                                         <label class="col-form-label">Pengendalian</label>
                                         <div class=" w-100">
-                                            <input type="text" class="form-control" name="kendali"
-                                                id="kendali" value="{{ $hirarc->kendali }}">{{ $hirarc->kendali }}>
+                                            <input type="text" class="form-control" name="kendali" id="kendali"
+                                                value="{{ $hirarc->kendali }}">{{ $hirarc->kendali }}>
                                         </div>
                                     </div>
 
@@ -156,7 +157,8 @@
                                         <label class="col-form-label">Keparahan Saat Ini</label>
                                         <div class=" w-100">
                                             <input type="text" class="form-control" name="current_severity"
-                                                id="current_severity ini" value="{{ $hirarc->current_severity }}">{{ $hirarc->current_severity }}>
+                                                id="current_severity ini"
+                                                value="{{ $hirarc->current_severity }}">{{ $hirarc->current_severity }}>
                                         </div>
                                     </div>
 
@@ -164,7 +166,8 @@
                                         <label class="col-form-label">Paparan Saat Ini</label>
                                         <div class=" w-100">
                                             <input type="text" class="form-control" name="current_exposure"
-                                                id="current_exposure" value="{{ $hirarc->current_exposure }}">{{ $hirarc->current_exposure }}>
+                                                id="current_exposure"
+                                                value="{{ $hirarc->current_exposure }}">{{ $hirarc->current_exposure }}>
                                         </div>
                                     </div>
 
@@ -172,7 +175,8 @@
                                         <label class="col-form-label">Probabilitas Saat Ini</label>
                                         <div class=" w-100">
                                             <input type="text" class="form-control" name="current_probability"
-                                                id="current_probability" value="{{ $hirarc->current_probability }}">{{ $hirarc->current_probability }}>
+                                                id="current_probability"
+                                                value="{{ $hirarc->current_probability }}">{{ $hirarc->current_probability }}>
                                         </div>
                                     </div>
 
@@ -180,7 +184,8 @@
                                         <label class="col-form-label">Tingkat Resiko Saat Ini</label>
                                         <div class=" w-100">
                                             <input type="text" class="form-control" name="current_risk_rating"
-                                                id="current_risk_rating" value="{{ $hirarc->current_risk_rating }}">{{ $hirarc->current_risk_rating }}>
+                                                id="current_risk_rating"
+                                                value="{{ $hirarc->current_risk_rating }}">{{ $hirarc->current_risk_rating }}>
                                         </div>
                                     </div>
 
@@ -188,23 +193,24 @@
                                         <label class="col-form-label">Kategori Saat Ini</label>
                                         <div class=" w-100">
                                             <input type="text" class="form-control" name="current_risk_category"
-                                                id="current_risk_category" value="{{ $hirarc->current_risk_category }}">{{ $hirarc->current_risk_category }}>
+                                                id="current_risk_category"
+                                                value="{{ $hirarc->current_risk_category }}">{{ $hirarc->current_risk_category }}>
                                         </div>
                                     </div>
 
                                     <div class="ps-3 pe-5">
                                         <label class="col-form-label">Penyebab Utama</label>
                                         <div class=" w-100">
-                                            <input type="text" class="form-control" name="penyebab"
-                                                id="penyebab" value="{{ $hirarc->penyebab }}">{{ $hirarc->penyebab }}>
+                                            <input type="text" class="form-control" name="penyebab" id="penyebab"
+                                                value="{{ $hirarc->penyebab }}">{{ $hirarc->penyebab }}>
                                         </div>
                                     </div>
 
                                     <div class="ps-3 pe-5">
                                         <label class="col-form-label">Usulan</label>
                                         <div class=" w-100">
-                                            <input type="text" class="form-control" name="usulan"
-                                                id="usulan" value="{{ $hirarc->usulan }}">{{ $hirarc->usulan }}>
+                                            <input type="text" class="form-control" name="usulan" id="usulan"
+                                                value="{{ $hirarc->usulan }}">{{ $hirarc->usulan }}>
                                         </div>
                                     </div>
 
@@ -212,15 +218,16 @@
                                         <label class="col-form-label">Formulir yang Dibutuhkan</label>
                                         <div class=" w-100">
                                             <input type="text" class="form-control" name="form_diperlukan"
-                                                id="form_diperlukan" value="{{ $hirarc->form_dibutuhkan }}">{{ $hirarc->form_dibutuhkan }}>
+                                                id="form_diperlukan"
+                                                value="{{ $hirarc->form_dibutuhkan }}">{{ $hirarc->form_dibutuhkan }}>
                                         </div>
                                     </div>
 
                                     <div class="ps-3 pe-5">
                                         <label class="col-form-label">SOP</label>
                                         <div class=" w-100">
-                                            <input type="text" class="form-control" name="sop"
-                                                id="sop" value="{{ $hirarc->sop }}">{{ $hirarc->sop }}>
+                                            <input type="text" class="form-control" name="sop" id="sop"
+                                                value="{{ $hirarc->sop }}">{{ $hirarc->sop }}>
                                         </div>
                                     </div>
 
@@ -228,7 +235,8 @@
                                         <label class="col-form-label">Keparahan Residual</label>
                                         <div class=" w-100">
                                             <input type="text" class="form-control" name="residual_severity"
-                                                id="residual_severity" value="{{ $hirarc->residual_severity }}">{{ $hirarc->residual_severity }}>
+                                                id="residual_severity"
+                                                value="{{ $hirarc->residual_severity }}">{{ $hirarc->residual_severity }}>
                                         </div>
                                     </div>
 
@@ -236,7 +244,8 @@
                                         <label class="col-form-label">Paparan Residual</label>
                                         <div class=" w-100">
                                             <input type="text" class="form-control" name="residual_exposure"
-                                                id="residual_exposure" value="{{ $hirarc->residual_exposure }}">{{ $hirarc->residual_exposure }}>
+                                                id="residual_exposure"
+                                                value="{{ $hirarc->residual_exposure }}">{{ $hirarc->residual_exposure }}>
                                         </div>
                                     </div>
 
@@ -244,7 +253,8 @@
                                         <label class="col-form-label">Probabilitas Residual</label>
                                         <div class=" w-100">
                                             <input type="text" class="form-control" name="residual_probability"
-                                                id="residual_probability" value="{{ $hirarc->residual_probability }}">{{ $hirarc->residual_probability }}>
+                                                id="residual_probability"
+                                                value="{{ $hirarc->residual_probability }}">{{ $hirarc->residual_probability }}>
                                         </div>
                                     </div>
 
@@ -252,15 +262,17 @@
                                         <label class="col-form-label">Tingkat Resiko Residual</label>
                                         <div class=" w-100">
                                             <input type="text" class="form-control" name="residual_risk_rating"
-                                                id="residual_risk_rating" value="{{ $hirarc->residual_risk_rating }}">{{ $hirarc->residual_risk_rating }}>
+                                                id="residual_risk_rating"
+                                                value="{{ $hirarc->residual_risk_rating }}">{{ $hirarc->residual_risk_rating }}>
                                         </div>
                                     </div>
-                                    
+
                                     <div class="ps-3 pe-5">
                                         <label class="col-form-label">Kategori Residual</label>
                                         <div class=" w-100">
                                             <input type="text" class="form-control" name="residual_risk_category"
-                                                id="residual_risk_category" value="{{ $hirarc->residual_risk_category }}">{{ $hirarc->residual_risk_category }}>
+                                                id="residual_risk_category"
+                                                value="{{ $hirarc->residual_risk_category }}">{{ $hirarc->residual_risk_category }}>
                                         </div>
                                     </div>
 
@@ -268,15 +280,16 @@
                                         <label class="col-form-label">Penanggung Jawab </label>
                                         <div class=" w-100">
                                             <input type="text" class="form-control" name="penanggung_jawab"
-                                                id="penanggung_jawab" value="{{ $hirarc->penanggung_jawab }}">{{ $hirarc->penanggung_jawab }}>
+                                                id="penanggung_jawab"
+                                                value="{{ $hirarc->penanggung_jawab }}">{{ $hirarc->penanggung_jawab }}>
                                         </div>
                                     </div>
 
                                     <div class="ps-3 pe-5">
                                         <label class="col-form-label">Status</label>
                                         <div class=" w-100">
-                                            <input type="text" class="form-control" name="status"
-                                                id="status" value="{{ $hirarc->status }}">{{ $hirarc->status }}>
+                                            <input type="text" class="form-control" name="status" id="status"
+                                                value="{{ $hirarc->status }}">{{ $hirarc->status }}>
                                         </div>
                                     </div>
 
@@ -285,7 +298,7 @@
                                             <button type="submit" id="simpanHirarc"
                                                 class="btn btn-success text-white d-flex justify-content-center align-items-center "
                                                 style="background: #29CC6A; height: 38px; margin : 10px 20px 30px 20px; font-size:14px; border-radius: 5px;"
-                                                data-bs-toggle="modal" data-bs-target="#simpandata">Simpan
+                                                data-bs-target="#simpandata">Simpan
                                                 Data</button>
 
                                             <a href="{{ route('hirarc.index') }}" type="submit"
@@ -296,11 +309,11 @@
                                         </div>
                                     </div>
 
-                </form>
-            </div>
-        </div>
-    </div>
-                            {{-- <a href="{{ route('laporan-insiden.tambah') }}" type="submit"
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                    {{-- <a href="{{ route('laporan-insiden.tambah') }}" type="submit"
                                 class="btn btn-secondary text-white d-flex align-items-center justify-content-center"
                                 data-bs-toggle="modal" data-bs-target="#resetform"
                                 style="background: #868E96; margin : 10px 20px 30px 20px; width: 124.33px;height: 38px; font-size:14px; border-radius: 5px;">Reset</a>
@@ -330,14 +343,14 @@
                                     </div>
                                 </div>
                             </div> --}}
-                        </div>
-                    </div>
-                    </form>
                 </div>
             </div>
-            <!--end::Content container-->
-
+            </form>
         </div>
+    </div>
+    <!--end::Content container-->
+
+    </div>
     </div>
 @stop
 
