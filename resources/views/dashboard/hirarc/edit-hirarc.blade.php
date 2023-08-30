@@ -4,7 +4,8 @@
     <div class="page-title d-flex flex-column gap-1 mx-5 my-5  ">
 
         <div class="page-title d-flex flex-column  gap-1 mx-5 my-5  ">
-            <div id="kt_app_content" class="app-content  rounded bg-light  mb-20 px-5 shadow"style="box-shadow: 2px 4px 20px 2px rgba(0, 0, 0, 0.1);">
+            <div id="kt_app_content"
+                class="app-content  rounded bg-light  mb-20 px-5 shadow"style="box-shadow: 2px 4px 20px 2px rgba(0, 0, 0, 0.1);">
                 <div class="app-toolbar-wrapper d-flex flex-stack flex-wrap gap-4 w-100 mb-5 px-5 border-bottom border-5">
                     <!--begin::Page title-->
                     <h2>HIRARC</h2>
@@ -12,7 +13,8 @@
                         class="btn text-white btn-sm btn-secondary d-flex justify-content-center align-items-center mb-2"
                         data-bs-toggle="modal" data-bs-target="#staticBackdrop" style="background: #505050; width:90px"><i
                             class="bi bi-chevron-left text-white"></i>Kembali</a>
-                    <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                    <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false"
+                        tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
                         <div class="modal-dialog modal-dialog-centered ">
                             <div class="modal-content">
 
@@ -38,7 +40,8 @@
                     </div>
                 </div>
                 <div class="page-title  gap-1 mx-5 my-5  ">
-                    <div id="kt_app_content" class="app-content flex-column-fluid rounded   mb-20 px-5 shadow"style="box-shadow: 2px 4px 20px 2px rgba(0, 0, 0, 0.1);">
+                    <div id="kt_app_content"
+                        class="app-content flex-column-fluid rounded   mb-20 px-5 shadow"style="box-shadow: 2px 4px 20px 2px rgba(0, 0, 0, 0.1);">
                         <div class="card ">
                             <div class="card-header d-flex align-items-center fs-3 fw-normal">
                                 <div class="pull-left">
@@ -76,15 +79,13 @@
                                     <a type="submit"
                                         href="https://www.youtube.com/watch?v=iEu7XXvNUgw&ab_channel=SecretMusic"
                                         class="btn text-white btn-sm btn-primary d-flex justify-content-center align-items-center  rounded-1"
-                                        data-bs-toggle="modal" data-bs-target="#modalTambah"
-                                        style="background: #233EAE">
+                                        data-bs-toggle="modal" data-bs-target="#modalTambah" style="background: #233EAE">
                                         <i class="bi bi-plus-lg fs-3 text-center text-white"></i>
                                     </a>
                                 </div> --}}
 
-                                <div class="modal fade" id="modalTambah" data-bs-backdrop="static"
-                                    data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel"
-                                    aria-hidden="true">
+                                <div class="modal fade" id="modalTambah" data-bs-backdrop="static" data-bs-keyboard="false"
+                                    tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
                                     <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable ">
                                         <div class="modal-content border rounded-4 ">
                                             <div class="modal-header">
@@ -97,12 +98,15 @@
                                                 <div class="modal-body mt-5 ">
                                                     <div id="additionalForm">
                                                         <div class="mb-3">
-                                                            <label for="activitie" class="form-label">Pilih Aktifitas:</label>
-                                                            <select id="activitie" name="activitie" class="form-select" data-control="select2" data-hide-search="true">
+                                                            <label for="activitie" class="form-label">Pilih
+                                                                Aktifitas:</label>
+                                                            <select id="activitie" name="activitie" class="form-select"
+                                                                data-control="select2" data-hide-search="true">
                                                                 <option value="">Pilih Lokasi terlebih dahulu</option>
-                                                                
-                                                                <option value="{{ $activitie->name}}">{{ $activitie->name }}</option>
-                                                                
+
+                                                                <option value="{{ $activitie->name }}">
+                                                                    {{ $activitie->name }}</option>
+
                                                             </select>
                                                         </div>
                                                     </div>
@@ -112,8 +116,8 @@
                                                         <p class=" mb-0" style="color:rgba(22, 36, 61, 0.4);">
                                                             Masukkan data dengan lengkap</p>
                                                         <a type="button" id="addData"
-                                                            class="text-end text-decoration-underline"
-                                                            style="color:#233EAE" data-id="1"> + Tambah
+                                                            class="text-end text-decoration-underline" style="color:#233EAE"
+                                                            data-id="1"> + Tambah
                                                             Data </a>
                                                     </div>
 
@@ -125,9 +129,10 @@
                                                             data-dropdown-parent="#modalTambah">
                                                             <option value="">Pilih Aktifitas terlebih dahulu
                                                             </option>
-                                                            
-                                                            <option value="{{ $hazard->name}}">{{ $hazard->name }}</option>
-                                                            
+
+                                                            <option value="{{ $hazard->name }}">{{ $hazard->name }}
+                                                            </option>
+
                                                         </select>
                                                     </div>
 
@@ -139,9 +144,10 @@
                                                             data-dropdown-parent="#modalTambah">
                                                             <option value="">Pilih Hazard terlebih dahulu
                                                             </option>
-                                                            
-                                                            <option value="{{ $risk->name}}">{{ $risk->name }}</option>
-                                                            
+
+                                                            <option value="{{ $risk->name }}">{{ $risk->name }}
+                                                            </option>
+
                                                         </select>
                                                     </div>
                                                     <div id="komponenBaru">
@@ -154,7 +160,7 @@
                                                         <button type="submit" id="simpanAktifitas"
                                                             class="btn btn-success text-white d-flex justify-content-center align-items-center "
                                                             style="background: #29CC6A; height: 38px; margin : 10px 20px 30px 20px; font-size:14px; border-radius: 5px;"
-                                                            data-bs-toggle="modal" data-bs-target="#simpandata">Simpan
+                                                            data-bs-target="#simpandata">Simpan
                                                             Data</button>
 
                                                         {{-- <a href="{{ route('hirarc.editDetail') }}" type="submit"
@@ -189,8 +195,8 @@
                                     <td>{{ $hirarc->hazard }}</td>
                                     <td>{{ $hirarc->risk }}</td>
                                     <td>
-                                        <a href="{{ route('hirarc.editDetail', $hirarc->id) }}" type="button" class="btn  btn-sm bg-primary"
-                                            style="width:20px;"><i
+                                        <a href="{{ route('hirarc.editDetail', $hirarc->id) }}" type="button"
+                                            class="btn  btn-sm bg-primary" style="width:20px;"><i
                                                 class="bi bi-pencil-square text-dark d-flex justify-content-center align-items-center"></i></a>
                                     </td>
                                 </tr>
@@ -243,7 +249,7 @@
                                                     </div>
                                                 </div> --}}
 
-                                                {{-- <div class="modal-footer d-flex justify-content-center border-0">
+                                {{-- <div class="modal-footer d-flex justify-content-center border-0">
                                                     <div class=" d-flex justify-content-center">
                                                         <button type="submit" id="simpanAktifitas"
                                                             class="btn btn-success text-white d-flex justify-content-center align-items-center "
@@ -275,17 +281,17 @@
                                                             (severity)</label>
                                                         <select class="form-control" id="select_pre_severity_{{ $detail->id }}" name="pre_severity" data-control="select2" data-hide-search="true" required data-placeholder="Pilih Keparahan (severity)" data-dropdown-parent="#EditPreControl{{ $detail->id }}">
                                                             <option value="">Pilih Keparahan (severity)</option>
-                                                            <option value="1" @if($detail->prerating) @if($detail->prerating->pre_severity == "1") selected @endif @endif>
+                                                            <option value="1" @if ($detail->prerating) @if ($detail->prerating->pre_severity == '1') selected @endif @endif>
                                                                 Tergores, sayatan kecil, kerugian dalam rupiah sebesar Rp 1.000.000,-
                                                             </option>
-                                                            <option value="3" @if($detail->prerating) @if($detail->prerating->pre_severity == "3") selected @endif @endif>Cidera menyebabkan absen maksimal 3 hari, kerugian
+                                                            <option value="3" @if ($detail->prerating) @if ($detail->prerating->pre_severity == '3') selected @endif @endif>Cidera menyebabkan absen maksimal 3 hari, kerugian
                                                                 dalam rupiah sebesar Rp 10.000.000,-</option>
-                                                            <option value="7" @if($detail->prerating) @if($detail->prerating->pre_severity == "7") selected @endif @endif>Cidera menyebabkan absen lebih dari 3 hari, kerugian
+                                                            <option value="7" @if ($detail->prerating) @if ($detail->prerating->pre_severity == '7') selected @endif @endif>Cidera menyebabkan absen lebih dari 3 hari, kerugian
                                                                 dalam rupiah sebesar Rp 50.000.000,-</option>
-                                                            <option value="15" @if($detail->prerating) @if($detail->prerating->pre_severity == "15") selected @endif @endif>
+                                                            <option value="15" @if ($detail->prerating) @if ($detail->prerating->pre_severity == '15') selected @endif @endif>
                                                                 Cacat sementara, butuh rawat inap, kerugian dalam rupiah sebesar Rp
                                                                 100.000.000,-</option>
-                                                            <option value="40" @if($detail->prerating) @if($detail->prerating->pre_severity == "40") selected @endif @endif>
+                                                            <option value="40" @if ($detail->prerating) @if ($detail->prerating->pre_severity == '40') selected @endif @endif>
                                                                 Cidera serius atau sampai kematian, kerugian dalam rupiah sebesar Rp
                                                                 1.000.000.000,-</option>
                                                         </select>
@@ -296,12 +302,12 @@
                                                         <select class="form-control" id="select_pre_exposure_{{ $detail->id }}" name="pre_exposure" data-control="select2" data-hide-search="true" required data-placeholder="Pilih Paparan (Exposure)" data-dropdown-parent="#EditPreControl{{ $detail->id }}">
                                                             <option value="">Pilih Paparan
                                                                 (Exposure)</option>
-                                                            <option value="0.5" @if($detail->prerating) @if($detail->prerating->pre_exposure == "0.5") selected @endif @endif> 1 kali dalam setahun</option>
-                                                            <option value="1" @if($detail->prerating) @if($detail->prerating->pre_exposure == "1") selected @endif @endif>Beberapa kali dalam setahun</option>
-                                                            <option value="2" @if($detail->prerating) @if($detail->prerating->pre_exposure == "2") selected @endif @endif>1 kali sebulan</option>
-                                                            <option value="3" @if($detail->prerating) @if($detail->prerating->pre_exposure == "3") selected @endif @endif>1 kali dalam seminggu</option>
-                                                            <option value="6" @if($detail->prerating) @if($detail->prerating->pre_exposure == "6") selected @endif @endif>1 kali dalam sehari</option>
-                                                            <option value="10" @if($detail->prerating) @if($detail->prerating->pre_exposure == "10") selected @endif @endif>Berkelanjutan</option>
+                                                            <option value="0.5" @if ($detail->prerating) @if ($detail->prerating->pre_exposure == '0.5') selected @endif @endif> 1 kali dalam setahun</option>
+                                                            <option value="1" @if ($detail->prerating) @if ($detail->prerating->pre_exposure == '1') selected @endif @endif>Beberapa kali dalam setahun</option>
+                                                            <option value="2" @if ($detail->prerating) @if ($detail->prerating->pre_exposure == '2') selected @endif @endif>1 kali sebulan</option>
+                                                            <option value="3" @if ($detail->prerating) @if ($detail->prerating->pre_exposure == '3') selected @endif @endif>1 kali dalam seminggu</option>
+                                                            <option value="6" @if ($detail->prerating) @if ($detail->prerating->pre_exposure == '6') selected @endif @endif>1 kali dalam sehari</option>
+                                                            <option value="10" @if ($detail->prerating) @if ($detail->prerating->pre_exposure == '10') selected @endif @endif>Berkelanjutan</option>
                                                         </select>
                                                     </div>
                                                     <div class="form-group my-5">
@@ -310,13 +316,13 @@
                                                         <select class="form-control" id="select_pre_probability_{{ $detail->id }}" name="pre_probability" data-control="select2" data-hide-search="true" required data-placeholder="Pilih Kemungkinan Terjadi (Probability)" data-dropdown-parent="#EditPreControl{{ $detail->id }}">
                                                             <option value="">Pilih Kemungkinan
                                                                 Terjadi (Probability)</option>
-                                                            <option value="1" @if($detail->prerating) @if($detail->prerating->pre_exposure == "1") selected @endif @endif>
+                                                            <option value="1" @if ($detail->prerating) @if ($detail->prerating->pre_exposure == '1') selected @endif @endif>
                                                                 Kejadian yang secara teori hanya mungkin terjadi
                                                             </option>
-                                                            <option value="3" @if($detail->prerating) @if($detail->prerating->pre_exposure == "3") selected @endif @endif>mungkin terjadi sekali dalam 10 tahun</option>
-                                                            <option value="6" @if($detail->prerating) @if($detail->prerating->pre_exposure == "6") selected @endif @endif>Kejadian yang jarang tetapi dapat sesekali terjadi
+                                                            <option value="3" @if ($detail->prerating) @if ($detail->prerating->pre_exposure == '3') selected @endif @endif>mungkin terjadi sekali dalam 10 tahun</option>
+                                                            <option value="6" @if ($detail->prerating) @if ($detail->prerating->pre_exposure == '6') selected @endif @endif>Kejadian yang jarang tetapi dapat sesekali terjadi
                                                             </option>
-                                                            <option value="10" @if($detail->prerating) @if($detail->prerating->pre_exposure == "10") selected @endif @endif>
+                                                            <option value="10" @if ($detail->prerating) @if ($detail->prerating->pre_exposure == '10') selected @endif @endif>
                                                                 Peristiwa berulang setidaknya sekali dalam setahun</option>
                                                         </select>
                                                     </div>
@@ -418,17 +424,17 @@
                                                             (severity)</label>
                                                         <select class="form-control" id="select_post_severity_{{ $detail->id }}" name="post_severity" data-control="select2" data-hide-search="true" required data-placeholder="Pilih Keparahan (severity)" data-dropdown-parent="#EditPostControl{{ $detail->id }}">
                                                             <option value="">Pilih Keparahan (severity)</option>
-                                                            <option value="1" @if($detail->postrating) @if($detail->postrating->post_severity == "1") selected @endif @endif>
+                                                            <option value="1" @if ($detail->postrating) @if ($detail->postrating->post_severity == '1') selected @endif @endif>
                                                                 Tergores, sayatan kecil, kerugian dalam rupiah sebesar Rp 1.000.000,-
                                                             </option>
-                                                            <option value="3" @if($detail->postrating) @if($detail->postrating->post_severity == "3") selected @endif @endif>Cidera menyebabkan absen maksimal 3 hari, kerugian
+                                                            <option value="3" @if ($detail->postrating) @if ($detail->postrating->post_severity == '3') selected @endif @endif>Cidera menyebabkan absen maksimal 3 hari, kerugian
                                                                 dalam rupiah sebesar Rp 10.000.000,-</option>
-                                                            <option value="7" @if($detail->postrating) @if($detail->postrating->post_severity == "7") selected @endif @endif>Cidera menyebabkan absen lebih dari 3 hari, kerugian
+                                                            <option value="7" @if ($detail->postrating) @if ($detail->postrating->post_severity == '7') selected @endif @endif>Cidera menyebabkan absen lebih dari 3 hari, kerugian
                                                                 dalam rupiah sebesar Rp 50.000.000,-</option>
-                                                            <option value="15" @if($detail->postrating) @if($detail->postrating->post_severity == "15") selected @endif @endif>
+                                                            <option value="15" @if ($detail->postrating) @if ($detail->postrating->post_severity == '15') selected @endif @endif>
                                                                 Cacat sementara, butuh rawat inap, kerugian dalam rupiah sebesar Rp
                                                                 100.000.000,-</option>
-                                                            <option value="40" @if($detail->postrating) @if($detail->postrating->post_severity == "40") selected @endif @endif>
+                                                            <option value="40" @if ($detail->postrating) @if ($detail->postrating->post_severity == '40') selected @endif @endif>
                                                                 Cidera serius atau sampai kematian, kerugian dalam rupiah sebesar Rp
                                                                 1.000.000.000,-</option>
                                                         </select>
@@ -439,12 +445,12 @@
                                                         <select class="form-control" id="select_post_exposure_{{ $detail->id }}" name="post_exposure" data-control="select2" data-hide-search="true" required data-placeholder="Pilih Paparan (Exposure)" data-dropdown-parent="#EditPostControl{{ $detail->id }}">
                                                             <option value="">Pilih Paparan
                                                                 (Exposure)</option>
-                                                            <option value="0.5" @if($detail->postrating) @if($detail->postrating->post_exposure == "0.5") selected @endif @endif> 1 kali dalam setahun</option>
-                                                            <option value="1" @if($detail->postrating) @if($detail->postrating->post_exposure == "1") selected @endif @endif>Beberapa kali dalam setahun</option>
-                                                            <option value="2" @if($detail->postrating) @if($detail->postrating->post_exposure == "2") selected @endif @endif>1 kali sebulan</option>
-                                                            <option value="3" @if($detail->postrating) @if($detail->postrating->post_exposure == "3") selected @endif @endif>1 kali dalam seminggu</option>
-                                                            <option value="6" @if($detail->postrating) @if($detail->postrating->post_exposure == "6") selected @endif @endif>1 kali dalam sehari</option>
-                                                            <option value="10" @if($detail->postrating) @if($detail->postrating->post_exposure == "10") selected @endif @endif>Berkelanjutan</option>
+                                                            <option value="0.5" @if ($detail->postrating) @if ($detail->postrating->post_exposure == '0.5') selected @endif @endif> 1 kali dalam setahun</option>
+                                                            <option value="1" @if ($detail->postrating) @if ($detail->postrating->post_exposure == '1') selected @endif @endif>Beberapa kali dalam setahun</option>
+                                                            <option value="2" @if ($detail->postrating) @if ($detail->postrating->post_exposure == '2') selected @endif @endif>1 kali sebulan</option>
+                                                            <option value="3" @if ($detail->postrating) @if ($detail->postrating->post_exposure == '3') selected @endif @endif>1 kali dalam seminggu</option>
+                                                            <option value="6" @if ($detail->postrating) @if ($detail->postrating->post_exposure == '6') selected @endif @endif>1 kali dalam sehari</option>
+                                                            <option value="10" @if ($detail->postrating) @if ($detail->postrating->post_exposure == '10') selected @endif @endif>Berkelanjutan</option>
                                                         </select>
                                                     </div>
                                                     <div class="form-group my-5">
@@ -453,13 +459,13 @@
                                                         <select class="form-control" id="select_post_probability_{{ $detail->id }}" name="post_probability" data-control="select2" data-hide-search="true" required data-placeholder="Pilih Kemungkinan Terjadi (Probability)" data-dropdown-parent="#EditPostControl{{ $detail->id }}">
                                                             <option value="">Pilih Kemungkinan
                                                                 Terjadi (Probability)</option>
-                                                            <option value="1" @if($detail->postrating) @if($detail->postrating->post_exposure == "1") selected @endif @endif>
+                                                            <option value="1" @if ($detail->postrating) @if ($detail->postrating->post_exposure == '1') selected @endif @endif>
                                                                 Kejadian yang secara teori hanya mungkin terjadi
                                                             </option>
-                                                            <option value="3" @if($detail->postrating) @if($detail->postrating->post_exposure == "3") selected @endif @endif>mungkin terjadi sekali dalam 10 tahun</option>
-                                                            <option value="6" @if($detail->postrating) @if($detail->postrating->post_exposure == "6") selected @endif @endif>Kejadian yang jarang tetapi dapat sesekali terjadi
+                                                            <option value="3" @if ($detail->postrating) @if ($detail->postrating->post_exposure == '3') selected @endif @endif>mungkin terjadi sekali dalam 10 tahun</option>
+                                                            <option value="6" @if ($detail->postrating) @if ($detail->postrating->post_exposure == '6') selected @endif @endif>Kejadian yang jarang tetapi dapat sesekali terjadi
                                                             </option>
-                                                            <option value="10" @if($detail->postrating) @if($detail->postrating->post_exposure == "10") selected @endif @endif>
+                                                            <option value="10" @if ($detail->postrating) @if ($detail->postrating->post_exposure == '10') selected @endif @endif>
                                                                 Peristiwa berulang setidaknya sekali dalam setahun</option>
                                                         </select>
                                                     </div>
@@ -562,7 +568,7 @@
         $(document).ready(function() {
             $('.selectActivity').on('change', function() {
                 var data_id = $(this).attr('data-id');
-                var select = $('#hazard_id'+data_id);
+                var select = $('#hazard_id' + data_id);
                 select.closest("div").find(".select2-selection.select2-selection--single").addClass(
                     'loading');
                 select.prop('disabled', 'disabled');
@@ -582,8 +588,8 @@
                         select.empty();
                         select.append(
                             '<option value="" selected disabled >Pilih Hazard</option>');
-                        $('#risiko_id'+data_id).empty();
-                        $('#risiko_id'+data_id).append(
+                        $('#risiko_id' + data_id).empty();
+                        $('#risiko_id' + data_id).append(
                             '<option value="" selected disabled >Pilih Risiko</option>');
                         $.each(data, function(key, value) {
                             select.append('<option value="' + value.id + '">' + value
@@ -603,7 +609,8 @@
             $('.selectHazard').on('change', function() {
                 let data_id = $(this).attr("data-id");
                 var select = $('#risiko_id' + data_id);
-                select.closest("div").find(".select2-selection.select2-selection--single").addClass('loading');
+                select.closest("div").find(".select2-selection.select2-selection--single").addClass(
+                    'loading');
                 select.prop('disabled', 'disabled');
 
                 let risiko_id = $(this).val();
@@ -618,9 +625,11 @@
                     },
                     success: function(data) {
                         select.empty();
-                        select.append('<option value="" selected disabled >Pilih Risiko</option>');
+                        select.append(
+                            '<option value="" selected disabled >Pilih Risiko</option>');
                         $.each(data, function(key, value) {
-                            select.append('<option value="' + value.id + '">' + value.name +
+                            select.append('<option value="' + value.id + '">' + value
+                                .name +
                                 '</option>');
                         });
                         select.select2();
@@ -630,8 +639,9 @@
                     }
                 }).done(function(data) {
                     select.prop('disabled', false);
-                    select.closest("div").find(".select2-selection.select2-selection--single").removeClass(
-                        'loading');
+                    select.closest("div").find(".select2-selection.select2-selection--single")
+                        .removeClass(
+                            'loading');
                 });
             });
 
@@ -674,11 +684,11 @@
         });
 
         function hitungpreControl(id) {
-            var hasilpre = $('#hasilpre'+id);
-            var inputhasilpre = $('#inputhasilpre'+id);
-            var sel1 = $('#select_pre_severity_'+id).val();
-            var sel2 = $('#select_pre_exposure_'+id).val();
-            var sel3 = $('#select_pre_probability_'+id).val();
+            var hasilpre = $('#hasilpre' + id);
+            var inputhasilpre = $('#inputhasilpre' + id);
+            var sel1 = $('#select_pre_severity_' + id).val();
+            var sel2 = $('#select_pre_exposure_' + id).val();
+            var sel3 = $('#select_pre_probability_' + id).val();
 
             var hasil = sel1 * sel2 * sel3;
             hasilpre.html(hasil);
@@ -686,11 +696,11 @@
         }
 
         function hitungpostControl(id) {
-            var hasilpost = $('#hasilpost'+id);
-            var inputhasilpost = $('#inputhasilpost'+id);
-            var sel1 = $('#select_post_severity_'+id).val();
-            var sel2 = $('#select_post_exposure_'+id).val();
-            var sel3 = $('#select_post_probability_'+id).val();
+            var hasilpost = $('#hasilpost' + id);
+            var inputhasilpost = $('#inputhasilpost' + id);
+            var sel1 = $('#select_post_severity_' + id).val();
+            var sel2 = $('#select_post_exposure_' + id).val();
+            var sel3 = $('#select_post_probability_' + id).val();
 
             var hasil = sel1 * sel2 * sel3;
             hasilpost.html(hasil);

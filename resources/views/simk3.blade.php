@@ -510,6 +510,7 @@
 
         <!-- Template Main JS File -->
         <script src="{{ asset('vendor/Arsha/assets/js/main.js') }}"></script>
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </body>
 
 </html>

@@ -61,7 +61,8 @@
                                         <label class="col-form-label">Departemen</label>
                                         <div class=" w-100">
                                             <select name="departemen_id" class="form-select fs-6 w-100"
-                                                data-control="select2" data-hide-search="true" data-placeholder="Departemen">
+                                                data-control="select2" data-hide-search="true"
+                                                data-placeholder="Departemen">
                                                 @foreach ($departments as $dep)
                                                     <option value="{{ $dep->id }}"
                                                         {{ $hirarc->departemen_id == $dep->id ? 'selected' : '' }}>
@@ -74,8 +75,8 @@
                                     <div class="ps-3 pe-5">
                                         <label class="col-form-label">Lokasi</label>
                                         <div class=" w-100">
-                                            <select name="location_id" class="form-select fs-6 w-100"
-                                                data-control="select2" data-hide-search="true" data-placeholder="Lokasi">
+                                            <select name="location_id" class="form-select fs-6 w-100" data-control="select2"
+                                                data-hide-search="true" data-placeholder="Lokasi">
                                                 @foreach ($locations as $loc)
                                                     <option value="{{ $loc->id }}"
                                                         {{ $hirarc->location_id == $loc->id ? 'selected' : '' }}>
@@ -88,8 +89,8 @@
                                     <div class="ps-3 pe-5">
                                         <label class="col-form-label">Aktifitas</label>
                                         <div class=" w-100">
-                                            <select name="activity" class="form-select fs-6 w-100"
-                                                data-control="select2" data-hide-search="true" data-placeholder="Aktifitas">
+                                            <select name="activity" class="form-select fs-6 w-100" data-control="select2"
+                                                data-hide-search="true" data-placeholder="Aktifitas">
                                                 @foreach ($activitie as $act)
                                                     <option value="{{ $act->name }}"
                                                         {{ $hirarc->activitie == $act->id ? 'selected' : '' }}>
@@ -102,8 +103,8 @@
                                     <div class="ps-3 pe-5">
                                         <label class="col-form-label">Hazard</label>
                                         <div class=" w-100">
-                                            <select name="hazard" class="form-select fs-6 w-100"
-                                                data-control="select2" data-hide-search="true" data-placeholder="Hazard">
+                                            <select name="hazard" class="form-select fs-6 w-100" data-control="select2"
+                                                data-hide-search="true" data-placeholder="Hazard">
                                                 @foreach ($hazard as $hazard)
                                                     <option value="{{ $hazard->name }}"
                                                         {{ $hirarc->hazard == $hazard->id ? 'selected' : '' }}>
@@ -116,8 +117,8 @@
                                     <div class="ps-3 pe-5">
                                         <label class="col-form-label">Resiko</label>
                                         <div class=" w-100">
-                                            <select name="risk" class="form-select fs-6 w-100"
-                                                data-control="select2" data-hide-search="true" data-placeholder="Resiko">
+                                            <select name="risk" class="form-select fs-6 w-100" data-control="select2"
+                                                data-hide-search="true" data-placeholder="Resiko">
                                                 @foreach ($risk as $risk)
                                                     <option value="{{ $risk->name }}"
                                                         {{ $hirarc->risk == $risk->id ? 'selected' : '' }}>
@@ -126,8 +127,8 @@
                                             </select>
                                         </div>
                                     </div>
-                                    
-                                    
+
+
                                     <div class="ps-3 pe-5">
                                         <label class="col-form-label">Sesuai dengan peraturan
                                             pemerintah</label>
@@ -158,12 +159,12 @@
                                             </select>
                                         </div>
                                     </div>
-                                    
+
                                     <div class="ps-3 pe-5">
                                         <label class="col-form-label">Pengendalian</label>
                                         <div class=" w-100">
-                                            <input type="text" class="form-control" name="kendali"
-                                                id="kendali" value="{{ $hirarc->kendali }}">
+                                            <input type="text" class="form-control" name="kendali" id="kendali"
+                                                value="{{ $hirarc->kendali }}">{{ $hirarc->kendali }}>
                                         </div>
                                     </div>
 
@@ -288,16 +289,16 @@
                                     <div class="ps-3 pe-5">
                                         <label class="col-form-label">Penyebab Utama</label>
                                         <div class=" w-100">
-                                            <input type="text" class="form-control" name="penyebab"
-                                                id="penyebab" value="{{ $hirarc->penyebab }}">
+                                            <input type="text" class="form-control" name="penyebab" id="penyebab"
+                                                value="{{ $hirarc->penyebab }}">{{ $hirarc->penyebab }}>
                                         </div>
                                     </div>
 
                                     <div class="ps-3 pe-5">
                                         <label class="col-form-label">Usulan</label>
                                         <div class=" w-100">
-                                            <input type="text" class="form-control" name="usulan"
-                                                id="usulan" value="{{ $hirarc->usulan }}">
+                                            <input type="text" class="form-control" name="usulan" id="usulan"
+                                                value="{{ $hirarc->usulan }}">{{ $hirarc->usulan }}>
                                         </div>
                                     </div>
 
@@ -305,15 +306,16 @@
                                         <label class="col-form-label">Formulir yang Dibutuhkan</label>
                                         <div class=" w-100">
                                             <input type="text" class="form-control" name="form_diperlukan"
-                                                id="form_diperlukan" value="{{ $hirarc->form_dibutuhkan }}">
+                                                id="form_diperlukan"
+                                                value="{{ $hirarc->form_dibutuhkan }}">{{ $hirarc->form_dibutuhkan }}>
                                         </div>
                                     </div>
 
                                     <div class="ps-3 pe-5">
                                         <label class="col-form-label">SOP</label>
                                         <div class=" w-100">
-                                            <input type="text" class="form-control" name="sop"
-                                                id="sop" value="{{ $hirarc->sop }}">
+                                            <input type="text" class="form-control" name="sop" id="sop"
+                                                value="{{ $hirarc->sop }}">{{ $hirarc->sop }}>
                                         </div>
                                     </div>
 
@@ -412,9 +414,11 @@
                                         <div class=" w-100">
                                             <input type="text" class="form-control" name="residual_risk_rating"
                                                 id="residual_risk_rating" value="{{ $hirarc->residual_risk_rating }}" readonly>
+                                                id="residual_risk_rating"
+                                                value="{{ $hirarc->residual_risk_rating }}">{{ $hirarc->residual_risk_rating }}>
                                         </div>
                                     </div>
-                                    
+
                                     <div class="ps-3 pe-5">
                                         <label class="col-form-label">Kategori Risiko Residual</label>
                                         <div class=" w-100">
@@ -429,6 +433,9 @@
                                                 <option value="4">High</option>
                                                 <option value="5">Very High</option>
                                             </select>
+                                            <input type="text" class="form-control" name="residual_risk_category"
+                                                id="residual_risk_category"
+                                                value="{{ $hirarc->residual_risk_category }}">{{ $hirarc->residual_risk_category }}>
                                         </div>
                                     </div>
 
@@ -437,15 +444,16 @@
                                         <label class="col-form-label">Penanggung Jawab </label>
                                         <div class=" w-100">
                                             <input type="text" class="form-control" name="penanggung_jawab"
-                                                id="penanggung_jawab" value="{{ $hirarc->penanggung_jawab }}">
+                                                id="penanggung_jawab"
+                                                value="{{ $hirarc->penanggung_jawab }}">{{ $hirarc->penanggung_jawab }}>
                                         </div>
                                     </div>
 
                                     <div class="ps-3 pe-5">
                                         <label class="col-form-label">Status</label>
                                         <div class=" w-100">
-                                            <input type="text" class="form-control" name="status"
-                                                id="status" value="{{ $hirarc->status }}">
+                                            <input type="text" class="form-control" name="status" id="status"
+                                                value="{{ $hirarc->status }}">{{ $hirarc->status }}>
                                         </div>
                                     </div>
 
@@ -454,7 +462,7 @@
                                             <button type="submit" id="simpanHirarc"
                                                 class="btn btn-success text-white d-flex justify-content-center align-items-center "
                                                 style="background: #29CC6A; height: 38px; margin : 10px 20px 30px 20px; font-size:14px; border-radius: 5px;"
-                                                data-bs-toggle="modal" data-bs-target="#simpandata">Simpan
+                                                data-bs-target="#simpandata">Simpan
                                                 Data</button>
 
                                             <a href="{{ route('hirarc.index') }}" type="submit"
@@ -465,11 +473,11 @@
                                         </div>
                                     </div>
 
-                </form>
-            </div>
-        </div>
-    </div>
-                            {{-- <a href="{{ route('laporan-insiden.tambah') }}" type="submit"
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                    {{-- <a href="{{ route('laporan-insiden.tambah') }}" type="submit"
                                 class="btn btn-secondary text-white d-flex align-items-center justify-content-center"
                                 data-bs-toggle="modal" data-bs-target="#resetform"
                                 style="background: #868E96; margin : 10px 20px 30px 20px; width: 124.33px;height: 38px; font-size:14px; border-radius: 5px;">Reset</a>
@@ -499,14 +507,14 @@
                                     </div>
                                 </div>
                             </div> --}}
-                        </div>
-                    </div>
-                    </form>
                 </div>
             </div>
-            <!--end::Content container-->
-
+            </form>
         </div>
+    </div>
+    <!--end::Content container-->
+
+    </div>
     </div>
 @stop
 

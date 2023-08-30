@@ -53,7 +53,9 @@
                                 </div>
                             </div>
                             <div class="card-body">
-                                <form class="lh-lg" method="POST" action="{{ route('daftardokumen.ubahstore', $data['id']) }}" enctype="multipart/form-data">
+                                <form class="lh-lg" method="POST"
+                                    action="{{ route('daftardokumen.ubahstore', $data['id']) }}"
+                                    enctype="multipart/form-data">
                                     @csrf
                                     {{-- <div class="ps-3 pe-5">
                   <label class="col-sm-2 col-form-label ">Kode ID</label>
@@ -76,7 +78,8 @@
                                     <div class="ps-3 pe-5 mb-0 pb-0">
                                         <label class="d-flex col-sm-2 col-form-label">File (PDF)</label>
                                         <div class="col-sm-10 w-100 mt-0 pt-0">
-                                            <iframe src ="{{asset('/laraview/#../berkas/'.$data->file) }}" width="100%" height="600px"></iframe>
+                                            <iframe src="{{ asset('/laraview/#../berkas/' . $data->file) }}" width="100%"
+                                                height="600px"></iframe>
                                             {{-- <embed src="{{asset('/laraview/#../berkas/'.$data->file)}}" type="application/pdf" width="100%" height="600px" /> --}}
                                             <input type="file" class="form-control" name="file" id="file">
                                         </div>
@@ -92,9 +95,9 @@
                                 class="btn btn-success text-white d-flex justify-content-center align-items-center "
                                 style="background: #29CC6A;
             height: 38px; margin : 10px 20px 30px 20px; font-size:14px; border-radius: 5px;"
-                                data-bs-toggle="modal" onclick="showDiv()">Simpan Data</button>
-                                    </form>
-                                <div class="modal fade" id="simpandata" data-bs-keyboard="false" tabindex="-1"
+                                onclick="showDiv()">Simpan Data</button>
+                            </form>
+                            <div class="modal fade" id="simpandata" data-bs-keyboard="false" tabindex="-1"
                                 aria-labelledby="staticBackdropLabel" aria-hidden="true">
                                 <div class="modal-dialog modal-dialog-centered ">
                                     <div class="modal-content">
@@ -157,7 +160,5 @@
 
         </div>
     </div>
-    <script>
-
-    </script>
+    <script></script>
 @stop
