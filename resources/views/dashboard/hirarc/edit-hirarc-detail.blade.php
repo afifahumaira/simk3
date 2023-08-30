@@ -140,7 +140,7 @@
                                         <label class="col-form-label">Kondisi</label>
                                         <div class=" w-100">
                                             <input type="text" class="form-control" name="kondisi"
-                                                id="kondisi" value="{{ $hirarc->kondisi }}">{{ $hirarc->kondisi }}>
+                                                id="kondisi" value="{{ $hirarc->kondisi }}">
                                         </div>
                                     </div>
                                     
@@ -148,7 +148,7 @@
                                         <label class="col-form-label">Pengendalian</label>
                                         <div class=" w-100">
                                             <input type="text" class="form-control" name="kendali"
-                                                id="kendali" value="{{ $hirarc->kendali }}">{{ $hirarc->kendali }}>
+                                                id="kendali" value="{{ $hirarc->kendali }}">
                                         </div>
                                     </div>
 
@@ -156,7 +156,7 @@
                                         <label class="col-form-label">Keparahan Saat Ini</label>
                                         <div class=" w-100">
                                             <input type="text" class="form-control" name="current_severity"
-                                                id="current_severity ini" value="{{ $hirarc->current_severity }}">{{ $hirarc->current_severity }}>
+                                                id="current_severity ini" value="{{ $hirarc->current_severity }}">
                                         </div>
                                     </div>
 
@@ -164,7 +164,7 @@
                                         <label class="col-form-label">Paparan Saat Ini</label>
                                         <div class=" w-100">
                                             <input type="text" class="form-control" name="current_exposure"
-                                                id="current_exposure" value="{{ $hirarc->current_exposure }}">{{ $hirarc->current_exposure }}>
+                                                id="current_exposure" value="{{ $hirarc->current_exposure }}">
                                         </div>
                                     </div>
 
@@ -172,7 +172,7 @@
                                         <label class="col-form-label">Probabilitas Saat Ini</label>
                                         <div class=" w-100">
                                             <input type="text" class="form-control" name="current_probability"
-                                                id="current_probability" value="{{ $hirarc->current_probability }}">{{ $hirarc->current_probability }}>
+                                                id="current_probability" value="{{ $hirarc->current_probability }}">
                                         </div>
                                     </div>
 
@@ -180,7 +180,7 @@
                                         <label class="col-form-label">Tingkat Resiko Saat Ini</label>
                                         <div class=" w-100">
                                             <input type="text" class="form-control" name="current_risk_rating"
-                                                id="current_risk_rating" value="{{ $hirarc->current_risk_rating }}">{{ $hirarc->current_risk_rating }}>
+                                                id="current_risk_rating" value="{{ $hirarc->current_risk_rating }}">
                                         </div>
                                     </div>
 
@@ -188,7 +188,7 @@
                                         <label class="col-form-label">Kategori Saat Ini</label>
                                         <div class=" w-100">
                                             <input type="text" class="form-control" name="current_risk_category"
-                                                id="current_risk_category" value="{{ $hirarc->current_risk_category }}">{{ $hirarc->current_risk_category }}>
+                                                id="current_risk_category" value="{{ $hirarc->current_risk_category }}">
                                         </div>
                                     </div>
 
@@ -196,7 +196,7 @@
                                         <label class="col-form-label">Penyebab Utama</label>
                                         <div class=" w-100">
                                             <input type="text" class="form-control" name="penyebab"
-                                                id="penyebab" value="{{ $hirarc->penyebab }}">{{ $hirarc->penyebab }}>
+                                                id="penyebab" value="{{ $hirarc->penyebab }}">
                                         </div>
                                     </div>
 
@@ -204,7 +204,7 @@
                                         <label class="col-form-label">Usulan</label>
                                         <div class=" w-100">
                                             <input type="text" class="form-control" name="usulan"
-                                                id="usulan" value="{{ $hirarc->usulan }}">{{ $hirarc->usulan }}>
+                                                id="usulan" value="{{ $hirarc->usulan }}">
                                         </div>
                                     </div>
 
@@ -212,7 +212,7 @@
                                         <label class="col-form-label">Formulir yang Dibutuhkan</label>
                                         <div class=" w-100">
                                             <input type="text" class="form-control" name="form_diperlukan"
-                                                id="form_diperlukan" value="{{ $hirarc->form_dibutuhkan }}">{{ $hirarc->form_dibutuhkan }}>
+                                                id="form_diperlukan" value="{{ $hirarc->form_dibutuhkan }}">
                                         </div>
                                     </div>
 
@@ -220,7 +220,7 @@
                                         <label class="col-form-label">SOP</label>
                                         <div class=" w-100">
                                             <input type="text" class="form-control" name="sop"
-                                                id="sop" value="{{ $hirarc->sop }}">{{ $hirarc->sop }}>
+                                                id="sop" value="{{ $hirarc->sop }}">
                                         </div>
                                     </div>
 
@@ -228,7 +228,7 @@
                                         <label class="col-form-label">Keparahan Residual</label>
                                         <div class=" w-100">
                                             <input type="text" class="form-control" name="residual_severity"
-                                                id="residual_severity" value="{{ $hirarc->residual_severity }}">{{ $hirarc->residual_severity }}>
+                                                id="residual_severity" value="{{ $hirarc->residual_severity }}">
                                         </div>
                                     </div>
 
@@ -236,7 +236,7 @@
                                         <label class="col-form-label">Paparan Residual</label>
                                         <div class=" w-100">
                                             <input type="text" class="form-control" name="residual_exposure"
-                                                id="residual_exposure" value="{{ $hirarc->residual_exposure }}">{{ $hirarc->residual_exposure }}>
+                                                id="residual_exposure" value="{{ $hirarc->residual_exposure }}">
                                         </div>
                                     </div>
 
@@ -244,7 +244,7 @@
                                         <label class="col-form-label">Probabilitas Residual</label>
                                         <div class=" w-100">
                                             <input type="text" class="form-control" name="residual_probability"
-                                                id="residual_probability" value="{{ $hirarc->residual_probability }}">{{ $hirarc->residual_probability }}>
+                                                id="residual_probability" value="{{ $hirarc->residual_probability }}">
                                         </div>
                                     </div>
 
@@ -252,7 +252,7 @@
                                         <label class="col-form-label">Tingkat Resiko Residual</label>
                                         <div class=" w-100">
                                             <input type="text" class="form-control" name="residual_risk_rating"
-                                                id="residual_risk_rating" value="{{ $hirarc->residual_risk_rating }}">{{ $hirarc->residual_risk_rating }}>
+                                                id="residual_risk_rating" value="{{ $hirarc->residual_risk_rating }}">
                                         </div>
                                     </div>
                                     
@@ -260,7 +260,7 @@
                                         <label class="col-form-label">Kategori Residual</label>
                                         <div class=" w-100">
                                             <input type="text" class="form-control" name="residual_risk_category"
-                                                id="residual_risk_category" value="{{ $hirarc->residual_risk_category }}">{{ $hirarc->residual_risk_category }}>
+                                                id="residual_risk_category" value="{{ $hirarc->residual_risk_category }}">
                                         </div>
                                     </div>
 
@@ -268,7 +268,7 @@
                                         <label class="col-form-label">Penanggung Jawab </label>
                                         <div class=" w-100">
                                             <input type="text" class="form-control" name="penanggung_jawab"
-                                                id="penanggung_jawab" value="{{ $hirarc->penanggung_jawab }}">{{ $hirarc->penanggung_jawab }}>
+                                                id="penanggung_jawab" value="{{ $hirarc->penanggung_jawab }}">
                                         </div>
                                     </div>
 
@@ -276,7 +276,7 @@
                                         <label class="col-form-label">Status</label>
                                         <div class=" w-100">
                                             <input type="text" class="form-control" name="status"
-                                                id="status" value="{{ $hirarc->status }}">{{ $hirarc->status }}>
+                                                id="status" value="{{ $hirarc->status }}">
                                         </div>
                                     </div>
 

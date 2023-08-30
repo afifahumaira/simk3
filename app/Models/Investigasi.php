@@ -29,7 +29,7 @@ class Investigasi extends Model
 
     public function departemen()
     {
-        return $this->belongsTo(Departemen::class, 'departemen_id', 'id');
+        return $this->belongsTo(Departemen::class);
     }
 
 

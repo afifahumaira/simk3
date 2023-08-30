@@ -47,9 +47,9 @@
                                 <td scope="row" class="text-center">{{ $loop->iteration }}</td>
                                 <td>{{ $investigasi->kategori }}</td>
                                 {{-- <td>{{ $investigasi->laporinsiden->nama_pelapor }}</td> --}}
-                                <td>{{ $investigasi->departemen_name }}</td>
+                                <td>{{ $investigasi->departemen->name }}</td>
                                 {{-- <td>{{ $investigasi->tenggat_waktu ? $investigasi->tenggat_waktu->translatedFormat('d F Y') : '' }}</td> --}}
-                                <td>{{ $investigasi->p2k3_nama }}</td>
+                                <td>{{ $investigasi->p2k3->nama }}</td>
 
                                 <td>
                                     <a href="{{ route('daftarinvestigasi.lihat', $investigasi->id) }}"
@@ -99,9 +99,9 @@
                 </table>
             </div>
         </div>
-        <div class="card-footer">
+        {{-- <div class="card-footer">
             {{ $investigasis->links('pagination::customb5') }}
-        </div>
+        </div> --}}
     </div>
 @stop
 

@@ -70,7 +70,7 @@
                                     </tbody>
                                 </table>
 
-                                <div
+                                {{-- <div
                                     class="border  border-gray-300 d-flex justify-content-between align-items-center form-control py-2">
                                     <label class="form-label">Tambah Data</label>
                                     <a type="submit"
@@ -80,7 +80,7 @@
                                         style="background: #233EAE">
                                         <i class="bi bi-plus-lg fs-3 text-center text-white"></i>
                                     </a>
-                                </div>
+                                </div> --}}
 
                                 <div class="modal fade" id="modalTambah" data-bs-backdrop="static"
                                     data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel"

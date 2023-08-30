@@ -120,7 +120,41 @@
                                                         </div>
                                                     </div>
 
-                                                    <div class=" mt-5 d-flex justify-content-between" id="tambahResiko"
+                                                    <div class="modal-body mt-5 ">
+                                                        <div id="additionalForm">
+                                                            <div class="mb-3">
+                                                                <label for="activitie_id" class="form-label">Pilih
+                                                                    Hazard:</label>
+                                                                <select id="hazard_id" name="hazard" class="form-select"
+                                                                    data-control="select2" data-hide-search="true">
+                                                                    <option value="">Pilih Aktifitas terlebih dahulu
+                                                                    </option>
+                                                                    @foreach ($hazard as $hazard)
+                                                                        <option value="{{ $hazard->name }}">{{ $hazard->name }}
+                                                                        </option>
+                                                                    @endforeach
+                                                                </select>
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="modal-body mt-5 ">
+                                                            <div id="additionalForm">
+                                                                <div class="mb-3">
+                                                                    <label for="activitie_id" class="form-label">Pilih
+                                                                        Risiko:</label>
+                                                                    <select id="risk_id" name="risk" class="form-select"
+                                                                        data-control="select2" data-hide-search="true">
+                                                                        <option value="">Pilih Hazard terlebih dahulu
+                                                                        </option>
+                                                                        @foreach ($risk as $risk)
+                                                                            <option value="{{ $risk->name }}">{{ $risk->name }}
+                                                                            </option>
+                                                                        @endforeach
+                                                                    </select>
+                                                                </div>
+                                                            </div>
+
+                                                    {{-- <div class=" mt-5 d-flex justify-content-between" id="tambahResiko"
                                                         style="font-family: Roboto">
                                                         <p class=" mb-0" style="color:rgba(22, 36, 61, 0.4);">
                                                             Masukkan data dengan lengkap</p>
@@ -128,9 +162,9 @@
                                                             class="text-end text-decoration-underline"
                                                             style="color:#233EAE" data-id="1"> + Tambah
                                                             Data </a>
-                                                    </div>
+                                                    </div> --}}
 
-                                                    <div class="mb-3">
+                                                    {{-- <div class="mb-3">
                                                         <label for="hazard_id_1" class="form-label">Hazard 1</label>
                                                         <select id="hazard_id_1" name="hazard[]"
                                                             class="form-select selectHazard" data-id="1"
@@ -158,7 +192,7 @@
                                                                 </option>
                                                             @endforeach
                                                         </select>
-                                                    </div>
+                                                    </div> --}}
                                                     <div id="komponenBaru">
                                                         <!-- Komponen akan ditambahkan di sini -->
                                                     </div>

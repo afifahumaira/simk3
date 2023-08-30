@@ -97,7 +97,7 @@ class PotensibahayaController extends Controller
     }
 
     public function lihat($id) {
-        $data = PotensiBahaya::findorFail($id);
+        $data = PotensiBahaya::find($id);
         return view('dashboard.potensibahaya.lihat-potensibahaya', compact('data'));
     }
 

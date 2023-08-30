@@ -127,42 +127,119 @@
                                     </div>
 
                                     <div class="ps-3 pe-5">
-                                        <label class="col-form-label">Keparahan Saat Ini</label>
-                                        <div class=" w-100">
-                                            <input type="text" class="form-control" name="current_severity"
-                                                id="current_severity ini" value="{{ $hirarc->current_severity }}">
-                                        </div>
+                                        <label class="col-form-label" for="select1">Keparahan Risko
+                                            (severity) Saat Ini</label>
+                                        <select class="form-control" id="current_severity"
+                                            onchange="risk_rating()"
+                                            name="current_severity" data-control="select2"
+                                            data-hide-search="true" required
+                                            data-placeholder="Pilih Keparahan Risiko
+                                    (severity)">
+                                            <option value="" selected disabled>Pilih
+                                                Keparahan
+                                                (severity)</option>
+                                            <option value="1">
+                                                Tergores, sayatan kecil, kerugian dalam rupiah
+                                                sebesar
+                                                Rp 1.000.000,-
+                                            </option>
+                                            <option value="3">Cidera menyebabkan absen
+                                                maksimal 3
+                                                hari, kerugian
+                                                dalam rupiah sebesar Rp 10.000.000,-</option>
+                                            <option value="7">Cidera menyebabkan absen
+                                                lebih dari
+                                                3 hari, kerugian
+                                                dalam rupiah sebesar Rp 50.000.000,-</option>
+                                            <option value="15">
+                                                Cacat sementara, butuh rawat inap, kerugian
+                                                dalam rupiah
+                                                sebesar Rp
+                                                100.000.000,-</option>
+                                            <option value="40">
+                                                Cidera serius atau sampai kematian, kerugian
+                                                dalam
+                                                rupiah sebesar Rp
+                                                1.000.000.000,-</option>
+                                        </select>
                                     </div>
 
                                     <div class="ps-3 pe-5">
-                                        <label class="col-form-label">Paparan Saat Ini</label>
-                                        <div class=" w-100">
-                                            <input type="text" class="form-control" name="current_exposure"
-                                                id="current_exposure" value="{{ $hirarc->current_exposure }}">
-                                        </div>
+                                        <label class="col-form-label">Paparan Rsiko
+                                            (Exposure) Saat Ini</label>
+                                        <select class="form-control" id="current_exposure"
+                                            onchange="risk_rating()"
+                                            name="current_exposure" data-control="select2"
+                                            data-hide-search="true" required
+                                            data-placeholder="Pilih Paparan Risiko
+                                    (Exposure)">
+                                            <option value="" selected disabled>Pilih
+                                                Paparan
+                                                (Exposure)</option>
+                                            <option value="0.5"> 1 kali dalam setahun
+                                            </option>
+                                            <option value="1">Beberapa kali dalam setahun
+                                            </option>
+                                            <option value="2">1 kali sebulan</option>
+                                            <option value="3">1 kali dalam seminggu
+                                            </option>
+                                            <option value="6">1 kali dalam sehari</option>
+                                            <option value="10">Berkelanjutan</option>
+                                        </select>
                                     </div>
 
                                     <div class="ps-3 pe-5">
-                                        <label class="col-form-label">Probabilitas Saat Ini</label>
-                                        <div class=" w-100">
-                                            <input type="text" class="form-control" name="current_probability"
-                                                id="current_probability" value="{{ $hirarc->current_probability }}">
-                                        </div>
+                                        <label class="col-form-label">Kemungkinan Risiko
+                                            Terjadi Saat Ini(Probability)</label>
+                                        <select class="form-control"
+                                            onchange="risk_rating()"
+                                            id="current_probability"
+                                            name="current_probability" data-control="select2"
+                                            data-hide-search="true" required
+                                            data-placeholder="Pilih Kemungkinan Risiko Terjadi (Probability)">
+                                            <option value="" selected disabled>Pilih
+                                                Kemungkinan
+                                                Terjadi (Probability)</option>
+                                            <option value="1">
+                                                Kejadian yang secara teori hanya mungkin terjadi
+                                            </option>
+                                            <option value="3">mungkin terjadi sekali dalam
+                                                10
+                                                tahun</option>
+                                            <option value="6">Kejadian yang jarang tetapi
+                                                dapat
+                                                sesekali terjadi
+                                            </option>
+                                            <option value="10">
+                                                Peristiwa berulang setidaknya sekali dalam
+                                                setahun
+                                            </option>
+                                        </select>
                                     </div>
 
                                     <div class="ps-3 pe-5">
-                                        <label class="col-form-label">Tingkat Resiko Saat Ini</label>
+                                        <label class="col-form-label">Tingkat Risiko Saat Ini</label>
                                         <div class=" w-100">
                                             <input type="text" class="form-control" name="current_risk_rating"
-                                                id="current_risk_rating" value="{{ $hirarc->current_risk_rating }}">
+                                                id="current_risk_rating" value="{{ $hirarc->current_risk_rating }}" readonly>
                                         </div>
                                     </div>
 
                                     <div class="ps-3 pe-5">
-                                        <label class="col-form-label">Kategori Saat Ini</label>
-                                        <div class=" w-100">
-                                            <input type="text" class="form-control" name="current_risk_category"
-                                                id="current_risk_category" value="{{ $hirarc->current_risk_category }}">
+                                        <label class="col-form-label">Kategori Risiko Saat Ini
+                                            </label>
+                                        <div class="col-sm-10 w-100">
+                                            <select class="form-select fs-6 w-100" data-control="select2"
+                                                data-hide-search="true" data-placeholder="Pilih Kategori Risiko Saat Ini"
+                                                style="--bs-link-hover-color-rgb: 25, 135, 84;" name="current_risk_category"
+                                                id="current_risk_category" style="font-family: 'Inter';" required>
+                                                <option value="{{ $hirarc->current_risk_category }}">- Pilih -</option>
+                                                <option id="current_1" value="1">Slight</option>
+                                                <option id="current_2" value="2">Low</option>
+                                                <option id="current_3" value="3">Medium</option>
+                                                <option id="current_4" value="4">High</option>
+                                                <option id="current_5" value="5">Very High</option>
+                                            </select>
                                         </div>
                                     </div>
 
@@ -199,42 +276,117 @@
                                     </div>
 
                                     <div class="ps-3 pe-5">
-                                        <label class="col-form-label">Keparahan Residual</label>
-                                        <div class=" w-100">
-                                            <input type="text" class="form-control" name="residual_severity"
-                                                id="residual_severity" value="{{ $hirarc->residual_severity }}">
-                                        </div>
+                                        <label class="col-form-label">Keparahan
+                                            (severity) Residual</label>
+                                        <select class="form-control"
+                                            onchange="risk_residual()"
+                                            id="residual_severity" name="residual_severity"
+                                            data-control="select2" data-hide-search="true"
+                                            required
+                                            data-placeholder="Keparahan
+                                    (severity)">
+                                            <option value="" selected disable>Keparahan
+                                                (severity)</option>
+                                            <option value="1">
+                                                Tergores, sayatan kecil, kerugian dalam rupiah
+                                                sebesar
+                                                Rp 1.000.000,-
+                                            </option>
+                                            <option value="3">Cidera menyebabkan absen
+                                                maksimal 3
+                                                hari, kerugian
+                                                dalam rupiah sebesar Rp 10.000.000,-</option>
+                                            <option value="7">Cidera menyebabkan absen
+                                                lebih dari
+                                                3 hari, kerugian
+                                                dalam rupiah sebesar Rp 50.000.000,-</option>
+                                            <option value="15">
+                                                Cacat sementara, butuh rawat inap, kerugian
+                                                dalam rupiah
+                                                sebesar Rp
+                                                100.000.000,-</option>
+                                            <option value="40">
+                                                Cidera serius atau sampai kematian, kerugian
+                                                dalam
+                                                rupiah sebesar Rp
+                                                1.000.000.000,-</option>
+                                        </select>
                                     </div>
 
                                     <div class="ps-3 pe-5">
-                                        <label class="col-form-label">Paparan Residual</label>
-                                        <div class=" w-100">
-                                            <input type="text" class="form-control" name="residual_exposure"
-                                                id="residual_exposure" value="{{ $hirarc->residual_exposure }}">
-                                        </div>
+                                        <label class="col-form-label">Paparan Risiko
+                                            (Exposure) Residual</label>
+                                        <select class="form-control"
+                                            onchange="risk_residual()"
+                                            id="residual_exposure" name="residual_exposure"
+                                            data-control="select2" data-hide-search="true"
+                                            required
+                                            data-placeholder="Paparan
+                                    (Exposure)">
+                                            <option value="" selected disable>Paparan
+                                                (Exposure)</option>
+                                            <option value="0.5"> 1 kali dalam setahun
+                                            </option>
+                                            <option value="1">Beberapa kali dalam setahun
+                                            </option>
+                                            <option value="2">1 kali sebulan</option>
+                                            <option value="3">1 kali dalam seminggu
+                                            </option>
+                                            <option value="6">1 kali dalam sehari</option>
+                                            <option value="10">Berkelanjutan</option>
+                                        </select>
+                                    </div>
+                                    <div class="ps-3 pe-5">
+                                        <label class="col-form-label">Kemungkinan Risiko
+                                            Terjadi (Probability) Residual</label>
+                                        <select class="form-control"
+                                            id="residual_probability"
+                                            onchange="risk_residual()"
+                                            name="residual_probability" data-control="select2"
+                                            data-hide-search="true" required
+                                            data-placeholder="Kemungkinan
+                                    Terjadi (Probability)">
+                                            <option value="" selected disable>Kemungkinan
+                                                Terjadi (Probability)</option>
+                                            <option value="1">
+                                                Kejadian yang secara teori hanya mungkin terjadi
+                                            </option>
+                                            <option value="3">mungkin terjadi sekali dalam
+                                                10
+                                                tahun</option>
+                                            <option value="6">Kejadian yang jarang tetapi
+                                                dapat
+                                                sesekali terjadi
+                                            </option>
+                                            <option value="10">
+                                                Peristiwa berulang setidaknya sekali dalam
+                                                setahun
+                                            </option>
+                                        </select>
                                     </div>
 
                                     <div class="ps-3 pe-5">
-                                        <label class="col-form-label">Probabilitas Residual</label>
-                                        <div class=" w-100">
-                                            <input type="text" class="form-control" name="residual_probability"
-                                                id="residual_probability" value="{{ $hirarc->residual_probability }}">
-                                        </div>
-                                    </div>
-
-                                    <div class="ps-3 pe-5">
-                                        <label class="col-form-label">Tingkat Resiko Residual</label>
+                                        <label class="col-form-label">Tingkat Risiko Residual</label>
                                         <div class=" w-100">
                                             <input type="text" class="form-control" name="residual_risk_rating"
-                                                id="residual_risk_rating" value="{{ $hirarc->residual_risk_rating }}">
+                                                id="residual_risk_rating" value="{{ $hirarc->residual_risk_rating }}" readonly>
                                         </div>
                                     </div>
                                     
                                     <div class="ps-3 pe-5">
-                                        <label class="col-form-label">Kategori Residual</label>
+                                        <label class="col-form-label">Kategori Risiko Residual</label>
                                         <div class=" w-100">
-                                            <input type="text" class="form-control" name="residual_risk_category"
-                                                id="residual_risk_category" value="{{ $hirarc->residual_risk_category }}">
+                                            <select class="form-select fs-6 w-100" data-control="select2"
+                                                data-hide-search="true" data-placeholder="Pilih Kategori Risiko Residual"
+                                                style="--bs-link-hover-color-rgb: 25, 135, 84;" name="residual_risk_category"
+                                                id="residual_risk_category" style="font-family: 'Inter';" required>
+                                                <option value="{{ $hirarc->residual_risk_category }}">- Pilih -</option>
+                                                <option value="1">Slight</option>
+                                                <option value="2">Low</option>
+                                                <option value="3">Medium</option>
+                                                <option value="4">High</option>
+                                                <option value="5">Very High</option>
+                                            </select>
                                         </div>
                                     </div>
 
@@ -326,5 +478,50 @@
                 locale: "id"
             });
         });
+
+        function risk_rating() {
+            var severity = document.getElementById("current_severity").value;
+            var exposure = document.getElementById("current_exposure").value;
+            var proby = document.getElementById("current_probability").value;
+            var risk_rating = severity * exposure * proby;
+            document.getElementById("current_risk_rating").value = risk_rating;
+            var cat = document.getElementById("current_risk_category")
+            if ( risk_rating >= "20"){
+                $("current_risk_category select").val("1").change;
+            } else if (risk_rating >= "21" && risk_rating <= "70" ){
+                cat.option[1].selected = true;
+                $("current_risk_category select").val("2").change;    
+            } else if (risk_rating >= "71" && risk_rating <= "200"){
+                cat.option[2].selected = true;
+                $("current_risk_category select").val("3").change;
+            } else if (risk_rating => "201" && risk_rating <= "400"){
+                cat.option[3].selected = true;
+                $("current_risk_category select").val("4").change;
+            } else {
+                cat.option[4].selected = true;
+                $("current_risk_category select").val("5").change;
+            }
+        }
+
+        function risk_residual() {
+            var severity = document.getElementById("residual_severity").value;
+            var exposure = document.getElementById("residual_exposure").value;
+            var proby = document.getElementById("residual_probability").value;
+            var risk_rating = severity * exposure * proby;
+            document.getElementById("residual_risk_rating").value = risk_rating;
+            if ( risk_rating >= "20"){
+                $("residual_risk_category select").val("1").change;
+            } else if (risk_rating >= "21" && risk_rating <= "70" ){
+                $("residual_risk_category select").val("2").change;    
+            } else if (risk_rating >= "71" && risk_rating <= "200"){
+                $("residual_risk_category select").val("3").change;
+            } else if (risk_rating => "201" && risk_rating <= "400"){
+                $("residual_risk_category select").val("4").change;
+            } else {
+                $("residual_risk_category select").val("5").change;
+            }
+        }
+
+
     </script>
 @stop
