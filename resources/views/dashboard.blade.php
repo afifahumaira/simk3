@@ -1,6 +1,7 @@
 @extends ('layouts.layout')
 
 @section('content')
+    @include('sweetalert::alert')
 
     <div class="page-title d-flex flex-column gap-1 mx-5 my-5  ">
 
@@ -80,27 +81,27 @@
                                             class="page-heading d-flex flex-column justify-content-center text-dark fw-bolder fs-2 "style="color: #16243D; font-family: Roboto Flex;">
                                             Total Data Masuk</h1>
                                     </div>
-                                    <div class="pt-5">
-                                        <ul style="list-style-type:circle; font-size:16px" class="text-white ps-0">
-                                            <li class=" d-flex justify-content-between align-items-center rounded-2 px-4 py-2"
+                                    <div class="pt-5 mt-5">
+                                        <ul style="list-style-type:circle; font-size:18px" class="text-white ps-0 mt-3">
+                                            <li class=" d-flex justify-content-between align-items-center rounded-2 px-4 py-3"
                                                 style="background-color: #008BF1">
                                                 Lapor Insiden
                                                 <span class="card-title d-flex align-items-center my-0 rounded-3 px-3"
                                                     style="background-color: rgba(255,255,255,.5);">10</span>
                                             </li>
-                                            <li class=" d-flex justify-content-between align-items-center rounded-2 px-4 py-2 my-4"
+                                            <li class=" d-flex justify-content-between align-items-center rounded-2 px-4 py-3 my-5"
                                                 style="background-color: #FF9600">
                                                 Potensi Bahaya
                                                 <span class="card-title d-flex align-items-center my-0 rounded-3 px-3"
                                                     style="background-color: rgba(255,255,255,.5);">10</span>
                                             </li>
-                                            <li class=" d-flex justify-content-between align-items-center rounded-2 px-4 py-2 my-4"
+                                            {{-- <li class=" d-flex justify-content-between align-items-center rounded-2 px-4 py-2 my-4"
                                                 style="background-color: #108E72">
                                                 Investigasi
                                                 <span class="card-title d-flex align-items-center my-0 rounded-3 px-3"
                                                     style="background-color: rgba(255,255,255,.5);">10</span>
-                                            </li>
-                                            <li class=" d-flex justify-content-between align-items-center rounded-2 px-4 py-2"
+                                            </li> --}}
+                                            <li class=" d-flex justify-content-between align-items-center rounded-2 px-4 py-3"
                                                 style="background-color: #DC3545">
                                                 Hirarc
                                                 <span class="card-title d-flex align-items-center my-0 rounded-3 px-3"
@@ -127,8 +128,8 @@
                                             style="font-size:18px; font-weight:bold;">{{ $data['jumlah_insiden'] }}
                                             Laporan</span>
                                     </div>
-                                    <div class="d-flex justify-content-between ">
-                                        <div class="text-white d-flex flex-column py-3 rounded-4 w-25"
+                                    <div class="d-flex justify-content-around ">
+                                        <div class=" col-lg-4 text-white d-flex flex-column py-3 rounded-4 w-25"
                                             style="background:#DC3545">
                                             <div class="mb-4 d-flex justify-content-center py-2">
                                                 <i class="bi bi-clipboard-x text-white fs-2hx"></i>
@@ -141,7 +142,7 @@
                                                 <span class="card-title">Pending</span>
                                             </div>
                                         </div>
-                                        <div class="text-white d-flex flex-column py-3 rounded-4 w-25 bg-primary">
+                                        <div class="col-lg-4 text-white d-flex flex-column py-3 rounded-4 w-25 bg-primary">
                                             <div class="mb-4 d-flex justify-content-center py-2">
                                                 <i class="bi bi bi-search text-white fs-2hx"></i>
                                             </div>
@@ -150,10 +151,10 @@
                                                 {{ $data['jumlah_insiden_tindaklanjut'] }}
                                             </div>
                                             <div class="d-flex justify-content-center">
-                                                <span class="card-title">Ditindaklanjuti</span>
+                                                <span class="card-title">Tindaklanjut</span>
                                             </div>
                                         </div>
-                                        <div class="text-white d-flex flex-column py-3 rounded-4 w-25 bg-success">
+                                        <div class="col-lg-4 text-white d-flex flex-column py-3 rounded-4 w-25 bg-success">
                                             <div class="mb-4 d-flex justify-content-center py-2">
                                                 <i class="bi bi-person-check-fill text-white fs-2hx"></i>
                                             </div>
@@ -185,7 +186,7 @@
                                             Laporan</span>
                                     </div>
                                     <div class="d-flex justify-content-between ">
-                                        <div class="text-white d-flex flex-column py-3 rounded-4 w-25"
+                                        <div class="col-lg-4 text-white d-flex flex-column py-3 rounded-4 w-25"
                                             style="background:#DC3545">
                                             <div class="mb-4 d-flex justify-content-center py-2">
                                                 <i class="bi bi-clipboard-x text-white fs-2hx"></i>
@@ -198,7 +199,7 @@
                                                 <span class="card-title">Pending</span>
                                             </div>
                                         </div>
-                                        <div class="text-white d-flex flex-column py-3 rounded-4 w-25 bg-primary">
+                                        <div class="col-lg-4 text-white d-flex flex-column py-3 rounded-4 w-25 bg-primary">
                                             <div class="mb-4 d-flex justify-content-center py-2">
                                                 <i class="bi bi bi-search text-white fs-2hx"></i>
                                             </div>
@@ -207,10 +208,10 @@
                                                 {{ $data['jumlah_potensi_bahaya_tindaklanjut'] }}
                                             </div>
                                             <div class="d-flex justify-content-center">
-                                                <span class="card-title">Ditindaklanjuti</span>
+                                                <span class="card-title">Tindaklanjut</span>
                                             </div>
                                         </div>
-                                        <div class="text-white d-flex flex-column py-3 rounded-4 w-25 bg-success">
+                                        <div class="col-lg-4 text-white d-flex flex-column py-3 rounded-4 w-25 bg-success">
                                             <div class="mb-4 d-flex justify-content-center py-2">
                                                 <i class="bi bi-person-check-fill text-white fs-2hx"></i>
                                             </div>
