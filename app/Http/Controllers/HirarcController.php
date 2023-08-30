@@ -64,12 +64,14 @@ class HirarcController extends Controller
         $hirarc = Hirarc::where('id',$id)->first();
         $hazards = Hazard::where('id',$id)->get();
         $risks = Risk::where('id',$id)->get();
+        
 
         return view('dashboard.hirarc.tambah-hirarc-detail')
                 ->with('hirarc', $hirarc)
                 ->with('id', $id)
                 ->with('hazard', $hazards)
                 ->with('risk', $risks);
+                
                 
     }
 

@@ -155,7 +155,8 @@ class LaporanInsidenController extends Controller
             $pengenalName = $request->tanda_pengenal_old;
         }
 
-        Laporinsiden::find($id)->update([
+        
+        $investigasi = Laporinsiden::find($id)->update([
             'p2k3_id' => $request->p2k3_id,
             'kode_laporinsiden' => $request->kode_laporinsiden,
             'tanda_pengenal' => $pengenalName,
@@ -179,8 +180,17 @@ class LaporanInsidenController extends Controller
             'gambar' => $gambarName,
         ]);
 
-        Alert::success('Berhasil', 'Data Laporan Insiden berhasil diperbaharui!')->iconHtml('<i class="bi bi-person-check"></i>')->hideCloseButton();
-        return redirect()->route('laporan-insiden.index');
+        if ($investigasi) {
+            $data = Investigasi::create([
+                'p2k3_id' => $request->p2k3_id,
+                'laporinsiden_id' => $request->id,
+                'departemen_id' => $request->departemen_id,
+                'kategori' => $request->jenis_insiden,
+                'penyebab_dasar' =>$request->penyebab_insiden,
+            ]);
+            Alert::success('Berhasil', 'Data Laporan Insiden berhasil diperbaharui!')->iconHtml('<i class="bi bi-person-check"></i>')->hideCloseButton();
+            return redirect()->route('laporan-insiden.index');
+        }
     }
 
     public function delete($id) {

@@ -25,4 +25,8 @@ class Departemen extends Model
         return $this->hasMany(Location_masters::class, 'departemen_id', 'id');
     }
 
+    public function investigasi() {
+        return $this->hasMany(Investigasi::class, 'departemen_id');
+    }
+
 }

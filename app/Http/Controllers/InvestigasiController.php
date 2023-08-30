@@ -4,44 +4,28 @@ namespace App\Http\Controllers;
 
 use App\Models\Investigasi;
 use App\Models\Laporinsiden;
+use App\Models\P2k3;
 use Illuminate\Http\Request;
 use Alert;
+use App\Models\Departemen;
+use App\Models\Inventory;
 use Illuminate\Support\Facades\DB;
 
 class InvestigasiController extends Controller
 {
 
-    public function index(Request $request) {
-        // dd($request->search);
-        // $investigasis = Investigasi::with(['departemen' => function ($query) use ($request) {
-        //     $query->where('name' ,'LIKE', '%'.$request->search.'%');
-        //     }])
-        //     ->paginate(10);
-
-        $investigasis=DB::table('investigasis')
-        ->leftJoin('departemens', 'departemens.id', '=', 'investigasis.departemen_id')        
-        ->leftJoin('p2k3s', 'p2k3s.id', '=', 'investigasis.p2k3_id')
-        ->select(
-            'investigasis.id as id',
-            'departemens.id as departemen_id',
-            'departemens.name as departemen_name',
-            'p2k3s.nama as p2k3_nama',
-            'investigasis.kategori'
-            )
-        ->where('investigasis.kategori', 'LIKE', '%'.$request->search.'%')
-        ->orWhere('departemens.name', 'LIKE', '%'.$request->search.'%')
-        ->paginate(10);
-        // ->where('kategori', 'LIKE', '%'.$request->search.'%')
-        // ->orWhereHas('laporinsiden', function($query) use ($request) {
-        //     $query->orWhere('nama_pelapor', 'LIKE', '%'.$request->search.'%');
-        // })
-        // ->orWhereHas('p2k3', function($query) use ($request) {
-        //     $query->orWhere('nama', 'LIKE', '%'.$request->search.'%');
-        // })
-        // ->paginate(10);
+    public function index() {
+        $data = Laporinsiden::get('status', '=', '2');
+        $investigasis = Investigasi::all();
+        $departemen = Departemen::all();
+        $p2k3s = P2k3::all();
 
         return view('dashboard.daftarinvestigasi.index')
-            ->with('investigasis', $investigasis);
+            ->with('investigasis', $investigasis)
+            ->with('laporinsdien', $data)
+            ->with('departemen', $departemen)
+            ->with('p2k3', $p2k3s);
+            
     }
 
     public function tambah($id) {
@@ -56,9 +40,15 @@ class InvestigasiController extends Controller
     }
 
     public function ubah($id) {
-        $investigasi = Investigasi::with(['laporinsiden', 'departemen', 'p2k3'])->find($id);
+        $investigasi = Investigasi::where('id',$id)->first();
+        $p2k3s = P2k3::all();
+        $departemen = Departemen::all();
+        $laporinsiden = Laporinsiden::all();
         return view('dashboard.daftarinvestigasi.edit-investigasi')
-                ->with('investigasi', $investigasi);
+                ->with('investigasi', $investigasi)
+                ->with('p2k3s', $p2k3s)
+                ->with('departemen', $departemen)
+                ->with('laporinsiden', $laporinsiden);
     }
 
     public function simpan(Request $request) {
