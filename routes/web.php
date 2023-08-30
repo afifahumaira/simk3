@@ -84,7 +84,7 @@ Route::group(['middleware' => ['auth']], function() {
     // 4. Hirarc
     Route::prefix('hirarc')->name('hirarc.')->group(function(){
         Route::get('/', [HirarcController::class, 'index'])->name('index');
-        Route::get('tambah/{id?}', [HirarcController::class, 'tambah'])->name('tambah');
+        Route::get('tambah', [HirarcController::class, 'tambah'])->name('tambah');
         Route::get('tambahDetail/{id}', [HirarcController::class, 'tambahDetail'])->name('tambahDetail');
         Route::post('simpan', [HirarcController::class, 'simpan'])->name('simpan');
         Route::put('save/{id}', [HirarcController::class, 'save'])->name('save');

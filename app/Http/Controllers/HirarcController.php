@@ -76,7 +76,8 @@ class HirarcController extends Controller
     }
 
     public function edit($id) {
-        $hirarc = Hirarc::with(['departemen', 'user', 'location'])->find($id);
+        
+        $hirarc = Hirarc::where('id',$id)->first();
         $controls = Control::all();
         $activities = Activitie_master::findorFail($id);
         $locations = Location::findorFail($id);
@@ -84,17 +85,17 @@ class HirarcController extends Controller
         $hazards = Hazard::findorFail($id);
         $risks = Risk::findorFail($id);
 
-        $hrcs = Hirarc::findorFail($id);
+        //$hrcs = Hirarc::findorFail($id);
 
         
-        return view('dashboard.hirarc.edit-hirarc', compact('hirarc', 'controls', 'activities', 'hazards', 'risks'))
-        ->with('hirarc', $hirarc)
+        return view('dashboard.hirarc.edit-hirarc')
+                ->with('hirarc', $hirarc)
                 ->with('location', $locations)
                 ->with('departments', $departments)
                 ->with('activitie', $activities)
                 ->with('hazard', $hazards)
                 ->with('risk', $risks)
-                ->with('hirarc', $hrcs)
+                //->with('hirarc', $hrcs)
                 ->with('control', $controls);
     }
 

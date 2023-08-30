@@ -99,10 +99,6 @@ class PotensibahayaController extends Controller
     }
 
     public function lihat($id) {
-<<<<<<< HEAD
-        $data = PotensiBahaya::find($id);
-        return view('dashboard.potensibahaya.lihat-potensibahaya', compact('data'));
-=======
         $data = PotensiBahaya::where('id',$id)->first();
         $potensibahayas=DB::table('potensibahayas')
         ->leftJoin('p2k3s', 'p2k3s.id', '=', 'potensibahayas.p2k3_id')
@@ -111,7 +107,6 @@ class PotensibahayaController extends Controller
         );
         return view('dashboard.potensibahaya.lihat-potensibahaya', compact('data'))
         -> with('potensibahaya', $potensibahayas);
->>>>>>> dbd5586d23a3dd42a4785078b3d856505e0b6a38
     }
 
     public function delete($id){
