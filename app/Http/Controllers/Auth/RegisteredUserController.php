@@ -51,7 +51,7 @@ class RegisteredUserController extends Controller
 
         Auth::login($user);
 
-        Alert::success('Berhasil', 'Data Laporan Insiden berhasil disimpan!')->iconHtml('<i class="bi bi-person-check"></i>')->hideCloseButton();
-        return redirect()->route('login');
+        Alert::success('Berhasil', 'Data Pengguna Telah Terdaftar')->iconHtml('<i class="bi bi-person-check"></i>')->hideCloseButton();
+        return redirect()->route('/login');
     }
 }

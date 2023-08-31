@@ -68,7 +68,7 @@
                         {{-- <th scope="col">Email</th> --}}
                         <th scope="col">Jabatan</th>
                         <th scope="col">Departemen</th>
-                        <th scope="col">Foto Profil</th>
+                        {{-- <th scope="col">Foto Profil</th> --}}
                         @if (auth()->user()->hak_akses == 'admin' ||
                                 auth()->user()->hak_akses == 'p2k3' ||
                                 auth()->user()->hak_akses == 'k3_departemen' ||
@@ -88,8 +88,8 @@
                             </td> --}}
                             <td>{{ $data->jabatan }}</td>
                             <td>{{ $data->departemen }}</td>
-                            <td class="d-flex justify-content-center"><img src="{{ asset('berkas/' . $data->avatar) }}"
-                                    class="rounded-4" style="width:auto; height:55px;"></td>
+                            {{-- <td class="d-flex justify-content-center"><img src="{{ asset('berkas/' . $data->avatar) }}"
+                                    class="rounded-4" style="width:auto; height:55px;"></td> --}}
                             @if (auth()->user()->hak_akses == 'admin' ||
                                     auth()->user()->hak_akses == 'p2k3' ||
                                     auth()->user()->hak_akses == 'k3_departemen' ||

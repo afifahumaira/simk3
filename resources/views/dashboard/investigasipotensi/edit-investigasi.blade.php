@@ -87,7 +87,7 @@
                                             </select>
                                         </div>
                                     </div>
-                                    <div class="ps-3 pe-5">
+                                    {{-- <div class="ps-3 pe-5">
                                         <label class="col-form-label">Departemen</label>
                                         <div class=" w-100">
                                             <select name="departemen_id" class="form-select fs-6 w-100"
@@ -99,7 +99,7 @@
                                                 @endforeach
                                             </select>
                                         </div>
-                                    </div>
+                                    </div> --}}
                                     <div class="ps-3 pe-5">
                                         <label class="col-form-label ">Lokasi</label>
                                         <div class=" w-100">

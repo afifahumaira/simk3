@@ -11,7 +11,7 @@ class ProfileController extends Controller
 {
     
     public function index($id) {
-        $data = User::where('id', $id)->first();
-        return view('dashboard.profile', compact('data'));
+        $user = User::where('id', $id)->first();
+        return view('dashboard.profile', compact('user'));
     }
 }

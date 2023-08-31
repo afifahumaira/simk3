@@ -32,7 +32,7 @@ class AuthenticatedSessionController extends Controller
         $request->authenticate();
 
         $request->session()->regenerate();
-        Alert::success('Berhasil', 'Data Laporan Insiden berhasil disimpan!')->iconHtml('<i class="bi bi-person-check"></i>')->hideCloseButton();
+        Alert::success('Berhasil', 'Selamat Datang di SIMK3 FT UNDIP!')->iconHtml('<i class="bi bi-person-check"></i>')->hideCloseButton();
         return redirect()->intended(RouteServiceProvider::HOME);
     }
 
