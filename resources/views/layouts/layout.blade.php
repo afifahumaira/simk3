@@ -39,7 +39,7 @@ License: For each use you must have a valid license purchased only from above li
     <!--end::Fonts-->
     <!--begin::Vendor Stylesheets(used for this page only)-->
     <!--end::Vendor Stylesheets-->
-
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.11.6/css/jquery.dataTables.min.css">
     <!--begin::Global Stylesheets Bundle(mandatory for all pages)-->
     <link href="{{ asset('plugins/global/plugins.bundle.css') }}" rel="stylesheet" type="text/css" />
     <link href="{{ asset('css/style.bundle.css') }}" rel="stylesheet" type="text/css" />
