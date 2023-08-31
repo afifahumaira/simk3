@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Controllers\InvestigasiPotensiController as ControllersInvestigasiPotensiController;
 use Illuminate\Http\Request;
 use App\Models\Potensibahaya;
 use App\Models\InvestigasiPotensi;
@@ -90,14 +91,14 @@ class InvestigasiPotensiController extends Controller
         //     'tindakan' => 'required',
         // ]);
 
-        Investigasi::find($id)->update([
-            'p2k3_id' => $request->p2k3_id,
-            'laporinsiden_id' => $request->laporinsiden_id,
-            'departemen_id' => $request->departemen_id,
-            'kategori' => $request->kategori,
-            'penyebab_langsung' => $request->penyebab_langsung,
-            'penyebab_tidak_langsung' => $request->penyebab_tidak_langsung,
-            'penyebab_dasar' => $request->penyebab_dasar,
+        InvestigasiPotensi::find($id)->update([
+            //'p2k3_id' => $request->p2k3_id,
+            'potensibahaya_id' => $request->potensibahaya_id,
+            //'departemen_id' => $request->departemen_id,
+            'lokasi' => $request->lokasi,
+            'potensi_bahaya' => $request->potensi_bahaya,
+            'risiko' => $request->risiko,
+            'usulan' => $request->usulan,
             'tenggat_waktu' => $request->tenggat_waktu,
             'tindakan' => $request->tindakan,
         ]);

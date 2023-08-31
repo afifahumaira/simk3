@@ -165,7 +165,7 @@ class PotensibahayaController extends Controller
             $pengenalName = $request->tanda_pengenal_old;
         }
 
-        $investigasi = PotensiBahaya::find($id)->update([
+        PotensiBahaya::find($id)->update([
             'p2k3_id' => $request->p2k3_id,
             'kode_potensibahaya' => $request->kode_potensibahaya,
             'nama_pelapor' => $request->nama_pelapor,
@@ -187,7 +187,7 @@ class PotensibahayaController extends Controller
             'gambar' => $gambarName
         ]);
 
-        if($investigasi) {
+        if($request->status == 2 ) {
             $data = InvestigasiPotensi::create([
                 'p2k3' => $request->p2k3_id,
                 'potensibahaya_id' => $request->id,
@@ -197,9 +197,11 @@ class PotensibahayaController extends Controller
                 'risiko' => $request->resiko_bahaya,
                 'usulan' => $request->usulan_perbaikan,
             ]);
-            Alert::success('Berhasil', 'Data Potensi Bahaya berhasil diperbaharui!')->iconHtml('<i class="bi bi-person-check"></i>')->hideCloseButton();
+            Alert::success('Berhasil', 'Data Akan di Investigasi!')->iconHtml('<i class="bi bi-person-check"></i>')->hideCloseButton();
             return redirect()->route('potensibahaya.index');
         }
+        Alert::success('Berhasil', 'Data Potensi Bahaya berhasil diperbaharui!')->iconHtml('<i class="bi bi-person-check"></i>')->hideCloseButton();
+        return redirect()->route('potensibahaya.index');
 
     }
 
