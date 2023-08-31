@@ -91,17 +91,17 @@
                                                 style="--bs-link-hover-color-rgb: 25, 135, 84;" id="hak_akses"
                                                 style="font-family: 'Inter';">
                                                 <option value="">- Pilih -</option>
-                                                <option value="1" {{ $data->hak_akses == 'Admin' ? 'selected' : '' }}>
+                                                <option value="Admin" {{ $data->hak_akses == 'Admin' ? 'selected' : '' }}>
                                                     Admin </option>
-                                                <option value="2"
+                                                <option value="Pimpinan"
                                                     {{ $data->hak_akses == 'Pimpinan' ? 'selected' : '' }}>Pimpinan
                                                 </option>
-                                                <option value="3"
+                                                <option value="K3 Departemen"
                                                     {{ $data->hak_akses == 'K3 Departemen' ? 'selected' : '' }}>K3
                                                     Departemen</option>
-                                                <option value="4" {{ $data->hak_akses == 'P2K3' ? 'selected' : '' }}>
+                                                <option value="P2K3" {{ $data->hak_akses == 'P2K3' ? 'selected' : '' }}>
                                                     P2K3</option>
-                                                <option value="5" {{ $data->hak_akses == 'Tamu' ? 'selected' : '' }}>
+                                                <option value="Tamu" {{ $data->hak_akses == 'Tamu' ? 'selected' : '' }}>
                                                     Tamu</option>
 
                                             </select>

@@ -142,17 +142,18 @@
                                         <div class="ps-3 pe-5">
                                             <label class="col-form-label">P2K3</label>
                                             <div class=" w-100">
-                                                <select name="p2k3_id" class="form-select fs-6 w-100"
-                                                    data-control="select2" data-hide-search="true" data-placeholder="P2K3">
-                                                    @foreach ($p2k3s as $p2k3)
-                                                        <option value="{{ $p2k3->id }}"
-                                                            {{ $investigasi->p2k3_id == $p2k3->id ? 'selected' : '' }}>
-                                                            {{ $p2k3->name }}</option>
-                                                    @endforeach
-                                                </select>
+                                                <div class="form-group label-floating is-empty is-focused">
+                                                    <select name="p2k3_id" class="form-select fs-6 w-100" data-control="select2"
+                                                        data-hide-search="true" data-placeholder="P2K3" required>
+                                                        @foreach ($p2k3s as $p2k3)
+                                                            <option value="{{ $p2k3->id }}"
+                                                                {{ $investigasi->p2k3_id == $p2k3->id ? 'selected' : '' }}>
+                                                                {{ $p2k3->nama != '' ? $p2k3->nama : 'Pilih P2K3' }}</option>
+                                                        @endforeach
+                                                    </select>
+                                                </div>
                                             </div>
                                         </div>
-                                    </div>
                                     <div class="ps-3 pe-5">
                                         <label class="col-sm-2 col-form-label">Tenggat Waktu</label>
                                         <div class="col-sm-10 w-100">

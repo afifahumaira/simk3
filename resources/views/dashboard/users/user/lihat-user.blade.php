@@ -40,9 +40,9 @@
                     @if($data->departemen_id != null)
                     <td>{{$data->departemen->name}}</td>
                     @endif
-                    @if ($data->p2k3 != null)
+                    {{-- @if ($data->p2k3 != null)
                     <td>{{$data->p2k3->departemen}}</td>
-                    @endif
+                    @endif --}}
                 </tr>
 
                 <tr>

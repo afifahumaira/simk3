@@ -47,7 +47,8 @@
                                 {{-- <td>{{ $investigasi->departemen->name }}</td> --}}
                                 <td>{{ $investigasi->lokasi }}</td>
                                 <td>{{ $investigasi->potensi_bahaya }}</td>
-                                {{-- <td>{{ $investigasi->p2k3->nama }}</td>                                 --}}
+                                
+                                {{-- <td>{{ $investigasi->p2k3?->nama }}</td>                                 --}}
 
                                 <td>
                                     <a href="{{ route('investigasipotensi.lihat', $investigasi->id) }}"

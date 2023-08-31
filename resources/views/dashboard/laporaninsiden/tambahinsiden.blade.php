@@ -67,7 +67,7 @@
                                         <label class="col-form-label">Waktu Kejadian</label>
                                         <div class=" w-100">
                                             <input type="date" id="date" name="waktu_kejadian"
-                                                class="form-control tanggalPicker" placeholder="dd/mm/yyyy">
+                                                class="form-control tanggalPicker" placeholder="dd/mm/yyyy" max="<?php echo date('Y-m-d'); ?>">
                                         </div>
                                     </div>
 
@@ -291,15 +291,30 @@
 @section('customscript')
     {{-- <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script> --}}
     <script>
-        $(document).ready(function() {
-            $(".tanggalPicker").flatpickr({
-                altInput: true,
-                altFormat: "d F Y",
-                dateFormat: "Y-m-d",
-                locale: "id"
-            });
-        });
+        // $(document).ready(function() {
+        //     $(".tanggalPicker").flatpickr({
+        //         altInput: true,
+        //         altFormat: "d F Y",
+        //         dateFormat: "Y-m-d",
+        //         locale: "id"
+        //     });
+        // });
 
+        $(function(){
+        var dtToday = new Date();
+
+        var month = dtToday.getMonth() + 1;
+        var day = dtToday.getDate();
+        var year = dtToday.getFullYear();
+
+        if(month < 10)
+        month = '0' + month.toString();
+        if(day < 10)
+        day = '0' + day.toString();
+
+        var maxDate = year + '-' + month + '-' + day;    
+        $('#txtDate').attr('max', maxDate);
+    });
         // document.addEventListener('DOMContentLoaded', function() {
         //     const submitButton = document.querySelector('#submitButton');
 
