@@ -17,8 +17,11 @@ use App\Http\Controllers\AktifitasController;
 use App\Http\Controllers\AktifitasMasterController;
 use App\Http\Controllers\HazardController;
 use App\Http\Controllers\InvestigasiController;
+use App\Http\Controllers\investigasipotensicontroller;
+use App\Http\Controllers\InvestigasiPotensiController as ControllersInvestigasiPotensiController;
 use App\Http\Controllers\MapsController;
 use App\Http\Controllers\RisikoController;
+use App\Http\Controllers\ProfileController;
 // use App\Http\Controllers\Lihat_InsidenController;
 use Illuminate\Support\Facades\Route;
 // use RealRashid\SweetAlert\Facades\Alert;
@@ -54,6 +57,11 @@ Route::prefix('simk3')->name('simk3.')->group(function(){
 });
 
 Route::group(['middleware' => ['auth']], function() {
+    // Profile
+    Route::prefix('profile')->name('profile.')->group(function(){
+        Route::get('/', [ProfileController::class, 'index'])->name('index');
+    });
+
     // 1. Laporan Insiden
     Route::prefix('laporan-insiden')->name('laporan-insiden.')->group(function(){
         Route::get('/', [LaporanInsidenController::class, 'index'])->name('index');
@@ -67,7 +75,8 @@ Route::group(['middleware' => ['auth']], function() {
         Route::post('save', [LaporanInsidenController::class, 'save'])->name('save');
     });
 
-    // 2. Daftar Investigasi
+    // Daftar Investigasi
+    // Investigasi Lapor Insiden
     Route::prefix('daftarinvestigasi')->name('daftarinvestigasi.')->group(function(){
         Route::get('/', [InvestigasiController::class, 'index'])->name('index');
         Route::get('tambah/{id}', [InvestigasiController::class, 'tambah'])->name('tambah');
@@ -78,6 +87,18 @@ Route::group(['middleware' => ['auth']], function() {
         Route::post('delete/{id}', [InvestigasiController::class, 'delete'])->name('delete');
     });
 
+    //Investigasi Potensi
+    // Investigasi Lapor Potensi Bahaya
+    Route::prefix('investigasipotensi')->name('investigasipotensi.')->group(function(){
+        Route::get('/', [ControllersInvestigasiPotensiController::class, 'index'])->name('index');
+        Route::get('tambah/{id}', [ControllersInvestigasiPotensiController::class, 'tambah'])->name('tambah');
+        Route::post('simpan', [ControllersInvestigasiPotensiController::class, 'simpan'])->name('simpan');
+        Route::get('lihat/{id}', [ControllersInvestigasiPotensiController::class, 'lihat'])->name('lihat');
+        Route::get('ubah/{id}', [ControllersInvestigasiPotensiController::class, 'ubah'])->name('ubah');
+        Route::post('update/{id}', [ControllersInvestigasiPotensiController::class, 'update'])->name('update');
+        Route::post('delete/{id}', [ControllersInvestigasiPotensiController::class, 'delete'])->name('delete');
+    });
+    
     // 3. Potensi Bahaya
     Route::prefix('potensibahaya')->name('potensibahaya.')->group(function(){
         Route::get('/', [PotensibahayaController::class, 'index'])->name('index');

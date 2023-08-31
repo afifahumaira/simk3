@@ -3,7 +3,7 @@
 @section('content')
     <div class="card m-5">
         <div class="card-header shadow-sm">
-            <h3 class="card-title fw-bold fs-2">Daftar Investigasi</h3>
+            <h3 class="card-title fw-bold fs-2">Daftar Investigasi Laporan Insiden</h3>
             <div class="card-toolbar">
                 <div id="kt_docs_search_handler_basic" class="mt-3" data-kt-search-keypress="true"
                     data-kt-search-min-length="2" data-kt-search-enter="true" data-kt-search-layout="inline">

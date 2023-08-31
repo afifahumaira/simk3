@@ -11,10 +11,12 @@ use App\Models\LaporanInsiden;
 use App\Models\PotensiBahaya;
 use App\Models\VwInventory;
 use App\Models\VwPotensiBahaya;
+
 use Google\Cloud\Storage\Connection\Rest;
 use Hash;
 use Validator;
 use Alert;
+use App\Models\InvestigasiPotensi;
 use App\Models\P2k3;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
@@ -163,7 +165,7 @@ class PotensibahayaController extends Controller
             $pengenalName = $request->tanda_pengenal_old;
         }
 
-        PotensiBahaya::find($id)->update([
+        $investigasi = PotensiBahaya::find($id)->update([
             'p2k3_id' => $request->p2k3_id,
             'kode_potensibahaya' => $request->kode_potensibahaya,
             'nama_pelapor' => $request->nama_pelapor,
@@ -185,8 +187,20 @@ class PotensibahayaController extends Controller
             'gambar' => $gambarName
         ]);
 
-        Alert::success('Berhasil', 'Data Potensi Bahaya berhasil diperbaharui!')->iconHtml('<i class="bi bi-person-check"></i>')->hideCloseButton();
-        return redirect()->route('potensibahaya.index');
+        if($investigasi) {
+            $data = InvestigasiPotensi::create([
+                'p2k3' => $request->p2k3_id,
+                'potensibahaya_id' => $request->id,
+                //'departemen_id' => $request->departemen_id,
+                'lokasi' => $request->lokasi,
+                'potensi_bahaya' => $request->potensi_bahaya,
+                'risiko' => $request->resiko_bahaya,
+                'usulan' => $request->usulan_perbaikan,
+            ]);
+            Alert::success('Berhasil', 'Data Potensi Bahaya berhasil diperbaharui!')->iconHtml('<i class="bi bi-person-check"></i>')->hideCloseButton();
+            return redirect()->route('potensibahaya.index');
+        }
+
     }
 
     public function potensibahaya() {

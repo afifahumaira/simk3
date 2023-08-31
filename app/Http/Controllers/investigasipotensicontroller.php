@@ -2,20 +2,15 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Investigasi;
-use App\Models\Laporinsiden;
+use Illuminate\Http\Request;
 use App\Models\Potensibahaya;
 use App\Models\InvestigasiPotensi;
+use RealRashid\SweetAlert\Facades\Alert;
 use App\Models\P2k3;
-use Illuminate\Http\Request;
-use Alert;
 use App\Models\Departemen;
-use App\Models\Inventory;
-use Illuminate\Support\Facades\DB;
 
-class DaftarInvestigasiController extends Controller
+class InvestigasiPotensiController extends Controller
 {
-
     public function index() {
         $data = Potensibahaya::get('status', '=', '2');
         $investigasis = InvestigasiPotensi::all();

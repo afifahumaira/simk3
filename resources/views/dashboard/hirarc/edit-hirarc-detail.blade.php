@@ -540,16 +540,17 @@
             if ( risk_rating >= "20"){
                 $("current_risk_category select").val("1").change;
             } else if (risk_rating >= "21" && risk_rating <= "70" ){
-                cat.option[1].selected = true;
+                cat[1].option.selected;
                 $("current_risk_category select").val("2").change;    
             } else if (risk_rating >= "71" && risk_rating <= "200"){
-                cat.option[2].selected = true;
+                // cat.option[2].selected = true;
+                cat[2].option.selected;
                 $("current_risk_category select").val("3").change;
             } else if (risk_rating => "201" && risk_rating <= "400"){
-                cat.option[3].selected = true;
+                cat[3].option.selected;
                 $("current_risk_category select").val("4").change;
             } else {
-                cat.option[4].selected = true;
+                cat[4].option.selected;
                 $("current_risk_category select").val("5").change;
             }
         }
