@@ -9,7 +9,7 @@
                 <div class="app-toolbar-wrapper d-flex flex-stack flex-wrap gap-4 w-100 mb-5 px-5 border-bottom border-5">
                     <!--begin::Page title-->
                     <h2>Edit Data Investigasi Laporan Potensi Bahaya</h2>
-                    <a href="{{ route('investigaspotensi.index') }}" type="button"
+                    <a href="{{ route('investigasipotensi.index') }}" type="button"
                         class="btn text-white btn-secondary btn-sm d-flex justify-content-center align-items-center mb-2"
                         data-bs-toggle="modal" data-bs-target="#staticBackdrop" style="background: #505050; width:90px"><i
                             class="bi bi-chevron-left text-white"></i>Kembali</a>
@@ -30,7 +30,7 @@
                                     </h2>
                                 </div>
                                 <div class="modal-footer d-flex justify-content-center border-0">
-                                    <a href="{{ route('investigaspotensi.index') }}" type="button"
+                                    <a href="{{ route('investigasipotensi.index') }}" type="button"
                                         class="btn btn-success text-white d-flex justify-content-center align-items-center text-center rounded-1"
                                         style="width:76px; height:31px; background: #29CC6A;">Ya</a>
                                     <button type="button"

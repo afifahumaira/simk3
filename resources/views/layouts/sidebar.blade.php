@@ -28,7 +28,7 @@
                         <span class="menu-icon ">
                             <i class="bi bi-clipboard-check-fill text-white fs-3"></i>
                         </span>
-                        <span class="menu-title text-white">Daftar Lapor Insiden</span>
+                        <span class="menu-title text-white">Daftar Laporan Insiden</span>
 
                     </a>
                 </div>
@@ -52,7 +52,7 @@
                         <span class="menu-icon">
                             <i class="bi bi-exclamation-octagon text-white fs-3"></i>
                         </span>
-                        <span class="menu-title text-white">Lapor Potensi Bahaya</span>
+                        <span class="menu-title text-white">Daftar Laporan Potensi Bahaya</span>
 
                     </a>
                 </div>
@@ -87,7 +87,7 @@
                         <!--begin:Menu item-->
                         <div class="menu-item menu-accordion">
                             <!--begin:Menu link-->
-                            <a href="{{ route('user.index') }}" class="menu-link">
+                            <a href="{{ route('investigasipotensi.index') }}" class="menu-link">
                                 <span class="menu-bullet">
                                     <i class="bi bi-exclamation-diamond text-white fs-3"></i>
                                 </span>

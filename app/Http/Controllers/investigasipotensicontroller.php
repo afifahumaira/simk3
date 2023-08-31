@@ -3,13 +3,13 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\InvestigasiPotensi;
-use App\Models\Departemen;
-use App\Models\P2k3;
 use App\Models\Potensibahaya;
+use App\Models\InvestigasiPotensi;
 use RealRashid\SweetAlert\Facades\Alert;
+use App\Models\P2k3;
+use App\Models\Departemen;
 
-class investigasipotensicontroller extends Controller
+class InvestigasiPotensiController extends Controller
 {
     public function index() {
         $data = Potensibahaya::get('status', '=', '2');
@@ -61,7 +61,7 @@ class investigasipotensicontroller extends Controller
             'tindakan' => 'required',
         ]);
 
-        InvestigasiPotensi::create([
+        Investigasi::create([
             'p2k3_id' => $request->p2k3_id,
             'laporinsiden_id' => $request->laporinsiden_id,
             'departemen_id' => $request->departemen_id,
@@ -90,7 +90,7 @@ class investigasipotensicontroller extends Controller
         //     'tindakan' => 'required',
         // ]);
 
-        InvestigasiPotensi::find($id)->update([
+        Investigasi::find($id)->update([
             'p2k3_id' => $request->p2k3_id,
             'laporinsiden_id' => $request->laporinsiden_id,
             'departemen_id' => $request->departemen_id,
@@ -113,4 +113,5 @@ class investigasipotensicontroller extends Controller
         Alert::success('Berhasil', 'Data Investigasi berhasil dihapus!')->iconHtml('<i class="bi bi-person-check"></i>')->hideCloseButton();
         return redirect()->route('investigasipotensi.index');
     }
+
 }

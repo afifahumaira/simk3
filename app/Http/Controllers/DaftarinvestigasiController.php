@@ -2,117 +2,121 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
-use App\Models\User;
-use App\Models\Inventory;
 use App\Models\Investigasi;
-use App\Models\LaporanInsiden;
-use App\Models\PotensiBahaya;
+use App\Models\Laporinsiden;
+use App\Models\Potensibahaya;
+use App\Models\InvestigasiPotensi;
 use App\Models\P2k3;
+use Illuminate\Http\Request;
+use Alert;
 use App\Models\Departemen;
+use App\Models\Inventory;
+use Illuminate\Support\Facades\DB;
 
-
-use Hash;
-use Validator;
-
-class DaftarinvestigasiController extends Controller
+class DaftarInvestigasiController extends Controller
 {
-    public function index(Request $request){
-        $investigasi = Investigasi::with(['departemen', 'p2k3'])->paginate(10);
-        
-        // ->Where('p2k3_id', 'LIKE', '%'.$request->search.'%')
-        // ->paginate(10);
-        
-        return view('dashboard.daftarinvestigasi.index')-> with('investigasi',$investigasi);
+
+    public function index() {
+        $data = Potensibahaya::get('status', '=', '2');
+        $investigasis = InvestigasiPotensi::all();
+        $departemen = Departemen::all();
+        $p2k3s = P2k3::all();
+
+        return view('dashboard.investigasipotensi.index')
+            ->with('investigasis', $investigasis)
+            ->with('laporinsdien', $data)
+            ->with('departemen', $departemen)
+            ->with('p2k3', $p2k3s);
+            
     }
 
-    public function detail($id_investigasi){
-        $investigasi = Investigasi::where('id_investigasi', $id_investigasi)->first();
-        
-        return response()->json([
-            'message' => 'success',
-            'data' => $investigasi,
-        ], 200);
+    public function tambah($id) {
+        $lap = Potensibahaya::find($id);
+        return view('dashboard.investigasipotensi.tambah-investigasi', compact('lap'));
     }
 
     public function lihat($id) {
-        $investigasi = Investigasi::with(['departemen','p2k3'])->find($id);
-        return view('dashboard.daftarinvestigasi.lihat-investigasi', compact('investigasi'));
-    }
-
-
-    public function insert(Request $request){
-        
-        $request->validate([
-            'kategori'      => 'required',
-            'penyebab_langsung'      => 'required',
-            'penyebab_tak_langsung'      => 'required',
-            'tenggat_waktu'      => 'required',
-            'tindakan'      => 'required',
-            'id_laporan_insiden'      => 'required',
-            'id_users'      => 'required',
-        ]);
-
-
-        $data = array(
-            'kategori'      => $request->kategori,
-            'penyebab_langsung'      => $request->penyebab_langsung,
-            'penyebab_tak_langsung'      => $request->penyebab_tak_langsung,
-            'tenggat_waktu'      => $request->tenggat_waktu,
-            'tindakan'      => $request->tindakan,
-            'id_laporan_insiden'      => $request->id_laporan_insiden,
-            'id_users'      => $request->id_users,
-        );
-
-        Investigasi::insert($data);
-
-        return response()->json([
-            'message' => 'Data berhasil di Tambahkan',
-        ], 200);
-
+        $investigasi = InvestigasiPotensi::where('id',$id)->first();
+        return view('dashboard.investigasipotensi.Lihat-investigasi', compact('investigasi'));
+                
     }
 
     public function ubah($id) {
-        $departments = Departemen::all();
-        $investigasi = Investigasi::where('id',$id)->first();
-
+        $investigasi = InvestigasiPotensi::where('id',$id)->first();
         $p2k3s = P2k3::all();
-        return view('dashboard.laporaninsiden.edit-insiden', compact('investigasi', 'departments', 'p2k3s'));
+        $departemen = Departemen::all();
+        $laporinsiden = Potensibahaya::all();
+        return view('dashboard.investigasipotensi.edit-investigasi')
+                ->with('investigasi', $investigasi)
+                ->with('p2k3s', $p2k3s)
+                ->with('departemen', $departemen)
+                ->with('laporinsiden', $laporinsiden);
     }
 
-    public function update($id_investigasi, Request $request){
-        
+    public function simpan(Request $request) {
         $request->validate([
-            'penyebab_langsung'      => 'required',
-            'penyeyab_tidak_langsung' => 'required',
-            'tenggat_waktu'      => 'required',
-            'tindakan'      => 'required',
-            
+            'p2k3_id' => 'required',
+            'laporinsiden_id' => 'required',
+            'departemen_id' => 'required',
+            'kategori' => 'required',
+            'penyebab_langsung' => 'required',
+            'penyebab_tidak_langsung' => 'required',
+            'penyebab_dasar' => 'required',
+            'tenggat_waktu' => 'required',
+            'tindakan' => 'required',
         ]);
 
-        $data = array(
-            
-            'penyebab_langsung'      => $request->penyebab_langsung,
-            'penyebab_tak_langsung'      => $request->penyebab_tak_langsung,
-            'tenggat_waktu'      => $request->tenggat_waktu,
-            'tindakan'      => $request->tindakan,
-            
-        );
+        Investigasi::create([
+            'p2k3_id' => $request->p2k3_id,
+            'laporinsiden_id' => $request->laporinsiden_id,
+            'departemen_id' => $request->departemen_id,
+            'kategori' => $request->kategori,
+            'penyebab_langsung' => $request->penyebab_langsung,
+            'penyebab_tidak_langsung' => $request->penyebab_tidak_langsung,
+            'penyebab_dasar' => $request->penyebab_dasar,
+            'tenggat_waktu' => $request->tenggat_waktu,
+            'tindakan' => $request->tindakan,
+        ]);
 
-        Investigasi::find($id_investigasi)->update($data);
-
-        Alert::success('Berhasil', 'Data Laporan Insiden berhasil diperbaharui!')->iconHtml('<i class="bi bi-person-check"></i>')->hideCloseButton();
-        return redirect()->route('daftarinvestigasi.index');
-        
-
+        Alert::success('Berhasil', 'Data Investigasi berhasil disimpan!')->iconHtml('<i class="bi bi-person-check"></i>')->hideCloseButton();
+        return redirect()->route('investigasipotensi.index');
     }
 
-    public function delete($id){
-        $investigasi = Investigasi::find($id);
-        $investigasi->delete();
+    public function update($id, Request $request) {
+        // $request->validate([
+        //     'p2k3_id' => 'required',
+        //     'laporinsiden_id' => 'required',
+        //     'departemen_id' => 'required',
+        //     'kategori' => 'required',
+        //     'penyebab_langsung' => 'required',
+        //     'penyebab_tidak_langsung' => 'required',
+        //     'penyebab_dasar' => 'required',
+        //     'tenggat_waktu' => 'required',
+        //     'tindakan' => 'required',
+        // ]);
+
+        Investigasi::find($id)->update([
+            'p2k3_id' => $request->p2k3_id,
+            'laporinsiden_id' => $request->laporinsiden_id,
+            'departemen_id' => $request->departemen_id,
+            'kategori' => $request->kategori,
+            'penyebab_langsung' => $request->penyebab_langsung,
+            'penyebab_tidak_langsung' => $request->penyebab_tidak_langsung,
+            'penyebab_dasar' => $request->penyebab_dasar,
+            'tenggat_waktu' => $request->tenggat_waktu,
+            'tindakan' => $request->tindakan,
+        ]);
+
+        Alert::success('Berhasil', 'Data Investigasi berhasil diperbaharui!')->iconHtml('<i class="bi bi-person-check"></i>')->hideCloseButton();
+        return redirect()->route('investigasipotensi.index');
+    }
+
+    public function delete($id) {
+        $inv = InvestigasiPotensi::find($id);
+        $inv->delete();
+
         Alert::success('Berhasil', 'Data Investigasi berhasil dihapus!')->iconHtml('<i class="bi bi-person-check"></i>')->hideCloseButton();
-        return redirect()->route('daftarinvestigasi.index');
-
+        return redirect()->route('investigasipotensi.index');
     }
+
 }
