@@ -234,7 +234,9 @@
                 {{-- End View Admin --}}
 
                 {{-- View p2k3 --}}
-                @if (auth()->user()->hak_akses == 'p2k3')
+                @if (auth()->user()->hak_akses == 'p2k3' ||
+                        auth()->user()->hak_akses == 'k3_departemen' ||
+                        auth()->user()->hak_akses == 'pimpinan')
                     <div class="row my-5">
                         <div class="col-lg-4 col-md-6 col-sm-6">
                             <div class="card card-stats h-100 ">

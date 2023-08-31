@@ -76,8 +76,8 @@
                                     <div class="ps-3 pe-5">
                                         <label class="col-form-label">P2K3</label>
                                         <div class=" w-100">
-                                            <select name="p2k3_id" class="form-select fs-6 w-100"
-                                                data-control="select2" data-hide-search="true" data-placeholder="P2K3">
+                                            <select name="p2k3_id" class="form-select fs-6 w-100" data-control="select2"
+                                                data-hide-search="true" data-placeholder="P2K3">
                                                 @foreach ($p2k3s as $p2k3)
                                                     <option value="{{ $p2k3->id }}"
                                                         {{ $investigasi->p2k3_id == $p2k3->id ? 'selected' : '' }}>
@@ -90,7 +90,8 @@
                                         <label class="col-form-label">Laporan Insiden ID</label>
                                         <div class=" w-100">
                                             <select name="laporinsiden_id" class="form-select fs-6 w-100"
-                                                data-control="select2" data-hide-search="true" data-placeholder="Lapor Insiden ID">
+                                                data-control="select2" data-hide-search="true"
+                                                data-placeholder="Lapor Insiden ID">
                                                 @foreach ($laporinsiden as $lap)
                                                     <option value="{{ $lap->id }}"
                                                         {{ $investigasi->laporinsiden_id == $lap->id ? 'selected' : '' }}>

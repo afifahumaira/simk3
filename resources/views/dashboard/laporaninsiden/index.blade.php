@@ -47,7 +47,7 @@
                                 <th>Nama Pelapor</th>
                                 <th>Nama Korban</th>
                                 <th>P2K3</th>
-                                <th>Status</th>
+                                <th class="col-1">Status</th>
                                 <th>Action</th>
                             @endif
                             @if (auth()->user()->hak_akses == 'pengguna')
@@ -74,19 +74,25 @@
                                 <td>{{ $lap->nama_pelapor }}</td>
                                 <td>{{ $lap->nama_korban }}</td>
                                 <td>{{ $lap->p2k3 ? $lap->p2k3->nama : '' }}</td>
-                                <td align="center">
+                                <td align="center" class="pt-5">
                                     @if ($lap->status == '1')
-                                        <button type="button" class="btn btn-danger btn-sm py-2"
-                                            style="background:#DC3545">Pending</button>
+                                        <a href="#"
+                                            class="text-center fw-bold  text-danger border border-2 rounded-4 border-danger px-4 ">
+                                            Pending</a>
                                     @elseif ($lap->status == '2')
-                                        @if (auth()->user()->hak_akses == 'admin' || auth()->user()->hak_akses == 'p2k3')
+                                        @if (auth()->user()->hak_akses == 'admin' ||
+                                                auth()->user()->hak_akses == 'p2k3' ||
+                                                auth()->user()->hak_akses == 'k3_departemen' ||
+                                                auth()->user()->hak_akses == 'pimpinan')
                                             <a href="{{ route('daftarinvestigasi.tambah', $lap->id) }}"
-                                                class="btn btn-primary btn-sm py-2">Investigasi</a>
+                                                class="text-center fw-bold  text-warning border border-2 rounded-4 border-warning  px-4">Investigasi</a>
                                         @else
-                                            <button type="button" class="btn btn-primary btn-sm py-2">Investigasi</button>
+                                            <a href="#" type="button"
+                                                class="text-center fw-bold  text-warning border border-2 rounded-4 border-warning  px-4">Investigasi</a>
                                         @endif
                                     @elseif ($lap->status == '3')
-                                        <button type="button" class="btn btn-success btn-sm py-2">Sukses</button>
+                                        <a href="#"
+                                            class="text-center fw-bold  text-success border border-2 rounded-4 border-success px-4">Sukses</a>
                                     @endif
                                 </td>
                                 @if (auth()->user()->hak_akses == 'admin' ||
