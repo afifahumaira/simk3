@@ -60,6 +60,7 @@ Route::group(['middleware' => ['auth']], function() {
     // Profile
     Route::prefix('profile')->name('profile.')->group(function(){
         Route::get('/', [ProfileController::class, 'index'])->name('index');
+        Route::put('/edit', [ProfileController::class, 'edit'])->name('edit');
     });
 
     // 1. Laporan Insiden
@@ -68,7 +69,7 @@ Route::group(['middleware' => ['auth']], function() {
         Route::get('tambah', [LaporanInsidenController::class, 'tambah'])->name('tambah');
         Route::get('lihat/{id}', [LaporanInsidenController::class, 'lihat'])->name('lihat');
         Route::get('ubah/{id}', [LaporanInsidenController::class, 'ubah'])->name('ubah');
-        
+
         Route::post('insert', [LaporanInsidenController::class, 'insert'])->name('insert');
         Route::post('update/{id}', [LaporanInsidenController::class, 'update'])->name('update');
         Route::post('delete/{id}', [LaporanInsidenController::class, 'delete'])->name('delete');
@@ -98,7 +99,7 @@ Route::group(['middleware' => ['auth']], function() {
         Route::post('update/{id}', [ControllersInvestigasiPotensiController::class, 'update'])->name('update');
         Route::post('delete/{id}', [ControllersInvestigasiPotensiController::class, 'delete'])->name('delete');
     });
-    
+
     // 3. Potensi Bahaya
     Route::prefix('potensibahaya')->name('potensibahaya.')->group(function(){
         Route::get('/', [PotensibahayaController::class, 'index'])->name('index');

@@ -49,25 +49,37 @@
 
             <!--Edit Modal-->
             <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-                <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-dialog modal-dialog-centered">
                   <div class="modal-content">
                     <div class="modal-header">
                       <h5 class="modal-title" id="exampleModalLongTitle">Ubah Data Profile</h5>
-                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                      </button>
                     </div>
                     <div class="modal-body">
-                        <form action="" method="POST" enctype="multipart/form-data">
-                            <title>
-
-                            </title>
+                        <form action="{{ route('profile.edit')}}" method="POST" enctype="multipart/form-data">
+                            @csrf
+                            @method('PUT')
+                            <input type="hidden" value="{{Auth::user()->id}}" name="id" id="id">
+                            <div class="container">
+                                <div class="mb-3">
+                                    <label class="form-labels">Nama</label>
+                                    <input type="text" class="form-control" name="name" id="name" value="{{Auth::user()->name}}">
+                                </div>
+                                <div class="mb-3">
+                                    <label class="form-labels">Email</label>
+                                    <input type="text" class="form-control" name="email" id="email" value="{{Auth::user()->email}}">
+                                </div>
+                                <div class="mb-3">
+                                    <label class="form-labels">Password Terbaru</label>
+                                    <input type="password" class="form-control" name="password" id="password">
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="reset" style="background: #505050" class="btn text-white" data-bs-dismiss="modal">Kembali</button>
+                                <button type="submit" style="background: #fdaf1f" class="btn text-white">Simpan</button>
+                            </div>
                         </form>
                     </div>
-                    <div class="modal-footer">
-                      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                      <button type="button" class="btn btn-primary">Save changes</button>
-                    </div>
+
                   </div>
                 </div>
               </div>
