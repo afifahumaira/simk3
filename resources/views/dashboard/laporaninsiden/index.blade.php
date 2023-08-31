@@ -85,14 +85,14 @@
                                                 auth()->user()->hak_akses == 'k3_departemen' ||
                                                 auth()->user()->hak_akses == 'pimpinan')
                                             <a href="{{ route('daftarinvestigasi.tambah', $lap->id) }}"
-                                                class="text-center fw-bold  text-warning border border-2 rounded-4 border-warning  px-4">Investigasi</a>
+                                                class="text-center fw-bold  text-warning border border-2 rounded-4 border-warning  px-4">Pending</a>
                                         @else
                                             <a href="#" type="button"
                                                 class="text-center fw-bold  text-warning border border-2 rounded-4 border-warning  px-4">Investigasi</a>
                                         @endif
                                     @elseif ($lap->status == '3')
                                         <a href="#"
-                                            class="text-center fw-bold  text-success border border-2 rounded-4 border-success px-4">Sukses</a>
+                                            class="text-center fw-bold  text-success border border-2 rounded-4 border-success px-4">Tuntas</a>
                                     @endif
                                 </td>
                                 @if (auth()->user()->hak_akses == 'admin' ||
