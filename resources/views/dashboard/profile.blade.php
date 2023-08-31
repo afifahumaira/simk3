@@ -11,55 +11,80 @@
                 <!--begin::Main wrapper-->
 
                 <!--end::Main wrapper-->
-                <a href="{{ route('dashboard') }}" type="button" class="btn btn-secondary text-white btn-sm mb-2"
+                <div>
+                    <a href="{{ route('dashboard') }}" type="button" class="btn btn-secondary text-white btn-sm mb-2 mr-2"
                     style="background: #505050"><i class="bi bi-chevron-left text-white"></i>Kembali</a>
+                    <button data-bs-toggle="modal" data-bs-target="#exampleModalCenter" class="btn btn-secondary text-white btn-sm mb-2"
+                    style="background: #fdaf1f"><i class="bi bi-pencil text-white"></i>Ubah Data</button>
+                </div>
                 <!--end::Title-->
             </div>
             <!--begin::Content container-->
-            <table class="table table-bordered border-secondary rounded-5 px-3 py-3 mb-5 shadow">
-                <tbody>
-                <tr>
+            <div class="container">
+                <div class="row">
+                    <div class="col">
+                        <p class="h3">Nama</p>
+                    </div>
+                    <div class="col">
+                        <div class="h3 font-weight-normal">: {{Auth::user()->name}}</div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <p class="h3">Email</p>
+                    </div>
+                    <div class="col">
+                        <p class="h3 font-weight-normal">: {{Auth::user()->email}}</p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <p class="h3">Jabatan</p>
+                    </div>
+                    <div class="col">
+                        <p class="h3 font-weight-normal">: {{Auth::user()->hak_akses}}</p>
+                    </div>
+                </div>
+            </div>
 
-                    <th>Nama</th>
-                    <td>{{$profile->user->name}}</td>
+            <!--Edit Modal-->
+            <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h5 class="modal-title" id="exampleModalLongTitle">Ubah Data Profile</h5>
+                    </div>
+                    <div class="modal-body">
+                        <form action="{{ route('profile.edit')}}" method="POST" enctype="multipart/form-data">
+                            @csrf
+                            @method('PUT')
+                            <input type="hidden" value="{{Auth::user()->id}}" name="id" id="id">
+                            <div class="container">
+                                <div class="mb-3">
+                                    <label class="form-labels">Nama</label>
+                                    <input type="text" class="form-control" name="name" id="name" value="{{Auth::user()->name}}">
+                                </div>
+                                <div class="mb-3">
+                                    <label class="form-labels">Email</label>
+                                    <input type="text" class="form-control" name="email" id="email" value="{{Auth::user()->email}}">
+                                </div>
+                                <div class="mb-3">
+                                    <label class="form-labels">Password Terbaru</label>
+                                    <input type="password" class="form-control" name="password" id="password">
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="reset" style="background: #505050" class="btn text-white" data-bs-dismiss="modal">Kembali</button>
+                                <button type="submit" style="background: #fdaf1f" class="btn text-white">Simpan</button>
+                            </div>
+                        </form>
+                    </div>
 
-                </tr>
-                <tr>
-                    <th>Email</th>
-                    <td>{{$profile->user->email}}</td>
+                  </div>
+                </div>
+              </div>
+            <!--END Modal-->
 
-                </tr>
-                <tr>
-                    <th>Jabatan</th>
-                    <td>{{$data->hak_akses}}</td>
-
-                </tr>
-                <tr>
-
-                    <th>Username</th>
-                    @if($data->departemen_id != null)
-                    <td>{{$data->departemen->name}}</td>
-                    @endif
-                    @if ($data->p2k3 != null)
-                    <td>{{$data->p2k3->departemen}}</td>
-                    @endif
-                </tr>
-
-                <tr>
-
-                    {{-- <th>Foto Profil</th>
-                    <td><img src="{{ asset('berkas/' . $data->avatar) }}" style="width:auto; height:55px;" class="rounded"></td>
-
-                </tr> --}}
-                </tbody>
-
-                    {{-- <tr>
-
-                <th>Foto Benda</th>
-                <td><img src="https://laravel.com/img/logomark.min.svg" class="rounded"></td>
-
-              </tr> --}}
-            </table>
 
             <!--end::Content container-->
         </div>
