@@ -129,19 +129,19 @@
                                     {{-- <td>{{ $investigasi->tenggat_waktu ? $investigasi->tenggat_waktu->translatedFormat('d F Y') : '' }}</td> --}}
                                     <td>{{ $investigasi->p2k3->nama }}</td>
                                     <td align="center">
-                                        <p
-                                            class="text-center fw-bold  text-success border border-2 rounded-4 border-success w-75">
+                                        {{-- <a href="#"
+                                            class="text-center fw-bold  text-success border border-2 rounded-4 border-success px-4">
                                             Ditindaklanjuti
-                                        </p>
+                                        </a> --}}
 
-                                        <p
-                                            class="text-center fw-bold  text-danger border border-2 rounded-4 border-danger w-75">
+                                        <a href=""
+                                            class="text-center fw-bold  text-danger border border-2 rounded-4 border-danger px-4">
                                             Pending
-                                        </p>
+                                        </a>
 
-                                        <p class="text-center fw-bold  text-warning  w-75">
+                                        {{-- <a href="" class="text-center fw-bold  text-warning  px-4">
                                             Pending
-                                        </p>
+                                        </a> --}}
                                     </td>
 
                                     <td class="d-flex  justify-content-center">

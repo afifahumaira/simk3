@@ -84,14 +84,16 @@
                             <td>{{ $data->waktu_kejadian }}</td>
                             <td>{{ $data->nama_pelapor }}</td>
                             <td>{{ $data->lokasi }}</td>
-                            <td>
+                            <td align="center" class="pt-5">
                                 @if ($data->status == '1')
-                                    <button type="button" class="btn btn-danger btn-sm py-2"
-                                        style="background:#DC3545">Pending</button>
+                                    <a href="#"
+                                        class="text-center fw-bold  text-danger border border-2 rounded-4 border-danger px-4 ">Pending</a>
                                 @elseif ($data->status == '2')
-                                    <button type="button" class="btn btn-primary btn-sm py-2">Investigasi</button>
+                                    <a href="#"
+                                        class="text-center fw-bold  text-warning border border-2 rounded-4 border-warning  px-4">Investigasi</a>
                                 @elseif ($data->status == '3')
-                                    <button type="button" class="btn btn-success btn-sm py-2">Sukses</button>
+                                    <a
+                                        class="text-center fw-bold  text-success border border-2 rounded-4 border-success px-4">Tuntas</a>
                                 @endif
                             </td>
                             @if (auth()->user()->hak_akses == 'admin' ||

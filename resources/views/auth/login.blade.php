@@ -33,7 +33,7 @@
 </html>
 
 <body>
-
+    @include('sweetalert::alert')
     <div class="container-fluid">
         <div class="row no-gutter">
             <!-- The image half -->
@@ -79,7 +79,8 @@
                                         class="btn btn-primary btn-block text-uppercase mb-2 mt-3 shadow-sm d-flex justify-content-center align-items-center mx-auto">
                                         {{ __('MASUK') }} </button>
                                     <div class="text-center d-flex justify-content-center mt-2">
-                                        <p>Belum Memiliki akun?<a href="{{ url('/register') }}" class="font-italic text-muted">
+                                        <p>Belum Memiliki akun?<a href="{{ url('/register') }}"
+                                                class="font-italic text-muted">
                                                 <u>Daftar disini</u></a></p>
                                     </div>
                                 </form>

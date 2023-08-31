@@ -92,7 +92,7 @@
                                         @endif
                                     @elseif ($lap->status == '3')
                                         <a href="#"
-                                            class="text-center fw-bold  text-success border border-2 rounded-4 border-success px-4">Sukses</a>
+                                            class="text-center fw-bold  text-success border border-2 rounded-4 border-success px-4">Tuntas</a>
                                     @endif
                                 </td>
                                 @if (auth()->user()->hak_akses == 'admin' ||
