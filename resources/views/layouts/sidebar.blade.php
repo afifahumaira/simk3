@@ -34,7 +34,7 @@
                 </div>
                 <!--end:Menu item-->
                 <!--begin:Menu item-->
-                <div class="menu-item here show menu-accordion">
+                {{-- <div class="menu-item here show menu-accordion">
                     <!--begin:Menu link-->
                     <a href="{{ route('daftarinvestigasi.index') }}" class="menu-link">
                         <span class="menu-icon">
@@ -43,7 +43,7 @@
                         <span class="menu-title text-white">Daftar Investigasi</span>
 
                     </a>
-                </div>
+                </div> --}}
                 <!--end:Menu item-->
                 <!--begin:Menu item-->
                 <div class="menu-item here show menu-accordion">
@@ -57,6 +57,50 @@
                     </a>
                 </div>
                 <!--end:Menu item-->
+
+                <!--begin:Menu item-->
+                <div data-kt-menu-trigger="click" class="menu-item menu-accordion">
+                    <!--begin:Menu link-->
+                    <span class="menu-link">
+                        <span class="menu-icon">
+                            <i class="bi bi-card-checklist text-white fs-3"></i>
+                        </span>
+                        <span class="menu-title text-white">Daftar Investigasi</span>
+                        <span class="menu-arrow"></span>
+                    </span>
+                    <!--end:Menu link-->
+                    <!--begin:Menu sub-->
+                    <div class="menu-sub menu-sub-accordion">
+                        <!--begin:Menu item-->
+                        <div class="menu-item menu-accordion">
+                            <!--begin:Menu link-->
+                            <a href="{{ route('daftarinvestigasi.index') }}" class="menu-link">
+                                <span class="menu-bullet">
+                                    <i class="bi bi-person-lines-fill text-white fs-3"></i>
+                                </span>
+                                <span class="menu-title text-white">Daftar Investigasi Insiden</span>
+                                <!-- <span class="menu-arrow"></span> -->
+                            </a>
+                            <!--end:Menu link-->
+                        </div>
+                        <!--end:Menu item-->
+                        <!--begin:Menu item-->
+                        <div class="menu-item menu-accordion">
+                            <!--begin:Menu link-->
+                            <a href="{{ route('user.index') }}" class="menu-link">
+                                <span class="menu-bullet">
+                                    <i class="bi bi-exclamation-diamond text-white fs-3"></i>
+                                </span>
+                                <span class="menu-title text-white">Daftar Investigasi Potensi Bahaya</span>
+                                <!-- <span class="menu-arrow"></span> -->
+                            </a>
+                            <!--end:Menu link-->
+                        </div>
+                    </div>
+                    <!--end:Menu sub-->
+                </div>
+                <!--end:Menu item-->
+
                 <!--begin:Menu item-->
                 <div class="menu-item here show menu-accordion">
                     <!--begin:Menu link-->
@@ -330,7 +374,7 @@
                         <span class="menu-icon">
                             <i class="bi bi-exclamation-octagon text-white fs-3"></i>
                         </span>
-                        <span class="menu-title text-white">Lapor Potensi Bahaya</span>
+                        <span class="menu-title text-white">Daftar Lapor Potensi Bahaya</span>
 
                     </a>
                 </div>
@@ -412,7 +456,7 @@
                         <span class="menu-icon">
                             <i class="bi bi-exclamation-octagon text-white fs-3"></i>
                         </span>
-                        <span class="menu-title text-white">Lapor Potensi Bahaya</span>
+                        <span class="menu-title text-white">Daftar Lapor Potensi Bahaya</span>
 
                     </a>
                 </div>

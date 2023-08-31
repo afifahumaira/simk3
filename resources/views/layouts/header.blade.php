@@ -1,3 +1,12 @@
+<style>
+    .overflow-hidden {
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+</style>
+
+
+
 <!--begin::Header-->
 <div id="kt_app_header" class="app-header d-flex flex-column flex-stack mb-5">
     <!--begin::Header main-->
@@ -107,7 +116,7 @@
                 <i class="bi bi-person-circle fs-2qx"></i>
             </div>
             <!--begin::User account menu-->
-            <div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-800 menu-state-bg menu-state-color fw-semibold me-5 py-4 fs-6 w-300px"
+            <div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-800 menu-state-bg menu-state-color fw-semibold pe-5 py-4 fs-6 w-md-300px overflow-x-hidden "
                 data-kt-menu="true">
                 <!--begin::Menu item-->
                 <div class="menu-item px-3">
@@ -118,12 +127,15 @@
                         </div>
                         <!--end::Avatar-->
                         <!--begin::Username-->
-                        <div class="d-flex flex-column">
+                        <div class="d-flex flex-column pe-5">
                             <div class="fw-bold d-flex align-items-center fs-5">
                                 {{ auth()->user()->name }}
                             </div>
-                            <a href="#"
-                                class="fw-semibold text-muted text-hover-primary fs-7">{{ auth()->user()->email }}</a>
+                            <div class="fs-5 pe-5 me-5">
+                                <a href="#"
+                                    class="fw-semibold text-muted text-hover-primary pe-5 fs-7 text-nowrap  ">{{ auth()->user()->email }}</a>
+
+                            </div>
                         </div>
                         <!--end::Username-->
                     </div>
@@ -133,17 +145,19 @@
                 <div class="separator my-2"></div>
                 <!--end::Menu separator-->
                 <!--begin::Menu item-->
-                {{-- <div class="menu-item px-5">
+                <div class="menu-item px-5">
                     <a href="#" class="menu-link px-5">Profile</a>
-                </div> --}}
+                </div>
                 <!--end::Menu item-->
                 <!--begin::Menu item-->
 
                 <!--begin::Menu item-->
-                <div class="menu-item px-5">
-                    <form action="{{ route('logout') }}" method="post">
+                <div class="menu-item mt-3 px-5">
+
+                    <form action="{{ route('logout') }}" id="logoutForm" method="post">
                         @csrf
-                        <button type="submit" class="menu-link px-5">Sign Out</button>
+                        <a onclick="document.getElementById('logoutForm').submit()" class="menu-link px-5">Sign Out</a>
+                        {{-- <button type="submit" class="menu-link px-5">Sign Out</button> --}}
                     </form>
                     {{-- <a href="" ></a> --}}
                 </div>

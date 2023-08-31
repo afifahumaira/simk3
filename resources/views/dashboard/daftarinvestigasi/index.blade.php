@@ -35,7 +35,7 @@
                             <th scope="col" class="text-center">No</th>
                             <th scope="col">Kategori</th>
                             {{-- <th scope="col">Nama Pelapor</th> --}}
-                            <th scope="col">Lokasi Kejadian</th>
+                            {{-- <th scope="col">Lokasi Kejadian</th> --}}
                             {{-- <th scope="col">Tenggat Waktu</th> --}}
                             <th scope="col">Penanggung Jawab</th>
                             <th scope="col">Action</th>
@@ -47,24 +47,22 @@
                                 <td scope="row" class="text-center">{{ $loop->iteration }}</td>
                                 <td>{{ $investigasi->kategori }}</td>
                                 {{-- <td>{{ $investigasi->laporinsiden->nama_pelapor }}</td> --}}
-                                <td>{{ $investigasi->departemen->name }}</td>
+                                {{-- <td>{{ $investigasi->departemen->name }}</td> --}}
                                 {{-- <td>{{ $investigasi->tenggat_waktu ? $investigasi->tenggat_waktu->translatedFormat('d F Y') : '' }}</td> --}}
                                 <td>{{ $investigasi->p2k3->nama }}</td>
 
                                 <td>
-                                    <a href="{{ route('daftarinvestigasi.lihat', $investigasi->id) }}"
-                                        type="button" class="btn btn-sm btn-warning px-4"><i
-                                            class="bi bi-eye text-dark pe-0"></i></a>
-                                    <a href="{{ route('daftarinvestigasi.ubah', $investigasi->id) }}"
-                                        type="button" class="btn btn-sm btn-primary px-4"><i
-                                            class="bi bi-pencil-square pe-0"></i></a>
+                                    <a href="{{ route('daftarinvestigasi.lihat', $investigasi->id) }}" type="button"
+                                        class="btn btn-sm btn-warning px-4"><i class="bi bi-eye text-dark pe-0"></i></a>
+                                    <a href="{{ route('daftarinvestigasi.ubah', $investigasi->id) }}" type="button"
+                                        class="btn btn-sm btn-primary px-4"><i class="bi bi-pencil-square pe-0"></i></a>
                                     <button type="button" class="btn btn-danger btn-sm px-4" data-bs-toggle="modal"
                                         data-bs-target="#deleteForm{{ $investigasi->id }}"><i
                                             class="bi bi-trash pe-0"></i></button>
 
-                                    <div class="modal fade" id="deleteForm{{ $investigasi->id }}"
-                                        data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
-                                        aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                                    <div class="modal fade" id="deleteForm{{ $investigasi->id }}" data-bs-backdrop="static"
+                                        data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel"
+                                        aria-hidden="true">
                                         <div class="modal-dialog modal-dialog-centered ">
                                             <div class="modal-content">
 
