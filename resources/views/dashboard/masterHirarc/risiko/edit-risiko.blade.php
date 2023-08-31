@@ -19,7 +19,7 @@
                             <div class="modal-content">
                                 <div class="modal-body mt-5 d-flex justify-content-center align-items-center">
                                     <h2 class="mt-5 text-center" style="color: #16243D; font-size: 20px font-weight:700">
-                                        keluar dari tambah data?
+                                        keluar dari ubah data?
                                         <p class="mb-0 mt-2 text-center "
                                             style="color: #DC3545; font-weight:400; font-size:14px"> data yang dimasukkan
                                             belum tersimpan </p>

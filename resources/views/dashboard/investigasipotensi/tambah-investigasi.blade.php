@@ -11,8 +11,8 @@
                 class="app-content  rounded bg-light  mb-20 px-5 shadow"style="box-shadow: 2px 4px 20px 2px rgba(0, 0, 0, 0.1);">
                 <div class="app-toolbar-wrapper d-flex flex-stack flex-wrap gap-4 w-100 mb-5 px-5 border-bottom border-5">
                     <!--begin::Page title-->
-                    <h2>Tambah Data Investigasi Laporan Insiden</h2>
-                    <a href="{{ route('daftarinvestigasi.index') }}" type="button"
+                    <h2>Tambah Data Investigasi Laporan Potensi Bahaya</h2>
+                    <a href="{{ route('investigasipotensi.index') }}" type="button"
                         class="btn btn-secondary text-white btn-sm d-flex justify-content-center align-items-center mb-2"
                         data-bs-toggle="modal" data-bs-target="#staticBackdrop" style="background: #505050; width:90px"><i
                             class="bi bi-chevron-left text-white"></i>Kembali</a>
@@ -33,7 +33,7 @@
                                     </h2>
                                 </div>
                                 <div class="modal-footer d-flex justify-content-center border-0">
-                                    <a href="{{ route('daftarinvestigasi.index') }}" type="button"
+                                    <a href="{{ route('investigasipotensi.index') }}" type="button"
                                         class="btn btn-success text-white d-flex justify-content-center align-items-center text-center rounded-1"
                                         style="width:76px; height:31px; background: #29CC6A;">Ya</a>
                                     <button type="button"
@@ -45,9 +45,9 @@
                         </div>
                     </div>
                 </div>
-                <form class="lh-lg" method="POST" action="{{ route('daftarinvestigasi.simpan') }}">
+                <form class="lh-lg" method="POST" action="{{ route('investigasipotensi.simpan') }}">
                     @csrf
-                    <input type="hidden" name="laporinsiden_id" value="{{ $lap->id }}">
+                    <input type="hidden" name="potensibahaya_id" value="{{ $lap->id }}">
                     <input type="hidden" name="departemen_id" value="{{ $lap->departemen_id }}">
                     <div class="page-title  gap-1 mx-5 my-5  ">
                         <div class="card">
@@ -57,61 +57,46 @@
                                 </div>
                             </div>
                             <div class="card-body">
+                                    
                                     <div class="ps-3 pe-5">
-                                        <label class="col-sm-2 col-form-label">Kategori</label>
-                                        <div class="col-sm-10 w-100">
-                                            <select name="kategori" class="form-select fs-6 w-100" data-control="select2" data-hide-search="true" data-placeholder="Kategori">
-                                                <option value="">- Pilih -</option>
-                                                <option value="Near-Miss">Near-Miss</option>
-                                                <option value="Minor Injury">Minor Injury</option>
-                                                <option value="Major Injury">Major Injury</option>
-                                            </select>
-                                        </div>
-                                    </div>
-
-                                    <div class="ps-3 pe-5">
-                                        <label class="col-sm-2 col-form-label ">Nama Pelapor</label>
+                                        <label class="col-sm-2 col-form-label ">Lokasi Kejadian Pelapor</label>
                                         <div class="col-sm-10 w-100">
                                             <div class="form-group label-floating is-empty is-focused">
-                                                <input class="form-control bg-secondary" name="nama_pelapor"
-                                                    id="nama_pelapor" value="{{ $lap->nama_pelapor }}" readonly>
+                                                <input class="form-control bg-secondary" name="lokasi"
+                                                    id="lokasi" value="{{ $lap->lokasi }}" readonly>
                                             </div>
                                         </div>
                                     </div>
 
                                     <div class="ps-3 pe-5">
-                                        <label class="col-sm-2 col-form-label ">Lokasi Kejadian</label>
+                                        <label class="col-sm-2 col-form-label ">Potensi Bahaya</label>
                                         <div class="col-sm-10 w-100">
                                             <div class="form-group label-floating is-empty is-focused">
-                                                <input class="form-control bg-secondary" name="nama_departemen"
-                                                    id="nama_departemen" value="{{ $lap->departemen->name }}" readonly>
+                                                <input class="form-control bg-secondary" name="potensi_bahaya"
+                                                    id="potensi_bahaya" value="{{ $lap->potensi_bahaya }}" readonly>
                                             </div>
                                         </div>
                                     </div>
 
                                     <div class="ps-3 pe-5">
-                                        <label class="col-sm-2 col-form-label">Penyebab Langsung</label>
+                                        <label class="col-sm-2 col-form-label ">Risiko</label>
                                         <div class="col-sm-10 w-100">
-                                            <input type="text" class="form-control" name="penyebab_langsung">
-                                        </div>
-                                    </div>
-
-
-                                    <div class="ps-3 pe-5">
-                                        <label class="col-sm-2 col-form-label">Penyebab Tidak Langsung</label>
-                                        <div class="col-sm-10 w-100">
-                                            <input type="text" class="form-control" name="penyebab_tidak_langsung">
+                                            <div class="form-group label-floating is-empty is-focused">
+                                                <input class="form-control bg-secondary" name="risiko"
+                                                    id="risiko" value="{{ $lap->risiko }}" readonly>
+                                            </div>
                                         </div>
                                     </div>
 
                                     <div class="ps-3 pe-5">
-                                        <label class="col-sm-2 col-form-label">Penyebab Dasar</label>
+                                        <label class="col-sm-2 col-form-label ">Usulan</label>
                                         <div class="col-sm-10 w-100">
-                                            <input type="text" class="form-control" name="penyebab_dasar">
+                                            <div class="form-group label-floating is-empty is-focused">
+                                                <input class="form-control bg-secondary" name="usulan"
+                                                    id="usulan" value="{{ $lap->usulan }}" readonly>
+                                            </div>
                                         </div>
                                     </div>
-                            </div>
-                        </div>
 
                         <!-- {{-- Data Pelapor --}} -->
 
@@ -121,16 +106,7 @@
                                     <strong>Kontrol Perbaikan</strong>
                                 </div>
                             </div>
-                            <div class="card-body">
-                                <div class="ps-3 pe-5">
-                                    <label class="col-sm-2 col-form-label ">Tenggat Waktu</label>
-                                    <div class="col-sm-10 w-100">
-                                        <div class="form-group">
-                                            <input class="form-control tanggalPicker" name="tenggat_waktu" id="tenggat_waktu">
-                                        </div>
-                                    </div>
-                                </div>
-
+                            
                                 <div class="ps-3 pe-5">
                                     <label for="inputEmail3" class="col-sm-2 col-form-label">Tindakan</label>
                                     <div class="col-sm-10 w-100">
@@ -148,6 +124,16 @@
                                     </div>
                                 </div>
 
+                                <div class="card-body">
+                                    <div class="ps-3 pe-5">
+                                        <label class="col-sm-2 col-form-label ">Tenggat Waktu</label>
+                                        <div class="col-sm-10 w-100">
+                                            <div class="form-group">
+                                                <input class="form-control tanggalPicker" name="tenggat_waktu" id="tenggat_waktu">
+                                            </div>
+                                        </div>
+                                    </div>
+
                             </div>
                         </div>
                     </div>
@@ -157,7 +143,7 @@
                             <button type="submit"
                                 class="btn btn-success text-white d-flex justify-content-center align-items-center "
                                 style="background: #29CC6A;height: 38px; margin : 10px 20px 30px 20px; font-size:14px; border-radius: 5px;">Simpan Data</button>
-                            <a href="{{ route('daftarinvestigasi.tambah', $lap->id) }}"
+                            <a href="{{ route('investigasipotensi.tambah', $lap->id) }}"
                                 class="btn btn-secondary text-white d-flex align-items-center justify-content-center"
                                 data-bs-toggle="modal" data-bs-target="#resetform"
                                 style="background: #868E96; margin : 10px 20px 30px 20px; width: 124.33px;height: 38px; font-size:14px; border-radius: 5px;">Reset</a>
@@ -178,7 +164,7 @@
                                             </h2>
                                         </div>
                                         <div class="modal-footer d-flex justify-content-center border-0">
-                                            <a href="{{ route('daftarinvestigasi.tambah', $lap->id) }}" type="button"
+                                            <a href="{{ route('investigasipotensi.tambah', $lap->id) }}" type="button"
                                                 class="btn btn-success text-white d-flex justify-content-center align-items-center text-center rounded-1"
                                                 style="width:76px; height:31px; background: #29CC6A;">Ya</a>
                                             <button type="button"

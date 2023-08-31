@@ -8,8 +8,8 @@
                 class="app-content  rounded bg-light  mb-20 px-5 shadow"style="box-shadow: 2px 4px 20px 2px rgba(0, 0, 0, 0.1);">
                 <div class="app-toolbar-wrapper d-flex flex-stack flex-wrap gap-4 w-100 mb-5 px-5 border-bottom border-5">
                     <!--begin::Page title-->
-                    <h2>Edit Data Investigasi Laporan Insiden</h2>
-                    <a href="{{ route('daftarinvestigasi.index') }}" type="button"
+                    <h2>Edit Data Investigasi Laporan Potensi Bahaya</h2>
+                    <a href="{{ route('investigaspotensi.index') }}" type="button"
                         class="btn text-white btn-secondary btn-sm d-flex justify-content-center align-items-center mb-2"
                         data-bs-toggle="modal" data-bs-target="#staticBackdrop" style="background: #505050; width:90px"><i
                             class="bi bi-chevron-left text-white"></i>Kembali</a>
@@ -30,7 +30,7 @@
                                     </h2>
                                 </div>
                                 <div class="modal-footer d-flex justify-content-center border-0">
-                                    <a href="{{ route('daftarinvestigasi.index') }}" type="button"
+                                    <a href="{{ route('investigaspotensi.index') }}" type="button"
                                         class="btn btn-success text-white d-flex justify-content-center align-items-center text-center rounded-1"
                                         style="width:76px; height:31px; background: #29CC6A;">Ya</a>
                                     <button type="button"
@@ -55,7 +55,7 @@
                             </div>
                             <div class="card-body">
                                 <form class="lh-lg" method="POST"
-                                    action="{{ route('daftarinvestigasi.update', $investigasi->id) }}"
+                                    action="{{ route('investigasipotensi.update', $investigasi->id) }}"
                                     enctype="multipart/form-data">
                                     @csrf
                                     {{-- <div class="ps-3 pe-5">
@@ -73,21 +73,9 @@
                                             </div>
                                         </div>
                                     </div> --}}
+                                    
                                     <div class="ps-3 pe-5">
-                                        <label class="col-form-label">P2K3</label>
-                                        <div class=" w-100">
-                                            <select name="p2k3_id" class="form-select fs-6 w-100"
-                                                data-control="select2" data-hide-search="true" data-placeholder="P2K3">
-                                                @foreach ($p2k3s as $p2k3)
-                                                    <option value="{{ $p2k3->id }}"
-                                                        {{ $investigasi->p2k3_id == $p2k3->id ? 'selected' : '' }}>
-                                                        {{ $p2k3->name }}</option>
-                                                @endforeach
-                                            </select>
-                                        </div>
-                                    </div>
-                                    <div class="ps-3 pe-5">
-                                        <label class="col-form-label">Laporan Insiden ID</label>
+                                        <label class="col-form-label">Laporan Potensi Bahaya ID</label>
                                         <div class=" w-100">
                                             <select name="laporinsiden_id" class="form-select fs-6 w-100"
                                                 data-control="select2" data-hide-search="true" data-placeholder="Lapor Insiden ID">
@@ -100,7 +88,7 @@
                                         </div>
                                     </div>
                                     <div class="ps-3 pe-5">
-                                        <label class="col-form-label">Lokasi</label>
+                                        <label class="col-form-label">Departemen</label>
                                         <div class=" w-100">
                                             <select name="departemen_id" class="form-select fs-6 w-100"
                                                 data-control="select2" data-hide-search="true" data-placeholder="Lokasi">
@@ -113,37 +101,56 @@
                                         </div>
                                     </div>
                                     <div class="ps-3 pe-5">
-                                        <label class="col-form-label ">Kategori</label>
+                                        <label class="col-form-label ">Lokasi</label>
                                         <div class=" w-100">
                                             <div class="form-group label-floating is-empty is-focused">
-                                                <input class="form-control bg-secondary" name="kategori" id="kategori"
-                                                    value="{{ $investigasi->kategori }}">
+                                                <input class="form-control bg-secondary" name="lokasi" id="lokasi"
+                                                    value="{{ $investigasi->lokasi }}">
                                             </div>
                                         </div>
                                     </div>
                                     <div class="ps-3 pe-5">
-                                        <label class="col-sm-2 col-form-label">Penyebab Langsung</label>
+                                        <label class="col-sm-2 col-form-label">Potensi Bahaya</label>
                                         <div class="col-sm-10 w-100">
-                                            <input type="text" class="form-control" name="penyebab_langsung"
-                                                id="penyebab_langsung" value="{{ $investigasi->penyebab_langsung }}">
+                                            <input type="text" class="form-control" name="potensi_bahaya"
+                                                id="potensi_bahaya" value="{{ $investigasi->potensi_bahaya }}">
 
                                         </div>
                                     </div>
                                     <div class="ps-3 pe-5">
-                                        <label class="col-sm-2 col-form-label">Penyebab Tidak Langsung</label>
+                                        <label class="col-sm-2 col-form-label">Risiko</label>
                                         <div class="col-sm-10 w-100">
-                                            <input type="text" class="form-control" name="penyebab_tidak_langsung"
-                                                id="penyebab_tidak_langsung"
-                                                value="{{ $investigasi->penyebab_tidak_langsung }}">
+                                            <input type="text" class="form-control" name="risiko"
+                                                id="risiko"
+                                                value="{{ $investigasi->risiko }}">
 
                                         </div>
                                     </div>
                                     <div class="ps-3 pe-5">
-                                        <label class="col-sm-2 col-form-label">Penyebab Dasar</label>
+                                        <label class="col-sm-2 col-form-label">Usulan</label>
                                         <div class="col-sm-10 w-100">
-                                            <input type="text" class="form-control" name="penyebab_dasar"
-                                                id="penyebab_dasar" value="{{ $investigasi->penyebab_dasar }}" readonly>
+                                            <input type="text" class="form-control" name="usulan"
+                                                id="usulan" value="{{ $investigasi->usulan }}" readonly>
 
+                                        <div class="ps-3 pe-5">
+                                        <label class="col-sm-2 col-form-label">Tindakan</label>
+                                        <div class="col-sm-10 w-100">
+                                            <input type="text" class="form-control" name="tindakan" id="tindakan"
+                                                value="{{ $investigasi->tenggat_waktu }}">
+
+                                        </div>
+                                        <div class="ps-3 pe-5">
+                                            <label class="col-form-label">P2K3</label>
+                                            <div class=" w-100">
+                                                <select name="p2k3_id" class="form-select fs-6 w-100"
+                                                    data-control="select2" data-hide-search="true" data-placeholder="P2K3">
+                                                    @foreach ($p2k3s as $p2k3)
+                                                        <option value="{{ $p2k3->id }}"
+                                                            {{ $investigasi->p2k3_id == $p2k3->id ? 'selected' : '' }}>
+                                                            {{ $p2k3->name }}</option>
+                                                    @endforeach
+                                                </select>
+                                            </div>
                                         </div>
                                     </div>
                                     <div class="ps-3 pe-5">
@@ -154,12 +161,7 @@
 
                                         </div>
                                     </div>
-                                    <div class="ps-3 pe-5">
-                                        <label class="col-sm-2 col-form-label">Tindakan</label>
-                                        <div class="col-sm-10 w-100">
-                                            <input type="text" class="form-control" name="tindakan" id="tindakan"
-                                                value="{{ $investigasi->tenggat_waktu }}">
-
+                                    
                                             {{-- <div class="ps-3 pe-5">
                                                 <label for="inputEmail3" class="col-sm-2 col-form-label">Tindakan</label>
                                                 <div class="col-sm-10 w-100">

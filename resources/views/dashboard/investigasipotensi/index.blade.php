@@ -3,7 +3,7 @@
 @section('content')
     <div class="card m-5">
         <div class="card-header shadow-sm">
-            <h3 class="card-title fw-bold fs-2">Daftar Investigasi Laporan Insiden</h3>
+            <h3 class="card-title fw-bold fs-2">Daftar Investigasi Laporan Potensi Bahaya</h3>
             <div class="card-toolbar">
                 <div id="kt_docs_search_handler_basic" class="mt-3" data-kt-search-keypress="true"
                     data-kt-search-min-length="2" data-kt-search-enter="true" data-kt-search-layout="inline">
@@ -33,10 +33,9 @@
                     <thead>
                         <tr>
                             <th scope="col" class="text-center">No</th>
-                            <th scope="col">Kategori</th>
-                            {{-- <th scope="col">Nama Pelapor</th> --}}
-                            <th scope="col">Lokasi Kejadian</th>
-                            {{-- <th scope="col">Tenggat Waktu</th> --}}
+                            <th scope="col">Departemen</th>
+                            <th scope="col">Lokasi Potensi Bahaya</th>
+                            <th scope="col">Potensi</th>
                             <th scope="col">Penanggung Jawab</th>
                             <th scope="col">Action</th>
                         </tr>
@@ -45,17 +44,16 @@
                         @foreach ($investigasis as $investigasi)
                             <tr>
                                 <td scope="row" class="text-center">{{ $loop->iteration }}</td>
-                                <td>{{ $investigasi->kategori }}</td>
-                                {{-- <td>{{ $investigasi->laporinsiden->nama_pelapor }}</td> --}}
                                 <td>{{ $investigasi->departemen->name }}</td>
-                                {{-- <td>{{ $investigasi->tenggat_waktu ? $investigasi->tenggat_waktu->translatedFormat('d F Y') : '' }}</td> --}}
-                                <td>{{ $investigasi->p2k3->nama }}</td>
+                                <td>{{ $investigasi->lokasi }}</td>
+                                <td>{{ $investigasi->potensi_bahaya }}</td>
+                                <td>{{ $investigasi->p2k3->nama }}</td>                                
 
                                 <td>
-                                    <a href="{{ route('daftarinvestigasi.lihat', $investigasi->id) }}"
+                                    <a href="{{ route('investigasipotensi.lihat', $investigasi->id) }}"
                                         type="button" class="btn btn-sm btn-warning px-4"><i
                                             class="bi bi-eye text-dark pe-0"></i></a>
-                                    <a href="{{ route('daftarinvestigasi.ubah', $investigasi->id) }}"
+                                    <a href="{{ route('investigasipotensi.ubah', $investigasi->id) }}"
                                         type="button" class="btn btn-sm btn-primary px-4"><i
                                             class="bi bi-pencil-square pe-0"></i></a>
                                     <button type="button" class="btn btn-danger btn-sm px-4" data-bs-toggle="modal"
@@ -69,7 +67,7 @@
                                             <div class="modal-content">
 
                                                 <form method="POST"
-                                                    action="{{ route('daftarinvestigasi.delete', $investigasi->id) }}">
+                                                    action="{{ route('investigasipotensi.delete', $investigasi->id) }}">
                                                     @csrf
                                                     <div
                                                         class="modal-body mt-5 d-flex justify-content-center align-items-center">

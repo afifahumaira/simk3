@@ -17,6 +17,7 @@ use App\Http\Controllers\AktifitasController;
 use App\Http\Controllers\AktifitasMasterController;
 use App\Http\Controllers\HazardController;
 use App\Http\Controllers\InvestigasiController;
+use App\Http\Controllers\investigasipotensicontroller;
 use App\Http\Controllers\MapsController;
 use App\Http\Controllers\RisikoController;
 // use App\Http\Controllers\Lihat_InsidenController;
@@ -67,7 +68,8 @@ Route::group(['middleware' => ['auth']], function() {
         Route::post('save', [LaporanInsidenController::class, 'save'])->name('save');
     });
 
-    // 2. Daftar Investigasi
+    // Daftar Investigasi
+    // 2.1 Investigasi Lapor Insiden
     Route::prefix('daftarinvestigasi')->name('daftarinvestigasi.')->group(function(){
         Route::get('/', [InvestigasiController::class, 'index'])->name('index');
         Route::get('tambah/{id}', [InvestigasiController::class, 'tambah'])->name('tambah');
@@ -78,6 +80,17 @@ Route::group(['middleware' => ['auth']], function() {
         Route::post('delete/{id}', [InvestigasiController::class, 'delete'])->name('delete');
     });
 
+    //2.2 Investigasi Lapor Potensi Bahaya
+    Route::prefix('investigasipotensi')->name('investigasipotensi')->group(function(){
+        Route::get('/', [investigasipotensicontroller::class, 'index'])->name('index');
+        Route::get('tambah/{id}', [investigasipotensicontroller::class, 'tambah'])->name('tambah');
+        Route::post('simpan', [investigasipotensicontroller::class, 'simpan'])->name('simpan');
+        Route::get('lihat/{id}', [investigasipotensicontroller::class, 'lihat'])->name('lihat');
+        Route::get('ubah/{id}', [investigasipotensicontroller::class, 'ubah'])->name('ubah');
+        Route::post('update/{id}', [investigasipotensicontroller::class, 'update'])->name('update');
+        Route::post('delete/{id}', [investigasipotensicontroller::class, 'delete'])->name('delete');
+    });
+    
     // 3. Potensi Bahaya
     Route::prefix('potensibahaya')->name('potensibahaya.')->group(function(){
         Route::get('/', [PotensibahayaController::class, 'index'])->name('index');
