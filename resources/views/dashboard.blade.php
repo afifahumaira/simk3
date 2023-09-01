@@ -17,7 +17,7 @@
             <div id="kt_app_content_container" class="app-container container-fluid">
 
 
-                @if (auth()->user()->hak_akses == 'pengguna')
+                @if (auth()->user()->hak_akses == 'tamu')
                     <div class="row my-5 d-flex justify-content-around">
                         <div class="col-lg-3 col-md-6 col-sm-6">
                             <div class="card card-stats h-100">
@@ -87,13 +87,13 @@
                                                 style="background-color: #008BF1">
                                                 Lapor Insiden
                                                 <span class="card-title d-flex align-items-center my-0 rounded-3 px-3"
-                                                    style="background-color: rgba(255,255,255,.5);">10</span>
+                                                    style="background-color: rgba(255,255,255,.5);">{{ $data['jumlah_insiden'] }}</span>
                                             </li>
                                             <li class=" d-flex justify-content-between align-items-center rounded-2 px-4 py-3 my-5"
                                                 style="background-color: #FF9600">
                                                 Potensi Bahaya
                                                 <span class="card-title d-flex align-items-center my-0 rounded-3 px-3"
-                                                    style="background-color: rgba(255,255,255,.5);">10</span>
+                                                    style="background-color: rgba(255,255,255,.5);">{{ $data['jumlah_potensi_bahaya'] }}</span>
                                             </li>
                                             {{-- <li class=" d-flex justify-content-between align-items-center rounded-2 px-4 py-2 my-4"
                                                 style="background-color: #108E72">
@@ -105,7 +105,7 @@
                                                 style="background-color: #DC3545">
                                                 Hirarc
                                                 <span class="card-title d-flex align-items-center my-0 rounded-3 px-3"
-                                                    style="background-color: rgba(255,255,255,.5);">10</span>
+                                                    style="background-color: rgba(255,255,255,.5);">{{ $data['jumlah_hirarc'] }}</span>
                                             </li>
                                         </ul>
                                         {{-- <p class="card-category " style="color: #FF9600">Total Potensi Bahaya</p>
@@ -252,25 +252,25 @@
                                                 style="background-color: #008BF1">
                                                 Lapor Insiden
                                                 <span class="card-title d-flex align-items-center my-0 rounded-3 px-3"
-                                                    style="background-color: rgba(255,255,255,.5);">10</span>
+                                                    style="background-color: rgba(255,255,255,.5);">{{ $data['jumlah_insiden'] }}</span>
                                             </li>
                                             <li class=" d-flex justify-content-between align-items-center rounded-2 px-4 py-2 my-4"
                                                 style="background-color: #FF9600">
                                                 Potensi Bahaya
                                                 <span class="card-title d-flex align-items-center my-0 rounded-3 px-3"
-                                                    style="background-color: rgba(255,255,255,.5);">10</span>
+                                                    style="background-color: rgba(255,255,255,.5);">{{ $data['jumlah_potensi_bahaya'] }}</span>
                                             </li>
-                                            <li class=" d-flex justify-content-between align-items-center rounded-2 px-4 py-2 my-4"
+                                            {{-- <li class=" d-flex justify-content-between align-items-center rounded-2 px-4 py-2 my-4"
                                                 style="background-color: #108E72">
                                                 Investigasi
                                                 <span class="card-title d-flex align-items-center my-0 rounded-3 px-3"
                                                     style="background-color: rgba(255,255,255,.5);">10</span>
-                                            </li>
+                                            </li> --}}
                                             <li class=" d-flex justify-content-between align-items-center rounded-2 px-4 py-2"
                                                 style="background-color: #DC3545">
                                                 Hirarc
                                                 <span class="card-title d-flex align-items-center my-0 rounded-3 px-3"
-                                                    style="background-color: rgba(255,255,255,.5);">10</span>
+                                                    style="background-color: rgba(255,255,255,.5);">{{ $data['jumlah_hirarc'] }}</span>
                                             </li>
                                         </ul>
                                         {{-- <p class="card-category " style="color: #FF9600">Total Potensi Bahaya</p>

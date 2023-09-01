@@ -124,7 +124,7 @@
                                     <td>{{ $investigasi->kategori }}</td>
                                     {{-- <td>{{ $investigasi->laporinsiden->nama_pelapor }}</td> --}}
                                     <td>
-                                        {{-- {{ $investigasi->departemen->name }} --}}
+                                        {{ $investigasi->departemen->name }}
                                     </td>
                                     {{-- <td>{{ $investigasi->tenggat_waktu ? $investigasi->tenggat_waktu->translatedFormat('d F Y') : '' }}</td> --}}
                                     <td>{{ $investigasi->p2k3->nama }}</td>
@@ -206,7 +206,7 @@
                                                 <h1 class="modal-title" id="staticBackdropLabel">Ubah Data Investigasi
                                                 </h1>
                                                 <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                                    aria-label="Close"></button>
+                                                    aria-label="Close" href="{{ route('daftarinvestigasi.ubah', $investigasi->id) }}"></button>
                                             </div>
 
                                             <div class="modal-body mt-5 ">
@@ -219,8 +219,8 @@
                                                                 data-placeholder="P2K3">
                                                                 {{-- @foreach ($p2k3s as $p2k3)
                                                                     <option value="{{ $p2k3->id }}"
-                                                                        {{ $investigasi->p2k3_id == $p2k3->id ? 'selected' : '' }}>
-                                                                        {{ $p2k3->name }}</option>
+                                                                        {{ $investigasis->p2k3_id == $p2k3->id ? 'selected' : '' }}>
+                                                                        {{ $p2k3->nama != '' ? $p2k3->nama : 'Pilih P2K3' }}</option>
                                                                 @endforeach --}}
                                                             </select>
                                                         </div>
@@ -230,14 +230,17 @@
                                                         <div class="ps-3 pe-5">
                                                             <label class="col-form-label ps-2">Status Investigasi </label>
                                                             <div class=" w-100">
-                                                                <select name="p2k3_id" class="form-select fs-6 w-100"
+                                                                <select name="tindakan" class="form-select fs-6 w-100"
                                                                     data-control="select2" data-hide-search="true"
-                                                                    data-placeholder="Status">
-                                                                    {{-- @foreach ($p2k3s as $p2k3)
-                                                                        <option value="{{ $p2k3->id }}"
-                                                                            {{ $investigasi->p2k3_id == $p2k3->id ? 'selected' : '' }}>
-                                                                            {{ $p2k3->name }}</option>
-                                                                    @endforeach --}}
+                                                                    data-placeholder="tindakan">
+                                                                    
+                                                                    {{-- <option value="1" {{ $investigasis->tindakan == 1 ? 'selected' : '' }}>Pending
+                                                                    </option>
+                                                                    <option value="2" {{ $investigasis->tindakan == 2 ? 'selected' : '' }}>Investigasi
+                                                                    </option>
+                                                                    <option value="3" {{ $investigasis->tindakan == 3 ? 'selected' : '' }}>Sukses
+                                                                    </option> --}}
+                                                                    
                                                                 </select>
                                                             </div>
                                                         </div>
