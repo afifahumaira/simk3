@@ -15,7 +15,7 @@ class InvestigasiController extends Controller
 {
 
     public function index() {
-        $data = Laporinsiden::get('status', '=', '2');
+        $data = Laporinsiden::all();
         $investigasis = Investigasi::all();
         $departemen = Departemen::all();
         $p2k3s = P2k3::all();

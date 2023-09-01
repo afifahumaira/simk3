@@ -109,7 +109,8 @@
                                 <div class="ps-3 pe-5">
                                     <label class="col-sm-2 col-form-label">Tanggal Kejadian</label>
                                     <div class="col-sm-10 w-100">
-                                        <input type="date" id="date" class="form-control tanggalPicker" name="waktu_kejadian">
+                                        <input type="date" id="date" class="form-control tanggalPicker" name="waktu_kejadian" 
+                                        placeholder="dd/mm/yyyy" max="<?php echo date('Y-m-d'); ?>">
 
                                     </div>
                                 </div>
@@ -307,13 +308,29 @@
 
 @section('customscript')
     <script>
-        $(document).ready(function() {
-            $(".tanggalPicker").flatpickr({
-                altInput: true,
-                altFormat: "d F Y",
-                dateFormat: "Y-m-d",
-                locale: "id"
-            });
-        });
+        // $(document).ready(function() {
+        //     $(".tanggalPicker").flatpickr({
+        //         altInput: true,
+        //         altFormat: "d F Y",
+        //         dateFormat: "Y-m-d",
+        //         locale: "id"
+        //     });
+        // });
+
+        $(function(){
+        var dtToday = new Date();
+
+        var month = dtToday.getMonth() + 1;
+        var day = dtToday.getDate();
+        var year = dtToday.getFullYear();
+
+        if(month < 10)
+        month = '0' + month.toString();
+        if(day < 10)
+        day = '0' + day.toString();
+
+        var maxDate = year + '-' + month + '-' + day;    
+        $('#txtDate').attr('max', maxDate);
+    });
     </script>
 @stop
