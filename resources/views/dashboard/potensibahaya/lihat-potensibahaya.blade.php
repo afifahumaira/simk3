@@ -32,8 +32,8 @@
                         <td>
                     </tr>
                     <tr>
-                        {{-- <th>P2K3</th>
-                        <td>{{ $data->p2k3?->nama}}</td> --}}
+                        <th>P2K3</th>
+                        <td>{{ $data->p2k3?->nama}}</td>
                     </tr>
                     <tr>
                         <th>Nama Pelapor</th>

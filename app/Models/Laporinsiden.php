@@ -18,12 +18,17 @@ class Laporinsiden extends Model
 
     public function p2k3()
     {
-        return $this->belongsTo(P2k3::class, 'p2k3_id', 'id');
+        return $this->belongsTo(P2k3::class);
     }
 
     public function departemen()
     {
         return $this->belongsTo(Departemen::class, 'departemen_id', 'id');
+    }
+
+    public function investigasi()
+    {
+        return $this->hasMany(Investigasi::class);
     }
 
     public static function generateCode()

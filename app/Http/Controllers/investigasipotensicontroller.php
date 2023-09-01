@@ -13,7 +13,7 @@ use App\Models\Departemen;
 class InvestigasiPotensiController extends Controller
 {
     public function index() {
-        $data = Potensibahaya::get('status', '=', '2');
+        $data = Potensibahaya::all();
         $investigasis = InvestigasiPotensi::all();
         $departemen = Departemen::all();
         $p2k3s = P2k3::all();
@@ -62,7 +62,7 @@ class InvestigasiPotensiController extends Controller
             'tindakan' => 'required',
         ]);
 
-        Investigasi::create([
+        InvestigasiPotensi::create([
             'p2k3_id' => $request->p2k3_id,
             'laporinsiden_id' => $request->laporinsiden_id,
             'departemen_id' => $request->departemen_id,

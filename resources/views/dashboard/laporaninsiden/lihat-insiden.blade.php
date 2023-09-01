@@ -34,14 +34,10 @@
                     </tr>
 
                     <tr>
-                        {{-- <th>P2K3</th>
-                        <td>{{ $lap->p2k3->nama }}</td> --}}
+                        <th>P2K3</th>
+                        <td>{{ $lap->p2k3->nama }}</td>
                     </tr>
-                    {{-- <tr>
-                <th>Kategori</th>
-                <td>This is Dummy</td>
-
-              </tr> --}}
+                    
                     <tr>
                         <th>Kode Lapor Insiden</th>
                         <td>{{ $lap->kode_laporinsiden }}</td>

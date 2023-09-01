@@ -18,178 +18,54 @@
 
 
                 @if (auth()->user()->hak_akses == 'pengguna')
-                    <div class="row my-5">
-                        <div class="col-lg-4 col-md-6 col-sm-6">
-                            <div class="card card-stats h-100 ">
-                                <div class="card-body mx-3">
-                                    <div class="pull-left mb-4 ">
-                                        <h1
-                                            class="page-heading d-flex flex-column justify-content-center text-dark fw-bolder fs-2 "style="color: #16243D; font-family: Roboto Flex;">
-                                            Total Data Masuk</h1>
-                                    </div>
-
-
-                                    <div class="pt-5 mt-5">
-                                        <ul style="list-style-type:circle; font-size:18px" class="text-white ps-0 mt-3">
-                                            <li class=" d-flex justify-content-between align-items-center rounded-2 px-4 py-5 mb-5"
-                                                style="background-color: #008BF1">
-                                                <div class="fs-2"> <i
-                                                        class="bi bi-clipboard-check-fill text-white fs-1 me-3">
-                                                    </i>
-                                                    Lapor Insiden
-                                                </div>
-                                                <div>
-                                                    <span
-                                                        class="card-title d-flex align-items-center my-0 rounded-3 fs-2 px-3"
-                                                        style="background-color: rgba(255,255,255,.5);">{{ $data['jumlah_insiden'] }}</span>
-                                                </div>
-                                            </li>
-                                            <li class=" d-flex justify-content-between align-items-center rounded-2 px-4 py-5 mt-10"
-                                                style="background-color: #FF9600">
-                                                <div class="fs-2"> <i
-                                                        class="bi bi-exclamation-octagon text-white fs-1 me-3">
-                                                    </i>
-                                                    Potensi Bahaya
-                                                </div>
-                                                <div>
-                                                    <span
-                                                        class="card-title d-flex align-items-center my-0 rounded-3 fs-2 px-3"
-                                                        style="background-color: rgba(255,255,255,.5);">{{ $data['jumlah_potensi_bahaya'] }}</span>
-                                                </div>
-                                            </li>
-                                            {{-- <li class=" d-flex justify-content-between align-items-center rounded-2 px-4 py-2 my-4"
-                                                style="background-color: #108E72">
-                                                Investigasi
-                                                <span class="card-title d-flex align-items-center my-0 rounded-3 px-3"
-                                                    style="background-color: rgba(255,255,255,.5);">10</span>
-                                            </li>
-                                            <li class=" d-flex justify-content-between align-items-center rounded-2 px-4 py-3"
-                                                style="background-color: #DC3545">
-                                                Hirarc
-                                                <span class="card-title d-flex align-items-center my-0 rounded-3 px-3"
-                                                    style="background-color: rgba(255,255,255,.5);">10</span>
-                                            </li> --}}
-                                        </ul>
-
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="col-lg-4 col-md-6 col-sm-6 ">
+                    <div class="row my-5 d-flex justify-content-around">
+                        <div class="col-lg-3 col-md-6 col-sm-6">
                             <div class="card card-stats h-100">
                                 <div class="card-body ">
-                                    <div class="numbers  d-flex flex-column mb-5">
-                                        <p class="card-category mb-0" style="font-size:20px; font-weight:bold;">Status
-                                            Pelaporan </p>
-                                        <span class=" " style="font-size: 12px; font-weight:400;">Lapor insiden</span>
-                                    </div>
-                                    <div class="pt-3 pb-2">
-                                        <span class="card-title mb-0"
-                                            style="font-size:18px; font-weight:bold;">{{ $data['jumlah_insiden'] }}
-                                            Laporan</span>
-                                    </div>
-                                    <div class="d-flex justify-content-around ">
-                                        <div class=" col-lg-4 text-white d-flex flex-column py-3 rounded-4 w-25"
-                                            style="background:#DC3545">
-                                            <div class="mb-4 d-flex justify-content-center py-2">
-                                                <i class="bi bi-clipboard-x text-white fs-2hx"></i>
-                                            </div>
-                                            <div class="fs-2hx d-flex justify-content-center"
-                                                style=" font-family: Roboto Flex;">
-                                                {{ $data['jumlah_insiden_pending'] }}
-                                            </div>
-                                            <div class="d-flex justify-content-center">
-                                                <span class="card-title">Pending</span>
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-4 text-white d-flex flex-column py-3 rounded-4 w-25 bg-primary">
-                                            <div class="mb-4 d-flex justify-content-center py-2">
-                                                <i class="bi bi bi-search text-white fs-2hx"></i>
-                                            </div>
-                                            <div class="fs-2hx d-flex justify-content-center"
-                                                style=" font-family: Roboto Flex;">
-                                                {{ $data['jumlah_insiden_tindaklanjut'] }}
-                                            </div>
-                                            <div class="d-flex justify-content-center">
-                                                <span class="card-title">Tindaklanjut</span>
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-4 text-white d-flex flex-column py-3 rounded-4 w-25 bg-success">
-                                            <div class="mb-4 d-flex justify-content-center py-2">
-                                                <i class="bi bi-person-check-fill text-white fs-2hx"></i>
-                                            </div>
-                                            <div class="fs-2hx d-flex justify-content-center"
-                                                style=" font-family: Roboto Flex;">
-                                                {{ $data['jumlah_insiden_sukses'] }}
-                                            </div>
-                                            <div class="d-flex justify-content-center">
-                                                <span class="card-title">Tuntas</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="col-lg-4 col-md-6 col-sm-6 ">
-                            <div class="card card-stats h-100">
-                                <div class="card-body ">
-                                    <div class="numbers  d-flex flex-column mb-5">
-                                        <p class="card-category mb-0" style="font-size:20px; font-weight:bold;">Status
-                                            Pelaporan </p>
-                                        <span class=" " style="font-size: 12px; font-weight:400;">Potensi
-                                            bahaya</span>
-                                    </div>
-                                    <div class="pt-3 pb-2">
-                                        <span class="card-title mb-0"
-                                            style="font-size:18px; font-weight:bold;">{{ $data['jumlah_potensi_bahaya'] }}
-                                            Laporan</span>
+                                    <div class="numbers  d-flex justify-content-between" style="font-size: 16px">
+                                        <p class="card-category " style="color: #FF9600">Total Potensi Bahaya</p>
+                                        <span class="card-title">{{ $data['jumlah_potensi_bahaya'] }}</span>
                                     </div>
                                     <div class="d-flex justify-content-between ">
-                                        <div class="col-lg-4 text-white d-flex flex-column py-3 rounded-4 w-25"
-                                            style="background:#DC3545">
-                                            <div class="mb-4 d-flex justify-content-center py-2">
-                                                <i class="bi bi-clipboard-x text-white fs-2hx"></i>
-                                            </div>
-                                            <div class="fs-2hx d-flex justify-content-center"
-                                                style=" font-family: Roboto Flex;">
-                                                {{ $data['jumlah_potensi_bahaya_pending'] }}
-                                            </div>
-                                            <div class="d-flex justify-content-center">
-                                                <span class="card-title">Pending</span>
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-4 text-white d-flex flex-column py-3 rounded-4 w-25 bg-primary">
-                                            <div class="mb-4 d-flex justify-content-center py-2">
-                                                <i class="bi bi bi-search text-white fs-2hx"></i>
-                                            </div>
-                                            <div class="fs-2hx d-flex justify-content-center"
-                                                style=" font-family: Roboto Flex;">
-                                                {{ $data['jumlah_potensi_bahaya_tindaklanjut'] }}
-                                            </div>
-                                            <div class="d-flex justify-content-center">
-                                                <span class="card-title">Tindaklanjut</span>
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-4 text-white d-flex flex-column py-3 rounded-4 w-25 bg-success">
-                                            <div class="mb-4 d-flex justify-content-center py-2">
-                                                <i class="bi bi-person-check-fill text-white fs-2hx"></i>
-                                            </div>
-                                            <div class="fs-2hx d-flex justify-content-center"
-                                                style=" font-family: Roboto Flex;">
-                                                {{ $data['jumlah_potensi_bahaya_sukses'] }}
-                                            </div>
-                                            <div class="d-flex justify-content-center">
-                                                <span class="card-title">Tuntas</span>
-                                            </div>
-                                        </div>
+                                        <button type="button" class="btn text-white btn-sm" style="background:#DC3545">{{ $data['jumlah_potensi_bahaya_pending'] }}
+                                            Pending</button>
+                                        <button type="button" class="btn text-white btn-sm mx-2"
+                                            style="background:#0099FF">{{ $data['jumlah_potensi_bahaya_tindaklanjut'] }}
+                                            Ditindaklanjuti</button>
+                                        <button type="button" class="btn  text-white btn-sm" style="background:#29CC6A">{{ $data['jumlah_potensi_bahaya_sukses'] }}
+                                            Disetujui</button>
                                     </div>
                                 </div>
                             </div>
                         </div>
-
-
+                        <div class="col-lg-3 col-md-6 col-sm-6">
+                            <div class="card card-stats h-100">
+                                <div class="card-body d-flex justify-content-around flex-column">
+                                    <p class="card-category  " style="color: #00876C; font-size:16px ">Total Investigasi</p>
+                                    <span class="card-title mb-0" style="font-size:24px">{{ $data['jumlah_investigasi'] }}</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-md-6 col-sm-6">
+                            <div class="card card-stats h-100">
+                                <div class="card-body">
+                                    <div class="numbers d-flex justify-content-between mb-2" style="font-size: 16px">
+                                        <p class="card-category   " style="color: #0056B9 ">Total Lapor Insiden
+                                        </p>
+                                        <span class="card-title">{{ $data['jumlah_insiden'] }}</span>
+                                    </div>
+                                    <div class="d-flex justify-content-between ">
+                                        <button type="button" class="btn text-white btn-sm" style="background:#DC3545">{{ $data['jumlah_insiden_pending'] }}
+                                            Pending</button>
+                                        <button type="button" class="btn text-white btn-sm mx-2"
+                                            style="background:#0099FF">{{ $data['jumlah_insiden_tindaklanjut'] }}
+                                            Ditindaklanjuti</button>
+                                        <button type="button" class="btn  text-white btn-sm" style="background:#29CC6A">{{ $data['jumlah_insiden_sukses'] }}
+                                            Disetujui</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 @endif
                 {{-- End View Pengguna --}}
@@ -245,8 +121,7 @@
                                     <div class="numbers  d-flex flex-column mb-5">
                                         <p class="card-category mb-0" style="font-size:20px; font-weight:bold;">Status
                                             Pelaporan </p>
-                                        <span class=" " style="font-size: 12px; font-weight:400;">Lapor
-                                            insiden</span>
+                                        <span class=" " style="font-size: 12px; font-weight:400;">Lapor insiden</span>
                                     </div>
                                     <div class="pt-3 pb-2">
                                         <span class="card-title mb-0"
@@ -371,15 +246,15 @@
                                             class="page-heading d-flex flex-column justify-content-center text-dark fw-bolder fs-2 "style="color: #16243D; font-family: Roboto Flex;">
                                             Total Data Masuk</h1>
                                     </div>
-                                    <div class="pt-5 mt-5">
-                                        <ul style="list-style-type:circle; font-size:18px" class="text-white ps-0 mt-3">
-                                            <li class=" d-flex justify-content-between align-items-center rounded-2 px-4 py-3"
+                                    <div class="pt-3">
+                                        <ul style="list-style-type:circle; font-size:16px" class="text-white ps-0">
+                                            <li class=" d-flex justify-content-between align-items-center rounded-2 px-4 py-2"
                                                 style="background-color: #008BF1">
                                                 Lapor Insiden
                                                 <span class="card-title d-flex align-items-center my-0 rounded-3 px-3"
                                                     style="background-color: rgba(255,255,255,.5);">{{ $data['jumlah_insiden'] }}</span>
                                             </li>
-                                            <li class=" d-flex justify-content-between align-items-center rounded-2 px-4 py-3 my-5"
+                                            <li class=" d-flex justify-content-between align-items-center rounded-2 px-4 py-2 my-4"
                                                 style="background-color: #FF9600">
                                                 Potensi Bahaya
                                                 <span class="card-title d-flex align-items-center my-0 rounded-3 px-3"
@@ -391,7 +266,7 @@
                                                 <span class="card-title d-flex align-items-center my-0 rounded-3 px-3"
                                                     style="background-color: rgba(255,255,255,.5);">10</span>
                                             </li> --}}
-                                            <li class=" d-flex justify-content-between align-items-center rounded-2 px-4 py-3"
+                                            <li class=" d-flex justify-content-between align-items-center rounded-2 px-4 py-2"
                                                 style="background-color: #DC3545">
                                                 Hirarc
                                                 <span class="card-title d-flex align-items-center my-0 rounded-3 px-3"
@@ -399,7 +274,7 @@
                                             </li>
                                         </ul>
                                         {{-- <p class="card-category " style="color: #FF9600">Total Potensi Bahaya</p>
-                                        <span class="card-title">10</span> --}}
+                                    <span class="card-title">10</span> --}}
                                     </div>
                                 </div>
                             </div>

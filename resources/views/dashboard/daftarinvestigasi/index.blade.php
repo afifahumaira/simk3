@@ -136,7 +136,7 @@
 
                                         <a href=""
                                             class="text-center fw-bold  text-danger border border-2 rounded-4 border-danger px-4">
-                                            Pending
+                                            {{ $investigasi->laporinsiden->status }}
                                         </a>
 
                                         {{-- <a href="" class="text-center fw-bold  text-warning  px-4">
