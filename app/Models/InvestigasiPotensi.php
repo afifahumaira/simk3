@@ -21,14 +21,14 @@ class InvestigasiPotensi extends Model
         return $this->belongsTo(Potensibahaya::class, 'potensibahaya_id', 'id');
     }
 
-    public function p2k3()
+    public function p2k3_data()
     {
-        return $this->belongsTo(P2k3::class, 'p2k3_id', 'id', 'nama')->withDefault([
+        return $this->belongsTo(P2k3::class, 'p2k3', 'id', 'nama')->withDefault([
             'nama' => '']);
     }
 
     public function departemen()
     {
-        return $this->belongsTo(Departemen::class);
+        return $this->belongsTo(Departemen::class, 'departemen_id', 'id');
     }
 }

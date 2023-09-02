@@ -135,9 +135,9 @@
                                         </a> --}}
 
                                         <a href=""
-                                            class="text-center fw-bold  text-warning border border-2 rounded-2 border-warning px-4 py-1 "
+                                            class="text-center fw-bold  text-danger border border-2 rounded-4 border-danger px-4"
                                             style=" cursor: default !important;">
-                                            Ditindaklanjuti
+                                            {{ $investigasi->laporinsiden->status }}
                                         </a>
 
                                         {{-- <a href="" class="text-center fw-bold  text-warning  px-4">

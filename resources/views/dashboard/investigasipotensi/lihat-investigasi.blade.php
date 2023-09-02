@@ -44,8 +44,8 @@
                         <td>{{ $investigasi->tindakan }}</td>
                     </tr>
                     <tr>
-                        {{-- <th style="width: 40%">P2K3</th> --}}
-                        {{-- <td>{{ $investigasi->p2k3->nama ''}}</td> --}}
+                        <th style="width: 40%">P2K3</th>
+                        <td>{{ $investigasi->p2k3_data->nama}}</td>
                     </tr>
                     <tr>
                         <th style="width: 40%">Tenggat Waktu</th>

@@ -50,14 +50,14 @@
                                 <th class="col-1">Status</th>
                                 <th>Action</th>
                             @endif
-                            @if (auth()->user()->hak_akses == 'pengguna')
+                            @if (auth()->user()->hak_akses == 'tamu')
                                 <th>No</th>
                                 <th>Kode Insiden Lapor</th>
                                 <th>Waktu Kejadian</th>
                                 <th>Lokasi</th>
                                 <th>Nama Pelapor</th>
                                 <th>Nama Korban</th>
-                                <th>P2K3</th>
+                                {{-- <th>P2K3</th> --}}
                                 <th>Status</th>
                             @endif
                         </tr>

@@ -36,7 +36,7 @@
                             {{-- <th scope="col">Departemen</th> --}}
                             <th scope="col">Lokasi Potensi Bahaya</th>
                             <th scope="col">Potensi Bahaya</th>
-                            {{-- <th scope="col">Penanggung Jawab</th> --}}
+                            <th scope="col">Penanggung Jawab</th>
                             <th scope="col">Action</th>
                         </tr>
                     </thead>
@@ -47,8 +47,7 @@
                                 {{-- <td>{{ $investigasi->departemen->name }}</td> --}}
                                 <td>{{ $investigasi->lokasi }}</td>
                                 <td>{{ $investigasi->potensi_bahaya }}</td>
-                                
-                                {{-- <td>{{ $investigasi->p2k3?->nama }}</td>                                 --}}
+                                <td>{{ $investigasi->p2k3_data->nama }}</td>                                
 
                                 <td>
                                     <a href="{{ route('investigasipotensi.lihat', $investigasi->id) }}"

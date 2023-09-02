@@ -11,11 +11,11 @@ class Potensibahaya extends Model
     use SoftDeletes;
     use HasFactory;
 
-    protected $guarded = ['id'];
+    protected $guarded;
 
     public function p2k3()
     {
-        return $this->belongsTo('App\Models\User');
+        return $this->belongsTo(P2k3::class);
     }
 
     public function departemen()

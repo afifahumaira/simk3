@@ -41,7 +41,8 @@ class LaporanInsidenController extends Controller
     }
 
     public function lihat($id) {
-        $lap = Laporinsiden::findOrFail($id);
+        $lap = Laporinsiden::with(['p2k3'])->find($id);
+        
         return view('dashboard.laporaninsiden.lihat-insiden', compact('lap'));
     }
 
