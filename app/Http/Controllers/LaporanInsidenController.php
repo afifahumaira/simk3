@@ -23,13 +23,23 @@ use Illuminate\Support\Str;
 class LaporanInsidenController extends Controller
 {
     public function index(Request $request){
+        
         $laporaninsidens = Laporinsiden::with(['p2k3', 'departemen'])
-            // ->where('kode_laporinsiden', 'LIKE', '%'.$request->search.'%')
-            // ->orWhere('lokasi_rinci', 'LIKE', '%'.$request->search.'%')
-            // ->orWhere('nama_pelapor', 'LIKE', '%'.$request->search.'%')
-            // ->orWhere('nama_korban', 'LIKE', '%'.$request->search.'%')
-            ->whereNot('status', '2')
-            //->where('departemen_id', Auth::user()->departemen_id)
+        ->when($request->has('filter'), function($query) use($request){
+           if($request->filter !=''){
+            $query->where('status', $request->filter);
+           }
+        })
+        ->when (auth()->user()->hak_akses=='k3_departemen', function ($query){
+            $query->where('departemen_id', auth()->user()->departemen_id);
+        })
+            ->where(function($query) use($request){
+                $query->where('kode_laporinsiden', 'LIKE', '%'.$request->search.'%')
+                ->orWhere('lokasi_rinci', 'LIKE', '%'.$request->search.'%')
+                ->orWhere('nama_pelapor', 'LIKE', '%'.$request->search.'%')
+                ->orWhere('nama_korban', 'LIKE', '%'.$request->search.'%');
+            }) 
+            //->whereNot('status', '2')
             ->paginate(10);
         return view('dashboard.laporaninsiden.index')->with('laporaninsidens',$laporaninsidens);
     }

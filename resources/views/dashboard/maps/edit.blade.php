@@ -147,3 +147,6 @@
         </div>
     </div>
 @stop
+@section('customscript')
+    <script src="{{ asset('plugins/custom/fslightbox/fslightbox.bundle.js') }}"></script>
+@stop

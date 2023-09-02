@@ -34,7 +34,7 @@ class MapsController extends Controller
         ]);
 
         $gambar = $request->file('gambar');
-        $gambar->move('foto_maps/', $gambar->getClientOriginalName());
+        $gambar->storeAs('public/maps/gambar', $gambar->getClientOriginalName());        
 
         Map::create([
             'gedung' => $request->gedung,
@@ -60,7 +60,7 @@ class MapsController extends Controller
         $gambarname = '';
         if($request->hasFile('gambar')) {
             $gambar = $request->file('gambar');
-            $gambar->move('foto_maps/', $gambar->getClientOriginalName());
+            $gambar->storeAs('public/maps/gambar', $gambar->getClientOriginalName());
             $gambarname = $gambar->getClientOriginalName();
         } else {
             $gambarname = $request->gambar_old;
