@@ -71,7 +71,7 @@
                 {{-- End View Pengguna --}}
 
                 {{-- View Admin --}}
-                @if (auth()->user()->hak_akses == 'admin')
+                @if (auth()->user()->hak_akses == 'Admin')
                     <div class="row my-5">
                         <div class="col-lg-4 col-md-6 col-sm-6">
                             <div class="card card-stats h-100 ">
@@ -234,9 +234,9 @@
                 {{-- End View Admin --}}
 
                 {{-- View p2k3 --}}
-                @if (auth()->user()->hak_akses == 'p2k3' ||
-                        auth()->user()->hak_akses == 'k3_departemen' ||
-                        auth()->user()->hak_akses == 'pimpinan')
+                @if (auth()->user()->hak_akses == 'P2K3' ||
+                        auth()->user()->hak_akses == 'K3 Departtemen' ||
+                        auth()->user()->hak_akses == 'Pimpinan')
                     <div class="row my-5">
                         <div class="col-lg-4 col-md-6 col-sm-6">
                             <div class="card card-stats h-100 ">

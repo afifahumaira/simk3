@@ -64,12 +64,22 @@
                   </div>
               </div> --}}
 
-                                    <div class="ps-3 pe-5">
+                                    {{-- <div class="ps-3 pe-5">
                                         <label class="col-sm-2 col-form-label">Nama</label>
                                         <div class="col-sm-10 w-100">
-                                            <input type="text" class="form-control bg-secondary" name="lokasi_rinci"
-                                                id="lokasi_rinci" value="{{ $data->name }}" readonly>
+                                            <input type="text" class="form-control bg-secondary" name="name"
+                                                id="name" value="{{ $data->name }}" readonly>
 
+                                        </div>
+                                    </div> --}}
+
+                                    <div class="ps-3 pe-5">
+                                        <label class="col-form-label ">Username</label>
+                                        <div class=" w-100">
+                                            <div class="form-group label-floating is-empty is-focused">
+                                                <input class="form-control bg-secondary" name="name"
+                                                    id="name" value="{{ $data->name }}" readonly>
+                                            </div>
                                         </div>
                                     </div>
 
@@ -91,18 +101,18 @@
                                                 style="--bs-link-hover-color-rgb: 25, 135, 84;" id="hak_akses"
                                                 style="font-family: 'Inter';">
                                                 <option value="">- Pilih -</option>
-                                                <option value="Admin" {{ $data->hak_akses == 'Admin' ? 'selected' : '' }}>
+                                                <option value="Admin" {{ $data->hak_akses == '1' ? 'selected' : '' }}>
                                                     Admin </option>
                                                 <option value="Pimpinan"
-                                                    {{ $data->hak_akses == 'Pimpinan' ? 'selected' : '' }}>Pimpinan
+                                                    {{ $data->hak_akses == '2' ? 'selected' : '' }}>Pimpinan
                                                 </option>
                                                 <option value="K3 Departemen"
-                                                    {{ $data->hak_akses == 'K3 Departemen' ? 'selected' : '' }}>K3
+                                                    {{ $data->hak_akses == '3 ' ? 'selected' : '' }}>K3
                                                     Departemen</option>
-                                                <option value="P2K3" {{ $data->hak_akses == 'P2K3' ? 'selected' : '' }}>
+                                                <option value="P2K3" {{ $data->hak_akses == '4' ? 'selected' : '' }}>
                                                     P2K3</option>
-                                                <option value="Tamu" {{ $data->hak_akses == 'Tamu' ? 'selected' : '' }}>
-                                                    Tamu</option>
+                                                <option value="Pengguna" {{ $data->hak_akses == '5' ? 'selected' : '' }}>
+                                                    Pengguna</option>
 
                                             </select>
 

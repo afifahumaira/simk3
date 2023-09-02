@@ -84,7 +84,8 @@ Route::group(['middleware' => ['auth']], function() {
         Route::post('simpan', [InvestigasiController::class, 'simpan'])->name('simpan');
         Route::get('lihat/{id}', [InvestigasiController::class, 'lihat'])->name('lihat');
         Route::get('ubah/{id}', [InvestigasiController::class, 'ubah'])->name('ubah');
-        Route::post('update/{id}', [InvestigasiController::class, 'update'])->name('update');
+        Route::put('update/{id}', [InvestigasiController::class, 'update'])->name('update');
+        Route::put('edit/{id}', [InvestigasiController::class, 'edit'])->name('edit');
         Route::post('delete/{id}', [InvestigasiController::class, 'delete'])->name('delete');
     });
 
@@ -96,7 +97,7 @@ Route::group(['middleware' => ['auth']], function() {
         Route::post('simpan', [ControllersInvestigasiPotensiController::class, 'simpan'])->name('simpan');
         Route::get('lihat/{id}', [ControllersInvestigasiPotensiController::class, 'lihat'])->name('lihat');
         Route::get('ubah/{id}', [ControllersInvestigasiPotensiController::class, 'ubah'])->name('ubah');
-        Route::post('update/{id}', [ControllersInvestigasiPotensiController::class, 'update'])->name('update');
+        Route::post('update/', [ControllersInvestigasiPotensiController::class, 'update'])->name('update');
         Route::post('delete/{id}', [ControllersInvestigasiPotensiController::class, 'delete'])->name('delete');
     });
 

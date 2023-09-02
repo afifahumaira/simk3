@@ -16,6 +16,7 @@ use Google\Cloud\Storage\Connection\Rest;
 use Hash;
 use Validator;
 use Alert;
+use App\Models\Departemen;
 use App\Models\InvestigasiPotensi;
 use App\Models\P2k3;
 use Illuminate\Support\Facades\DB;
@@ -25,7 +26,8 @@ class PotensibahayaController extends Controller
 {
     public function index(Request $request){
         $datas = PotensiBahaya:: with(['p2k3', 'departemen'])
-        -> where('nama_pelapor', 'LIKE', '%'.$request->search.'%')
+        
+        ->where('nama_pelapor', 'LIKE', '%'.$request->search.'%')
         ->orWhere('lokasi', 'LIKE', '%'.$request->search.'%')
         ->orWhere('waktu_kejadian', 'LIKE', '%'.$request->search.'%')
         ->paginate(10);
@@ -121,7 +123,8 @@ class PotensibahayaController extends Controller
     public function edit($id) {
         $data = PotensiBahaya::find($id);
         $p2k3s = P2k3::all();
-        return view('dashboard.potensibahaya.edit-potensibahaya', compact('data', 'p2k3s'));
+        $departemen = Departemen::all();
+        return view('dashboard.potensibahaya.edit-potensibahaya', compact('data', 'p2k3s', 'departemen'));
             
         
     }

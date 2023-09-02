@@ -220,7 +220,7 @@
                                                 <label class="col-sm-2 col-form-label">Institusi yang Dikunjungi</label>
                                                 <div class="col-sm-10 w-100">
                                                     <input type="text" class="form-control "
-                                                        value="{{ $data->institusi }}" name="institusi">
+                                                        value="{{ $data->institusi }}" name="institusi" readonly>
 
                                                 </div>
                                             </div>
@@ -231,6 +231,20 @@
                                                     <input type="text" class="form-control"
                                                         value="{{ $data->tujuan }}" name="tujuan">
 
+                                                </div>
+                                            </div>
+
+                                            <div class="ps-3 pe-5">
+                                                <label class="col-form-label">Departemen</label>
+                                                <div class=" w-100">
+                                                    <select name="departemen_id" class="form-select fs-6 w-100"
+                                                        data-control="select2" data-hide-search="true" data-placeholder="departemen_id">
+                                                        @foreach ($department as $dep)
+                                                            <option value="{{ $dep->id }}"
+                                                                {{ $data->departemen_id == $dep->id ? 'selected' : '' }}>
+                                                                {{ $dep->name }}</option>
+                                                        @endforeach
+                                                    </select>
                                                 </div>
                                             </div>
 

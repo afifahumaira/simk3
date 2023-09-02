@@ -36,21 +36,21 @@
                 <table class="table table-rounded table-bordered">
                     <thead>
                         <tr class="fw-semibold border-bottom-2 border-gray-200">
-                            @if (auth()->user()->hak_akses == 'admin' ||
-                                    auth()->user()->hak_akses == 'p2k3' ||
-                                    auth()->user()->hak_akses == 'k3_departemen' ||
-                                    auth()->user()->hak_akses == 'pimpinan')
+                            @if (auth()->user()->hak_akses == 'Admin' ||
+                                    auth()->user()->hak_akses == 'P2K3' ||
+                                    auth()->user()->hak_akses == 'K3 Departemen' ||
+                                    auth()->user()->hak_akses == 'Pimpinan')
                                 <th>No</th>
                                 <th>Kode Insiden Lapor</th>
                                 <th>Waktu Kejadian</th>
                                 <th>Lokasi</th>
                                 <th>Nama Pelapor</th>
-                                <th>Nama Korban</th>
+                                {{-- <th>Nama Korban</th> --}}
                                 <th>P2K3</th>
                                 <th class="col-1">Status</th>
                                 <th>Action</th>
                             @endif
-                            @if (auth()->user()->hak_akses == 'tamu')
+                            @if (auth()->user()->hak_akses == 'Pengguna')
                                 <th>No</th>
                                 <th>Kode Insiden Lapor</th>
                                 <th>Waktu Kejadian</th>
@@ -72,19 +72,19 @@
                                 <td>{{ $lap->waktu_kejadian ? $lap->waktu_kejadian->translatedFormat('d F Y') : '' }}</td>
                                 <td>{{ $lap->lokasi_rinci }}</td>
                                 <td>{{ $lap->nama_pelapor }}</td>
-                                <td>{{ $lap->nama_korban }}</td>
+                                {{-- <td>{{ $lap->nama_korban }}</td> --}}
                                 <td>{{ $lap->p2k3 ? $lap->p2k3->nama : '' }}</td>
-                                <td align="center" class="pt-5">
+                                <td {align="center" class="pt-5">
                                     @if ($lap->status == '1')
                                         <a href=""
                                             class="text-center fw-bold  text-danger border border-2 rounded-2 border-danger px-5 py-1"
                                             style=" cursor: default !important;">
                                             Pending</a>
                                     @elseif ($lap->status == '2')
-                                        @if (auth()->user()->hak_akses == 'admin' ||
-                                                auth()->user()->hak_akses == 'p2k3' ||
-                                                auth()->user()->hak_akses == 'k3_departemen' ||
-                                                auth()->user()->hak_akses == 'pimpinan')
+                                        @if (auth()->user()->hak_akses == 'Admin' ||
+                                                auth()->user()->hak_akses == 'P2K3' ||
+                                                auth()->user()->hak_akses == 'K3 Departemen' ||
+                                                auth()->user()->hak_akses == 'Pimpinan')
                                             <a href="{{ route('daftarinvestigasi.tambah', $lap->id) }}"
                                                 class="text-center fw-bold  text-warning border border-2 rounded-2 border-warning py-1 px-4"
                                                 style=" cursor: default !important;">Ditindaklanjuti</a>
@@ -99,10 +99,10 @@
                                             Tuntas </a>
                                     @endif
                                 </td>
-                                @if (auth()->user()->hak_akses == 'admin' ||
-                                        auth()->user()->hak_akses == 'p2k3' ||
-                                        auth()->user()->hak_akses == 'k3_departemen' ||
-                                        auth()->user()->hak_akses == 'pimpinan')
+                                @if (auth()->user()->hak_akses == 'Admin' ||
+                                        auth()->user()->hak_akses == 'P2K3' ||
+                                        auth()->user()->hak_akses == 'K3 Departemen' ||
+                                        auth()->user()->hak_akses == 'Pimpinan')
                                     <td align="center">
                                         <a href="{{ route('laporan-insiden.lihat', $lap->id) }}" type="button"
                                             class="btn btn-sm btn-warning px-4"><i class="bi bi-eye text-dark pe-0"></i></a>

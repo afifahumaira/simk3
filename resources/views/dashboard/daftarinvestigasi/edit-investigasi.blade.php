@@ -53,6 +53,23 @@
                                         Kejadian</strong>
                                 </div>
                             </div>
+                            <div class="ps-3 pe-5">
+                                <label class="col-form-label">Status</label>
+                                <div class="w-100">
+                                    <div class="form-group label-floating is-empty is-focused">
+                                        <select name="status" class="form-select fs-6  w-100"
+                                            data-control="select2" data-hide-search="true" data-placeholder="Status"
+                                            id="status">
+                                            <option value="1" {{ $investigas->status == 1 ? 'selected' : '' }}>Pending
+                                            </option>
+                                            <option value="2" {{ $investigasi->status == 2 ? 'selected' : '' }}>Investigasi
+                                            </option>
+                                            <option value="3" {{ $investigasi->status == 3 ? 'selected' : '' }}>Sukses
+                                            </option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
                             <div class="card-body">
                                 <form class="lh-lg" method="POST"
                                     action="{{ route('daftarinvestigasi.update', $investigasi->id) }}"

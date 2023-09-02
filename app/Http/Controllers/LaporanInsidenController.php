@@ -15,6 +15,7 @@ use App\Models\Laporinsiden;
 use Hash;
 use Validator;
 Use Alert;
+use Auth;
 use App\Models\P2k3;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
@@ -23,10 +24,12 @@ class LaporanInsidenController extends Controller
 {
     public function index(Request $request){
         $laporaninsidens = Laporinsiden::with(['p2k3', 'departemen'])
-            ->where('kode_laporinsiden', 'LIKE', '%'.$request->search.'%')
-            ->orWhere('lokasi_rinci', 'LIKE', '%'.$request->search.'%')
-            ->orWhere('nama_pelapor', 'LIKE', '%'.$request->search.'%')
-            ->orWhere('nama_korban', 'LIKE', '%'.$request->search.'%')
+            // ->where('kode_laporinsiden', 'LIKE', '%'.$request->search.'%')
+            // ->orWhere('lokasi_rinci', 'LIKE', '%'.$request->search.'%')
+            // ->orWhere('nama_pelapor', 'LIKE', '%'.$request->search.'%')
+            // ->orWhere('nama_korban', 'LIKE', '%'.$request->search.'%')
+            ->whereNot('status', '2')
+            //->where('departemen_id', Auth::user()->departemen_id)
             ->paginate(10);
         return view('dashboard.laporaninsiden.index')->with('laporaninsidens',$laporaninsidens);
     }
@@ -120,6 +123,7 @@ class LaporanInsidenController extends Controller
 
     public function update($id, Request $request) {
         $request->validate([
+            
             'p2k3_id' => 'required',
             'kode_laporinsiden' => 'required',
             'waktu_kejadian' => 'required',
@@ -158,6 +162,7 @@ class LaporanInsidenController extends Controller
         
         
         Laporinsiden::find($id)->update([
+            
             'p2k3_id' => $request->p2k3_id,
             'kode_laporinsiden' => $request->kode_laporinsiden,
             'tanda_pengenal' => $pengenalName,
@@ -188,10 +193,20 @@ class LaporanInsidenController extends Controller
                 'departemen_id' => $request->departemen_id,
                 'kategori' => $request->jenis_insiden,
                 'penyebab_dasar' =>$request->penyebab_insiden,
-                
-            ]);
+                'status' => $request->status                
+            ]);      
             Alert::success('Berhasil', 'Data Laporan Insiden berhasil diperbaharui!')->iconHtml('<i class="bi bi-person-check"></i>')->hideCloseButton();
-            return redirect()->route('laporan-insiden.index');
+            return redirect()->route('laporan-insiden.index'); 
+
+            // if ($data) {
+            //     $inves = Laporinsiden::find($id);
+            //     $inves->delete();
+            // }
+        }
+        elseif ($request->status == 3) {
+            $data = Laporinsiden::find($id);
+            $data->delete();
+            
         }
 
             Alert::success('Berhasil', 'Data Laporan Insiden berhasil diperbaharui!')->iconHtml('<i class="bi bi-person-check"></i>')->hideCloseButton();

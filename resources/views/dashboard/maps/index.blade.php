@@ -13,7 +13,7 @@
         <div id="kt_app_content"
             class="app-content flex-column-fluid rounded bg-light  mb-20 px-5 shadow"style="box-shadow: 2px 4px 20px 2px rgba(0, 0, 0, 0.1);">
             {{-- View Pengguna --}}
-            @if (auth()->user()->hak_akses == 'pengguna')
+            @if (auth()->user()->hak_akses == 'Pengguna')
                 <div class="app-toolbar-wrapper d-flex flex-stack flex-wrap gap-4 w-100 mb-5 px-5 border-bottom border-5">
                     <!--begin::Page title-->
                     <h2>Maps</h2>
@@ -25,7 +25,7 @@
             {{-- End View Pengguna --}}
 
             {{-- View Admin --}}
-            @if (auth()->user()->hak_akses == 'admin')
+            @if (auth()->user()->hak_akses == 'Admin')
                 <div class="app-toolbar-wrapper d-flex flex-stack flex-wrap gap-4 w-100 mb-5 px-5 border-bottom border-5">
                     <!--begin::Page title-->
                     <h2>Maps</h2>

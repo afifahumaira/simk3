@@ -67,10 +67,10 @@
                         <th scope="col">Nama Pelapor</th>
                         <th scope="col">Lokasi Kejadian</th>
                         <th scope="col">Status</th>
-                        @if (auth()->user()->hak_akses == 'admin' ||
-                                auth()->user()->hak_akses == 'p2k3' ||
-                                auth()->user()->hak_akses == 'k3_departemen' ||
-                                auth()->user()->hak_akses == 'pimpinan')
+                        @if (auth()->user()->hak_akses == 'Admin' ||
+                                auth()->user()->hak_akses == 'P2K3' ||
+                                auth()->user()->hak_akses == 'K3 Departemen' ||
+                                auth()->user()->hak_akses == 'Pimpinan')
                             <th scope="col">Action</th>
                         @endif
                     </tr>
@@ -101,10 +101,10 @@
                                         Tuntas</a>
                                 @endif
                             </td>
-                            @if (auth()->user()->hak_akses == 'admin' ||
-                                    auth()->user()->hak_akses == 'p2k3' ||
-                                    auth()->user()->hak_akses == 'k3_departemen' ||
-                                    auth()->user()->hak_akses == 'pimpinan')
+                            @if (auth()->user()->hak_akses == 'Admin' ||
+                                    auth()->user()->hak_akses == 'P2K3' ||
+                                    auth()->user()->hak_akses == 'K3 Departemen' ||
+                                    auth()->user()->hak_akses == 'Pimpinan')
                                 <td>
                                     <a href="{{ route('potensibahaya.lihat', $data['id']) }}" type="button"
                                         class="btn  btn-sm bg-warning " style="width:20px;"><i

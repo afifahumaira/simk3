@@ -11,7 +11,7 @@
             class="flex-column-fluid menu menu-sub-indention menu-column menu-rounded menu-active-bg mb-7 ">
             <!--begin:Menu item-->
             {{-- View Admin --}}
-            @if (auth()->user()->hak_akses == 'admin')
+            @if (auth()->user()->hak_akses == 'Admin')
                 <div class="menu-item here show menu-accordion ">
                     <!--begin:Menu link-->
                     <a href="{{ route('dashboard') }}" class="menu-link ">
@@ -346,7 +346,7 @@
             @endif
             {{-- End View Admin --}}
 
-            {{-- View tamu --}}
+            {{-- View pengguna --}}
             @if (auth()->user()->hak_akses == 'pengguna')
                 <div class="menu-item here show menu-accordion ">
                     <!--begin:Menu link-->
@@ -411,9 +411,9 @@
             {{-- End View Pengguna --}}
 
             {{-- View P2K3 --}}
-            @if (auth()->user()->hak_akses == 'p2k3' ||
-                    auth()->user()->hak_akses == 'k3_departemen' ||
-                    auth()->user()->hak_akses == 'pimpinan')
+            @if (auth()->user()->hak_akses == 'P2K3' ||
+                    auth()->user()->hak_akses == 'K3 Departemen' ||
+                    auth()->user()->hak_akses == 'Pimpinan')
                 <!--begin:Menu item-->
 
                 <div class="menu-item here show menu-accordion ">

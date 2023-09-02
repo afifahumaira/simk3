@@ -29,9 +29,9 @@
         </div>
         <div class="card-body">
             <div class="table-responsive">
-                @if (auth()->user()->hak_akses == 'admin' ||
-                        auth()->user()->hak_akses == 'p2k3' ||
-                        auth()->user()->hak_akses == 'k3_departemen')
+                @if (auth()->user()->hak_akses == 'Admin' ||
+                        auth()->user()->hak_akses == 'P2K3' ||
+                        auth()->user()->hak_akses == 'K3 Departemen')
                     <table class="table table-rounded table-bordered">
                         <thead>
                             <tr>
@@ -102,7 +102,7 @@
                         </tbody>
                     </table>
                 @endif
-                @if (auth()->user()->hak_akses == 'pimpinan')
+                @if (auth()->user()->hak_akses == 'Pimpinan')
                     <table class="table table-rounded table-bordered">
                         <thead>
                             <tr>
@@ -128,17 +128,25 @@
                                     </td>
                                     {{-- <td>{{ $investigasi->tenggat_waktu ? $investigasi->tenggat_waktu->translatedFormat('d F Y') : '' }}</td> --}}
                                     <td>{{ $investigasi->p2k3->nama }}</td>
-                                    <td align="center" class="mx-15">
-                                        {{-- <a href="#"
-                                            class="text-center fw-bold  text-success border border-2 rounded-4 border-success px-4">
-                                            Ditindaklanjuti
-                                        </a> --}}
+                                    <td align="center" class="mx-15">                                  
+                                                                                    
+                                            @if ($investigasi->status == '1')
+                                                <a href=""
+                                                    class="text-center fw-bold  text-danger border border-2 rounded-2 border-danger px-5 py-1"
+                                                    style=" cursor: default !important;">
+                                                    Pending</a>
 
-                                        <a href=""
-                                            class="text-center fw-bold  text-danger border border-2 rounded-4 border-danger px-4"
-                                            style=" cursor: default !important;">
-                                            {{ $investigasi->laporinsiden->status }}
-                                        </a>
+                                            @elseif ($investigasi->status == '2')
+                                                <a class="text-center fw-bold  text-warning border border-2 rounded-2 border-warning py-2 px-4"
+                                                        style=" cursor: default !important;">
+                                                        Ditindaklanjuti</a>
+                                                
+                                            @elseif ($investigasi->status == '3')
+                                                <a class="text-center fw-bold  text-success border border-2 rounded-2 border-success px-5 py-1"
+                                                    style=" cursor: default !important;">
+                                                    Tuntas </a>
+                                            @endif
+                                        
 
                                         {{-- <a href="" class="text-center fw-bold  text-warning  px-4">
                                             Pending
@@ -147,12 +155,12 @@
 
                                     <td class="d-flex
                                             justify-content-center">
-                                        <a href="{{ route('daftarinvestigasi.ubah', $investigasi->id) }}" type="button"
-                                            class="btn btn-sm btn-primary px-4 "data-bs-toggle="modal"
-                                            data-bs-target="#staticBackdrop">Ubah
-                                            Status
-                                            investigasi
-                                            {{-- <i class="bi bi-repeat pe-0"></i> --}}
+                                        <a id="update" class="btn btn-primary"
+                                            data-bs-toggle="modal"
+                                            data-bs-target="#editmodal"
+                                            data-bs-p2k3_id="{{ $investigasi->p2k3_id }}"
+                                            data-bs-status="{{ $investigasi->status }}"
+                                            >Ubah Status Investigasi
                                         </a>
                                     </td>
 
@@ -171,10 +179,7 @@
                                             aria-labelledby="staticBackdropLabel" aria-hidden="true">
                                             <div class="modal-dialog modal-dialog-centered ">
                                                 <div class="modal-content">
-
-                                                    <form method="POST"
-                                                        action="{{ route('daftarinvestigasi.delete', $investigasi->id) }}">
-                                                        @csrf
+                                                    
                                                         <div
                                                             class="modal-body mt-5 d-flex justify-content-center align-items-center">
                                                             <h2 class="mt-5 text-center"
@@ -199,65 +204,65 @@
                                         </div>
                                     </td>
                                 </tr>
-                                <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static"
+                                
+                                <div class="modal fade" id="editmodal" data-bs-backdrop="static"
                                     data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel"
                                     aria-hidden="true">
                                     <div class="modal-dialog modal-dialog-centered ">
-                                        <div class="modal-content">
-                                            <div class="modal-header">
-                                                <h1 class="modal-title" id="staticBackdropLabel">Ubah Data Investigasi
-                                                </h1>
-                                                <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                                    aria-label="Close"
-                                                    href="{{ route('daftarinvestigasi.ubah', $investigasi->id) }}"></button>
-                                            </div>
-
-                                            <div class="modal-body mt-5 ">
-                                                <div id="additionalForm">
-                                                    <div class="ps-3 pe-5 pb-5">
-                                                        <label class="col-form-label ps-2">P2K3</label>
-                                                        <div class=" w-100">
-                                                            <select name="p2k3_id" class="form-select fs-6 w-100"
-                                                                data-control="select2" data-hide-search="true"
-                                                                data-placeholder="P2K3">
-                                                                {{-- @foreach ($p2k3s as $p2k3)
-                                                                    <option value="{{ $p2k3->id }}"
-                                                                        {{ $investigasis->p2k3_id == $p2k3->id ? 'selected' : '' }}>
-                                                                        {{ $p2k3->nama != '' ? $p2k3->nama : 'Pilih P2K3' }}</option>
-                                                                @endforeach --}}
-                                                            </select>
-                                                        </div>
-                                                    </div>
-
+                                        <form action="{{ route("daftarinvestigasi.edit", $investigasi->id) }}" method="post" enctype="multipart/form-data">
+                                        @csrf
+                                        @method('PUT')
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h1 class="modal-title" id="staticBackdropLabel">Ubah Data Investigasi
+                                                    </h1>
+                                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                        aria-label="Close" id="update"></button>
+                                                </div>
+    
+                                                <div class="modal-body mt-5 ">
                                                     <div id="additionalForm">
-                                                        <div class="ps-3 pe-5">
-                                                            <label class="col-form-label ps-2">Status Investigasi </label>
+                                                        <div class="ps-3 pe-5 pb-5">
+                                                            <label class="col-form-label ps-2">P2K3</label>
                                                             <div class=" w-100">
-                                                                <select name="tindakan" class="form-select fs-6 w-100"
+                                                                <select id="p2k3_id" name="p2k3_id" class="form-select fs-6 w-100"
                                                                     data-control="select2" data-hide-search="true"
-                                                                    data-placeholder="tindakan">
-
-                                                                    {{-- <option value="1" {{ $investigasis->tindakan == 1 ? 'selected' : '' }}>Pending
-                                                                    </option>
-                                                                    <option value="2" {{ $investigasis->tindakan == 2 ? 'selected' : '' }}>Investigasi
-                                                                    </option>
-                                                                    <option value="3" {{ $investigasis->tindakan == 3 ? 'selected' : '' }}>Sukses
-                                                                    </option> --}}
-
+                                                                    data-placeholder="p2k3">
+                                                                    @foreach ($p2k3s as $p2k3)
+                                                                        <option value="{{ $p2k3->id }}">
+                                                                           {{  $p2k3->nama }}
+                                                                        </option>
+                                                                    @endforeach
                                                                 </select>
                                                             </div>
                                                         </div>
+    
+                                                        <div id="additionalForm">
+                                                            <div class="ps-3 pe-5">
+                                                                <label class="col-form-label ps-2">Status Investigasi </label>
+                                                                <div class=" w-100">
+                                                                    <select name="status" id="status" class="form-select fs-6 w-100"
+                                                                        data-control="select2" data-hide-search="true"
+                                                                        data-placeholder="status">
+                                                                        <option value="2" >Investigasi
+                                                                        </option>
+                                                                        <option value="3" >Sukses
+                                                                        </option>
+                                                                    </select>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+    
                                                     </div>
-
-                                                </div>
-                                                <div class="modal-footer d-flex justify-content-center border-0 mt-5">
-                                                    <button type="submit"
-                                                        class="btn btn-success text-white d-flex justify-content-center align-items-center "
-                                                        style="background: #29CC6A;height: 38px; margin : 10px 20px 30px 20px; font-size:14px; border-radius: 5px;">Simpan
-                                                        Data</button>
+                                                    <div class="modal-footer d-flex justify-content-center border-0 mt-5">
+                                                        <button type="submit"
+                                                            class="btn btn-success text-white d-flex justify-content-center align-items-center "
+                                                            style="background: #29CC6A;height: 38px; margin : 10px 20px 30px 20px; font-size:14px; border-radius: 5px;">Simpan
+                                                            Data</button>
+                                                    </div>
                                                 </div>
                                             </div>
-                                        </div>
+                                        </form>
                                     </div>
                             @endforeach
                         </tbody>
@@ -272,5 +277,13 @@
 @stop
 
 @section('customscript')
-    <script></script>
+    <script>
+        $(document).on("click", "#update", function () {
+        var p2k3_id = $(this).attr('data-bs-p2k3_id');
+        var status = $(this).attr('data-bs-status');
+        $("#p2k3_id").val( p2k3_id ).setAttribute('selected','selected');
+        $("#status").val( status ).setAttribute('selected','selected');
+     
+});
+    </script>
 @stop
