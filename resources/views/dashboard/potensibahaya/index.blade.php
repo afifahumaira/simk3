@@ -86,14 +86,19 @@
                             <td>{{ $data->lokasi }}</td>
                             <td align="center" class="pt-5">
                                 @if ($data->status == '1')
-                                    <a href="#"
-                                        class="text-center fw-bold  text-danger border border-2 rounded-4 border-danger px-4 ">Pending</a>
+                                    <a href=""
+                                        class="text-center fw-bold  text-danger border border-2 rounded-2 border-danger py-1 px-4 "
+                                        style=" cursor: default !important;">
+                                        Pending</a>
                                 @elseif ($data->status == '2')
                                     <a href="#"
-                                        class="text-center fw-bold  text-warning border border-2 rounded-4 border-warning  px-4">Investigasi</a>
+                                        class="text-center fw-bold  text-warning border border-2 rounded-2 border-warning  px-4 py-1"
+                                        style=" cursor: default !important;">Ditindaklanjuti</a>
                                 @elseif ($data->status == '3')
-                                    <a
-                                        class="text-center fw-bold  text-success border border-2 rounded-4 border-success px-4">Tuntas</a>
+                                    <a href=""
+                                        class="text-center fw-bold  text-success border border-2 rounded-2 border-success mx-10 px-4 py-1"
+                                        style=" cursor: default !important;">
+                                        Tuntas</a>
                                 @endif
                             </td>
                             @if (auth()->user()->hak_akses == 'admin' ||

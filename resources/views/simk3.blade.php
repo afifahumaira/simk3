@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
-@include('sweetalert::alert')
+
+
 <head>
     <meta charset="utf-8" />
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
@@ -25,7 +26,7 @@
     <link rel="stylesheet"
         href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.1/css/fontawesome.min.css"
         integrity="sha384-QYIZto+st3yW+o8+5OHfT6S482Zsvz2WfOzpFSXMF9zqeLcFV0/wlZpMtyFcZALm" crossorigin="anonymous">
-    <!-- Vendor CSS Files -->
+    <!-- Vendor CSS Files --->
 
 
     <!-- Vendor CSS Files -->

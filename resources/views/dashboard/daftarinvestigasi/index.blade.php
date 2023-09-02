@@ -128,15 +128,16 @@
                                     </td>
                                     {{-- <td>{{ $investigasi->tenggat_waktu ? $investigasi->tenggat_waktu->translatedFormat('d F Y') : '' }}</td> --}}
                                     <td>{{ $investigasi->p2k3->nama }}</td>
-                                    <td align="center">
+                                    <td align="center" class="mx-15">
                                         {{-- <a href="#"
                                             class="text-center fw-bold  text-success border border-2 rounded-4 border-success px-4">
                                             Ditindaklanjuti
                                         </a> --}}
 
                                         <a href=""
-                                            class="text-center fw-bold  text-danger border border-2 rounded-4 border-danger px-4">
-                                            Pending
+                                            class="text-center fw-bold  text-warning border border-2 rounded-2 border-warning px-4 py-1 "
+                                            style=" cursor: default !important;">
+                                            Ditindaklanjuti
                                         </a>
 
                                         {{-- <a href="" class="text-center fw-bold  text-warning  px-4">
@@ -144,7 +145,8 @@
                                         </a> --}}
                                     </td>
 
-                                    <td class="d-flex  justify-content-center">
+                                    <td class="d-flex
+                                            justify-content-center">
                                         <a href="{{ route('daftarinvestigasi.ubah', $investigasi->id) }}" type="button"
                                             class="btn btn-sm btn-primary px-4 "data-bs-toggle="modal"
                                             data-bs-target="#staticBackdrop">Ubah
@@ -206,7 +208,8 @@
                                                 <h1 class="modal-title" id="staticBackdropLabel">Ubah Data Investigasi
                                                 </h1>
                                                 <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                                    aria-label="Close" href="{{ route('daftarinvestigasi.ubah', $investigasi->id) }}"></button>
+                                                    aria-label="Close"
+                                                    href="{{ route('daftarinvestigasi.ubah', $investigasi->id) }}"></button>
                                             </div>
 
                                             <div class="modal-body mt-5 ">
@@ -233,14 +236,14 @@
                                                                 <select name="tindakan" class="form-select fs-6 w-100"
                                                                     data-control="select2" data-hide-search="true"
                                                                     data-placeholder="tindakan">
-                                                                    
+
                                                                     {{-- <option value="1" {{ $investigasis->tindakan == 1 ? 'selected' : '' }}>Pending
                                                                     </option>
                                                                     <option value="2" {{ $investigasis->tindakan == 2 ? 'selected' : '' }}>Investigasi
                                                                     </option>
                                                                     <option value="3" {{ $investigasis->tindakan == 3 ? 'selected' : '' }}>Sukses
                                                                     </option> --}}
-                                                                    
+
                                                                 </select>
                                                             </div>
                                                         </div>
