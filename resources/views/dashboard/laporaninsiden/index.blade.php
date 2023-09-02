@@ -32,6 +32,25 @@
             </div>
         </div>
         <div class="card-body">
+            <div class="ps-3 pe-5 pb-5 mb-5 d-flex justify-content-end ">
+                <label class="col-form-label pe-4">Status :</label>
+                <div class="w-0">
+                    <select name="filter" id="filter" class="form-select fs-6 w-100" data-control="select2"
+                        data-hide-search="true">
+                        <option value="">Status</option>
+                        <option value="1"
+                            {{ request()->has('filter') ? (request()->filter == 1 ? 'selected' : false) : '' }}>
+                            Pending</option>
+                        <option value="2"
+                            {{ request()->has('filter') ? (request()->filter == 2 ? 'selected' : false) : '' }}>Ditindak
+                            lanjuti</option>
+                        <option value="3"
+                            {{ request()->has('filter') ? (request()->filter == 3 ? 'selected' : false) : '' }}>Tuntas
+                        </option>
+
+                    </select>
+                </div>
+            </div>
             <div class="table-responsive">
                 <table class="table table-rounded table-bordered">
                     <thead>
@@ -154,4 +173,40 @@
             {{ $laporaninsidens->links('pagination::customb5') }}
         </div>
     </div>
+@stop
+
+@section('customscript')
+    <script>
+        $(document).ready(function() {
+            // Get the select filter element
+            var selectFilter = $("#filter");
+
+            // Get the current URL
+            var currentUrl = window.location.href;
+
+            // Bind an event handler to the change event of the select filter
+            selectFilter.on("change", function() {
+
+                const selectedValue = selectFilter.val();
+                const currentURL = window.location.href;
+                const url = new URL(currentURL);
+                const params = new URLSearchParams(url.search);
+
+                // Check if the "filter" parameter already exists
+                if (params.has('filter')) {
+                    // Update the existing "filter" parameter with the selected value
+                    params.set('filter', selectedValue);
+                } else {
+                    // If "filter" parameter doesn't exist, add it
+                    params.append('filter', selectedValue);
+                }
+
+                // Set the updated query parameters back to the URL object
+                url.search = params.toString();
+
+                // Redirect to the updated URL, which will reload the page
+                window.location.href = url.toString();
+            });
+        });
+    </script>
 @stop

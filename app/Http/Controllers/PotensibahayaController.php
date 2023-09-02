@@ -25,6 +25,9 @@ class PotensibahayaController extends Controller
 {
     public function index(Request $request){
         $datas = PotensiBahaya:: with(['p2k3', 'departemen'])
+        ->when (auth()->user()->hak_akses=='k3_departemen', function ($query){
+            $query->where('departemen_id', auth()->user()->departemen_id);
+        })
         -> where('nama_pelapor', 'LIKE', '%'.$request->search.'%')
         ->orWhere('lokasi', 'LIKE', '%'.$request->search.'%')
         ->orWhere('waktu_kejadian', 'LIKE', '%'.$request->search.'%')
