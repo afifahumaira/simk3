@@ -3,14 +3,13 @@
 
 @section('content')
     <div class="page-title d-flex flex-column gap-1 mx-5 my-5  ">
-        <div id="kt_app_content"
-            class="app-content flex-column-fluid rounded bg-light  mb-20 px-5 shadow"style="box-shadow: 2px 4px 20px 2px rgba(0, 0, 0, 0.1);">
-            <div class="app-toolbar-wrapper d-flex flex-stack flex-wrap gap-4 w-100 mb-5 px-5 border-bottom border-5">
+        <div class="card m-5">
+            <div class="card-header shadow-sm d-flex justify-content-between align-items-center">
                 <!--begin::Page title-->
                 <h2>Data Laporan Potensi Bahaya</h2>
                 <!--begin::Main wrapper-->
-                <div id="kt_docs_search_handler_basic" data-kt-search-keypress="true" data-kt-search-min-length="2"
-                    data-kt-search-enter="true" data-kt-search-layout="inline">
+                <div id="kt_docs_search_handler_basic" class="mt-3" data-kt-search-keypress="true"
+                    data-kt-search-min-length="2" data-kt-search-enter="true" data-kt-search-layout="inline">
 
                     <!--begin::Input Form-->
                     <form data-kt-search-element="form" class="w-100 position-relative mb-5 shadow rounded"
@@ -53,114 +52,178 @@
                     <!--end::Wrapper-->
                 </div>
                 <!--end::Main wrapper-->
-                <a href="{{ route('potensibahaya.tambah') }}" type="button" class="btn btn-primary btn-sm"
-                    style="background: #233EAE">Tambah Data +</a>
+                <div class="card-toolbar d-flex">
+                    <div class="ps-3 pe-5  ">
+                        {{-- <label class="col-form-label pe-4">Status :</label> --}}
+                        <div class="w-0 ">
+                            <select name="filter" id="filter" class="form-select fs-6 w-100 shadow"
+                                data-control="select2" data-hide-search="true">
+                                <option value="">Status</option>
+                                <option value="1"
+                                    {{ request()->has('filter') ? (request()->filter == 1 ? 'selected' : false) : '' }}>
+                                    Pending</option>
+                                <option value="2"
+                                    {{ request()->has('filter') ? (request()->filter == 2 ? 'selected' : false) : '' }}>
+                                    Ditindak
+                                    lanjuti</option>
+                                <option value="3"
+                                    {{ request()->has('filter') ? (request()->filter == 3 ? 'selected' : false) : '' }}>
+                                    Tuntas
+                                </option>
+
+                            </select>
+                        </div>
+                    </div>
+                    <a href="{{ route('potensibahaya.tambah') }}" type="button" class="btn btn-primary btn-sm mb-0"
+                        style="background: #233EAE">Tambah Data +</a>
+                </div>
                 <!--end::Title-->
             </div>
             <!--begin::Content container-->
-            <table class="table table-bordered border-secondary px-3 py-3 mb-5 shadow">
-                <thead px-3>
-                    <tr>
-                        <th scope="col" class="text-center">No</th>
-                        <th scope="col">Kode Potensi Bahaya</th>
-                        <th scope="col">Tanggal lapor</th>
-                        <th scope="col">Nama Pelapor</th>
-                        <th scope="col">Lokasi Kejadian</th>
-                        <th scope="col">Status</th>
-                        @if (auth()->user()->hak_akses == 'Admin' ||
-                                auth()->user()->hak_akses == 'P2K3' ||
-                                auth()->user()->hak_akses == 'K3 Departemen' ||
-                                auth()->user()->hak_akses == 'Pimpinan')
-                            <th scope="col">Action</th>
-                        @endif
-                    </tr>
-                </thead>
-                <tbody>
-                    @foreach ($datas as $data)
-                        <tr>
-                            <td scope="row" class="text-center">
-                                {{ ($datas->currentpage() - 1) * $datas->perpage() + $loop->index + 1 }}</td>
-                            <td>{{ $data->kode_potensibahaya }}</td>
-                            <td>{{ $data->waktu_kejadian }}</td>
-                            <td>{{ $data->nama_pelapor }}</td>
-                            <td>{{ $data->lokasi }}</td>
-                            <td align="center" class="pt-5">
-                                @if ($data->status == '1')
-                                    <a href=""
-                                        class="text-center fw-bold  text-danger border border-2 rounded-2 border-danger py-1 px-4 "
-                                        style=" cursor: default !important;">
-                                        Pending</a>
-                                @elseif ($data->status == '2')
-                                    <a href="#"
-                                        class="text-center fw-bold  text-warning border border-2 rounded-2 border-warning  px-4 py-1"
-                                        style=" cursor: default !important;">Ditindaklanjuti</a>
-                                @elseif ($data->status == '3')
-                                    <a href=""
-                                        class="text-center fw-bold  text-success border border-2 rounded-2 border-success mx-10 px-4 py-1"
-                                        style=" cursor: default !important;">
-                                        Tuntas</a>
+            <div class="card-body">
+
+                <div class="table-responsive">
+                    <table class="table table-rounded table-bordered">
+                        <thead>
+                            <tr>
+                                <th scope="col" class="text-center">No</th>
+                                <th scope="col">Kode Potensi Bahaya</th>
+                                <th scope="col">Tanggal lapor</th>
+                                <th scope="col">Nama Pelapor</th>
+                                <th scope="col">Lokasi Kejadian</th>
+                                <th scope="col">Status</th>
+                                @if (auth()->user()->hak_akses == 'Admin' ||
+                                        auth()->user()->hak_akses == 'P2K3' ||
+                                        auth()->user()->hak_akses == 'K3 Departemen' ||
+                                        auth()->user()->hak_akses == 'Pimpinan')
+                                    <th scope="col">Action</th>
                                 @endif
-                            </td>
-                            @if (auth()->user()->hak_akses == 'Admin' ||
-                                    auth()->user()->hak_akses == 'P2K3' ||
-                                    auth()->user()->hak_akses == 'K3 Departemen' ||
-                                    auth()->user()->hak_akses == 'Pimpinan')
-                                <td>
-                                    <a href="{{ route('potensibahaya.lihat', $data['id']) }}" type="button"
-                                        class="btn  btn-sm bg-warning " style="width:20px;"><i
-                                            class="bi bi-eye text-dark d-flex justify-content-center align-items-center"></i></a>
-                                    <a href="{{ route('potensibahaya.edit', $data['id']) }}" type="button"
-                                        class="btn  btn-sm bg-primary" style="width:20px;"><i
-                                            class="bi bi-pencil-square text-dark d-flex justify-content-center align-items-center"></i>
-                                    </a>
-                                    <button type="button" class="btn btn-sm" style="width: 20px; background: #DC3545"
-                                        data-bs-toggle="modal" data-bs-target="#deleteModal{{ $data->id }}">
-                                        <i
-                                            class="bi bi-trash text-dark d-flex justify-content-center align-items-center"></i>
-                                    </button>
-                                </td>
-                            @endif
-                        </tr>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach ($datas as $data)
+                                <tr>
+                                    <td scope="row" class="text-center">
+                                        {{ ($datas->currentpage() - 1) * $datas->perpage() + $loop->index + 1 }}</td>
+                                    <td>{{ $data->kode_potensibahaya }}</td>
+                                    <td>{{ $data->waktu_kejadian }}</td>
+                                    <td>{{ $data->nama_pelapor }}</td>
+                                    <td>{{ $data->lokasi }}</td>
+                                    <td align="center" class="pt-5">
+                                        @if ($data->status == '1')
+                                            <a href=""
+                                                class="text-center fw-bold  text-danger border border-2 rounded-2 border-danger py-1 px-4 "
+                                                style=" cursor: default !important;">
+                                                Pending</a>
+                                        @elseif ($data->status == '2')
+                                            <a href="#"
+                                                class="text-center fw-bold  text-warning border border-2 rounded-2 border-warning  px-4 py-1"
+                                                style=" cursor: default !important;">Ditindaklanjuti</a>
+                                        @elseif ($data->status == '3')
+                                            <a href=""
+                                                class="text-center fw-bold  text-success border border-2 rounded-2 border-success mx-10 px-4 py-1"
+                                                style=" cursor: default !important;">
+                                                Tuntas</a>
+                                        @endif
+                                    </td>
+                                    @if (auth()->user()->hak_akses == 'Admin' ||
+                                            auth()->user()->hak_akses == 'P2K3' ||
+                                            auth()->user()->hak_akses == 'K3 Departemen' ||
+                                            auth()->user()->hak_akses == 'Pimpinan')
+                                        <td>
+                                            <a href="{{ route('potensibahaya.lihat', $data['id']) }}" type="button"
+                                                class="btn  btn-sm bg-warning " style="width:20px;"><i
+                                                    class="bi bi-eye text-dark d-flex justify-content-center align-items-center"></i></a>
+                                            <a href="{{ route('potensibahaya.edit', $data['id']) }}" type="button"
+                                                class="btn  btn-sm bg-primary" style="width:20px;"><i
+                                                    class="bi bi-pencil-square text-dark d-flex justify-content-center align-items-center"></i>
+                                            </a>
+                                            <button type="button" class="btn btn-sm"
+                                                style="width: 20px; background: #DC3545" data-bs-toggle="modal"
+                                                data-bs-target="#deleteModal{{ $data->id }}">
+                                                <i
+                                                    class="bi bi-trash text-dark d-flex justify-content-center align-items-center"></i>
+                                            </button>
+                                        </td>
+                                    @endif
+                                </tr>
 
-                        <!-- Delete modal -->
-                        <div class="modal fade" id="deleteModal{{ $data->id }}" tabindex="-1" role="dialog"
-                            aria-labelledby="deleteModalLabel{{ $data->id }}" data-bs-backdrop="static"
-                            aria-labelledby="staticBackdropLabel" aria-hidden="true">
-                            <div class="modal-dialog modal-dialog-centered" role="document">
-                                <div class="modal-content">
+                                <!-- Delete modal -->
+                                <div class="modal fade" id="deleteModal{{ $data->id }}" tabindex="-1" role="dialog"
+                                    aria-labelledby="deleteModalLabel{{ $data->id }}" data-bs-backdrop="static"
+                                    aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                                    <div class="modal-dialog modal-dialog-centered" role="document">
+                                        <div class="modal-content">
 
-                                    <div class="modal-body mt-5 d-flex justify-content-center align-items-center">
-                                        <h2 class="mt-5 text-center"
-                                            style="color: #16243D; font-size: 20px font-weight:700">
-                                            Yakin data
-                                            ingin dihapus?
-                                        </h2>
-                                    </div>
-                                    <div class="modal-footer d-flex justify-content-center border-0">
-                                        <form action="{{ route('potensibahaya.delete', $data['id']) }}" method="POST">
-                                            @csrf
-                                            <button type="submit"
-                                                class="btn btn-success text-white d-flex justify-content-center align-items-center text-center rounded-1"
-                                                style="width:76px; height:31px; background: #29CC6A;">Ya</button>
-                                        </form>
-                                        <button type="button"
-                                            class="btn btn-secondary text-center d-flex align-items-center rounded-1"
-                                            data-bs-dismiss="modal" style="width:76px; height:31px; ">Tidak</button>
+                                            <div class="modal-body mt-5 d-flex justify-content-center align-items-center">
+                                                <h2 class="mt-5 text-center"
+                                                    style="color: #16243D; font-size: 20px font-weight:700">
+                                                    Yakin data
+                                                    ingin dihapus?
+                                                </h2>
+                                            </div>
+                                            <div class="modal-footer d-flex justify-content-center border-0">
+                                                <form action="{{ route('potensibahaya.delete', $data['id']) }}"
+                                                    method="POST">
+                                                    @csrf
+                                                    <button type="submit"
+                                                        class="btn btn-success text-white d-flex justify-content-center align-items-center text-center rounded-1"
+                                                        style="width:76px; height:31px; background: #29CC6A;">Ya</button>
+                                                </form>
+                                                <button type="button"
+                                                    class="btn btn-secondary text-center d-flex align-items-center rounded-1"
+                                                    data-bs-dismiss="modal"
+                                                    style="width:76px; height:31px; ">Tidak</button>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                        </div>
-                    @endforeach
+                            @endforeach
 
-                </tbody>
-            </table>
-
-            {{ $datas->links('pagination::customb5') }}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="card-footer">
+                {{ $datas->links('pagination::customb5') }}
+            </div>
             <!--end::Content container-->
         </div>
     </div>
 @stop
 
 @section('customscript')
+    <script>
+        $(document).ready(function() {
+            // Get the select filter element
+            var selectFilter = $("#filter");
 
+            // Get the current URL
+            var currentUrl = window.location.href;
+
+            // Bind an event handler to the change event of the select filter
+            selectFilter.on("change", function() {
+
+                const selectedValue = selectFilter.val();
+                const currentURL = window.location.href;
+                const url = new URL(currentURL);
+                const params = new URLSearchParams(url.search);
+
+                // Check if the "filter" parameter already exists
+                if (params.has('filter')) {
+                    // Update the existing "filter" parameter with the selected value
+                    params.set('filter', selectedValue);
+                } else {
+                    // If "filter" parameter doesn't exist, add it
+                    params.append('filter', selectedValue);
+                }
+
+                // Set the updated query parameters back to the URL object
+                url.search = params.toString();
+
+                // Redirect to the updated URL, which will reload the page
+                window.location.href = url.toString();
+            });
+        });
+    </script>
 @endsection

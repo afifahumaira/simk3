@@ -12,14 +12,20 @@ use App\Models\Departemen;
 
 class InvestigasiPotensiController extends Controller
 {
-    public function index() {
+    public function index(Request $request) {
         // $data = Potensibahaya::all();        
         // $departemen = Departemen::all();
         // $p2k3s = P2k3::all();
         $investigasis = InvestigasiPotensi::with(['p2k3_data', 'departemen', 'potensibahaya'])
+        ->when($request->has('filter'), function($query) use($request){
+            if($request->filter !=''){
+             $query->where('status', $request->filter);
+            }
+         })
         ->when (auth()->user()->hak_akses=='K3 Departemen', function ($query){
             $query->where('departemen_id', auth()->user()->departemen_id);
         })
+        
         ->paginate(10);
 
         return view('dashboard.investigasipotensi.index')
