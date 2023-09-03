@@ -25,6 +25,11 @@ class P2k3 extends Model
         return $this->belongsTo(User::class);
     }
 
+    public function departemen()
+    {
+        return $this->belongsTo(Departemen::class);
+    }
+
     public function insiden()
     {
         return $this->hasMany(Laporinsiden::class, 'p2k3_id');

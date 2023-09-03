@@ -60,7 +60,7 @@ class User extends Authenticatable
 
     public function p2k3()
     {
-        return $this->hasMany(P2k3::class, 'user_id', 'nama');
+        return $this->hasMany(P2k3::class, 'user_id', 'nama', 'departemen_id');
     }
 
 

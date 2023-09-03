@@ -37,4 +37,12 @@ class Departemen extends Model
         return $this->hasMany(Laporinsiden::class, 'departemen_id');
     }
 
+    public function p2k3() {
+        return $this->hasMany(P2k3::class, 'departemen_id');
+    }
+
+    public function user() {
+        return $this->hasMany(User::class, 'departemen_id');
+    }
+
 }

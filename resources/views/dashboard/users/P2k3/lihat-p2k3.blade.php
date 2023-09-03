@@ -38,7 +38,7 @@
                     <tr>
 
                         <th>Departemen</th>
-                        <td>{{$data->departemen}}</td>
+                        <td>{{$data->departemen?->name}}</td>
 
                     </tr>
 

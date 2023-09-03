@@ -227,7 +227,7 @@
                                                             <div class=" w-100">
                                                                 <select id="p2k3_id" name="p2k3_id" class="form-select fs-6 w-100"
                                                                     data-control="select2" data-hide-search="true"
-                                                                    data-placeholder="p2k3">
+                                                                    data-placeholder="p2k3_id">
                                                                     @foreach ($p2k3s as $p2k3)
                                                                         <option value="{{ $p2k3->id }}">
                                                                            {{  $p2k3->nama }}

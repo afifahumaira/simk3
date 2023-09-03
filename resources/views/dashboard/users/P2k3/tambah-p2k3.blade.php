@@ -78,22 +78,11 @@
                   <div class="col-sm-10 w-100">
                       <select class="form-select fs-6 w-100" data-control="select2"
                               data-hide-search="true" data-placeholder="Departemen"
-                              style="--bs-link-hover-color-rgb: 25, 135, 84;" id="departemen"
-                              style="font-family: 'Inter';" name="departemen">
-                          <option value="">- Pilih -</option>
-                          <option value="Teknik Sipil" >Teknik Sipil</option>
-                          <option value="Teknik Arsitektur" >Teknik Arsitektur</option>
-                          <option value="Teknik Kimia" >Teknik Kimia</option>
-                          <option value="Teknik Perencanaan Wilayah dan Kota">Teknik Perencanaan Wilayah dan Kota</option>
-                          <option value="Teknik Mesin" >Teknik Mesin</option>
-                          <option value="Teknik Elektro" >Teknik Elektro</option>
-                          <option value="Teknik Industri" >Teknik Industri</option>
-                          <option value="Teknik Lingkungan" >Teknik Lingkungan</option>
-                          <option value="Teknik Perkapalan" >Teknik Perkapalan</option>
-                          <option value="Teknik Perkapalan" >Teknik Perkapalan</option>
-                          <option value="Teknik Perkapalan" >Teknik Perkapalan</option>
-                          <option value="Teknik Komputer" >Teknik Komputer</option>
-                          <option value="Dekanat" >Dekanat</option>
+                              style="--bs-link-hover-color-rgb: 25, 135, 84;" id="departemen_id"
+                              style="font-family: 'Inter';" name="departemen_id">
+                              @foreach ($departemen as $dep)
+                              <option value="{{ $dep->id }}">{{ $dep->name }}</option>
+                          @endforeach
                       </select>
 
                   </div>

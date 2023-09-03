@@ -15,20 +15,20 @@ class InvestigasiController extends Controller
 {
 
     public function index(Request $request) {
-        // $data = Laporinsiden::all();
-        // $departemen = Departemen::all();
-        // $p2k3s = P2k3::all();
-        $investigasis = Investigasi::with(['p2k3', 'departemen', 'laporinsiden'])
+        $data = Laporinsiden::all();
+        $departemen = Departemen::all();
+        $p2k3s = P2k3::all();
+        $investigasis = Investigasi::with([ 'departemen', 'laporinsiden', 'p2k3'])
         ->when (auth()->user()->hak_akses=='K3 Departemen', function ($query){
             $query->where('departemen_id', auth()->user()->departemen_id);
         })
         ->paginate(10);        
                     
         return view('dashboard.daftarinvestigasi.index')
-            ->with('investigasis', $investigasis);
-            // ->with('laporinsdien', $data)
-            // ->with('departemen', $departemen)
-            // ->with('p2k3s', $p2k3s);
+            ->with('investigasis', $investigasis)
+            ->with('laporinsdien', $data)
+            ->with('departemen', $departemen)
+            ->with('p2k3s', $p2k3s);
             
     }
 
@@ -108,6 +108,14 @@ class InvestigasiController extends Controller
             'tenggat_waktu' => $request->tenggat_waktu,
             'tindakan' => $request->tindakan,
         ]);
+
+        if ($request->status == 3) {
+            $data = Investigasi::find($id);
+            $data->delete();
+            
+            Alert::success('Berhasil', 'Investigasi selesai')->iconHtml('<i class="bi bi-person-check"></i>')->hideCloseButton();
+            return redirect()->route('daftarinvestigasi.index');
+        }
 
         Alert::success('Berhasil', 'Data Investigasi berhasil diperbaharui!')->iconHtml('<i class="bi bi-person-check"></i>')->hideCloseButton();
         return redirect()->route('daftarinvestigasi.index');

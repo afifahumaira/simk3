@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\P2k3;
 use Illuminate\Http\Request;
 use App\Models\User;
+use App\Models\Departemen;
 use App\Models\Inventory;
 use App\Models\Investigasi;
 use App\Models\LaporanInsiden;
@@ -18,14 +19,17 @@ use RealRashid\SweetAlert\Facades\Alert;
 class P2k3Controller extends Controller
 {
     public function index(Request $request) {
-        $datas = P2k3::where('nama', 'LIKE', '%'.$request->search.'%')
-        ->orWhere('departemen', 'LIKE', '%'.$request->search.'%')
+        $datas = P2k3::with(['user', 'departemen'])
+        ->when (auth()->user()->hak_akses=='K3 Departemen', function ($query){
+            $query->where('departemen_id', auth()->user()->departemen_id);
+        })
         ->paginate(10);
         return view('dashboard.users.P2k3.index', compact('datas'));
     }
 
     public function tambah() {
-        return view('dashboard.users.P2k3.tambah-p2k3');
+        $departemen = Departemen::all();
+        return view('dashboard.users.P2k3.tambah-p2k3', compact('departemen'));
     }
 
     public function simpan(Request $request) {
@@ -33,7 +37,7 @@ class P2k3Controller extends Controller
             'nama' => 'required',
             'email' => 'required',
             'jabatan' => 'required',
-            'departemen' => 'required',
+            'departemen_id' => 'required',
             'gambar' => 'required',
         ]);
 
@@ -63,7 +67,8 @@ class P2k3Controller extends Controller
 
     public function edit($id) {
         $data = P2k3::find($id);
-        return view('dashboard.users.P2k3.edit-p2k3', compact('data'));
+        $departemen = Departemen::all();
+        return view('dashboard.users.P2k3.edit-p2k3', compact('data', 'departemen'));
     }
 
     public function update(Request $request, $id) {
@@ -73,7 +78,7 @@ class P2k3Controller extends Controller
                 'nama' => 'required',
                 'email' => 'required',
                 'jabatan' => 'required',
-                'departemen' => 'required',
+                'departemen_id' => 'required',
                 'gambar' => 'required',
             ]);
             $input =$request->except(['email', '_token', 'gambar']);
@@ -98,7 +103,7 @@ class P2k3Controller extends Controller
                 'nama' => 'required',
                 'email' => 'required',
                 'jabatan' => 'required',
-                'departemen' => 'required',
+                'departemen_id' => 'required',
             ]);
             $input =$request->except(['email', '_token']);
             P2k3::where('id', $id)->whereNull('deleted_at')->update($input);
@@ -113,7 +118,8 @@ class P2k3Controller extends Controller
 
     public function lihat($id) {
         $data = P2k3::find($id);
-        return view('dashboard.users.P2k3.lihat-p2k3', compact('data'));
+        $departemen = Departemen::findorFail($id);
+        return view('dashboard.users.P2k3.lihat-p2k3', compact('data', 'departemen'));
     }
 
     public function hapus($id) {
