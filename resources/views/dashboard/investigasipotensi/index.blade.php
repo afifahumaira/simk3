@@ -26,53 +26,178 @@
                     </form>
                 </div>
             </div>
+            @if (auth()->user()->hak_akses == 'Pimpinan')
+                <div class="card-toolbar">
+                    <div class="ps-3 pe-5  d-flex align-items-center justify-content-end ">
+                        {{-- <label class="col-form-label pe-4">Status :</label> --}}
+                        <div class="w-0 ">
+                            <select name="filter" id="filter" class="form-select fs-6 w-100 shadow"
+                                data-control="select2" data-hide-search="true">
+                                <option value="">Status</option>
+                                <option value="1"
+                                    {{ request()->has('filter') ? (request()->filter == 1 ? 'selected' : false) : '' }}>
+                                    Pending</option>
+                                <option value="2"
+                                    {{ request()->has('filter') ? (request()->filter == 2 ? 'selected' : false) : '' }}>
+                                    Ditindak
+                                    lanjuti</option>
+                                <option value="3"
+                                    {{ request()->has('filter') ? (request()->filter == 3 ? 'selected' : false) : '' }}>
+                                    Tuntas
+                                </option>
+
+                            </select>
+                        </div>
+                    </div>
+
+                </div>
+            @endif
         </div>
         <div class="card-body">
             <div class="table-responsive">
-                <table class="table table-rounded table-bordered">
-                    <thead>
-                        <tr>
-                            <th scope="col" class="text-center">No</th>
-                            {{-- <th scope="col">Departemen</th> --}}
-                            <th scope="col">Lokasi Potensi Bahaya</th>
-                            <th scope="col">Potensi Bahaya</th>
-                            <th scope="col">Penanggung Jawab</th>
-                            <th scope="col">Action</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        @foreach ($investigasis as $investigasi)
+                @if (auth()->user()->hak_akses == 'Admin' ||
+                        auth()->user()->hak_akses == 'P2K3' ||
+                        auth()->user()->hak_akses == 'K3 Departemen')
+                    <table class="table table-rounded table-bordered">
+                        <thead>
                             <tr>
-                                <td scope="row" class="text-center">{{ $loop->iteration }}</td>
-                                {{-- <td>{{ $investigasi->departemen->name }}</td> --}}
-                                <td>{{ $investigasi->lokasi }}</td>
-                                <td>{{ $investigasi->potensi_bahaya }}</td>
-                                <td>{{ $investigasi->p2k3_data->nama }}</td>                                
+                                <th scope="col" class="text-center">No</th>
+                                {{-- <th scope="col">Departemen</th> --}}
+                                <th scope="col">Lokasi Potensi Bahaya</th>
+                                <th scope="col">Potensi Bahaya</th>
+                                <th scope="col">Penanggung Jawab</th>
+                                <th scope="col">Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach ($investigasis as $investigasi)
+                                <tr>
+                                    <td scope="row" class="text-center">{{ $loop->iteration }}</td>
+                                    {{-- <td>{{ $investigasi->departemen->name }}</td> --}}
+                                    <td>{{ $investigasi->lokasi }}</td>
+                                    <td>{{ $investigasi->potensi_bahaya }}</td>
+                                    <td>{{ $investigasi->p2k3_data->nama }}</td>
 
-                                <td>
-                                    <a href="{{ route('investigasipotensi.lihat', $investigasi->id) }}"
-                                        type="button" class="btn btn-sm btn-warning px-4"><i
-                                            class="bi bi-eye text-dark pe-0"></i></a>
-                                    <a href="{{ route('investigasipotensi.ubah', $investigasi->id) }}"
-                                        type="button" class="btn btn-sm btn-primary px-4"><i
-                                            class="bi bi-pencil-square pe-0"></i></a>
-                                    <button type="button" class="btn btn-danger btn-sm px-4" data-bs-toggle="modal"
-                                        data-bs-target="#deleteForm{{ $investigasi->id }}"><i
-                                            class="bi bi-trash pe-0"></i></button>
+                                    <td>
+                                        <a href="{{ route('investigasipotensi.lihat', $investigasi->id) }}" type="button"
+                                            class="btn btn-sm btn-warning px-4"><i class="bi bi-eye text-dark pe-0"></i></a>
+                                        <a href="{{ route('investigasipotensi.ubah', $investigasi->id) }}" type="button"
+                                            class="btn btn-sm btn-primary px-4"><i class="bi bi-pencil-square pe-0"></i></a>
+                                        <button type="button" class="btn btn-danger btn-sm px-4" data-bs-toggle="modal"
+                                            data-bs-target="#deleteForm{{ $investigasi->id }}"><i
+                                                class="bi bi-trash pe-0"></i></button>
 
-                                    <div class="modal fade" id="deleteForm{{ $investigasi->id }}"
-                                        data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
-                                        aria-labelledby="staticBackdropLabel" aria-hidden="true">
-                                        <div class="modal-dialog modal-dialog-centered ">
-                                            <div class="modal-content">
+                                        <div class="modal fade" id="deleteForm{{ $investigasi->id }}"
+                                            data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+                                            aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                                            <div class="modal-dialog modal-dialog-centered ">
+                                                <div class="modal-content">
 
-                                                <form method="POST"
-                                                    action="{{ route('investigasipotensi.delete', $investigasi->id) }}">
-                                                    @csrf
+                                                    <form method="POST"
+                                                        action="{{ route('investigasipotensi.delete', $investigasi->id) }}">
+                                                        @csrf
+                                                        <div
+                                                            class="modal-body mt-5 d-flex justify-content-center align-items-center">
+                                                            <h2 class="mt-5 text-center"
+                                                                style="color: #16243D; font-size: 20px font-weight:700">
+                                                                Yakin
+                                                                data
+                                                                ingin dihapus?
+                                                            </h2>
+                                                        </div>
+                                                        <div class="modal-footer d-flex justify-content-center border-0">
+                                                            <button type="submit"
+                                                                class="btn btn-success text-white d-flex justify-content-center align-items-center text-center rounded-1"
+                                                                style="width:76px; height:31px; background: #29CC6A;">Ya</button>
+                                                            <button type="button"
+                                                                class="btn btn-secondary text-center d-flex align-items-center rounded-1"
+                                                                data-bs-dismiss="modal"
+                                                                style="width:76px; height:31px; ">Tidak</button>
+                                                        </div>
+                                                    </form>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>
+                            @endforeach
+                        </tbody>
+                    </table>
+                @endif
+
+                @if (auth()->user()->hak_akses == 'Pimpinan')
+                    <table class="table table-rounded table-bordered">
+                        <thead>
+                            <tr>
+                                <th scope="col" class="text-center">No</th>
+                                <th scope="col">Lokasi Potensi Bahaya</th>
+                                <th scope="col">Potensi Bahaya</th>
+                                <th scope="col">Penanggung Jawab</th>
+                                <th scope="col">Status</th>
+                                <th scope="col">Ubah Status</th>
+                                <th scope="col">Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach ($investigasis as $investigasi)
+                                <tr>
+                                    <td scope="row" class="text-center">{{ $loop->iteration }}</td>
+                                    <td>{{ $investigasi->lokasi }}</td>
+                                    <td>{{ $investigasi->potensi_bahaya }}</td>
+                                    <td>{{ $investigasi->p2k3_data->nama }}</td>
+                                    <td align="center" class="mx-15 pt-5">
+
+
+                                        @if ($investigasi->status == '1')
+                                            <a href=""
+                                                class="text-center fw-bold  text-danger border border-2 rounded-2 border-danger px-5 py-1"
+                                                style=" cursor: default !important;">
+                                                Pending</a>
+                                        @elseif ($investigasi->status == '2')
+                                            <a class="text-center fw-bold  text-warning border border-2 rounded-2 border-warning py-2 px-4"
+                                                style=" cursor: default !important;">
+                                                Ditindaklanjuti</a>
+                                        @elseif ($investigasi->status == '3')
+                                            <a class="text-center fw-bold  text-success border border-2 rounded-2 border-success px-5 py-1"
+                                                style=" cursor: default !important;">
+                                                Tuntas </a>
+                                        @endif
+
+
+                                        {{-- <a href="" class="text-center fw-bold  text-warning  px-4">
+                                            Pending
+                                        </a> --}}
+                                    </td>
+
+                                    <td class="d-flex
+                                            justify-content-center">
+                                        <a id="update" class="btn btn-primary" data-bs-toggle="modal"
+                                            data-bs-target="#editmodal" data-bs-p2k3_id="{{ $investigasi->p2k3_id }}"
+                                            data-bs-status="{{ $investigasi->status }}">Ubah Status Investigasi
+                                        </a>
+                                    </td>
+
+                                    <td>
+                                        <a href="{{ route('investigasipotensi.lihat', $investigasi->id) }}"
+                                            type="button" class="btn btn-sm btn-warning px-4"><i
+                                                class="bi bi-eye text-dark pe-0"></i></a>
+                                        {{-- <a href="{{ route('daftarinvestigasi.ubah', $investigasi->id) }}" type="button"
+                                            class="btn btn-sm btn-primary px-4"><i class="bi bi-pencil-square pe-0"></i></a> --}}
+                                        <button type="button" class="btn btn-danger btn-sm px-4" data-bs-toggle="modal"
+                                            data-bs-target="#deleteForm{{ $investigasi->id }}"><i
+                                                class="bi bi-trash pe-0"></i></button>
+
+                                        <div class="modal fade" id="deleteForm{{ $investigasi->id }}"
+                                            data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+                                            aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                                            <div class="modal-dialog modal-dialog-centered ">
+                                                <div class="modal-content">
+
                                                     <div
                                                         class="modal-body mt-5 d-flex justify-content-center align-items-center">
                                                         <h2 class="mt-5 text-center"
-                                                            style="color: #16243D; font-size: 20px font-weight:700">Yakin
+                                                            style="color: #16243D; font-size: 20px font-weight:700">
+                                                            Yakin
                                                             data
                                                             ingin dihapus?
                                                         </h2>
@@ -86,15 +211,80 @@
                                                             data-bs-dismiss="modal"
                                                             style="width:76px; height:31px; ">Tidak</button>
                                                     </div>
-                                                </form>
+                                                    </form>
+                                                </div>
                                             </div>
                                         </div>
+                                    </td>
+                                </tr>
+
+                                <div class="modal fade" id="editmodal" data-bs-backdrop="static"
+                                    data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel"
+                                    aria-hidden="true">
+                                    <div class="modal-dialog modal-dialog-centered ">
+                                        <form action="{{ route('investigasipotensi.ubah', $investigasi->id) }}"
+                                            method="post" enctype="multipart/form-data">
+                                            @csrf
+                                            @method('PUT')
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h1 class="modal-title" id="staticBackdropLabel">Ubah Data Investigasi
+                                                    </h1>
+                                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                        aria-label="Close" id="update"></button>
+                                                </div>
+
+                                                <div class="modal-body mt-5 ">
+                                                    <div id="additionalForm">
+                                                        <div class="ps-3 pe-5 pb-5">
+                                                            <label class="col-form-label ps-2">P2K3</label>
+                                                            <div class=" w-100">
+                                                                <select id="p2k3_id" name="p2k3_id"
+                                                                    class="form-select fs-6 w-100" data-control="select2"
+                                                                    data-hide-search="true" data-placeholder="p2k3">
+                                                                    {{-- @foreach ($P2K3 as $P2K3)
+                                                                        <option value="{{ $P2K3->id }}">
+                                                                            {{ $P2K3->nama }}
+                                                                        </option>
+                                                                    @endforeach --}}
+                                                                </select>
+                                                            </div>
+                                                        </div>
+
+                                                        <div id="additionalForm">
+                                                            <div class="ps-3 pe-5">
+                                                                <label class="col-form-label ps-2">Status Investigasi
+                                                                </label>
+                                                                <div class=" w-100">
+                                                                    <select name="status" id="status"
+                                                                        class="form-select fs-6 w-100"
+                                                                        data-control="select2" data-hide-search="true"
+                                                                        data-placeholder="status">
+                                                                        <option value="2">Investigasi
+                                                                        </option>
+                                                                        <option value="3">Sukses
+                                                                        </option>
+                                                                    </select>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+
+                                                    </div>
+                                                    <div class="modal-footer d-flex justify-content-center border-0 mt-5">
+                                                        <button type="submit"
+                                                            class="btn btn-success text-white d-flex justify-content-center align-items-center "
+                                                            style="background: #29CC6A;height: 38px; margin : 10px 20px 30px 20px; font-size:14px; border-radius: 5px;">Simpan
+                                                            Data</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </form>
                                     </div>
-                                </td>
-                            </tr>
-                        @endforeach
-                    </tbody>
-                </table>
+                            @endforeach
+                        </tbody>
+                    </table>
+                @endif
+
             </div>
         </div>
         {{-- <div class="card-footer">
@@ -104,5 +294,37 @@
 @stop
 
 @section('customscript')
-    <script></script>
+    <script>
+        $(document).ready(function() {
+            // Get the select filter element
+            var selectFilter = $("#filter");
+
+            // Get the current URL
+            var currentUrl = window.location.href;
+
+            // Bind an event handler to the change event of the select filter
+            selectFilter.on("change", function() {
+
+                const selectedValue = selectFilter.val();
+                const currentURL = window.location.href;
+                const url = new URL(currentURL);
+                const params = new URLSearchParams(url.search);
+
+                // Check if the "filter" parameter already exists
+                if (params.has('filter')) {
+                    // Update the existing "filter" parameter with the selected value
+                    params.set('filter', selectedValue);
+                } else {
+                    // If "filter" parameter doesn't exist, add it
+                    params.append('filter', selectedValue);
+                }
+
+                // Set the updated query parameters back to the URL object
+                url.search = params.toString();
+
+                // Redirect to the updated URL, which will reload the page
+                window.location.href = url.toString();
+            });
+        });
+    </script>
 @stop

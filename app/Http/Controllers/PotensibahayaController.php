@@ -28,6 +28,11 @@ class PotensibahayaController extends Controller
         
         $datas = PotensiBahaya:: with(['p2k3', 'departemen'])
         ->whereNot('status', '2')
+        ->when($request->has('filter'), function($query) use($request){
+            if($request->filter !=''){
+             $query->where('status', $request->filter);
+            }
+         })
         ->when (auth()->user()->hak_akses=='K3 Departemen', function ($query){
             $query->where('departemen_id', auth()->user()->departemen_id);
         })
