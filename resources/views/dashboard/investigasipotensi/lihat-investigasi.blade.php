@@ -19,10 +19,10 @@
             <!--begin::Content container-->
             <table class="table table-bordered border-secondary rounded-5 px-3 py-3 mb-5 shadow">
                 <tbody>
-                    {{-- <tr>
+                    <tr>
                         <th style="width: 40%">Departemen</th>
                         <td>{{ $investigasi->departemen->name }}</td>
-                    </tr> --}}
+                    </tr>
                     <tr>
                         <th style="width: 40%">Lokasi</th>
                         <td>{{ $investigasi->lokasi }}</td>

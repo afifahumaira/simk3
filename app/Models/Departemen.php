@@ -29,4 +29,12 @@ class Departemen extends Model
         return $this->hasMany(Investigasi::class, 'departemen_id');
     }
 
+    public function potensibahaya() {
+        return $this->hasMany(Potensibahaya::class, 'departemen_id');
+    }
+
+    public function laporinsiden() {
+        return $this->hasMany(Laporinsiden::class, 'departemen_id');
+    }
+
 }

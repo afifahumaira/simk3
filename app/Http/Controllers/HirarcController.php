@@ -26,7 +26,12 @@ use App\Models\Location_masters;
 class HirarcController extends Controller
 {
     public function index(){
-        $hirarcs = Hirarc::with(['departemen', 'user', 'location'])->paginate(10);
+        $hirarcs = Hirarc::with(['departemen', 'user', 'location'])
+        ->when (auth()->user()->hak_akses=='K3 Departemen', function ($query){
+            $query->where('departemen_id', auth()->user()->departemen_id);
+        })
+            
+        ->paginate(10);
                 
         return view('dashboard.hirarc.index')
             ->with('hirarcs',$hirarcs);

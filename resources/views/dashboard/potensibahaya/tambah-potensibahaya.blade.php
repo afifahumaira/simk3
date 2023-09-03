@@ -161,6 +161,18 @@
 
                                     </div>
                                 </div>
+
+                                <div class="ps-3 pe-5">
+                                    <label class="col-form-label">Departemen</label>
+                                    <div class=" w-100">
+                                        <select name="departemen_id" class="form-select fs-6 w-100"
+                                            data-control="select2" data-hide-search="true" data-placeholder="departemen_id">
+                                            @foreach ($departemen as $dep)
+                                                <option value="{{ $dep->id }}">{{ $dep->name }}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>

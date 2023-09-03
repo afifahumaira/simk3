@@ -14,17 +14,21 @@ use Illuminate\Support\Facades\DB;
 class InvestigasiController extends Controller
 {
 
-    public function index() {
-        $data = Laporinsiden::all();
-        $investigasis = Investigasi::all();
-        $departemen = Departemen::all();
-        $p2k3s = P2k3::all();
-
+    public function index(Request $request) {
+        // $data = Laporinsiden::all();
+        // $departemen = Departemen::all();
+        // $p2k3s = P2k3::all();
+        $investigasis = Investigasi::with(['p2k3', 'departemen', 'laporinsiden'])
+        ->when (auth()->user()->hak_akses=='K3 Departemen', function ($query){
+            $query->where('departemen_id', auth()->user()->departemen_id);
+        })
+        ->paginate(10);        
+                    
         return view('dashboard.daftarinvestigasi.index')
-            ->with('investigasis', $investigasis)
-            ->with('laporinsdien', $data)
-            ->with('departemen', $departemen)
-            ->with('p2k3s', $p2k3s);
+            ->with('investigasis', $investigasis);
+            // ->with('laporinsdien', $data)
+            // ->with('departemen', $departemen)
+            // ->with('p2k3s', $p2k3s);
             
     }
 

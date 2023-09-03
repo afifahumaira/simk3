@@ -239,7 +239,7 @@
                                                 <div class=" w-100">
                                                     <select name="departemen_id" class="form-select fs-6 w-100"
                                                         data-control="select2" data-hide-search="true" data-placeholder="departemen_id">
-                                                        @foreach ($department as $dep)
+                                                        @foreach ($departemen as $dep)
                                                             <option value="{{ $dep->id }}"
                                                                 {{ $data->departemen_id == $dep->id ? 'selected' : '' }}>
                                                                 {{ $dep->name }}</option>

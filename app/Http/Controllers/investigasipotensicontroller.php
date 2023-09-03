@@ -13,16 +13,20 @@ use App\Models\Departemen;
 class InvestigasiPotensiController extends Controller
 {
     public function index() {
-        $data = Potensibahaya::all();
-        $investigasis = InvestigasiPotensi::all();
-        $departemen = Departemen::all();
-        $p2k3s = P2k3::all();
+        // $data = Potensibahaya::all();        
+        // $departemen = Departemen::all();
+        // $p2k3s = P2k3::all();
+        $investigasis = InvestigasiPotensi::with(['p2k3_data', 'departemen', 'potensibahaya'])
+        ->when (auth()->user()->hak_akses=='K3 Departemen', function ($query){
+            $query->where('departemen_id', auth()->user()->departemen_id);
+        })
+        ->paginate(10);
 
         return view('dashboard.investigasipotensi.index')
-            ->with('investigasis', $investigasis)
-            ->with('laporinsdien', $data)
-            ->with('departemen', $departemen)
-            ->with('p2k3', $p2k3s);
+            ->with('investigasis', $investigasis);
+            // ->with('laporinsdien', $data)
+            // ->with('departemen', $departemen)
+            // ->with('p2k3', $p2k3s);
             
     }
 

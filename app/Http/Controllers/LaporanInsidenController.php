@@ -25,12 +25,13 @@ class LaporanInsidenController extends Controller
     public function index(Request $request){
         
         $laporaninsidens = Laporinsiden::with(['p2k3', 'departemen'])
+        ->whereNot('status', '2')
         ->when($request->has('filter'), function($query) use($request){
            if($request->filter !=''){
             $query->where('status', $request->filter);
            }
         })
-        ->when (auth()->user()->hak_akses=='k3_departemen', function ($query){
+        ->when (auth()->user()->hak_akses=='K3 Departemen', function ($query){
             $query->where('departemen_id', auth()->user()->departemen_id);
         })
             ->where(function($query) use($request){
@@ -39,9 +40,10 @@ class LaporanInsidenController extends Controller
                 ->orWhere('nama_pelapor', 'LIKE', '%'.$request->search.'%')
                 ->orWhere('nama_korban', 'LIKE', '%'.$request->search.'%');
             }) 
-            //->whereNot('status', '2')
+            
             ->paginate(10);
-        return view('dashboard.laporaninsiden.index')->with('laporaninsidens',$laporaninsidens);
+        return view('dashboard.laporaninsiden.index')
+            ->with('laporaninsidens',$laporaninsidens);
     }
 
     public function tambah() {

@@ -25,13 +25,17 @@ use Illuminate\Support\Str;
 class PotensibahayaController extends Controller
 {
     public function index(Request $request){
+        
         $datas = PotensiBahaya:: with(['p2k3', 'departemen'])
-        ->when (auth()->user()->hak_akses=='k3_departemen', function ($query){
+        ->whereNot('status', '2')
+        ->when (auth()->user()->hak_akses=='K3 Departemen', function ($query){
             $query->where('departemen_id', auth()->user()->departemen_id);
         })
-        -> where('nama_pelapor', 'LIKE', '%'.$request->search.'%')
-        ->orWhere('lokasi', 'LIKE', '%'.$request->search.'%')
-        ->orWhere('waktu_kejadian', 'LIKE', '%'.$request->search.'%')
+        ->where(function($query) use($request){        
+            $query-> where('nama_pelapor', 'LIKE', '%'.$request->search.'%')
+            ->orWhere('lokasi', 'LIKE', '%'.$request->search.'%')
+            ->orWhere('waktu_kejadian', 'LIKE', '%'.$request->search.'%');
+    })
         ->paginate(10);
         
         return view('dashboard.potensibahaya.index', compact('datas'));
@@ -40,7 +44,8 @@ class PotensibahayaController extends Controller
 
     public function tambah() {
         $kode= PotensiBahaya::generateCode();
-        return view('dashboard.potensibahaya.tambah-potensibahaya', compact('kode'));
+        $departemen = Departemen::all();
+        return view('dashboard.potensibahaya.tambah-potensibahaya', compact('kode', 'departemen'));
     }
 
     public function tambahdata(Request $request) {
@@ -53,6 +58,7 @@ class PotensibahayaController extends Controller
             'waktu_kejadian' => 'required',
             'institusi' => 'required',
             'tujuan' => 'required',
+            'depatemen_id' => 'required',
             'lokasi' => 'required',
             'deskripsi_potensi_bahaya' => 'required',
             'resiko_bahaya' => 'required',
@@ -89,6 +95,7 @@ class PotensibahayaController extends Controller
             'kategori_pelapor' => $request->kategori_pelapor,
             'institusi' => $request->institusi,
             'tujuan' => $request->tujuan,
+            'departemen_id' => $request->departemen_id,
             'unit_civitas_akademika_box' => $request->unit_civitas_akademika_box,
             'lokasi' => $request->lokasi,
             'potensi_bahaya' => $request->potensi_bahaya,
@@ -106,12 +113,13 @@ class PotensibahayaController extends Controller
 
     public function lihat($id) {
         $data = PotensiBahaya::where('id',$id)->first();
+        $departemen = Departemen::where('id', $id)->first();
         $potensibahayas=DB::table('potensibahayas')
         ->leftJoin('p2k3s', 'p2k3s.id', '=', 'potensibahayas.p2k3_id')
         ->select(            
             'p2k3s.nama as p2k3_nama'
         );
-        return view('dashboard.potensibahaya.lihat-potensibahaya', compact('data'))
+        return view('dashboard.potensibahaya.lihat-potensibahaya', compact('data', 'departemen'))
         -> with('potensibahaya', $potensibahayas);
     }
 
@@ -142,6 +150,7 @@ class PotensibahayaController extends Controller
             'waktu_kejadian' => 'required',
             'institusi' => 'required',
             'tujuan' => 'required',
+            'departemen_id' => 'required',
             'lokasi' => 'required',
             'deskripsi_potensi_bahaya' => 'required',
             'resiko_bahaya' => 'required',
@@ -181,6 +190,7 @@ class PotensibahayaController extends Controller
             'kategori_pelapor' => $request->kategori_pelapor,
             'institusi' => $request->institusi,
             'tujuan' => $request->tujuan,
+            'departemen_id' => $request->departemen_id,
             'unit_civitas_akademika_box' => $request->unit_civitas_akademika_box,
             'lokasi' => $request->lokasi,
             'potensi_bahaya' => $request->potensi_bahaya,
@@ -196,7 +206,7 @@ class PotensibahayaController extends Controller
             $data = InvestigasiPotensi::create([
                 'p2k3' => $request->p2k3_id,
                 'potensibahaya_id' => $request->id,
-                //'departemen_id' => $request->departemen_id,
+                'departemen_id' => $request->departemen_id,
                 'lokasi' => $request->lokasi,
                 'potensi_bahaya' => $request->potensi_bahaya,
                 'risiko' => $request->resiko_bahaya,

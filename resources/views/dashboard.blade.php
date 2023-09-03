@@ -235,7 +235,7 @@
 
                 {{-- View p2k3 --}}
                 @if (auth()->user()->hak_akses == 'P2K3' ||
-                        auth()->user()->hak_akses == 'K3 Departtemen' ||
+                        auth()->user()->hak_akses == 'K3 Departemen' ||
                         auth()->user()->hak_akses == 'Pimpinan')
                     <div class="row my-5">
                         <div class="col-lg-4 col-md-6 col-sm-6">
