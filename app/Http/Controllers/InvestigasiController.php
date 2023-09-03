@@ -33,10 +33,10 @@ class InvestigasiController extends Controller
         ->paginate(10);        
                     
         return view('dashboard.daftarinvestigasi.index')
-            ->with('investigasis', $investigasis);
-            // ->with('laporinsdien', $data)
-            // ->with('departemen', $departemen)
-            // ->with('p2k3s', $p2k3s);
+            ->with('investigasis', $investigasis)
+            ->with('laporinsdien', $data)
+            ->with('departemen', $departemen)
+            ->with('p2k3s', $p2k3s);
             
     }
 
@@ -116,6 +116,14 @@ class InvestigasiController extends Controller
             'tenggat_waktu' => $request->tenggat_waktu,
             'tindakan' => $request->tindakan,
         ]);
+
+        if ($request->status == 3) {
+            $data = Investigasi::find($id);
+            $data->delete();
+            
+            Alert::success('Berhasil', 'Investigasi selesai')->iconHtml('<i class="bi bi-person-check"></i>')->hideCloseButton();
+            return redirect()->route('daftarinvestigasi.index');
+        }
 
         Alert::success('Berhasil', 'Data Investigasi berhasil diperbaharui!')->iconHtml('<i class="bi bi-person-check"></i>')->hideCloseButton();
         return redirect()->route('daftarinvestigasi.index');

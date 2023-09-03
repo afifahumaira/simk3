@@ -219,6 +219,8 @@ class LaporanInsidenController extends Controller
             $data = Laporinsiden::find($id);
             $data->delete();
             
+            Alert::success('Berhasil', 'Data Telah Ditangani')->iconHtml('<i class="bi bi-person-check"></i>')->hideCloseButton();
+            return redirect()->route('laporan-insiden.index');
         }
 
             Alert::success('Berhasil', 'Data Laporan Insiden berhasil diperbaharui!')->iconHtml('<i class="bi bi-person-check"></i>')->hideCloseButton();

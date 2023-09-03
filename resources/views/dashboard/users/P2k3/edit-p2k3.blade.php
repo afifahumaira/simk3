@@ -97,48 +97,13 @@
                                         <div class="col-sm-10 w-100">
                                             <select class="form-select fs-6 w-100" data-control="select2"
                                                 data-hide-search="true" data-placeholder="Departemen"
-                                                style="--bs-link-hover-color-rgb: 25, 135, 84;" id="departemen"
-                                                style="font-family: 'Inter';" name="departemen">
-                                                <option value="">- Pilih -</option>
-                                                <option value="Teknik Sipil"
-                                                    {{ $data->departemen == 'Teknik Sipil' ? 'selected' : '' }}>Teknik Sipil
-                                                </option>
-                                                <option value="Teknik Arsitektur"
-                                                    {{ $data->departemen == 'Teknik Arsitektur' ? 'selected' : '' }}>Teknik
-                                                    Arsitektur</option>
-                                                <option value="Teknik Kimia"
-                                                    {{ $data->departemen == 'Teknik Kimia' ? 'selected' : '' }}>Teknik Kimia
-                                                </option>
-                                                <option value="Teknik Perencanaan Wilayah dan Kota"
-                                                    {{ $data->departemen == 'Teknik Perencanaan Wilayah dan Kota' ? 'selected' : '' }}>
-                                                    Teknik Perencanaan Wilayah dan Kota</option>
-                                                <option value="Teknik Mesin"
-                                                    {{ $data->departemen == 'Teknik Mesin' ? 'selected' : '' }}>Teknik
-                                                    Mesin</option>
-                                                <option value="Teknik Elektro"
-                                                    {{ $data->departemen == 'Teknik Elektro' ? 'selected' : '' }}>Teknik
-                                                    Elektro</option>
-                                                <option value="Teknik Industri"
-                                                    {{ $data->departemen == 'Teknik Industri' ? 'selected' : '' }}>Teknik
-                                                    Industri</option>
-                                                <option value="Teknik Lingkungan"
-                                                    {{ $data->departemen == 'Teknik Lingkungan' ? 'selected' : '' }}>Teknik
-                                                    Lingkungan</option>
-                                                <option value="Teknik Perkapalan"
-                                                    {{ $data->departemen == 'Teknik Perkapalan' ? 'selected' : '' }}>Teknik
-                                                    Perkapalan</option>
-                                                <option value="Teknik Perkapalan"
-                                                    {{ $data->departemen == 'Teknik Perkapalan' ? 'selected' : '' }}>Teknik
-                                                    Perkapalan</option>
-                                                <option value="Teknik Perkapalan"
-                                                    {{ $data->departemen == 'Teknik Perkapalan' ? 'selected' : '' }}>Teknik
-                                                    Perkapalan</option>
-                                                <option value="Teknik Komputer"
-                                                    {{ $data->departemen == 'Teknik Komputer' ? 'selected' : '' }}>Teknik
-                                                    Komputer</option>
-                                                <option value="Teknik Komputer"
-                                                    {{ $data->departemen == 'Teknik Komputer' ? 'selected' : '' }}>Teknik
-                                                    Komputer</option>
+                                                style="--bs-link-hover-color-rgb: 25, 135, 84;" id="departemen_id"
+                                                style="font-family: 'Inter';" name="departemen_id">
+                                                @foreach ($departemen as $dep)
+                                                    <option value="{{ $dep->id }}"
+                                                        {{ $data->departemen_id == $dep->id ? 'selected' : '' }}>
+                                                        {{ $dep->name }}</option>
+                                                @endforeach
                                             </select>
 
                                         </div>

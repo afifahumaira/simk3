@@ -97,7 +97,7 @@ Route::group(['middleware' => ['auth']], function() {
         Route::post('simpan', [ControllersInvestigasiPotensiController::class, 'simpan'])->name('simpan');
         Route::get('lihat/{id}', [ControllersInvestigasiPotensiController::class, 'lihat'])->name('lihat');
         Route::get('ubah/{id}', [ControllersInvestigasiPotensiController::class, 'ubah'])->name('ubah');
-        Route::post('update/', [ControllersInvestigasiPotensiController::class, 'update'])->name('update');
+        Route::post('update/{id}', [ControllersInvestigasiPotensiController::class, 'update'])->name('update');
         Route::post('delete/{id}', [ControllersInvestigasiPotensiController::class, 'delete'])->name('delete');
     });
 

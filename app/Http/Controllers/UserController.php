@@ -7,6 +7,9 @@ use App\Models\User;
 use App\Models\P2k3;
 use App\Http\Controllers\P2k3Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Auth\Events\Validated;
+use Validator;
 use RealRashid\SweetAlert\Facades\Alert;
 
 class UserController extends Controller
@@ -33,9 +36,9 @@ class UserController extends Controller
         
             $request->validate([
                 //dd($request->all()),
-                // 'hak_akses' => 'required',
-                // 'departemen_id' => 'required',
-                // 'name' => 'required,'
+                'hak_akses' => 'required',
+                'departemen_id' => 'required',
+                'name' => 'required',
                 
             ]);
             User::where('id', $id)->update([
@@ -47,7 +50,7 @@ class UserController extends Controller
             if($request->hak_akses == "P2K3") {
                 $data = P2k3::create([
                     'user_id' => $request->id,
-                    'nama' => $request->name,
+                    'nama' => $request->name,                    
                     //'avatar' => $request->avatar, 
                 ]);
                

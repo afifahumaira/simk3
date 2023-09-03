@@ -23,6 +23,11 @@ class Potensibahaya extends Model
         return $this->belongsTo('App\Models\Departemen');
     }
 
+    public function investigasipotensi()
+    {
+        return $this->hasMany(InvestigasiPotensi::class);
+    }
+
     public static function generateCode()
     {
         $latestRecord = self::latest()->first(); // Retrieve the latest record from the table

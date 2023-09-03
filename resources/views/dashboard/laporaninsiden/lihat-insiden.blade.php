@@ -35,7 +35,7 @@
 
                     <tr>
                         <th>P2K3</th>
-                        <td>{{ $lap->p2k3->nama }}</td>
+                        <td>{{ $lap->p2k3?->nama }}</td>
                     </tr>
                     
                     <tr>

@@ -52,6 +52,7 @@
                         <th style="width: 40%">Tindakan</th>
                         <td>{{ $investigasi->tindakan }}</td>
                     </tr>
+                    
                 </tbody>
             </table>
             <!--end::Content container-->

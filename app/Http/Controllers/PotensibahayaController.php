@@ -63,7 +63,7 @@ class PotensibahayaController extends Controller
             'waktu_kejadian' => 'required',
             'institusi' => 'required',
             'tujuan' => 'required',
-            'depatemen_id' => 'required',
+            'departemen_id' => 'required',
             'lokasi' => 'required',
             'deskripsi_potensi_bahaya' => 'required',
             'resiko_bahaya' => 'required',
@@ -220,9 +220,15 @@ class PotensibahayaController extends Controller
             Alert::success('Berhasil', 'Data Akan di Investigasi!')->iconHtml('<i class="bi bi-person-check"></i>')->hideCloseButton();
             return redirect()->route('potensibahaya.index');
         }
+        elseif ($request->status == 3) {
+            $data = PotensiBahaya::find($id);
+            $data->delete();
+
+        Alert::success('Berhasil', 'Data Telah Ditangani')->iconHtml('<i class="bi bi-person-check"></i>')->hideCloseButton();
+        return redirect()->route('potensibahaya.index');
+        }
         Alert::success('Berhasil', 'Data Potensi Bahaya berhasil diperbaharui!')->iconHtml('<i class="bi bi-person-check"></i>')->hideCloseButton();
         return redirect()->route('potensibahaya.index');
-
     }
 
     public function potensibahaya() {

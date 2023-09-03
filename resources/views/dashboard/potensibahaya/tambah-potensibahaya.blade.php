@@ -149,7 +149,7 @@
                                 <div class="ps-3 pe-5">
                                     <label class="col-sm-2 col-form-label">Institusi yang Dikunjungi</label>
                                     <div class="col-sm-10 w-100">
-                                        <input type="text" class="form-control" name="institusi" value="Fakultas Teknik">
+                                        <input type="text" class="form-control" name="institusi" value="Fakultas Teknik" readonly>
 
                                     </div>
                                 </div>
