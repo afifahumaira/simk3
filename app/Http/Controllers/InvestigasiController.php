@@ -27,7 +27,9 @@ class InvestigasiController extends Controller
         ->when (auth()->user()->hak_akses=='K3 Departemen', function ($query){
             $query->where('departemen_id', auth()->user()->departemen_id);
         })
-        
+        ->where(function($query) use($request){
+            $query->where('kategori', 'LIKE', '%'.$request->search.'%');
+        })
         ->paginate(10);        
                     
         return view('dashboard.daftarinvestigasi.index')
