@@ -148,19 +148,16 @@
                                     <td align="center" class="mx-15 pt-5">
 
 
-                                        @if ($investigasi->status == '1')
+                                        @if ($investigasi->status == '2')
                                             <a href=""
                                                 class="text-center fw-bold  text-danger border border-2 rounded-2 border-danger px-5 py-1"
                                                 style=" cursor: default !important;">
-                                                Pending</a>
-                                        @elseif ($investigasi->status == '2')
-                                            <a class="text-center fw-bold  text-warning border border-2 rounded-2 border-warning py-2 px-4"
-                                                style=" cursor: default !important;">
                                                 Ditindaklanjuti</a>
                                         @elseif ($investigasi->status == '3')
-                                            <a class="text-center fw-bold  text-success border border-2 rounded-2 border-success px-5 py-1"
+                                            <a class="text-center fw-bold  text-warning border border-2 rounded-2 border-warning py-1 px-5"
                                                 style=" cursor: default !important;">
-                                                Tuntas </a>
+                                                Tuntas</a>
+                                        
                                         @endif
 
 
@@ -172,7 +169,7 @@
                                     <td class="d-flex
                                             justify-content-center">
                                         <a id="update" class="btn btn-primary" data-bs-toggle="modal"
-                                            data-bs-target="#editmodal" data-bs-p2k3_id="{{ $investigasi->p2k3_id }}"
+                                            data-bs-target="#editmodal" data-bs-p2k3="{{ $investigasi->p2k3 }}"
                                             data-bs-status="{{ $investigasi->status }}">Ubah Status Investigasi
                                         </a>
                                     </td>
@@ -222,7 +219,7 @@
                                     data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel"
                                     aria-hidden="true">
                                     <div class="modal-dialog modal-dialog-centered ">
-                                        <form action="{{ route('investigasipotensi.ubah', $investigasi->id) }}"
+                                        <form action="{{ route('investigasipotensi.edit', $investigasi->id) }}"
                                             method="post" enctype="multipart/form-data">
                                             @csrf
                                             @method('PUT')
@@ -239,14 +236,14 @@
                                                         <div class="ps-3 pe-5 pb-5">
                                                             <label class="col-form-label ps-2">P2K3</label>
                                                             <div class=" w-100">
-                                                                <select id="p2k3_id" name="p2k3_id"
+                                                                <select id="p2k3" name="p2k3"
                                                                     class="form-select fs-6 w-100" data-control="select2"
                                                                     data-hide-search="true" data-placeholder="p2k3">
-                                                                    {{-- @foreach ($P2K3 as $P2K3)
-                                                                        <option value="{{ $P2K3->id }}">
-                                                                            {{ $P2K3->nama }}
+                                                                    @foreach ($p2k3s as $p2k3)
+                                                                        <option value="{{ $p2k3->id }}">
+                                                                            {{ $p2k3->nama }}
                                                                         </option>
-                                                                    @endforeach --}}
+                                                                    @endforeach
                                                                 </select>
                                                             </div>
                                                         </div>
@@ -295,6 +292,14 @@
 
 @section('customscript')
     <script>
+        $(document).on("click", "#update", function() {
+            var p2k3 = $(this).attr('data-bs-p2k3');
+            var status = $(this).attr('data-bs-status');
+            $("#p2k3").val(p2k3).setAttribute('selected', 'selected');
+            $("#status").val(status).setAttribute('selected', 'selected');
+
+        });
+        
         $(document).ready(function() {
             // Get the select filter element
             var selectFilter = $("#filter");

@@ -156,19 +156,16 @@
                                     <td>{{ $investigasi->p2k3->nama }}</td>
                                     <td align="center" class="mx-15 pt-5">
 
-                                        @if ($investigasi->status == '1')
+                                        @if ($investigasi->status == '2')
                                             <a href=""
                                                 class="text-center fw-bold  text-danger border border-2 rounded-2 border-danger px-5 py-1"
                                                 style=" cursor: default !important;">
-                                                Pending</a>
-                                        @elseif ($investigasi->status == '2')
-                                            <a class="text-center fw-bold  text-warning border border-2 rounded-2 border-warning py-2 px-4"
-                                                style=" cursor: default !important;">
                                                 Ditindaklanjuti</a>
                                         @elseif ($investigasi->status == '3')
-                                            <a class="text-center fw-bold  text-success border border-2 rounded-2 border-success px-5 py-1"
+                                            <a class="text-center fw-bold  text-warning border border-2 rounded-2 border-warning py-1 px-5"
                                                 style=" cursor: default !important;">
-                                                Tuntas </a>
+                                                Tuntas</a>
+                                        
                                         @endif
 
 

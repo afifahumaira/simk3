@@ -15,9 +15,9 @@ class InvestigasiController extends Controller
 {
 
     public function index(Request $request) {
-        // $data = Laporinsiden::all();
-        // $departemen = Departemen::all();
-        // $p2k3s = P2k3::all();
+        $data = Laporinsiden::all();
+        $departemen = Departemen::all();
+        $p2k3s = P2k3::all();
         $investigasis = Investigasi::with(['p2k3', 'departemen', 'laporinsiden'])
         ->when($request->has('filter'), function($query) use($request){
             if($request->filter !=''){

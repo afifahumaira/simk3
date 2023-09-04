@@ -98,6 +98,7 @@ Route::group(['middleware' => ['auth']], function() {
         Route::get('lihat/{id}', [ControllersInvestigasiPotensiController::class, 'lihat'])->name('lihat');
         Route::get('ubah/{id}', [ControllersInvestigasiPotensiController::class, 'ubah'])->name('ubah');
         Route::post('update/{id}', [ControllersInvestigasiPotensiController::class, 'update'])->name('update');
+        Route::put('edit/{id}', [ControllersInvestigasiPotensiController::class, 'edit'])->name('edit');
         Route::post('delete/{id}', [ControllersInvestigasiPotensiController::class, 'delete'])->name('delete');
     });
 

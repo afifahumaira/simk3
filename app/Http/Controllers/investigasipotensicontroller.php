@@ -13,9 +13,9 @@ use App\Models\Departemen;
 class InvestigasiPotensiController extends Controller
 {
     public function index(Request $request) {
-        // $data = Potensibahaya::all();        
-        // $departemen = Departemen::all();
-        // $p2k3s = P2k3::all();
+        $data = Potensibahaya::all();        
+        $departemen = Departemen::all();
+        $p2k3s = P2k3::all();
         $investigasis = InvestigasiPotensi::with(['p2k3_data', 'departemen', 'potensibahaya'])
         ->when($request->has('filter'), function($query) use($request){
             if($request->filter !=''){
@@ -29,10 +29,10 @@ class InvestigasiPotensiController extends Controller
         ->paginate(10);
 
         return view('dashboard.investigasipotensi.index')
-            ->with('investigasis', $investigasis);
-            // ->with('laporinsdien', $data)
-            // ->with('departemen', $departemen)
-            // ->with('p2k3', $p2k3s);
+            ->with('investigasis', $investigasis)
+            ->with('laporinsdien', $data)
+            ->with('departemen', $departemen)
+            ->with('p2k3s', $p2k3s);
             
     }
 
@@ -115,6 +115,29 @@ class InvestigasiPotensiController extends Controller
 
         Alert::success('Berhasil', 'Data Investigasi berhasil diperbaharui!')->iconHtml('<i class="bi bi-person-check"></i>')->hideCloseButton();
         return redirect()->route('investigasipotensi.index');
+    }
+
+    public function edit($id, Request $request) {
+        // $request->validate([
+        //     'p2k3_id' => 'required',
+        //     'status' => 'required',
+        // ]);
+
+        InvestigasiPotensi::find($id)->update([
+            'p2k3' => $request->p2k3,
+            'status' => $request->status,
+        ]);
+
+        if ($request->status == 3) {
+            $data = InvestigasiPotensi::find($id);
+            $data->delete();
+            
+            Alert::success('Berhasil', 'Investigasi selesai')->iconHtml('<i class="bi bi-person-check"></i>')->hideCloseButton();
+            return redirect()->route('daftarinvestigasi.index');
+        }
+
+        Alert::success('Berhasil', 'Data Investigasi berhasil diperbaharui!')->iconHtml('<i class="bi bi-person-check"></i>')->hideCloseButton();
+        return redirect()->route('daftarinvestigasi.index');
     }
 
     public function delete($id) {
