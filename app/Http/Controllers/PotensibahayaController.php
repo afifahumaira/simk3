@@ -47,6 +47,29 @@ class PotensibahayaController extends Controller
         
     }
 
+    public function k3dep(Request $request){
+        
+        $datas = PotensiBahaya:: with(['p2k3', 'departemen'])
+        ->whereNot('status', '2')
+        ->when($request->has('filter'), function($query) use($request){
+            if($request->filter !=''){
+             $query->where('status', $request->filter);
+            }
+         })
+        // ->when (auth()->user()->hak_akses=='K3 Departemen', function ($query){
+        //     $query->where('departemen_id', auth()->user()->departemen_id);
+        // })
+        ->where(function($query) use($request){        
+            $query-> where('nama_pelapor', 'LIKE', '%'.$request->search.'%')
+            ->orWhere('lokasi', 'LIKE', '%'.$request->search.'%')
+            ->orWhere('waktu_kejadian', 'LIKE', '%'.$request->search.'%');
+    })
+        ->paginate(10);
+        
+        return view('dashboard.potensibahaya.k3view', compact('datas'));
+        
+    }
+
     public function tambah() {
         $kode= PotensiBahaya::generateCode();
         $departemen = Departemen::all();
@@ -125,6 +148,18 @@ class PotensibahayaController extends Controller
             'p2k3s.nama as p2k3_nama'
         );
         return view('dashboard.potensibahaya.lihat-potensibahaya', compact('data', 'departemen'))
+        -> with('potensibahaya', $potensibahayas);
+    }
+
+    public function melihat($id) {
+        $data = PotensiBahaya::where('id',$id)->first();
+        $departemen = Departemen::where('id', $id)->first();
+        $potensibahayas=DB::table('potensibahayas')
+        ->leftJoin('p2k3s', 'p2k3s.id', '=', 'potensibahayas.p2k3_id')
+        ->select(            
+            'p2k3s.nama as p2k3_nama'
+        );
+        return view('dashboard.potensibahaya.lihat-k3view', compact('data', 'departemen'))
         -> with('potensibahaya', $potensibahayas);
     }
 
