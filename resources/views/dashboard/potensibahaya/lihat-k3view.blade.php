@@ -10,7 +10,7 @@
                 <!--begin::Main wrapper-->
 
                 <!--end::Main wrapper-->
-                <a href="{{ route('potensibahaya.index') }}" type="button" class="btn text-white btn-secondary btn-sm mb-2"
+                <a href="{{ route('potensibahaya.k3dep') }}" type="button" class="btn text-white btn-secondary btn-sm mb-2"
                     style="background: #505050"><i class="bi bi-chevron-left text-white"></i>Kembali</a>
                 <!--end::Title-->
             </div>

@@ -46,6 +46,30 @@ class LaporanInsidenController extends Controller
             ->with('laporaninsidens',$laporaninsidens);
     }
 
+    public function k3dep(Request $request){
+        
+        $laporaninsidens = Laporinsiden::with(['p2k3', 'departemen'])
+        ->whereNot('status', '2')
+        ->when($request->has('filter'), function($query) use($request){
+           if($request->filter !=''){
+            $query->where('status', $request->filter);
+           }
+        })
+        // ->when (auth()->user()->hak_akses=='K3 Departemen', function ($query){
+        //     $query->where('departemen_id', auth()->user()->departemen_id);
+        // })
+            ->where(function($query) use($request){
+                $query->where('kode_laporinsiden', 'LIKE', '%'.$request->search.'%')
+                ->orWhere('lokasi_rinci', 'LIKE', '%'.$request->search.'%')
+                ->orWhere('nama_pelapor', 'LIKE', '%'.$request->search.'%')
+                ->orWhere('nama_korban', 'LIKE', '%'.$request->search.'%');
+            }) 
+            
+            ->paginate(10);
+        return view('dashboard.laporaninsiden.k3view')
+            ->with('laporaninsidens',$laporaninsidens);
+    }
+
     public function tambah() {
         $departments = Departemen::all();
         $kode = Laporinsiden::generateCode();
@@ -59,6 +83,12 @@ class LaporanInsidenController extends Controller
         $lap = Laporinsiden::with(['p2k3'])->find($id);
         
         return view('dashboard.laporaninsiden.lihat-insiden', compact('lap'));
+    }
+
+    public function melihat($id) {
+        $lap = Laporinsiden::with(['p2k3'])->find($id);
+        
+        return view('dashboard.laporaninsiden.lihat-k3view', compact('lap'));
     }
 
     public function ubah($id) {

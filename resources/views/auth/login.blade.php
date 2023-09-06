@@ -50,6 +50,15 @@
                                 <div class="d-flex justify-content-center">
                                     <h3 class="display-4  mb-5 pb-5">SIM K3 TEKNIK UNDIP</h3>
                                 </div>
+                                @if ($errors->any())
+                                    <div class="alert alert-danger">
+                                        <ul>
+                                            @foreach ($errors->all() as $error)
+                                                <li>{{ $error }}</li>
+                                            @endforeach
+                                        </ul>
+                                    </div>
+                                @endif
                                 <div class="">
                                     <h3 class="display-4 fs-3">MASUK</h3>
                                     <p class="text-muted mb-4">Masuk untuk mengakses halaman website ini.</p>

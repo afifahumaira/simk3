@@ -54,6 +54,15 @@
                                 </div>
                             </div>
                             <div class="card-body">
+                                @if ($errors->any())
+                                    <div class="alert alert-danger">
+                                        <ul>
+                                            @foreach ($errors->all() as $error)
+                                                <li>{{ $error }}</li>
+                                            @endforeach
+                                        </ul>
+                                    </div>
+                                @endif
                                 <form class="lh-lg" method="POST" action="{{ route('laporan-insiden.update', $lap->id) }}"
                                     enctype="multipart/form-data">
                                     @csrf
@@ -66,7 +75,8 @@
                                                     id="status">
                                                     <option value="1" {{ $lap->status == 1 ? 'selected' : '' }}>Pending
                                                     </option>
-                                                    <option value="2" {{ $lap->status == 2 ? 'selected' : '' }}>Investigasi
+                                                    <option value="2" {{ $lap->status == 2 ? 'selected' : '' }}>
+                                                        Investigasi
                                                     </option>
                                                     <option value="3" {{ $lap->status == 3 ? 'selected' : '' }}>Sukses
                                                     </option>
@@ -103,7 +113,8 @@
                                         <label class="col-form-label">Waktu Kejadian</label>
                                         <div class=" w-100">
                                             <input type="date" id="date" name="waktu_kejadian"
-                                                class="form-control tanggalPicker" value="{{ $lap->waktu_kejadian }}" placeholder="dd/mm/yyyy" max="<?php echo date('Y-m-d'); ?>">
+                                                class="form-control tanggalPicker" value="{{ $lap->waktu_kejadian }}"
+                                                placeholder="dd/mm/yyyy" max="<?php echo date('Y-m-d'); ?>">
                                         </div>
                                     </div>
 
@@ -370,20 +381,20 @@
         //     });
         // });
 
-        $(function(){
-        var dtToday = new Date();
+        $(function() {
+            var dtToday = new Date();
 
-        var month = dtToday.getMonth() + 1;
-        var day = dtToday.getDate();
-        var year = dtToday.getFullYear();
+            var month = dtToday.getMonth() + 1;
+            var day = dtToday.getDate();
+            var year = dtToday.getFullYear();
 
-        if(month < 10)
-        month = '0' + month.toString();
-        if(day < 10)
-        day = '0' + day.toString();
+            if (month < 10)
+                month = '0' + month.toString();
+            if (day < 10)
+                day = '0' + day.toString();
 
-        var maxDate = year + '-' + month + '-' + day;    
-        $('#txtDate').attr('max', maxDate);
-    });
+            var maxDate = year + '-' + month + '-' + day;
+            $('#txtDate').attr('max', maxDate);
+        });
     </script>
 @stop

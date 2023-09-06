@@ -60,44 +60,16 @@
                     <table class="table table-rounded table-bordered">
                         <thead>
                             <tr class="fw-semibold border-bottom-2 border-gray-200">
-                                @if (auth()->user()->hak_akses == 'Admin' ||
-                                        auth()->user()->hak_akses == 'P2K3' ||
-                                        auth()->user()->hak_akses == 'K3 Departemen')
-                                    <th>No</th>
-                                    <th scope="col" class="col-1">Kode Insiden Lapor</th>
-                                    <th>Waktu Kejadian</th>
-                                    <th>Lokasi</th>
-                                    <th scope="col">Departemen</th>
-                                    <th>Nama Pelapor</th>
-                                    {{-- <th>Nama Korban</th> --}}
-                                    <th>P2K3</th>
-                                    <th class="col-1">Status</th>
-                                    <th>Action</th>
-                                @endif
-                                @if (auth()->user()->hak_akses == 'Pimpinan')
-                                    <th>No</th>
-                                    <th>Kode Insiden Lapor</th>
-                                    <th>Waktu Kejadian</th>
-                                    <th>Lokasi</th>
-                                    <th scope="col" class="col-1">Departemen</th>
-                                    <th>Nama Pelapor</th>
-                                    {{-- <th>Nama Korban</th> --}}
-                                    <th>P2K3</th>
-                                    <th class="col-1">Status</th>
-                                    <th class="">Ubah Status</th>
-                                    <th>Action</th>
-                                @endif
-                                @if (auth()->user()->hak_akses == 'pengguna')
-                                    <th>No</th>
-                                    <th>Kode Insiden Lapor</th>
-                                    <th>Waktu Kejadian</th>
-                                    <th>Lokasi</th>
-                                    <th>Departemen</th>
-                                    <th>Nama Pelapor</th>
-                                    <th>Nama Korban</th>
-                                    {{-- <th>P2K3</th> --}}
-                                    <th>Status</th>
-                                @endif
+                                <th>No</th>
+                                <th scope="col" class="col-1">Kode Insiden Lapor</th>
+                                <th>Waktu Kejadian</th>
+                                <th>Lokasi</th>
+                                <th scope="col">Departemen</th>
+                                <th>Nama Pelapor</th>
+                                {{-- <th>Nama Korban</th> --}}
+                                <th>P2K3</th>
+                                <th class="col-1">Status</th>
+                                <th>Action</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -124,80 +96,26 @@
                                             <a class="text-center fw-bold  text-warning border border-2 rounded-2 border-warning py-2 px-4"
                                                 style=" cursor: default !important;">
                                                 Ditindaklanjuti</a>
+                                            {{-- @if (auth()->user()->hak_akses == 'Admin' || auth()->user()->hak_akses == 'P2K3' || auth()->user()->hak_akses == 'K3 Departemen' || auth()->user()->hak_akses == 'Pimpinan')
+                                                <a href="{{ route('daftarinvestigasi.tambah', $lap->id) }}"
+                                                    class="text-center fw-bold  text-warning border border-2 rounded-2 border-warning py-1 px-4"
+                                                    style=" cursor: default !important;">Ditindaklanjuti</a>
+                                            @else
+                                                <a class="text-center fw-bold  text-warning border border-2 rounded-2 border-warning py-2 px-4"
+                                                    style=" cursor: default !important;">
+                                                    Ditindaklanjuti</a>
+                                            @endif --}}
                                         @elseif ($lap->status == '3')
                                             <a class="text-center fw-bold  text-success border border-2 rounded-2 border-success px-5 py-1"
                                                 style=" cursor: default !important;">
                                                 Tuntas </a>
                                         @endif
                                     </td>
-                                    @if (auth()->user()->hak_akses == 'Pimpinan')
-                                        <td class="d-flex justify-content-center align-items-center">
-                                            <a id="update" class="btn btn-primary btn-sm" data-bs-toggle="modal"
-                                                data-bs-target="#editmodal" data-bs-p2k3="" data-bs-status="">Ubah Status
-                                                Investigasi
-                                                {{-- {{ $investigasi->p2k3 }} --}}
-                                                {{-- {{ $investigasi->status }} --}}
-                                            </a>
-                                        </td>
-                                    @endif
-                                    @if (auth()->user()->hak_akses == 'Admin' ||
-                                            auth()->user()->hak_akses == 'P2K3' ||
-                                            auth()->user()->hak_akses == 'K3 Departemen')
-                                        <td align="center">
-                                            <a href="{{ route('laporan-insiden.lihat', $lap->id) }}" type="button"
-                                                class="btn btn-sm btn-warning px-4"><i
-                                                    class="bi bi-eye text-dark pe-0"></i></a>
-                                            <a href="{{ route('laporan-insiden.ubah', $lap->id) }}" type="button"
-                                                class="btn btn-sm btn-primary px-4"><i
-                                                    class="bi bi-pencil-square pe-0"></i></a>
-                                            <button type="button" class="btn btn-danger btn-sm px-4" data-bs-toggle="modal"
-                                                data-bs-target="#deleteForm{{ $lap->id }}"><i
-                                                    class="bi bi-trash pe-0"></i></button>
+                                    <td align="center">
+                                        <a href="{{ route('laporan-insiden.melihat', $lap->id) }}" type="button"
+                                            class="btn btn-sm btn-warning px-4"><i class="bi bi-eye text-dark pe-0"></i></a>
+                                    </td>
 
-                                            <div class="modal fade" id="deleteForm{{ $lap->id }}"
-                                                data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
-                                                aria-labelledby="staticBackdropLabel" aria-hidden="true">
-                                                <div class="modal-dialog modal-dialog-centered ">
-                                                    <div class="modal-content">
-
-                                                        <form method="POST"
-                                                            action="{{ route('laporan-insiden.delete', $lap->id) }}">
-                                                            @csrf
-                                                            <div
-                                                                class="modal-body mt-5 d-flex justify-content-center align-items-center">
-                                                                <h2 class="mt-5 text-center"
-                                                                    style="color: #16243D; font-size: 20px font-weight:700">
-                                                                    Yakin data
-                                                                    ingin dihapus?
-                                                                </h2>
-                                                            </div>
-                                                            <div
-                                                                class="modal-footer d-flex justify-content-center border-0">
-                                                                <button type="submit"
-                                                                    class="btn btn-success text-white d-flex justify-content-center align-items-center text-center rounded-1"
-                                                                    style="width:76px; height:31px; background: #29CC6A;">Ya</button>
-                                                                <button type="button"
-                                                                    class="btn btn-secondary text-center d-flex align-items-center rounded-1"
-                                                                    data-bs-dismiss="modal"
-                                                                    style="width:76px; height:31px; ">Tidak</button>
-                                                            </div>
-                                                        </form>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </td>
-                                    @endif
-
-                                    @if (auth()->user()->hak_akses == 'Pimpinan')
-                                        <td align="center">
-                                            <a href="{{ route('laporan-insiden.lihat', $lap->id) }}" type="button"
-                                                class="btn btn-sm btn-warning px-4"><i
-                                                    class="bi bi-eye text-dark pe-0"></i></a>
-                                            <button type="button" class="btn btn-danger btn-sm px-4"
-                                                data-bs-toggle="modal" data-bs-target="#deleteForm{{ $lap->id }}"><i
-                                                    class="bi bi-trash pe-0"></i></button>
-                                        </td>
-                                    @endif
                                 </tr>
                             @endforeach
                         </tbody>
@@ -243,7 +161,7 @@
                                             data-control="select2" data-hide-search="true" data-placeholder="status">
                                             <option value="2">Investigasi
                                             </option>
-                                            <option value="3">Tuntas
+                                            <option value="3">Sukses
                                             </option>
                                         </select>
                                     </div>
@@ -253,7 +171,6 @@
                         <div class="modal-footer d-flex justify-content-center border-0 mt-5">
                             <button type="submit"
                                 class="btn btn-success text-white d-flex justify-content-center align-items-center "
-                                data-bs-toggle="modal" data-bs-target="#warning"
                                 style="background: #29CC6A;height: 38px; margin : 10px 20px 30px 20px; font-size:14px; border-radius: 5px;">Simpan
                                 Data</button>
                         </div>
@@ -261,41 +178,6 @@
                 </div>
             </div>
             {{-- ------------ End Modal ubah status ----------- --}}
-            {{-- Modal Warning --}}
-            <div class="modal fade" id="warning" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
-                aria-labelledby="staticBackdropLabel" aria-hidden="true">
-                <div class="modal-dialog modal-dialog-centered ">
-                    <div class="modal-content">
-                        {{-- <div class="modal-header">
-                    <h1 class="modal-title fs-5" id="staticBackdropLabel">Modal title</h1>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div> --}}
-                        <div class="modal-body mt-5 d-flex justify-content-center align-items-center">
-                            <h2 class="mt-5 text-center" style="color: #16243D; font-size: 20px font-weight:700">Apakah
-                                anda yakin telah menyelesaikan Investigasi?
-                                {{-- <p class="mb-0 mt-2 text-center " style="color: #DC3545; font-weight:400; font-size:14px">
-                                    data
-                                    yang
-                                    dimasukkan belum tersimpan </p> --}}
-                            </h2>
-                        </div>
-                        <div class="modal-footer d-flex justify-content-center border-0">
-                            <button type="submit"
-                                class="btn btn-success btn-sm text-white d-flex justify-content-center align-items-center text-center rounded-1 "
-                                style="background: #29CC6A;  font-size:14px; ">Ya, simpan
-                                Data</button>
-                            {{-- <a href="{{ route('daftarinvestigasi.ubah', $investigasi->id) }}" type="button"
-                                class="btn btn-success text-white d-flex justify-content-center align-items-center "
-                                style="width:76px; height:31px; background: #29CC6A;">Ya</a> --}}
-                            <button type="button"
-                                class="btn btn-secondary btn-sm text-center d-flex align-items-center rounded-1"
-                                data-bs-dismiss="modal" style=" font-size:14px; ">Tidak</button>
-
-                        </div>
-                    </div>
-                </div>
-            </div>
-            {{-- ------------ End Modal warning ----------- --}}
             <div class="card-footer">
                 {{ $laporaninsidens->links('pagination::customb5') }}
             </div>

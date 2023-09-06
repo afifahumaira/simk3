@@ -74,8 +74,8 @@
                             </select>
                         </div>
                     </div>
-                    <a href="{{ route('potensibahaya.tambah') }}" type="button" class="btn btn-primary btn-sm mb-0"
-                        style="background: #233EAE">Tambah Data +</a>
+                    {{-- <a href="{{ route('potensibahaya.tambah') }}" type="button" class="btn btn-primary btn-sm mb-0"
+                        style="background: #233EAE">Tambah Data +</a> --}}
                 </div>
                 <!--end::Title-->
             </div>
@@ -87,21 +87,13 @@
                         <thead>
                             <tr>
                                 <th scope="col" class="text-center">No</th>
-                                <th scope="col" class="">Kode Potensi Bahaya</th>
+                                <th scope="col">Kode Potensi Bahaya</th>
                                 <th scope="col">Tanggal lapor</th>
-                                <th scope="col">Nama Pelapor</th>
-                                <th scope="col">Lokasi Kejadian</th>
-                                <th scope="col" class="col-2">Departemen</th>
+                                <th scope="col" class="col-3">Nama Pelapor</th>
+                                <th scope="col" class="col-3">Lokasi Kejadian</th>
                                 <th scope="col" class="col-1">Status</th>
-                                @if (auth()->user()->hak_akses == 'Pimpinan')
-                                    <th scope="col">Ubah Status</th>
-                                @endif
-                                @if (auth()->user()->hak_akses == 'Admin' ||
-                                        auth()->user()->hak_akses == 'P2K3' ||
-                                        auth()->user()->hak_akses == 'K3 Departemen' ||
-                                        auth()->user()->hak_akses == 'Pimpinan')
-                                    <th scope="col">Action</th>
-                                @endif
+                                <th scope="col" class="col-0">Action</th>
+
                             </tr>
                         </thead>
                         <tbody>
@@ -113,7 +105,6 @@
                                     <td>{{ $data->waktu_kejadian }}</td>
                                     <td>{{ $data->nama_pelapor }}</td>
                                     <td>{{ $data->lokasi }}</td>
-                                    <td>{{ $data->departemen->name }}</td>
                                     <td align="center" class="pt-5">
                                         @if ($data->status == '1')
                                             <a href=""
@@ -131,55 +122,27 @@
                                                 Tuntas</a>
                                         @endif
                                     </td>
-                                    @if (auth()->user()->hak_akses == 'Pimpinan')
-                                        <td class="d-flex justify-content-center">
-                                            <a id="update" class="btn btn-primary btn-sm" data-bs-toggle="modal"
-                                                data-bs-target="#editmodal" data-bs-p2k3="" data-bs-status="">Ubah Status
-                                                Investigasi
-                                                {{-- {{ $investigasi->p2k3 }} --}}
-                                                {{-- {{ $investigasi->status }} --}}
-                                            </a>
-                                        </td>
-                                    @endif
-                                    @if (auth()->user()->hak_akses == 'Admin' ||
-                                            auth()->user()->hak_akses == 'P2K3' ||
-                                            auth()->user()->hak_akses == 'K3 Departemen')
-                                        <td>
-                                            <a href="{{ route('potensibahaya.lihat', $data['id']) }}" type="button"
-                                                class="btn  btn-sm bg-warning " style="width:20px;"><i
-                                                    class="bi bi-eye text-dark d-flex justify-content-center align-items-center"></i></a>
-                                            <a href="{{ route('potensibahaya.edit', $data['id']) }}" type="button"
-                                                class="btn  btn-sm bg-primary" style="width:20px;"><i
-                                                    class="bi bi-pencil-square text-dark d-flex justify-content-center align-items-center"></i>
-                                            </a>
-                                            <button type="button" class="btn btn-sm"
-                                                style="width: 20px; background: #DC3545" data-bs-toggle="modal"
-                                                data-bs-target="#deleteModal{{ $data->id }}">
-                                                <i
-                                                    class="bi bi-trash text-dark d-flex justify-content-center align-items-center"></i>
-                                            </button>
-                                        </td>
-                                    @endif
+                                    <td align="center">
+                                        <a href="{{ route('potensibahaya.melihat', $data['id']) }}" type="button"
+                                            class="btn  btn-sm bg-warning " style="width:20px;"><i
+                                                class="bi bi-eye text-dark d-flex justify-content-center align-items-center"></i></a>
+                                        {{-- <a href="{{ route('potensibahaya.edit', $data['id']) }}" type="button"
+                                            class="btn  btn-sm bg-primary" style="width:20px;"><i
+                                                class="bi bi-pencil-square text-dark d-flex justify-content-center align-items-center"></i>
+                                        </a>
+                                        <button type="button" class="btn btn-sm" style="width: 20px; background: #DC3545"
+                                            data-bs-toggle="modal" data-bs-target="#deleteModal{{ $data->id }}">
+                                            <i
+                                                class="bi bi-trash text-dark d-flex justify-content-center align-items-center"></i>
+                                        </button> --}}
+                                    </td>
 
-                                    @if (auth()->user()->hak_akses == 'Pimpinan')
-                                        <td>
-                                            <a href="{{ route('potensibahaya.lihat', $data['id']) }}" type="button"
-                                                class="btn  btn-sm bg-warning " style="width:20px;"><i
-                                                    class="bi bi-eye text-dark d-flex justify-content-center align-items-center"></i></a>
-                                            <button type="button" class="btn btn-sm"
-                                                style="width: 20px; background: #DC3545" data-bs-toggle="modal"
-                                                data-bs-target="#deleteModal{{ $data->id }}">
-                                                <i
-                                                    class="bi bi-trash text-dark d-flex justify-content-center align-items-center"></i>
-                                            </button>
-                                        </td>
-                                    @endif
                                 </tr>
 
                                 <!-- Delete modal -->
-                                <div class="modal fade" id="deleteModal{{ $data->id }}" tabindex="-1"
-                                    role="dialog" aria-labelledby="deleteModalLabel{{ $data->id }}"
-                                    data-bs-backdrop="static" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                                <div class="modal fade" id="deleteModal{{ $data->id }}" tabindex="-1" role="dialog"
+                                    aria-labelledby="deleteModalLabel{{ $data->id }}" data-bs-backdrop="static"
+                                    aria-labelledby="staticBackdropLabel" aria-hidden="true">
                                     <div class="modal-dialog modal-dialog-centered" role="document">
                                         <div class="modal-content">
 
@@ -200,8 +163,7 @@
                                                 </form>
                                                 <button type="button"
                                                     class="btn btn-secondary text-center d-flex align-items-center rounded-1"
-                                                    data-bs-dismiss="modal"
-                                                    style="width:76px; height:31px; ">Tidak</button>
+                                                    data-bs-dismiss="modal" style="width:76px; height:31px; ">Tidak</button>
                                             </div>
                                         </div>
                                     </div>
@@ -260,7 +222,6 @@
                         <div class="modal-footer d-flex justify-content-center border-0 mt-5">
                             <button type="submit"
                                 class="btn btn-success text-white d-flex justify-content-center align-items-center "
-                                data-bs-toggle="modal" data-bs-target="#warning"
                                 style="background: #29CC6A;height: 38px; margin : 10px 20px 30px 20px; font-size:14px; border-radius: 5px;">Simpan
                                 Data</button>
                         </div>
@@ -268,42 +229,6 @@
                 </div>
             </div>
             {{-- ------------ End Modal ubah status ----------- --}}
-            {{-- Modal Warning --}}
-            <div class="modal fade" id="warning" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
-                aria-labelledby="staticBackdropLabel" aria-hidden="true">
-                <div class="modal-dialog modal-dialog-centered ">
-                    <div class="modal-content">
-                        {{-- <div class="modal-header">
-                    <h1 class="modal-title fs-5" id="staticBackdropLabel">Modal title</h1>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div> --}}
-                        <div class="modal-body mt-5 d-flex justify-content-center align-items-center">
-                            <h2 class="mt-5 text-center" style="color: #16243D; font-size: 20px font-weight:700">Apakah
-                                anda yakin telah menyelesaikan Investigasi?
-                                {{-- <p class="mb-0 mt-2 text-center " style="color: #DC3545; font-weight:400; font-size:14px">
-                                    data
-                                    yang
-                                    dimasukkan belum tersimpan </p> --}}
-                            </h2>
-                        </div>
-                        <div class="modal-footer d-flex justify-content-center border-0">
-                            <button type="submit"
-                                class="btn btn-success btn-sm text-white d-flex justify-content-center align-items-center text-center rounded-1 "
-                                style="background: #29CC6A;  font-size:14px; ">Ya, simpan
-                                Data</button>
-                            {{-- <a href="{{ route('daftarinvestigasi.ubah', $investigasi->id) }}" type="button"
-                                class="btn btn-success text-white d-flex justify-content-center align-items-center "
-                                style="width:76px; height:31px; background: #29CC6A;">Ya</a> --}}
-                            <button type="button"
-                                class="btn btn-secondary btn-sm text-center d-flex align-items-center rounded-1"
-                                data-bs-dismiss="modal" style=" font-size:14px; ">Tidak</button>
-
-                        </div>
-                    </div>
-                </div>
-            </div>
-            {{-- ------------ End Modal warning ----------- --}}
-
             <div class="card-footer">
                 {{ $datas->links('pagination::customb5') }}
             </div>

@@ -34,16 +34,7 @@
                 </div>
                 <!--end:Menu item-->
                 <!--begin:Menu item-->
-                {{-- <div class="menu-item here show menu-accordion">
-                    <!--begin:Menu link-->
-                    <a href="{{ route('daftarinvestigasi.index') }}" class="menu-link">
-                        <span class="menu-icon">
-                            <i class="bi bi-person-lines-fill text-white fs-3"></i>
-                        </span>
-                        <span class="menu-title text-white">Daftar Investigasi</span>
 
-                    </a>
-                </div> --}}
                 <!--end:Menu item-->
                 <!--begin:Menu item-->
                 <div class="menu-item here show menu-accordion">
@@ -113,49 +104,8 @@
                     </a>
                 </div>
                 <!--end:Menu item-->
-                <!--begin:Menu item-->
-                {{-- <div data-kt-menu-trigger="click" class="menu-item menu-accordion">
-                    <!--begin:Menu link-->
-                    <span class="menu-link">
-                        <span class="menu-icon">
-                            <i class="bi bi-inboxes text-white fs-3"></i>
-                        </span>
-                        <span class="menu-title text-white">Inventory</span>
-                        <span class="menu-arrow"></span>
-                    </span>
-                    <!--end:Menu link-->
-                    <!--begin:Menu sub-->
-                    <div class="menu-sub menu-sub-accordion">
-                        <!--begin:Menu item-->
-                        <div class="menu-item menu-accordion">
-                            <!--begin:Menu link-->
-                            <a href="{{ route('apar.index') }}" class="menu-link">
-                                <span class="menu-bullet">
-                                    <i class="bi bi-fire text-white fs-3 "></i>
-                                </span>
-                                <span class="menu-title text-white">Apar</span>
-                                <!-- <span class="menu-arrow"></span> -->
-                            </a>
-                            <!--end:Menu link-->
-                        </div>
-                        <!--end:Menu item-->
-                        <!--begin:Menu item-->
-                        <div class="menu-item menu-accordion">
-                            <!--begin:Menu link-->
-                            <a href="{{ route('p3k.index') }}" class="menu-link">
-                                <span class="menu-bullet">
-                                    <i class="bi bi-prescription2 text-white fs-3"></i>
-                                </span>
-                                <span class="menu-title text-white">P3K</span>
-                                <!-- <span class="menu-arrow"></span> -->
-                            </a>
-                            <!--end:Menu link-->
-                        </div>
 
-                    </div>
-                    <!--end:Menu sub--> 
-                </div>
-                <!--end:Menu item--> --}}
+
 
                 <!--begin:Menu item-->
                 <div data-kt-menu-trigger="click" class="menu-item menu-accordion">
@@ -200,51 +150,7 @@
                 </div>
                 <!--end:Menu item-->
 
-                <!--begin:Menu item-->
-                {{-- <div data-kt-menu-trigger="click" class="menu-item menu-accordion">
-                    <!--begin:Menu link-->
-                    <span class="menu-link">
-                        <span class="menu-icon">
-                            <i class="ki-duotone ki-some-files text-white fs-2">
-                                <span class="path1"></span>
-                                <span class="path2"></span>
-                            </i>
-                        </span>
-                        <span class="menu-title text-white">Inspeksi</span>
-                        <span class="menu-arrow"></span>
-                    </span>
-                    <!--end:Menu link-->
-                    <!--begin:Menu sub-->
-                    <div class="menu-sub menu-sub-accordion">
-                        <!--begin:Menu item-->
-                        <div class="menu-item menu-accordion">
-                            <!--begin:Menu link-->
-                            <a href="{{ route('aparinspeksi.index') }}" class="menu-link">
-                                <span class="menu-bullet">
-                                    <i class="bi bi-fire text-white fs-3 "></i>
-                                </span>
-                                <span class="menu-title text-white">APAR</span>
-                                <!-- <span class="menu-arrow"></span> -->
-                            </a>
-                            <!--end:Menu link-->
-                        </div>
-                        <!--end:Menu item-->
-                        <!--begin:Menu item-->
-                        <div class="menu-item menu-accordion">
-                            <!--begin:Menu link-->
-                            <a href="{{ route('p3kinspeksi.index') }}" class="menu-link">
-                                <span class="menu-bullet">
-                                    <i class="bi bi-prescription2 text-white fs-3"></i>
-                                </span>
-                                <span class="menu-title text-white">P3K</span>
-                                <!-- <span class="menu-arrow"></span> -->
-                            </a>
-                            <!--end:Menu link-->
-                        </div>
-                    </div>
-                    <!--end:Menu sub-->
-                </div> --}}
-                <!--end:Menu item-->
+
 
                 <!--begin:Menu item-->
                 <div data-kt-menu-trigger="click" class="menu-item menu-accordion">
@@ -379,15 +285,7 @@
                     </a>
                 </div>
                 <!--begin:Menu item-->
-                {{-- <div class=" ms-1 menu-item here show menu-accordion">
-                    <a href="{{ route('p2k3.index') }}" class="menu-link">
-                        <span class="menu-bullet">
-                            <i class="bi bi-people-fill text-white fs-3"></i>
-                        </span>
-                        <span class="menu-title ms-3 text-white">P2K3</span>
-                    </a>
 
-                </div> --}}
                 <!--end:Menu item-->
                 <div class="menu-item here show menu-accordion">
                     <!--begin:Menu link-->
@@ -415,7 +313,6 @@
                     auth()->user()->hak_akses == 'K3 Departemen' ||
                     auth()->user()->hak_akses == 'Pimpinan')
                 <!--begin:Menu item-->
-
                 <div class="menu-item here show menu-accordion ">
                     <!--begin:Menu link-->
                     <a href="{{ route('dashboard') }}" class="menu-link ">
@@ -426,75 +323,228 @@
 
                     </a>
                 </div>
-                <div class="menu-item here show menu-accordion">
-                    <!--begin:Menu link-->
-                    <a href="{{ route('laporan-insiden.index') }}" class="menu-link">
-                        <span class="menu-icon ">
-                            <i class="bi bi-clipboard-check-fill text-white fs-3"></i>
+                @if (auth()->user()->hak_akses == 'K3 Departemen')
+                    <!--begin:Menu item-->
+                    <div data-kt-menu-trigger="click" class="menu-item menu-accordion">
+                        <!--begin:Menu link-->
+                        <span class="menu-link">
+                            <span class="menu-icon">
+                                <i class="bi bi-clipboard-check-fill text-white fs-3"></i>
+                            </span>
+                            <span class="menu-title text-white">Daftar Laporan Insiden</span>
+                            <span class="menu-arrow"></span>
                         </span>
-                        <span class="menu-title text-white">Daftar Lapor Insiden</span>
-
-                    </a>
-                </div>
-                <!--end:Menu item-->
-
-                <!--begin:Menu item-->
-                <div class="menu-item here show menu-accordion">
-                    <!--begin:Menu link-->
-                    <a href="{{ route('potensibahaya.index') }}" class="menu-link">
-                        <span class="menu-icon">
-                            <i class="bi bi-exclamation-octagon text-white fs-3"></i>
-                        </span>
-                        <span class="menu-title text-white">Daftar Lapor Potensi Bahaya</span>
-
-                    </a>
-                </div>
-                <!--end:Menu item-->
-
-                <!--begin:Menu item-->
-                <!--begin:Menu item-->
-                <div data-kt-menu-trigger="click" class="menu-item menu-accordion">
-                    <!--begin:Menu link-->
-                    <span class="menu-link">
-                        <span class="menu-icon">
-                            <i class="bi bi-card-checklist text-white fs-3"></i>
-                        </span>
-                        <span class="menu-title text-white">Daftar Investigasi</span>
-                        <span class="menu-arrow"></span>
-                    </span>
-                    <!--end:Menu link-->
-                    <!--begin:Menu sub-->
-                    <div class="menu-sub menu-sub-accordion">
-                        <!--begin:Menu item-->
-                        <div class="menu-item menu-accordion">
-                            <!--begin:Menu link-->
-                            <a href="{{ route('daftarinvestigasi.index') }}" class="menu-link">
-                                <span class="menu-bullet">
-                                    <i class="bi bi-person-lines-fill text-white fs-3"></i>
-                                </span>
-                                <span class="menu-title text-white">Daftar Investigasi Insiden</span>
-                                <!-- <span class="menu-arrow"></span> -->
-                            </a>
-                            <!--end:Menu link-->
+                        <!--end:Menu link-->
+                        <!--begin:Menu sub-->
+                        <div class="menu-sub menu-sub-accordion">
+                            <!--begin:Menu item-->
+                            <div class="menu-item menu-accordion">
+                                <!--begin:Menu link-->
+                                <a href="{{ route('laporan-insiden.index') }}" class="menu-link">
+                                    <span class="menu-bullet">
+                                        <i class="bi bi-clipboard-minus-fill text-white fs-3"></i>
+                                    </span>
+                                    <span class="menu-title text-white">Daftar Laporan Insiden Departemen</span>
+                                    <!-- <span class="menu-arrow"></span> -->
+                                </a>
+                                <!--end:Menu link-->
+                            </div>
+                            <!--end:Menu item-->
+                            <!--begin:Menu item-->
+                            <div class="menu-item menu-accordion">
+                                <!--begin:Menu link-->
+                                <a href="{{ route('laporan-insiden.k3dep') }}" class="menu-link">
+                                    <span class="menu-bullet">
+                                        <i class="bi bi-clipboard-data-fill text-white fs-3"></i>
+                                    </span>
+                                    <span class="menu-title text-white">Daftar Laporan Insiden</span>
+                                    <!-- <span class="menu-arrow"></span> -->
+                                </a>
+                                <!--end:Menu link-->
+                            </div>
                         </div>
-                        <!--end:Menu item-->
-                        <!--begin:Menu item-->
-                        <div class="menu-item menu-accordion">
-                            <!--begin:Menu link-->
-                            <a href="{{ route('investigasipotensi.index') }}" class="menu-link">
-                                <span class="menu-bullet">
-                                    <i class="bi bi-exclamation-diamond text-white fs-3"></i>
-                                </span>
-                                <span class="menu-title text-white">Daftar Investigasi Potensi Bahaya</span>
-                                <!-- <span class="menu-arrow"></span> -->
-                            </a>
-                            <!--end:Menu link-->
-                        </div>
+                        <!--end:Menu sub-->
                     </div>
-                    <!--end:Menu sub-->
-                </div>
-                <!--end:Menu item-->
-                <!--end:Menu item-->
+                    <!--End begin:Menu item-->
+
+                    <!--begin:Menu item-->
+                    <div data-kt-menu-trigger="click" class="menu-item menu-accordion">
+                        <!--begin:Menu link-->
+                        <span class="menu-link">
+                            <span class="menu-icon">
+                                <i class="bi bi-exclamation-octagon text-white fs-3"></i>
+                            </span>
+                            <span class="menu-title text-white">Daftar Laporan Potensi Bahaya</span>
+                            <span class="menu-arrow"></span>
+                        </span>
+                        <!--end:Menu link-->
+                        <!--begin:Menu sub-->
+                        <div class="menu-sub menu-sub-accordion">
+                            <!--begin:Menu item-->
+                            <div class="menu-item menu-accordion">
+                                <!--begin:Menu link-->
+                                <a href="{{ route('potensibahaya.index') }}" class="menu-link">
+                                    <span class="menu-bullet">
+                                        <i class="bi bi-building-fill-exclamation text-white fs-3"></i>
+                                    </span>
+                                    <span class="menu-title text-white">Daftar Laporan Potensi Bahaya Departemen</span>
+                                    <!-- <span class="menu-arrow"></span> -->
+                                </a>
+                                <!--end:Menu link-->
+                            </div>
+                            <!--end:Menu item-->
+                            <!--begin:Menu item-->
+                            <div class="menu-item menu-accordion">
+                                <!--begin:Menu link-->
+                                <a href="{{ route('potensibahaya.k3dep') }}" class="menu-link">
+                                    <span class="menu-bullet">
+                                        <i class="bi bi-database-fill-exclamation text-white fs-3"></i>
+                                    </span>
+                                    <span class="menu-title text-white">Daftar Laporan Potensi Bahaya</span>
+                                    <!-- <span class="menu-arrow"></span> -->
+                                </a>
+                                <!--end:Menu link-->
+                            </div>
+                        </div>
+                        <!--end:Menu sub-->
+                    </div>
+                    <!--End begin:Menu item-->
+
+                    <div data-kt-menu-trigger="click" class="menu-item menu-accordion">
+                        <!--begin:Menu link-->
+                        <span class="menu-link">
+                            <span class="menu-icon">
+                                <i class="bi bi-card-checklist text-white fs-3"></i>
+                            </span>
+                            <span class="menu-title text-white">Daftar Investigasi</span>
+                            <span class="menu-arrow"></span>
+                        </span>
+                        <!--end:Menu link-->
+                        <!--begin:Menu sub-->
+                        <div class="menu-sub menu-sub-accordion">
+                            <!--begin:Menu item-->
+                            <div class="menu-item menu-accordion">
+                                <!--begin:Menu link-->
+                                <a href="{{ route('daftarinvestigasi.index') }}" class="menu-link">
+                                    <span class="menu-bullet">
+                                        <i class="bi bi-person-fill-gear text-white fs-3"></i>
+                                    </span>
+                                    <span class="menu-title text-white">Daftar Investigasi Insiden Departemen</span>
+                                    <!-- <span class="menu-arrow"></span> -->
+                                </a>
+                                <!--end:Menu link-->
+                            </div>
+                            <!--end:Menu item-->
+                            <div class="menu-item menu-accordion">
+                                <!--begin:Menu link-->
+                                <a href="{{ route('daftarinvestigasi.k3dep') }}" class="menu-link">
+                                    <span class="menu-bullet">
+                                        <i class="bi bi-person-lines-fill text-white fs-3"></i>
+                                    </span>
+                                    <span class="menu-title text-white">Daftar Investigasi Insiden</span>
+                                    <!-- <span class="menu-arrow"></span> -->
+                                </a>
+                                <!--end:Menu link-->
+                            </div>
+                            <!--begin:Menu item-->
+                            <div class="menu-item menu-accordion">
+                                <!--begin:Menu link-->
+                                <a href="{{ route('investigasipotensi.index') }}" class="menu-link">
+                                    <span class="menu-bullet">
+                                        <i class="bi bi-house-exclamation-fill text-white fs-3"></i>
+                                    </span>
+                                    <span class="menu-title text-white">Daftar Investigasi Potensi Bahaya
+                                        Departemen</span>
+                                    <!-- <span class="menu-arrow"></span> -->
+                                </a>
+                                <!--end:Menu link-->
+                            </div>
+                            <div class="menu-item menu-accordion">
+                                <!--begin:Menu link-->
+                                <a href="{{ route('investigasipotensi.k3dep') }}" class="menu-link">
+                                    <span class="menu-bullet">
+                                        <i class="bi bi-exclamation-diamond text-white fs-3"></i>
+                                    </span>
+                                    <span class="menu-title text-white">Daftar Investigasi Potensi Bahaya</span>
+                                    <!-- <span class="menu-arrow"></span> -->
+                                </a>
+                                <!--end:Menu link-->
+                            </div>
+                        </div>
+                        <!--end:Menu sub-->
+                    </div>
+                @else
+                    <div class="menu-item here show menu-accordion">
+                        <!--begin:Menu link-->
+                        <a href="{{ route('laporan-insiden.index') }}" class="menu-link">
+                            <span class="menu-icon ">
+                                <i class="bi bi-clipboard-check-fill text-white fs-3"></i>
+                            </span>
+                            <span class="menu-title text-white">Daftar Laporan Insiden</span>
+
+                        </a>
+                    </div>
+                    <!--end:Menu item-->
+
+                    <!--begin:Menu item-->
+                    <div class="menu-item here show menu-accordion">
+                        <!--begin:Menu link-->
+                        <a href="{{ route('potensibahaya.index') }}" class="menu-link">
+                            <span class="menu-icon">
+                                <i class="bi bi-exclamation-octagon text-white fs-3"></i>
+                            </span>
+                            <span class="menu-title text-white">Daftar Lapor Potensi Bahaya</span>
+
+                        </a>
+                    </div>
+                    <!--end:Menu item-->
+
+                    <!--begin:Menu item-->
+                    <!--begin:Menu item-->
+                    <div data-kt-menu-trigger="click" class="menu-item menu-accordion">
+                        <!--begin:Menu link-->
+                        <span class="menu-link">
+                            <span class="menu-icon">
+                                <i class="bi bi-card-checklist text-white fs-3"></i>
+                            </span>
+                            <span class="menu-title text-white">Daftar Investigasi</span>
+                            <span class="menu-arrow"></span>
+                        </span>
+                        <!--end:Menu link-->
+                        <!--begin:Menu sub-->
+                        <div class="menu-sub menu-sub-accordion">
+                            <!--begin:Menu item-->
+                            <div class="menu-item menu-accordion">
+                                <!--begin:Menu link-->
+                                <a href="{{ route('daftarinvestigasi.index') }}" class="menu-link">
+                                    <span class="menu-bullet">
+                                        <i class="bi bi-person-lines-fill text-white fs-3"></i>
+                                    </span>
+                                    <span class="menu-title text-white">Daftar Investigasi Insiden</span>
+                                    <!-- <span class="menu-arrow"></span> -->
+                                </a>
+                                <!--end:Menu link-->
+                            </div>
+                            <!--end:Menu item-->
+                            <!--begin:Menu item-->
+                            <div class="menu-item menu-accordion">
+                                <!--begin:Menu link-->
+                                <a href="{{ route('investigasipotensi.index') }}" class="menu-link">
+                                    <span class="menu-bullet">
+                                        <i class="bi bi-exclamation-diamond text-white fs-3"></i>
+                                    </span>
+                                    <span class="menu-title text-white">Daftar Investigasi Potensi Bahaya</span>
+                                    <!-- <span class="menu-arrow"></span> -->
+                                </a>
+                                <!--end:Menu link-->
+                            </div>
+                        </div>
+                        <!--end:Menu sub-->
+                    </div>
+                    <!--end:Menu item-->
+                    <!--end:Menu item-->
+                @endif
+
 
                 <!--begin:Menu item-->
                 <div class="menu-item here show menu-accordion">
@@ -508,94 +558,7 @@
                     </a>
                 </div>
                 <!--end:Menu item-->
-                <!--begin:Menu item-->
-                {{-- <div data-kt-menu-trigger="click" class="menu-item menu-accordion">
-                    <!--begin:Menu link-->
-                    <span class="menu-link">
-                        <span class="menu-icon">
-                            <i class="bi bi-inboxes text-white fs-3"></i>
-                        </span>
-                        <span class="menu-title text-white">Inventory</span>
-                        <span class="menu-arrow"></span>
-                    </span>
-                    <!--end:Menu link-->
-                    <!--begin:Menu sub-->
-                    <div class="menu-sub menu-sub-accordion">
-                        <!--begin:Menu item-->
-                        <div class="menu-item menu-accordion">
-                            <!--begin:Menu link-->
-                            <a href="{{ route('apar.index') }}" class="menu-link">
-                                <span class="menu-bullet">
-                                    <i class="bi bi-fire text-white fs-3 "></i>
-                                </span>
-                                <span class="menu-title text-white">Apar</span>
-                                <!-- <span class="menu-arrow"></span> -->
-                            </a>
-                            <!--end:Menu link-->
-                        </div>
-                        <!--end:Menu item-->
-                        <!--begin:Menu item-->
-                        <div class="menu-item menu-accordion">
-                            <!--begin:Menu link-->
-                            <a href="{{ route('p3k.index') }}" class="menu-link">
-                                <span class="menu-bullet">
-                                    <i class="bi bi-prescription2 text-white fs-3"></i>
-                                </span>
-                                <span class="menu-title text-white">P3K</span>
-                                <!-- <span class="menu-arrow"></span> -->
-                            </a>
-                            <!--end:Menu link-->
-                        </div>
 
-                    </div>
-                    <!--end:Menu sub-->
-                </div> --}}
-                <!--end:Menu item-->
-
-                <!--begin:Menu item-->
-                {{-- <div data-kt-menu-trigger="click" class="menu-item menu-accordion">
-                    <!--begin:Menu link-->
-                    <span class="menu-link">
-                        <span class="menu-icon">
-                            <i class="ki-duotone ki-some-files text-white fs-2">
-                                <span class="path1"></span>
-                                <span class="path2"></span>
-                            </i>
-                        </span>
-                        <span class="menu-title text-white">Inspeksi</span>
-                        <span class="menu-arrow"></span>
-                    </span>
-                    <!--end:Menu link-->
-                    <!--begin:Menu sub-->
-                    <div class="menu-sub menu-sub-accordion">
-                        <!--begin:Menu item-->
-                        <div class="menu-item menu-accordion">
-                            <!--begin:Menu link-->
-                            <a href="{{ route('aparinspeksi.index') }}" class="menu-link">
-                                <span class="menu-bullet">
-                                    <i class="bi bi-fire text-white fs-3 "></i>
-                                </span>
-                                <span class="menu-title text-white">APAR</span>
-                                <!-- <span class="menu-arrow"></span> -->
-                            </a>
-                            <!--end:Menu link-->
-                        </div>
-                        <!--end:Menu item-->
-                        <!--begin:Menu item-->
-                        <div class="menu-item menu-accordion">
-                            <!--begin:Menu link-->
-                            <a href="{{ route('p3kinspeksi.index') }}" class="menu-link">
-                                <span class="menu-bullet">
-                                    <i class="bi bi-prescription2 text-white fs-3"></i>
-                                </span>
-                                <span class="menu-title text-white">P3K</span>
-                                <!-- <span class="menu-arrow"></span> -->
-                            </a>
-                            <!--end:Menu link-->
-                        </div>
-                    </div>
-                    <!--end:Menu sub-->
-                </div> --}}
                 <!--end:Menu item-->
 
 
@@ -653,12 +616,12 @@
                 <!--begin:Menu item-->
                 <div class="menu-item here show menu-accordion">
                     <!--begin:Menu link-->
-                    <span class="menu-link">
+                    <a href="{{ route('simk3.index') }}" class="menu-link">
                         <span class="menu-icon">
                             <i class="bi bi-house-door text-white fs-3"></i>
                         </span>
                         <span class="menu-title text-white">Back Home</span>
-                    </span>
+                    </a>
                 </div>
             @endif
             {{-- End View P2K3 --}}

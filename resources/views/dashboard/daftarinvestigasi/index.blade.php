@@ -26,10 +26,9 @@
                     </form>
                 </div>
             </div>
-            @if (auth()->user()->hak_akses == 'Pimpinan')
+            {{-- @if (auth()->user()->hak_akses == 'Pimpinan')
                 <div class="card-toolbar">
-                    <div class="ps-3 pe-5  d-flex align-items-center justify-content-end ">
-                        {{-- <label class="col-form-label pe-4">Status :</label> --}}
+                    <div class="ps-3 pe-5  d-flex align-items-center justify-content-end ">                        
                         <div class="w-0 ">
                             <select name="filter" id="filter" class="form-select fs-6 w-100 shadow"
                                 data-control="select2" data-hide-search="true">
@@ -51,7 +50,7 @@
                     </div>
 
                 </div>
-            @endif
+            @endif --}}
         </div>
         <div class="card-body">
             <div class="table-responsive">
@@ -138,8 +137,8 @@
                                 <th scope="col"class="3">Lokasi Kejadian</th>
                                 {{-- <th scope="col">Tenggat Waktu</th> --}}
                                 <th scope="col"class="4">Penanggung Jawab</th>
-                                <th scope="col" class="">Status Investigasi</th>
-                                <th scope="col" class="2">Ubah Status investigasi</th>
+                                {{-- <th scope="col" class="">Status Investigasi</th>
+                                <th scope="col" class="2">Ubah Status investigasi</th> --}}
                                 <th scope="col">Action</th>
                             </tr>
                         </thead>
@@ -153,44 +152,15 @@
                                         {{ $investigasi->departemen->name }}
                                     </td>
                                     {{-- <td>{{ $investigasi->tenggat_waktu ? $investigasi->tenggat_waktu->translatedFormat('d F Y') : '' }}</td> --}}
-                                    <td>{{ $investigasi->p2k3->nama }}</td>
-                                    <td align="center" class="mx-15 pt-5">
-
-                                        @if ($investigasi->status == '2')
-                                            <a href=""
-                                                class="text-center fw-bold  text-danger border border-2 rounded-2 border-danger px-5 py-1"
-                                                style=" cursor: default !important;">
-                                                Ditindaklanjuti</a>
-                                        @elseif ($investigasi->status == '3')
-                                            <a class="text-center fw-bold  text-warning border border-2 rounded-2 border-warning py-1 px-5"
-                                                style=" cursor: default !important;">
-                                                Tuntas</a>
-                                        
-                                        @endif
-
-
-                                        {{-- <a href="" class="text-center fw-bold  text-warning  px-4">
-                                            Pending
-                                        </a> --}}
+                                    <td>
+                                        {{ $investigasi->p2k3->nama }}
                                     </td>
 
-                                    <td class="d-flex
-                                            justify-content-center">
-                                        <a id="update" class="btn btn-primary" data-bs-toggle="modal"
-                                            data-bs-target="#editmodal" data-bs-p2k3_id="{{ $investigasi->p2k3_id }}"
-                                            data-bs-status="{{ $investigasi->status }}">Ubah Status Investigasi
-                                        </a>
-                                    </td>
 
                                     <td>
                                         <a href="{{ route('daftarinvestigasi.lihat', $investigasi->id) }}" type="button"
-                                            class="btn btn-sm btn-warning px-4"><i
-                                                class="bi bi-eye text-dark pe-0"></i></a>
-                                        {{-- <a href="{{ route('daftarinvestigasi.ubah', $investigasi->id) }}" type="button"
-                                            class="btn btn-sm btn-primary px-4"><i class="bi bi-pencil-square pe-0"></i></a> --}}
-                                        <button type="button" class="btn btn-danger btn-sm px-4" data-bs-toggle="modal"
-                                            data-bs-target="#deleteForm{{ $investigasi->id }}"><i
-                                                class="bi bi-trash pe-0"></i></button>
+                                            class="btn btn-sm btn-warning px-4"><i class="bi bi-eye text-dark pe-0"></i></a>
+
 
                                         <div class="modal fade" id="deleteForm{{ $investigasi->id }}"
                                             data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
@@ -222,78 +192,15 @@
                                         </div>
                                     </td>
                                 </tr>
-
-                                <div class="modal fade" id="editmodal" data-bs-backdrop="static"
-                                    data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel"
-                                    aria-hidden="true">
-                                    <div class="modal-dialog modal-dialog-centered ">
-                                        <form action="{{ route('daftarinvestigasi.edit', $investigasi->id) }}"
-                                            method="post" enctype="multipart/form-data">
-                                            @csrf
-                                            @method('PUT')
-                                            <div class="modal-content">
-                                                <div class="modal-header">
-                                                    <h1 class="modal-title" id="staticBackdropLabel">Ubah Data Investigasi
-                                                    </h1>
-                                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                                        aria-label="Close" id="update"></button>
-                                                </div>
-
-                                                <div class="modal-body mt-5 ">
-                                                    <div id="additionalForm">
-                                                        <div class="ps-3 pe-5 pb-5">
-                                                            <label class="col-form-label ps-2">P2K3</label>
-                                                            <div class=" w-100">
-                                                                <select id="p2k3_id" name="p2k3_id" class="form-select fs-6 w-100"
-                                                                    data-control="select2" data-hide-search="true"
-                                                                    data-placeholder="p2k3_id">
-                                                                    @foreach ($p2k3s as $p2k3)
-                                                                        <option value="{{ $p2k3->id }}">
-                                                                           {{  $p2k3->nama }}
-                                                                        </option>
-                                                                    @endforeach 
-                                                                </select>
-                                                            </div>
-                                                        </div>
-
-                                                        <div id="additionalForm">
-                                                            <div class="ps-3 pe-5">
-                                                                <label class="col-form-label ps-2">Status Investigasi
-                                                                </label>
-                                                                <div class=" w-100">
-                                                                    <select name="status" id="status"
-                                                                        class="form-select fs-6 w-100"
-                                                                        data-control="select2" data-hide-search="true"
-                                                                        data-placeholder="status">
-                                                                        <option value="2">Investigasi
-                                                                        </option>
-                                                                        <option value="3">Sukses
-                                                                        </option>
-                                                                    </select>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-
-                                                    </div>
-                                                    <div class="modal-footer d-flex justify-content-center border-0 mt-5">
-                                                        <button type="submit"
-                                                            class="btn btn-success text-white d-flex justify-content-center align-items-center "
-                                                            style="background: #29CC6A;height: 38px; margin : 10px 20px 30px 20px; font-size:14px; border-radius: 5px;">Simpan
-                                                            Data</button>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </form>
-                                    </div>
                             @endforeach
                         </tbody>
                     </table>
                 @endif
             </div>
         </div>
-        {{-- <div class="card-footer">
+        <div class="card-footer">
             {{ $investigasis->links('pagination::customb5') }}
-        </div> --}}
+        </div>
     </div>
 @stop
 

@@ -69,6 +69,8 @@ Route::group(['middleware' => ['auth']], function() {
         Route::get('tambah', [LaporanInsidenController::class, 'tambah'])->name('tambah');
         Route::get('lihat/{id}', [LaporanInsidenController::class, 'lihat'])->name('lihat');
         Route::get('ubah/{id}', [LaporanInsidenController::class, 'ubah'])->name('ubah');
+        Route::get('k3departemen', [LaporanInsidenController::class, 'k3dep'])->name('k3dep');
+        Route::get('melihat/{id}', [LaporanInsidenController::class, 'melihat'])->name('melihat');
 
         Route::post('insert', [LaporanInsidenController::class, 'insert'])->name('insert');
         Route::post('update/{id}', [LaporanInsidenController::class, 'update'])->name('update');
@@ -87,6 +89,8 @@ Route::group(['middleware' => ['auth']], function() {
         Route::put('update/{id}', [InvestigasiController::class, 'update'])->name('update');
         Route::put('edit/{id}', [InvestigasiController::class, 'edit'])->name('edit');
         Route::post('delete/{id}', [InvestigasiController::class, 'delete'])->name('delete');
+        Route::get('k3departemen', [InvestigasiController::class, 'k3dep'])->name('k3dep');
+        Route::get('melihat/{id}', [InvestigasiController::class, 'melihat'])->name('melihat');
     });
 
     //Investigasi Potensi
@@ -100,6 +104,8 @@ Route::group(['middleware' => ['auth']], function() {
         Route::post('update/{id}', [ControllersInvestigasiPotensiController::class, 'update'])->name('update');
         Route::put('edit/{id}', [ControllersInvestigasiPotensiController::class, 'edit'])->name('edit');
         Route::post('delete/{id}', [ControllersInvestigasiPotensiController::class, 'delete'])->name('delete');
+        Route::get('k3departemen', [ControllersInvestigasiPotensiController::class, 'k3dep'])->name('k3dep');
+        Route::get('melihat/{id}', [ControllersInvestigasiPotensiController::class, 'melihat'])->name('melihat');
     });
 
     // 3. Potensi Bahaya
@@ -111,6 +117,8 @@ Route::group(['middleware' => ['auth']], function() {
         Route::get('edit/{id}', [PotensibahayaController::class, 'edit'])->name('edit');
         Route::post('delete/{id}', [PotensibahayaController::class, 'delete'])->name('delete');
         Route::post('edit/{id}', [PotensibahayaController::class, 'editstore'])->name('editstore');
+        Route::get('k3departemen', [PotensibahayaController::class, 'k3dep'])->name('k3dep');
+        Route::get('melihat/{id}', [PotensibahayaController::class, 'melihat'])->name('melihat');
     });
 
     // 4. Hirarc
