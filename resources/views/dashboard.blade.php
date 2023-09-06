@@ -17,7 +17,7 @@
             <div id="kt_app_content_container" class="app-container container-fluid">
 
 
-                @if (auth()->user()->hak_akses == 'pengguna')
+                @if (auth()->user()->hak_akses == 'Pengguna')
                     <div class="row my-5 d-flex justify-content-around">
                         <div class="col-lg-3 col-md-6 col-sm-6">
                             <div class="card card-stats h-100">
