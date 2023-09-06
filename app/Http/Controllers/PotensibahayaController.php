@@ -25,7 +25,7 @@ use Illuminate\Support\Str;
 class PotensibahayaController extends Controller
 {
     public function index(Request $request){
-        
+        $p2k3s = P2K3::all();
         $datas = PotensiBahaya:: with(['p2k3', 'departemen'])
         ->whereNot('status', '2')
         ->when($request->has('filter'), function($query) use($request){
@@ -43,7 +43,7 @@ class PotensibahayaController extends Controller
     })
         ->paginate(10);
         
-        return view('dashboard.potensibahaya.index', compact('datas'));
+        return view('dashboard.potensibahaya.index', compact('datas', 'p2k3s'));
         
     }
 

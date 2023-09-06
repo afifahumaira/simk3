@@ -77,7 +77,7 @@
                                     <td>{{ $investigasi->lokasi }}</td>
                                     <td>{{ $investigasi->potensi_bahaya }}</td>
                                     <td>
-                                        {{-- {{ $investigasi->p2k3_data->nama }} --}}
+                                        {{ $investigasi->p2k3_data->nama }}
                                     </td>
 
                                     <td>

@@ -23,7 +23,7 @@ use Illuminate\Support\Str;
 class LaporanInsidenController extends Controller
 {
     public function index(Request $request){
-        
+        $p2k3s = P2k3::all();
         $laporaninsidens = Laporinsiden::with(['p2k3', 'departemen'])
         ->whereNot('status', '2')
         ->when($request->has('filter'), function($query) use($request){
@@ -43,7 +43,8 @@ class LaporanInsidenController extends Controller
             
             ->paginate(10);
         return view('dashboard.laporaninsiden.index')
-            ->with('laporaninsidens',$laporaninsidens);
+            ->with('laporaninsidens',$laporaninsidens)
+            ->with('p2k3s', $p2k3s);
     }
 
     public function k3dep(Request $request){
@@ -255,6 +256,43 @@ class LaporanInsidenController extends Controller
 
             Alert::success('Berhasil', 'Data Laporan Insiden berhasil diperbaharui!')->iconHtml('<i class="bi bi-person-check"></i>')->hideCloseButton();
             return redirect()->route('laporan-insiden.index');
+    }
+
+    public function edit($id, Request $request) {
+        // $request->validate([
+        //     'p2k3_id' => 'required',
+        //     'status' => 'required',
+        // ]);
+
+        Laporinsiden::find($id)->update([
+            'p2k3_id' => $request->p2k3_id,
+            'status' => $request->status,
+        ]);
+
+        if ($request->status == 2) {
+            $data = Investigasi::create([
+                'p2k3_id' => $request->p2k3_id,                
+                'status' => $request->status                
+            ]);      
+            Alert::success('Berhasil', 'Data Laporan Insiden berhasil diperbaharui!')->iconHtml('<i class="bi bi-person-check"></i>')->hideCloseButton();
+            return redirect()->route('laporan-insiden.index'); 
+
+            // if ($data) {
+            //     $inves = Laporinsiden::find($id);
+            //     $inves->delete();
+            // }
+        }
+
+        if ($request->status == 3) {
+            $data = Laporinsiden::find($id);
+            $data->delete();
+            
+            Alert::success('Berhasil', 'Investigasi telah selesai')->iconHtml('<i class="bi bi-person-check"></i>')->hideCloseButton();
+            return redirect()->route('daftarinvestigasi.index');
+        }
+
+        Alert::success('Berhasil', 'Data Laporan berhasil diperbaharui!')->iconHtml('<i class="bi bi-person-check"></i>')->hideCloseButton();
+        return redirect()->route('daftarinvestigasi.index');
     }
 
     public function delete($id) {

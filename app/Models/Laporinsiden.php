@@ -18,7 +18,7 @@ class Laporinsiden extends Model
 
     public function p2k3()
     {
-        return $this->belongsTo(P2k3::class);
+        return $this->belongsTo(P2k3::class, 'p2k3_id', 'id');
     }
 
     public function departemen()

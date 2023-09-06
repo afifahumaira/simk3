@@ -30,7 +30,7 @@
                     
                     <tr>
                         <th style="width: 40%">Lokasi Kejadian</th>
-                        <td>{{ $investigasi->departemen->name }}</td>
+                        <td>{{ $investigasi->departemen?->name }}</td>
                     </tr>
                     <tr>
                         <th style="width: 40%">Penyebab Langsung</th>

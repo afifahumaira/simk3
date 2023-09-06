@@ -42,7 +42,7 @@
                     <form action="{{ route('potensibahaya.editstore', $data['id']) }}" method="POST"
                         enctype="multipart/form-data">
                         @csrf
-
+                        @method('PUT')
 
                         <input type="hidden" value="{{ $data->nip_nim }}" name="nip_nim">
                         <div id="kt_app_content"

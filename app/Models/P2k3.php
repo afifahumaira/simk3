@@ -30,9 +30,9 @@ class P2k3 extends Model
         return $this->belongsTo(Departemen::class);
     }
 
-    public function insiden()
+    public function laporinsiden()
     {
-        return $this->hasMany(Laporinsiden::class, 'p2k3_id');
+        return $this->hasMany(Laporinsiden::class, 'p2k3_id', 'id');
     }
     
     public function investigasi()

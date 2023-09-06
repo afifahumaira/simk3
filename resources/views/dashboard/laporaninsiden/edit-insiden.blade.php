@@ -66,6 +66,7 @@
                                 <form class="lh-lg" method="POST" action="{{ route('laporan-insiden.update', $lap->id) }}"
                                     enctype="multipart/form-data">
                                     @csrf
+                                    @method ('PUT')
                                     <div class="ps-3 pe-5">
                                         <label class="col-form-label">Status</label>
                                         <div class="w-100">

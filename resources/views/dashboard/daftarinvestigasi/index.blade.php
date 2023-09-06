@@ -76,7 +76,7 @@
                                     <td>{{ $investigasi->kategori }}</td>
                                     {{-- <td>{{ $investigasi->laporinsiden->nama_pelapor }}</td> --}}
                                     <td>
-                                        {{ $investigasi->departemen->name }}
+                                        {{ $investigasi->departemen?->name }}
                                     </td>
                                     {{-- <td>{{ $investigasi->tenggat_waktu ? $investigasi->tenggat_waktu->translatedFormat('d F Y') : '' }}</td> --}}
                                     <td>{{ $investigasi->p2k3->nama }}</td>
@@ -149,7 +149,7 @@
                                     <td>{{ $investigasi->kategori }}</td>
                                     {{-- <td>{{ $investigasi->laporinsiden->nama_pelapor }}</td> --}}
                                     <td>
-                                        {{ $investigasi->departemen->name }}
+                                        {{ $investigasi->departemen?->name }}
                                     </td>
                                     {{-- <td>{{ $investigasi->tenggat_waktu ? $investigasi->tenggat_waktu->translatedFormat('d F Y') : '' }}</td> --}}
                                     <td>

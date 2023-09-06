@@ -49,9 +49,7 @@
                                 {{-- <td>{{ $investigasi->departemen->name }}</td> --}}
                                 <td>{{ $investigasi->lokasi }}</td>
                                 <td>{{ $investigasi->potensi_bahaya }}</td>
-                                <td>
-                                    {{-- {{ $investigasi->p2k3_data->nama }} --}}
-                                </td>
+                                <td>{{ $investigasi->p2k3_data->nama }}</td>
 
                                 <td>
                                     <a href="{{ route('investigasipotensi.melihat', $investigasi->id) }}" type="button"

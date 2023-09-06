@@ -71,9 +71,9 @@ Route::group(['middleware' => ['auth']], function() {
         Route::get('ubah/{id}', [LaporanInsidenController::class, 'ubah'])->name('ubah');
         Route::get('k3departemen', [LaporanInsidenController::class, 'k3dep'])->name('k3dep');
         Route::get('melihat/{id}', [LaporanInsidenController::class, 'melihat'])->name('melihat');
-
+        //Route::put('edit/{id}', [LaporanInsidenController::class, 'edit'])->name('edit');
         Route::post('insert', [LaporanInsidenController::class, 'insert'])->name('insert');
-        Route::post('update/{id}', [LaporanInsidenController::class, 'update'])->name('update');
+        Route::put('update/{id}', [LaporanInsidenController::class, 'update'])->name('update');
         Route::post('delete/{id}', [LaporanInsidenController::class, 'delete'])->name('delete');
         Route::post('save', [LaporanInsidenController::class, 'save'])->name('save');
     });
@@ -116,7 +116,7 @@ Route::group(['middleware' => ['auth']], function() {
         Route::get('lihat/{id}', [PotensibahayaController::class, 'lihat'])->name('lihat');
         Route::get('edit/{id}', [PotensibahayaController::class, 'edit'])->name('edit');
         Route::post('delete/{id}', [PotensibahayaController::class, 'delete'])->name('delete');
-        Route::post('edit/{id}', [PotensibahayaController::class, 'editstore'])->name('editstore');
+        Route::put('edit/{id}', [PotensibahayaController::class, 'editstore'])->name('editstore');
         Route::get('k3departemen', [PotensibahayaController::class, 'k3dep'])->name('k3dep');
         Route::get('melihat/{id}', [PotensibahayaController::class, 'melihat'])->name('melihat');
     });

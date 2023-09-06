@@ -134,12 +134,72 @@
                                     @if (auth()->user()->hak_akses == 'Pimpinan')
                                         <td class="d-flex justify-content-center">
                                             <a id="update" class="btn btn-primary btn-sm" data-bs-toggle="modal"
-                                                data-bs-target="#editmodal" data-bs-p2k3="" data-bs-status="">Ubah Status
-                                                Investigasi
+                                                data-bs-target="#editmodal" data-bs-p2k3="{{ $data->p2k3_id }}" data-bs-status="{{ $data->status }}">Ubah Status
+                                                Laporan Potensi Bahaya
                                                 {{-- {{ $investigasi->p2k3 }} --}}
                                                 {{-- {{ $investigasi->status }} --}}
                                             </a>
                                         </td>
+                                        {{-- ------------ Modal ubah status ----------- --}}
+            <div class="modal fade" id="editmodal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+            aria-labelledby="staticBackdropLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <form action="{{ route('potensibahaya.edit', $data->id) }}"
+                    method="post" enctype="multipart/form-data">
+                    @csrf
+                    @method('PUT')
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title" id="staticBackdropLabel">Ubah Data
+                            Laporan Potensi Bahaya
+                        </h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"
+                            id="update"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div id="additionalForm">
+                            <div class="ps-3 pe-5 pb-5">
+                                <label class="col-form-label ps-2">P2K3</label>
+                                <div class=" w-100">
+                                    <select id="p2k3_id" name="p2k3_id" class="form-select fs-6 w-100"
+                                        data-control="select2" data-hide-search="true" data-placeholder="p2k3_id">
+                                        @foreach ($p2k3s as $p2k3)
+                                     <option value="{{ $p2k3->id }}">
+                                         {{ $p2k3->nama }}
+                                     </option>
+                                 @endforeach
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="additionalForm">
+                            <div class="ps-3 pe-5">
+                                <label class="col-form-label ps-2">Status
+                                    Investigasi
+                                </label>
+                                <div class=" w-100">
+                                    <select name="status" id="status" class="form-select fs-6 w-100"
+                                        data-control="select2" data-hide-search="true" data-placeholder="status">
+                                        <option value="2">Investigasi
+                                        </option>
+                                        <option value="3">Sukses
+                                        </option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer d-flex justify-content-center border-0 mt-5">
+                        <button type="submit"
+                            class="btn btn-success text-white d-flex justify-content-center align-items-center "
+                            data-bs-toggle="modal" data-bs-target="#warning"
+                            style="background: #29CC6A;height: 38px; margin : 10px 20px 30px 20px; font-size:14px; border-radius: 5px;">Simpan
+                            Data</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {{-- ------------ End Modal ubah status ----------- --}}
                                     @endif
                                     @if (auth()->user()->hak_akses == 'Admin' ||
                                             auth()->user()->hak_akses == 'P2K3' ||
@@ -172,7 +232,7 @@
                                                 <i
                                                     class="bi bi-trash text-dark d-flex justify-content-center align-items-center"></i>
                                             </button>
-                                        </td>
+                                        </td>                                                    
                                     @endif
                                 </tr>
 
@@ -212,62 +272,7 @@
                     </table>
                 </div>
             </div>
-            {{-- ------------ Modal ubah status ----------- --}}
-            <div class="modal fade" id="editmodal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
-                aria-labelledby="staticBackdropLabel" aria-hidden="true">
-                <div class="modal-dialog modal-dialog-centered">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h1 class="modal-title" id="staticBackdropLabel">Ubah Data
-                                Investigasi
-                            </h1>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"
-                                id="update"></button>
-                        </div>
-                        <div class="modal-body">
-                            <div id="additionalForm">
-                                <div class="ps-3 pe-5 pb-5">
-                                    <label class="col-form-label ps-2">P2K3</label>
-                                    <div class=" w-100">
-                                        <select id="p2k3_id" name="p2k3_id" class="form-select fs-6 w-100"
-                                            data-control="select2" data-hide-search="true" data-placeholder="p2k3_id">
-                                            {{-- @foreach ($p2k3s as $p2k3)
-                                         <option value="{{ $p2k3->id }}">
-                                             {{ $p2k3->nama }}
-                                         </option>
-                                     @endforeach --}}
-                                        </select>
-                                    </div>
-                                </div>
-                            </div>
-                            <div id="additionalForm">
-                                <div class="ps-3 pe-5">
-                                    <label class="col-form-label ps-2">Status
-                                        Investigasi
-                                    </label>
-                                    <div class=" w-100">
-                                        <select name="status" id="status" class="form-select fs-6 w-100"
-                                            data-control="select2" data-hide-search="true" data-placeholder="status">
-                                            <option value="2">Investigasi
-                                            </option>
-                                            <option value="3">Sukses
-                                            </option>
-                                        </select>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="modal-footer d-flex justify-content-center border-0 mt-5">
-                            <button type="submit"
-                                class="btn btn-success text-white d-flex justify-content-center align-items-center "
-                                data-bs-toggle="modal" data-bs-target="#warning"
-                                style="background: #29CC6A;height: 38px; margin : 10px 20px 30px 20px; font-size:14px; border-radius: 5px;">Simpan
-                                Data</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            {{-- ------------ End Modal ubah status ----------- --}}
+
             {{-- Modal Warning --}}
             <div class="modal fade" id="warning" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
                 aria-labelledby="staticBackdropLabel" aria-hidden="true">
@@ -314,6 +319,13 @@
 
 @section('customscript')
     <script>
+        $(document).on("click", "#update", function() {
+            var p2k3_id = $(this).attr('data-bs-p2k3_id');
+            var status = $(this).attr('data-bs-status');
+            $("#p2k3_id").val(p2k3_id).setAttribute('selected', 'selected');
+            $("#status").val(status).setAttribute('selected', 'selected');
+        });
+
         $(document).ready(function() {
             // Get the select filter element
             var selectFilter = $("#filter");
