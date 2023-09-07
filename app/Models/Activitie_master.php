@@ -26,4 +26,9 @@ class Activitie_master extends Model
         return Hazard::whereRaw("FIND_IN_SET($activity_id, aktifitas)")->count();
     }
 
+    public function hirarc()
+    {
+        return $this->hasMany(Hirarc::class);
+    }
+
 }

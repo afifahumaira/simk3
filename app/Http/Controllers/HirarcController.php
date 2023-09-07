@@ -82,31 +82,44 @@ class HirarcController extends Controller
 
     public function edit($id) {
         
-        $hirarc = Hirarc::where('id',$id)->first();
-        $controls = Control::all();
-        $activities = Activitie_master::findorFail($id);
-        $locations = Location::findorFail($id);
-        $departments = Departemen::findorFail($id);
-        $hazards = Hazard::findorFail($id);
-        $risks = Risk::findorFail($id);
+        $hirarc = Hirarc::with(['departemen', 'activitie', 'location', 'hazard', 'risk'])->first();
+        //$controls = Control::all();
+        $activitie = Activitie_master::all();
+        $locations = Location_masters::all();
+        $departments = Departemen::all();
+        $hazards = Hazard::all();
+        $risks = Risk::all();
 
         //$hrcs = Hirarc::findorFail($id);
 
         
-        return view('dashboard.hirarc.edit-hirarc')
-                ->with('hirarc', $hirarc)
-                ->with('location', $locations)
-                ->with('departments', $departments)
-                ->with('activitie', $activities)
-                ->with('hazard', $hazards)
-                ->with('risk', $risks)
+        return view('dashboard.hirarc.edit-hirarc', compact('hirarc', 'activitie', 'locations', 'departments', 'hazards', 'risks'));
+                // ->with('hirarc', $hirarc)
+                // ->with('location', $locations)
+                // ->with('departments', $departments)
+                // ->with('activitie', $activities)
+                // ->with('hazard', $hazards)
+                // ->with('risk', $risks)
                 //->with('hirarc', $hrcs)
-                ->with('control', $controls);
+                //->with('control', $controls);
     }
 
     public function lihat($id) {
-        $hirarc = Hirarc::with(['departemen', 'user', 'location'])->find($id);
-        return view('dashboard.hirarc.lihat-hirarc', compact('hirarc'));
+        $hirarcs = Hirarc::with(['departemen', 'activitie', 'location', 'hazard', 'risk'])->first();
+        // $departemen = Departemen::findorFail($id);
+        // $activities = Activitie_master::findorFail($id);
+        // $locations = Location_masters::findorFail($id);
+        // $hazards = Hazard::findorFail($id);
+        // $risks = Risk::findorFail($id);
+        
+        
+        return view('dashboard.hirarc.lihat-hirarc', compact('hirarcs'));
+        // ->with('hirarcs', $hirarcs)
+        // ->with('location', $locations)
+        // ->with('departemen', $departemen)
+        // ->with('activitie', $activities)
+        // ->with('hazard', $hazards)
+        // ->with('risk', $risks);
     }
 
     public function detail($id_hirarc){

@@ -71,7 +71,7 @@ Route::group(['middleware' => ['auth']], function() {
         Route::get('ubah/{id}', [LaporanInsidenController::class, 'ubah'])->name('ubah');
         Route::get('k3departemen', [LaporanInsidenController::class, 'k3dep'])->name('k3dep');
         Route::get('melihat/{id}', [LaporanInsidenController::class, 'melihat'])->name('melihat');
-        //Route::put('edit/{id}', [LaporanInsidenController::class, 'edit'])->name('edit');
+        Route::put('edit/{id}', [LaporanInsidenController::class, 'edit'])->name('edit');
         Route::post('insert', [LaporanInsidenController::class, 'insert'])->name('insert');
         Route::put('update/{id}', [LaporanInsidenController::class, 'update'])->name('update');
         Route::post('delete/{id}', [LaporanInsidenController::class, 'delete'])->name('delete');

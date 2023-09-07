@@ -10,4 +10,9 @@ class Risk extends Model
     use HasFactory;
     protected $guarded;
     public $timestamps = false;
+
+    public function hirarc()
+    {
+        return $this->hasMany(Hirarc::class);
+    }
 }

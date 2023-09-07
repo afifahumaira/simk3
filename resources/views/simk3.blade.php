@@ -77,7 +77,7 @@
                         </li>
 
                         <li><a class="nav-link scrollto" href="#dokumen">Dokumen</a></li>
-                        <li><a class="nav-link scrollto" href="#team">Team P2K3</a></li>
+                        {{-- <li><a class="nav-link scrollto" href="#team">Team P2K3</a></li> --}}
                         <li><a class="nav-link scrollto" href="#footer">Kontak</a></li>
                         <li>
                             <img src="Arsha/assets/img/Vector_13.png" alt="" class="Vector img-fluid ps-4" />
@@ -120,7 +120,7 @@
                         </li>
 
                         <li><a class="nav-link scrollto" href="#dokumen">Dokumen</a></li>
-                        <li><a class="nav-link scrollto" href="#team">Team P2K3</a></li>
+                        {{-- <li><a class="nav-link scrollto" href="#team">Team P2K3</a></li> --}}
                         <li><a class="nav-link scrollto" href="#footer">Kontak</a></li>
                         <li>
                             <img src="{{ asset('vendor/Arsha/assets/img/Vector_13.png') }} " alt=""
@@ -404,7 +404,7 @@
         </section><!-- End Why Us Section -->
 
         <!-- ======= Team Section ======= -->
-        <section id="team" class="team section-bg" style="background-color: #fefaf0;">
+        {{-- <section id="team" class="team section-bg" style="background-color: #fefaf0;">
             <div class="container" data-aos="fade-up">
 
                 <div class="section-title fs-5">
@@ -422,9 +422,9 @@
 
                             </div>
                             <div class="member-info">
-                                <h4>Sayid</h4>
+                                <h4>Elang</h4>
                                 <span>Ketua K3</span>
-                                <p>Sid@gmail.com</p>
+                                <p>elanggg@gmail.com</p>
                             </div>
                         </div>
                     </div>
@@ -437,16 +437,16 @@
                                     class="pic img-fluid animated mt-1" alt="">
                             </div>
                             <div class="member-info">
-                                <h4>Sayid</h4>
-                                <span>Ketua K3</span>
-                                <p>Sid@gmail.com</p>
+                                <h4>Dimas</h4>
+                                <span>P2K3</span>
+                                <p>dimasaldy999@gmail.com</p>
                             </div>
                         </div>
                     </div>
 
                 </div>
             </div>
-        </section><!-- End Team Section -->
+        </section><!-- End Team Section --> --}}
 
         <!-- ======= Footer ======= -->
         <footer id="footer" class="pt-5">

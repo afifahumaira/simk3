@@ -37,23 +37,24 @@ class Hirarc extends Model
         return $this->belongsTo(User::class, 'user_id', 'id');
     }
 
-    public function departemen() {
+    public function departemen() 
+    {
         return $this->belongsTo(Departemen::class, 'departemen_id', 'id');
     }
 
     public function activitie()
     {
-        return $this->belongsTo(Activitie_master::class, 'activitie_id', 'id', 'name');
+        return $this->belongsTo(Activitie_master::class);
     }
 
     public function hazard()
     {
-        return $this->belongsTo(Hazard::class, 'hazard_id', 'id', 'hazard');
+        return $this->belongsTo(Hazard::class);
     }
 
     public function risk()
     {
-        return $this->belongsTo(Risk::class, 'risk_id', 'id', 'hazard');
+        return $this->belongsTo(Risk::class);
     }
 
     
