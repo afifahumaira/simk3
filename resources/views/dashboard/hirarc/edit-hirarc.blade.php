@@ -185,10 +185,25 @@
                                 <th scope="col">Aktifitas</th>
                                 <th scope="col">Hazard</th>
                                 <th scope="col">Resiko</th>
-                                <th scope="col"style="width: 10%">Action</th>
+                                <th scope="col" class="col-1">Action</th>
                             </tr>
                         </thead>
                         <tbody>
+                            {{-- @foreach ($hirarc->hirarcdetails as $detail)
+                                <tr>
+                                    <td>{{ $detail->activity->name }}</td>
+                                    <td>{{ $detail->hazard->name }}</td>
+                                    <td>{{ $detail->risk->name }}</td>
+                                    <td>{{ $detail->prerating->hasilprecontrol ?? '' }}</td>
+                                    <td>{{ $detail->hirarc_detail_control->control_child->name ?? '' }}</td>
+                                    <td>{{ $detail->postrating->hasilpostcontrol ?? '' }}</td>
+                                    <td id="Edit" class="Edit "> <button href="" type="button"
+                                            class="btn px-0 my-3" data-bs-toggle="modal"
+                                            data-bs-target="#Editdata{{ $detail->id }}">Edit Data</button>
+                                    </td>
+                                </tr>
+                            @endforeach --}}
+
                             @foreach ($hirarc as $hir)
                                 <tr>
                                     <td>{{ $hirarc->activity }}</td>
@@ -200,8 +215,15 @@
                                                 class="bi bi-pencil-square text-dark d-flex justify-content-center align-items-center"></i></a>
                                     </td>
                                 </tr>
-
-                                {{-- <div class="modal fade" id="Editdata{{ $hirarc->id }}" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                            @endforeach
+                        </tbody>
+                    </table>
+                </div>
+                <!--end::Content container-->
+            </div>
+        </div>
+    </div>
+    {{-- <div class="modal fade" id="Editdata{{ $hirarc->id }}" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
                                     <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable ">
                                         <div class="modal-content border rounded-4 ">
                                             <div class="modal-header">
@@ -249,7 +271,7 @@
                                                     </div>
                                                 </div> --}}
 
-                                {{-- <div class="modal-footer d-flex justify-content-center border-0">
+    {{-- <div class="modal-footer d-flex justify-content-center border-0">
                                                     <div class=" d-flex justify-content-center">
                                                         <button type="submit" id="simpanAktifitas"
                                                             class="btn btn-success text-white d-flex justify-content-center align-items-center "
@@ -262,9 +284,9 @@
                                     </div>
                                 </div> --}}
 
-                                {{-- MOODAL POST, SOLUSI, PRE CONTROL --}}
-                                {{-- Pre Control --}}
-                                {{-- <div class="modal fade" id="EditPreControl{{ $detail->id }}" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    {{-- MOODAL POST, SOLUSI, PRE CONTROL --}}
+    {{-- Pre Control --}}
+    {{-- <div class="modal fade" id="EditPreControl{{ $detail->id }}" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
                                     <div class="modal-dialog">
                                         <div class="modal-content">
                                             <div class="modal-header">
@@ -357,7 +379,7 @@
                                     </div>
                                 </div>
                                 {{-- Solusi --}}
-                                {{-- <div class="modal fade" id="EditSolusi{{ $detail->id }}" data-bs-backdrop="static" data-bs-keyboard="false"
+    {{-- <div class="modal fade" id="EditSolusi{{ $detail->id }}" data-bs-backdrop="static" data-bs-keyboard="false"
                                     tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
                                     <div class="modal-dialog">
                                         <div class="modal-content">
@@ -405,8 +427,8 @@
                                         </div>
                                     </div>
                                 </div> --}}
-                                {{-- Post Control --}}
-                                {{-- <div class="modal fade" id="EditPostControl{{ $detail->id }}" data-bs-backdrop="static" data-bs-keyboard="false"
+    {{-- Post Control --}}
+    {{-- <div class="modal fade" id="EditPostControl{{ $detail->id }}" data-bs-backdrop="static" data-bs-keyboard="false"
                                     tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
                                     <div class="modal-dialog">
                                         <div class="modal-content">
@@ -500,15 +522,7 @@
                                     </div>
                                 </div>
                                 {{-- END MOODAL POST, SOLUSI, PRE CONTROL --}}
-                            @endforeach
-                        </tbody>
-                    </table>
-                </div>
-                <!--end::Content container-->
-            </div>
-        </div>
-    </div>
-@stop --}} --}}
+@stop
 
 @section('custom-css')
     <style>

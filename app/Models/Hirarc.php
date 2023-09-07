@@ -14,7 +14,7 @@ class Hirarc extends Model
 
     public function hirarcdetails()
     {
-        return $this->belongsToMany(Hirarcdetails::class);
+        return $this->hasMany(Hirarcdetails::class , 'hirarc_id', 'id');
     }
 
     public function prerating()

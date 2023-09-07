@@ -257,7 +257,9 @@
                     </div>
 
                     {{-- <div class="container "> --}}
-                    <table class="table table-bordered border-secondary px-3 py-3 mb-5 shadow mt-10">
+                    {{-- <div class="table-responsive"> --}}
+                    <table class="table table-bordered border-secondary px-3 py-3 mb-5 shadow mt-10"
+                        style="height:20px !important;">
                         <thead>
                             <tr>
                                 <th scope="col">Aktifitas</th>
@@ -266,7 +268,7 @@
                                 <th scope="col" class="col-2">Action</th>
                             </tr>
                         </thead>
-                        <tbody>
+                        <tbody class="">
                             @foreach ($hirarc as $hira)
                                 <tr>
                                     <td>{{ $hira->activity }}</td>
@@ -283,6 +285,7 @@
                             @endforeach
                         </tbody>
                     </table>
+                    {{-- </div> --}}
 
 
 
