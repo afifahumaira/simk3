@@ -15,5 +15,10 @@ class Location_masters extends Model
         return $this->belongsTo('App\Models\Location_masters');
     }
 
+    public function hirarc()
+    {
+        return $this->hasMany(Hirarc::class);
+    }
+
 
 }

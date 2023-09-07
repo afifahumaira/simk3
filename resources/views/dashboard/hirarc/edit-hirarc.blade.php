@@ -73,7 +73,41 @@
                                     </tbody>
                                 </table>
 
-                                {{-- <div
+                                <table id="tabelTambahData"
+                                    class="table table-bordered border-secondary px-3 py-3 mb-5 shadow"
+                                    style="margin-top: 40px; margin-bottom:10px;">
+                                    <thead px-3>
+                                        <tr>
+                                            <th scope="col">Aktifitas</th>
+                                            <th scope="col">Hazard</th>
+                                            <th scope="col">Resiko</th>
+                                            <th scope="col"style="width: 10%">Action</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        {{-- @foreach ($hirarc as $hir) --}}
+                                        <tr>
+                                            <td>{{ $hirarc->activity }}</td>
+                                            <td>{{ $hirarc->hazard }}</td>
+                                            <td>{{ $hirarc->risk }}</td>
+                                            <td>
+                                                <a href="{{ route('hirarc.editDetail', $hirarc->id) }}" type="button"
+                                                    class="btn  btn-sm bg-primary" style="width:20px;"><i
+                                                        class="bi bi-pencil-square text-dark d-flex justify-content-center align-items-center"></i></a>
+                                            </td>
+                                        </tr>
+
+                            </div>
+                        </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+
+    {{-- <div
                                     class="border  border-gray-300 d-flex justify-content-between align-items-center form-control py-2">
                                     <label class="form-label">Tambah Data</label>
                                     <a type="submit"
@@ -84,7 +118,7 @@
                                     </a>
                                 </div> --}}
 
-                                <div class="modal fade" id="modalTambah" data-bs-backdrop="static" data-bs-keyboard="false"
+    {{-- <div class="modal fade" id="modalTambah" data-bs-backdrop="static" data-bs-keyboard="false"
                                     tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
                                     <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable ">
                                         <div class="modal-content border rounded-4 ">
@@ -161,68 +195,16 @@
                                                             class="btn btn-success text-white d-flex justify-content-center align-items-center "
                                                             style="background: #29CC6A; height: 38px; margin : 10px 20px 30px 20px; font-size:14px; border-radius: 5px;"
                                                             data-bs-target="#simpandata">Simpan
-                                                            Data</button>
+                                                            Data</button> --}}
 
-                                                        {{-- <a href="{{ route('hirarc.editDetail') }}" type="submit"
+    {{-- <a href="{{ route('hirarc.editDetail') }}" type="submit"
                                                             class="btn btn-secondary text-white d-flex align-items-center justify-content-center"
                                                             data-bs-toggle="modal" data-bs-target="#resetform"
                                                             style="background: #868E96; margin : 10px 20px 30px 20px; width: 124.33px; height: 38px; font-size:14px; border-radius: 5px;">Reset</a> --}}
 
-                                                    </div>
-                                                </div>
-                                            </form>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
 
-                    <table id="tabelTambahData" class="table table-bordered border-secondary px-3 py-3 mb-5 shadow"
-                        style="margin-top: 40px; margin-bottom:10px;">
-                        <thead px-3>
-                            <tr>
-                                <th scope="col">Aktifitas</th>
-                                <th scope="col">Hazard</th>
-                                <th scope="col">Resiko</th>
-                                <th scope="col" class="col-1">Action</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            {{-- @foreach ($hirarc->hirarcdetails as $detail)
-                                <tr>
-                                    <td>{{ $detail->activity->name }}</td>
-                                    <td>{{ $detail->hazard->name }}</td>
-                                    <td>{{ $detail->risk->name }}</td>
-                                    <td>{{ $detail->prerating->hasilprecontrol ?? '' }}</td>
-                                    <td>{{ $detail->hirarc_detail_control->control_child->name ?? '' }}</td>
-                                    <td>{{ $detail->postrating->hasilpostcontrol ?? '' }}</td>
-                                    <td id="Edit" class="Edit "> <button href="" type="button"
-                                            class="btn px-0 my-3" data-bs-toggle="modal"
-                                            data-bs-target="#Editdata{{ $detail->id }}">Edit Data</button>
-                                    </td>
-                                </tr>
-                            @endforeach --}}
 
-                            @foreach ($hirarc as $hir)
-                                <tr>
-                                    <td>{{ $hirarc->activity }}</td>
-                                    <td>{{ $hirarc->hazard }}</td>
-                                    <td>{{ $hirarc->risk }}</td>
-                                    <td>
-                                        <a href="{{ route('hirarc.editDetail', $hirarc->id) }}" type="button"
-                                            class="btn  btn-sm bg-primary" style="width:20px;"><i
-                                                class="bi bi-pencil-square text-dark d-flex justify-content-center align-items-center"></i></a>
-                                    </td>
-                                </tr>
-                            @endforeach
-                        </tbody>
-                    </table>
-                </div>
-                <!--end::Content container-->
-            </div>
-        </div>
-    </div>
+
     {{-- <div class="modal fade" id="Editdata{{ $hirarc->id }}" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
                                     <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable ">
                                         <div class="modal-content border rounded-4 ">
@@ -522,6 +504,14 @@
                                     </div>
                                 </div>
                                 {{-- END MOODAL POST, SOLUSI, PRE CONTROL --}}
+    {{-- @endforeach --}}
+    </tbody>
+    </table>
+    </div>
+    <!--end::Content container-->
+    </div>
+    </div>
+    </div>
 @stop
 
 @section('custom-css')

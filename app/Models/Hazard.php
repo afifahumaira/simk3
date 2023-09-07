@@ -17,4 +17,9 @@ class Hazard extends Model
 
         return Risk::whereRaw("FIND_IN_SET($risk_id, name)")->count();
     }
+
+    public function hirarc()
+    {
+        return $this->hasMany(Hirarc::class);
+    }
 }
