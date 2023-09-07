@@ -81,7 +81,15 @@
             </div>
             <!--begin::Content container-->
             <div class="card-body">
-
+                {{-- @if ($errors->any())
+                    <div class="alert alert-danger">
+                        <ul>
+                            @foreach ($errors->all() as $error)
+                                <li>{{ $error }}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+                @endif --}}
                 <div class="table-responsive">
                     <table class="table table-rounded table-bordered">
                         <thead>
@@ -91,10 +99,10 @@
                                 <th scope="col">Tanggal lapor</th>
                                 <th scope="col">Nama Pelapor</th>
                                 <th scope="col">Lokasi Kejadian</th>
-                                <th scope="col" class="col-2">Departemen</th>
+                                <th scope="col" class="col-1">Departemen</th>
                                 <th scope="col" class="col-1">Status</th>
                                 @if (auth()->user()->hak_akses == 'Pimpinan')
-                                    <th scope="col">Ubah Status</th>
+                                    <th scope="col" class="col-2">Ubah Status</th>
                                 @endif
                                 @if (auth()->user()->hak_akses == 'Admin' ||
                                         auth()->user()->hak_akses == 'P2K3' ||
@@ -136,7 +144,7 @@
                                             <a id="update" class="btn btn-primary btn-sm" data-bs-toggle="modal"
                                                 data-bs-target="#editmodal" data-bs-p2k3="{{ $data->p2k3_id }}"
                                                 data-bs-status="{{ $data->status }}">Ubah Status
-                                                Laporan Potensi Bahaya
+                                                Laporan <br> Potensi Bahaya
                                                 {{-- {{ $investigasi->p2k3 }} --}}
                                                 {{-- {{ $investigasi->status }} --}}
                                             </a>
@@ -199,7 +207,7 @@
                                                             class="modal-footer d-flex justify-content-center border-0 mt-5">
                                                             <button type=""
                                                                 class="btn btn-success text-white d-flex justify-content-center align-items-center "
-                                                                data-bs-toggle="modal" data-bs-target="#warning"
+                                                                {{-- data-bs-toggle="modal" data-bs-target="#warning" --}}
                                                                 style="background: #29CC6A;height: 38px; margin : 10px 20px 30px 20px; font-size:14px; border-radius: 5px;">Simpan
                                                                 Data</button>
                                                         </div>

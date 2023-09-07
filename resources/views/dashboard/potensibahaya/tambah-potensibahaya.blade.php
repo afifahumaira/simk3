@@ -5,8 +5,10 @@
         <form action="{{ route('potensibahaya.tambah') }}" method="POST" enctype="multipart/form-data">
             @csrf
             <div class="page-title d-flex flex-column  gap-1 mx-5 my-5  ">
-                <div id="kt_app_content" class="app-content  rounded bg-light  mb-20 px-5 shadow"style="box-shadow: 2px 4px 20px 2px rgba(0, 0, 0, 0.1);">
-                    <div class="app-toolbar-wrapper d-flex flex-stack flex-wrap gap-4 w-100 mb-5 px-5 border-bottom border-5">
+                <div id="kt_app_content"
+                    class="app-content  rounded bg-light  mb-20 px-5 shadow"style="box-shadow: 2px 4px 20px 2px rgba(0, 0, 0, 0.1);">
+                    <div
+                        class="app-toolbar-wrapper d-flex flex-stack flex-wrap gap-4 w-100 mb-5 px-5 border-bottom border-5">
                         <!--begin::Page title-->
                         <h2>Tambah Data Potensi Bahaya</h2>
                         <a href="{{ route('potensibahaya.index') }}" type="button"
@@ -56,6 +58,15 @@
                                 </div>
                             </div>
                             <div class="card-body">
+                                @if ($errors->any())
+                                    <div class="alert alert-danger">
+                                        <ul>
+                                            @foreach ($errors->all() as $error)
+                                                <li>{{ $error }}</li>
+                                            @endforeach
+                                        </ul>
+                                    </div>
+                                @endif
                                 <div class="ps-3 pe-5">
                                     <label class="col-sm-2 col-form-label ">Kode Potensi Bahaya</label>
                                     <div class="col-sm-10 w-100">
@@ -78,7 +89,8 @@
                                 <div class="ps-3 pe-5">
                                     <label for="inputEmail3" class="col-sm-2 col-form-label">Email Pelapor</label>
                                     <div class="col-sm-10 w-100">
-                                        <input type="email" class="form-control" name="email_pelapor" value="{{ old('email_pelapor') }}">
+                                        <input type="email" class="form-control" name="email_pelapor"
+                                            value="{{ old('email_pelapor') }}">
 
                                     </div>
                                 </div>
@@ -86,7 +98,8 @@
                                 <div class="ps-3 pe-5">
                                     <label for="inputNomertelepon3" class="col-sm-2 col-form-label">NIP/NIM</label>
                                     <div class="col-sm-10 w-100">
-                                        <input type="number" class="form-control " name="nip_nim" value="{{ old('nip_nim') }}">
+                                        <input type="number" class="form-control " name="nip_nim"
+                                            value="{{ old('nip_nim') }}">
 
                                     </div>
                                 </div>
@@ -95,22 +108,24 @@
                                     <label for="inputNomertelepon3" class="col-sm-2 col-form-label">No. Telp
                                         Pelapor</label>
                                     <div class="col-sm-10 w-100">
-                                        <input type="number" class="form-control " name="nomer_telepon_pelapor" value="{{ old('nomer_telepon_pelapor') }}">
+                                        <input type="number" class="form-control " name="nomer_telepon_pelapor"
+                                            value="{{ old('nomer_telepon_pelapor') }}">
                                     </div>
                                 </div>
 
                                 <div class="ps-3 pe-5">
                                     <label class="col-sm-2 col-form-label">Foto Tanda Pengenal</label>
                                     <div class="col-sm-10 w-100">
-                                        <input type="file" class="form-control" name="tanda_pengenal" id="tanda_pengenal" accept="image/png, image/jpeg">
+                                        <input type="file" class="form-control" name="tanda_pengenal" id="tanda_pengenal"
+                                            accept="image/png, image/jpeg">
                                     </div>
                                 </div>
 
                                 <div class="ps-3 pe-5">
                                     <label class="col-sm-2 col-form-label">Tanggal Kejadian</label>
                                     <div class="col-sm-10 w-100">
-                                        <input type="date" id="date" class="form-control tanggalPicker" name="waktu_kejadian" 
-                                        placeholder="dd/mm/yyyy" max="<?php echo date('Y-m-d'); ?>">
+                                        <input type="date" id="date" class="form-control tanggalPicker"
+                                            name="waktu_kejadian" placeholder="dd/mm/yyyy" max="<?php echo date('Y-m-d'); ?>">
 
                                     </div>
                                 </div>
@@ -120,8 +135,7 @@
                                     <label class="col-sm-2 col-form-label">Kategori Pelapor</label>
                                     <div class="col-sm-10 w-100">
                                         <select class="form-select fs-6 w-100" data-kt-placement="bottom"
-                                            data-control="select2" data-hide-search="true"
-                                            data-placeholder="- Pilih -"
+                                            data-control="select2" data-hide-search="true" data-placeholder="- Pilih -"
                                             style="--bs-link-hover-color-rgb: 25, 135, 84;" id=""
                                             name="kategori_pelapor" style="font-family: 'Inter';">
                                             <option value="">- Pilih -</option>
@@ -149,7 +163,8 @@
                                 <div class="ps-3 pe-5">
                                     <label class="col-sm-2 col-form-label">Institusi yang Dikunjungi</label>
                                     <div class="col-sm-10 w-100">
-                                        <input type="text" class="form-control" name="institusi" value="Fakultas Teknik" readonly>
+                                        <input type="text" class="form-control" name="institusi"
+                                            value="Fakultas Teknik" readonly>
 
                                     </div>
                                 </div>
@@ -166,7 +181,8 @@
                                     <label class="col-form-label">Departemen</label>
                                     <div class=" w-100">
                                         <select name="departemen_id" class="form-select fs-6 w-100"
-                                            data-control="select2" data-hide-search="true" data-placeholder="departemen_id">
+                                            data-control="select2" data-hide-search="true"
+                                            data-placeholder="departemen_id">
                                             @foreach ($departemen as $dep)
                                                 <option value="{{ $dep->id }}">{{ $dep->name }}</option>
                                             @endforeach
@@ -255,7 +271,8 @@
                                 <div class="ps-3 pe-5">
                                     <label class="col-sm-2 col-form-label">Foto Kejadian</label>
                                     <div class="col-sm-10 w-100">
-                                        <input type="file" class="form-control" name="gambar" id="gambar" accept="image/png, image/jpeg">
+                                        <input type="file" class="form-control" name="gambar" id="gambar"
+                                            accept="image/png, image/jpeg">
 
                                     </div>
                                 </div>
@@ -275,7 +292,8 @@
                         <div class=" d-flex justify-content-center">
                             <button type="submit"
                                 class="btn btn-success text-white d-flex justify-content-center align-items-center "
-                                style="background: #29CC6A; height: 38px; margin : 10px 20px 30px 20px; font-size:14px; border-radius: 5px;">Simpan Data</button>
+                                style="background: #29CC6A; height: 38px; margin : 10px 20px 30px 20px; font-size:14px; border-radius: 5px;">Simpan
+                                Data</button>
                             <a href="{{ route('potensibahaya.tambah') }}" type="submit"
                                 class="btn btn-secondary text-white d-flex align-items-center justify-content-center"
                                 data-bs-toggle="modal" data-bs-target="#resetform"
@@ -329,20 +347,20 @@
         //     });
         // });
 
-        $(function(){
-        var dtToday = new Date();
+        $(function() {
+            var dtToday = new Date();
 
-        var month = dtToday.getMonth() + 1;
-        var day = dtToday.getDate();
-        var year = dtToday.getFullYear();
+            var month = dtToday.getMonth() + 1;
+            var day = dtToday.getDate();
+            var year = dtToday.getFullYear();
 
-        if(month < 10)
-        month = '0' + month.toString();
-        if(day < 10)
-        day = '0' + day.toString();
+            if (month < 10)
+                month = '0' + month.toString();
+            if (day < 10)
+                day = '0' + day.toString();
 
-        var maxDate = year + '-' + month + '-' + day;    
-        $('#txtDate').attr('max', maxDate);
-    });
+            var maxDate = year + '-' + month + '-' + day;
+            $('#txtDate').attr('max', maxDate);
+        });
     </script>
 @stop

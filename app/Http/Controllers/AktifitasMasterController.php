@@ -46,7 +46,7 @@ class AktifitasMasterController extends Controller
             'name' => $request->name,
         ]);
 
-        Alert::success('Berhasil', 'Data Aktifitas berhasil disimpan!')->iconHtml('<i class="bi bi-person-check"></i>')->hideCloseButton();
+        Alert::success('Berhasil', 'Data Aktifitas berhasil disimpan!')->iconHtml('<i class="bi bi-person-check fs-3x"></i>')->hideCloseButton();
         return redirect()->route('aktifitasmaster.index');
     }
 
@@ -60,7 +60,7 @@ class AktifitasMasterController extends Controller
             'name' => $request->name,
         ]);
 
-        Alert::success('Berhasil', 'Data Aktifitas berhasil diperbaharui!')->iconHtml('<i class="bi bi-person-check"></i>')->hideCloseButton();
+        Alert::success('Berhasil', 'Data Aktifitas berhasil diperbaharui!')->iconHtml('<i class="bi bi-person-check fs-3x"></i>')->hideCloseButton();
         return redirect()->route('aktifitasmaster.index');
         
     }
@@ -69,7 +69,7 @@ class AktifitasMasterController extends Controller
         $activities = Activitie_master::find($id);
         $activities->delete();
 
-        Alert::success('Berhasil', 'Data Aktifitas berhasil dihapus!')->iconHtml('<i class="bi bi-person-check"></i>')->hideCloseButton();
+        Alert::success('Berhasil', 'Data Aktifitas berhasil dihapus!')->iconHtml('<i class="bi bi-person-check fs-3x"></i>')->hideCloseButton();
         return redirect()->route('aktifitasmaster.index', $id);
     }
 

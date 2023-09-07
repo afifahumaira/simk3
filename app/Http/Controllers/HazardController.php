@@ -46,7 +46,7 @@ class HazardController extends Controller
             'name' => $request->name,
         ]);
 
-        Alert::success('Berhasil', 'Data Hazard berhasil disimpan!')->iconHtml('<i class="bi bi-person-check"></i>')->hideCloseButton();
+        Alert::success('Berhasil', 'Data Hazard berhasil disimpan!')->iconHtml('<i class="bi bi-person-check fs-3x"></i>')->hideCloseButton();
         return redirect()->route('hazard.index');
     }
 
@@ -61,7 +61,7 @@ class HazardController extends Controller
             'name' => $request->name,
         ]);
 
-        Alert::success('Berhasil', 'Data Hazard berhasil diperbaharui!')->iconHtml('<i class="bi bi-person-check"></i>')->hideCloseButton();
+        Alert::success('Berhasil', 'Data Hazard berhasil diperbaharui!')->iconHtml('<i class="bi bi-person-check fs-3x"></i>')->hideCloseButton();
         return redirect()->route('hazard.index');
     }
 
@@ -69,7 +69,7 @@ class HazardController extends Controller
         $hazards = Hazard::find($id);
         $hazards->delete();
 
-        Alert::success('Berhasil', 'Data Hazard berhasil dihapus!')->iconHtml('<i class="bi bi-person-check"></i>')->hideCloseButton();
+        Alert::success('Berhasil', 'Data Hazard berhasil dihapus!')->iconHtml('<i class="bi bi-person-check fs-3x"></i>')->hideCloseButton();
         return redirect()->route('hazard.index', $id);
     }
 

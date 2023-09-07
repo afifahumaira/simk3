@@ -80,7 +80,7 @@ class P3kController extends Controller
             // dd($data);
             $success = Inventory::create($data);
             if($success) {
-                Alert::success('Berhasil', 'Data berhasil disimpan!')->iconHtml('<i class="bi-person-check"></i>')->hideCloseButton();
+                Alert::success('Berhasil', 'Data berhasil disimpan!')->iconHtml('<i class="bi-person-check fs-3x"></i>')->hideCloseButton();
         return redirect()->route('p3k.tambah');
             }
         }
@@ -106,7 +106,7 @@ class P3kController extends Controller
             $berkas->move($tujuan_upload,$nama_berkas);
             $data['gambar'] = $nama_berkas;
             Inventory::where('id', $id)->whereNull('deleted_at')->update($data);
-            Alert::success('Berhasil', 'Data berhasil disimpan!')->iconHtml('<i class="bi-person-check"></i>')->hideCloseButton();
+            Alert::success('Berhasil', 'Data berhasil disimpan!')->iconHtml('<i class="bi-person-check fs-3x"></i>')->hideCloseButton();
             return redirect()->route('p3k.index');
         } else {
             $data = $request->validate([
@@ -119,14 +119,14 @@ class P3kController extends Controller
             ]);
             $data['berat'] = 0;
             Inventory::where('id', $id)->whereNull('deleted_at')->update($data);
-            Alert::success('Berhasil', 'Data Berhasil Diperbarui!')->iconHtml('<i class="bi-person-check"></i>')->hideCloseButton();
+            Alert::success('Berhasil', 'Data Berhasil Diperbarui!')->iconHtml('<i class="bi-person-check fs-3x"></i>')->hideCloseButton();
             return redirect()->route('p3k.index');
         }
     }
 
     public function delete($id){
         Inventory::where('id', $id)->delete();
-        Alert::success('Berhasil', 'Data berhasil Dihapus!')->iconHtml('<i class="bi-person-check"></i>')->hideCloseButton();
+        Alert::success('Berhasil', 'Data berhasil Dihapus!')->iconHtml('<i class="bi-person-check fs-3x"></i>')->hideCloseButton();
         return redirect()->route('p3k.index');
 
     }

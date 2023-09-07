@@ -55,7 +55,7 @@ class UserController extends Controller
                 ]);
                
             }
-            Alert::success('Berhasil', 'Data Berhasil Diperbarui!')->iconHtml('<i class="bi-person-check"></i>')->hideCloseButton();
+            Alert::success('Berhasil', 'Data Berhasil Diperbarui!')->iconHtml('<i class="bi-person-check fs-3x"></i>')->hideCloseButton();
             return redirect()->route('user.index');
         
     }

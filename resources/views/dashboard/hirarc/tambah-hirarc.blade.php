@@ -50,8 +50,16 @@
                                 </div>
                             </div>
                             <div class="card-body">
-
-                                @include('layouts.alerts')
+                                @if ($errors->any())
+                                    <div class="alert alert-danger">
+                                        <ul>
+                                            @foreach ($errors->all() as $error)
+                                                <li>{{ $error }}</li>
+                                            @endforeach
+                                        </ul>
+                                    </div>
+                                @endif
+                                {{-- @include('layouts.alerts') --}}
 
                                 <form action="{{ route('hirarc.simpan') }}" method="POST">
                                     @csrf
@@ -72,7 +80,7 @@
                                     <div class="mb-3">
                                         <label for="location_id" class="form-label">Pilih Lokasi:</label>
                                         <select id="location_id" name="location_id" class="form-select"
-                                            data-control="select2" data-hide-search="true">
+                                            data-control="select2">
                                             <option value="">Pilih Departemen terlebih dahulu</option>
                                             @foreach ($location as $loc)
                                                 <option value="{{ $loc->id }}">{{ $loc->name }}</option>
@@ -92,8 +100,7 @@
                                     </div>
 
                                     <div class="modal fade" id="modalTambah" data-bs-backdrop="static"
-                                        data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel"
-                                        aria-hidden="true">
+                                        data-bs-keyboard="false" aria-labelledby="staticBackdropLabel" aria-hidden="true">
                                         <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable ">
                                             <div class="modal-content border rounded-4 ">
                                                 <div class="modal-header">
@@ -108,7 +115,7 @@
                                                             <label for="activitie_id" class="form-label">Pilih
                                                                 Aktifitas:</label>
                                                             <select id="activitie_id" name="activitie" class="form-select"
-                                                                data-control="select2" data-hide-search="true">
+                                                                data-control="select2" data-dropdown-parent="#modalTambah">
                                                                 <option value="">Pilih Lokasi terlebih dahulu
                                                                 </option>
                                                                 @foreach ($activitie as $act)
@@ -119,44 +126,45 @@
                                                         </div>
                                                     </div>
 
-                                                    <div class="modal-body mt-5 ">
-                                                        <div id="additionalForm">
-                                                            <div class="mb-3">
-                                                                <label for="activitie_id" class="form-label">Pilih
-                                                                    Hazard:</label>
-                                                                <select id="hazard_id" name="hazard" class="form-select"
-                                                                    data-control="select2" data-hide-search="true">
-                                                                    <option value="">Pilih Aktifitas terlebih dahulu
+
+                                                    <div id="additionalForm">
+                                                        <div class="mb-3">
+                                                            <label for="activitie_id" class="form-label">Pilih
+                                                                Hazard:</label>
+                                                            <select id="hazard_id" name="hazard" class="form-select"
+                                                                data-control="select2"
+                                                                data-dropdown-parent="#modalTambah">
+                                                                <option value="">Pilih Aktifitas terlebih dahulu
+                                                                </option>
+                                                                @foreach ($hazard as $hazard)
+                                                                    <option value="{{ $hazard->name }}">
+                                                                        {{ $hazard->name }}
                                                                     </option>
-                                                                    @foreach ($hazard as $hazard)
-                                                                        <option value="{{ $hazard->name }}">
-                                                                            {{ $hazard->name }}
-                                                                        </option>
-                                                                    @endforeach
-                                                                </select>
-                                                            </div>
+                                                                @endforeach
+                                                            </select>
                                                         </div>
+                                                    </div>
 
-                                                        <div class="modal-body mt-5 ">
-                                                            <div id="additionalForm">
-                                                                <div class="mb-3">
-                                                                    <label for="activitie_id" class="form-label">Pilih
-                                                                        Risiko:</label>
-                                                                    <select id="risk_id" name="risk"
-                                                                        class="form-select" data-control="select2"
-                                                                        data-hide-search="true">
-                                                                        <option value="">Pilih Hazard terlebih dahulu
-                                                                        </option>
-                                                                        @foreach ($risk as $risk)
-                                                                            <option value="{{ $risk->name }}">
-                                                                                {{ $risk->name }}
-                                                                            </option>
-                                                                        @endforeach
-                                                                    </select>
-                                                                </div>
-                                                            </div>
 
-                                                            {{-- <div class=" mt-5 d-flex justify-content-between" id="tambahResiko"
+                                                    <div id="additionalForm">
+                                                        <div class="mb-3">
+                                                            <label for="activitie_id" class="form-label">Pilih
+                                                                Risiko:</label>
+                                                            <select id="risk_id" name="risk" class="form-select"
+                                                                data-control="select2"
+                                                                data-dropdown-parent="#modalTambah">
+                                                                <option value="">Pilih Hazard terlebih dahulu
+                                                                </option>
+                                                                @foreach ($risk as $risk)
+                                                                    <option value="{{ $risk->name }}">
+                                                                        {{ $risk->name }}
+                                                                    </option>
+                                                                @endforeach
+                                                            </select>
+                                                        </div>
+                                                    </div>
+
+                                                    {{-- <div class=" mt-5 d-flex justify-content-between" id="tambahResiko"
                                                         style="font-family: Roboto">
                                                         <p class=" mb-0" style="color:rgba(22, 36, 61, 0.4);">
                                                             Masukkan data dengan lengkap</p>
@@ -166,7 +174,7 @@
                                                             Data </a>
                                                     </div> --}}
 
-                                                            {{-- <div class="mb-3">
+                                                    {{-- <div class="mb-3">
                                                         <label for="hazard_id_1" class="form-label">Hazard 1</label>
                                                         <select id="hazard_id_1" name="hazard[]"
                                                             class="form-select selectHazard" data-id="1"
@@ -195,62 +203,61 @@
                                                             @endforeach
                                                         </select>
                                                     </div> --}}
-                                                            <div id="komponenBaru">
-                                                                <!-- Komponen akan ditambahkan di sini -->
-                                                            </div>
-                                                        </div>
+                                                    <div id="komponenBaru">
+                                                        <!-- Komponen akan ditambahkan di sini -->
+                                                    </div>
+                                                </div>
 
-                                                        <div class="modal-footer d-flex justify-content-center border-0">
-                                                            <div class=" d-flex justify-content-center">
-                                                                <button type="submit" id="simpanAktifitas"
-                                                                    class="btn btn-success text-white d-flex justify-content-center align-items-center "
-                                                                    style="background: #29CC6A; height: 38px; margin : 10px 20px 30px 20px; font-size:14px; border-radius: 5px;"
-                                                                    data-bs-toggle="modal"
-                                                                    data-bs-target="#simpandata">Simpan
-                                                                    Data</button>
+                                                <div class="modal-footer d-flex justify-content-center border-0">
+                                                    <div class=" d-flex justify-content-center">
+                                                        <button type="submit" id="simpanAktifitas"
+                                                            class="btn btn-success text-white d-flex justify-content-center align-items-center "
+                                                            style="background: #29CC6A; height: 38px; margin : 10px 20px 30px 20px; font-size:14px; border-radius: 5px;"
+                                                            data-bs-toggle="modal" data-bs-target="#simpandata">Simpan
+                                                            Data</button>
 
-                                                                <a href="{{ route('hirarc.tambah') }}" type="submit"
-                                                                    class="btn btn-secondary text-white d-flex align-items-center justify-content-center"
-                                                                    data-bs-toggle="modal" data-bs-target="#resetform"
-                                                                    style="background: #868E96; margin : 10px 20px 30px 20px; width: 124.33px; height: 38px; font-size:14px; border-radius: 5px;">Reset</a>
+                                                        <a href="{{ route('hirarc.tambah') }}" type="submit"
+                                                            class="btn btn-secondary text-white d-flex align-items-center justify-content-center"
+                                                            data-bs-toggle="modal" data-bs-target="#resetform"
+                                                            style="background: #868E96; margin : 10px 20px 30px 20px; width: 124.33px; height: 38px; font-size:14px; border-radius: 5px;">Reset</a>
 
-                                                            </div>
-                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
+                                        </div>
+                                    </div>
 
-                                            <div class="modal fade" id="resetform" data-bs-backdrop="static"
-                                                data-bs-keyboard="false" tabindex="-1"
-                                                aria-labelledby="staticBackdropLabel" aria-hidden="true">
-                                                <div class="modal-dialog modal-dialog-centered ">
-                                                    <div class="modal-content">
+                                    <div class="modal fade" id="resetform" data-bs-backdrop="static"
+                                        data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel"
+                                        aria-hidden="true">
+                                        <div class="modal-dialog modal-dialog-centered ">
+                                            <div class="modal-content">
 
-                                                        <div
-                                                            class="modal-body mt-5 d-flex justify-content-center align-items-center">
-                                                            <h2 class="mt-5 text-center"
-                                                                style="color: #16243D; font-size: 20px font-weight:700">
-                                                                keluar dari tambah
-                                                                data?
-                                                                <p class="mb-0 mt-2 text-center "
-                                                                    style="color: #DC3545; font-weight:400; font-size:14px">
-                                                                    data yang
-                                                                    dimasukkan belum tersimpan </p>
-                                                            </h2>
-                                                        </div>
-                                                        <div class="modal-footer d-flex justify-content-center border-0">
-                                                            <a href="{{ route('hirarc.tambah') }}" type="button"
-                                                                class="btn btn-success text-white d-flex justify-content-center align-items-center text-center rounded-1"
-                                                                style="width:76px; height:31px; background: #29CC6A;">Ya</a>
-                                                            <button type="button"
-                                                                class="btn btn-secondary text-center d-flex align-items-center rounded-1"
-                                                                data-bs-dismiss="modal"
-                                                                style="width:76px; height:31px; ">Tidak</button>
+                                                <div
+                                                    class="modal-body mt-5 d-flex justify-content-center align-items-center">
+                                                    <h2 class="mt-5 text-center"
+                                                        style="color: #16243D; font-size: 20px font-weight:700">
+                                                        keluar dari tambah
+                                                        data?
+                                                        <p class="mb-0 mt-2 text-center "
+                                                            style="color: #DC3545; font-weight:400; font-size:14px">
+                                                            data yang
+                                                            dimasukkan belum tersimpan </p>
+                                                    </h2>
+                                                </div>
+                                                <div class="modal-footer d-flex justify-content-center border-0">
+                                                    <a href="{{ route('hirarc.tambah') }}" type="button"
+                                                        class="btn btn-success text-white d-flex justify-content-center align-items-center text-center rounded-1"
+                                                        style="width:76px; height:31px; background: #29CC6A;">Ya</a>
+                                                    <button type="button"
+                                                        class="btn btn-secondary text-center d-flex align-items-center rounded-1"
+                                                        data-bs-dismiss="modal"
+                                                        style="width:76px; height:31px; ">Tidak</button>
 
-                                                        </div>
-                                                    </div>
                                                 </div>
                                             </div>
+                                        </div>
+                                    </div>
                                 </form>
                             </div>
                         </div>
@@ -646,7 +653,9 @@
         @section('customscript')
             <script>
                 let hazards = [];
+
                 $(document).ready(function() {
+
                     $('#simpanAktifitas').on('click', function() {
                         // $('#tabelp3k').slideDown (500);
                         if ($('#tabelTambahData').is(":hidden")) {

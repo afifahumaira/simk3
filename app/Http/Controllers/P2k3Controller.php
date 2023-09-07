@@ -57,7 +57,7 @@ class P2k3Controller extends Controller
                 $data2['user_id'] = $success->id;
                 $berhasil = P2k3::create($data2);
                 if($berhasil) {
-                    Alert::success('Berhasil', 'Data berhasil disimpan!')->iconHtml('<i class="bi-person-check"></i>')->hideCloseButton();
+                    Alert::success('Berhasil', 'Data berhasil disimpan!')->iconHtml('<i class="bi-person-check fs-3x"></i>')->hideCloseButton();
                     return redirect()->route('p2k3.index');
                 }
             }
@@ -94,7 +94,7 @@ class P2k3Controller extends Controller
                 $input2['name'] = $request->nama;
                 $user_id = $db->user_id;
                 User::where('id', $user_id)->whereNull('deleted_at')->update($input2);
-                Alert::success('Berhasil', 'Data berhasil disimpan!')->iconHtml('<i class="bi-person-check"></i>')->hideCloseButton();
+                Alert::success('Berhasil', 'Data berhasil disimpan!')->iconHtml('<i class="bi-person-check fs-3x"></i>')->hideCloseButton();
                 return redirect()->route('p2k3.index');
             }
 
@@ -111,7 +111,7 @@ class P2k3Controller extends Controller
             $input2['email']= $request->email;
             $input2['name'] = $request->nama;
             User::where('id', $user_id)->whereNull('deleted_at')->update($input2);
-            Alert::success('Berhasil', 'Data Berhasil Diperbarui!')->iconHtml('<i class="bi-person-check"></i>')->hideCloseButton();
+            Alert::success('Berhasil', 'Data Berhasil Diperbarui!')->iconHtml('<i class="bi-person-check fs-3x"></i>')->hideCloseButton();
             return redirect()->route('p2k3.index');
         }
     }

@@ -120,7 +120,7 @@ class InvestigasiController extends Controller
             'tindakan' => $request->tindakan,
         ]);
 
-        Alert::success('Berhasil', 'Data Investigasi berhasil disimpan!')->iconHtml('<i class="bi bi-person-check"></i>')->hideCloseButton();
+        Alert::success('Berhasil', 'Data Investigasi berhasil disimpan!')->iconHtml('<i class="bi bi-person-check fs-3x"></i>')->hideCloseButton();
         return redirect()->route('daftarinvestigasi.index');
     }
 
@@ -153,11 +153,11 @@ class InvestigasiController extends Controller
             $data = Investigasi::find($id);
             $data->delete();
             
-            Alert::success('Berhasil', 'Investigasi selesai')->iconHtml('<i class="bi bi-person-check"></i>')->hideCloseButton();
+            Alert::success('Berhasil', 'Investigasi selesai')->iconHtml('<i class="bi bi-person-check fs-3x"></i>')->hideCloseButton();
             return redirect()->route('daftarinvestigasi.index');
         }
 
-        Alert::success('Berhasil', 'Data Investigasi berhasil diperbaharui!')->iconHtml('<i class="bi bi-person-check"></i>')->hideCloseButton();
+        Alert::success('Berhasil', 'Data Investigasi berhasil diperbaharui!')->iconHtml('<i class="bi bi-person-check fs-3x"></i>')->hideCloseButton();
         return redirect()->route('daftarinvestigasi.index');
     }
 
@@ -176,11 +176,11 @@ class InvestigasiController extends Controller
             $data = Investigasi::find($id);
             $data->delete();
             
-            Alert::success('Berhasil', 'Investigasi selesai')->iconHtml('<i class="bi bi-person-check"></i>')->hideCloseButton();
+            Alert::success('Berhasil', 'Investigasi selesai')->iconHtml('<i class="bi bi-person-check fs-3x"></i>')->hideCloseButton();
             return redirect()->route('daftarinvestigasi.index');
         }
 
-        Alert::success('Berhasil', 'Data Investigasi berhasil diperbaharui!')->iconHtml('<i class="bi bi-person-check"></i>')->hideCloseButton();
+        Alert::success('Berhasil', 'Data Investigasi berhasil diperbaharui!')->iconHtml('<i class="bi bi-person-check fs-3x"></i>')->hideCloseButton();
         return redirect()->route('daftarinvestigasi.index');
     }
 
@@ -188,7 +188,7 @@ class InvestigasiController extends Controller
         $inv = Investigasi::find($id);
         $inv->delete();
 
-        Alert::success('Berhasil', 'Data Investigasi berhasil dihapus!')->iconHtml('<i class="bi bi-person-check"></i>')->hideCloseButton();
+        Alert::success('Berhasil', 'Data Investigasi berhasil dihapus!')->iconHtml('<i class="bi bi-person-check fs-3x"></i>')->hideCloseButton();
         return redirect()->route('daftarinvestigasi.index');
     }
 

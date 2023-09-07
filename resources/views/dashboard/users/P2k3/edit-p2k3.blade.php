@@ -53,6 +53,15 @@
                                 </div>
                             </div>
                             <div class="card-body">
+                                @if ($errors->any())
+                                    <div class="alert alert-danger">
+                                        <ul>
+                                            @foreach ($errors->all() as $error)
+                                                <li>{{ $error }}</li>
+                                            @endforeach
+                                        </ul>
+                                    </div>
+                                @endif
                                 <form class="lh-lg" action="{{ route('p2k3.update', $data->id) }}"
                                     enctype="multipart/form-data" method="post">
                                     @csrf

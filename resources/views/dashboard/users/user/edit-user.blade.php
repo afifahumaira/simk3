@@ -52,6 +52,15 @@
                                 </div>
                             </div>
                             <div class="card-body">
+                                @if ($errors->any())
+                                    <div class="alert alert-danger">
+                                        <ul>
+                                            @foreach ($errors->all() as $error)
+                                                <li>{{ $error }}</li>
+                                            @endforeach
+                                        </ul>
+                                    </div>
+                                @endif
                                 <form class="lh-lg" action="{{ route('user.update', $data->id) }}"
                                     enctype="multipart/form-data" method="post">
                                     @csrf
@@ -77,8 +86,8 @@
                                         <label class="col-form-label ">Username</label>
                                         <div class=" w-100">
                                             <div class="form-group label-floating is-empty is-focused">
-                                                <input class="form-control bg-secondary" name="name"
-                                                    id="name" value="{{ $data->name }}" readonly>
+                                                <input class="form-control bg-secondary" name="name" id="name"
+                                                    value="{{ $data->name }}" readonly>
                                             </div>
                                         </div>
                                     </div>
@@ -103,8 +112,8 @@
                                                 <option value="">- Pilih -</option>
                                                 <option value="Admin" {{ $data->hak_akses == '1' ? 'selected' : '' }}>
                                                     Admin </option>
-                                                <option value="Pimpinan"
-                                                    {{ $data->hak_akses == '2' ? 'selected' : '' }}>Pimpinan
+                                                <option value="Pimpinan" {{ $data->hak_akses == '2' ? 'selected' : '' }}>
+                                                    Pimpinan
                                                 </option>
                                                 <option value="K3 Departemen"
                                                     {{ $data->hak_akses == '3 ' ? 'selected' : '' }}>K3

@@ -135,7 +135,7 @@ class PotensibahayaController extends Controller
             'gambar' => $gambarName
         ]);
 
-        Alert::success('Berhasil', 'Data Potensi Bahaya berhasil disimpan!')->iconHtml('<i class="bi bi-person-check"></i>')->hideCloseButton();
+        Alert::success('Berhasil', 'Data Potensi Bahaya berhasil disimpan!')->iconHtml('<i class="bi bi-person-check fs-3x"></i>')->hideCloseButton();
         return redirect()->route('potensibahaya.index');
     }
 
@@ -166,7 +166,7 @@ class PotensibahayaController extends Controller
     public function delete($id){
         $data = Potensibahaya::find($id)->delete();
 
-        Alert::success('Berhasil', 'Data Potensi Bahaya berhasil dihapus!')->iconHtml('<i class="bi bi-person-check"></i>')->hideCloseButton();
+        Alert::success('Berhasil', 'Data Potensi Bahaya berhasil dihapus!')->iconHtml('<i class="bi bi-person-check fs-3x"></i>')->hideCloseButton();
         return redirect()->route('potensibahaya.index');
     }
 
@@ -252,17 +252,17 @@ class PotensibahayaController extends Controller
                 'risiko' => $request->resiko_bahaya,
                 'usulan' => $request->usulan_perbaikan,
             ]);
-            Alert::success('Berhasil', 'Data Akan di Investigasi!')->iconHtml('<i class="bi bi-person-check"></i>')->hideCloseButton();
+            Alert::success('Berhasil', 'Data Akan di Investigasi!')->iconHtml('<i class="bi bi-person-check fs-3x"></i>')->hideCloseButton();
             return redirect()->route('potensibahaya.index');
         }
         elseif ($request->status == 3) {
             $data = PotensiBahaya::find($id);
             $data->delete();
 
-        Alert::success('Berhasil', 'Data Telah Ditangani')->iconHtml('<i class="bi bi-person-check"></i>')->hideCloseButton();
+        Alert::success('Berhasil', 'Data Telah Ditangani')->iconHtml('<i class="bi bi-person-check fs-3x"></i>')->hideCloseButton();
         return redirect()->route('potensibahaya.index');
         }
-        Alert::success('Berhasil', 'Data Potensi Bahaya berhasil diperbaharui!')->iconHtml('<i class="bi bi-person-check"></i>')->hideCloseButton();
+        Alert::success('Berhasil', 'Data Potensi Bahaya berhasil diperbaharui!')->iconHtml('<i class="bi bi-person-check fs-3x"></i>')->hideCloseButton();
         return redirect()->route('potensibahaya.index');
     }
 
@@ -328,7 +328,7 @@ class PotensibahayaController extends Controller
             'gambar' => $gambarName
         ]);
 
-        Alert::success('Berhasil', 'Data Potensi Bahaya berhasil disimpan!')->iconHtml('<i class="bi bi-person-check"></i>')->hideCloseButton();
+        Alert::success('Berhasil', 'Data Potensi Bahaya berhasil disimpan!')->iconHtml('<i class="bi bi-person-check fs-3x"></i>')->hideCloseButton();
         return redirect()->route('simk3.index');
     }
 

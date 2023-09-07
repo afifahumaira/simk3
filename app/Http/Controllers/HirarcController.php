@@ -105,7 +105,7 @@ class HirarcController extends Controller
     }
 
     public function lihat($id) {
-        $hirarcs = Hirarc::with(['departemen', 'activitie', 'location', 'hazard', 'risk'])->first();
+        $hirarcs = Hirarc::with(['departemen', 'activitie', 'location', 'hazard', 'risk'])->find($id);
         // $departemen = Departemen::findorFail($id);
         // $activities = Activitie_master::findorFail($id);
         // $locations = Location_masters::findorFail($id);
@@ -165,7 +165,7 @@ class HirarcController extends Controller
     //        ]);
     //    }
 
-        Alert::success('Berhasil', 'Data Hirarc berhasil disimpan!')->iconHtml('<i class="bi bi-person-check"></i>')->hideCloseButton();
+        Alert::success('Berhasil', 'Data Hirarc berhasil disimpan!')->iconHtml('<i class="bi bi-person-check fs-3x"></i>')->hideCloseButton();
         return redirect()->route('hirarc.tambah', $hirarc->id);
         }
 
@@ -216,7 +216,7 @@ class HirarcController extends Controller
                 
             ]);
 
-            Alert::success('Berhasil', 'Data Hirarc berhasil disimpan!')->iconHtml('<i class="bi bi-person-check"></i>')->hideCloseButton();
+            Alert::success('Berhasil', 'Data Hirarc berhasil disimpan!')->iconHtml('<i class="bi bi-person-check fs-3x"></i>')->hideCloseButton();
         return redirect()->route('hirarc.tambah')
         ->with('id', $id);
         }
@@ -242,7 +242,7 @@ class HirarcController extends Controller
                 
                 
                     
-            Alert::success('Berhasil', 'Data Hirarc berhasil ditambahkan!')->iconHtml('<i class="bi bi-person-check"></i>')->hideCloseButton();
+            Alert::success('Berhasil', 'Data Hirarc berhasil ditambahkan!')->iconHtml('<i class="bi bi-person-check fs-3x"></i>')->hideCloseButton();
             
         }
     
@@ -300,7 +300,7 @@ class HirarcController extends Controller
             ]);
             // dd("aa");
             
-            Alert::success('Berhasil', 'Data HIRARC berhasil diperbaharui!')->iconHtml('<i class="bi bi-person-check"></i>')->hideCloseButton();
+            Alert::success('Berhasil', 'Data HIRARC berhasil diperbaharui!')->iconHtml('<i class="bi bi-person-check fs-3x"></i>')->hideCloseButton();
             return redirect()->route('hirarc.index');
     
         }
@@ -309,7 +309,7 @@ class HirarcController extends Controller
             $hirarc = Hirarc::find($id);
             $hirarc->delete();
     
-            Alert::success('Berhasil', 'Data Hirarc berhasil dihapus!')->iconHtml('<i class="bi bi-person-check"></i>')->hideCloseButton();
+            Alert::success('Berhasil', 'Data Hirarc berhasil dihapus!')->iconHtml('<i class="bi bi-person-check fs-3x"></i>')->hideCloseButton();
             return redirect()->back();
         }
     
