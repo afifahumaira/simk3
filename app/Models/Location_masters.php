@@ -10,11 +10,7 @@ class Location_masters extends Model
     public $timestamps = false;
     protected $guarded;
 
-    public function location_masters()
-    {
-        return $this->belongsTo('App\Models\Location_masters');
-    }
-
+    
     public function hirarc()
     {
         return $this->hasMany(Hirarc::class);

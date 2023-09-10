@@ -16,17 +16,16 @@ class Departemen extends Model
         'name', 'departemen_id'
     ];
 
-    public function apar():HasOne
-    {
-        return $this->hasOne(Apar::class, 'id');
-    }
-
     public function location() {
         return $this->hasMany(Location_masters::class, 'departemen_id', 'id');
     }
 
     public function investigasi() {
         return $this->hasMany(Investigasi::class, 'departemen_id');
+    }
+
+    public function investigasipotensi() {
+        return $this->hasMany(InvestigasiPotensi::class, 'departemen_id');
     }
 
     public function potensibahaya() {
@@ -42,6 +41,10 @@ class Departemen extends Model
     }
 
     public function user() {
+        return $this->hasMany(User::class, 'departemen_id');
+    }
+
+    public function hirarc() {
         return $this->hasMany(User::class, 'departemen_id');
     }
 

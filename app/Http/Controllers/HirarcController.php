@@ -66,7 +66,7 @@ class HirarcController extends Controller
     }
 
     public function tambahDetail($id = null) {
-        $hirarc = Hirarc::where('id',$id)->first();
+        $hirarc = Hirarc::where('id',$id)->find($id);
         $hazards = Hazard::where('id',$id)->get();
         $risks = Risk::where('id',$id)->get();
         
@@ -82,7 +82,7 @@ class HirarcController extends Controller
 
     public function edit($id) {
         
-        $hirarc = Hirarc::with(['departemen', 'activitie', 'location', 'hazard', 'risk'])->first($id);
+        $hirarc = Hirarc::with(['departemen', 'activitie', 'location', 'hazard', 'risk'])->find($id);
         //$controls = Control::all();
         $activitie = Activitie_master::all();
         $locations = Location_masters::all();
@@ -94,14 +94,32 @@ class HirarcController extends Controller
 
         
         return view('dashboard.hirarc.edit-hirarc', compact('hirarc', 'activitie', 'locations', 'departments', 'hazards', 'risks'));
-                // ->with('hirarc', $hirarc)
-                // ->with('location', $locations)
-                // ->with('departments', $departments)
-                // ->with('activitie', $activities)
-                // ->with('hazard', $hazards)
-                // ->with('risk', $risks)
-                //->with('hirarc', $hrcs)
-                //->with('control', $controls);
+               
+    }
+
+    public function editDetail($id ) {
+        // dd($id);
+        $departments = Departemen::all();
+        $hirarc = Hirarc::where('id',$id)->find($id);
+        $locations = Location_masters::all();
+        $activities = Activitie_master::all();
+        $hazards = Hazard::all();
+        $risks = Risk::all();
+        
+        
+
+        return view('dashboard.hirarc.edit-hirarc-detail')
+            ->with('hirarc', $hirarc)
+            ->with('locations', $locations)
+            ->with('departments', $departments)
+            ->with('activitie', $activities)
+            ->with('hazard', $hazards)
+            ->with('risk', $risks);
+            
+            
+                
+        Alert::success('Berhasil', 'Data Hirarc berhasil ditambahkan!')->iconHtml('<i class="bi bi-person-check fs-3x"></i>')->hideCloseButton();
+        
     }
 
     public function lihat($id) {
@@ -219,31 +237,6 @@ class HirarcController extends Controller
             Alert::success('Berhasil', 'Data Hirarc berhasil disimpan!')->iconHtml('<i class="bi bi-person-check fs-3x"></i>')->hideCloseButton();
         return redirect()->route('hirarc.tambah')
         ->with('id', $id);
-        }
-
-        public function editDetail($id ) {
-            // dd($id);
-            $departments = Departemen::all();
-            $hirarc = Hirarc::where('id',$id)->first();
-            $locations = Location_masters::all();
-            $activities = Activitie_master::all();
-            $hazards = Hazard::all();
-            $risks = Risk::all();
-            
-            
-    
-            return view('dashboard.hirarc.edit-hirarc-detail')
-                ->with('hirarc', $hirarc)
-                ->with('locations', $locations)
-                ->with('departments', $departments)
-                ->with('activitie', $activities)
-                ->with('hazard', $hazards)
-                ->with('risk', $risks);
-                
-                
-                    
-            Alert::success('Berhasil', 'Data Hirarc berhasil ditambahkan!')->iconHtml('<i class="bi bi-person-check fs-3x"></i>')->hideCloseButton();
-            
         }
     
         public function update($id, Request $request) {
