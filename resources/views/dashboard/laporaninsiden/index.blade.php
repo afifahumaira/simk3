@@ -132,8 +132,14 @@
                                     </td>
                                     @if (auth()->user()->hak_akses == 'Pimpinan')
                                         <td class="d-flex justify-content-center align-items-center">
-                                            <a id="update" class="btn btn-primary btn-sm" data-bs-toggle="modal"
-                                                data-bs-target="#editmodal" data-bs-p2k3_id="{{ $lap->p2k3_id }}" data-bs-status="{{ $lap->status }}">Ubah Status
+                                            <a id="update" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#editmodal" 
+                                                data-bs-p2k3_id="{{ $lap->p2k3_id }}" 
+                                                data-bs-status="{{ $lap->status }}"
+                                                data-bs-departemen_id="{{ $lap->departemen_id }}"
+                                                data-bs-id="{{ $lap->id }}"
+                                                data-bs-jenis_insiden="{{ $lap->jenis_insiden }}"
+                                                data-bs-penyebab_insiden="{{ $lap->penyebab_insiden }}">
+                                                Ubah Status
                                                 Laporan                                                
                                             </a>
                                         </td>
@@ -141,7 +147,7 @@
             <div class="modal fade" id="editmodal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
             aria-labelledby="staticBackdropLabel" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered">
-                <form action="{{ route('laporan-insiden.update', $lap->id) }}"
+                <form action="{{ route('laporan-insiden.edit', $lap->id) }}"
                     method="post" enctype="multipart/form-data">
                     @csrf
                     @method('PUT')
@@ -169,6 +175,10 @@
                                 </div>
                             </div>
                         </div>
+                        <input type="hidden" name="id" id="id" value="{{ $lap->id }}">
+                        <input type="hidden" name="departemen_id" id="departemen_id" value="{{ $lap->departemen_id }}">
+                        <input type="hidden" name="jenis_insiden" id="jenis_insiden" value="{{ $lap->jenis_insiden }}">
+                        <input type="hidden" name="penyebab_insiden" id="penyebab_insiden" value="{{ $lap->penyebab_insiden }}">
                         <div id="additionalForm">
                             <div class="ps-3 pe-5">
                                 <label class="col-form-label ps-2">Status
@@ -312,8 +322,16 @@
         $(document).on("click", "#update", function() {
             var p2k3_id = $(this).attr('data-bs-p2k3_id');
             var status = $(this).attr('data-bs-status');
+            var id = $(this).attr('data-bs-id');
+            var departemen_id = $(this).attr('data-bs-departemen_id');
+            var jenis_insdien = $(this).attr('data-bs-jenis_insiden');
+            var penyebab_insiden = $(this).attr('data-bs-penyebab_insiden';)
             $("#p2k3_id").val(p2k3_id).setAttribute('selected', 'selected');
             $("#status").val(status).setAttribute('selected', 'selected');
+            $("#id").val(id);
+            $("#departemen_id").val(departemen_id);
+            $("#jenis_insiden").val(jenis_insdien);
+            $("#penyebab_insiden").val(penyebab_insiden);
         });
         
 

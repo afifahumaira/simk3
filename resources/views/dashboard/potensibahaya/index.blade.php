@@ -133,8 +133,15 @@
                                     </td>
                                     @if (auth()->user()->hak_akses == 'Pimpinan')
                                         <td class="d-flex justify-content-center">
-                                            <a id="update" class="btn btn-primary btn-sm" data-bs-toggle="modal"
-                                                data-bs-target="#editmodal" data-bs-p2k3="{{ $data->p2k3_id }}" data-bs-status="{{ $data->status }}">Ubah Status
+                                            <a id="update" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#editmodal" 
+                                                data-bs-p2k3="{{ $data->p2k3_id }}" 
+                                                data-bs-status="{{ $data->status }}"
+                                                data-bs-id="{{ $data->id }}"
+                                                data-bs-departemen_id="{{ $data->departemen_id }}"
+                                                data-bs-potensi_bahaya="{{ $data->potensi_bahaya }}"
+                                                data-bs-resiko_bahaya="{{ $data->resiko_bahaya }}"
+                                                data-bs-usulan_perbikan="{{ $data->usulan_perbikan }}">
+                                                Ubah Status
                                                 Laporan Potensi Bahaya
                                                 {{-- {{ $investigasi->p2k3 }} --}}
                                                 {{-- {{ $investigasi->status }} --}}
@@ -144,7 +151,7 @@
             <div class="modal fade" id="editmodal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
             aria-labelledby="staticBackdropLabel" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered">
-                <form action="{{ route('potensibahaya.edit', $data->id) }}"
+                <form action="{{ route('potensibahaya.update', $data->id) }}"
                     method="post" enctype="multipart/form-data">
                     @csrf
                     @method('PUT')
@@ -172,6 +179,12 @@
                                 </div>
                             </div>
                         </div>
+                        <input type="hidden" name="id" id="id" value="{{ $data->id }}">
+                        <input type="hidden" name="departemen_id" id="departemen_id" value="{{ $data->departemen_id }}">
+                        <input type="hidden" name="lokasi" id="lokasi" value="{{ $data->lokasi }}">
+                        <input type="hidden" name="potensi_bahaya" id="potensi_bahaya" value="{{ $data->potensi_bahaya }}">
+                        <input type="hidden" name="resiko_bahaya" id="resiko_bahaya" value="{{ $data->resiko_bahaya }}">
+                        <input type="hidden" name="usulan_perbaik" id="usulan_perbaikan" value="{{ $data->usulan_perbaikan }}">
                         <div id="additionalForm">
                             <div class="ps-3 pe-5">
                                 <label class="col-form-label ps-2">Status
@@ -274,39 +287,39 @@
             </div>
 
             {{-- Modal Warning --}}
-            <div class="modal fade" id="warning" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+            {{-- <div class="modal fade" id="warning" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
                 aria-labelledby="staticBackdropLabel" aria-hidden="true">
                 <div class="modal-dialog modal-dialog-centered ">
-                    <div class="modal-content">
+                    <div class="modal-content"> --}}
                         {{-- <div class="modal-header">
                     <h1 class="modal-title fs-5" id="staticBackdropLabel">Modal title</h1>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div> --}}
-                        <div class="modal-body mt-5 d-flex justify-content-center align-items-center">
+                        {{-- <div class="modal-body mt-5 d-flex justify-content-center align-items-center">
                             <h2 class="mt-5 text-center" style="color: #16243D; font-size: 20px font-weight:700">Apakah
-                                anda yakin telah menyelesaikan Investigasi?
+                                anda yakin telah menyelesaikan Investigasi? --}}
                                 {{-- <p class="mb-0 mt-2 text-center " style="color: #DC3545; font-weight:400; font-size:14px">
                                     data
                                     yang
                                     dimasukkan belum tersimpan </p> --}}
-                            </h2>
+                            {{-- </h2>
                         </div>
                         <div class="modal-footer d-flex justify-content-center border-0">
                             <button type="submit"
                                 class="btn btn-success btn-sm text-white d-flex justify-content-center align-items-center text-center rounded-1 "
                                 style="background: #29CC6A;  font-size:14px; ">Ya, simpan
-                                Data</button>
+                                Data</button> --}}
                             {{-- <a href="{{ route('daftarinvestigasi.ubah', $investigasi->id) }}" type="button"
                                 class="btn btn-success text-white d-flex justify-content-center align-items-center "
                                 style="width:76px; height:31px; background: #29CC6A;">Ya</a> --}}
-                            <button type="button"
+                            {{-- <button type="button"
                                 class="btn btn-secondary btn-sm text-center d-flex align-items-center rounded-1"
                                 data-bs-dismiss="modal" style=" font-size:14px; ">Tidak</button>
 
                         </div>
                     </div>
                 </div>
-            </div>
+            </div> --}}
             {{-- ------------ End Modal warning ----------- --}}
 
             <div class="card-footer">
@@ -322,8 +335,18 @@
         $(document).on("click", "#update", function() {
             var p2k3_id = $(this).attr('data-bs-p2k3_id');
             var status = $(this).attr('data-bs-status');
+            var id = $(this).attr('data-bs-id');
+            var departemen_id = $(this).attr('data-bs-departemen_id');
+            var potensi_bahaya = $(this).attr('data-bs-potensi_bahaya');
+            var resiko_bahaya = $(this).attr('data-bs-resiko_bahaya');
+            var usulan_perbaikan = $(this).attr('data-bs-usulan_perbaikan');
             $("#p2k3_id").val(p2k3_id).setAttribute('selected', 'selected');
             $("#status").val(status).setAttribute('selected', 'selected');
+            $("#id").val(id);
+            $("#departemen_id").val(departemen_id);
+            $("#potensi_bahaya").val(potensi_bahaya);
+            $("#resiko_bahaya").val(resiko_bahaya);
+            $("#usulan_perbaikan").val(usulan_perbaikan);
         });
 
         $(document).ready(function() {

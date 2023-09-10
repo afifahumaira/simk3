@@ -263,18 +263,26 @@ class LaporanInsidenController extends Controller
         //     'p2k3_id' => 'required',
         //     'status' => 'required',
         // ]);
-
+            //dd($request);
         Laporinsiden::find($id)->update([
             'p2k3_id' => $request->p2k3_id,
             'status' => $request->status,
+            //'id' => $request->id,
+            'departemen_id' => $request->departemen_id,
+            'penyebab_insiden' => $request->penyebab_insiden,
+            'jenis_insiden' => $request->jenis_insiden,
         ]);
 
         if ($request->status == 2) {
             $data = Investigasi::create([
                 'p2k3_id' => $request->p2k3_id,                
-                'status' => $request->status                
+                'status' => $request->status,
+                'laporinsiden_id' => $request->id,
+                'departemen_id' => $request->departemen_id,
+                'kategori' => $request->jenis_insiden,
+                'penyebab_dasar' =>$request->penyebab_insiden,                
             ]);      
-            Alert::success('Berhasil', 'Data Laporan Insiden berhasil diperbaharui!')->iconHtml('<i class="bi bi-person-check"></i>')->hideCloseButton();
+            Alert::success('Berhasil', 'Data Laporan berhasil diperbaharui!')->iconHtml('<i class="bi bi-person-check"></i>')->hideCloseButton();
             return redirect()->route('laporan-insiden.index'); 
 
             // if ($data) {

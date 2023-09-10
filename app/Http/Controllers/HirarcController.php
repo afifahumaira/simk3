@@ -82,7 +82,7 @@ class HirarcController extends Controller
 
     public function edit($id) {
         
-        $hirarc = Hirarc::with(['departemen', 'activitie', 'location', 'hazard', 'risk'])->first();
+        $hirarc = Hirarc::with(['departemen', 'activitie', 'location', 'hazard', 'risk'])->first($id);
         //$controls = Control::all();
         $activitie = Activitie_master::all();
         $locations = Location_masters::all();
@@ -105,7 +105,7 @@ class HirarcController extends Controller
     }
 
     public function lihat($id) {
-        $hirarcs = Hirarc::with(['departemen', 'activitie', 'location', 'hazard', 'risk'])->first();
+        $hirarcs = Hirarc::with(['departemen', 'activitie', 'location', 'hazard', 'risk'])->find($id);
         // $departemen = Departemen::findorFail($id);
         // $activities = Activitie_master::findorFail($id);
         // $locations = Location_masters::findorFail($id);
