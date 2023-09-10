@@ -42,7 +42,7 @@ class MapsController extends Controller
             'gambar' => $gambar->getClientOriginalName(),
         ]);
 
-        Alert::success('Berhasil', 'Data Maps berhasil ditambahkan!')->iconHtml('<i class="bi bi-person-check"></i>')->hideCloseButton();
+        Alert::success('Berhasil', 'Data Maps berhasil ditambahkan!')->iconHtml('<i class="bi bi-person-check fs-3x"></i>')->hideCloseButton();
         return redirect()->route('maps.lihat');
     }
 
@@ -72,7 +72,7 @@ class MapsController extends Controller
             'gambar' => $gambarname,
         ]);
 
-        Alert::success('Berhasil', 'Data Maps berhasil diperbaharui!')->iconHtml('<i class="bi bi-person-check"></i>')->hideCloseButton();
+        Alert::success('Berhasil', 'Data Maps berhasil diperbaharui!')->iconHtml('<i class="bi bi-person-check fs-3x"></i>')->hideCloseButton();
         return redirect()->route('maps.lihat');
     }
 
@@ -83,7 +83,7 @@ class MapsController extends Controller
 
     public function delete($id) {
         Map::find($id)->delete();
-        Alert::success('Berhasil', 'Data Maps berhasil dihapus!')->iconHtml('<i class="bi bi-person-check"></i>')->hideCloseButton();
+        Alert::success('Berhasil', 'Data Maps berhasil dihapus!')->iconHtml('<i class="bi bi-person-check fs-3x"></i>')->hideCloseButton();
         return redirect()->route('maps.lihat');
     }
 

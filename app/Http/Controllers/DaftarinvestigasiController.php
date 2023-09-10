@@ -78,7 +78,7 @@ class DaftarInvestigasiController extends Controller
             'tindakan' => $request->tindakan,
         ]);
 
-        Alert::success('Berhasil', 'Data Investigasi berhasil disimpan!')->iconHtml('<i class="bi bi-person-check"></i>')->hideCloseButton();
+        Alert::success('Berhasil', 'Data Investigasi berhasil disimpan!')->iconHtml('<i class="bi bi-person-check fs-3x"></i>')->hideCloseButton();
         return redirect()->route('investigasipotensi.index');
     }
 
@@ -107,7 +107,7 @@ class DaftarInvestigasiController extends Controller
             'tindakan' => $request->tindakan,
         ]);
 
-        Alert::success('Berhasil', 'Data Investigasi berhasil diperbaharui!')->iconHtml('<i class="bi bi-person-check"></i>')->hideCloseButton();
+        Alert::success('Berhasil', 'Data Investigasi berhasil diperbaharui!')->iconHtml('<i class="bi bi-person-check fs-3x"></i>')->hideCloseButton();
         return redirect()->route('investigasipotensi.index');
     }
 
@@ -115,7 +115,7 @@ class DaftarInvestigasiController extends Controller
         $inv = InvestigasiPotensi::find($id);
         $inv->delete();
 
-        Alert::success('Berhasil', 'Data Investigasi berhasil dihapus!')->iconHtml('<i class="bi bi-person-check"></i>')->hideCloseButton();
+        Alert::success('Berhasil', 'Data Investigasi berhasil dihapus!')->iconHtml('<i class="bi bi-person-check fs-3x"></i>')->hideCloseButton();
         return redirect()->route('investigasipotensi.index');
     }
 

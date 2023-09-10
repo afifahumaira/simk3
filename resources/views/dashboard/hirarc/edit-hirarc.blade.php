@@ -73,40 +73,41 @@
                                     </tbody>
                                 </table>
 
-                                <table id="tabelTambahData" class="table table-bordered border-secondary px-3 py-3 mb-5 shadow"
-                        style="margin-top: 40px; margin-bottom:10px;">
-                        <thead px-3>
-                            <tr>
-                                <th scope="col">Aktifitas</th>
-                                <th scope="col">Hazard</th>
-                                <th scope="col">Resiko</th>
-                                <th scope="col"style="width: 10%">Action</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            {{-- @foreach ($hirarc as $hir) --}}
-                                <tr>
-                                    <td>{{ $hirarc->activity }}</td>
-                                    <td>{{ $hirarc->hazard }}</td>
-                                    <td>{{ $hirarc->risk }}</td>
-                                    <td>
-                                        <a href="{{ route('hirarc.editDetail', $hirarc->id) }}" type="button"
-                                            class="btn  btn-sm bg-primary" style="width:20px;"><i
-                                                class="bi bi-pencil-square text-dark d-flex justify-content-center align-items-center"></i></a>
-                                    </td>
-                                </tr>
-                                
+                                <table id="tabelTambahData"
+                                    class="table table-bordered border-secondary px-3 py-3 mb-5 shadow"
+                                    style="margin-top: 40px; margin-bottom:10px;">
+                                    <thead px-3>
+                                        <tr>
+                                            <th scope="col">Aktifitas</th>
+                                            <th scope="col">Hazard</th>
+                                            <th scope="col">Resiko</th>
+                                            <th scope="col"style="width: 10%">Action</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        {{-- @foreach ($hirarc as $hir) --}}
+                                        <tr>
+                                            <td>{{ $hirarc->activity }}</td>
+                                            <td>{{ $hirarc->hazard }}</td>
+                                            <td>{{ $hirarc->risk }}</td>
+                                            <td>
+                                                <a href="{{ route('hirarc.editDetail', $hirarc->id) }}" type="button"
+                                                    class="btn  btn-sm bg-primary" style="width:20px;"><i
+                                                        class="bi bi-pencil-square text-dark d-flex justify-content-center align-items-center"></i></a>
+                                            </td>
+                                        </tr>
+
                             </div>
                         </div>
-                    </form>
+                        </form>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
-</div>
+    </div>
 
-                                {{-- <div
+    {{-- <div
                                     class="border  border-gray-300 d-flex justify-content-between align-items-center form-control py-2">
                                     <label class="form-label">Tambah Data</label>
                                     <a type="submit"
@@ -117,7 +118,7 @@
                                     </a>
                                 </div> --}}
 
-                                {{-- <div class="modal fade" id="modalTambah" data-bs-backdrop="static" data-bs-keyboard="false"
+    {{-- <div class="modal fade" id="modalTambah" data-bs-backdrop="static" data-bs-keyboard="false"
                                     tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
                                     <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable ">
                                         <div class="modal-content border rounded-4 ">
@@ -196,15 +197,15 @@
                                                             data-bs-target="#simpandata">Simpan
                                                             Data</button> --}}
 
-                                                        {{-- <a href="{{ route('hirarc.editDetail') }}" type="submit"
+    {{-- <a href="{{ route('hirarc.editDetail') }}" type="submit"
                                                             class="btn btn-secondary text-white d-flex align-items-center justify-content-center"
                                                             data-bs-toggle="modal" data-bs-target="#resetform"
                                                             style="background: #868E96; margin : 10px 20px 30px 20px; width: 124.33px; height: 38px; font-size:14px; border-radius: 5px;">Reset</a> --}}
 
 
-                    
 
-                                {{-- <div class="modal fade" id="Editdata{{ $hirarc->id }}" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+
+    {{-- <div class="modal fade" id="Editdata{{ $hirarc->id }}" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
                                     <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable ">
                                         <div class="modal-content border rounded-4 ">
                                             <div class="modal-header">
@@ -252,7 +253,7 @@
                                                     </div>
                                                 </div> --}}
 
-                                {{-- <div class="modal-footer d-flex justify-content-center border-0">
+    {{-- <div class="modal-footer d-flex justify-content-center border-0">
                                                     <div class=" d-flex justify-content-center">
                                                         <button type="submit" id="simpanAktifitas"
                                                             class="btn btn-success text-white d-flex justify-content-center align-items-center "
@@ -265,9 +266,9 @@
                                     </div>
                                 </div> --}}
 
-                                {{-- MOODAL POST, SOLUSI, PRE CONTROL --}}
-                                {{-- Pre Control --}}
-                                {{-- <div class="modal fade" id="EditPreControl{{ $detail->id }}" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    {{-- MOODAL POST, SOLUSI, PRE CONTROL --}}
+    {{-- Pre Control --}}
+    {{-- <div class="modal fade" id="EditPreControl{{ $detail->id }}" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
                                     <div class="modal-dialog">
                                         <div class="modal-content">
                                             <div class="modal-header">
@@ -360,7 +361,7 @@
                                     </div>
                                 </div>
                                 {{-- Solusi --}}
-                                {{-- <div class="modal fade" id="EditSolusi{{ $detail->id }}" data-bs-backdrop="static" data-bs-keyboard="false"
+    {{-- <div class="modal fade" id="EditSolusi{{ $detail->id }}" data-bs-backdrop="static" data-bs-keyboard="false"
                                     tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
                                     <div class="modal-dialog">
                                         <div class="modal-content">
@@ -408,8 +409,8 @@
                                         </div>
                                     </div>
                                 </div> --}}
-                                {{-- Post Control --}}
-                                {{-- <div class="modal fade" id="EditPostControl{{ $detail->id }}" data-bs-backdrop="static" data-bs-keyboard="false"
+    {{-- Post Control --}}
+    {{-- <div class="modal fade" id="EditPostControl{{ $detail->id }}" data-bs-backdrop="static" data-bs-keyboard="false"
                                     tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
                                     <div class="modal-dialog">
                                         <div class="modal-content">
@@ -503,15 +504,15 @@
                                     </div>
                                 </div>
                                 {{-- END MOODAL POST, SOLUSI, PRE CONTROL --}}
-                            {{-- @endforeach --}}
-                        </tbody>
-                    </table>
-                </div>
-                <!--end::Content container-->
-            </div>
-        </div>
+    {{-- @endforeach --}}
+    </tbody>
+    </table>
     </div>
-@stop 
+    <!--end::Content container-->
+    </div>
+    </div>
+    </div>
+@stop
 
 @section('custom-css')
     <style>

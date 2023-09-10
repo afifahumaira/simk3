@@ -56,6 +56,15 @@
                 </div>
             </div>
             <div class="card-body">
+                {{-- @if ($errors->any())
+                    <div class="alert alert-danger">
+                        <ul>
+                            @foreach ($errors->all() as $error)
+                                <li>{{ $error }}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+                @endif --}}
                 <div class="table-responsive">
                     <table class="table table-rounded table-bordered">
                         <thead>
@@ -218,8 +227,8 @@
                                             <a href="{{ route('laporan-insiden.ubah', $lap->id) }}" type="button"
                                                 class="btn btn-sm btn-primary px-4"><i
                                                     class="bi bi-pencil-square pe-0"></i></a>
-                                            <button type="button" class="btn btn-danger btn-sm px-4" data-bs-toggle="modal"
-                                                data-bs-target="#deleteForm{{ $lap->id }}"><i
+                                            <button type="button" class="btn btn-danger btn-sm px-4"
+                                                data-bs-toggle="modal" data-bs-target="#deleteForm{{ $lap->id }}"><i
                                                     class="bi bi-trash pe-0"></i></button>
 
                                             <div class="modal fade" id="deleteForm{{ $lap->id }}"
@@ -273,35 +282,35 @@
 
                 </div>
             </div>
-            
+
             {{-- ------------ End Modal ubah status ----------- --}}
             {{-- Modal Warning --}}
             {{-- <div class="modal fade" id="warning" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
                 aria-labelledby="staticBackdropLabel" aria-hidden="true">
                 <div class="modal-dialog modal-dialog-centered ">
                     <div class="modal-content"> --}}
-                        {{-- <div class="modal-header">
+            {{-- <div class="modal-header">
                     <h1 class="modal-title fs-5" id="staticBackdropLabel">Modal title</h1>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div> --}}
-                        {{-- <div class="modal-body mt-5 d-flex justify-content-center align-items-center">
+            {{-- <div class="modal-body mt-5 d-flex justify-content-center align-items-center">
                             <h2 class="mt-5 text-center" style="color: #16243D; font-size: 20px font-weight:700">Apakah
                                 anda yakin telah menyelesaikan Investigasi? --}}
-                                {{-- <p class="mb-0 mt-2 text-center " style="color: #DC3545; font-weight:400; font-size:14px">
+            {{-- <p class="mb-0 mt-2 text-center " style="color: #DC3545; font-weight:400; font-size:14px">
                                     data
                                     yang
                                     dimasukkan belum tersimpan </p> --}}
-                            {{-- </h2>
+            {{-- </h2>
                         </div>
                         <div class="modal-footer d-flex justify-content-center border-0">
                             <button type="submit"
                                 class="btn btn-success btn-sm text-white d-flex justify-content-center align-items-center text-center rounded-1 "
                                 style="background: #29CC6A;  font-size:14px; ">Ya, simpan
                                 Data</button> --}}
-                            {{-- <a href="{{ route('daftarinvestigasi.ubah', $investigasi->id) }}" type="button"
+            {{-- <a href="{{ route('daftarinvestigasi.ubah', $investigasi->id) }}" type="button"
                                 class="btn btn-success text-white d-flex justify-content-center align-items-center "
                                 style="width:76px; height:31px; background: #29CC6A;">Ya</a> --}}
-                            {{-- <button type="button"
+            {{-- <button type="button"
                                 class="btn btn-secondary btn-sm text-center d-flex align-items-center rounded-1"
                                 data-bs-dismiss="modal" style=" font-size:14px; ">Tidak</button>
 
@@ -333,7 +342,7 @@
             $("#jenis_insiden").val(jenis_insdien);
             $("#penyebab_insiden").val(penyebab_insiden);
         });
-        
+
 
         $(document).ready(function() {
             // Get the select filter element

@@ -221,6 +221,10 @@
 
                     </div>
                 </div>
+                <div class="section-title mt-5">
+                    <img src="{{ asset('vendor/Arsha/assets/img/underline.png') }} " class="img-fluid animated"
+                        alt="">
+                </div>
             </div>
         </section><!-- End strukturOrganisasi Section -->
 
@@ -337,12 +341,11 @@
                     </div>
                 </div>
 
-
             </div>
         </section><!-- End Skills Section -->
 
         <!-- ======= Why Us Section ======= -->
-        <section id="dokumen" class="media pb-5" style="background-color: #fefaf0;">
+        {{-- <section id="dokumen" class="media pb-5" style="background-color: #fefaf0;">
             <div class="container" data-aos="fade-up">
                 <div class="card-header d-flex justify-content-center mb-lg-2 mb-0 fs-5 ">
                     <div class="text-center">
@@ -401,7 +404,7 @@
                         alt="">
                 </div>
             </div>
-        </section><!-- End Why Us Section -->
+        </section><!-- End Why Us Section --> --}}
 
         <!-- ======= Team Section ======= -->
         {{-- <section id="team" class="team section-bg" style="background-color: #fefaf0;">
@@ -446,7 +449,8 @@
 
                 </div>
             </div>
-        </section><!-- End Team Section --> --}}
+        </section>
+        <!-- End Team Section --> --}}
 
         <!-- ======= Footer ======= -->
         <footer id="footer" class="pt-5">
@@ -488,9 +492,10 @@
                   <h3>Maps</h3>
                 </div> -->
                             <iframe
-                                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3966.615148064189!2d106.82618481529484!3d-6.182234162298325!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69f42dc40f2ccf%3A0x39f30350bff6392e!2sKantor%20Kes%20Bang%20Pol%20DKI%20Jakarta!5e0!3m2!1sen!2sid!4v1645061221714!5m2!1sen!2sid"
+                                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1399.9457899351726!2d110.43848313080261!3d-7.050976318737886!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e708c1b512ef20b%3A0xcb858b2ff8548af9!2sDiponegoro%20University%20Faculty%20of%20Engineering!5e0!3m2!1sen!2sid!4v1694087773195!5m2!1sen!2sid"
                                 width="420" height="437" style="border-radius: 25px" allowfullscreen=""
-                                loading="lazy"></iframe>
+                                loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+
                         </div>
                     </div>
                 </div>

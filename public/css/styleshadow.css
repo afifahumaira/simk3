@@ -129,6 +129,10 @@ h3 {
     color: #fff;
 }
 
+#header.header-scrolled .dropdown ul li a {
+    color: #16243d !important;
+}
+
 #header .logo {
     font-size: 24px;
     margin: 0;

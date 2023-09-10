@@ -47,7 +47,7 @@ class LokasiMasterController extends Controller
             'name' => $request->name,
         ]);
 
-        Alert::success('Berhasil', 'Data Lokasi berhasil disimpan!')->iconHtml('<i class="bi bi-person-check"></i>')->hideCloseButton();
+        Alert::success('Berhasil', 'Data Lokasi berhasil disimpan!')->iconHtml('<i class="bi bi-person-check fs-3x"></i>')->hideCloseButton();
         return redirect()->route('lokasimaster.index');
     }
 
@@ -61,7 +61,7 @@ class LokasiMasterController extends Controller
             'name' => $request->name,
         ]);
 
-        Alert::success('Berhasil', 'Data Lokasi berhasil diperbaharui!')->iconHtml('<i class="bi bi-person-check"></i>')->hideCloseButton();
+        Alert::success('Berhasil', 'Data Lokasi berhasil diperbaharui!')->iconHtml('<i class="bi bi-person-check fs-3x"></i>')->hideCloseButton();
         return redirect()->route('lokasimaster.index');
     }
 
@@ -69,7 +69,7 @@ class LokasiMasterController extends Controller
         $locations = Location_masters::find($id);
         $locations->delete();
 
-        Alert::success('Berhasil', 'Data Lokasi berhasil dihapus!')->iconHtml('<i class="bi bi-person-check"></i>')->hideCloseButton();
+        Alert::success('Berhasil', 'Data Lokasi berhasil dihapus!')->iconHtml('<i class="bi bi-person-check fs-3x"></i>')->hideCloseButton();
         return redirect()->route('lokasimaster.index', $id);
     }
 

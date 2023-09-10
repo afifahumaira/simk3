@@ -26,10 +26,10 @@ class ProfileController extends Controller
         $validatedData['password'] = Hash::make($validatedData['password']);
         $succes = $data->update($validatedData);
         if($succes){
-            Alert::success('Berhasil', 'Data Pengguna Berhasil Diperbarui')->iconHtml('<i class="bi bi-person-check"></i>')->hideCloseButton();
+            Alert::success('Berhasil', 'Data Pengguna Berhasil Diperbarui')->iconHtml('<i class="bi bi-person-check fs-3x"></i>')->hideCloseButton();
             return redirect()->route('dashboard');
         }
-        Alert::error('Gagal', 'Periksa Kembali Data Anda!')->iconHtml('<i class="bi bi-cross"></i>')->hideCloseButton();
+        Alert::error('Gagal', 'Periksa Kembali Data Anda!')->iconHtml('<i class="bi bi-cross fs-3x"></i>')->hideCloseButton();
         return redirect()->route('/');
 
     }

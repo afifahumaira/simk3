@@ -44,7 +44,7 @@ class DaftardokumenController extends Controller
                 $data['file'] = $filename;
                 $success = Dokumen::where('id', $id)->update($data);
                 if($success) {
-                    Alert::success('Berhasil', 'Data berhasil Diperbarui!')->iconHtml('<i class="bi-person-check"></i>')->hideCloseButton();
+                    Alert::success('Berhasil', 'Data berhasil Diperbarui!')->iconHtml('<i class="bi-person-check fs-3x"></i>')->hideCloseButton();
                     return redirect()->route('daftardokumen.index');
                 }
             } else {
@@ -55,7 +55,7 @@ class DaftardokumenController extends Controller
                 $data['file'] = $filename;
                 $success = Dokumen::where('id', $id)->update($data);
                 if($success) {
-                    Alert::success('Berhasil', 'Data berhasil Diperbarui!')->iconHtml('<i class="bi-person-check"></i>')->hideCloseButton();
+                    Alert::success('Berhasil', 'Data berhasil Diperbarui!')->iconHtml('<i class="bi-person-check fs-3x"></i>')->hideCloseButton();
                     return redirect()->route('daftardokumen.index');
                 }
             }
@@ -65,7 +65,7 @@ class DaftardokumenController extends Controller
             ]);
             // dd($data);
             $success = Dokumen::where('id', $id)->update($data);
-            Alert::success('Berhasil', 'Data Berhasil Diperbarui!')->iconHtml('<i class="bi-person-check"></i>')->hideCloseButton();
+            Alert::success('Berhasil', 'Data Berhasil Diperbarui!')->iconHtml('<i class="bi-person-check fs-3x "></i>')->hideCloseButton();
             return redirect()->route('daftardokumen.index');
         }
     }
@@ -92,7 +92,7 @@ class DaftardokumenController extends Controller
         $validatedData['file'] = $filename;
         $save = Dokumen::create($validatedData);
         if($save) {
-            Alert::success('Berhasil', 'Data berhasil disimpan!')->iconHtml('<i class="bi-person-check"></i>')->hideCloseButton();
+            Alert::success('Berhasil', 'Data berhasil disimpan!')->iconHtml('<i class="bi-person-check fs-3x"></i>')->hideCloseButton();
             return redirect()->route('daftardokumen.index');
         }
 
@@ -138,13 +138,13 @@ class DaftardokumenController extends Controller
             $done = unlink(public_path().'/berkas/'.$db->file);
             $done = Dokumen::find($id)->delete();
             if ($done) {
-                Alert::success('Berhasil', 'Data berhasil Dihapus!')->iconHtml('<i class="bi-person-check"></i>')->hideCloseButton();
+                Alert::success('Berhasil', 'Data berhasil Dihapus!')->iconHtml('<i class="bi-person-check fs-3x"></i>')->hideCloseButton();
                 return redirect('/daftardokumen');
             }
         } else {
             $done = Dokumen::find($id)->delete();
             if ($done) {
-                Alert::success('Berhasil', 'Data berhasil Dihapus!')->iconHtml('<i class="bi-person-check"></i>')->hideCloseButton();
+                Alert::success('Berhasil', 'Data berhasil Dihapus!')->iconHtml('<i class="bi-person-check fs-3x"></i>')->hideCloseButton();
                 return redirect('/daftardokumen');
             }
         }

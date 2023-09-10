@@ -45,7 +45,7 @@ class LokasidepartemenController extends Controller
             'name' => $request->lokasi,
         ]);
 
-        Alert::success('Berhasil', 'Data Lokasi berhasil disimpan!')->iconHtml('<i class="bi bi-person-check"></i>')->hideCloseButton();
+        Alert::success('Berhasil', 'Data Lokasi berhasil disimpan!')->iconHtml('<i class="bi bi-person-check fs-3x"></i>')->hideCloseButton();
         return redirect()->route('lokasi-departemen.index');
     }
 
@@ -59,7 +59,7 @@ class LokasidepartemenController extends Controller
             'name' => $request->lokasi,
         ]);
 
-        Alert::success('Berhasil', 'Data Lokasi berhasil diperbaharui!')->iconHtml('<i class="bi bi-person-check"></i>')->hideCloseButton();
+        Alert::success('Berhasil', 'Data Lokasi berhasil diperbaharui!')->iconHtml('<i class="bi bi-person-check fs-3x"></i>')->hideCloseButton();
         return redirect()->route('lokasi-departemen.detail', $request->departemen_id);
     }
 
@@ -67,7 +67,7 @@ class LokasidepartemenController extends Controller
         $departemen_id = Location::find($id)->departemen_id;
         Location::find($id)->delete();
 
-        Alert::success('Berhasil', 'Data Lokasi berhasil dihapus!')->iconHtml('<i class="bi bi-person-check"></i>')->hideCloseButton();
+        Alert::success('Berhasil', 'Data Lokasi berhasil dihapus!')->iconHtml('<i class="bi bi-person-check fs-3x"></i>')->hideCloseButton();
         return redirect()->route('lokasi-departemen.detail', $departemen_id);
     }
 

@@ -90,7 +90,7 @@ class P3kInspeksiController extends Controller
 
         $success = P3k::create($data);
         if ($success) {
-            Alert::success('Berhasil', 'Data berhasil disimpan!')->iconHtml('<i class="bi-person-check"></i>')->hideCloseButton();
+            Alert::success('Berhasil', 'Data berhasil disimpan!')->iconHtml('<i class="bi-person-check fs-3x"></i>')->hideCloseButton();
             return redirect()->route('p3kinspeksi.index');
         }
     }

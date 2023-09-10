@@ -160,7 +160,7 @@ class LaporanInsidenController extends Controller
             'gambar' => $gambarName,
         ]);
 
-        Alert::success('Berhasil', 'Data Laporan Insiden berhasil disimpan!')->iconHtml('<i class="bi bi-person-check"></i>')->hideCloseButton();
+        Alert::success('Berhasil', 'Data Laporan Insiden berhasil disimpan!')->iconHtml('<i class="bi bi-person-check fs-3x"></i>')->hideCloseButton();
         return redirect()->route('laporan-insiden.index');
     }
 
@@ -238,7 +238,7 @@ class LaporanInsidenController extends Controller
                 'penyebab_dasar' =>$request->penyebab_insiden,
                 'status' => $request->status                
             ]);      
-            Alert::success('Berhasil', 'Data Laporan Insiden berhasil diperbaharui!')->iconHtml('<i class="bi bi-person-check"></i>')->hideCloseButton();
+            Alert::success('Berhasil', 'Data Laporan Insiden berhasil diperbaharui!')->iconHtml('<i class="bi bi-person-check fs-3x"></i>')->hideCloseButton();
             return redirect()->route('laporan-insiden.index'); 
 
             // if ($data) {
@@ -250,11 +250,11 @@ class LaporanInsidenController extends Controller
             $data = Laporinsiden::find($id);
             $data->delete();
             
-            Alert::success('Berhasil', 'Data Telah Ditangani')->iconHtml('<i class="bi bi-person-check"></i>')->hideCloseButton();
+            Alert::success('Berhasil', 'Data Telah Ditangani')->iconHtml('<i class="bi bi-person-check fs-3x"></i>')->hideCloseButton();
             return redirect()->route('laporan-insiden.index');
         }
 
-            Alert::success('Berhasil', 'Data Laporan Insiden berhasil diperbaharui!')->iconHtml('<i class="bi bi-person-check"></i>')->hideCloseButton();
+            Alert::success('Berhasil', 'Data Laporan Insiden berhasil diperbaharui!')->iconHtml('<i class="bi bi-person-check fs-3x"></i>')->hideCloseButton();
             return redirect()->route('laporan-insiden.index');
     }
 
@@ -282,7 +282,7 @@ class LaporanInsidenController extends Controller
                 'kategori' => $request->jenis_insiden,
                 'penyebab_dasar' =>$request->penyebab_insiden,                
             ]);      
-            Alert::success('Berhasil', 'Data Laporan berhasil diperbaharui!')->iconHtml('<i class="bi bi-person-check"></i>')->hideCloseButton();
+            Alert::success('Berhasil', 'Data Laporan Insiden berhasil diperbaharui!')->iconHtml('<i class="bi bi-person-check fs-3x"></i>')->hideCloseButton();
             return redirect()->route('laporan-insiden.index'); 
 
             // if ($data) {
@@ -295,11 +295,11 @@ class LaporanInsidenController extends Controller
             $data = Laporinsiden::find($id);
             $data->delete();
             
-            Alert::success('Berhasil', 'Investigasi telah selesai')->iconHtml('<i class="bi bi-person-check"></i>')->hideCloseButton();
+            Alert::success('Berhasil', 'Investigasi telah selesai')->iconHtml('<i class="bi bi-person-check fs-3x"></i>')->hideCloseButton();
             return redirect()->route('daftarinvestigasi.index');
         }
 
-        Alert::success('Berhasil', 'Data Laporan berhasil diperbaharui!')->iconHtml('<i class="bi bi-person-check"></i>')->hideCloseButton();
+        Alert::success('Berhasil', 'Data Laporan berhasil diperbaharui!')->iconHtml('<i class="bi bi-person-check fs-3x"></i>')->hideCloseButton();
         return redirect()->route('daftarinvestigasi.index');
     }
 
@@ -314,7 +314,7 @@ class LaporanInsidenController extends Controller
         }
         $lap->delete();
 
-        Alert::success('Berhasil', 'Data Laporan Insiden berhasil dihapus!')->iconHtml('<i class="bi bi-person-check"></i>')->hideCloseButton();
+        Alert::success('Berhasil', 'Data Laporan Insiden berhasil dihapus!')->iconHtml('<i class="bi bi-person-check fs-3x"></i>')->hideCloseButton();
         return redirect()->route('laporan-insiden.index');
     }
 
@@ -386,7 +386,7 @@ class LaporanInsidenController extends Controller
             'gambar' => $gambarName,
         ]);
 
-        Alert::success('Berhasil', 'Data Laporan Insiden berhasil disimpan!')->iconHtml('<i class="bi bi-person-check"></i>')->hideCloseButton();
+        Alert::success('Berhasil', 'Data Laporan Insiden berhasil disimpan!')->iconHtml('<i class="bi bi-person-check fs-3x"></i>')->hideCloseButton();
         return redirect()->route('simk3.index');
     }
 }

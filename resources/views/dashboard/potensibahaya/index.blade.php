@@ -81,7 +81,15 @@
             </div>
             <!--begin::Content container-->
             <div class="card-body">
-
+                {{-- @if ($errors->any())
+                    <div class="alert alert-danger">
+                        <ul>
+                            @foreach ($errors->all() as $error)
+                                <li>{{ $error }}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+                @endif --}}
                 <div class="table-responsive">
                     <table class="table table-rounded table-bordered">
                         <thead>
@@ -91,10 +99,10 @@
                                 <th scope="col">Tanggal lapor</th>
                                 <th scope="col">Nama Pelapor</th>
                                 <th scope="col">Lokasi Kejadian</th>
-                                <th scope="col" class="col-2">Departemen</th>
+                                <th scope="col" class="col-1">Departemen</th>
                                 <th scope="col" class="col-1">Status</th>
                                 @if (auth()->user()->hak_akses == 'Pimpinan')
-                                    <th scope="col">Ubah Status</th>
+                                    <th scope="col" class="col-2">Ubah Status</th>
                                 @endif
                                 @if (auth()->user()->hak_akses == 'Admin' ||
                                         auth()->user()->hak_akses == 'P2K3' ||
@@ -245,7 +253,7 @@
                                                 <i
                                                     class="bi bi-trash text-dark d-flex justify-content-center align-items-center"></i>
                                             </button>
-                                        </td>                                                    
+                                        </td>
                                     @endif
                                 </tr>
 
@@ -305,6 +313,7 @@
                             {{-- </h2>
                         </div>
                         <div class="modal-footer d-flex justify-content-center border-0">
+                            @csrf
                             <button type="submit"
                                 class="btn btn-success btn-sm text-white d-flex justify-content-center align-items-center text-center rounded-1 "
                                 style="background: #29CC6A;  font-size:14px; ">Ya, simpan

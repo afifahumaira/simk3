@@ -45,7 +45,7 @@ class RisikoController extends Controller
             'name' => $request->name,
         ]);
 
-        Alert::success('Berhasil', 'Data Risiko berhasil disimpan!')->iconHtml('<i class="bi bi-person-check"></i>')->hideCloseButton();
+        Alert::success('Berhasil', 'Data Risiko berhasil disimpan!')->iconHtml('<i class="bi bi-person-check fs-3x"></i>')->hideCloseButton();
         return redirect()->route('risiko.index');
     }
 
@@ -60,7 +60,7 @@ class RisikoController extends Controller
             'name' => $request->name,
         ]);
 
-        Alert::success('Berhasil', 'Data Risiko berhasil diperbaharui!')->iconHtml('<i class="bi bi-person-check"></i>')->hideCloseButton();
+        Alert::success('Berhasil', 'Data Risiko berhasil diperbaharui!')->iconHtml('<i class="bi bi-person-check fs-3x"></i>')->hideCloseButton();
         return redirect()->route('risiko.index');
     }
 
@@ -68,7 +68,7 @@ class RisikoController extends Controller
         $risk = Risk::find($id);
         $risk->delete();
 
-        Alert::success('Berhasil', 'Data Risiko berhasil dihapus!')->iconHtml('<i class="bi bi-person-check"></i>')->hideCloseButton();
+        Alert::success('Berhasil', 'Data Risiko berhasil dihapus!')->iconHtml('<i class="bi bi-person-check fs-3x"></i>')->hideCloseButton();
         return redirect()->route('risiko.index', $id);
     }
 
