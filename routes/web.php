@@ -142,6 +142,7 @@ Route::group(['middleware' => ['auth']], function() {
         Route::get('edit/{id}', [HirarcController::class, 'edit'])->name('edit');
         Route::get('editDetail/{id}', [HirarcController::class, 'editDetail'])->name('editDetail');
         Route::get('lihat/{id}', [HirarcController::class, 'lihat'])->name('lihat');
+        Route::get('testlihat', [HirarcController::class, 'index'])->name('testlihat');
     });
 
     // Inventory

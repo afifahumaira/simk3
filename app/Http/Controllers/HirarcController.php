@@ -22,6 +22,7 @@ use App\Models\Control;
 use App\Models\Hirarc_postrating;
 use App\Models\Hirarc_prerating;
 use App\Models\Location_masters;
+use App\Models\Activitie;
 
 class HirarcController extends Controller
 {
@@ -30,12 +31,41 @@ class HirarcController extends Controller
         ->when (auth()->user()->hak_akses=='K3 Departemen', function ($query){
             $query->where('departemen_id', auth()->user()->departemen_id);
         })
-            
+        ->orderBy('departemen_id')
+        ->orderBy ('location_id')
         ->paginate(10);
-                
-        return view('dashboard.hirarc.index')
-            ->with('hirarcs',$hirarcs);
+        $deptCount=[];
+        $locCount=[];
+        foreach ($hirarcs as $hir) {
+            if (!isset($deptCount[$hir->departemen_id])) {
+                $deptCount[$hir->departemen_id] = 0;
+            }
+            $deptCount[$hir->departemen_id]++;
+
+            if (!isset($locCount[$hir->location_id])) {
+                $locCount[$hir->location_id] = 0;
+            }
+            $locCount[$hir->location_id]++;
+        } 
+         
+
+        return view('dashboard.hirarc.testlihat')
+            ->with('hirarcs',$hirarcs)
+            ->with('deptCount',$deptCount)
+            ->with('locCount',$locCount);
     }
+
+    // public function index(){
+    //     $hirarcs = Hirarc::with(['departemen', 'user', 'location'])
+    //     ->when (auth()->user()->hak_akses=='K3 Departemen', function ($query){
+    //         $query->where('departemen_id', auth()->user()->departemen_id);
+    //     })
+            
+    //     ->paginate(10);
+                
+    //     return view('dashboard.hirarc.index')
+    //         ->with('hirarcs',$hirarcs);
+    // }
 
     public function tambah($id = null) {
         $departments = Departemen::all();
@@ -106,6 +136,7 @@ class HirarcController extends Controller
 
     public function lihat($id) {
         $hirarcs = Hirarc::with(['departemen', 'activitie', 'location', 'hazard', 'risk'])->find($id);
+        // dd($hirarcs);
         // $departemen = Departemen::findorFail($id);
         // $activities = Activitie_master::findorFail($id);
         // $locations = Location_masters::findorFail($id);
@@ -121,6 +152,19 @@ class HirarcController extends Controller
         // ->with('hazard', $hazards)
         // ->with('risk', $risks);
     }
+
+//     public function testlihat(){
+//         $activities = Activitie::first();
+//         // dd($activities->lokasi);
+//         // $location = Location::whereIn('id', json_decode($activities->lokasi))->get();
+//         $lokasi_id = array_map('intval', explode(',', $activities->lokasi));
+// $location = Location::whereIn('id', $lokasi_id)->get();
+// dd
+        
+//         // $activities = Activitie::whereRaw("FIND_IN_SET($id, lokasi)")->paginate(10);
+//         // dd($activities);
+//         return view('dashboard.hirarc.testlihat', compact('activities'));
+//     }
 
     public function detail($id_hirarc){
         $hirarc = Hirarc::where('id_hirarc', $id_hirarc)->first();

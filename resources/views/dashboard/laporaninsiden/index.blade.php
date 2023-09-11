@@ -96,7 +96,7 @@
                                     <th class="">Ubah Status</th>
                                     <th>Action</th>
                                 @endif
-                                @if (auth()->user()->hak_akses == 'pengguna')
+                                @if (auth()->user()->hak_akses == 'Pengguna')
                                     <th>No</th>
                                     <th>Kode Insiden Lapor</th>
                                     <th>Waktu Kejadian</th>
