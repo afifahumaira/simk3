@@ -11,10 +11,17 @@
                 <!--begin::Main wrapper-->
 
                 <!--end::Main wrapper-->
-                <a href="{{ route('maps.lihat') }} " type="button"
-                    class="btn text-white btn-secondary btn-sm mb-2" style="background: #505050"><i
-                        class="bi bi-chevron-left text-white"></i>Kembali</a>
-                <!--end::Title-->
+                @if (auth()->user()->hak_akses == 'Admin' ||
+                        auth()->user()->hak_akses == 'K3 Departemen' ||
+                        auth()->user()->hak_akses == 'Pimpinan')
+                    <a href="{{ route('maps.lihat') }} " type="button" class="btn text-white btn-secondary btn-sm mb-2"
+                        style="background: #505050"><i class="bi bi-chevron-left text-white"></i>Kembali</a>
+                    <!--end::Title-->
+                @endif
+                @if (auth()->user()->hak_akses == 'Pengguna')
+                    <a href="{{ route('maps.index') }} " type="button" class="btn text-white btn-secondary btn-sm mb-2"
+                        style="background: #505050"><i class="bi bi-chevron-left text-white"></i>Kembali</a>
+                @endif
             </div>
             <!--begin::Content container-->
             <table class="table table-bordered border-secondary rounded-5 px-3 py-3 mb-5 shadow">
@@ -30,9 +37,10 @@
                     <tr>
                         <th class="w-25">Foto Maps</th>
                         <td>
-                            <a class="d-block overlay" data-fslightbox="lightbox-basic" href="{{ asset('foto_maps/'. $map->gambar) }}">
+                            <a class="d-block overlay" data-fslightbox="lightbox-basic"
+                                href="{{ asset('foto_maps/' . $map->gambar) }}">
                                 <div class="overlay-wrapper bgi-no-repeat bgi-position-center bgi-size-cover card-rounded min-h-500px"
-                                    style="background-image:url('{{ asset('foto_maps/'. $map->gambar) }}')">
+                                    style="background-image:url('{{ asset('foto_maps/' . $map->gambar) }}')">
                                 </div>
                                 <div class="overlay-layer card-rounded bg-dark bg-opacity-25 shadow">
                                     <i class="bi bi-eye-fill text-white fs-3x"></i>
@@ -48,5 +56,5 @@
 @stop
 
 @section('customscript')
-<script src="{{ asset('plugins/custom/fslightbox/fslightbox.bundle.js') }}"></script>
+    <script src="{{ asset('plugins/custom/fslightbox/fslightbox.bundle.js') }}"></script>
 @stop

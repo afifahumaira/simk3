@@ -5,7 +5,7 @@
 
         <div class="page-title d-flex flex-column  gap-1 mx-5 my-5  ">
             <div id="kt_app_content"
-                class="app-content  rounded bg-light  mb-20 px-5 shadow"style="box-shadow: 2px 4px 20px 2px rgba(0, 0, 0, 0.1);">
+                class="app-content  rounded bg-light  mb-10 px-5 shadow"style="box-shadow: 2px 4px 20px 2px rgba(0, 0, 0, 0.1);">
                 <div class="app-toolbar-wrapper d-flex flex-stack flex-wrap gap-4 w-100 mb-5 px-5 border-bottom border-5">
                     <!--begin::Page title-->
                     <h2>HIRARC</h2>
@@ -157,7 +157,7 @@
                                                                 </option>
                                                                 @foreach ($risk as $ris)
                                                                     <option value="{{ $ris->name }}">
-                                                                        {{ $ris ->name }}
+                                                                        {{ $ris->name }}
                                                                     </option>
                                                                 @endforeach
                                                             </select>
@@ -263,36 +263,38 @@
                         </div>
                     </div>
 
-                    {{-- <div class="container "> --}}
-                    {{-- <div class="table-responsive"> --}}
-                    <table class="table table-bordered border-secondary px-3 py-3 mb-5 shadow mt-10"
-                        style="height:20px !important;">
-                        <thead>
-                            <tr>
-                                <th scope="col">Aktifitas</th>
-                                <th scope="col">Hazard</th>
-                                <th scope="col">Resiko</th>
-                                <th scope="col" class="col-2">Action</th>
-                            </tr>
-                        </thead>
-                        <tbody class="">
-                            @foreach ($hirarc as $hira)
-                                <tr>
-                                    <td>{{ $hira->activity }}</td>
-                                    <td>{{ $hira->hazard }}</td>
-                                    <td>{{ $hira->risk }}</td>
-                                    <td>
-                                        <a href="{{ route('hirarc.tambahDetail', $hira->id) }}" type="button"
-                                            class="btn  btn-sm bg-primary" style="font-weight: 400; font-size: 16px">
-                                            Lengkapi data
-                                            {{-- <i class="bi bi-pencil-square text-dark d-flex justify-content-center align-items-center"></i> --}}
-                                        </a>
-                                    </td>
-                                </tr>
-                            @endforeach
-                        </tbody>
-                    </table>
-                    {{-- </div> --}}
+                    <div class="container ">
+                        <div class="table-container" style="height: 500px; overflow-y: auto;">
+                            <table
+                                class="table table-bordered border-secondary  px-3 py-3 mb-5 shadow mt-10"style="height:20px !important;">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">Aktifitas</th>
+                                        <th scope="col">Hazard</th>
+                                        <th scope="col">Resiko</th>
+                                        <th scope="col" class="col-2">Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="">
+                                    @foreach ($hirarc as $hira)
+                                        <tr>
+                                            <td>{{ $hira->activity }}</td>
+                                            <td>{{ $hira->hazard }}</td>
+                                            <td>{{ $hira->risk }}</td>
+                                            <td>
+                                                <a href="{{ route('hirarc.tambahDetail', $hira->id) }}" type="button"
+                                                    class="btn  btn-sm bg-primary"
+                                                    style="font-weight: 400; font-size: 16px">
+                                                    Lengkapi data
+                                                    {{-- <i class="bi bi-pencil-square text-dark d-flex justify-content-center align-items-center"></i> --}}
+                                                </a>
+                                            </td>
+                                        </tr>
+                                    @endforeach
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
 
 
 

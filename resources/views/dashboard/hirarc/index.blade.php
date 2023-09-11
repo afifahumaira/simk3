@@ -18,7 +18,7 @@
                         <!--begin::Hidden input(Added to disable form autocomplete)-->
                         <input type="hidden" />
                         <!--end::Hidden input-->
-<td></td>
+                        <td></td>
                         <!--begin::Icon-->
                         <i
                             class="ki-duotone ki-magnifier fs-2 fs-lg-1 text-gray-500 position-absolute top-50 ms-5 translate-middle-y"><span
@@ -71,29 +71,48 @@
                 <tbody>
                     @foreach ($hirarcs as $hirarc)
                         <tr>
-                            <td scope="row" class="text-center">{{ ($hirarcs->currentpage()-1) * $hirarcs ->perpage() + $loop->index + 1 }}</td>
-                            <td>{{ $hirarc->departemen?->name }}</td>
-                            <td>{{ $hirarc->location?->name }}</td>
+                            <td scope="row" class="text-center">
+                                {{ ($hirarcs->currentpage() - 1) * $hirarcs->perpage() + $loop->index + 1 }}</td>
+                            @if (!isset($printedDept[$hirarc->departemen_id]))
+                                <td rowspan="{{ $deptCount[$hirarc->departemen_id] }}">
+                                    {{ $hirarc->departemen->name }}
+                                </td>
+                                @php
+                                    $printedDept[$hirarc->departemen_id] = true;
+                                @endphp
+                            @endif
+                            {{-- <td>{{ $hirarc->location?->name }}</td> --}}
+                            @if (!isset($printedLoc[$hirarc->location_id]))
+                                <td rowspan="{{ $locCount[$hirarc->location_id] }}">
+                                    {{ $hirarc->location->name }}
+                                </td>
+                                @php
+                                    $printedLoc[$hirarc->location_id] = true;
+                                @endphp
+                            @endif
                             <td>{{ $hirarc->created_at ? $hirarc->created_at->translatedFormat('d F Y') : '' }}</td>
-                                                        
-                            <td>
-                                <a href="{{ route('hirarc.lihat', $hirarc->id) }}" type="button" class="btn  btn-sm bg-warning "
-                                style="width:20px;"><i
-                                    class="bi bi-eye text-dark d-flex justify-content-center align-items-center"></i></a>
-                                <a href="{{ route('hirarc.edit', $hirarc->id) }}" type="button" class="btn  btn-sm bg-primary"
-                                    style="width:20px;"><i
-                                        class="bi bi-pencil-square text-dark d-flex justify-content-center align-items-center"></i></a>
-                                <button type="button" class="btn  btn-sm" style="width:20px; background:#DC3545" data-bs-toggle="modal" data-bs-target="#deleteForm{{ $hirarc->id }}"><i
-                                            class="bi bi-trash text-dark d-flex justify-content-center align-items-center"></i></button>
 
-                                <div class="modal fade" id="deleteForm{{ $hirarc->id }}" data-bs-backdrop="static" data-bs-keyboard="false"
-                                tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                            <td>
+                                <a href="{{ route('hirarc.lihat', $hirarc->departemen_id) }}" type="button"
+                                    class="btn  btn-sm bg-warning " style="width:20px;"><i
+                                        class="bi bi-eye text-dark d-flex justify-content-center align-items-center"></i></a>
+                                <a href="{{ route('hirarc.edit', $hirarc->id) }}" type="button"
+                                    class="btn  btn-sm bg-primary" style="width:20px;"><i
+                                        class="bi bi-pencil-square text-dark d-flex justify-content-center align-items-center"></i></a>
+                                <button type="button" class="btn  btn-sm" style="width:20px; background:#DC3545"
+                                    data-bs-toggle="modal" data-bs-target="#deleteForm{{ $hirarc->id }}"><i
+                                        class="bi bi-trash text-dark d-flex justify-content-center align-items-center"></i></button>
+
+                                <div class="modal fade" id="deleteForm{{ $hirarc->id }}" data-bs-backdrop="static"
+                                    data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel"
+                                    aria-hidden="true">
                                     <div class="modal-dialog modal-dialog-centered ">
                                         <div class="modal-content">
 
                                             <form method="POST" action="{{ route('hirarc.delete', $hirarc->id) }}">
                                                 @csrf
-                                                <div class="modal-body mt-5 d-flex justify-content-center align-items-center">
+                                                <div
+                                                    class="modal-body mt-5 d-flex justify-content-center align-items-center">
                                                     <h2 class="mt-5 text-center"
                                                         style="color: #16243D; font-size: 20px font-weight:700">Yakin data
                                                         ingin dihapus?

@@ -243,16 +243,16 @@
                                             Laporan</span>
                                     </div>
                                     <div class="d-flex flex-wrap flex-lg-nowrap justify-content-around ">
-                                        <div class=" col-lg-4 text-black  px-5 ms-3 py-3 insiden shadow">
+                                        <div class=" col-lg-4 text-black  px-3 ms-3 py-3 insiden shadow">
                                             <div class="">
                                                 <span class="card-title">Pending</span>
                                             </div>
                                             <div class="row mb-4 d-flex justify-content-between align-items-center py-2">
-                                                <div class=" col-lg-6 fs-2hx text-start ps-2"
+                                                <div class=" col-lg-6 fs-2hx text-start ps-2 pe-0"
                                                     style=" font-family: Roboto Flex;">
                                                     {{ $data['jumlah_insiden_pending'] }}
                                                 </div>
-                                                <div class="col-lg-6">
+                                                <div class="col-lg-6 ps-0 text-end">
                                                     <i class="bi bi-clipboard-x text-black fs-2hx"></i>
                                                 </div>
                                             </div>
@@ -263,11 +263,11 @@
                                                 <span class="card-title">Pending</span>
                                             </div>
                                             <div class="row mb-4 d-flex justify-content-between align-items-center py-2">
-                                                <div class=" col-lg-6 fs-2hx text-start ps-2"
+                                                <div class=" col-lg-6 fs-2hx text-start ps-2 pe-0"
                                                     style=" font-family: Roboto Flex;">
                                                     {{ $data['jumlah_insiden_pending'] }}
                                                 </div>
-                                                <div class="col-lg-6">
+                                                <div class="col-lg-6 ps-0 text-end">
                                                     <i class="bi bi-clipboard-x text-black fs-2hx"></i>
                                                 </div>
                                             </div>
@@ -277,11 +277,11 @@
                                                 <span class="card-title">Pending</span>
                                             </div>
                                             <div class="row mb-4 d-flex justify-content-between align-items-center py-2">
-                                                <div class=" col-lg-6 fs-2hx text-start ps-2"
+                                                <div class=" col-lg-6 fs-2hx text-start ps-2 pe-0"
                                                     style=" font-family: Roboto Flex;">
                                                     {{ $data['jumlah_insiden_pending'] }}
                                                 </div>
-                                                <div class="col-lg-6">
+                                                <div class="col-lg-6 ps-0 text-end">
                                                     <i class="bi bi-clipboard-x text-black fs-2hx"></i>
                                                 </div>
                                             </div>

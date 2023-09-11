@@ -152,23 +152,39 @@ class HirarcController extends Controller
         
     }
 
-    public function lihat($id) {
-        $hirarcs = Hirarc::with(['departemen', 'activitie', 'location', 'hazard', 'risk'])->find($id);
-        // dd($hirarcs);
-        // $departemen = Departemen::findorFail($id);
-        // $activities = Activitie_master::findorFail($id);
-        // $locations = Location_masters::findorFail($id);
-        // $hazards = Hazard::findorFail($id);
-        // $risks = Risk::findorFail($id);
+    
+
+    public function lihat($departemen_id) {
+        $hirarcs = Hirarc::with(['departemen', 'activitie', 'location', 'hazard', 'risk'])
+        ->where('departemen_id', $departemen_id )
+        ->orderBy ('location_id')
+        ->orderBy('activity')
+        ->orderBy ('hazard')
+        ->get();
+        $locCount=[];
+        $actCount=[];
+        $hazardCount=[];
+        foreach ($hirarcs as $hir) {
+            if (!isset($locCount[$hir->location_id])) {
+                            $locCount[$hir->location_id] = 0;
+                        }
+                        $locCount[$hir->location_id]++;
+            if (!isset($actCount[$hir->activity])) {
+                $actCount[$hir->activity] = 0;
+            }
+            $actCount[$hir->activity]++;
+
+            if (!isset($hazardCount[$hir->hazard])) {
+                $hazardCount[$hir->hazard] = 0;
+            }
+            $hazardCount[$hir->hazard]++;
+        } 
         
+        return view('dashboard.hirarc.lihat-hirarc', compact('hirarcs'))
+        ->with('locCount',$locCount)
+        ->with('actCount',$actCount)
+        ->with('hazardCount',$hazardCount);
         
-        return view('dashboard.hirarc.lihat-hirarc', compact('hirarcs'));
-        // ->with('hirarcs', $hirarcs)
-        // ->with('location', $locations)
-        // ->with('departemen', $departemen)
-        // ->with('activitie', $activities)
-        // ->with('hazard', $hazards)
-        // ->with('risk', $risks);
     }
 
 //     public function testlihat(){

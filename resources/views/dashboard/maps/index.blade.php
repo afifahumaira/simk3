@@ -75,7 +75,7 @@
                 border-radius: 0;
                 max-width: 300px;
                 min-width: 200px;
-                background-color: rgba(0, 0, 0, 0.8);
+                background-color: rgba(0, 0, 0, 0.8) !important;
                 padding: 0;
             }
 
@@ -534,12 +534,12 @@
                 map.on('click', 'teknik-kapal', (e) => {
                     new mapboxgl.Popup()
                         .setLngLat(e.lngLat)
-                        .setHTML(`<h1>Teknik Kapal</h1><div class="list-item feedback">Detail APAR & P3K</div>
+                        .setHTML(`<h1>Teknik Kapal</h1>
             <button id="fly_kapal" class="list-item inside" onclick="floor_kapal()">Lantai Teknik Kapal</button>
             <div style="display: none" id="showhide_kapal">
             @foreach ($maps as $item)
             @if ($item->gedung == 'Teknik Perkapalan')
-            <a href="{{ url('detail_maps/' . $item->id) }}" class="list-item inside">{{ $item->lantai }} <img id="mapsimg" src="{{ asset('foto_maps/foreign.png') }}"></a>
+            <a href="{{ route('maps.detail', $item->id) }}" class="list-item inside">{{ $item->lantai }} <img id="mapsimg" src="{{ asset('foto_maps/foreign.png') }}"></a>
             @endif
             @endforeach
             </div>
@@ -656,12 +656,12 @@
                 map.on('click', 'teknik-industri', (e) => {
                     new mapboxgl.Popup()
                         .setLngLat(e.lngLat)
-                        .setHTML(`<h1>Teknik Industri</h1><div class="list-item feedback">Detail APAR & P3K</div>
+                        .setHTML(`<h1>Teknik Industri</h1>
                 <button id="fly_industri" class="list-item inside" onclick="floor_industri()">Lantai Teknik Industri</button>
                 <div style="display: none" id="showhide_industri">
                 @foreach ($maps as $item)
                 @if ($item->gedung == 'Teknik Industri')
-                <a href="{{ url('detail_maps/' . $item->id) }}" class="list-item inside">{{ $item->lantai }} <img id="mapsimg" src="{{ asset('foto_maps/foreign.png') }}"></a>
+                <a href="{{ route('maps.detail', $item->id) }}" class="list-item inside">{{ $item->lantai }} <img id="mapsimg" src="{{ asset('foto_maps/foreign.png') }}"></a>
                 @endif
                 @endforeach
                 </div>
@@ -799,12 +799,12 @@
                 map.on('click', 'teknik-arsitektur-gedung-a', (e) => {
                     new mapboxgl.Popup()
                         .setLngLat(e.lngLat)
-                        .setHTML(`<h1>Teknik Arsitektur Gedung A</h1><div class="list-item feedback">Detail APAR & P3K</div>
+                        .setHTML(`<h1>Teknik Arsitektur Gedung A</h1>
             <button id="fly_arsitektur_gedung_a" class="list-item inside" onclick="floor_arsitektur_gedung_a()">Lantai Teknik Arsitektur Gedung A</button>
             <div style="display: none" id="showhide_arsitektur_gedung_a">
             @foreach ($maps as $item)
             @if ($item->gedung == 'Teknik Arsitektur Gedung A')
-            <a href="{{ url('detail_maps/' . $item->id) }}" class="list-item inside">{{ $item->lantai }} <img id="mapsimg" src="{{ asset('foto_maps/foreign.png') }}"></a>
+            <a href="{{ route('maps.detail', $item->id) }}" class="list-item inside">{{ $item->lantai }} <img id="mapsimg" src="{{ asset('foto_maps/foreign.png') }}"></a>
             @endif
             @endforeach
             </div>
@@ -921,12 +921,12 @@
                 map.on('click', 'teknik-arsitektur-gedung-b', (e) => {
                     new mapboxgl.Popup()
                         .setLngLat(e.lngLat)
-                        .setHTML(`<h1>Teknik Arsitektur Gedung B</h1><div class="list-item feedback">Detail APAR & P3K</div>
+                        .setHTML(`<h1>Teknik Arsitektur Gedung B</h1>
             <button id="fly_arsitektur_gedung_b" class="list-item inside" onclick="floor_arsitektur_gedung_b()">Lantai Teknik Arsitektur Gedung B</button>
             <div style="display: none" id="showhide_arsitektur_gedung_b">
             @foreach ($maps as $item)
             @if ($item->gedung == 'Teknik Arsitektur Gedung B')
-            <a href="{{ url('detail_maps/' . $item->id) }}" class="list-item inside">{{ $item->lantai }} <img id="mapsimg" src="{{ asset('foto_maps/foreign.png') }}"></a>
+            <a href="{{ route('maps.detail', $item->id) }}" class="list-item inside">{{ $item->lantai }} <img id="mapsimg" src="{{ asset('foto_maps/foreign.png') }}"></a>
             @endif
             @endforeach
             </div>
@@ -1038,12 +1038,12 @@
                 map.on('click', 'teknik-arsitektur-gedung-c', (e) => {
                     new mapboxgl.Popup()
                         .setLngLat(e.lngLat)
-                        .setHTML(`<h1>Teknik Arsitektur Gedung C</h1><div class="list-item feedback">Detail APAR & P3K</div>
+                        .setHTML(`<h1>Teknik Arsitektur Gedung C</h1>
             <button id="fly_arsitektur_gedung_c" class="list-item inside" onclick="floor_arsitektur_gedung_c()">Lantai Teknik Arsitektur Gedung C</button>
             <div style="display: none" id="showhide_arsitektur_gedung_c">
             @foreach ($maps as $item)
             @if ($item->gedung == 'Teknik Arsitektur Gedung C')
-            <a href="{{ url('detail_maps/' . $item->id) }}" class="list-item inside">{{ $item->lantai }} <img id="mapsimg" src="{{ asset('foto_maps/foreign.png') }}"></a>
+            <a href="{{ route('maps.detail', $item->id) }}" class="list-item inside">{{ $item->lantai }} <img id="mapsimg" src="{{ asset('foto_maps/foreign.png') }}"></a>
             @endif
             @endforeach
             </div>
@@ -1154,17 +1154,17 @@
                 map.on('click', 'teknik-arsitektur-gedung-d', (e) => {
                     new mapboxgl.Popup()
                         .setLngLat(e.lngLat)
-                        .setHTML(`<h1>Teknik Arsitektur Gedung D</h1><div class="list-item feedback">Detail APAR & P3K</div>
+                        .setHTML(`<h1>Teknik Arsitektur Gedung D</h1>
             <button id="fly_arsitektur_gedung_d" class="list-item inside" onclick="floor_arsitektur_gedung_d()">Lantai Teknik Arsitektur Gedung D</button>
             <div style="display: none" id="showhide_arsitektur_gedung_d">
             @foreach ($maps as $item)
             @if ($item->gedung == 'Teknik Arsitektur Gedung D')
-            <a href="{{ url('detail_maps/' . $item->id) }}" class="list-item inside">{{ $item->lantai }} <img id="mapsimg" src="{{ asset('foto_maps/foreign.png') }}"></a>
+            <a href="{{ route('maps.detail', $item->id) }}" class="list-item inside">{{ $item->lantai }} <img id="mapsimg" src="{{ asset('foto_maps/foreign.png') }}"></a>
             @endif
             @endforeach
             </div>
             `)
-                        // <h1>Teknik Arsitektur Gedung D</h1><div class="list-item feedback">Detail APAR & P3K</div>
+                        // <h1>Teknik Arsitektur Gedung D</h1>
                         // <button id="fly_arsitektur_gedung_d" class="list-item inside" onclick="floor_arsitektur_gedung_d()">Lantai Teknik Arsitektur Gedung D</button>
                         //   <a href="{{ url('maps/teknik_arsitektur/gedung_d/teknik_arsitektur_lantai1') }}" class="list-item inside" id="lantai1" style="display: none">Lantai 1 <img id="mapsimg" src="{{ asset('foto_maps/foreign.png') }}"></a>
                         //   <a href="{{ url('maps/teknik_arsitektur/gedung_d/teknik_arsitektur_lantai2') }}" class="list-item inside" id="lantai2" style="display: none">Lantai 2 <img id="mapsimg" src="{{ asset('foto_maps/foreign.png') }}"></a>
@@ -1284,12 +1284,12 @@
                 map.on('click', 'dekanat-baru', (e) => {
                     new mapboxgl.Popup()
                         .setLngLat(e.lngLat)
-                        .setHTML(`<h1>Dekanat Fakultas Teknik</h1><div class="list-item feedback">Detail APAR & P3K</div>
+                        .setHTML(`<h1>Dekanat Fakultas Teknik</h1>
             <button id="fly_dekanat_baru" class="list-item inside" onclick="floor_dekanat_baru()">Lantai Dekanat Fakultas Teknik</button>
             <div style="display: none" id="showhide_dekanat_fakultas">
             @foreach ($maps as $item)
             @if ($item->gedung == 'Dekanat Fakultas Teknik')
-            <a href="{{ url('detail_maps/' . $item->id) }}" class="list-item inside">{{ $item->lantai }} <img id="mapsimg" src="{{ asset('foto_maps/foreign.png') }}"></a>
+            <a href="{{ route('maps.detail', $item->id) }}" class="list-item inside">{{ $item->lantai }} <img id="mapsimg" src="{{ asset('foto_maps/foreign.png') }}"></a>
             @endif
             @endforeach
             </div>
@@ -1410,12 +1410,12 @@
                 map.on('click', 'teknik-kimia-a', (e) => {
                     new mapboxgl.Popup()
                         .setLngLat(e.lngLat)
-                        .setHTML(`<h1>Teknik Kimia Gedung A</h1><div class="list-item feedback">Detail APAR & P3K</div>
+                        .setHTML(`<h1>Teknik Kimia Gedung A</h1>
                 <button id="fly_kimia_a" class="list-item inside" onclick="floor_kimia_a()">Lantai Teknik Kimia Gedung A</button>
                 <div style="display: none" id="showhide_kimia_a">
                 @foreach ($maps as $item)
                 @if ($item->gedung == 'Teknik Kimia Gedung A')
-                <a href="{{ url('detail_maps/' . $item->id) }}" class="list-item inside">{{ $item->lantai }} <img id="mapsimg" src="{{ asset('foto_maps/foreign.png') }}"></a>
+                <a href="{{ route('maps.detail', $item->id) }}" class="list-item inside">{{ $item->lantai }} <img id="mapsimg" src="{{ asset('foto_maps/foreign.png') }}"></a>
                 @endif
                 @endforeach
                 </div>
@@ -1526,12 +1526,12 @@
                 map.on('click', 'teknik-kimia-b', (e) => {
                     new mapboxgl.Popup()
                         .setLngLat(e.lngLat)
-                        .setHTML(`<h1>Teknik Kimia Gedung B</h1><div class="list-item feedback">Detail APAR & P3K</div>
+                        .setHTML(`<h1>Teknik Kimia Gedung B</h1>
                 <button id="fly_kimia_b" class="list-item inside" onclick="floor_kimia_b()">Lantai Teknik Kimia Gedung B</button>
                 <div style="display: none" id="showhide_kimia_b">
                 @foreach ($maps as $item)
                 @if ($item->gedung == 'Teknik Kimia Gedung B')
-                <a href="{{ url('detail_maps/' . $item->id) }}" class="list-item inside">{{ $item->lantai }} <img id="mapsimg" src="{{ asset('foto_maps/foreign.png') }}"></a>
+                <a href="{{ route('maps.detail', $item->id) }}" class="list-item inside">{{ $item->lantai }} <img id="mapsimg" src="{{ asset('foto_maps/foreign.png') }}"></a>
                 @endif
                 @endforeach
                 </div>
@@ -1658,12 +1658,12 @@
                 map.on('click', 'teknik-kimia-c', (e) => {
                     new mapboxgl.Popup()
                         .setLngLat(e.lngLat)
-                        .setHTML(`<h1>Teknik Kimia Gedung C</h1><div class="list-item feedback">Detail APAR & P3K</div>
+                        .setHTML(`<h1>Teknik Kimia Gedung C</h1>
                 <button id="fly_kimia_c" class="list-item inside" onclick="floor_kimia_c()">Lantai Teknik Kimia Gedung C</button>
                 <div style="display: none" id="showhide_kimia_c">
                 @foreach ($maps as $item)
                 @if ($item->gedung == 'Teknik Kimia Gedung C')
-                <a href="{{ url('detail_maps/' . $item->id) }}" class="list-item inside">{{ $item->lantai }} <img id="mapsimg" src="{{ asset('foto_maps/foreign.png') }}"></a>
+                <a href="{{ route('maps.detail', $item->id) }}" class="list-item inside">{{ $item->lantai }} <img id="mapsimg" src="{{ asset('foto_maps/foreign.png') }}"></a>
                 @endif
                 @endforeach
                 </div>
@@ -1766,12 +1766,12 @@
                 map.on('click', 'teknik-kimia-pengolahan-limbah', (e) => {
                     new mapboxgl.Popup()
                         .setLngLat(e.lngLat)
-                        .setHTML(`<h1>Laboratorium Pengolah Limbah</h1><div class="list-item feedback">Detail APAR & P3K</div>
+                        .setHTML(`<h1>Laboratorium Pengolah Limbah</h1>
                 <button id="fly_lab_pengolahlimbah" class="list-item inside" onclick="floor_lab_pengolahlimbah()">Lantai Laboratorium Pengolah Limbah</button>
                 <div style="display: none" id="showhide_lab_pengolahlimbah">
                 @foreach ($maps as $item)
                 @if ($item->gedung == 'Laboratorium Pengolahan Limbah (Teknik Kimia)')
-                <a href="{{ url('detail_maps/' . $item->id) }}" class="list-item inside">{{ $item->lantai }} <img id="mapsimg" src="{{ asset('foto_maps/foreign.png') }}"></a>
+                <a href="{{ route('maps.detail', $item->id) }}" class="list-item inside">{{ $item->lantai }} <img id="mapsimg" src="{{ asset('foto_maps/foreign.png') }}"></a>
                 @endif
                 @endforeach
                 </div>
@@ -1879,12 +1879,12 @@
                 map.on('click', 'teknik-kimia-lab-kimia-dasar', (e) => {
                     new mapboxgl.Popup()
                         .setLngLat(e.lngLat)
-                        .setHTML(`<h1>Laboratorium Kimia Dasar</h1><div class="list-item feedback">Detail APAR & P3K</div>
+                        .setHTML(`<h1>Laboratorium Kimia Dasar</h1>
                 <button id="fly_lab_kimiadasar" class="list-item inside" onclick="floor_lab_kimiadasar()">Lantai Laboratorium Kimia Dasar</button>
                 <div style="display: none" id="showhide_lab_kimiadasar">
                 @foreach ($maps as $item)
                 @if ($item->gedung == 'Laboratorium Kimia Dasar (Teknik Kimia)')
-                <a href="{{ url('detail_maps/' . $item->id) }}" class="list-item inside">{{ $item->lantai }} <img id="mapsimg" src="{{ asset('foto_maps/foreign.png') }}"></a>
+                <a href="{{ route('maps.detail', $item->id) }}" class="list-item inside">{{ $item->lantai }} <img id="mapsimg" src="{{ asset('foto_maps/foreign.png') }}"></a>
                 @endif
                 @endforeach
                 </div>
@@ -2037,12 +2037,12 @@
                 map.on('click', 'gedung-gkb', (e) => {
                     new mapboxgl.Popup()
                         .setLngLat(e.lngLat)
-                        .setHTML(`<h1>Gedung Kuliah Bersama</h1><div class="list-item feedback">Detail APAR & P3K</div>
+                        .setHTML(`<h1>Gedung Kuliah Bersama</h1>
                     <button id="fly_gkb" class="list-item inside" onclick="floor_gkb()">Lantai Gedung Kuliah Bersama</button>
                     <div style="display: none" id="showhide_gkb">
                     @foreach ($maps as $item)
                     @if ($item->gedung == 'Gedung Kuliah Bersama')
-                    <a href="{{ url('detail_maps/' . $item->id) }}" class="list-item inside">{{ $item->lantai }} <img id="mapsimg" src="{{ asset('foto_maps/foreign.png') }}"></a>
+                    <a href="{{ route('maps.detail', $item->id) }}" class="list-item inside">{{ $item->lantai }} <img id="mapsimg" src="{{ asset('foto_maps/foreign.png') }}"></a>
                     @endif
                     @endforeach
                     </div>
@@ -2197,12 +2197,12 @@
                 map.on('click', 'teknik_elektro_a', (e) => {
                     new mapboxgl.Popup()
                         .setLngLat(e.lngLat)
-                        .setHTML(`<h1>Teknik Elektro Gedung A</h1><div class="list-item feedback">Detail APAR & P3K</div>
+                        .setHTML(`<h1>Teknik Elektro Gedung A</h1>
             <button id="fly_teknik_elektro_a" class="list-item inside" onclick="floor_elektro_gedung_a()">Lantai Teknik Elektro Gedung A</button>
             <div style="display: none" id="showhide_elektro_gedung_a">
             @foreach ($maps as $item)
             @if ($item->gedung == 'Teknik Elektro Gedung A')
-            <a href="{{ url('detail_maps/' . $item->id) }}" class="list-item inside">{{ $item->lantai }} <img id="mapsimg" src="{{ asset('foto_maps/foreign.png') }}"></a>
+            <a href="{{ route('maps.detail', $item->id) }}" class="list-item inside">{{ $item->lantai }} <img id="mapsimg" src="{{ asset('foto_maps/foreign.png') }}"></a>
             @endif
             @endforeach
             </div>
@@ -2309,12 +2309,12 @@
                 map.on('click', 'teknik_elektro_b', (e) => {
                     new mapboxgl.Popup()
                         .setLngLat(e.lngLat)
-                        .setHTML(`<h1>Teknik Elektro Gedung B</h1><div class="list-item feedback">Detail APAR & P3K</div>
+                        .setHTML(`<h1>Teknik Elektro Gedung B</h1>
             <button id="fly_elektro_b" class="list-item inside" onclick="floor_elektro_gedung_b()">Lantai Teknik Elektro Gedung B</button>
             <div style="display: none" id="showhide_elektro_gedung_b">
             @foreach ($maps as $item)
             @if ($item->gedung == 'Teknik Elektro Gedung B')
-            <a href="{{ url('detail_maps/' . $item->id) }}" class="list-item inside">{{ $item->lantai }} <img id="mapsimg" src="{{ asset('foto_maps/foreign.png') }}"></a>
+            <a href="{{ route('maps.detail', $item->id) }}" class="list-item inside">{{ $item->lantai }} <img id="mapsimg" src="{{ asset('foto_maps/foreign.png') }}"></a>
             @endif
             @endforeach
             </div>
@@ -2422,12 +2422,12 @@
                 map.on('click', 'teknik_pwk_a', (e) => {
                     new mapboxgl.Popup()
                         .setLngLat(e.lngLat)
-                        .setHTML(`<h1>PWK Gedung A</h1><div class="list-item feedback">Detail APAR & P3K</div>
+                        .setHTML(`<h1>PWK Gedung A</h1>
             <button id="fly_teknik_pwk_a" class="list-item inside" onclick="floor_pwk_a()">Lantai PWK Gedung A</button>
             <div style="display: none" id="showhide_pwk_a">
             @foreach ($maps as $item)
             @if ($item->gedung == 'PWK Gedung A')
-            <a href="{{ url('detail_maps/' . $item->id) }}" class="list-item inside">{{ $item->lantai }} <img id="mapsimg" src="{{ asset('foto_maps/foreign.png') }}"></a>
+            <a href="{{ route('maps.detail', $item->id) }}" class="list-item inside">{{ $item->lantai }} <img id="mapsimg" src="{{ asset('foto_maps/foreign.png') }}"></a>
             @endif
             @endforeach
             </div>
@@ -2533,12 +2533,12 @@
                 map.on('click', 'teknik_pwk_b', (e) => {
                     new mapboxgl.Popup()
                         .setLngLat(e.lngLat)
-                        .setHTML(`<h1>PWK Gedung B</h1><div class="list-item feedback">Detail APAR & P3K</div>
+                        .setHTML(`<h1>PWK Gedung B</h1>
             <button id="fly_teknik_pwk_b" class="list-item inside" onclick="floor_pwk_b()">Lantai PWK Gedung B</button>
             <div style="display: none" id="showhide_pwk_b">
             @foreach ($maps as $item)
             @if ($item->gedung == 'PWK Gedung B')
-            <a href="{{ url('detail_maps/' . $item->id) }}" class="list-item inside">{{ $item->lantai }} <img id="mapsimg" src="{{ asset('foto_maps/foreign.png') }}"></a>
+            <a href="{{ route('maps.detail', $item->id) }}" class="list-item inside">{{ $item->lantai }} <img id="mapsimg" src="{{ asset('foto_maps/foreign.png') }}"></a>
             @endif
             @endforeach
             </div>
@@ -2748,7 +2748,7 @@
                 map.on('click', 'gedung_dekanat_lama', (e) => {
                     new mapboxgl.Popup()
                         .setLngLat(e.lngLat)
-                        .setHTML(`<h1>Dekanat Fakultas Teknik Lama</h1><div class="list-item feedback">Detail APAR & P3K</div>
+                        .setHTML(`<h1>Dekanat Fakultas Teknik Lama</h1>
             <button id="fly_dekanat_baru" class="list-item inside" onclick="floor_dekanat_baru()">Lantai Dekanat Fakultas Teknik Lama</button>
             `)
                         // <a href="{{ url('maps/dekanat_fakultas_teknik/dekanat_fakultas_teknik_lantai1') }}" class="list-item inside" id="lantai1" style="display: none">Lantai 1 <img id="mapsimg" src="{{ asset('foto_maps/foreign.png') }}"></a>
@@ -2930,14 +2930,14 @@
                 map.on('click', 'teknik_geologi', (e) => {
                     new mapboxgl.Popup()
                         .setLngLat(e.lngLat)
-                        .setHTML(`<h1>Teknik Geologi</h1><div class="list-item feedback">Detail APAR & P3K</div>
+                        .setHTML(`<h1>Teknik Geologi</h1>
                 <button id="fly_teknik_geologi" class="list-item inside" onclick="floor_geologi()">Lantai Teknik Geologi</button>
                 <div style="display: none" id="showhide_geologi">
-                @foreach ($maps as $item)
-                @if ($item->gedung == 'Teknik Geologi')
-                <a href="{{ url('detail_maps/' . $item->id) }}" class="list-item inside">{{ $item->lantai }} <img id="mapsimg" src="{{ asset('foto_maps/foreign.png') }}"></a>
-                @endif
-                @endforeach
+                    @foreach ($maps as $item)
+                        @if ($item->gedung == 'Teknik Geologi')
+                        <a href="{{ route('maps.detail', $item->id) }}" class="list-item inside">{{ $item->lantai }} <img id="mapsimg" src="{{ asset('foto_maps/foreign.png') }}"></a>
+                        @endif
+                        @endforeach
                 </div>
                 `)
                         .addTo(map);
@@ -3036,12 +3036,12 @@
                 map.on('click', 'teknik_sipil_gedung_A', (e) => {
                     new mapboxgl.Popup()
                         .setLngLat(e.lngLat)
-                        .setHTML(`<h1>Teknik Sipil Gedung A</h1><div class="list-item feedback">Detail APAR & P3K</div>
+                        .setHTML(`<h1>Teknik Sipil Gedung A</h1>
                     <button id="fly_teknik_sipil_gedung_A" class="list-item inside" onclick="floor_sipil_a()">Lantai Teknik Sipil Gedung A</button>
                     <div style="display: none" id="showhide_sipil_a">
                     @foreach ($maps as $item)
                     @if ($item->gedung == 'Teknik Sipil Gedung A')
-                    <a href="{{ url('detail_maps/' . $item->id) }}" class="list-item inside">{{ $item->lantai }} <img id="mapsimg" src="{{ asset('foto_maps/foreign.png') }}"></a>
+                    <a href="{{ route('maps.detail', $item->id) }}" class="list-item inside">{{ $item->lantai }} <img id="mapsimg" src="{{ asset('foto_maps/foreign.png') }}"></a>
                     @endif
                     @endforeach
                     </div>
@@ -3187,12 +3187,12 @@
                 map.on('click', 'teknik_sipil_gedung_B_C', (e) => {
                     new mapboxgl.Popup()
                         .setLngLat(e.lngLat)
-                        .setHTML(`<h1>Teknik Sipil Gedung B & C</h1><div class="list-item feedback">Detail APAR & P3K</div>
+                        .setHTML(`<h1>Teknik Sipil Gedung B & C</h1>
                     <button id="fly_teknik_sipil_gedung_B_C" class="list-item inside" onclick="floor_sipil_b_dan_c()">Lantai Teknik Sipil Gedung B & C</button>
                     <div style="display: none" id="showhide_sipil_b_dan_c">
                     @foreach ($maps as $item)
                     @if ($item->gedung == 'Teknik Sipil Gedung B dan C')
-                    <a href="{{ url('detail_maps/' . $item->id) }}" class="list-item inside">{{ $item->lantai }} <img id="mapsimg" src="{{ asset('foto_maps/foreign.png') }}"></a>
+                    <a href="{{ route('maps.detail', $item->id) }}" class="list-item inside">{{ $item->lantai }} <img id="mapsimg" src="{{ asset('foto_maps/foreign.png') }}"></a>
                     @endif
                     @endforeach
                     </div>
@@ -3338,12 +3338,12 @@
                 map.on('click', 'teknik_sipil_gedung_D', (e) => {
                     new mapboxgl.Popup()
                         .setLngLat(e.lngLat)
-                        .setHTML(`<h1>Teknik Sipil Gedung D</h1><div class="list-item feedback">Detail APAR & P3K</div>
+                        .setHTML(`<h1>Teknik Sipil Gedung D</h1>
                     <button id="fly_teknik_sipil_gedung_D" class="list-item inside" onclick="floor_sipil_d()">Lantai Teknik Sipil Gedung D</button>
                     <div style="display: none" id="showhide_sipil_d">
                     @foreach ($maps as $item)
                     @if ($item->gedung == 'Teknik Sipil Gedung D')
-                    <a href="{{ url('detail_maps/' . $item->id) }}" class="list-item inside">{{ $item->lantai }} <img id="mapsimg" src="{{ asset('foto_maps/foreign.png') }}"></a>
+                    <a href="{{ route('maps.detail', $item->id) }}" class="list-item inside">{{ $item->lantai }} <img id="mapsimg" src="{{ asset('foto_maps/foreign.png') }}"></a>
                     @endif
                     @endforeach
                     </div>
@@ -3465,12 +3465,12 @@
                 map.on('click', 'teknik_sipil_gedung_E', (e) => {
                     new mapboxgl.Popup()
                         .setLngLat(e.lngLat)
-                        .setHTML(`<h1>Teknik Sipil Gedung E</h1><div class="list-item feedback">Detail APAR & P3K</div>
+                        .setHTML(`<h1>Teknik Sipil Gedung E</h1>
                     <button id="fly_teknik_sipil_gedung_E" class="list-item inside" onclick="floor_sipil_e()">Lantai Teknik Sipil Gedung E</button>
                     <div style="display: none" id="showhide_sipil_e">
                     @foreach ($maps as $item)
                     @if ($item->gedung == 'Teknik Sipil Gedung E')
-                    <a href="{{ url('detail_maps/' . $item->id) }}" class="list-item inside">{{ $item->lantai }} <img id="mapsimg" src="{{ asset('foto_maps/foreign.png') }}"></a>
+                    <a href="{{ route('maps.detail', $item->id) }}" class="list-item inside">{{ $item->lantai }} <img id="mapsimg" src="{{ asset('foto_maps/foreign.png') }}"></a>
                     @endif
                     @endforeach
                     </div>
@@ -3585,12 +3585,12 @@
                 map.on('click', 'teknik_mesin_gedung_A', (e) => {
                     new mapboxgl.Popup()
                         .setLngLat(e.lngLat)
-                        .setHTML(`<h1>Teknik Mesin Gedung A</h1><div class="list-item feedback">Detail APAR & P3K</div>
+                        .setHTML(`<h1>Teknik Mesin Gedung A</h1>
                     <button id="fly_teknik_mesin_gedung_A" class="list-item inside" onclick="floor_mesin_a()">Lantai Teknik Mesin Gedung A</button>
                     <div style="display: none" id="showhide_mesin_a">
                     @foreach ($maps as $item)
                     @if ($item->gedung == 'Teknik Mesin Gedung A')
-                    <a href="{{ url('detail_maps/' . $item->id) }}" class="list-item inside">{{ $item->lantai }} <img id="mapsimg" src="{{ asset('foto_maps/foreign.png') }}"></a>
+                    <a href="{{ route('maps.detail', $item->id) }}" class="list-item inside">{{ $item->lantai }} <img id="mapsimg" src="{{ asset('foto_maps/foreign.png') }}"></a>
                     @endif
                     @endforeach
                     </div>
@@ -3707,12 +3707,12 @@
                 map.on('click', 'teknik_mesin_gedung_B', (e) => {
                     new mapboxgl.Popup()
                         .setLngLat(e.lngLat)
-                        .setHTML(`<h1>Teknik Mesin Gedung B</h1><div class="list-item feedback">Detail APAR & P3K</div>
+                        .setHTML(`<h1>Teknik Mesin Gedung B</h1>
                     <button id="fly_teknik_mesin_gedung_B" class="list-item inside" onclick="floor_mesin_b()">Lantai Teknik Mesin Gedung B</button>
                     <div style="display: none" id="showhide_mesin_b">
                     @foreach ($maps as $item)
                     @if ($item->gedung == 'Teknik Mesin Gedung B')
-                    <a href="{{ url('detail_maps/' . $item->id) }}" class="list-item inside">{{ $item->lantai }} <img id="mapsimg" src="{{ asset('foto_maps/foreign.png') }}"></a>
+                    <a href="{{ route('maps.detail', $item->id) }}" class="list-item inside">{{ $item->lantai }} <img id="mapsimg" src="{{ asset('foto_maps/foreign.png') }}"></a>
                     @endif
                     @endforeach
                     </div>
@@ -3833,12 +3833,12 @@
                 map.on('click', 'teknik_mesin_lab_tribologi', (e) => {
                     new mapboxgl.Popup()
                         .setLngLat(e.lngLat)
-                        .setHTML(`<h1>Laboratorium Tribologi (Teknik Mesin)</h1><div class="list-item feedback">Detail APAR & P3K</div>
+                        .setHTML(`<h1>Laboratorium Tribologi (Teknik Mesin)</h1>
                     <button id="fly_teknik_mesin_lab_tribologi" class="list-item inside" onclick="floor_mesin_b()">Lantai Laboratorium Tribologi</button>
                     <div style="display: none" id="showhide_mesin_b">
                     @foreach ($maps as $item)
                     @if ($item->gedung == 'Laboratorium Tribologi (Teknik Mesin)')
-                    <a href="{{ url('detail_maps/' . $item->id) }}" class="list-item inside">{{ $item->lantai }} <img id="mapsimg" src="{{ asset('foto_maps/foreign.png') }}"></a>
+                    <a href="{{ route('maps.detail', $item->id) }}" class="list-item inside">{{ $item->lantai }} <img id="mapsimg" src="{{ asset('foto_maps/foreign.png') }}"></a>
                     @endif
                     @endforeach
                     </div>
@@ -3936,12 +3936,12 @@
                 map.on('click', 'teknik_mesin_laboratorium', (e) => {
                     new mapboxgl.Popup()
                         .setLngLat(e.lngLat)
-                        .setHTML(`<h1>Gedung Teknik Mesin</h1><div class="list-item feedback">Detail APAR & P3K</div>
+                        .setHTML(`<h1>Gedung Teknik Mesin</h1>
                     <button id="fly_teknik_mesin_laboratorium" class="list-item inside" onclick="floor_mesin_b()">Lantai Gedung Teknik Mesin</button>
                     <div style="display: none" id="showhide_mesin_b">
                     @foreach ($maps as $item)
                     @if ($item->gedung == 'Gedung Laboratorium Teknik Mesin')
-                    <a href="{{ url('detail_maps/' . $item->id) }}" class="list-item inside">{{ $item->lantai }} <img id="mapsimg" src="{{ asset('foto_maps/foreign.png') }}"></a>
+                    <a href="{{ route('maps.detail', $item->id) }}" class="list-item inside">{{ $item->lantai }} <img id="mapsimg" src="{{ asset('foto_maps/foreign.png') }}"></a>
                     @endif
                     @endforeach
                     </div>
@@ -3968,6 +3968,322 @@
                     map.getCanvas().style.cursor = '';
                 });
             });
+
+            //maps
+
+            //kapal
+            function floor_kapal() {
+                var showhideTeknikKapal = document.getElementById("showhide_kapal");
+                if (showhideTeknikKapal.style.display === "none") {
+                    showhideTeknikKapal.style.display = "block";
+                } else {
+                    showhideTeknikKapal.style.display = "none";
+
+
+                }
+            }
+
+            //industri
+            function floor_industri() {
+                var showhideIndustri = document.getElementById("showhide_industri");
+
+                if (showhideIndustri.style.display === "none") {
+                    showhideIndustri.style.display = "block";
+
+                } else {
+                    showhideIndustri.style.display = "none";
+
+
+                }
+            }
+
+            //arsitektur
+            function floor_arsitektur_gedung_a() {
+                var showhideArsitekturGedungA = document.getElementById("showhide_arsitektur_gedung_a");
+
+                if (showhideArsitekturGedungA.style.display === "none") {
+                    showhideArsitekturGedungA.style.display = "block";
+
+                } else {
+                    showhideArsitekturGedungA.style.display = "none";
+
+                }
+            }
+
+            function floor_arsitektur_gedung_b() {
+                var showhideArsitekturGedungB = document.getElementById("showhide_arsitektur_gedung_b");
+
+                if (showhideArsitekturGedungB.style.display === "none") {
+                    showhideArsitekturGedungB.style.display = "block";
+
+                } else {
+                    showhideArsitekturGedungB.style.display = "none";
+
+
+                }
+            }
+
+            function floor_arsitektur_gedung_c() {
+                var showhideArsitekturGedungC = document.getElementById("showhide_arsitektur_gedung_c");
+
+                if (showhideArsitekturGedungC.style.display === "none") {
+                    showhideArsitekturGedungC.style.display = "block";
+
+                } else {
+                    showhideArsitekturGedungC.style.display = "none";
+                }
+            }
+
+            function floor_arsitektur_gedung_d() {
+                var showhideArsitekturGedungD = document.getElementById("showhide_arsitektur_gedung_d");
+
+                if (showhideArsitekturGedungD.style.display === "none") {
+                    showhideArsitekturGedungD.style.display = "block";
+
+                } else {
+                    showhideArsitekturGedungD.style.display = "none";
+
+
+                }
+            }
+
+            //dekanat baru
+            function floor_dekanat_baru() {
+                var showhideDekanatFakultas = document.getElementById("showhide_dekanat_fakultas");
+
+                if (showhideDekanatFakultas.style.display === "none") {
+                    showhideDekanatFakultas.style.display = "block";
+
+                } else {
+                    showhideDekanatFakultas.style.display = "none";
+                }
+            }
+
+            //kimia
+            function floor_kimia_a() {
+                {
+                    var showhideKimiaA = document.getElementById("showhide_kimia_a");
+
+                    if (showhideKimiaA.style.display === "none") {
+                        showhideKimiaA.style.display = "block";
+
+                    } else {
+                        showhideKimiaA.style.display = "none";
+
+
+                    }
+                }
+            }
+
+            function floor_kimia_b() {
+                var showhideKimiaB = document.getElementById("showhide_kimia_b");
+
+                if (showhideKimiaB.style.display === "none") {
+                    showhideKimiaB.style.display = "block";
+
+                } else {
+                    showhideKimiaB.style.display = "none";
+
+                }
+            }
+
+
+            function floor_kimia_c() {
+                var showhideKimiaC = document.getElementById("showhide_kimia_c");
+
+                if (showhideKimiaC.style.display === "none") {
+                    showhideKimiaC.style.display = "block";
+
+                } else {
+                    showhideKimiaC.style.display = "none";
+
+                }
+            }
+
+            function floor_lab_pengolahlimbah() {
+                var lab_pengolahlimbah = document.getElementById("showhide_lab_pengolahlimbah");
+
+                if (lab_pengolahlimbah.style.display === "none") {
+                    lab_pengolahlimbah.style.display = "block";
+
+
+                } else {
+                    lab_pengolahlimbah.style.display = "none";
+
+                }
+            }
+
+            function floor_lab_kimiadasar() {
+                var lab_kimiadasar = document.getElementById("showhide_lab_kimiadasar");
+
+                if (lab_kimiadasar.style.display === "none") {
+                    lab_kimiadasar.style.display = "block";
+
+
+                } else {
+                    lab_kimiadasar.style.display = "none";
+
+                }
+            }
+
+            //elektro
+            function floor_elektro_gedung_a() {
+                var showhideElektroGedungA = document.getElementById("showhide_elektro_gedung_a");
+
+                if (showhideElektroGedungA.style.display === "none") {
+                    showhideElektroGedungA.style.display = "block";
+
+                } else {
+                    showhideElektroGedungA.style.display = "none";
+
+
+                }
+            }
+
+            function floor_elektro_gedung_b() {
+                var showhideElektroGedungB = document.getElementById("showhide_elektro_gedung_b");
+
+                if (showhideElektroGedungB.style.display === "none") {
+                    showhideElektroGedungB.style.display = "block";
+
+                } else {
+                    showhideElektroGedungB.style.display = "none";
+
+
+                }
+            }
+
+            //geologi
+            function floor_geologi() {
+                var showhideGeologi = document.getElementById("showhide_geologi");
+
+                if (showhideGeologi.style.display === "none") {
+                    showhideGeologi.style.display = "block";
+
+                } else {
+                    showhideGeologi.style.display = "none";
+
+
+                }
+            }
+
+
+            //gkb
+            function floor_gkb() {
+                var showhideGKB = document.getElementById("showhide_gkb");
+
+                if (showhideGKB.style.display === "none") {
+                    showhideGKB.style.display = "block";
+
+                } else {
+                    showhideGKB.style.display = "none";
+
+
+                }
+            }
+
+            //floor pwk
+            function floor_pwk_a() {
+                var showhidePwkA = document.getElementById("showhide_pwk_a");
+
+                if (showhidePwkA.style.display === "none") {
+                    showhidePwkA.style.display = "block";
+
+                } else {
+                    showhidePwkA.style.display = "none";
+
+
+                }
+            }
+
+            function floor_pwk_b() {
+                var showhidePwkB = document.getElementById("showhide_pwk_b");
+
+                if (showhidePwkB.style.display === "none") {
+                    showhidePwkB.style.display = "block";
+
+                } else {
+                    showhidePwkB.style.display = "none";
+
+
+                }
+            }
+
+            //sipil
+            function floor_sipil_a() {
+                var showhideSipilA = document.getElementById("showhide_sipil_a");
+
+                if (showhideSipilA.style.display === "none") {
+                    showhideSipilA.style.display = "block";
+
+                } else {
+                    showhideSipilA.style.display = "none";
+
+
+                }
+            }
+
+            function floor_sipil_b_dan_c() {
+                var showhideSipilBdanC = document.getElementById("showhide_sipil_b_dan_c");
+
+                if (showhideSipilBdanC.style.display === "none") {
+                    showhideSipilBdanC.style.display = "block";
+
+                } else {
+                    showhideSipilBdanC.style.display = "none";
+
+
+                }
+            }
+
+            function floor_sipil_d() {
+                var showhideSipilD = document.getElementById("showhide_sipil_d");
+
+                if (showhideSipilD.style.display === "none") {
+                    showhideSipilD.style.display = "block";
+
+                } else {
+                    showhideSipilD.style.display = "none";
+
+
+                }
+            }
+
+            function floor_sipil_e() {
+                var showhideSipilE = document.getElementById("showhide_sipil_e");
+
+                if (showhideSipilE.style.display === "none") {
+                    showhideSipilE.style.display = "block";
+
+                } else {
+                    showhideSipilE.style.display = "none";
+
+
+                }
+            }
+
+            //mesin
+            function floor_mesin_a() {
+                var showhideMesinA = document.getElementById("showhide_mesin_a");
+
+                if (showhideMesinA.style.display === "none") {
+                    showhideMesinA.style.display = "block";
+
+                } else {
+                    showhideMesinA.style.display = "none";
+                }
+            }
+
+            function floor_mesin_b() {
+                var showhideMesinB = document.getElementById("showhide_mesin_b");
+
+                if (showhideMesinB.style.display === "none") {
+                    showhideMesinB.style.display = "block";
+
+                } else {
+                    showhideMesinB.style.display = "none";
+                }
+            }
 
 
 
