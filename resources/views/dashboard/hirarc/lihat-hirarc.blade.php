@@ -16,25 +16,26 @@
                 <!--end::Title-->
             </div>
             <!--begin::Content container-->
+            @foreach ($hirarcs as $hirarc)
             <div class="content card">
                 <div class="card-body table-responsive">
                     <table class="table table-bordered border-secondary rounded-5 px-3 py-3 mb-5 shadow">
                         
                             <tr>
                                 <th>Departemen</th>
-                                <td>{{ $hirarcs->departemen->name }}</td>
+                                <td>{{ $hirarc->departemen->name }}</td>
                             </tr>
                             <tr>
                                 <th>Lokasi</th>
-                                <td>{{ $hirarcs->location->name }}</td>
+                                <td>{{ $hirarc->location->name }}</td>
                             </tr>
                             <tr>
                                 <th>Nama Pelapor</th>
-                                <td>{{ $hirarcs->user->name }}</td>
+                                <td>{{ $hirarc->user->name }}</td>
                             </tr>
                             <tr>
                                 <th>Tanggal Lapor</th>
-                                <td>{{ $hirarcs->created_at ? $hirarcs->created_at->translatedFormat('d F Y') : '' }}</td>
+                                <td>{{ $hirarc->created_at ? $hirarc->created_at->translatedFormat('d F Y') : '' }}</td>
                             </tr>
                         
                     </table>
@@ -67,39 +68,41 @@
                             </tr>
                         </thead>
                         <tbody>
-                            {{-- @foreach ($hirarcs as $hirarc)
+                            {{-- @foreach ($hirarc as $hirarc)
                             @php
                             dd( $hirarc );
                             @endphp --}}
                                 <tr>
-                                    <td>{{ $hirarcs->activity }}</td>
-                                    <td>{{ $hirarcs->hazard }}</td>
-                                    <td>{{ $hirarcs->risk }}</td>
-                                    <td>{{ $hirarcs->kesesuaian }}</td>
-                                    <td>{{ $hirarcs->kondisi }}</td>
-                                    <td>{{ $hirarcs->kendali }}</td>
-                                    <td>{{ $hirarcs->current_severity }}</td>
-                                    <td>{{ $hirarcs->current_exposure }}</td>
-                                    <td>{{ $hirarcs->current_probability }}</td>
-                                    <td>{{ $hirarcs->current_risk_rating }}</td>
-                                    <td>{{ $hirarcs->current_risk_category }}</td>
-                                    <td>{{ $hirarcs->penyebab }}</td>
-                                    <td>{{ $hirarcs->usulan }}</td>
-                                    <td>{{ $hirarcs->form_diperlukan }}</td>
-                                    <td>{{ $hirarcs->sop }}</td>
-                                    <td>{{ $hirarcs->residual_severity }}</td>
-                                    <td>{{ $hirarcs->residual_exposure }}</td>
-                                    <td>{{ $hirarcs->residual_probability }}</td>
-                                    <td>{{ $hirarcs->residual_risk_rating }}</td>
-                                    <td>{{ $hirarcs->residual_risk_category }}</td>
-                                    <td>{{ $hirarcs->penanggung_jawab }}</td>
-                                    <td>{{ $hirarcs->status }}</td>
+                                    <td>{{ $hirarc->activity }}</td>
+                                    <td>{{ $hirarc->hazard }}</td>
+                                    <td>{{ $hirarc->risk }}</td>
+                                    <td>{{ $hirarc->kesesuaian }}</td>
+                                    <td>{{ $hirarc->kondisi }}</td>
+                                    <td>{{ $hirarc->kendali }}</td>
+                                    <td>{{ $hirarc->current_severity }}</td>
+                                    <td>{{ $hirarc->current_exposure }}</td>
+                                    <td>{{ $hirarc->current_probability }}</td>
+                                    <td>{{ $hirarc->current_risk_rating }}</td>
+                                    <td>{{ $hirarc->current_risk_category }}</td>
+                                    <td>{{ $hirarc->penyebab }}</td>
+                                    <td>{{ $hirarc->usulan }}</td>
+                                    <td>{{ $hirarc->form_diperlukan }}</td>
+                                    <td>{{ $hirarc->sop }}</td>
+                                    <td>{{ $hirarc->residual_severity }}</td>
+                                    <td>{{ $hirarc->residual_exposure }}</td>
+                                    <td>{{ $hirarc->residual_probability }}</td>
+                                    <td>{{ $hirarc->residual_risk_rating }}</td>
+                                    <td>{{ $hirarc->residual_risk_category }}</td>
+                                    <td>{{ $hirarc->penanggung_jawab }}</td>
+                                    <td>{{ $hirarc->status }}</td>
                                 </tr>
                             {{-- @endforeach --}}
                         </tbody>
                     </table>
                 </div>
-            </div>
+            </div>                
+            @endforeach
+
         </div>
     </div>
 @stop

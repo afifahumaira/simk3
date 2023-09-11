@@ -77,7 +77,7 @@
                             <td>{{ $hirarc->created_at ? $hirarc->created_at->translatedFormat('d F Y') : '' }}</td>
                                                         
                             <td>
-                                <a href="{{ route('hirarc.lihat', $hirarc->id) }}" type="button" class="btn  btn-sm bg-warning "
+                                <a href="{{ route('hirarc.lihat', $hirarc->departemen_id) }}" type="button" class="btn  btn-sm bg-warning "
                                 style="width:20px;"><i
                                     class="bi bi-eye text-dark d-flex justify-content-center align-items-center"></i></a>
                                 <a href="{{ route('hirarc.edit', $hirarc->id) }}" type="button" class="btn  btn-sm bg-primary"

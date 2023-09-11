@@ -122,14 +122,14 @@ class HirarcController extends Controller
         
     }
 
-    public function lihat($id) {
-        $hirarcs = Hirarc::with(['departemen', 'activitie', 'location', 'hazard', 'risk'])->find($id);
+    public function lihat($departemen_id) {
+        $hirarcs = Hirarc::with(['departemen', 'activitie', 'location', 'hazard', 'risk'])->where('departemen_id', $departemen_id )->get();
         // $departemen = Departemen::findorFail($id);
         // $activities = Activitie_master::findorFail($id);
         // $locations = Location_masters::findorFail($id);
         // $hazards = Hazard::findorFail($id);
         // $risks = Risk::findorFail($id);
-        
+        // dd($hirarcs);
         
         return view('dashboard.hirarc.lihat-hirarc', compact('hirarcs'));
         // ->with('hirarcs', $hirarcs)
