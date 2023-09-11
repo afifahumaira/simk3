@@ -34,9 +34,14 @@ class HirarcController extends Controller
         ->orderBy('departemen_id')
         ->orderBy ('location_id')
         ->paginate(10);
-        $deptCount=[];
+        
         $locCount=[];
+        $deptCount = [];
+        // $printedDept = [];
+        // dd($departemenCount);
+        
         foreach ($hirarcs as $hir) {
+            
             if (!isset($deptCount[$hir->departemen_id])) {
                 $deptCount[$hir->departemen_id] = 0;
             }
@@ -47,9 +52,9 @@ class HirarcController extends Controller
             }
             $locCount[$hir->location_id]++;
         } 
-         
+        
 
-        return view('dashboard.hirarc.testlihat')
+        return view('dashboard.hirarc.index')
             ->with('hirarcs',$hirarcs)
             ->with('deptCount',$deptCount)
             ->with('locCount',$locCount);
@@ -156,11 +161,13 @@ class HirarcController extends Controller
 
     public function lihat($departemen_id) {
         $hirarcs = Hirarc::with(['departemen', 'activitie', 'location', 'hazard', 'risk'])
+        
         ->where('departemen_id', $departemen_id )
         ->orderBy ('location_id')
         ->orderBy('activity')
         ->orderBy ('hazard')
         ->get();
+        // dd($hirarcs);
         $locCount=[];
         $actCount=[];
         $hazardCount=[];

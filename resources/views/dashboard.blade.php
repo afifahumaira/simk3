@@ -201,17 +201,18 @@
                                     </div>
                                     <div class="pt-5 mt-3">
                                         <ul style="list-style-type:circle; font-size:18px" class="text-white ps-0 mt-3">
-                                            <li class=" d-flex justify-content-between align-items-center rounded-2 px-4 py-3"
+                                            <li class=" d-flex justify-content-between align-items-center rounded-2 px-4 py-3 "
                                                 style="background-color: #008BF1">
                                                 Lapor Insiden
                                                 <span class="card-title d-flex align-items-center my-0 rounded-3 px-3"
                                                     style="background-color: rgba(255,255,255,.5);">{{ $data['jumlah_insiden'] }}</span>
                                             </li>
-                                            <li class=" d-flex justify-content-between align-items-center rounded-2 px-4 py-3 my-5"
-                                                style="background-color: #FF9600">
+                                            <li
+                                                class=" d-flex  justify-content-between align-items-center text-black px-4 py-3 my-5 border-gray-300
+                                            border-bottom-dashed border-top-dashed">
                                                 Potensi Bahaya
-                                                <span class="card-title d-flex align-items-center my-0 rounded-3 px-3"
-                                                    style="background-color: rgba(255,255,255,.5);">{{ $data['jumlah_potensi_bahaya'] }}</span>
+                                                <span
+                                                    class="card-title d-flex align-items-center my-0 rounded-3 px-3">{{ $data['jumlah_potensi_bahaya'] }}</span>
                                             </li>
 
                                             <li class=" d-flex justify-content-between align-items-center rounded-2 px-4 py-3"

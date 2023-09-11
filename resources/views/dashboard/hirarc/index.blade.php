@@ -69,10 +69,18 @@
                     </tr>
                 </thead>
                 <tbody>
+                    @php
+                        $printedDept = [];
+                        $printedLoc = [];
+                        
+                    @endphp
+
                     @foreach ($hirarcs as $hirarc)
+                        {{-- @dd($hirarcs) --}}
                         <tr>
                             <td scope="row" class="text-center">
                                 {{ ($hirarcs->currentpage() - 1) * $hirarcs->perpage() + $loop->index + 1 }}</td>
+
                             @if (!isset($printedDept[$hirarc->departemen_id]))
                                 <td rowspan="{{ $deptCount[$hirarc->departemen_id] }}">
                                     {{ $hirarc->departemen->name }}
@@ -81,7 +89,8 @@
                                     $printedDept[$hirarc->departemen_id] = true;
                                 @endphp
                             @endif
-                            {{-- <td>{{ $hirarc->location?->name }}</td> --}}
+                            {{-- <td>{{ $hirarc->departemen?->name }}</td>
+                            <td>{{ $hirarc->location?->name }}</td> --}}
                             @if (!isset($printedLoc[$hirarc->location_id]))
                                 <td rowspan="{{ $locCount[$hirarc->location_id] }}">
                                     {{ $hirarc->location->name }}
