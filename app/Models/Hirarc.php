@@ -12,21 +12,7 @@ class Hirarc extends Model
 
     protected $guarded = ['id'];
 
-    public function hirarcdetails()
-    {
-        return $this->hasMany(Hirarcdetails::class , 'hirarc_id', 'id');
-    }
-
-    public function prerating()
-    {
-        return $this->hasOne(Hirarc_prerating::class, 'hirarc_id', 'id');
-    }
-
-    public function postrating()
-    {
-        return $this->hasOne(Hirarc_postrating::class, 'hirarc_id', 'id');
-    }
-
+    
     public function location()
     {
         return $this->belongsTo(Location_masters::class, 'location_id', 'id', 'name');

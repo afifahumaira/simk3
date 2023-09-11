@@ -117,6 +117,7 @@ Route::group(['middleware' => ['auth']], function() {
         Route::get('edit/{id}', [PotensibahayaController::class, 'edit'])->name('edit');
         Route::post('delete/{id}', [PotensibahayaController::class, 'delete'])->name('delete');
         Route::put('edit/{id}', [PotensibahayaController::class, 'editstore'])->name('editstore');
+        Route::put('update/{id}', [PotensibahayaController::class, 'update'])->name('update');
         Route::get('k3departemen', [PotensibahayaController::class, 'k3dep'])->name('k3dep');
         Route::get('melihat/{id}', [PotensibahayaController::class, 'melihat'])->name('melihat');
     });

@@ -266,6 +266,50 @@ class PotensibahayaController extends Controller
         return redirect()->route('potensibahaya.index');
     }
 
+    public function update($id, Request $request) {
+       // $request->validate([
+         //   'p2k3' => 'required',
+         // 'status' => 'required',
+       // ]);
+
+       Potensibahaya::find($id)->update([
+        'p2k3_id' => $request->p2k3_id,
+        'status' => $request->status,
+        'id' => $request->id,
+        'departemen_id' => $request->departemen_id,
+        'lokasi' => $request->lokasi,
+        'potensi_bahaya' => $request->potensi_bahaya,
+        'resiko_bahaya' => $request->resiko_bahaya,
+        'usulan_perbaikan' => $request->usulan_perbaikan,
+       ]);
+
+       if ($request->status == 2) {
+        $data = InvestigasiPotensi::create([
+            'p2k3' => $request->p2k3_id,
+            'potensibahaya_id' => $request->id,
+            'departemen_id' => $request->departemen_id,
+            'lokasi' => $request->lokasi,
+            'potensi_bahaya' => $request->potensi_bahaya,
+            'risiko' => $request->resiko_bahaya,
+            //'usulan' => $request->usulan_perbaikan,
+            'status' => $request->status,
+        ]);
+        Alert::success('Berhasil', 'Data Akan di Investigasi!')->iconHtml('<i class="bi bi-person-check"></i>')->hideCloseButton();
+        return redirect()->route('potensibahaya.index');
+       }
+
+       if ($request->status == 3) {
+        $data = Potensibahaya::find($id);
+        $data->delete();
+        
+        Alert::success('Berhasil', 'Investigasi telah selesai')->iconHtml('<i class="bi bi-person-check"></i>')->hideCloseButton();
+        return redirect()->route('potensibahaya.index');
+        }
+
+        Alert::success('Berhasil', 'Data Laporan berhasil diperbaharui!')->iconHtml('<i class="bi bi-person-check"></i>')->hideCloseButton();
+        return redirect()->route('potensibahaya.index');
+    }
+
     public function potensibahaya() {
         $kode= PotensiBahaya::generateCode();
         return view('Frntend_simk3.potensibahayas', compact('kode'));

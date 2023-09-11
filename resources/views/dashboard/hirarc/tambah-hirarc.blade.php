@@ -81,7 +81,7 @@
                                         <label for="location_id" class="form-label">Pilih Lokasi:</label>
                                         <select id="location_id" name="location_id" class="form-select"
                                             data-control="select2">
-                                            <option value="">Pilih Departemen terlebih dahulu</option>
+                                            <option value="">Pilih Lokasi</option>
                                             @foreach ($location as $loc)
                                                 <option value="{{ $loc->id }}">{{ $loc->name }}</option>
                                             @endforeach
@@ -116,7 +116,7 @@
                                                                 Aktifitas:</label>
                                                             <select id="activitie_id" name="activitie" class="form-select"
                                                                 data-control="select2" data-dropdown-parent="#modalTambah">
-                                                                <option value="">Pilih Lokasi terlebih dahulu
+                                                                <option value="">Pilih Aktifitas
                                                                 </option>
                                                                 @foreach ($activitie as $act)
                                                                     <option value="{{ $act->name }}">{{ $act->name }}
@@ -134,11 +134,11 @@
                                                             <select id="hazard_id" name="hazard" class="form-select"
                                                                 data-control="select2"
                                                                 data-dropdown-parent="#modalTambah">
-                                                                <option value="">Pilih Aktifitas terlebih dahulu
+                                                                <option value="">Pilih Hazard
                                                                 </option>
-                                                                @foreach ($hazard as $hazard)
-                                                                    <option value="{{ $hazard->name }}">
-                                                                        {{ $hazard->name }}
+                                                                @foreach ($hazard as $haz)
+                                                                    <option value="{{ $haz->name }}">
+                                                                        {{ $haz->name }}
                                                                     </option>
                                                                 @endforeach
                                                             </select>
@@ -153,11 +153,11 @@
                                                             <select id="risk_id" name="risk" class="form-select"
                                                                 data-control="select2"
                                                                 data-dropdown-parent="#modalTambah">
-                                                                <option value="">Pilih Hazard terlebih dahulu
+                                                                <option value="">Pilih Risiko
                                                                 </option>
-                                                                @foreach ($risk as $risk)
-                                                                    <option value="{{ $risk->name }}">
-                                                                        {{ $risk->name }}
+                                                                @foreach ($risk as $ris)
+                                                                    <option value="{{ $ris->name }}">
+                                                                        {{ $ris ->name }}
                                                                     </option>
                                                                 @endforeach
                                                             </select>
