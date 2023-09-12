@@ -3,6 +3,10 @@
         overflow: hidden;
         text-overflow: ellipsis;
     }
+
+    .ki-duotone {
+        color: #16243D !important;
+    }
 </style>
 
 
@@ -10,9 +14,9 @@
 <!--begin::Header-->
 <div id="kt_app_header" class="app-header d-flex flex-column flex-stack mb-5">
     <!--begin::Header main-->
-    <div class="d-flex align-items-center  flex-stack flex-grow-1"style="background: #ffffff">
+    <div class="d-flex align-items-center  flex-stack flex-grow-1"style="background: #FEFAEF">
         <div class="app-header-logo d-flex align-items-center justify-content-center flex-stack h-100 "
-            id="kt_app_header_logo" style="background:#16243D">
+            id="kt_app_header_logo" style="background:#FFFF">
             <!--begin::Sidebar mobile toggle-->
             <div class="btn btn-icon btn-active-color-primary w-35px h-35px ms-3 me-2 d-flex d-lg-none"
                 id="kt_app_sidebar_mobile_toggle">
@@ -24,7 +28,8 @@
             <!--end::Sidebar mobile toggle-->
             <!--begin::Logo-->
             <div>
-                <a href="#" class="app-sidebar-logo d-flex text-center fs-1 text-white">
+                <a href="#" class="app-sidebar-logo d-flex text-center fs-1"
+                    style="color:#16243D; font-weight:bold">
                     SIM K3
                 </a>
             </div>

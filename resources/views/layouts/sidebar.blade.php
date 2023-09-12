@@ -1,7 +1,7 @@
 <div id="kt_app_sidebar" class="app-sidebar flex-column" data-kt-drawer="true" data-kt-drawer-name="app-sidebar"
     data-kt-drawer-activate="{default: true, lg: false}" data-kt-drawer-overlay="true" data-kt-drawer-width="250px"
     data-kt-drawer-direction="start" data-kt-drawer-toggle="#kt_app_sidebar_mobile_toggle"
-    style="background-color:#16243D">
+    style="background-color:#FFFFFF">
     <!--begin::Main-->
     <div class="d-flex flex-column justify-content-between h-100 hover-scroll-overlay-y my-2 d-flex flex-column"
         id="kt_app_sidebar_main" data-kt-scroll="true" data-kt-scroll-activate="true" data-kt-scroll-height="auto"
@@ -12,23 +12,24 @@
             <!--begin:Menu item-->
             {{-- View Admin --}}
             @if (auth()->user()->hak_akses == 'Admin')
-                <div class="menu-item here show menu-accordion ">
+                <div class="menu-title menu-item here show menu-accordion ">
                     <!--begin:Menu link-->
-                    <a href="{{ route('dashboard') }}" class="menu-link ">
+                    <a href="{{ route('dashboard') }}" class="menu-link {{ Request::is('dashboard') ? 'active' : '' }}">
                         <span class="menu-icon">
-                            <i class="bi bi-speedometer2 fs-3 text-white"></i>
+                            <i class="bi bi-speedometer2 fs-3 "></i>
                         </span>
-                        <span class="menu-title text-white">Dashboards</span>
+                        <span class="menu-title ">Dashboards</span>
 
                     </a>
                 </div>
                 <div class="menu-item here show menu-accordion">
                     <!--begin:Menu link-->
-                    <a href="{{ route('laporan-insiden.index') }}" class="menu-link">
+                    <a href="{{ route('laporan-insiden.index') }}"
+                        class="menu-link hvr {{ Request::is('laporan-insiden') ? 'active' : '' }}">
                         <span class="menu-icon ">
-                            <i class="bi bi-clipboard-check-fill text-white fs-3"></i>
+                            <i class="bi bi-clipboard-check-fill  fs-3"></i>
                         </span>
-                        <span class="menu-title text-white">Daftar Laporan Insiden</span>
+                        <span class="menu-title ">Daftar Laporan Insiden</span>
 
                     </a>
                 </div>
@@ -39,11 +40,12 @@
                 <!--begin:Menu item-->
                 <div class="menu-item here show menu-accordion">
                     <!--begin:Menu link-->
-                    <a href="{{ route('potensibahaya.index') }}" class="menu-link">
+                    <a href="{{ route('potensibahaya.index') }}"
+                        class="menu-link {{ Request::is('potensibahaya') ? 'active' : '' }}">
                         <span class="menu-icon">
-                            <i class="bi bi-exclamation-octagon text-white fs-3"></i>
+                            <i class="bi bi-exclamation-octagon  fs-3"></i>
                         </span>
-                        <span class="menu-title text-white">Daftar Laporan Potensi Bahaya</span>
+                        <span class="menu-title ">Daftar Laporan Potensi Bahaya</span>
 
                     </a>
                 </div>
@@ -54,9 +56,9 @@
                     <!--begin:Menu link-->
                     <span class="menu-link">
                         <span class="menu-icon">
-                            <i class="bi bi-card-checklist text-white fs-3"></i>
+                            <i class="bi bi-card-checklist  fs-3"></i>
                         </span>
-                        <span class="menu-title text-white">Daftar Investigasi</span>
+                        <span class="menu-title ">Daftar Investigasi</span>
                         <span class="menu-arrow"></span>
                     </span>
                     <!--end:Menu link-->
@@ -65,11 +67,12 @@
                         <!--begin:Menu item-->
                         <div class="menu-item menu-accordion">
                             <!--begin:Menu link-->
-                            <a href="{{ route('daftarinvestigasi.index') }}" class="menu-link">
+                            <a href="{{ route('daftarinvestigasi.index') }}"
+                                class="menu-link {{ Request::is('daftarinvestigasi') ? 'active' : '' }}">
                                 <span class="menu-bullet">
-                                    <i class="bi bi-person-lines-fill text-white fs-3"></i>
+                                    <i class="bi bi-person-lines-fill  fs-3"></i>
                                 </span>
-                                <span class="menu-title text-white">Daftar Investigasi Insiden</span>
+                                <span class="menu-title ">Daftar Investigasi Insiden</span>
                                 <!-- <span class="menu-arrow"></span> -->
                             </a>
                             <!--end:Menu link-->
@@ -78,11 +81,12 @@
                         <!--begin:Menu item-->
                         <div class="menu-item menu-accordion">
                             <!--begin:Menu link-->
-                            <a href="{{ route('investigasipotensi.index') }}" class="menu-link">
+                            <a href="{{ route('investigasipotensi.index') }}"
+                                class="menu-link {{ Request::is('investigasipotensi') ? 'active' : '' }}">
                                 <span class="menu-bullet">
-                                    <i class="bi bi-exclamation-diamond text-white fs-3"></i>
+                                    <i class="bi bi-exclamation-diamond  fs-3"></i>
                                 </span>
-                                <span class="menu-title text-white">Daftar Investigasi Potensi Bahaya</span>
+                                <span class="menu-title ">Daftar Investigasi Potensi Bahaya</span>
                                 <!-- <span class="menu-arrow"></span> -->
                             </a>
                             <!--end:Menu link-->
@@ -95,11 +99,12 @@
                 <!--begin:Menu item-->
                 <div class="menu-item here show menu-accordion">
                     <!--begin:Menu link-->
-                    <a href="{{ route('hirarc.index') }}" class="menu-link">
+                    <a href="{{ route('hirarc.index') }}"
+                        class="menu-link {{ Request::is('hirarc') ? 'active' : '' }}">
                         <span class="menu-icon">
-                            <i class="bi bi-diagram-2 text-white fs-3"></i>
+                            <i class="bi bi-diagram-2  fs-3"></i>
                         </span>
-                        <span class="menu-title text-white">Hirarc</span>
+                        <span class="menu-title ">Hirarc</span>
 
                     </a>
                 </div>
@@ -112,9 +117,9 @@
                     <!--begin:Menu link-->
                     <span class="menu-link">
                         <span class="menu-icon">
-                            <i class="bi bi-people text-white fs-3"></i>
+                            <i class="bi bi-people  fs-3"></i>
                         </span>
-                        <span class="menu-title text-white">Users</span>
+                        <span class="menu-title ">Users</span>
                         <span class="menu-arrow"></span>
                     </span>
                     <!--end:Menu link-->
@@ -123,11 +128,12 @@
                         <!--begin:Menu item-->
                         <div class="menu-item menu-accordion">
                             <!--begin:Menu link-->
-                            <a href="{{ route('p2k3.index') }}" class="menu-link">
+                            <a href="{{ route('p2k3.index') }}"
+                                class="menu-link {{ Request::is('p2k3') ? 'active' : '' }}">
                                 <span class="menu-bullet">
-                                    <i class="bi bi-person-fill text-white fs-3"></i>
+                                    <i class="bi bi-person-fill  fs-3"></i>
                                 </span>
-                                <span class="menu-title text-white">P2K3</span>
+                                <span class="menu-title ">P2K3</span>
                                 <!-- <span class="menu-arrow"></span> -->
                             </a>
                             <!--end:Menu link-->
@@ -136,11 +142,12 @@
                         <!--begin:Menu item-->
                         <div class="menu-item menu-accordion">
                             <!--begin:Menu link-->
-                            <a href="{{ route('user.index') }}" class="menu-link">
+                            <a href="{{ route('user.index') }}"
+                                class="menu-link {{ Request::is('user') ? 'active' : '' }}">
                                 <span class="menu-bullet">
-                                    <i class="bi bi-people text-white fs-3"></i>
+                                    <i class="bi bi-people  fs-3"></i>
                                 </span>
-                                <span class="menu-title text-white">Role User</span>
+                                <span class="menu-title ">Role User</span>
                                 <!-- <span class="menu-arrow"></span> -->
                             </a>
                             <!--end:Menu link-->
@@ -157,9 +164,9 @@
                     <!--begin:Menu link-->
                     <span class="menu-link">
                         <span class="menu-icon">
-                            <i class="bi bi-database-add text-white fs-3"></i>
+                            <i class="bi bi-database-add  fs-3"></i>
                         </span>
-                        <span class="menu-title text-white">Data Master</span>
+                        <span class="menu-title ">Data Master</span>
                         <span class="menu-arrow"></span>
                     </span>
                     <!--end:Menu link-->
@@ -168,11 +175,12 @@
                         <!--begin:Menu item-->
                         <div class="menu-item menu-accordion">
                             <!--begin:Menu link-->
-                            <a href="{{ route('lokasimaster.index') }}" class="menu-link">
+                            <a href="{{ route('lokasimaster.index') }}"
+                                class="menu-link {{ Request::is('lokasimaster') ? 'active' : '' }}">
                                 <span class="menu-bullet">
-                                    <i class="bi bi-pin-map text-white fs-3 "></i>
+                                    <i class="bi bi-pin-map  fs-3 "></i>
                                 </span>
-                                <span class="menu-title text-white">Lokasi</span>
+                                <span class="menu-title ">Lokasi</span>
                                 <!-- <span class="menu-arrow"></span> -->
                             </a>
                             <!--end:Menu link-->
@@ -181,11 +189,12 @@
                         <!--begin:Menu item-->
                         <div class="menu-item menu-accordion">
                             <!--begin:Menu link-->
-                            <a href="{{ route('aktifitasmaster.index') }}" class="menu-link">
+                            <a href="{{ route('aktifitasmaster.index') }}"
+                                class="menu-link {{ Request::is('aktifitasmaster') ? 'active' : '' }}">
                                 <span class="menu-bullet">
-                                    <i class="bi bi-activity text-white fs-3"></i>
+                                    <i class="bi bi-activity  fs-3"></i>
                                 </span>
-                                <span class="menu-title text-white">Aktifitas</span>
+                                <span class="menu-title ">Aktifitas</span>
                                 <!-- <span class="menu-arrow"></span> -->
                             </a>
                             <!--end:Menu link-->
@@ -193,22 +202,24 @@
 
                         <div class="menu-item menu-accordion">
                             <!--begin:Menu link-->
-                            <a href="{{ route('hazard.index') }}" class="menu-link">
+                            <a href="{{ route('hazard.index') }}"
+                                class="menu-link {{ Request::is('hazard') ? 'active' : '' }}">
                                 <span class="menu-bullet">
-                                    <i class="bi bi-exclamation-octagon text-white fs-3"></i>
+                                    <i class="bi bi-exclamation-octagon  fs-3"></i>
                                 </span>
-                                <span class="menu-title text-white">Hazard</span>
+                                <span class="menu-title ">Hazard</span>
                                 <!-- <span class="menu-arrow"></span> -->
                             </a>
                             <!--end:Menu link-->
                         </div>
                         <div class="menu-item menu-accordion">
                             <!--begin:Menu link-->
-                            <a href="{{ route('risiko.index') }}" class="menu-link">
+                            <a href="{{ route('risiko.index') }}"
+                                class="menu-link {{ Request::is('risiko') ? 'active' : '' }}">
                                 <span class="menu-bullet">
-                                    <i class="bi bi-exclamation-triangle text-white fs-3"></i>
+                                    <i class="bi bi-exclamation-triangle  fs-3"></i>
                                 </span>
-                                <span class="menu-title text-white">Risiko</span>
+                                <span class="menu-title ">Risiko</span>
                                 <!-- <span class="menu-arrow"></span> -->
                             </a>
                             <!--end:Menu link-->
@@ -219,33 +230,35 @@
                 <!--begin:Menu item-->
                 <div class="menu-item here show menu-accordion">
                     <!--begin:Menu link-->
-                    <a href="{{ route('maps.index') }}" class="menu-link">
+                    <a href="{{ route('maps.index') }}" class="menu-link {{ Request::is('maps') ? 'active' : '' }}">
                         <span class="menu-icon">
-                            <i class="bi bi-map text-white fs-3 "></i>
+                            <i class="bi bi-map  fs-3 "></i>
                         </span>
-                        <span class="menu-title text-white">Maps</span>
+                        <span class="menu-title ">Maps</span>
                     </a>
                 </div>
                 <!--end:Menu item-->
                 <!--begin:Menu item-->
                 <div class="menu-item here show menu-accordion">
                     <!--begin:Menu link-->
-                    <a href="{{ route('daftardokumen.index') }}" class="menu-link">
+                    <a href="{{ route('daftardokumen.index') }}"
+                        class="menu-link {{ Request::is('daftardokumen') ? 'active' : '' }}">
                         <span class="menu-icon">
-                            <i class="bi bi-filetype-doc text-white fs-3"></i>
+                            <i class="bi bi-filetype-doc  fs-3"></i>
                         </span>
-                        <span class="menu-title text-white">Daftar Dokumen</span>
+                        <span class="menu-title ">Daftar Dokumen</span>
                     </a>
                 </div>
                 <!--end:Menu item-->
                 <!--begin:Menu item-->
                 <div class="menu-item here show menu-accordion">
                     <!--begin:Menu link-->
-                    <a href="{{ route('simk3.index') }}" class="menu-link">
+                    <a href="{{ route('simk3.index') }}"
+                        class="menu-link {{ Request::is('simk3') ? 'active' : '' }}">
                         <span class="menu-icon">
-                            <i class="bi bi-house-door text-white fs-3"></i>
+                            <i class="bi bi-house-door  fs-3"></i>
                         </span>
-                        <span class="menu-title text-white">Back Home</span>
+                        <span class="menu-title ">Back Home</span>
                     </a>
                 </div>
                 <!--end:Menu item-->
@@ -254,33 +267,36 @@
 
             {{-- View pengguna --}}
             @if (auth()->user()->hak_akses == 'Pengguna')
-                <div class="menu-item here show menu-accordion ">
+                <div class=" menu-item here show menu-accordion ">
                     <!--begin:Menu link-->
-                    <a href="{{ route('dashboard') }}" class="menu-link ">
+                    <a href="{{ route('dashboard') }}"
+                        class="menu-link {{ Request::is('dashboard') ? 'active' : '' }} ">
                         <span class="menu-icon">
-                            <i class="bi bi-speedometer2 fs-3 text-white"></i>
+                            <i class="bi bi-speedometer2 fs-3 "></i>
                         </span>
-                        <span class="menu-title text-white">Dashboards</span>
+                        <span class="menu-title ">Dashboards</span>
 
                     </a>
                 </div>
                 <div class="menu-item here show menu-accordion">
                     <!--begin:Menu link-->
-                    <a href="{{ route('laporan-insiden.index') }}" class="menu-link">
+                    <a href="{{ route('laporan-insiden.index') }}"
+                        class="menu-link {{ Request::is('laporan-insiden') ? 'active' : '' }}">
                         <span class="menu-icon ">
-                            <i class="bi bi-clipboard-check-fill text-white fs-3"></i>
+                            <i class="bi bi-clipboard-check-fill  fs-3"></i>
                         </span>
-                        <span class="menu-title text-white">Daftar Lapor Insiden</span>
+                        <span class="menu-title ">Daftar Lapor Insiden</span>
 
                     </a>
                 </div>
                 <div class="menu-item here show menu-accordion">
                     <!--begin:Menu link-->
-                    <a href="{{ route('potensibahaya.index') }}" class="menu-link">
+                    <a href="{{ route('potensibahaya.index') }}"
+                        class="menu-link {{ Request::is('potensibahaya') ? 'active' : '' }}">
                         <span class="menu-icon">
-                            <i class="bi bi-exclamation-octagon text-white fs-3"></i>
+                            <i class="bi bi-exclamation-octagon  fs-3"></i>
                         </span>
-                        <span class="menu-title text-white">Daftar Lapor Potensi Bahaya</span>
+                        <span class="menu-title ">Daftar Lapor Potensi Bahaya</span>
 
                     </a>
                 </div>
@@ -289,20 +305,21 @@
                 <!--end:Menu item-->
                 <div class="menu-item here show menu-accordion">
                     <!--begin:Menu link-->
-                    <a href="{{ route('maps.index') }}" class="menu-link">
+                    <a href="{{ route('maps.index') }}" class="menu-link {{ Request::is('maps') ? 'active' : '' }}">
                         <span class="menu-icon">
-                            <i class="bi bi-map text-white fs-3 "></i>
+                            <i class="bi bi-map  fs-3 "></i>
                         </span>
-                        <span class="menu-title text-white">Maps</span>
+                        <span class="menu-title ">Maps</span>
                     </a>
                 </div>
                 <div class="menu-item here show menu-accordion">
                     <!--begin:Menu link-->
-                    <a href="{{ route('simk3.index') }}" class="menu-link">
+                    <a href="{{ route('simk3.index') }}"
+                        class="menu-link {{ Request::is('simk3') ? 'active' : '' }}">
                         <span class="menu-icon">
-                            <i class="bi bi-house-door text-white fs-3"></i>
+                            <i class="bi bi-house-door  fs-3"></i>
                         </span>
-                        <span class="menu-title text-white">Back Home</span>
+                        <span class="menu-title ">Back Home</span>
                     </a>
                 </div>
             @endif
@@ -315,11 +332,12 @@
                 <!--begin:Menu item-->
                 <div class="menu-item here show menu-accordion ">
                     <!--begin:Menu link-->
-                    <a href="{{ route('dashboard') }}" class="menu-link ">
+                    <a href="{{ route('dashboard') }}"
+                        class="menu-link {{ Request::is('dashboard') ? 'active' : '' }}">
                         <span class="menu-icon">
-                            <i class="bi bi-speedometer2 fs-3 text-white"></i>
+                            <i class="bi bi-speedometer2 fs-3 "></i>
                         </span>
-                        <span class="menu-title text-white">Dashboards</span>
+                        <span class="menu-title ">Dashboards</span>
 
                     </a>
                 </div>
@@ -329,9 +347,9 @@
                         <!--begin:Menu link-->
                         <span class="menu-link">
                             <span class="menu-icon">
-                                <i class="bi bi-clipboard-check-fill text-white fs-3"></i>
+                                <i class="bi bi-clipboard-check-fill  fs-3"></i>
                             </span>
-                            <span class="menu-title text-white">Daftar Laporan Insiden</span>
+                            <span class="menu-title ">Daftar Laporan Insiden</span>
                             <span class="menu-arrow"></span>
                         </span>
                         <!--end:Menu link-->
@@ -340,11 +358,12 @@
                             <!--begin:Menu item-->
                             <div class="menu-item menu-accordion">
                                 <!--begin:Menu link-->
-                                <a href="{{ route('laporan-insiden.index') }}" class="menu-link">
+                                <a href="{{ route('laporan-insiden.index') }}"
+                                    class="menu-link {{ Request::is('laporan-insiden') ? 'active' : '' }}">
                                     <span class="menu-bullet">
-                                        <i class="bi bi-clipboard-minus-fill text-white fs-3"></i>
+                                        <i class="bi bi-clipboard-minus-fill  fs-3"></i>
                                     </span>
-                                    <span class="menu-title text-white">Daftar Laporan Insiden Departemen</span>
+                                    <span class="menu-title ">Daftar Laporan Insiden Departemen</span>
                                     <!-- <span class="menu-arrow"></span> -->
                                 </a>
                                 <!--end:Menu link-->
@@ -353,11 +372,12 @@
                             <!--begin:Menu item-->
                             <div class="menu-item menu-accordion">
                                 <!--begin:Menu link-->
-                                <a href="{{ route('laporan-insiden.k3dep') }}" class="menu-link">
+                                <a href="{{ route('laporan-insiden.k3dep') }}"
+                                    class="menu-link {{ Request::is('laporan-insiden/k3departemen') ? 'active' : '' }}">
                                     <span class="menu-bullet">
-                                        <i class="bi bi-clipboard-data-fill text-white fs-3"></i>
+                                        <i class="bi bi-clipboard-data-fill  fs-3"></i>
                                     </span>
-                                    <span class="menu-title text-white">Daftar Laporan Insiden</span>
+                                    <span class="menu-title ">Daftar Laporan Insiden</span>
                                     <!-- <span class="menu-arrow"></span> -->
                                 </a>
                                 <!--end:Menu link-->
@@ -372,9 +392,9 @@
                         <!--begin:Menu link-->
                         <span class="menu-link">
                             <span class="menu-icon">
-                                <i class="bi bi-exclamation-octagon text-white fs-3"></i>
+                                <i class="bi bi-exclamation-octagon  fs-3"></i>
                             </span>
-                            <span class="menu-title text-white">Daftar Laporan Potensi Bahaya</span>
+                            <span class="menu-title ">Daftar Laporan Potensi Bahaya</span>
                             <span class="menu-arrow"></span>
                         </span>
                         <!--end:Menu link-->
@@ -383,11 +403,12 @@
                             <!--begin:Menu item-->
                             <div class="menu-item menu-accordion">
                                 <!--begin:Menu link-->
-                                <a href="{{ route('potensibahaya.index') }}" class="menu-link">
+                                <a href="{{ route('potensibahaya.index') }}"
+                                    class="menu-link {{ Request::is('potensibahaya') ? 'active' : '' }}">
                                     <span class="menu-bullet">
-                                        <i class="bi bi-building-fill-exclamation text-white fs-3"></i>
+                                        <i class="bi bi-building-fill-exclamation  fs-3"></i>
                                     </span>
-                                    <span class="menu-title text-white">Daftar Laporan Potensi Bahaya Departemen</span>
+                                    <span class="menu-title ">Daftar Laporan Potensi Bahaya Departemen</span>
                                     <!-- <span class="menu-arrow"></span> -->
                                 </a>
                                 <!--end:Menu link-->
@@ -396,11 +417,12 @@
                             <!--begin:Menu item-->
                             <div class="menu-item menu-accordion">
                                 <!--begin:Menu link-->
-                                <a href="{{ route('potensibahaya.k3dep') }}" class="menu-link">
+                                <a href="{{ route('potensibahaya.k3dep') }}"
+                                    class="menu-link {{ Request::is('potensibahaya/k3departemen') ? 'active' : '' }}">
                                     <span class="menu-bullet">
-                                        <i class="bi bi-database-fill-exclamation text-white fs-3"></i>
+                                        <i class="bi bi-database-fill-exclamation  fs-3"></i>
                                     </span>
-                                    <span class="menu-title text-white">Daftar Laporan Potensi Bahaya</span>
+                                    <span class="menu-title ">Daftar Laporan Potensi Bahaya</span>
                                     <!-- <span class="menu-arrow"></span> -->
                                 </a>
                                 <!--end:Menu link-->
@@ -414,9 +436,9 @@
                         <!--begin:Menu link-->
                         <span class="menu-link">
                             <span class="menu-icon">
-                                <i class="bi bi-card-checklist text-white fs-3"></i>
+                                <i class="bi bi-card-checklist  fs-3"></i>
                             </span>
-                            <span class="menu-title text-white">Daftar Investigasi</span>
+                            <span class="menu-title ">Daftar Investigasi</span>
                             <span class="menu-arrow"></span>
                         </span>
                         <!--end:Menu link-->
@@ -425,11 +447,12 @@
                             <!--begin:Menu item-->
                             <div class="menu-item menu-accordion">
                                 <!--begin:Menu link-->
-                                <a href="{{ route('daftarinvestigasi.index') }}" class="menu-link">
+                                <a href="{{ route('daftarinvestigasi.index') }}"
+                                    class="menu-link {{ Request::is('daftarinvestigasi') ? 'active' : '' }}">
                                     <span class="menu-bullet">
-                                        <i class="bi bi-person-fill-gear text-white fs-3"></i>
+                                        <i class="bi bi-person-fill-gear  fs-3"></i>
                                     </span>
-                                    <span class="menu-title text-white">Daftar Investigasi Insiden Departemen</span>
+                                    <span class="menu-title ">Daftar Investigasi Insiden Departemen</span>
                                     <!-- <span class="menu-arrow"></span> -->
                                 </a>
                                 <!--end:Menu link-->
@@ -437,11 +460,12 @@
                             <!--end:Menu item-->
                             <div class="menu-item menu-accordion">
                                 <!--begin:Menu link-->
-                                <a href="{{ route('daftarinvestigasi.k3dep') }}" class="menu-link">
+                                <a href="{{ route('daftarinvestigasi.k3dep') }}"
+                                    class="menu-link {{ Request::is('daftarinvestigasi/k3departemen') ? 'active' : '' }}">
                                     <span class="menu-bullet">
-                                        <i class="bi bi-person-lines-fill text-white fs-3"></i>
+                                        <i class="bi bi-person-lines-fill  fs-3"></i>
                                     </span>
-                                    <span class="menu-title text-white">Daftar Investigasi Insiden</span>
+                                    <span class="menu-title ">Daftar Investigasi Insiden</span>
                                     <!-- <span class="menu-arrow"></span> -->
                                 </a>
                                 <!--end:Menu link-->
@@ -449,11 +473,12 @@
                             <!--begin:Menu item-->
                             <div class="menu-item menu-accordion">
                                 <!--begin:Menu link-->
-                                <a href="{{ route('investigasipotensi.index') }}" class="menu-link">
+                                <a href="{{ route('investigasipotensi.index') }}"
+                                    class="menu-link {{ Request::is('investigasipotensi') ? 'active' : '' }}">
                                     <span class="menu-bullet">
-                                        <i class="bi bi-house-exclamation-fill text-white fs-3"></i>
+                                        <i class="bi bi-house-exclamation-fill  fs-3"></i>
                                     </span>
-                                    <span class="menu-title text-white">Daftar Investigasi Potensi Bahaya
+                                    <span class="menu-title ">Daftar Investigasi Potensi Bahaya
                                         Departemen</span>
                                     <!-- <span class="menu-arrow"></span> -->
                                 </a>
@@ -461,11 +486,12 @@
                             </div>
                             <div class="menu-item menu-accordion">
                                 <!--begin:Menu link-->
-                                <a href="{{ route('investigasipotensi.k3dep') }}" class="menu-link">
+                                <a href="{{ route('investigasipotensi.k3dep') }}"
+                                    class="menu-link {{ Request::is('investigasipotensi/k3departemen') ? 'active' : '' }}">
                                     <span class="menu-bullet">
-                                        <i class="bi bi-exclamation-diamond text-white fs-3"></i>
+                                        <i class="bi bi-exclamation-diamond  fs-3"></i>
                                     </span>
-                                    <span class="menu-title text-white">Daftar Investigasi Potensi Bahaya</span>
+                                    <span class="menu-title ">Daftar Investigasi Potensi Bahaya</span>
                                     <!-- <span class="menu-arrow"></span> -->
                                 </a>
                                 <!--end:Menu link-->
@@ -476,11 +502,12 @@
                 @else
                     <div class="menu-item here show menu-accordion">
                         <!--begin:Menu link-->
-                        <a href="{{ route('laporan-insiden.index') }}" class="menu-link">
+                        <a href="{{ route('laporan-insiden.index') }}"
+                            class="menu-link {{ Request::is('laporan-inside') ? 'active' : '' }}">
                             <span class="menu-icon ">
-                                <i class="bi bi-clipboard-check-fill text-white fs-3"></i>
+                                <i class="bi bi-clipboard-check-fill  fs-3"></i>
                             </span>
-                            <span class="menu-title text-white">Daftar Laporan Insiden</span>
+                            <span class="menu-title ">Daftar Laporan Insiden</span>
 
                         </a>
                     </div>
@@ -489,11 +516,12 @@
                     <!--begin:Menu item-->
                     <div class="menu-item here show menu-accordion">
                         <!--begin:Menu link-->
-                        <a href="{{ route('potensibahaya.index') }}" class="menu-link">
+                        <a href="{{ route('potensibahaya.index') }}"
+                            class="menu-link {{ Request::is('potensibahaya') ? 'active' : '' }}">
                             <span class="menu-icon">
-                                <i class="bi bi-exclamation-octagon text-white fs-3"></i>
+                                <i class="bi bi-exclamation-octagon  fs-3"></i>
                             </span>
-                            <span class="menu-title text-white">Daftar Lapor Potensi Bahaya</span>
+                            <span class="menu-title ">Daftar Lapor Potensi Bahaya</span>
 
                         </a>
                     </div>
@@ -505,9 +533,9 @@
                         <!--begin:Menu link-->
                         <span class="menu-link">
                             <span class="menu-icon">
-                                <i class="bi bi-card-checklist text-white fs-3"></i>
+                                <i class="bi bi-card-checklist  fs-3"></i>
                             </span>
-                            <span class="menu-title text-white">Daftar Investigasi</span>
+                            <span class="menu-title ">Daftar Investigasi</span>
                             <span class="menu-arrow"></span>
                         </span>
                         <!--end:Menu link-->
@@ -516,11 +544,12 @@
                             <!--begin:Menu item-->
                             <div class="menu-item menu-accordion">
                                 <!--begin:Menu link-->
-                                <a href="{{ route('daftarinvestigasi.index') }}" class="menu-link">
+                                <a href="{{ route('daftarinvestigasi.index') }}"
+                                    class="menu-link {{ Request::is('daftarinvestigasi') ? 'active' : '' }}">
                                     <span class="menu-bullet">
-                                        <i class="bi bi-person-lines-fill text-white fs-3"></i>
+                                        <i class="bi bi-person-lines-fill  fs-3"></i>
                                     </span>
-                                    <span class="menu-title text-white">Daftar Investigasi Insiden</span>
+                                    <span class="menu-title ">Daftar Investigasi Insiden</span>
                                     <!-- <span class="menu-arrow"></span> -->
                                 </a>
                                 <!--end:Menu link-->
@@ -529,11 +558,12 @@
                             <!--begin:Menu item-->
                             <div class="menu-item menu-accordion">
                                 <!--begin:Menu link-->
-                                <a href="{{ route('investigasipotensi.index') }}" class="menu-link">
+                                <a href="{{ route('investigasipotensi.index') }}"
+                                    class="menu-link {{ Request::is('investigasipotensi') ? 'active' : '' }}">
                                     <span class="menu-bullet">
-                                        <i class="bi bi-exclamation-diamond text-white fs-3"></i>
+                                        <i class="bi bi-exclamation-diamond  fs-3"></i>
                                     </span>
-                                    <span class="menu-title text-white">Daftar Investigasi Potensi Bahaya</span>
+                                    <span class="menu-title ">Daftar Investigasi Potensi Bahaya</span>
                                     <!-- <span class="menu-arrow"></span> -->
                                 </a>
                                 <!--end:Menu link-->
@@ -549,11 +579,12 @@
                 <!--begin:Menu item-->
                 <div class="menu-item here show menu-accordion">
                     <!--begin:Menu link-->
-                    <a href="{{ route('hirarc.index') }}" class="menu-link">
+                    <a href="{{ route('hirarc.index') }}"
+                        class="menu-link {{ Request::is('hirarc') ? 'active' : '' }}">
                         <span class="menu-icon">
-                            <i class="bi bi-diagram-2 text-white fs-3"></i>
+                            <i class="bi bi-diagram-2  fs-3"></i>
                         </span>
-                        <span class="menu-title text-white">Hirarc</span>
+                        <span class="menu-title ">Hirarc</span>
 
                     </a>
                 </div>
@@ -565,31 +596,32 @@
                 <!--begin:Menu item-->
                 <div class="menu-item here show menu-accordion">
                     <!--begin:Menu link-->
-                    <a href="{{ route('maps.index') }}" class="menu-link">
+                    <a href="{{ route('maps.index') }}" class="menu-link {{ Request::is('maps') ? 'active' : '' }}">
                         <span class="menu-icon">
-                            <i class="bi bi-map text-white fs-3 "></i>
+                            <i class="bi bi-map  fs-3 "></i>
                         </span>
-                        <span class="menu-title text-white">Maps</span>
+                        <span class="menu-title ">Maps</span>
                     </a>
                 </div>
                 <!--end:Menu item-->
                 <!--begin:Menu item-->
                 <div class="menu-item here show menu-accordion">
                     <!--begin:Menu link-->
-                    <a href="{{ route('daftardokumen.index') }}" class="menu-link">
+                    <a href="{{ route('daftardokumen.index') }}"
+                        class="menu-link {{ Request::is('daftardokumen') ? 'active' : '' }}">
                         <span class="menu-icon">
-                            <i class="bi bi-filetype-doc text-white fs-3"></i>
+                            <i class="bi bi-filetype-doc  fs-3"></i>
                         </span>
-                        <span class="menu-title text-white">Daftar Dokumen</span>
+                        <span class="menu-title ">Daftar Dokumen</span>
                     </a>
                 </div>
                 <div data-kt-menu-trigger="click" class="menu-item menu-accordion">
                     <!--begin:Menu link-->
                     <span class="menu-link">
                         <span class="menu-icon">
-                            <i class="bi bi-people text-white fs-3"></i>
+                            <i class="bi bi-people  fs-3"></i>
                         </span>
-                        <span class="menu-title text-white">Users</span>
+                        <span class="menu-title ">Users</span>
                         <span class="menu-arrow"></span>
                     </span>
                     <!--end:Menu link-->
@@ -598,11 +630,12 @@
                         <!--begin:Menu item-->
                         <div class="menu-item menu-accordion">
                             <!--begin:Menu link-->
-                            <a href="{{ route('p2k3.index') }}" class="menu-link">
+                            <a href="{{ route('p2k3.index') }}"
+                                class="menu-link {{ Request::is('p2k3') ? 'active' : '' }}">
                                 <span class="menu-bullet">
-                                    <i class="bi bi-person-fill text-white fs-3"></i>
+                                    <i class="bi bi-person-fill  fs-3"></i>
                                 </span>
-                                <span class="menu-title text-white">P2K3</span>
+                                <span class="menu-title ">P2K3</span>
                                 <!-- <span class="menu-arrow"></span> -->
                             </a>
                             <!--end:Menu link-->
@@ -616,11 +649,12 @@
                 <!--begin:Menu item-->
                 <div class="menu-item here show menu-accordion">
                     <!--begin:Menu link-->
-                    <a href="{{ route('simk3.index') }}" class="menu-link">
+                    <a href="{{ route('simk3.index') }}"
+                        class="menu-link {{ Request::is('simk3') ? 'active' : '' }}">
                         <span class="menu-icon">
-                            <i class="bi bi-house-door text-white fs-3"></i>
+                            <i class="bi bi-house-door  fs-3"></i>
                         </span>
-                        <span class="menu-title text-white">Back Home</span>
+                        <span class="menu-title ">Back Home</span>
                     </a>
                 </div>
             @endif

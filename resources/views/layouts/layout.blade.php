@@ -81,8 +81,7 @@ License: For each use you must have a valid license purchased only from above li
     .pagination .page-link i .next:hover {
       color: #DC3545 !important;
     } */
-    </style>
-    <style>
+
         .page-item.active .page-link {
             background-color: #DC3545 !Important;
             border: solid 1px #DC3545 !Important;
@@ -147,7 +146,7 @@ License: For each use you must have a valid license purchased only from above li
     </script>
     <!--end::Theme mode setup on page load-->
     <!--begin::App-->
-    <div class="d-flex flex-column flex-root app-root" id="kt_app_root">
+    <div class="d-flex flex-column flex-root app-root" id="kt_app_root" style="background-color:#fff!important;">
         <!--begin::Page-->
         <div class="app-page flex-column flex-column-fluid" id="kt_app_page">
             <!--begin::Header-->

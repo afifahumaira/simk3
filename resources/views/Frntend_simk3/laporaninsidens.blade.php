@@ -296,12 +296,7 @@
                                     </div>
                                 </div>
 
-                                {{-- <div class="ps-3 pe-5">
-                                    <label for="inputUnit" class="col-form-label">Unit</label>
-                                    <div class=" w-100">
-                                        <input type="text" class="form-control" name="unit_korban">
-                                    </div>
-                                </div> --}}
+
                             </div>
                         </div>
                         <div class="container d-flex justify-content-center">
