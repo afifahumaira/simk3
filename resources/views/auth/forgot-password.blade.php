@@ -34,51 +34,32 @@
 
 <body>
 
-    <div class="container-fluid">
-        <div class="row no-gutter">
-            <!-- The image half -->
-            <div class="col-md-5 d-none d-md-flex bg-image"></div>
-
-
+    <div class="container">
+        <div class="row ">
             <!-- The content half -->
-            <div class="col-md-7 bg-light">
-                <div class="login d-flex align-items-center py-5">
+            <div class="col-md-7 col-lg-5 mx-auto my-auto">
+                <div class="login card border-0 shadow rounded-4 my-5">
                     <!-- Demo content-->
-                    <div class="container ">
-                        <div class="row ">
-                            <div class="col-lg-10 col-xl-7 mx-auto ">
-                                <div class="d-flex justify-content-center">
-                                    <h3 class="display-4  mb-5 pb-5">SIM K3 TEKNIK UNDIP</h3>
-                                </div>
-                                <div class="">
-                                    <h3 class="display-4 fs-3">Lupa Kata Sandi</h3>
-                                    <p class="text-muted mb-4">Masukkan email anda untuk mendapatkan instruksi
-                                        selanjutnya.</p>
-                                </div>
-                                <form method="POST" action="{{ route('password.email') }}">
-                                    @csrf
-                                    <div class="form-group mb-3">
-                                        <input id="inputEmail" type="email" name="email" :value="old('email')"
-                                            required autofocus placeholder="Email address"
-                                            class="form-control border-0 shadow-sm px-4">
-                                    </div>
-                                    <!-- <div class="form-group mb-3">
-                                    <input id="inputPassword" type="password" placeholder="Password" required="" class="form-control border-0 shadow-sm px-4 text-primary">
-                                </div>
-                                <div class="custom-control custom-checkbox mb-3">
-                                    <input id="customCheck1" type="checkbox" checked class="custom-control-input">
-                                    <label for="customCheck1" class="custom-control-label">Remember password</label>
-                                </div>
-                                <div class="text-center d-flex justify-content-end mt-4"><p><a href="https://bootstrapious.com/snippets" class="font-italic text-muted">
-                                  <u>Lupa password?</u></a></p></div> -->
-                                    <button type="submit"
-                                        class="btn btn-primary btn-block text-uppercase mb-2 mt-5 shadow-sm d-flex justify-content-center align-items-center mx-auto">
-                                        {{ __('MASUK') }} </button>
-                                    <!-- <div class="text-center d-flex justify-content-center mt-2"><p>Belum Memiliki akun?<a href="f-regist.html" class="font-italic text-muted">
-                                  <u>Daftar disini</u></a></p></div> -->
-                                </form>
-                            </div>
+                    <div class="card-body p-4 p-sm-5 ">
+                        <div class="card-title mb-5">
+                            <h3 class="">Lupa Kata Sandi</h3>
+                            <p style="color: #B9B9B9">Masukkan email anda untuk mendapatkan instruksi
+                                selanjutnya.</p>
                         </div>
+                        <form method="POST" action="{{ route('password.email') }}">
+                            @csrf
+                            <div class="form-group mb-3">
+                                <input id="inputEmail" type="email" name="email" :value="old('email')" required
+                                    autofocus placeholder="Email address" class="form-control border-0 shadow-sm px-4">
+                            </div>
+
+                            <button type="submit"
+                                class="btn btn-block text-uppercase px-5 mb-2 mt-5 shadow-sm d-flex justify-content-center align-items-center mx-auto"
+                                style="background-color:#16243D; color:#fff">
+                                {{ __('MASUK') }} </button>
+
+                        </form>
+
                     </div><!-- End -->
 
                 </div>
@@ -90,15 +71,32 @@
     <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i
             class="bi bi-arrow-up-short"></i></a>
     <style>
-        .login,
-        .image {
-            min-height: 100vh;
+        .card-title p {
+            font-size: 20px;
+            font-weight: 400;
+            color: #B9B9B9;
         }
 
-        .bg-image {
-            background-image: url('{{ asset('vendor/Arsha/assets/img/bg_lgn.jpg') }} ');
+        .card-title {
+            font-size: 28px !important;
+            font-weight: bold !important;
+        }
+
+        body {
+            height: 90vh;
+            background-image: url('{{ asset('vendor/Arsha/assets/img/bg_login.png') }} ');
             background-size: cover;
             background-position: center center;
+        }
+
+        .container,
+        .row {
+            height: 100%;
+        }
+
+        .form-group input {
+            background-color: #F5F4EF;
+            color: #16243D;
         }
     </style>
 
