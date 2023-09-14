@@ -54,10 +54,8 @@
             <!--begin::Content container-->
             <div class="card-body">
                 <div id='map'></div>
-
-
-                <!--end::Content container-->
             </div>
+            <!--end::Content container-->
         </div>
     @stop
 

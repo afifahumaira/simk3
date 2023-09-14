@@ -39,9 +39,10 @@ use Illuminate\Console\View\Components\Alert;
 |
 */
 
-Route::get('/', function () {
-    return view('simk3');
-});
+// Route::get('/', function () {
+//     return view('simk3');
+// });
+Route::get('/', [Simk3Controller::class, 'index'])->name('simk3');
 
 Route::get('dashboard', [Simk3Controller::class, 'dashboard'])->middleware(['auth'])->name('dashboard');
 

@@ -19,7 +19,10 @@ class LokasiMasterController extends Controller
 
     public function tambah() {
         $locations = Location_masters::all();
+        // $departemens=Departemen::all();
+
         return view('dashboard.masterHirarc.lokasi-departemen.tambah-lokasi', compact('locations'));
+        // ->with('departemens',$departemens);
     }
 
     public function edit($id) {

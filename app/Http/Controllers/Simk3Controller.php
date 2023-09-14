@@ -10,11 +10,13 @@ use App\Models\PotensiBahaya;
 use App\Models\Dokumen;
 use App\Models\Laporinsiden;
 use App\Models\VwDashboard;
+use App\Models\Map;
 
 class Simk3Controller extends Controller
 {
     public function index( Request $request) {
-        return view('.simk3');
+        $maps = Map::all();
+        return view('simk3' , compact('maps'));
   
         }
     

@@ -23,13 +23,18 @@ use App\Models\Hirarc_postrating;
 use App\Models\Hirarc_prerating;
 use App\Models\Location_masters;
 use App\Models\Activitie;
+use GPBMetadata\Google\Cloud\Location\Locations;
 
 class HirarcController extends Controller
 {
-    public function index(){
+    public function index(Request $request){
         $hirarcs = Hirarc::with(['departemen', 'user', 'location'])
         ->when (auth()->user()->hak_akses=='K3 Departemen', function ($query){
             $query->where('departemen_id', auth()->user()->departemen_id);
+        })
+        ->where(function($query) use($request){
+            $query->where('departemen_id', 'LIKE', '%'.$request->search.'%');
+            $query->where('location_id', 'LIKE', '%'.$request->search.'%');
         })
         ->orderBy('departemen_id')
         ->orderBy ('location_id')
@@ -159,14 +164,22 @@ class HirarcController extends Controller
 
     
 
-    public function lihat($departemen_id) {
+    public function lihat($departemen_id, Request $request) {
         $hirarcs = Hirarc::with(['departemen', 'activitie', 'location', 'hazard', 'risk'])
         
         ->where('departemen_id', $departemen_id )
+        ->when($request->has('location_id'), function($query) use($request){
+            if($request->location_id !=''){
+             $query->where('location_id', $request->location_id);
+            }
+         })
         ->orderBy ('location_id')
         ->orderBy('activity')
         ->orderBy ('hazard')
         ->get();
+        $lokasi_ids=Hirarc::where('departemen_id', $departemen_id )->pluck('location_id')->unique()->toArray();
+        // @dd($lokasi_ids);
+        $locations=Location::whereIn('id', $lokasi_ids )->get();
         // dd($hirarcs);
         $locCount=[];
         $actCount=[];
@@ -190,7 +203,8 @@ class HirarcController extends Controller
         return view('dashboard.hirarc.lihat-hirarc', compact('hirarcs'))
         ->with('locCount',$locCount)
         ->with('actCount',$actCount)
-        ->with('hazardCount',$hazardCount);
+        ->with('hazardCount',$hazardCount)
+        ->with('locations',$locations);
         
     }
 

@@ -51,6 +51,22 @@
                                     <strong>Tambah Data Lokasi</strong>
                                 </div>
                             </div>
+
+                            {{-- <div class="card-body">
+                                <div class="mb-3">
+                                    <label class="col-form-label">Pilih Departemen</label>
+                                    <div class=" w-100">
+                                        <select name="departemen_id" class="form-select fs-6 w-100" data-control="select2"
+                                            data-hide-search="true" data-placeholder="Pilih Departemen">
+                                            <option value="">Pilih Departemen</option>
+                                            @foreach ($departemens as $dep)
+                                                <option value="{{ $dep->id }}">{{ $dep->name }}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                </div>
+                            </div> --}}
+
                             <div class="card-body">
                                 <div class="mb-3">
                                     <label for="inputNomertelepon3" class="col-sm-2 col-form-label required">Lokasi</label>
@@ -58,8 +74,6 @@
                                         <input type="text" class="form-control" name="name" required>
                                     </div>
                                 </div>
-
-                                
                             </div>
                         </div>
 
@@ -67,7 +81,8 @@
                             <div class=" d-flex justify-content-center">
                                 <button type="submit"
                                     class="btn btn-success text-white d-flex justify-content-center align-items-center "
-                                    style="background: #29CC6A;height: 38px; margin : 10px 20px 30px 20px; font-size:14px; border-radius: 5px;">Simpan Data</button>
+                                    style="background: #29CC6A;height: 38px; margin : 10px 20px 30px 20px; font-size:14px; border-radius: 5px;">Simpan
+                                    Data</button>
                                 <a href="{{ route('lokasimaster.tambah') }}" type="submit"
                                     class="btn btn-secondary text-white d-flex align-items-center justify-content-center"
                                     data-bs-toggle="modal" data-bs-target="#resetform"
@@ -78,9 +93,12 @@
                                         <div class="modal-content">
                                             <div class="modal-body mt-5 d-flex justify-content-center align-items-center">
                                                 <h2 class="mt-5 text-center"
-                                                    style="color: #16243D; font-size: 20px font-weight:700">reset data yang akan dimasukkan
+                                                    style="color: #16243D; font-size: 20px font-weight:700">reset data
+                                                    yang
+                                                    akan dimasukkan
                                                     <p class="mb-0 mt-2 text-center "
-                                                        style="color: #DC3545; font-weight:400; font-size:14px"> data yang
+                                                        style="color: #DC3545; font-weight:400; font-size:14px"> data
+                                                        yang
                                                         dimasukkan belum tersimpan </p>
                                                 </h2>
                                             </div>
@@ -108,11 +126,11 @@
 @stop
 
 @section('customscript')
-<script>
-    $(document).ready(function() {
-        $('#lokasimaster').select2({
-            closeOnSelect: false
+    <script>
+        $(document).ready(function() {
+            $('#lokasimaster').select2({
+                closeOnSelect: false
+            });
         });
-    });
-</script>
+    </script>
 @stop
