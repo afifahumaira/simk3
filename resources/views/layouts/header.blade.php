@@ -60,11 +60,11 @@
                         <!--end::Avatar-->
                         <!--begin::Username-->
                         <div class="d-flex flex-column">
-                            <div class="fw-bold d-flex align-items-center fs-4" style="font-family: Roboto Flex;">
+                            <div class="fw-bold d-flex align-items-center fs-4" style="font-family: Plus Jakarta Sans, sans-serif;">
                                 Selamat datang, {{ auth()->user()->name }}
                             </div>
                             <a href="#" class="fw-semibold text-muted fs-7"
-                                style="font-family: Roboto">{{ auth()->user()->hak_akses }}</a>
+                                style="font-family: Helvetica, sans-serif;">{{ auth()->user()->hak_akses }}</a>
                         </div>
                         <!--end::Username-->
                     </div>

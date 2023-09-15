@@ -67,7 +67,7 @@
                                             <select class="form-select fs-6 w-100" data-control="select2"
                                                 data-hide-search="true" data-placeholder="-Pilih-"
                                                 style="--bs-link-hover-color-rgb: 25, 135, 84;" id=""
-                                                style="font-family: 'Inter';">
+                                                style="font-family: Arial, Helvetica, sans-serif;">
                                                 <option value="">- Pilih -</option>
                                                 <option value="*">Admin </option>
                                                 <option value="* ">Pimpinan </option>
@@ -85,7 +85,7 @@
                                             <select class="form-select fs-6 w-100" data-control="select2"
                                                 data-hide-search="true" data-placeholder="-Pilih-"
                                                 style="--bs-link-hover-color-rgb: 25, 135, 84;" id=""
-                                                style="font-family: 'Inter';">
+                                                style="font-family: Arial, Helvetica, sans-serif;">
                                                 <option value="">- Pilih -</option>
                                                 <option value="*">Teknik Sipil</option>
                                                 <option value="* ">Teknik Arsitektur</option>

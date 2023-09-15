@@ -194,7 +194,7 @@
                                             <select class="form-select fs-6 w-100" data-control="select2"
                                                 data-hide-search="true" data-placeholder="- Pilih -"
                                                 style="--bs-link-hover-color-rgb: 25, 135, 84;" id=""
-                                                name="kategori_pelapor" style="font-family: 'Inter';">
+                                                name="kategori_pelapor" style="font-family: Arial, Helvetica, sans-serif;">
                                                 <option value="">- Pilih -</option>
                                                 <option value="Dosen"
                                                     {{ $data->kategori_pelapor == 'Dosen' ? 'selected' : '' }}>
@@ -284,7 +284,7 @@
                                                     data-hide-search="true" data-placeholder="- Pilih -"
                                                     data-kt-placement="bottom"
                                                     style="--bs-link-hover-color-rgb: 25, 135, 84;" id=""
-                                                    name="unit_civitas_akademika_box" style="font-family: 'Inter';">
+                                                    name="unit_civitas_akademika_box" style="font-family: Arial, Helvetica, sans-serif;">
                                                     <option value="">- Pilih -</option>
                                                     <option value="Dosen"
                                                         {{ $data->unit_civitas_akademika_box == 'Dosen' ? 'selected' : '' }}>
@@ -322,7 +322,7 @@
                                                     data-hide-search="true" data-placeholder="- Pilih -"
                                                     data-kt-placement="bottom"
                                                     style="--bs-link-hover-color-rgb: 25, 135, 84;" id=""
-                                                    name="potensi_bahaya" style="font-family: 'Inter';">
+                                                    name="potensi_bahaya" style="font-family: Arial, Helvetica, sans-serif;">
                                                     <option value="">- Pilih -</option>
                                                     <option value="Fisik"
                                                         {{ $data->potensi_bahaya == 'Fisik' ? 'selected' : '' }}>Fisik

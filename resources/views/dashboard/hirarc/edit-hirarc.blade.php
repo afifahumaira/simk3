@@ -146,7 +146,7 @@
                                                     </div>
 
                                                     <div class=" mt-5 d-flex justify-content-between" id="tambahResiko"
-                                                        style="font-family: Roboto">
+                                                        style="font-family: Helvetica, sans-serif">
                                                         <p class=" mb-0" style="color:rgba(22, 36, 61, 0.4);">
                                                             Masukkan data dengan lengkap</p>
                                                         <a type="button" id="addData"
@@ -524,7 +524,7 @@
             height: 40px;
             display: flex;
             align-items: center;
-            font-family: 'Roboto';
+            font-family: Arial, Helvetica, sans-serif;
             font-size: 14px;
             font-weight: 400;
             color: #009B3E;
@@ -540,7 +540,7 @@
             border-radius: 5px !important;
             /* height: 40px; */
             width: 100%;
-            font-family: 'Roboto';
+            font-family: Arial, Helvetica, sans-serif;
             font-size: 14px;
             font-weight: 400;
             color: #009B3E;

@@ -45,18 +45,18 @@ License: For each use you must have a valid license purchased only from above li
     <link href="{{ asset('css/style.bundle.css') }}" rel="stylesheet" type="text/css" />
     <style>
         h2 {
-            font-family: Roboto Flex !important;
+            font-family: Plus Jakarta Sans, sans-serif !important;
             font-size: 24px !important;
             font-weight: 700 !important;
         }
 
         strong {
-            font-family: Roboto Flex !important;
+            font-family: Plus Jakarta Sans, sans-serif !important;
             font-size: 16px !important;
         }
 
         thead {
-            font-family: Roboto Flex;
+            font-family: Plus Jakarta Sans, sans-serif;
             font-size: 16px;
             color: #16243D;
             font-weight: 700;
@@ -64,13 +64,13 @@ License: For each use you must have a valid license purchased only from above li
 
         tbody {
             font-size: 16px !important;
-            font-family: Roboto !important;
+            font-family: Arial, Helvetica, sans-serif !important;
             font-weight: 400 !important;
         }
 
         #kt_app_content {
             font-size: 12px !important;
-            font-family: Roboto !important;
+            font-family: Plus Jakarta Sans, sans-serif !important;
             font-weight: 400 !important;
         }
 

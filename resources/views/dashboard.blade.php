@@ -10,7 +10,7 @@
             <div class="app-toolbar-wrapper d-flex flex-stack flex-wrap gap-4 w-100 my-5 px-5 ">
                 <!--begin::Page title-->
                 <h1 class="page-heading mb-5 ms-7 d-flex flex-column justify-content-center text-dark fw-bolder fs-1 lh-0"
-                    style="color: #16243D; font-family: Roboto Flex;">Dashboard</h1>
+                    style="color: #16243D; font-family: Plus Jakarta Sans, sans-serif;">Dashboard</h1>
                 <!--end::Title-->
             </div>
             <!--begin::Content container-->
@@ -24,7 +24,7 @@
                                 <div class="card-body mx-3">
                                     <div class="pull-left mb-4 ">
                                         <h1
-                                            class="page-heading d-flex flex-column justify-content-center text-dark fw-bolder fs-2 "style="color: #16243D; font-family: Roboto Flex;">
+                                            class="page-heading d-flex flex-column justify-content-center text-dark fw-bolder fs-2 "style="color: #16243D; font-family: Plus Jakarta Sans, sans-serif;">
                                             Total Data Masuk</h1>
                                     </div>
                                     <div class="pt-5 mt-5">
@@ -93,7 +93,7 @@
                                                 <i class="bi bi-clipboard-x text-white fs-2hx"></i>
                                             </div>
                                             <div class="fs-2hx d-flex justify-content-center"
-                                                style=" font-family: Roboto Flex;">
+                                                style=" font-family: Plus Jakarta Sans, sans-serif;">
                                                 {{ $data['jumlah_insiden_pending'] }}
                                             </div>
                                             <div class="d-flex justify-content-center">
@@ -105,7 +105,7 @@
                                                 <i class="bi bi bi-search text-white fs-2hx"></i>
                                             </div>
                                             <div class="fs-2hx d-flex justify-content-center"
-                                                style=" font-family: Roboto Flex;">
+                                                style=" font-family: Plus Jakarta Sans, sans-serif;">
                                                 {{ $data['jumlah_insiden_tindaklanjut'] }}
                                             </div>
                                             <div class="d-flex justify-content-center">
@@ -117,7 +117,7 @@
                                                 <i class="bi bi-person-check-fill text-white fs-2hx"></i>
                                             </div>
                                             <div class="fs-2hx d-flex justify-content-center"
-                                                style=" font-family: Roboto Flex;">
+                                                style=" font-family: Plus Jakarta Sans, sans-serif;">
                                                 {{ $data['jumlah_insiden_sukses'] }}
                                             </div>
                                             <div class="d-flex justify-content-center">
@@ -149,7 +149,7 @@
                                                 <i class="bi bi-clipboard-x text-white fs-2hx"></i>
                                             </div>
                                             <div class="fs-2hx d-flex justify-content-center"
-                                                style=" font-family: Roboto Flex;">
+                                                style=" font-family: Plus Jakarta Sans, sans-serif;">
                                                 {{ $data['jumlah_potensi_bahaya_pending'] }}
                                             </div>
                                             <div class="d-flex justify-content-center">
@@ -161,7 +161,7 @@
                                                 <i class="bi bi bi-search text-white fs-2hx"></i>
                                             </div>
                                             <div class="fs-2hx d-flex justify-content-center"
-                                                style=" font-family: Roboto Flex;">
+                                                style=" font-family: Plus Jakarta Sans, sans-serif;">
                                                 {{ $data['jumlah_potensi_bahaya_tindaklanjut'] }}
                                             </div>
                                             <div class="d-flex justify-content-center">
@@ -173,7 +173,7 @@
                                                 <i class="bi bi-person-check-fill text-white fs-2hx"></i>
                                             </div>
                                             <div class="fs-2hx d-flex justify-content-center"
-                                                style=" font-family: Roboto Flex;">
+                                                style=" font-family: Plus Jakarta Sans, sans-serif;">
                                                 {{ $data['jumlah_potensi_bahaya_sukses'] }}
                                             </div>
                                             <div class="d-flex justify-content-center">
@@ -252,7 +252,7 @@
                                             </div>
                                             <div class="mb-0 pb-0 py-2 d-flex justify-content-between align-items-center ">
                                                 <div class=" col-lg-6 fs-2hx text-start ps-0 pe-0"
-                                                    style=" font-family: Roboto Flex;">
+                                                    style=" font-family: Plus Jakarta Sans, sans-serif;">
                                                     {{ $data['jumlah_insiden_pending'] }}
                                                 </div>
                                                 <div class="col-lg-6 ps-0 text-end">
@@ -268,7 +268,7 @@
                                             </div>
                                             <div class="mb-0 pb-0 py-2 d-flex justify-content-between align-items-center">
                                                 <div class=" col-lg-6 fs-2hx text-start ps-0 pe-0"
-                                                    style=" font-family: Roboto Flex;">
+                                                    style=" font-family: Plus Jakarta Sans, sans-serif;">
                                                     {{ $data['jumlah_insiden_tindaklanjut'] }}
                                                 </div>
                                                 <div class="col-lg-6 ps-0 text-end">
@@ -283,7 +283,7 @@
                                             </div>
                                             <div class="mb-0 pb-0 py-2 d-flex justify-content-between align-items-center ">
                                                 <div class=" col-lg-6 fs-2hx text-start ps-0 pe-0"
-                                                    style=" font-family: Roboto Flex;">
+                                                    style=" font-family: Plus Jakarta Sans, sans-serif;">
                                                     {{ $data['jumlah_insiden_sukses'] }}
                                                 </div>
                                                 <div class="col-lg-6 ps-0 text-end">
@@ -319,7 +319,7 @@
                                             </div>
                                             <div class="mb-0 pb-0 py-2 d-flex justify-content-between align-items-center ">
                                                 <div class=" col-lg-6 fs-2hx text-start ps-0 pe-0"
-                                                    style=" font-family: Roboto Flex;">
+                                                    style=" font-family: Plus Jakarta Sans, sans-serif;">
                                                     {{ $data['jumlah_potensi_bahaya_pending'] }}
                                                 </div>
                                                 <div class="col-lg-6 ps-0 text-end">
@@ -335,7 +335,7 @@
                                             </div>
                                             <div class="mb-0 pb-0 py-2 d-flex justify-content-between align-items-center ">
                                                 <div class=" col-lg-6 fs-2hx text-start ps-0 pe-0"
-                                                    style=" font-family: Roboto Flex;">
+                                                    style=" font-family: Plus Jakarta Sans, sans-serif;">
                                                     {{ $data['jumlah_potensi_bahaya_tindaklanjut'] }}
                                                 </div>
                                                 <div class="col-lg-6 ps-0 text-end">
@@ -350,7 +350,7 @@
                                             </div>
                                             <div class="mb-0 pb-0 py-2 d-flex justify-content-between align-items-center ">
                                                 <div class=" col-lg-6 fs-2hx text-start ps-0 pe-0"
-                                                    style=" font-family: Roboto Flex;">
+                                                    style=" font-family: Plus Jakarta Sans, sans-serif;">
                                                     {{ $data['jumlah_potensi_bahaya_sukses'] }}
                                                 </div>
                                                 <div class="col-lg-6 ps-0 text-end">
@@ -384,7 +384,7 @@
                                                 <i class="bi bi-clipboard-x text-white fs-2hx"></i>
                                             </div>
                                             <div class="fs-2hx d-flex justify-content-center"
-                                                style=" font-family: Roboto Flex;">
+                                                style=" font-family: Plus Jakarta Sans, sans-serif;">
                                                 {{ $data['jumlah_potensi_bahaya_pending'] }}
                                             </div>
                                             <div class="d-flex justify-content-center">
@@ -396,7 +396,7 @@
                                                 <i class="bi bi bi-search text-white fs-2hx"></i>
                                             </div>
                                             <div class="fs-2hx d-flex justify-content-center"
-                                                style=" font-family: Roboto Flex;">
+                                                style=" font-family: Plus Jakarta Sans, sans-serif;">
                                                 {{ $data['jumlah_potensi_bahaya_tindaklanjut'] }}
                                             </div>
                                             <div class="d-flex justify-content-center">
@@ -408,7 +408,7 @@
                                                 <i class="bi bi-person-check-fill text-white fs-2hx"></i>
                                             </div>
                                             <div class="fs-2hx d-flex justify-content-center"
-                                                style=" font-family: Roboto Flex;">
+                                                style=" font-family: Plus Jakarta Sans, sans-serif;">
                                                 {{ $data['jumlah_potensi_bahaya_sukses'] }}
                                             </div>
                                             <div class="d-flex justify-content-center">
@@ -435,7 +435,7 @@
                                 <div class="card-body mx-3">
                                     <div class="pull-left mb-4 ">
                                         <h1
-                                            class="page-heading d-flex flex-column justify-content-center text-dark fw-bolder fs-2 "style="color: #16243D; font-family: Roboto Flex;">
+                                            class="page-heading d-flex flex-column justify-content-center text-dark fw-bolder fs-2 "style="color: #16243D; font-family: Plus Jakarta Sans, sans-serif;">
                                             Total Data Masuk</h1>
                                     </div>
                                     <div class="pt-3">
@@ -493,7 +493,7 @@
                                                 <i class="bi bi-person-check-fill text-white fs-2hx"></i>
                                             </div>
                                             <div class="fs-2hx d-flex justify-content-center"
-                                                style=" font-family: Roboto Flex;">
+                                                style=" font-family: Plus Jakarta Sans, sans-serif;">
                                                 {{ $data['jumlah_insiden_pending'] }}
                                             </div>
                                             <div class="d-flex justify-content-center">
@@ -505,7 +505,7 @@
                                                 <i class="bi bi bi-search text-white fs-2hx"></i>
                                             </div>
                                             <div class="fs-2hx d-flex justify-content-center"
-                                                style=" font-family: Roboto Flex;">
+                                                style=" font-family: Plus Jakarta Sans, sans-serif;">
                                                 {{ $data['jumlah_insiden_tindaklanjut'] }}
                                             </div>
                                             <div class="d-flex justify-content-center">
@@ -517,7 +517,7 @@
                                                 <i class="bi bi-person-check-fill text-white fs-2hx"></i>
                                             </div>
                                             <div class="fs-2hx d-flex justify-content-center"
-                                                style=" font-family: Roboto Flex;">
+                                                style=" font-family: Plus Jakarta Sans, sans-serif;">
                                                 {{ $data['jumlah_insiden_sukses'] }}
                                             </div>
                                             <div class="d-flex justify-content-center">
@@ -550,7 +550,7 @@
                                                 <i class="bi bi-clipboard-x text-white fs-2hx"></i>
                                             </div>
                                             <div class="fs-2hx d-flex justify-content-center"
-                                                style=" font-family: Roboto Flex;">
+                                                style=" font-family: Plus Jakarta Sans, sans-serif;">
                                                 {{ $data['jumlah_potensi_bahaya_pending'] }}
                                             </div>
                                             <div class="d-flex justify-content-center">
@@ -562,7 +562,7 @@
                                                 <i class="bi bi-person-check-fill text-white fs-2hx"></i>
                                             </div>
                                             <div class="fs-2hx d-flex justify-content-center"
-                                                style=" font-family: Roboto Flex;">
+                                                style=" font-family: Plus Jakarta Sans, sans-serif;">
                                                 {{ $data['jumlah_potensi_bahaya_tindaklanjut'] }}
                                             </div>
                                             <div class="d-flex justify-content-center">
@@ -574,7 +574,7 @@
                                                 <i class="bi bi-person-check-fill text-white fs-2hx"></i>
                                             </div>
                                             <div class="fs-2hx d-flex justify-content-center"
-                                                style=" font-family: Roboto Flex;">
+                                                style=" font-family: Plus Jakarta Sans, sans-serif;">
                                                 {{ $data['jumlah_potensi_bahaya_sukses'] }}
                                             </div>
                                             <div class="d-flex justify-content-center">
@@ -597,7 +597,7 @@
                             <div class="card-body">
                                 <div class="pull-left pb-4">
                                     <h1
-                                        class="page-heading d-flex flex-column justify-content-center text-dark fw-bolder fs-2 "style="color: #16243D; font-family: Roboto Flex;">
+                                        class="page-heading d-flex flex-column justify-content-center text-dark fw-bolder fs-2 "style="color: #16243D; font-family: Plus Jakarta Sans, sans-serif;">
                                         Total Laporan Insiden</h1>
 
                                 </div>

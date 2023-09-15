@@ -99,7 +99,7 @@
                     <div class="card rounded-3">
                         <div class="card-header d-flex align-items-center fs-3 fw-normal">
                             <div class="pull-left">
-                                <strong style="color: #16243D; font-family: Roboto Flex; font-size:16px;">Data
+                                <strong style="color: #16243D; font-family: Plus Jakarta Sans, sans-serif; font-size:16px;">Data
                                     Potensi Bahaya</strong>
                             </div>
                         </div>
@@ -380,12 +380,12 @@
 <style>
     strong {
         font-weight: bold !important;
-        font-family: Roboto Flex !important;
+        font-family: Plus Jakarta Sans, sans-serif !important;
         font-size: 16px;
     }
 
     h2 {
-        font-family: Roboto Flex !important;
+        font-family: Plus Jakarta Sans, sans-serif !important;
         font-size: 24px;
         font-weight: bold;
     }
@@ -396,7 +396,7 @@
 
     .animated {
         /* background-color: #fdf7e5; */
-        font-family: Roboto !important;
+        font-family: Arial, Helvetica, sans-serif !important;
         font-size: 16px !important;
     }
 
