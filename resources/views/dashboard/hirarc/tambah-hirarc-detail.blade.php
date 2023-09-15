@@ -8,7 +8,7 @@
                 class="app-content  rounded bg-light  mb-20 px-5 shadow"style="box-shadow: 2px 4px 20px 2px rgba(0, 0, 0, 0.1);">
                 <div class="app-toolbar-wrapper d-flex flex-stack flex-wrap gap-4 w-100 mb-5 px-5 border-bottom border-5">
                     <!--begin::Page title-->
-                    <h2>Lengkapi Data HIRARC</h2>
+                    <h2>Tambah Data HIRARC</h2>
                     <a href="{{ route('hirarc.index') }}" type="button"
                         class="btn text-white btn-secondary btn-sm d-flex justify-content-center align-items-center mb-2"
                         data-bs-toggle="modal" data-bs-target="#staticBackdrop" style="background: #505050; width:90px"><i
@@ -63,39 +63,79 @@
                                         </ul>
                                     </div>
                                 @endif
-                                <form action="{{ route('hirarc.save', $hirarc->id) }}" method="POST">
+                                <form action="{{ route('hirarc.save') }}" method="POST">
                                     @csrf
                                     @method('put')
 
-                                    {{-- <div class="ps-3 pe-5">
-                                        <label class="col-form-label">Hazard</label>
+                                    <div class="ps-3 pe-5">
+                                        <label class="col-form-label">Pilih Departemen</label>
                                         <div class=" w-100">
-                                            <select name="hazard" class="form-select fs-6 w-100"
-                                                data-control="select2" data-hide-search="true" data-placeholder="Hazard">
-                                                @foreach ($hazard as $hazard)
-                                                    <option value="{{ $hazard->name }}"
-                                                        {{ $hirarc->hazard == $hazard->id ? 'selected' : '' }}>
-                                                        {{ $hazard->name }}</option>
+                                            <select name="departemen_id" class="form-select fs-6 w-100"
+                                                data-control="select2" data-hide-search="true"
+                                                data-placeholder="Pilih Departemen">
+                                                <option value="">Pilih Departemen</option>
+                                                @foreach ($departments as $dep)
+                                                    <option value="{{ $dep->id }}">{{ $dep->name }}</option>
                                                 @endforeach
                                             </select>
                                         </div>
                                     </div>
 
                                     <div class="ps-3 pe-5">
-                                        <label class="col-form-label">Resiko</label>
-                                        <div class=" w-100">
-                                            <select name="risk" class="form-select fs-6 w-100"
-                                                data-control="select2" data-hide-search="true" data-placeholder="Resiko">
-                                                @foreach ($risk as $risk)
-                                                    <option value="{{ $risk->name }}"
-                                                        {{ $hirarc->risk == $risk->id ? 'selected' : '' }}>
-                                                        {{ $risk->name }}</option>
+                                        <label for="location_id" class="form-label">Pilih Lokasi:</label>
+                                        <select id="location_id" name="location_id" class="form-select"
+                                            data-control="select2">
+                                            <option value="">Pilih Lokasi</option>
+                                            @foreach ($location as $loc)
+                                                <option value="{{ $loc->id }}">{{ $loc->name }}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                    
+                                    <div id="additionalForm">
+                                    <div class="ps-3 pe-5 ">                                                                                   
+                                                <label for="activitie_id" class="form-label">Pilih Aktifitas:</label>
+                                                <select id="activitie_id" name="activitie" class="form-select"
+                                                    data-control="select2">
+                                                    <option value="">Pilih Aktifitas
+                                                    </option>
+                                                    @foreach ($activitie as $act)
+                                                        <option value="{{ $act->name }}">{{ $act->name }}</option>
+                                                    @endforeach
+                                                </select>
+                                            </div>
+                                        </div>
+                                    
+                                    <div id="additionalForm">
+                                        <div class="ps-3 pe-5">
+                                            <label for="hazard_id" class="form-label">Pilih
+                                                Hazard:</label>
+                                            <select id="hazard_id" name="hazard" class="form-select"
+                                                data-control="select2">                                                
+                                                <option value="">Pilih Hazard
+                                                </option>
+                                                @foreach ($hazard as $haz)
+                                                    <option value="{{ $haz->name }}">{{ $haz->name }}</option>
                                                 @endforeach
                                             </select>
                                         </div>
                                     </div>
-                                     --}}
 
+                                    <div id="additionalForm">
+                                        <div class="ps-3 pe-5">
+                                            <label for="risk_id" class="form-label">Pilih
+                                                Risiko:</label>
+                                            <select id="risk_id" name="risk" class="form-select"
+                                                data-control="select2">
+                                                <option value="">Pilih Risiko
+                                                </option>
+                                                @foreach ($risk as $ris)
+                                                    <option value="{{ $ris->name }}">{{ $ris->name }}</option>
+                                                @endforeach
+                                            </select>
+                                        </div>
+                                    </div>                               
+                                    
                                     <div class="ps-3 pe-5">
                                         <label class="col-form-label">Sesuai dengan peraturan
                                             pemerintah</label>
@@ -103,8 +143,13 @@
                                             <select class="form-select fs-6 w-100" data-control="select2"
                                                 data-hide-search="true" data-placeholder="N/A"
                                                 style="--bs-link-hover-color-rgb: 25, 135, 84;" name="kesesuaian"
+<<<<<<< HEAD
                                                 id="kesesuaian" style="font-family: Arial, Helvetica, sans-serif;" required>
                                                 <option value="{{ $hirarc->kesesuaian }}">- Pilih -</option>
+=======
+                                                id="kesesuaian" style="font-family: 'Inter';" required>
+                                                <option value="">- Pilih -</option>
+>>>>>>> ea2ed0b579604b5b643d6c4701509c9cd8804baa
                                                 <option value="1">Yes</option>
                                                 <option value="2">No</option>
                                                 <option value="3">Not Applicable</option>
@@ -118,8 +163,13 @@
                                             <select class="form-select fs-6 w-100" data-control="select2"
                                                 data-hide-search="true" data-placeholder="Normal"
                                                 style="--bs-link-hover-color-rgb: 25, 135, 84;" name="kondisi"
+<<<<<<< HEAD
                                                 id="kondisi" style="font-family: Arial, Helvetica, sans-serif;" required>
                                                 <option value="{{ $hirarc->kondisi }}">- Pilih -</option>
+=======
+                                                id="kondisi" style="font-family: 'Inter';" required>
+                                                <option value="">- Pilih -</option>
+>>>>>>> ea2ed0b579604b5b643d6c4701509c9cd8804baa
                                                 <option value="1">Normal </option>
                                                 <option value="2">Not Normal</option>
                                                 <option value="3"> Emergency</option>
@@ -131,7 +181,7 @@
                                         <label class="col-form-label">Pengendalian</label>
                                         <div class=" w-100">
                                             <input type="text" class="form-control" name="kendali" id="kendali"
-                                                value="{{ $hirarc->kendali }}">
+                                                value="">
                                         </div>
                                     </div>
 
@@ -224,7 +274,7 @@
                                         <label class="col-form-label">Tingkat Risiko Saat Ini</label>
                                         <div class=" w-100">
                                             <input type="text" class="form-control" name="current_risk_rating"
-                                                id="current_risk_rating" value="{{ $hirarc->current_risk_rating }}"
+                                                id="current_risk_rating" value=""
                                                 readonly>
                                         </div>
                                     </div>
@@ -237,8 +287,13 @@
                                                 data-hide-search="true" data-placeholder="Pilih Kategori Risiko Saat Ini"
                                                 style="--bs-link-hover-color-rgb: 25, 135, 84;"
                                                 name="current_risk_category" id="current_risk_category"
+<<<<<<< HEAD
                                                 style="font-family: Arial, Helvetica, sans-serif;" required>
                                                 <option value="{{ $hirarc->current_risk_category }}">- Pilih -</option>
+=======
+                                                style="font-family: 'Inter';" required>
+                                                <option value="">- Pilih -</option>
+>>>>>>> ea2ed0b579604b5b643d6c4701509c9cd8804baa
                                                 <option id="current_1" value="1">Slight</option>
                                                 <option id="current_2" value="2">Low</option>
                                                 <option id="current_3" value="3">Medium</option>
@@ -252,7 +307,7 @@
                                         <label class="col-form-label">Penyebab Utama</label>
                                         <div class=" w-100">
                                             <input type="text" class="form-control" name="penyebab" id="penyebab"
-                                                value="{{ $hirarc->penyebab }}">
+                                                value="">
                                         </div>
                                     </div>
 
@@ -260,7 +315,7 @@
                                         <label class="col-form-label">Usulan</label>
                                         <div class=" w-100">
                                             <input type="text" class="form-control" name="usulan" id="usulan"
-                                                value="{{ $hirarc->usulan }}">
+                                                value="">
                                         </div>
                                     </div>
 
@@ -268,7 +323,7 @@
                                         <label class="col-form-label">Formulir yang Dibutuhkan</label>
                                         <div class=" w-100">
                                             <input type="text" class="form-control" name="form_diperlukan"
-                                                id="form_diperlukan" value="{{ $hirarc->form_dibutuhkan }}">
+                                                id="form_diperlukan" value="">
                                         </div>
                                     </div>
 
@@ -276,7 +331,7 @@
                                         <label class="col-form-label">SOP</label>
                                         <div class=" w-100">
                                             <input type="text" class="form-control" name="sop" id="sop"
-                                                value="{{ $hirarc->sop }}">
+                                                value="">
                                         </div>
                                     </div>
 
@@ -368,7 +423,7 @@
                                         <label class="col-form-label">Tingkat Risiko Residual</label>
                                         <div class=" w-100">
                                             <input type="text" class="form-control" name="residual_risk_rating"
-                                                id="residual_risk_rating" value="{{ $hirarc->residual_risk_rating }}"
+                                                id="residual_risk_rating" value=""
                                                 readonly>
                                         </div>
                                     </div>
@@ -380,8 +435,13 @@
                                                 data-hide-search="true" data-placeholder="Pilih Kategori Risiko Residual"
                                                 style="--bs-link-hover-color-rgb: 25, 135, 84;"
                                                 name="residual_risk_category" id="residual_risk_category"
+<<<<<<< HEAD
                                                 style="font-family: Arial, Helvetica, sans-serif;" required>
                                                 <option value="{{ $hirarc->residual_risk_category }}">- Pilih -</option>
+=======
+                                                style="font-family: 'Inter';" required>
+                                                <option value="">- Pilih -</option>
+>>>>>>> ea2ed0b579604b5b643d6c4701509c9cd8804baa
                                                 <option value="1">Slight</option>
                                                 <option value="2">Low</option>
                                                 <option value="3">Medium</option>
@@ -395,7 +455,7 @@
                                         <label class="col-form-label">Penanggung Jawab </label>
                                         <div class=" w-100">
                                             <input type="text" class="form-control" name="penanggung_jawab"
-                                                id="penanggung_jawab" value="{{ $hirarc->penanggung_jawab }}">
+                                                id="penanggung_jawab" value="">
                                         </div>
                                     </div>
 
@@ -403,7 +463,7 @@
                                         <label class="col-form-label">Status</label>
                                         <div class=" w-100">
                                             <input type="text" class="form-control" name="status" id="status"
-                                                value="{{ $hirarc->status }}">
+                                                value="">
                                         </div>
                                     </div>
 
@@ -486,21 +546,29 @@
             var proby = document.getElementById("current_probability").value;
             var risk_rating = severity * exposure * proby;
             document.getElementById("current_risk_rating").value = risk_rating;
-            var cat = document.getElementById("current_risk_category")
+            var cat = document.querySelector('#current_risk_category')
             if (risk_rating >= "20") {
-                $("current_risk_category select").val("1").change;
+                //cat.option[1].selected = true
+                const changeOption = (e) => {
+                    cat.value = "1";
+                };
+                document.querySelector()
             } else if (risk_rating >= "21" && risk_rating <= "70") {
-                cat.option[1].selected = true;
-                $("current_risk_category select").val("2").change;
+                cat.value = "2";
+                // cat.option[2].selected = true;
+                // $("current_risk_category select").val("2").change;
             } else if (risk_rating >= "71" && risk_rating <= "200") {
-                cat.option[2].selected = true;
-                $("current_risk_category select").val("3").change;
+                cat.value = "3";
+                // cat.option[3].selected = true;
+                // $("current_risk_category select").val("3").change;
             } else if (risk_rating => "201" && risk_rating <= "400") {
-                cat.option[3].selected = true;
-                $("current_risk_category select").val("4").change;
+                cat.value = "4";
+                // cat.option[4].selected = true;
+                // $("current_risk_category select").val("4").change;
             } else {
-                cat.option[4].selected = true;
-                $("current_risk_category select").val("5").change;
+                cat.value = "5";
+                // cat.option[5].selected = true;
+                // $("current_risk_category select").val("5").change;
             }
         }
 
@@ -513,12 +581,16 @@
             if (risk_rating >= "20") {
                 $("residual_risk_category select").val("1").change;
             } else if (risk_rating >= "21" && risk_rating <= "70") {
+                cat.option[1].selected = true;
                 $("residual_risk_category select").val("2").change;
             } else if (risk_rating >= "71" && risk_rating <= "200") {
+                cat.option[2].selected = true;
                 $("residual_risk_category select").val("3").change;
             } else if (risk_rating => "201" && risk_rating <= "400") {
+                cat.option[3].selected = true;
                 $("residual_risk_category select").val("4").change;
             } else {
+                cat.option[4].selected = true;
                 $("residual_risk_category select").val("5").change;
             }
         }

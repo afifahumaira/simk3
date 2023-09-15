@@ -39,9 +39,10 @@ use Illuminate\Console\View\Components\Alert;
 |
 */
 
-Route::get('/', function () {
-    return view('simk3');
-});
+// Route::get('/', function () {
+//     return view('simk3');
+// });
+Route::get('/', [Simk3Controller::class, 'index'])->name('simk3');
 
 Route::get('dashboard', [Simk3Controller::class, 'dashboard'])->middleware(['auth'])->name('dashboard');
 
@@ -126,9 +127,9 @@ Route::group(['middleware' => ['auth']], function() {
     Route::prefix('hirarc')->name('hirarc.')->group(function(){
         Route::get('/', [HirarcController::class, 'index'])->name('index');
         Route::get('tambah', [HirarcController::class, 'tambah'])->name('tambah');
-        Route::get('tambahDetail/{id}', [HirarcController::class, 'tambahDetail'])->name('tambahDetail');
+        Route::get('tambahDetail', [HirarcController::class, 'tambahDetail'])->name('tambahDetail');
         Route::post('simpan', [HirarcController::class, 'simpan'])->name('simpan');
-        Route::put('save/{id}', [HirarcController::class, 'save'])->name('save');
+        Route::put('save', [HirarcController::class, 'save'])->name('save');
         Route::post('simpanPreControl/{id}/{detail_id}', [HirarcController::class, 'simpanPreControl'])->name('simpanPreControl');
         Route::post('simpanSolusi/{id}/{detail_id}', [HirarcController::class, 'simpanSolusi'])->name('simpanSolusi');
         Route::post('simpanPostControl/{id}/{detail_id}', [HirarcController::class, 'simpanPostControl'])->name('simpanPostControl');

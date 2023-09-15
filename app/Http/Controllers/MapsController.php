@@ -12,6 +12,7 @@ class MapsController extends Controller
     public function index() {
         $maps = Map::all();
         return view('dashboard.maps.index', compact('maps'));
+        
     }
 
     public function lihat(Request $request) {
@@ -49,6 +50,8 @@ class MapsController extends Controller
     public function edit($id) {
         $map = Map::find($id);
         return view('dashboard.maps.edit', compact('map'));
+        
+        
     }
 
     public function update($id, Request $request) {

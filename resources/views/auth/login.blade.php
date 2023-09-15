@@ -68,14 +68,14 @@
                                     class="form-control  shadow-sm px-4 border border-1">
                             </div>
 
-                            <div class="text-center d-flex justify-content-end mt-4">
+                            {{-- <div class="text-center d-flex justify-content-end mt-4">
                                 @if (Route::has('password.request'))
                                     <a class="underline text-sm text-danger hover:text-danger-900"
                                         href="{{ route('password.request') }}">
                                         <p><u>Lupa password?</u></p>
                                     </a>
                                 @endif
-                            </div>
+                            </div> --}}
                             <button type="submit"
                                 class="btn btn-block text-uppercase mb-2 mt-3 px-5 shadow-sm d-flex justify-content-center align-items-center mx-auto"
                                 style="background-color:#16243D; color:#fff">

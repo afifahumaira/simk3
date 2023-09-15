@@ -23,13 +23,18 @@ use App\Models\Hirarc_postrating;
 use App\Models\Hirarc_prerating;
 use App\Models\Location_masters;
 use App\Models\Activitie;
+use GPBMetadata\Google\Cloud\Location\Locations;
 
 class HirarcController extends Controller
 {
-    public function index(){
+    public function index(Request $request){
         $hirarcs = Hirarc::with(['departemen', 'user', 'location'])
         ->when (auth()->user()->hak_akses=='K3 Departemen', function ($query){
             $query->where('departemen_id', auth()->user()->departemen_id);
+        })
+        ->where(function($query) use($request){
+            $query->where('departemen_id', 'LIKE', '%'.$request->search.'%');
+            $query->where('location_id', 'LIKE', '%'.$request->search.'%');
         })
         ->orderBy('departemen_id')
         ->orderBy ('location_id')
@@ -72,7 +77,7 @@ class HirarcController extends Controller
     //         ->with('hirarcs',$hirarcs);
     // }
 
-    public function tambah($id = null) {
+    public function tambahDetail($id = null) {
         $departments = Departemen::all();
         $locations = Location_masters::all();
         $activities = Activitie_master::all();
@@ -88,7 +93,7 @@ class HirarcController extends Controller
 
         $controls = Control::all();
 
-        return view('dashboard.hirarc.tambah-hirarc')
+        return view('dashboard.hirarc.tambah-hirarc-detail')
                 ->with('hirarc', $hirarc)
                 ->with('location', $locations)
                 ->with('departments', $departments)
@@ -100,20 +105,20 @@ class HirarcController extends Controller
                 
     }
 
-    public function tambahDetail($id = null) {
-        $hirarc = Hirarc::where('id',$id)->find($id);
-        $hazards = Hazard::where('id',$id)->get();
-        $risks = Risk::where('id',$id)->get();
+    // public function tambahDetail($id = null) {
+    //     $hirarc = Hirarc::where('id',$id)->find($id);
+    //     $hazards = Hazard::where('id',$id)->get();
+    //     $risks = Risk::where('id',$id)->get();
         
 
-        return view('dashboard.hirarc.tambah-hirarc-detail')
-                ->with('hirarc', $hirarc)
-                ->with('id', $id)
-                ->with('hazard', $hazards)
-                ->with('risk', $risks);
+    //     return view('dashboard.hirarc.tambah-hirarc-detail')
+    //             ->with('hirarc', $hirarc)
+    //             ->with('id', $id)
+    //             ->with('hazard', $hazards)
+    //             ->with('risk', $risks);
                 
                 
-    }
+    // }
 
     public function edit($id) {
         
@@ -159,14 +164,22 @@ class HirarcController extends Controller
 
     
 
-    public function lihat($departemen_id) {
+    public function lihat($departemen_id, Request $request) {
         $hirarcs = Hirarc::with(['departemen', 'activitie', 'location', 'hazard', 'risk'])
         
         ->where('departemen_id', $departemen_id )
+        ->when($request->has('location_id'), function($query) use($request){
+            if($request->location_id !=''){
+             $query->where('location_id', $request->location_id);
+            }
+         })
         ->orderBy ('location_id')
         ->orderBy('activity')
         ->orderBy ('hazard')
         ->get();
+        $lokasi_ids=Hirarc::where('departemen_id', $departemen_id )->pluck('location_id')->unique()->toArray();
+        // @dd($lokasi_ids);
+        $locations=Location::whereIn('id', $lokasi_ids )->get();
         // dd($hirarcs);
         $locCount=[];
         $actCount=[];
@@ -190,7 +203,8 @@ class HirarcController extends Controller
         return view('dashboard.hirarc.lihat-hirarc', compact('hirarcs'))
         ->with('locCount',$locCount)
         ->with('actCount',$actCount)
-        ->with('hazardCount',$hazardCount);
+        ->with('hazardCount',$hazardCount)
+        ->with('locations',$locations);
         
     }
 
@@ -254,7 +268,7 @@ class HirarcController extends Controller
         return redirect()->route('hirarc.tambah', $hirarc->id);
         }
 
-        public function save($id, Request $request) {
+        public function save(Request $request) {
             // $validatedData = $request->validate([
             //     'kesesuaian' => 'required',
             //     'kondisi' => 'required',
@@ -277,8 +291,14 @@ class HirarcController extends Controller
             //     'status' => 'required',
             // ]);
     
-            Hirarc::find($id)->update([
+            $hirarc = Hirarc::create([
                 //$validatedData
+                'departemen_id' => $request->departemen_id,
+                'location_id' => $request->location_id,
+                'user_id' => auth()->user()->id,
+                'activity' => $request->activitie,
+                'hazard' => $request->hazard,
+                'risk' => $request->risk,
                 'kesesuaian'      => $request->kesesuaian,
                 'kondisi'      => $request->kondisi,
                 'kendali'      => $request->kendali,
@@ -302,8 +322,8 @@ class HirarcController extends Controller
             ]);
 
             Alert::success('Berhasil', 'Data Hirarc berhasil disimpan!')->iconHtml('<i class="bi bi-person-check fs-3x"></i>')->hideCloseButton();
-        return redirect()->route('hirarc.tambah')
-        ->with('id', $id);
+        return redirect()->route('hirarc.index', $hirarc->id);
+        
         }
     
         public function update($id, Request $request) {
@@ -370,7 +390,7 @@ class HirarcController extends Controller
             $hirarc->delete();
     
             Alert::success('Berhasil', 'Data Hirarc berhasil dihapus!')->iconHtml('<i class="bi bi-person-check fs-3x"></i>')->hideCloseButton();
-            return redirect()->back();
+            return redirect()->route('hirarc.index');
         }
     
     

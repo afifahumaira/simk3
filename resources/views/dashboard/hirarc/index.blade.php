@@ -53,7 +53,7 @@
                     <!--end::Wrapper-->
                 </div>
                 <!--end::Main wrapper-->
-                <a href="{{ route('hirarc.tambah') }}" type="button" class="btn btn-primary btn-sm"
+                <a href="{{ route('hirarc.tambahDetail') }}" type="button" class="btn btn-primary btn-sm"
                     style="background: #233EAE">Tambah Data +</a>
                 <!--end::Title-->
             </div>
@@ -63,9 +63,9 @@
                     <tr>
                         <th scope="col" class="text-center">No</th>
                         <th scope="col">Departemen</th>
-                        <th scope="col">Lokasi</th>
+                        <th scope="col" class="col-4">Lokasi</th>
                         <th scope="col">Tanggal Lapor</th>
-                        <th scope="col">Action</th>
+                        <th scope="col" class="col-1">Action</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -101,45 +101,11 @@
                             @endif
                             <td>{{ $hirarc->created_at ? $hirarc->created_at->translatedFormat('d F Y') : '' }}</td>
 
-                            <td>
+                            <td align="center">
                                 <a href="{{ route('hirarc.lihat', $hirarc->departemen_id) }}" type="button"
                                     class="btn  btn-sm bg-warning " style="width:20px;"><i
                                         class="bi bi-eye text-dark d-flex justify-content-center align-items-center"></i></a>
-                                <a href="{{ route('hirarc.edit', $hirarc->id) }}" type="button"
-                                    class="btn  btn-sm bg-primary" style="width:20px;"><i
-                                        class="bi bi-pencil-square text-dark d-flex justify-content-center align-items-center"></i></a>
-                                <button type="button" class="btn  btn-sm" style="width:20px; background:#DC3545"
-                                    data-bs-toggle="modal" data-bs-target="#deleteForm{{ $hirarc->id }}"><i
-                                        class="bi bi-trash text-dark d-flex justify-content-center align-items-center"></i></button>
 
-                                <div class="modal fade" id="deleteForm{{ $hirarc->id }}" data-bs-backdrop="static"
-                                    data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel"
-                                    aria-hidden="true">
-                                    <div class="modal-dialog modal-dialog-centered ">
-                                        <div class="modal-content">
-
-                                            <form method="POST" action="{{ route('hirarc.delete', $hirarc->id) }}">
-                                                @csrf
-                                                <div
-                                                    class="modal-body mt-5 d-flex justify-content-center align-items-center">
-                                                    <h2 class="mt-5 text-center"
-                                                        style="color: #16243D; font-size: 20px font-weight:700">Yakin data
-                                                        ingin dihapus?
-                                                    </h2>
-                                                </div>
-                                                <div class="modal-footer d-flex justify-content-center border-0">
-                                                    <button type="submit"
-                                                        class="btn btn-success text-white d-flex justify-content-center align-items-center text-center rounded-1"
-                                                        style="width:76px; height:31px; background: #29CC6A;">Ya</button>
-                                                    <button type="button"
-                                                        class="btn btn-secondary text-center d-flex align-items-center rounded-1"
-                                                        data-bs-dismiss="modal"
-                                                        style="width:76px; height:31px; ">Tidak</button>
-                                                </div>
-                                            </form>
-                                        </div>
-                                    </div>
-                                </div>
                             </td>
                         </tr>
                     @endforeach
