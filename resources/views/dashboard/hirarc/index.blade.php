@@ -53,7 +53,7 @@
                     <!--end::Wrapper-->
                 </div>
                 <!--end::Main wrapper-->
-                <a href="{{ route('hirarc.tambah') }}" type="button" class="btn btn-primary btn-sm"
+                <a href="{{ route('hirarc.tambahDetail') }}" type="button" class="btn btn-primary btn-sm"
                     style="background: #233EAE">Tambah Data +</a>
                 <!--end::Title-->
             </div>
