@@ -526,21 +526,29 @@
             var proby = document.getElementById("current_probability").value;
             var risk_rating = severity * exposure * proby;
             document.getElementById("current_risk_rating").value = risk_rating;
-            var cat = document.getElementById("current_risk_category")
+            var cat = document.querySelector('#current_risk_category')
             if (risk_rating >= "20") {
-                $("current_risk_category select").val("1").change;
+                //cat.option[1].selected = true
+                const changeOption = (e) => {
+                    cat.value = "1";
+                };
+                document.querySelector()
             } else if (risk_rating >= "21" && risk_rating <= "70") {
-                cat.option[1].selected = true;
-                $("current_risk_category select").val("2").change;
+                cat.value = "2";
+                // cat.option[2].selected = true;
+                // $("current_risk_category select").val("2").change;
             } else if (risk_rating >= "71" && risk_rating <= "200") {
-                cat.option[2].selected = true;
-                $("current_risk_category select").val("3").change;
+                cat.value = "3";
+                // cat.option[3].selected = true;
+                // $("current_risk_category select").val("3").change;
             } else if (risk_rating => "201" && risk_rating <= "400") {
-                cat.option[3].selected = true;
-                $("current_risk_category select").val("4").change;
+                cat.value = "4";
+                // cat.option[4].selected = true;
+                // $("current_risk_category select").val("4").change;
             } else {
-                cat.option[4].selected = true;
-                $("current_risk_category select").val("5").change;
+                cat.value = "5";
+                // cat.option[5].selected = true;
+                // $("current_risk_category select").val("5").change;
             }
         }
 
@@ -553,12 +561,16 @@
             if (risk_rating >= "20") {
                 $("residual_risk_category select").val("1").change;
             } else if (risk_rating >= "21" && risk_rating <= "70") {
+                cat.option[1].selected = true;
                 $("residual_risk_category select").val("2").change;
             } else if (risk_rating >= "71" && risk_rating <= "200") {
+                cat.option[2].selected = true;
                 $("residual_risk_category select").val("3").change;
             } else if (risk_rating => "201" && risk_rating <= "400") {
+                cat.option[3].selected = true;
                 $("residual_risk_category select").val("4").change;
             } else {
+                cat.option[4].selected = true;
                 $("residual_risk_category select").val("5").change;
             }
         }

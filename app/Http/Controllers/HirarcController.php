@@ -390,7 +390,7 @@ class HirarcController extends Controller
             $hirarc->delete();
     
             Alert::success('Berhasil', 'Data Hirarc berhasil dihapus!')->iconHtml('<i class="bi bi-person-check fs-3x"></i>')->hideCloseButton();
-            return redirect()->back();
+            return redirect()->route('hirarc.index');
         }
     
     
