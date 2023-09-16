@@ -38,6 +38,7 @@ class HirarcController extends Controller
         })
         ->orderBy('departemen_id')
         ->orderBy ('location_id')
+        ->orderBy('created_at')
         ->paginate(10);
         
         $locCount=[];
@@ -52,10 +53,10 @@ class HirarcController extends Controller
             }
             $deptCount[$hir->departemen_id]++;
 
-            if (!isset($locCount[$hir->location_id])) {
-                $locCount[$hir->location_id] = 0;
+            if (!isset($locCount[$hir->departemen_id][$hir->location_id])) {
+                $locCount[$hir->departemen_id][$hir->location_id] = 0;
             }
-            $locCount[$hir->location_id]++;
+            $locCount[$hir->departemen_id][$hir->location_id]++;
         } 
         
 
