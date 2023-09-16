@@ -10,7 +10,7 @@
             <div class="app-toolbar-wrapper d-flex flex-stack flex-wrap gap-4 w-100 my-5 px-5 ">
                 <!--begin::Page title-->
                 <h1 class="page-heading mb-5 ms-7 d-flex flex-column justify-content-center text-dark fw-bolder fs-1 lh-0"
-                    style="color: #16243D; font-family: Roboto Flex;">Dashboard</h1>
+                    style="color: #16243D; font-family: Plus Jakarta Sans, sans-serif;">Dashboard</h1>
                 <!--end::Title-->
             </div>
             <!--begin::Content container-->
@@ -21,12 +21,20 @@
                     <div class="row my-5">
                         <div class="col-xl-4 col-lg-6 col-md-6 col-sm-6">
                             <div class="card card-stats h-100 ">
+<<<<<<< HEAD
+                                <div class="card-body mx-3">
+                                    <div class="pull-left mb-4 ">
+                                        <h1
+                                            class="page-heading d-flex flex-column justify-content-center text-dark fw-bolder fs-2 "style="color: #16243D; font-family: Plus Jakarta Sans, sans-serif;">
+                                            Total Data Masuk</h1>
+=======
                                 <div class="card-body pb-3 mx-3">
                                     <div class="numbers  d-flex flex-column mb-3">
                                         <p class="card-category mb-0" style="font-size:20px; font-weight:bold;">Status
                                             Pelaporan </p>
                                         <span class=" " style="font-size: 12px; font-weight:400;">Akumulasi data yang
                                             dilaporkan pengguna</span>
+>>>>>>> ea2ed0b579604b5b643d6c4701509c9cd8804baa
                                     </div>
                                     <div class="pt-2 mt-2 fs-black">
                                         <ul style="list-style-type:circle; font-size:18px" class=" ps-0 mt-4">
@@ -72,6 +80,32 @@
                                             style="font-size:18px; font-weight:bold;">{{ $data['jumlah_insiden'] }}
                                             Laporan</span>
                                     </div>
+<<<<<<< HEAD
+                                    <div class="d-flex justify-content-around ">
+                                        <div class=" col-lg-4 text-white d-flex flex-column py-3 rounded-4 w-25"
+                                            style="background:#DC3545">
+                                            <div class="mb-4 d-flex justify-content-center py-2">
+                                                <i class="bi bi-clipboard-x text-white fs-2hx"></i>
+                                            </div>
+                                            <div class="fs-2hx d-flex justify-content-center"
+                                                style=" font-family: Plus Jakarta Sans, sans-serif;">
+                                                {{ $data['jumlah_insiden_pending'] }}
+                                            </div>
+                                            <div class="d-flex justify-content-center">
+                                                <span class="card-title">Pending</span>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-4 text-white d-flex flex-column py-3 rounded-4 w-25 bg-primary">
+                                            <div class="mb-4 d-flex justify-content-center py-2">
+                                                <i class="bi bi bi-search text-white fs-2hx"></i>
+                                            </div>
+                                            <div class="fs-2hx d-flex justify-content-center"
+                                                style=" font-family: Plus Jakarta Sans, sans-serif;">
+                                                {{ $data['jumlah_insiden_tindaklanjut'] }}
+                                            </div>
+                                            <div class="d-flex justify-content-center">
+                                                <span class="card-title">Tindaklanjut</span>
+=======
                                     <div class="d-flex flex-wrap flex-lg-nowrap justify-content-around ">
                                         <div
                                             class=" col-lg-4 col-md-6 my-md-3 text-black overflow-md-auto px-3  py-3 insiden shadow">
@@ -86,6 +120,7 @@
                                                 <div class="col-lg-6 ps-0 text-end">
                                                     <i class="bi bi-clipboard-x text-black fs-2hx"></i>
                                                 </div>
+>>>>>>> ea2ed0b579604b5b643d6c4701509c9cd8804baa
                                             </div>
                                         </div>
 
@@ -94,6 +129,11 @@
                                             <div class="">
                                                 <span class="card-title">Tindak lanjut</span>
                                             </div>
+<<<<<<< HEAD
+                                            <div class="fs-2hx d-flex justify-content-center"
+                                                style=" font-family: Plus Jakarta Sans, sans-serif;">
+                                                {{ $data['jumlah_insiden_sukses'] }}
+=======
                                             <div class="mb-0 pb-0 py-2 d-flex justify-content-between align-items-center">
                                                 <div class=" col-lg-6 fs-2hx text-start ps-0 pe-0"
                                                     style=" font-family: Roboto Flex;">
@@ -102,6 +142,7 @@
                                                 <div class="col-lg-6 ps-0 text-end">
                                                     <i class="bi bi-clipboard-x text-black fs-2hx"></i>
                                                 </div>
+>>>>>>> ea2ed0b579604b5b643d6c4701509c9cd8804baa
                                             </div>
                                         </div>
                                         <div
@@ -139,6 +180,32 @@
                                             style="font-size:18px; font-weight:bold;">{{ $data['jumlah_potensi_bahaya'] }}
                                             Laporan</span>
                                     </div>
+<<<<<<< HEAD
+                                    <div class="d-flex justify-content-between ">
+                                        <div class="col-lg-4 text-white d-flex flex-column py-3 rounded-4 w-25"
+                                            style="background:#DC3545">
+                                            <div class="mb-4 d-flex justify-content-center py-2">
+                                                <i class="bi bi-clipboard-x text-white fs-2hx"></i>
+                                            </div>
+                                            <div class="fs-2hx d-flex justify-content-center"
+                                                style=" font-family: Plus Jakarta Sans, sans-serif;">
+                                                {{ $data['jumlah_potensi_bahaya_pending'] }}
+                                            </div>
+                                            <div class="d-flex justify-content-center">
+                                                <span class="card-title">Pending</span>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-4 text-white d-flex flex-column py-3 rounded-4 w-25 bg-primary">
+                                            <div class="mb-4 d-flex justify-content-center py-2">
+                                                <i class="bi bi bi-search text-white fs-2hx"></i>
+                                            </div>
+                                            <div class="fs-2hx d-flex justify-content-center"
+                                                style=" font-family: Plus Jakarta Sans, sans-serif;">
+                                                {{ $data['jumlah_potensi_bahaya_tindaklanjut'] }}
+                                            </div>
+                                            <div class="d-flex justify-content-center">
+                                                <span class="card-title">Tindaklanjut</span>
+=======
                                     <div class="d-flex flex-wrap flex-lg-nowrap justify-content-around ">
                                         <div
                                             class=" col-lg-4 col-md-6 my-md-3 text-black overflow-auto px-3  py-3 insiden shadow">
@@ -153,6 +220,7 @@
                                                 <div class="col-lg-6 ps-0 text-end">
                                                     <i class="bi bi-clipboard-x text-black fs-2hx"></i>
                                                 </div>
+>>>>>>> ea2ed0b579604b5b643d6c4701509c9cd8804baa
                                             </div>
                                         </div>
 
@@ -161,6 +229,11 @@
                                             <div class="">
                                                 <span class="card-title">Tindak lanjut</span>
                                             </div>
+<<<<<<< HEAD
+                                            <div class="fs-2hx d-flex justify-content-center"
+                                                style=" font-family: Plus Jakarta Sans, sans-serif;">
+                                                {{ $data['jumlah_potensi_bahaya_sukses'] }}
+=======
                                             <div class="mb-0 pb-0 py-2 d-flex justify-content-between align-items-center ">
                                                 <div class=" col-lg-6 fs-2hx text-start ps-0 pe-0"
                                                     style=" font-family: Roboto Flex;">
@@ -169,6 +242,7 @@
                                                 <div class="col-lg-6 ps-0 text-end">
                                                     <i class="bi bi-clipboard-x text-black fs-2hx"></i>
                                                 </div>
+>>>>>>> ea2ed0b579604b5b643d6c4701509c9cd8804baa
                                             </div>
                                         </div>
                                         <div
@@ -261,7 +335,7 @@
                                             </div>
                                             <div class="mb-0 pb-0 py-2 d-flex justify-content-between align-items-center ">
                                                 <div class=" col-lg-6 fs-2hx text-start ps-0 pe-0"
-                                                    style=" font-family: Roboto Flex;">
+                                                    style=" font-family: Plus Jakarta Sans, sans-serif;">
                                                     {{ $data['jumlah_insiden_pending'] }}
                                                 </div>
                                                 <div class="col-lg-6 ps-0 text-end">
@@ -277,7 +351,7 @@
                                             </div>
                                             <div class="mb-0 pb-0 py-2 d-flex justify-content-between align-items-center">
                                                 <div class=" col-lg-6 fs-2hx text-start ps-0 pe-0"
-                                                    style=" font-family: Roboto Flex;">
+                                                    style=" font-family: Plus Jakarta Sans, sans-serif;">
                                                     {{ $data['jumlah_insiden_tindaklanjut'] }}
                                                 </div>
                                                 <div class="col-lg-6 ps-0 text-end">
@@ -292,7 +366,7 @@
                                             </div>
                                             <div class="mb-0 pb-0 py-2 d-flex justify-content-between align-items-center ">
                                                 <div class=" col-lg-6 fs-2hx text-start ps-0 pe-0"
-                                                    style=" font-family: Roboto Flex;">
+                                                    style=" font-family: Plus Jakarta Sans, sans-serif;">
                                                     {{ $data['jumlah_insiden_sukses'] }}
                                                 </div>
                                                 <div class="col-lg-6 ps-0 text-end">
@@ -328,7 +402,7 @@
                                             </div>
                                             <div class="mb-0 pb-0 py-2 d-flex justify-content-between align-items-center ">
                                                 <div class=" col-lg-6 fs-2hx text-start ps-0 pe-0"
-                                                    style=" font-family: Roboto Flex;">
+                                                    style=" font-family: Plus Jakarta Sans, sans-serif;">
                                                     {{ $data['jumlah_potensi_bahaya_pending'] }}
                                                 </div>
                                                 <div class="col-lg-6 ps-0 text-end">
@@ -344,7 +418,7 @@
                                             </div>
                                             <div class="mb-0 pb-0 py-2 d-flex justify-content-between align-items-center ">
                                                 <div class=" col-lg-6 fs-2hx text-start ps-0 pe-0"
-                                                    style=" font-family: Roboto Flex;">
+                                                    style=" font-family: Plus Jakarta Sans, sans-serif;">
                                                     {{ $data['jumlah_potensi_bahaya_tindaklanjut'] }}
                                                 </div>
                                                 <div class="col-lg-6 ps-0 text-end">
@@ -359,7 +433,7 @@
                                             </div>
                                             <div class="mb-0 pb-0 py-2 d-flex justify-content-between align-items-center ">
                                                 <div class=" col-lg-6 fs-2hx text-start ps-0 pe-0"
-                                                    style=" font-family: Roboto Flex;">
+                                                    style=" font-family: Plus Jakarta Sans, sans-serif;">
                                                     {{ $data['jumlah_potensi_bahaya_sukses'] }}
                                                 </div>
                                                 <div class="col-lg-6 ps-0 text-end">
@@ -371,6 +445,68 @@
                                 </div>
                             </div>
                         </div>
+<<<<<<< HEAD
+
+                        {{-- <div class="col-lg-4 col-md-6 col-sm-6 ">
+                            <div class="card card-stats h-100">
+                                <div class="card-body ">
+                                    <div class="numbers  d-flex flex-column mb-5">
+                                        <p class="card-category mb-0" style="font-size:20px; font-weight:bold;">Status
+                                            Pelaporan </p>
+                                        <span class=" " style="font-size: 12px; font-weight:400;">Potensi
+                                            bahaya</span>
+                                    </div>
+                                    <div class="pt-3 pb-2">
+                                        <span class="card-title mb-0"
+                                            style="font-size:18px; font-weight:bold;">{{ $data['jumlah_potensi_bahaya'] }}
+                                            Laporan</span>
+                                    </div>
+                                    <div class="d-flex justify-content-between ">
+                                        <div class="col-lg-4 text-white d-flex flex-column py-3 rounded-4 w-25"
+                                            style="background:#DC3545">
+                                            <div class="mb-4 d-flex justify-content-center py-2">
+                                                <i class="bi bi-clipboard-x text-white fs-2hx"></i>
+                                            </div>
+                                            <div class="fs-2hx d-flex justify-content-center"
+                                                style=" font-family: Plus Jakarta Sans, sans-serif;">
+                                                {{ $data['jumlah_potensi_bahaya_pending'] }}
+                                            </div>
+                                            <div class="d-flex justify-content-center">
+                                                <span class="card-title">Pending</span>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-4 text-white d-flex flex-column py-3 rounded-4 w-25 bg-primary">
+                                            <div class="mb-4 d-flex justify-content-center py-2">
+                                                <i class="bi bi bi-search text-white fs-2hx"></i>
+                                            </div>
+                                            <div class="fs-2hx d-flex justify-content-center"
+                                                style=" font-family: Plus Jakarta Sans, sans-serif;">
+                                                {{ $data['jumlah_potensi_bahaya_tindaklanjut'] }}
+                                            </div>
+                                            <div class="d-flex justify-content-center">
+                                                <span class="card-title">Tindaklanjut</span>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-4 text-white d-flex flex-column py-3 rounded-4 w-25 bg-success">
+                                            <div class="mb-4 d-flex justify-content-center py-2">
+                                                <i class="bi bi-person-check-fill text-white fs-2hx"></i>
+                                            </div>
+                                            <div class="fs-2hx d-flex justify-content-center"
+                                                style=" font-family: Plus Jakarta Sans, sans-serif;">
+                                                {{ $data['jumlah_potensi_bahaya_sukses'] }}
+                                            </div>
+                                            <div class="d-flex justify-content-center">
+                                                <span class="card-title">Disetujui</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div> --}}
+
+
+=======
+>>>>>>> ea2ed0b579604b5b643d6c4701509c9cd8804baa
                     </div>
                 @endif
                 {{-- End View Admin --}}
@@ -383,7 +519,7 @@
                                 <div class="card-body mx-3">
                                     <div class="pull-left mb-4 ">
                                         <h1
-                                            class="page-heading d-flex flex-column justify-content-center text-dark fw-bolder fs-2 "style="color: #16243D; font-family: Roboto Flex;">
+                                            class="page-heading d-flex flex-column justify-content-center text-dark fw-bolder fs-2 "style="color: #16243D; font-family: Plus Jakarta Sans, sans-serif;">
                                             Total Data Masuk</h1>
                                     </div>
                                     <div class="pt-3">
@@ -435,7 +571,7 @@
                                                 <i class="bi bi-person-check-fill text-white fs-2hx"></i>
                                             </div>
                                             <div class="fs-2hx d-flex justify-content-center"
-                                                style=" font-family: Roboto Flex;">
+                                                style=" font-family: Plus Jakarta Sans, sans-serif;">
                                                 {{ $data['jumlah_insiden_pending'] }}
                                             </div>
                                             <div class="d-flex justify-content-center">
@@ -447,7 +583,7 @@
                                                 <i class="bi bi bi-search text-white fs-2hx"></i>
                                             </div>
                                             <div class="fs-2hx d-flex justify-content-center"
-                                                style=" font-family: Roboto Flex;">
+                                                style=" font-family: Plus Jakarta Sans, sans-serif;">
                                                 {{ $data['jumlah_insiden_tindaklanjut'] }}
                                             </div>
                                             <div class="d-flex justify-content-center">
@@ -459,7 +595,7 @@
                                                 <i class="bi bi-person-check-fill text-white fs-2hx"></i>
                                             </div>
                                             <div class="fs-2hx d-flex justify-content-center"
-                                                style=" font-family: Roboto Flex;">
+                                                style=" font-family: Plus Jakarta Sans, sans-serif;">
                                                 {{ $data['jumlah_insiden_sukses'] }}
                                             </div>
                                             <div class="d-flex justify-content-center">
@@ -492,7 +628,7 @@
                                                 <i class="bi bi-clipboard-x text-white fs-2hx"></i>
                                             </div>
                                             <div class="fs-2hx d-flex justify-content-center"
-                                                style=" font-family: Roboto Flex;">
+                                                style=" font-family: Plus Jakarta Sans, sans-serif;">
                                                 {{ $data['jumlah_potensi_bahaya_pending'] }}
                                             </div>
                                             <div class="d-flex justify-content-center">
@@ -504,7 +640,7 @@
                                                 <i class="bi bi-person-check-fill text-white fs-2hx"></i>
                                             </div>
                                             <div class="fs-2hx d-flex justify-content-center"
-                                                style=" font-family: Roboto Flex;">
+                                                style=" font-family: Plus Jakarta Sans, sans-serif;">
                                                 {{ $data['jumlah_potensi_bahaya_tindaklanjut'] }}
                                             </div>
                                             <div class="d-flex justify-content-center">
@@ -516,7 +652,7 @@
                                                 <i class="bi bi-person-check-fill text-white fs-2hx"></i>
                                             </div>
                                             <div class="fs-2hx d-flex justify-content-center"
-                                                style=" font-family: Roboto Flex;">
+                                                style=" font-family: Plus Jakarta Sans, sans-serif;">
                                                 {{ $data['jumlah_potensi_bahaya_sukses'] }}
                                             </div>
                                             <div class="d-flex justify-content-center">
@@ -539,7 +675,7 @@
                             <div class="card-body">
                                 <div class="pull-left pb-4">
                                     <h1
-                                        class="page-heading d-flex flex-column justify-content-center text-dark fw-bolder fs-2 "style="color: #16243D; font-family: Roboto Flex;">
+                                        class="page-heading d-flex flex-column justify-content-center text-dark fw-bolder fs-2 "style="color: #16243D; font-family: Plus Jakarta Sans, sans-serif;">
                                         Total Laporan Insiden</h1>
 
                                 </div>

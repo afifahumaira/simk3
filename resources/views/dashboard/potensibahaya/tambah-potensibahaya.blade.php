@@ -137,7 +137,7 @@
                                         <select class="form-select fs-6 w-100" data-kt-placement="bottom"
                                             data-control="select2" data-hide-search="true" data-placeholder="- Pilih -"
                                             style="--bs-link-hover-color-rgb: 25, 135, 84;" id=""
-                                            name="kategori_pelapor" style="font-family: 'Inter';">
+                                            name="kategori_pelapor" style="font-family: Arial, Helvetica, sans-serif;">
                                             <option value="">- Pilih -</option>
                                             <option value="Dosen">Dosen</option>
                                             <option value="Karyawan">Karyawan</option>
@@ -208,7 +208,7 @@
                                             data-hide-search="true" data-placeholder="- Pilih -"
                                             data-kt-placement="bottom" style="--bs-link-hover-color-rgb: 25, 135, 84;"
                                             id="" name="unit_civitas_akademika_box"
-                                            style="font-family: 'Inter';">
+                                            style="font-family: Arial, Helvetica, sans-serif;">
                                             <option value="">- Pilih -</option>
                                             <option value="Dosen">Dosen</option>
                                             <option value="Karyawan">Karyawan</option>
@@ -235,7 +235,7 @@
                                         <select class="form-select fs-6 w-100" data-control="select2"
                                             data-hide-search="true" data-placeholder="- Pilih -"
                                             data-kt-placement="bottom" style="--bs-link-hover-color-rgb: 25, 135, 84;"
-                                            id="" name="potensi_bahaya" style="font-family: 'Inter';">
+                                            id="" name="potensi_bahaya" style="font-family: Arial, Helvetica, sans-serif;">
                                             <option value="">- Pilih -</option>
                                             <option value="Fisik">Fisik</option>
                                             <option value="Kimiawi">Kimiawi</option>

@@ -49,7 +49,7 @@
                         <div class="card bg-light">
                             <div class="card-header d-flex align-items-center fs-3 fw-normal">
                                 <div class="pull-left">
-                                    <strong style="color: #16243D; font-family: Roboto Flex; font-size:16px;">Data
+                                    <strong style="color: #16243D; font-family: Plus Jakarta Sans, sans-serif; font-size:16px;">Data
                                         HIRARC</strong>
                                 </div>
                             </div>
@@ -144,7 +144,7 @@
                                                 data-hide-search="true" data-placeholder="N/A"
                                                 style="--bs-link-hover-color-rgb: 25, 135, 84;" name="kesesuaian"
                                                 id="kesesuaian" style="font-family: 'Inter';" required>
-                                                <option value="">- Pilih -</option>
+                                                <option value="{{ $hirarc->kesesuaian }}">- Pilih -</option>
                                                 <option value="1">Yes</option>
                                                 <option value="2">No</option>
                                                 <option value="3">Not Applicable</option>
@@ -159,7 +159,7 @@
                                                 data-hide-search="true" data-placeholder="Normal"
                                                 style="--bs-link-hover-color-rgb: 25, 135, 84;" name="kondisi"
                                                 id="kondisi" style="font-family: 'Inter';" required>
-                                                <option value="">- Pilih -</option>
+                                                <option value="{{ $hirarc->kondisi }}">- Pilih -</option>
                                                 <option value="1">Normal </option>
                                                 <option value="2">Not Normal</option>
                                                 <option value="3"> Emergency</option>
@@ -277,7 +277,13 @@
                                                 data-hide-search="true" data-placeholder="Pilih Kategori Risiko Saat Ini"
                                                 style="--bs-link-hover-color-rgb: 25, 135, 84;"
                                                 name="current_risk_category" id="current_risk_category"
-                                                style="font-family: 'Inter';" required disabled>                                                
+                                                style="font-family: Arial, Helvetica, sans-serif;" required>
+                                                <option value="{{ $hirarc->current_risk_category }}">{{ $hirarc->current_risk_category }}</option>
+                                                <option id="current_1" value="1">Slight</option>
+                                                <option id="current_2" value="2">Low</option>
+                                                <option id="current_3" value="3">Medium</option>
+                                                <option id="current_4" value="4">High</option>
+                                                <option id="current_5" value="5">Very High</option>
                                             </select>
                                         </div>
                                     </div>
@@ -414,7 +420,14 @@
                                                 data-hide-search="true" data-placeholder="Pilih Kategori Risiko Residual"
                                                 style="--bs-link-hover-color-rgb: 25, 135, 84;"
                                                 name="residual_risk_category" id="residual_risk_category"
-                                                style="font-family: 'Inter';" required disabled>                                                
+                                                style="font-family: Arial, Helvetica, sans-serif;" required disabled>
+                                                <option value="{{ $hirarc->residual_risk_category }}">{{ $hirarc->residual_risk_category }}</option>
+                                                
+                                                <option value="1">Slight</option>
+                                                <option value="2">Low</option>
+                                                <option value="3">Medium</option>
+                                                <option value="4">High</option>
+                                                <option value="5">Very High</option>
                                             </select>
                                         </div>
                                     </div>

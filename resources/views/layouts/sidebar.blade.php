@@ -673,7 +673,7 @@
 <style>
     #kt_app_sidebar {
         font-size: 16px !important;
-        font-family: Roboto Flex !important;
+        font-family: Plus Jakarta Sans, sans-serif !important;
         font-weight: 400 !important;
     }
 </style>

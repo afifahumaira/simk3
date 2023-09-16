@@ -8,7 +8,7 @@
                 class="app-content  rounded bg-light  mb-20 px-5 shadow"style="box-shadow: 2px 4px 20px 2px rgba(0, 0, 0, 0.1);">
                 <div class="app-toolbar-wrapper d-flex flex-stack flex-wrap gap-4 w-100 mb-5 px-5 border-bottom border-5">
                     <!--begin::Page title-->
-                    <h2 style="color: #16243D; font-family: Roboto Flex; font-size:16px;">Tambah Data Lapor Insiden</h2>
+                    <h2 style="color: #16243D; font-family: Plus Jakarta Sans, sans-serif; font-size:16px;">Tambah Data Lapor Insiden</h2>
                     <a href="{{ route('laporan-insiden.index') }}" type="button"
                         class="btn text-white btn-sm btn-secondary d-flex justify-content-center align-items-center mb-2"
                         style="background: #505050; width:90px" data-bs-toggle="modal" data-bs-target="#staticBackdrop"><i
@@ -45,7 +45,7 @@
                         <div class="card bg-light">
                             <div class="card-header d-flex align-items-center fs-3 fw-normal">
                                 <div class="pull-left">
-                                    <strong style="color: #16243D; font-family: Roboto Flex; font-size:16px;">Data
+                                    <strong style="color: #16243D; font-family: Plus Jakarta Sans, sans-serif; font-size:16px;">Data
                                         Kejadian</strong>
                                 </div>
                             </div>
@@ -160,7 +160,7 @@
                         <div class="card">
                             <div class="card-header d-flex align-items-center fs-3 fw-normal">
                                 <div class="pull-left">
-                                    <strong style="color: #16243D; font-family: Roboto Flex; font-size:16px;">Data
+                                    <strong style="color: #16243D; font-family: Plus Jakarta Sans, sans-serif; font-size:16px;">Data
                                         Pelapor</strong>
                                 </div>
                             </div>
@@ -209,7 +209,7 @@
                         <div class="card">
                             <div class="card-header d-flex align-items-center fs-3 fw-normal">
                                 <div class="pull-left">
-                                    <strong style="color: #16243D; font-family: Roboto Flex; font-size:16px;">Data Korban
+                                    <strong style="color: #16243D; font-family: Plus Jakarta Sans, sans-serif; font-size:16px;">Data Korban
                                         <span style="color:#fc0000">(Apabila tidak mengetahui data korban dapat
                                             dikosongkan)
                                         </span></strong>

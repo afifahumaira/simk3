@@ -47,7 +47,7 @@
                     <div class="card ">
                         <div class="card-header d-flex align-items-center fs-3 fw-normal">
                             <div class="pull-left">
-                                <strong style="color: #16243D; font-family: Roboto Flex; font-size:16px;">Data
+                                <strong style="color: #16243D; font-family: Plus Jakarta Sans, sans-serif; font-size:16px;">Data
                                     Kejadian</strong>
                             </div>
                         </div>

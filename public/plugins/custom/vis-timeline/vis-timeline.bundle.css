@@ -836,7 +836,7 @@
 .vis-item .vis-delete:after, .vis-item .vis-delete-rtl:after {
   content: "×"; /* MULTIPLICATION SIGN */
   color: red;
-  font-family: arial, sans-serif;
+  font-family: Arial, Helvetica, sans-serif, sans-serif;
   font-size: 22px;
   font-weight: bold;
   -webkit-transition: color 0.2s linear;

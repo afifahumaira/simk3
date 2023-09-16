@@ -93,7 +93,7 @@
                                             <select class="form-select fs-6 w-100" data-control="select2"
                                                 data-hide-search="true" data-placeholder="N/A"
                                                 style="--bs-link-hover-color-rgb: 25, 135, 84;" name="kesesuaian"
-                                                id="kesesuaian" style="font-family: 'Inter';" required>
+                                                id="kesesuaian" style="font-family: Arial, Helvetica, sans-serif;" required>
                                                 <option value="">- Pilih -</option>
                                                 <option value="1">Yes</option>
                                                 <option value="2">No</option>
@@ -108,7 +108,7 @@
                                             <select class="form-select fs-6 w-100" data-control="select2"
                                                 data-hide-search="true" data-placeholder="Normal"
                                                 style="--bs-link-hover-color-rgb: 25, 135, 84;" name="kondisi"
-                                                id="kondisi" style="font-family: 'Inter';" required>
+                                                id="kondisi" style="font-family: Arial, Helvetica, sans-serif;" required>
                                                 <option value="">- Pilih -</option>
                                                 <option value="1">Normal </option>
                                                 <option value="2">Not Normal</option>
