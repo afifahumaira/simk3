@@ -185,9 +185,7 @@
                                             required
                                             data-placeholder="Pilih Keparahan Risiko
                                     (severity)">
-                                            <option value="" selected disabled>Pilih
-                                                Keparahan
-                                                (severity)</option>
+                                            <option value="{{ $hirarc->current_severity }}" selected disabled>{{ $hirarc->current_severity }}</option>
                                             <option value="1">
                                                 Tergores, sayatan kecil, kerugian dalam rupiah
                                                 sebesar
@@ -222,9 +220,7 @@
                                             required
                                             data-placeholder="Pilih Paparan Risiko
                                     (Exposure)">
-                                            <option value="" selected disabled>Pilih
-                                                Paparan
-                                                (Exposure)</option>
+                                            <option value="{{ $hirarc->current_exposure}}" selected disabled>{{ $hirarc->current_exposure }}</option>
                                             <option value="0.5"> 1 kali dalam setahun
                                             </option>
                                             <option value="1">Beberapa kali dalam setahun
@@ -242,23 +238,18 @@
                                             Terjadi Saat Ini(Probability)</label>
                                         <select class="form-control" onchange="risk_rating()" id="current_probability"
                                             name="current_probability" data-control="select2" data-hide-search="true"
-                                            required data-placeholder="Pilih Kemungkinan Risiko Terjadi (Probability)">
-                                            <option value="" selected disabled>Pilih
-                                                Kemungkinan
-                                                Terjadi (Probability)</option>
-                                            <option value="1">
+                                            required data-placeholder="Pilih Kemungkinan Risiko Terjadi (Probability)">                                            
+                                            <option value="{{ $hirarc->current_probability }}" selected disabled>{{ $hirarc->current_probability }}</option>
+                                            <option value="1" >
                                                 Kejadian yang secara teori hanya mungkin terjadi
                                             </option>
-                                            <option value="3">mungkin terjadi sekali dalam
-                                                10
-                                                tahun</option>
-                                            <option value="6">Kejadian yang jarang tetapi
-                                                dapat
-                                                sesekali terjadi
+                                            <option value="3" >
+                                                mungkin terjadi sekali dalam 10 tahun</option>
+                                            <option value="6" >
+                                                Kejadian yang jarang tetapi dapat sesekali terjadi
                                             </option>
-                                            <option value="10">
-                                                Peristiwa berulang setidaknya sekali dalam
-                                                setahun
+                                            <option value="10" >
+                                                Peristiwa berulang setidaknya sekali dalam setahun
                                             </option>
                                         </select>
                                     </div>
@@ -280,13 +271,9 @@
                                                 data-hide-search="true" data-placeholder="Pilih Kategori Risiko Saat Ini"
                                                 style="--bs-link-hover-color-rgb: 25, 135, 84;"
                                                 name="current_risk_category" id="current_risk_category"
-                                                style="font-family: 'Inter';" required>
-                                                <option value="{{ $hirarc->current_risk_category }}">- Pilih -</option>
-                                                <option id="current_1" value="1">Slight</option>
-                                                <option id="current_2" value="2">Low</option>
-                                                <option id="current_3" value="3">Medium</option>
-                                                <option id="current_4" value="4">High</option>
-                                                <option id="current_5" value="5">Very High</option>
+                                                style="font-family: 'Inter';" required disabled>
+                                                <option value="{{ $hirarc->current_risk_category }}">{{ $hirarc->current_risk_category }}</option>
+                                                
                                             </select>
                                         </div>
                                     </div>
@@ -332,8 +319,7 @@
                                             required
                                             data-placeholder="Keparahan
                                     (severity)">
-                                            <option value="" selected disable>Keparahan
-                                                (severity)</option>
+                                            <option value="{{ $hirarc->residual_severity }}" selected disable>{{ $hirarc->residual_severity }}</option>
                                             <option value="1">
                                                 Tergores, sayatan kecil, kerugian dalam rupiah
                                                 sebesar
@@ -368,8 +354,7 @@
                                             required
                                             data-placeholder="Paparan
                                     (Exposure)">
-                                            <option value="" selected disable>Paparan
-                                                (Exposure)</option>
+                                            <option value="{{ $hirarc->residual_exposure }}" selected disable>{{ $hirarc->residual_exposure }}</option>
                                             <option value="0.5"> 1 kali dalam setahun
                                             </option>
                                             <option value="1">Beberapa kali dalam setahun
@@ -389,8 +374,7 @@
                                             required
                                             data-placeholder="Kemungkinan
                                     Terjadi (Probability)">
-                                            <option value="" selected disable>Kemungkinan
-                                                Terjadi (Probability)</option>
+                                            <option value="{{ $hirarc->residual_probability }}" selected disable>{{ $hirarc->residual_probability }}</option>
                                             <option value="1">
                                                 Kejadian yang secara teori hanya mungkin terjadi
                                             </option>
@@ -425,13 +409,9 @@
                                                 data-hide-search="true" data-placeholder="Pilih Kategori Risiko Residual"
                                                 style="--bs-link-hover-color-rgb: 25, 135, 84;"
                                                 name="residual_risk_category" id="residual_risk_category"
-                                                style="font-family: 'Inter';" required>
-                                                <option value="{{ $hirarc->residual_risk_category }}">- Pilih -</option>
-                                                <option value="1">Slight</option>
-                                                <option value="2">Low</option>
-                                                <option value="3">Medium</option>
-                                                <option value="4">High</option>
-                                                <option value="5">Very High</option>
+                                                style="font-family: 'Inter';" required disabled>
+                                                <option value="{{ $hirarc->residual_risk_category }}">{{ $hirarc->residual_risk_category }}</option>
+                                                
                                             </select>
 
                                         </div>
@@ -527,6 +507,24 @@
             });
         });
 
+        function risk_cat (value, text) {
+            var x = document.getElementById("current_risk_category");
+            var option = document.createElement("option");
+            option.value= value;
+            option.text= text;
+            option.selected=true;
+            x.add(option);
+        }
+
+        function residual_cat (value, text) {
+            var x = document.getElementById("residual_risk_category");
+            var option = document.createElement("option");
+            option.value= value;
+            option.text= text;
+            option.selected=true;
+            x.add(option);
+        }
+
         function risk_rating() {
             var severity = document.getElementById("current_severity").value;
             var exposure = document.getElementById("current_exposure").value;
@@ -534,21 +532,16 @@
             var risk_rating = severity * exposure * proby;
             document.getElementById("current_risk_rating").value = risk_rating;
             var cat = document.getElementById("current_risk_category")
-            if (risk_rating >= "20") {
-                $("current_risk_category select").val("1").change;
+            if (risk_rating <= "20") {
+                risk_cat("1","Slight");
             } else if (risk_rating >= "21" && risk_rating <= "70") {
-                cat[1].option.selected;
-                $("current_risk_category select").val("2").change;
+                risk_cat("2","Low");
             } else if (risk_rating >= "71" && risk_rating <= "200") {
-                // cat.option[2].selected = true;
-                cat[2].option.selected;
-                $("current_risk_category select").val("3").change;
-            } else if (risk_rating => "201" && risk_rating <= "400") {
-                cat[3].option.selected;
-                $("current_risk_category select").val("4").change;
+                risk_cat("3","Medium");
+            } else if (risk_rating >= "201" && risk_rating <= "400") {
+                risk_cat("4","High");
             } else {
-                cat[4].option.selected;
-                $("current_risk_category select").val("5").change;
+                risk_cat("5","very High");
             }
         }
 
@@ -558,16 +551,16 @@
             var proby = document.getElementById("residual_probability").value;
             var risk_rating = severity * exposure * proby;
             document.getElementById("residual_risk_rating").value = risk_rating;
-            if (risk_rating >= "20") {
-                $("residual_risk_category select").val("1").change;
+            if (risk_rating <= "20") {
+                residual_cat("1","Slight");
             } else if (risk_rating >= "21" && risk_rating <= "70") {
-                $("residual_risk_category select").val("2").change;
+                residual_cat("2","Low");
             } else if (risk_rating >= "71" && risk_rating <= "200") {
-                $("residual_risk_category select").val("3").change;
+                residual_cat("3","Medium");
             } else if (risk_rating => "201" && risk_rating <= "400") {
-                $("residual_risk_category select").val("4").change;
+                residual_cat("4","High");
             } else {
-                $("residual_risk_category select").val("5").change;
+                residual_cat("5","Very High");
             }
         }
     </script>

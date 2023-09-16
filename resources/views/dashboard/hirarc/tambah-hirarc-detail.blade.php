@@ -277,13 +277,7 @@
                                                 data-hide-search="true" data-placeholder="Pilih Kategori Risiko Saat Ini"
                                                 style="--bs-link-hover-color-rgb: 25, 135, 84;"
                                                 name="current_risk_category" id="current_risk_category"
-                                                style="font-family: 'Inter';" required>
-                                                <option value="">- Pilih -</option>
-                                                <option id="current_1" value="1">Slight</option>
-                                                <option id="current_2" value="2">Low</option>
-                                                <option id="current_3" value="3">Medium</option>
-                                                <option id="current_4" value="4">High</option>
-                                                <option id="current_5" value="5">Very High</option>
+                                                style="font-family: 'Inter';" required disabled>                                                
                                             </select>
                                         </div>
                                     </div>
@@ -420,13 +414,7 @@
                                                 data-hide-search="true" data-placeholder="Pilih Kategori Risiko Residual"
                                                 style="--bs-link-hover-color-rgb: 25, 135, 84;"
                                                 name="residual_risk_category" id="residual_risk_category"
-                                                style="font-family: 'Inter';" required>
-                                                <option value="">- Pilih -</option>
-                                                <option value="1">Slight</option>
-                                                <option value="2">Low</option>
-                                                <option value="3">Medium</option>
-                                                <option value="4">High</option>
-                                                <option value="5">Very High</option>
+                                                style="font-family: 'Inter';" required disabled>                                                
                                             </select>
                                         </div>
                                     </div>
@@ -520,35 +508,40 @@
             });
         });
 
+        function risk_cat (value, text) {
+            var x = document.getElementById("current_risk_category");
+            var option = document.createElement("option");
+            option.value= value;
+            option.text= text;
+            option.selected=true;
+            x.add(option);
+        }
+
+        function residual_cat (value, text) {
+            var x = document.getElementById("residual_risk_category");
+            var option = document.createElement("option");
+            option.value= value;
+            option.text= text;
+            option.selected=true;
+            x.add(option);
+        }
+
         function risk_rating() {
             var severity = document.getElementById("current_severity").value;
             var exposure = document.getElementById("current_exposure").value;
             var proby = document.getElementById("current_probability").value;
             var risk_rating = severity * exposure * proby;
             document.getElementById("current_risk_rating").value = risk_rating;
-            var cat = document.querySelector('#current_risk_category')
-            if (risk_rating >= "20") {
-                //cat.option[1].selected = true
-                const changeOption = (e) => {
-                    cat.value = "1";
-                };
-                document.querySelector()
+            if (risk_rating <= "20") {
+                risk_cat("1","Slight");
             } else if (risk_rating >= "21" && risk_rating <= "70") {
-                cat.value = "2";
-                // cat.option[2].selected = true;
-                // $("current_risk_category select").val("2").change;
+                risk_cat("2","Low");
             } else if (risk_rating >= "71" && risk_rating <= "200") {
-                cat.value = "3";
-                // cat.option[3].selected = true;
-                // $("current_risk_category select").val("3").change;
-            } else if (risk_rating => "201" && risk_rating <= "400") {
-                cat.value = "4";
-                // cat.option[4].selected = true;
-                // $("current_risk_category select").val("4").change;
+                risk_cat("3","Medium");
+            } else if (risk_rating >= "201" && risk_rating <= "400") {
+                risk_cat("4","High");
             } else {
-                cat.value = "5";
-                // cat.option[5].selected = true;
-                // $("current_risk_category select").val("5").change;
+                risk_cat("5","very High");
             }
         }
 
@@ -558,20 +551,16 @@
             var proby = document.getElementById("residual_probability").value;
             var risk_rating = severity * exposure * proby;
             document.getElementById("residual_risk_rating").value = risk_rating;
-            if (risk_rating >= "20") {
-                $("residual_risk_category select").val("1").change;
+            if (risk_rating <= "20") {
+                residual_cat("1","Slight");
             } else if (risk_rating >= "21" && risk_rating <= "70") {
-                cat.option[1].selected = true;
-                $("residual_risk_category select").val("2").change;
+                residual_cat("2","Low");
             } else if (risk_rating >= "71" && risk_rating <= "200") {
-                cat.option[2].selected = true;
-                $("residual_risk_category select").val("3").change;
+                residual_cat("3","Medium");
             } else if (risk_rating => "201" && risk_rating <= "400") {
-                cat.option[3].selected = true;
-                $("residual_risk_category select").val("4").change;
+                residual_cat("4","High");
             } else {
-                cat.option[4].selected = true;
-                $("residual_risk_category select").val("5").change;
+                residual_cat("5","Very High");
             }
         }
     </script>
