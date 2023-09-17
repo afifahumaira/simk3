@@ -28,18 +28,38 @@ use GPBMetadata\Google\Cloud\Location\Locations;
 class HirarcController extends Controller
 {
     public function index(Request $request){
+
         $hirarcs = Hirarc::with(['departemen', 'user', 'location'])
-        ->when (auth()->user()->hak_akses=='K3 Departemen', function ($query){
-            $query->where('departemen_id', auth()->user()->departemen_id);
+    ->when(auth()->user()->hak_akses == 'K3 Departemen', function ($query) {
+        $query->where('departemen_id', auth()->user()->departemen_id);
+    })
+    ->where(function ($query) use ($request) {
+        $searchTerm = $request->search;
+
+        // Use a subquery to filter based on department name
+        $query->whereHas('departemen', function ($subquery) use ($searchTerm) {
+            $subquery->where('name', 'LIKE', '%' . $searchTerm . '%');
         })
-        ->where(function($query) use($request){
-            $query->where('departemen_id', 'LIKE', '%'.$request->search.'%');
-            $query->where('location_id', 'LIKE', '%'.$request->search.'%');
-        })
-        ->orderBy('departemen_id')
-        ->orderBy ('location_id')
-        ->orderBy('created_at')
-        ->paginate(10);
+        ->orWhere('location_id', 'LIKE', '%' . $searchTerm . '%');
+    })
+    ->orderBy('departemen_id')
+    ->orderBy('location_id')
+    ->orderBy('created_at')
+    ->paginate(10);
+
+       
+        // $hirarcs = Hirarc::with(['departemen', 'user', 'location'])
+        // ->when (auth()->user()->hak_akses=='K3 Departemen', function ($query){
+        //     $query->where('departemen_id', auth()->user()->departemen_id);
+        // })
+        // ->where(function($query) use($request){
+        //     $query->where('departemen_id', 'LIKE', '%'.$request->search.'%');
+        //     $query->where('location_id', 'LIKE', '%'.$request->search.'%');
+        // })
+        // ->orderBy('departemen_id')
+        // ->orderBy ('location_id')
+        // ->orderBy('created_at')
+        // ->paginate(10);
         
         $locCount=[];
         $deptCount = [];
