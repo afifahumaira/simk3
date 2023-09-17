@@ -49,10 +49,11 @@
     <link href="{{ asset('css/styleshadow.css') }}" rel="stylesheet" />
 
     <style>
-        #map {
-            height: 800px;
-            width: 100%;
-            margin: 3rem auto;
+         #map {
+            height: 750px;
+            width: 90%;
+            
+            /* margin: 3rem auto; */
         }
 
         /* --------background popup--------------- */
@@ -149,6 +150,8 @@
             right: 7px;
             top: 6px;
         }
+
+       
     </style>
 </head>
 
@@ -321,15 +324,27 @@
         <!-- ======= strukturOrganisasi Section ======= -->
         <section id="strukturOrganisasi" class="skills pt-2">
             <div class="container pt-4" data-aos="fade-up">
-
+                
                 <!--begin::Content container-->
-                <div class="card-body">
+
+                {{-- <div class="card-body">
                     <div id='map'></div>
+                </div> --}}
+                <div class="card-body rounded-4 mt-5 ">
+                    <div class="section-title fs-5 ">
+                        <h3 class="d-flex align-items-center justify-content-center"> <i class="bi bi-circle-fill fs-5 me-4"> </i> Lokasi Gedung Fakultas Teknik</h3>
+                    </div>  
+                    
+                        <div id='map'  class="rounded-4 shadow d-flex justify-content-center mx-auto"></div>                  
+                                         
                 </div>
             
                 <!--end::Content container-->
 
-               
+                <div class="section-title mt-5">
+                    <img src="{{ asset('vendor/Arsha/assets/img/underline.png') }} " class="img-fluid animated"
+                        alt="">
+                </div>
             </div>
         </section><!-- End strukturOrganisasi Section -->
 
@@ -5149,8 +5164,8 @@
                 }
             }
             // awalan
-        </script>
-</body>
+    </script>
+    </body>
 
 
 </html>

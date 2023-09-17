@@ -91,12 +91,12 @@
                             @endif
                             {{-- <td>{{ $hirarc->departemen?->name }}</td>
                             <td>{{ $hirarc->location?->name }}</td> --}}
-                            @if (!isset($printedLoc[$hirarc->location_id]))
-                                <td rowspan="{{ $locCount[$hirarc->location_id] }}">
+                            @if (!isset($printedLoc[$hirarc->departemen_id][$hirarc->location_id]))
+                                <td rowspan="{{ $locCount[$hirarc->departemen_id][$hirarc->location_id] }}">
                                     {{ $hirarc->location->name }}
                                 </td>
                                 @php
-                                    $printedLoc[$hirarc->location_id] = true;
+                                    $printedLoc[$hirarc->departemen_id][$hirarc->location_id] = true;
                                 @endphp
                             @endif
                             <td>{{ $hirarc->created_at ? $hirarc->created_at->translatedFormat('d F Y') : '' }}</td>
