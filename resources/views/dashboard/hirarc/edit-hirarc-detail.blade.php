@@ -147,9 +147,9 @@
                                                 style="--bs-link-hover-color-rgb: 25, 135, 84;" name="kesesuaian"
                                                 id="kesesuaian" style="font-family: Arial, Helvetica, sans-serif;" required>
                                                 <option value="{{ $hirarc->kesesuaian }}">{{ $hirarc->kesesuaian }}</option>
-                                                <option value="Yes">Yes</option>
-                                                <option value="No">No</option>
-                                                <option value="Not Applicable">Not Applicable</option>
+                                                <option value="1">Yes</option>
+                                                <option value="2">No</option>
+                                                <option value="3">Not Applicable</option>
                                             </select>
                                         </div>
                                     </div>
@@ -162,9 +162,9 @@
                                                 style="--bs-link-hover-color-rgb: 25, 135, 84;" name="kondisi"
                                                 id="kondisi" style="font-family: Arial, Helvetica, sans-serif;" required>
                                                 <option value="{{ $hirarc->kondisi }}">{{$hirarc->kondisi}}</option>
-                                                <option value="Normal">Normal </option>
-                                                <option value="Nor Normal">Not Normal</option>
-                                                <option value="Emergency"> Emergency</option>
+                                                <option value="1">Normal </option>
+                                                <option value="2">Not Normal</option>
+                                                <option value="3"> Emergency</option>
                                             </select>
                                         </div>
                                     </div>
@@ -270,7 +270,7 @@
                                                 data-hide-search="true" data-placeholder="Pilih Kategori Risiko Saat Ini"
                                                 style="--bs-link-hover-color-rgb: 25, 135, 84;"
                                                 name="current_risk_category" id="current_risk_category"
-                                                style="font-family: Arial, Helvetica, sans-serif;" required >
+                                                style="font-family: Arial, Helvetica, sans-serif;" required readonly>
                                                 <option value="{{ $hirarc->current_risk_category }}">{{ $hirarc->current_risk_category }}</option>
                                                 
                                             </select>

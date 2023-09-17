@@ -277,14 +277,10 @@
                                                 data-hide-search="true" data-placeholder="Pilih Kategori Risiko Saat Ini"
                                                 style="--bs-link-hover-color-rgb: 25, 135, 84;"
                                                 name="current_risk_category" id="current_risk_category"
-                                                style="font-family: Arial, Helvetica, sans-serif;" required >
-                                                {{-- <option value="" id="opt_current_cat" selected></option> --}}
-                                                {{-- <option value="1" >Slight</option>
-                                                <option value="2" >Mak Berat Ga Kuat</option> --}}
+                                                style="font-family: Arial, Helvetica, sans-serif;" required >                                          
                                             </select>
                                         </div>
                                     </div>
-
                                     <div class="ps-3 pe-5">
                                         <label class="col-form-label">Penyebab Utama</label>
                                         <div class=" w-100">
