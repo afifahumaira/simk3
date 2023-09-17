@@ -277,13 +277,10 @@
                                                 data-hide-search="true" data-placeholder="Pilih Kategori Risiko Saat Ini"
                                                 style="--bs-link-hover-color-rgb: 25, 135, 84;"
                                                 name="current_risk_category" id="current_risk_category"
-                                                style="font-family: Arial, Helvetica, sans-serif;" required disabled>
-                                                <option value="">-- Pilih --</option>
-                                                <option id="current_1" value="1">Slight</option>
-                                                <option id="current_2" value="2">Low</option>
-                                                <option id="current_3" value="3">Medium</option>
-                                                <option id="current_4" value="4">High</option>
-                                                <option id="current_5" value="5">Very High</option>
+                                                style="font-family: Arial, Helvetica, sans-serif;" required >
+                                                {{-- <option value="" id="opt_current_cat" selected></option> --}}
+                                                {{-- <option value="1" >Slight</option>
+                                                <option value="2" >Mak Berat Ga Kuat</option> --}}
                                             </select>
                                         </div>
                                     </div>
@@ -420,13 +417,10 @@
                                                 data-hide-search="true" data-placeholder="Pilih Kategori Risiko Residual"
                                                 style="--bs-link-hover-color-rgb: 25, 135, 84;"
                                                 name="residual_risk_category" id="residual_risk_category"
-                                                style="font-family: Arial, Helvetica, sans-serif;" required disabled>
-                                                <option value=""> -- Pilih --</option>                                                
-                                                <option value="1">Slight</option>
-                                                <option value="2">Low</option>
-                                                <option value="3">Medium</option>
-                                                <option value="4">High</option>
-                                                <option value="5">Very High</option>
+                                                style="font-family: Arial, Helvetica, sans-serif;" required >                                                
+                                                {{-- <option value="1" >Slight</option>
+                                                <option value="2" >Mak Berat Ga Kuat</option> --}}
+                                                {{-- <option value="" id="opt_residual_cat" selected></option> --}}
                                             </select>
                                         </div>
                                     </div>
@@ -525,8 +519,11 @@
             var option = document.createElement("option");
             option.value= value;
             option.text= text;
-            option.selected=true;
+            option.selected="selected";
             x.add(option);
+            // var x = document.getElementById("opt_current_cat");
+            // x.value = value;
+            // x.text = text
         }
 
         function residual_cat (value, text) {
@@ -534,8 +531,11 @@
             var option = document.createElement("option");
             option.value= value;
             option.text= text;
-            option.selected=true;
+            option.selected="selected";
             x.add(option);
+            // const x = document.getElementById("opt_residual_cat");
+            // x.value = value;
+            // x.text = text
         }
 
         function risk_rating() {
@@ -545,15 +545,17 @@
             var risk_rating = severity * exposure * proby;
             document.getElementById("current_risk_rating").value = risk_rating;
             if (risk_rating <= "20") {
-                risk_cat("1","Slight");
+                // $('.selDiv option:contains("Selection 1")');
+                $('#current_risk_category option[value="1"]');
+                // risk_cat("1","Slight", "select");
             } else if (risk_rating >= "21" && risk_rating <= "70") {
-                risk_cat("2","Low");
+                risk_cat("2","Low", "select");
             } else if (risk_rating >= "71" && risk_rating <= "200") {
-                risk_cat("3","Medium");
+                risk_cat("3","Medium", "select");
             } else if (risk_rating >= "201" && risk_rating <= "400") {
-                risk_cat("4","High");
+                risk_cat("4","High", "select");
             } else {
-                risk_cat("5","very High");
+                risk_cat("5","very High", "select");
             }
         }
 
@@ -564,13 +566,13 @@
             var risk_rating = severity * exposure * proby;
             document.getElementById("residual_risk_rating").value = risk_rating;
             if (risk_rating <= "20") {
-                residual_cat("1","Slight");
+                residual_cat("1","Slight", "select");
             } else if (risk_rating >= "21" && risk_rating <= "70") {
-                residual_cat("2","Low");
+                residual_cat("2","Low", "select");
             } else if (risk_rating >= "71" && risk_rating <= "200") {
-                residual_cat("3","Medium");
+                residual_cat("3","Medium", "select");
             } else if (risk_rating => "201" && risk_rating <= "400") {
-                residual_cat("4","High");
+                residual_cat("4","High", "select");
             } else {
                 residual_cat("5","Very High");
             }

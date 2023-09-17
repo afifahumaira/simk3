@@ -146,10 +146,10 @@
                                                 data-hide-search="true" data-placeholder="N/A"
                                                 style="--bs-link-hover-color-rgb: 25, 135, 84;" name="kesesuaian"
                                                 id="kesesuaian" style="font-family: Arial, Helvetica, sans-serif;" required>
-                                                <option value="{{ $hirarc->kesesuaian }}">- Pilih -</option>
-                                                <option value="1">Yes</option>
-                                                <option value="2">No</option>
-                                                <option value="3">Not Applicable</option>
+                                                <option value="{{ $hirarc->kesesuaian }}">{{ $hirarc->kesesuaian }}</option>
+                                                <option value="Yes">Yes</option>
+                                                <option value="No">No</option>
+                                                <option value="Not Applicable">Not Applicable</option>
                                             </select>
                                         </div>
                                     </div>
@@ -161,10 +161,10 @@
                                                 data-hide-search="true" data-placeholder="Normal"
                                                 style="--bs-link-hover-color-rgb: 25, 135, 84;" name="kondisi"
                                                 id="kondisi" style="font-family: Arial, Helvetica, sans-serif;" required>
-                                                <option value="{{ $hirarc->kondisi }}">- Pilih -</option>
-                                                <option value="1">Normal </option>
-                                                <option value="2">Not Normal</option>
-                                                <option value="3"> Emergency</option>
+                                                <option value="{{ $hirarc->kondisi }}">{{$hirarc->kondisi}}</option>
+                                                <option value="Normal">Normal </option>
+                                                <option value="Nor Normal">Not Normal</option>
+                                                <option value="Emergency"> Emergency</option>
                                             </select>
                                         </div>
                                     </div>
@@ -185,7 +185,7 @@
                                             required
                                             data-placeholder="Pilih Keparahan Risiko
                                     (severity)">
-                                            <option value="{{ $hirarc->current_severity }}" selected disabled>{{ $hirarc->current_severity }}</option>
+                                    <option value="{{ $hirarc->current_severity }}" selected disable>{{ $hirarc->current_severity }}</option>
                                             <option value="1">
                                                 Tergores, sayatan kecil, kerugian dalam rupiah
                                                 sebesar
@@ -218,9 +218,8 @@
                                         <select class="form-control" id="current_exposure" onchange="risk_rating()"
                                             name="current_exposure" data-control="select2" data-hide-search="true"
                                             required
-                                            data-placeholder="Pilih Paparan Risiko
-                                    (Exposure)">
-                                            <option value="{{ $hirarc->current_exposure}}" selected disabled>{{ $hirarc->current_exposure }}</option>
+                                            data-placeholder="Pilih Paparan Risiko (Exposure)">
+                                            <option value="{{ $hirarc->current_exposure }}" selected disable>{{ $hirarc->current_exposure }}</option>
                                             <option value="0.5"> 1 kali dalam setahun
                                             </option>
                                             <option value="1">Beberapa kali dalam setahun
@@ -239,7 +238,7 @@
                                         <select class="form-control" onchange="risk_rating()" id="current_probability"
                                             name="current_probability" data-control="select2" data-hide-search="true"
                                             required data-placeholder="Pilih Kemungkinan Risiko Terjadi (Probability)">                                            
-                                            <option value="{{ $hirarc->current_probability }}" selected disabled>{{ $hirarc->current_probability }}</option>
+                                            <option value="{{ $hirarc->current_probability }}" selected disable>{{ $hirarc->current_probability }}</option>
                                             <option value="1" >
                                                 Kejadian yang secara teori hanya mungkin terjadi
                                             </option>
@@ -271,7 +270,7 @@
                                                 data-hide-search="true" data-placeholder="Pilih Kategori Risiko Saat Ini"
                                                 style="--bs-link-hover-color-rgb: 25, 135, 84;"
                                                 name="current_risk_category" id="current_risk_category"
-                                                style="font-family: Arial, Helvetica, sans-serif;" required disabled>
+                                                style="font-family: Arial, Helvetica, sans-serif;" required >
                                                 <option value="{{ $hirarc->current_risk_category }}">{{ $hirarc->current_risk_category }}</option>
                                                 
                                             </select>
@@ -299,7 +298,7 @@
                                         <label class="col-form-label">Formulir yang Dibutuhkan</label>
                                         <div class=" w-100">
                                             <input type="text" class="form-control" name="form_diperlukan"
-                                                id="form_diperlukan" value="{{ $hirarc->form_dibutuhkan }}">
+                                                id="form_diperlukan" value="{{ $hirarc->form_diperlukan }}">
                                         </div>
                                     </div>
 
@@ -409,11 +408,9 @@
                                                 data-hide-search="true" data-placeholder="Pilih Kategori Risiko Residual"
                                                 style="--bs-link-hover-color-rgb: 25, 135, 84;"
                                                 name="residual_risk_category" id="residual_risk_category"
-                                                style="font-family: Arial, Helvetica, sans-serif;" required disabled>
-                                                <option value="{{ $hirarc->residual_risk_category }}">{{ $hirarc->residual_risk_category }}</option>
-                                                
+                                                style="font-family: Arial, Helvetica, sans-serif;" required readonly>                                                
+                                                <option value="{{ $hirarc->current_risk_category }}">{{ $hirarc->current_risk_category }}</option>
                                             </select>
-
                                         </div>
                                     </div>
 
@@ -512,7 +509,7 @@
             var option = document.createElement("option");
             option.value= value;
             option.text= text;
-            option.selected=true;
+            option.selected="selected";
             x.add(option);
         }
 
@@ -521,7 +518,7 @@
             var option = document.createElement("option");
             option.value= value;
             option.text= text;
-            option.selected=true;
+            option.selected="selected";
             x.add(option);
         }
 
@@ -551,6 +548,7 @@
             var proby = document.getElementById("residual_probability").value;
             var risk_rating = severity * exposure * proby;
             document.getElementById("residual_risk_rating").value = risk_rating;
+            var cat = document.getElementById("residual_risk_category")
             if (risk_rating <= "20") {
                 residual_cat("1","Slight");
             } else if (risk_rating >= "21" && risk_rating <= "70") {
