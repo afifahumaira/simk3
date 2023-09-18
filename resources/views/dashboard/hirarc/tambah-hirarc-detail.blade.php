@@ -49,7 +49,8 @@
                         <div class="card bg-light">
                             <div class="card-header d-flex align-items-center fs-3 fw-normal">
                                 <div class="pull-left">
-                                    <strong style="color: #16243D; font-family: Plus Jakarta Sans, sans-serif; font-size:16px;">Data
+                                    <strong
+                                        style="color: #16243D; font-family: Plus Jakarta Sans, sans-serif; font-size:16px;">Data
                                         HIRARC</strong>
                                 </div>
                             </div>
@@ -91,27 +92,27 @@
                                             @endforeach
                                         </select>
                                     </div>
-                                    
+
                                     <div id="additionalForm">
-                                    <div class="ps-3 pe-5 ">                                                                                   
-                                                <label for="activitie_id" class="form-label">Pilih Aktifitas:</label>
-                                                <select id="activitie_id" name="activitie" class="form-select"
-                                                    data-control="select2">
-                                                    <option value="">Pilih Aktifitas
-                                                    </option>
-                                                    @foreach ($activitie as $act)
-                                                        <option value="{{ $act->name }}">{{ $act->name }}</option>
-                                                    @endforeach
-                                                </select>
-                                            </div>
+                                        <div class="ps-3 pe-5 ">
+                                            <label for="activitie_id" class="form-label">Pilih Aktifitas:</label>
+                                            <select id="activitie_id" name="activitie" class="form-select"
+                                                data-control="select2">
+                                                <option value="">Pilih Aktifitas
+                                                </option>
+                                                @foreach ($activitie as $act)
+                                                    <option value="{{ $act->name }}">{{ $act->name }}</option>
+                                                @endforeach
+                                            </select>
                                         </div>
-                                    
+                                    </div>
+
                                     <div id="additionalForm">
                                         <div class="ps-3 pe-5">
                                             <label for="hazard_id" class="form-label">Pilih
                                                 Hazard:</label>
                                             <select id="hazard_id" name="hazard" class="form-select"
-                                                data-control="select2">                                                
+                                                data-control="select2">
                                                 <option value="">Pilih Hazard
                                                 </option>
                                                 @foreach ($hazard as $haz)
@@ -134,8 +135,8 @@
                                                 @endforeach
                                             </select>
                                         </div>
-                                    </div>                               
-                                    
+                                    </div>
+
                                     <div class="ps-3 pe-5">
                                         <label class="col-form-label">Sesuai dengan peraturan
                                             pemerintah</label>
@@ -179,7 +180,8 @@
                                         <label class="col-form-label" for="select1">Keparahan Risko
                                             (severity) Saat Ini</label>
                                         <select class="form-control" id="current_severity" onchange="risk_rating()"
-                                            name="current_severity" data-control="select2" data-hide-search="true" required
+                                            name="current_severity" data-control="select2" data-hide-search="true"
+                                            required
                                             data-placeholder="Pilih Keparahan Risiko
                                     (severity)">
                                             <option value="" selected disabled>Pilih
@@ -263,9 +265,9 @@
                                     <div class="ps-3 pe-5">
                                         <label class="col-form-label">Tingkat Risiko Saat Ini</label>
                                         <div class=" w-100">
-                                            <input type="text" class="form-control" name="current_risk_rating"
-                                                id="current_risk_rating" value=""
-                                                readonly>
+                                            <input type="text" class="form-control" name=""
+                                                id="current_risk_rating" value="" readonly disabled>
+                                            <input type="hidden" name="current_risk_rating" id="current_risk_rating1">
                                         </div>
                                     </div>
 
@@ -275,10 +277,12 @@
                                         <div class="col-sm-10 w-100">
                                             <select class="form-select fs-6 w-100" data-control="select2"
                                                 data-hide-search="true" data-placeholder="Pilih Kategori Risiko Saat Ini"
-                                                style="--bs-link-hover-color-rgb: 25, 135, 84;"
-                                                name="current_risk_category" id="current_risk_category"
-                                                style="font-family: Arial, Helvetica, sans-serif;" required >                                          
+                                                style="--bs-link-hover-color-rgb: 25, 135, 84;" name=""
+                                                id="current_risk_category"
+                                                style="font-family: Arial, Helvetica, sans-serif;" required disabled>
                                             </select>
+                                            <input type="hidden" name="current_risk_category"
+                                                id="current_risk_category1">
                                         </div>
                                     </div>
                                     <div class="ps-3 pe-5">
@@ -400,9 +404,9 @@
                                     <div class="ps-3 pe-5">
                                         <label class="col-form-label">Tingkat Risiko Residual</label>
                                         <div class=" w-100">
-                                            <input type="text" class="form-control" name="residual_risk_rating"
-                                                id="residual_risk_rating" value=""
-                                                readonly>
+                                            <input type="text" class="form-control" name=""
+                                                id="residual_risk_rating" value="" readonly disabled>
+                                            <input type="hidden" name="residual_risk_rating" id="residual_risk_rating1">
                                         </div>
                                     </div>
 
@@ -411,13 +415,15 @@
                                         <div class=" w-100">
                                             <select class="form-select fs-6 w-100" data-control="select2"
                                                 data-hide-search="true" data-placeholder="Pilih Kategori Risiko Residual"
-                                                style="--bs-link-hover-color-rgb: 25, 135, 84;"
-                                                name="residual_risk_category" id="residual_risk_category"
-                                                style="font-family: Arial, Helvetica, sans-serif;" required >                                                
+                                                style="--bs-link-hover-color-rgb: 25, 135, 84;" name=""
+                                                id="residual_risk_category"
+                                                style="font-family: Arial, Helvetica, sans-serif;" required disabled>
                                                 {{-- <option value="1" >Slight</option>
                                                 <option value="2" >Mak Berat Ga Kuat</option> --}}
                                                 {{-- <option value="" id="opt_residual_cat" selected></option> --}}
                                             </select>
+                                            <input type="hidden" name="residual_risk_category"
+                                                id="residual_risk_category1">
                                         </div>
                                     </div>
 
@@ -510,24 +516,30 @@
             });
         });
 
-        function risk_cat (value, text) {
+        function risk_cat(value, text) {
             var x = document.getElementById("current_risk_category");
+            // console.log(value);
+            test = document.getElementById("current_risk_category1")
+            test.value = value
+            // console.log(test.value)
             var option = document.createElement("option");
-            option.value= value;
-            option.text= text;
-            option.selected="selected";
+            option.value = value;
+            option.text = text;
+            option.selected = "selected";
             x.add(option);
             // var x = document.getElementById("opt_current_cat");
             // x.value = value;
             // x.text = text
         }
 
-        function residual_cat (value, text) {
+        function residual_cat(value, text) {
             var x = document.getElementById("residual_risk_category");
+            test = document.getElementById("residual_risk_category1")
+            test.value = value
             var option = document.createElement("option");
-            option.value= value;
-            option.text= text;
-            option.selected="selected";
+            option.value = value;
+            option.text = text;
+            option.selected = "selected";
             x.add(option);
             // const x = document.getElementById("opt_residual_cat");
             // x.value = value;
@@ -540,18 +552,19 @@
             var proby = document.getElementById("current_probability").value;
             var risk_rating = severity * exposure * proby;
             document.getElementById("current_risk_rating").value = risk_rating;
+            document.getElementById("current_risk_rating1").value = risk_rating;
             if (risk_rating <= "20") {
                 // $('.selDiv option:contains("Selection 1")');
-                $('#current_risk_category option[value="1"]');
-                // risk_cat("1","Slight", "select");
+                // $('#current_risk_category option[value="1"]');
+                risk_cat("1", "Slight", "select");
             } else if (risk_rating >= "21" && risk_rating <= "70") {
-                risk_cat("2","Low", "select");
+                risk_cat("2", "Low", "select");
             } else if (risk_rating >= "71" && risk_rating <= "200") {
-                risk_cat("3","Medium", "select");
+                risk_cat("3", "Medium", "select");
             } else if (risk_rating >= "201" && risk_rating <= "400") {
-                risk_cat("4","High", "select");
+                risk_cat("4", "High", "select");
             } else {
-                risk_cat("5","very High", "select");
+                risk_cat("5", "very High", "select");
             }
         }
 
@@ -561,16 +574,17 @@
             var proby = document.getElementById("residual_probability").value;
             var risk_rating = severity * exposure * proby;
             document.getElementById("residual_risk_rating").value = risk_rating;
+            document.getElementById("residual_risk_rating1").value = risk_rating;
             if (risk_rating <= "20") {
-                residual_cat("1","Slight", "select");
+                residual_cat("1", "Slight", "select");
             } else if (risk_rating >= "21" && risk_rating <= "70") {
-                residual_cat("2","Low", "select");
+                residual_cat("2", "Low", "select");
             } else if (risk_rating >= "71" && risk_rating <= "200") {
-                residual_cat("3","Medium", "select");
+                residual_cat("3", "Medium", "select");
             } else if (risk_rating => "201" && risk_rating <= "400") {
-                residual_cat("4","High", "select");
+                residual_cat("4", "High", "select");
             } else {
-                residual_cat("5","Very High");
+                residual_cat("5", "Very High");
             }
         }
     </script>

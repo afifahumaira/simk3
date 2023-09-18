@@ -290,6 +290,7 @@ class HirarcController extends Controller
         }
 
         public function save(Request $request) {
+            
             // $validatedData = $request->validate([
             //     'kesesuaian' => 'required',
             //     'kondisi' => 'required',
@@ -402,7 +403,7 @@ class HirarcController extends Controller
             // dd("aa");
             
             Alert::success('Berhasil', 'Data HIRARC berhasil diperbaharui!')->iconHtml('<i class="bi bi-person-check fs-3x"></i>')->hideCloseButton();
-            return redirect()->route('hirarc.index');
+            return redirect()->route('hirarc.lihat-hirarc');
     
         }
 
