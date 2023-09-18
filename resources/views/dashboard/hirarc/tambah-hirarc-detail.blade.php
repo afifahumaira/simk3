@@ -180,8 +180,7 @@
                                             (severity) Saat Ini</label>
                                         <select class="form-control" id="current_severity" onchange="risk_rating()"
                                             name="current_severity" data-control="select2" data-hide-search="true" required
-                                            data-placeholder="Pilih Keparahan Risiko
-                                    (severity)">
+                                            data-placeholder="Pilih Keparahan Risiko (severity)">
                                             <option value="" selected disabled>Pilih
                                                 Keparahan
                                                 (severity)</option>
@@ -217,8 +216,7 @@
                                         <select class="form-control" id="current_exposure" onchange="risk_rating()"
                                             name="current_exposure" data-control="select2" data-hide-search="true"
                                             required
-                                            data-placeholder="Pilih Paparan Risiko
-                                    (Exposure)">
+                                            data-placeholder="Pilih Paparan Risiko (Exposure)">
                                             <option value="" selected disabled>Pilih
                                                 Paparan
                                                 (Exposure)</option>
@@ -240,9 +238,7 @@
                                         <select class="form-control" onchange="risk_rating()" id="current_probability"
                                             name="current_probability" data-control="select2" data-hide-search="true"
                                             required data-placeholder="Pilih Kemungkinan Risiko Terjadi (Probability)">
-                                            <option value="" selected disabled>Pilih
-                                                Kemungkinan
-                                                Terjadi (Probability)</option>
+                                            <option value="" selected disabled>Pilih Kemungkinan Terjadi (Probability)</option>
                                             <option value="1">
                                                 Kejadian yang secara teori hanya mungkin terjadi
                                             </option>
@@ -277,7 +273,7 @@
                                                 data-hide-search="true" data-placeholder="Pilih Kategori Risiko Saat Ini"
                                                 style="--bs-link-hover-color-rgb: 25, 135, 84;"
                                                 name="current_risk_category" id="current_risk_category"
-                                                style="font-family: Arial, Helvetica, sans-serif;" required >                                          
+                                                style="font-family: Arial, Helvetica, sans-serif;" required readonly>                                          
                                             </select>
                                         </div>
                                     </div>
@@ -413,7 +409,7 @@
                                                 data-hide-search="true" data-placeholder="Pilih Kategori Risiko Residual"
                                                 style="--bs-link-hover-color-rgb: 25, 135, 84;"
                                                 name="residual_risk_category" id="residual_risk_category"
-                                                style="font-family: Arial, Helvetica, sans-serif;" required >                                                
+                                                style="font-family: Arial, Helvetica, sans-serif;" required readonly>                                                
                                                 {{-- <option value="1" >Slight</option>
                                                 <option value="2" >Mak Berat Ga Kuat</option> --}}
                                                 {{-- <option value="" id="opt_residual_cat" selected></option> --}}
@@ -452,6 +448,7 @@
 
                                         </div>
                                     </div>
+                                    <input type="hidden" name="id" id="id">
 
                                 </form>
                             </div>
@@ -541,8 +538,9 @@
             var risk_rating = severity * exposure * proby;
             document.getElementById("current_risk_rating").value = risk_rating;
             if (risk_rating <= "20") {
+                residual_cat("1","Slight", "select");
                 // $('.selDiv option:contains("Selection 1")');
-                $('#current_risk_category option[value="1"]');
+                //$('#current_risk_category option[value="1"]');
                 // risk_cat("1","Slight", "select");
             } else if (risk_rating >= "21" && risk_rating <= "70") {
                 risk_cat("2","Low", "select");
@@ -551,7 +549,7 @@
             } else if (risk_rating >= "201" && risk_rating <= "400") {
                 risk_cat("4","High", "select");
             } else {
-                risk_cat("5","very High", "select");
+                risk_cat("5","Very High", "select");
             }
         }
 

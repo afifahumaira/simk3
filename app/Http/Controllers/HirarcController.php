@@ -289,7 +289,7 @@ class HirarcController extends Controller
         return redirect()->route('hirarc.tambah', $hirarc->id);
         }
 
-        public function save(Request $request) {
+        public function save( Request $request) {
             // $validatedData = $request->validate([
             //     'kesesuaian' => 'required',
             //     'kondisi' => 'required',
@@ -340,10 +340,11 @@ class HirarcController extends Controller
                 'penanggung_jawab'      => $request->penanggung_jawab,
                 'status'      => $request->status,
                 
+                
             ]);
-
+            
             Alert::success('Berhasil', 'Data Hirarc berhasil disimpan!')->iconHtml('<i class="bi bi-person-check fs-3x"></i>')->hideCloseButton();
-        return redirect()->route('hirarc.index', $hirarc->id);
+            return redirect()->route('hirarc.lihat', $request->departemen_id);
         
         }
     
