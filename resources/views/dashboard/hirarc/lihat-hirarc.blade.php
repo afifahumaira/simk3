@@ -39,8 +39,13 @@
                 <!--begin::Main wrapper-->
 
                 <!--end::Main wrapper-->
-                <a href="{{ route('hirarc.index') }} " type="button" class="btn btn-secondary text-white btn-sm mb-2"
-                    style="background: #505050"><i class="bi bi-chevron-left text-white"></i>Kembali</a>
+                <div class="">
+                    <a href="{{ route('hirarc.tambahDetail') }}" type="button" class="btn btn-primary btn-sm mb-2"
+                        style="background: #233EAE">Tambah Data +</a>
+                    <a href="{{ route('hirarc.index') }} " type="button"
+                        class="btn btn-secondary text-white btn-sm ms-2 mb-2" style="background: #505050"><i
+                            class="bi bi-chevron-left text-white"></i>Kembali</a>
+                </div>
                 <!--end::Title-->
             </div>
             <!--begin::Content container-->
