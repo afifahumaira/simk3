@@ -381,7 +381,7 @@ class LaporanInsidenController extends Controller
             'nama_korban' => $request->nama_korban,
             'email_korban' => $request->email_korban,
             'nomer_telepon_korban' => $request->nomer_telepon_korban,
-           // 'unit_korban' => $request->unit_korban,
+            //'unit_korban' => $request->unit_korban,
             'status' => 1,
             'gambar' => $gambarName,
         ]);
