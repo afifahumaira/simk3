@@ -14,8 +14,11 @@ use App\Models\Location;
 use App\Models\PotensiBahaya;
 use App\Models\Risk;
 use App\Models\VwInventory;
+use Illuminate\Contracts\Validation\Validator;
+use Illuminate\Foundation\Validation\ValidatesRequests;
+use Illuminate\Routing\HirarcController as BaseController;
 use Hash;
-use Validator;
+//use Validator;
 use Alert;
 use App\Models\Activitie_master;
 use App\Models\Control;
@@ -415,6 +418,12 @@ class HirarcController extends Controller
             Alert::success('Berhasil', 'Data Hirarc berhasil dihapus!')->iconHtml('<i class="bi bi-person-check fs-3x"></i>')->hideCloseButton();
             return redirect()->route('hirarc.index');
         }
+
+        protected function formatValidationErrors(Validator $validator)
+        {
+        return $validator->errors()->all();
+
+    }
     
     
 
