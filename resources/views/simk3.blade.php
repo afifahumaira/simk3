@@ -51,7 +51,7 @@
     <style>
          #map {
             height: 750px;
-            width: 90%;
+            width: 100%;
             
             /* margin: 3rem auto; */
         }
@@ -335,7 +335,7 @@
                         <h3 class="d-flex align-items-center justify-content-center"> <i class="bi bi-circle-fill fs-5 me-4"> </i> Lokasi Gedung Fakultas Teknik</h3>
                     </div>  
                     
-                        <div id='map'  class="rounded-4 shadow d-flex justify-content-center mx-auto"></div>                  
+                        <div id='map'  class="rounded-4 shadow "></div>                  
                                          
                 </div>
             
@@ -662,6 +662,7 @@
         <script src="{{ asset('js/scripts.bundle.js') }}"></script>
         <script src="{{ asset('plugins/custom/fslightbox/fslightbox.bundle.js') }}"></script>
 
+        
         <script>
             mapboxgl.accessToken =
                 'pk.eyJ1IjoiZGltYXNhbGRpIiwiYSI6ImNrc3VtM3Q1czBqbDIyd3MxOTY5Zmt2djEifQ.OHesyN9CgouizbiRA9QuKA';
@@ -1168,12 +1169,12 @@
                         .setHTML(`<h1>Teknik Industri</h1>
                 <button id="fly_industri" class="list-item inside" onclick="floor_industri()">Lantai Teknik Industri</button>
                 <div style="display: none" id="showhide_industri">
-                @foreach ($maps as $item)
-                @if ($item->gedung == 'Teknik Industri')
-                <li class="list-item inside gambargedung" data-img="{{ $item->gambar }}">{{ $item->lantai }} <img id="mapsimg" src="{{ asset('foto_maps/foreign.png') }}"></li>
-            @endif
-            @endforeach
-            </div>
+                    @foreach ($maps as $item)
+                        @if ($item->gedung == 'Teknik Industri')
+                            <li class="list-item inside gambargedung" data-img="{{ $item->gambar }}">{{ $item->lantai }} <img id="mapsimg" src="{{ asset('foto_maps/foreign.png') }}"></li>
+                         @endif
+                 @endforeach
+                 </div>
 
             `)
 
