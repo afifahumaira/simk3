@@ -79,9 +79,9 @@
                                         <label class="col-sm-2 col-form-label">Foto Gedung</label>
                                         <div class="col-sm-10 w-100">
                                             <a class="d-block overlay" data-fslightbox="lightbox-basic"
-                                                href="{{ asset('storage/maps/gambar/' . $map->gambar) }}">
+                                                href="{{ asset('foto_maps/' . $map->gambar) }}">
                                                 <div class="overlay-wrapper bgi-no-repeat bgi-position-center bgi-size-cover card-rounded min-h-175px"
-                                                    style="background-image:url('{{ asset('storage/maps/gambar/' . $map->gambar) }}')">
+                                                    style="background-image:url('{{ asset('foto_maps/' . $map->gambar) }}')">
                                                 </div>
                                                 <div class="overlay-layer card-rounded bg-dark bg-opacity-25 shadow">
                                                     <i class="bi bi-eye-fill text-white fs-3x"></i>

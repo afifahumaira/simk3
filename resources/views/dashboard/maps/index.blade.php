@@ -2747,15 +2747,47 @@
                     new mapboxgl.Popup()
                         .setLngLat(e.lngLat)
                         .setHTML(`<h1>Dekanat Fakultas Teknik Lama</h1>
-            <button id="fly_dekanat_baru" class="list-item inside" onclick="floor_dekanat_baru()">Lantai Dekanat Fakultas Teknik Lama</button>
+                        <button id="fly_dekanat_lama" class="list-item inside" onclick="floor_dekanat_lama()">Lantai Dekanat Fakultas Teknik La</button>
+            <div style="display: none" id="showhide_dekanat_fakultas_lama">
+                @foreach ($maps as $item)
+                @if ($item->gedung == 'Dekanat Fakultas Teknik Lama')
+                <li class="list-item inside gambargedung" data-img="{{ $item->gambar }}">{{ $item->lantai }} <img id="mapsimg" src="{{ asset('foto_maps/foreign.png') }}"></li>
+                @endif
+                @endforeach
+                </div>
+             <button id="fly_laboratorium_komputer" class="list-item inside" onclick="floor_laboratorium_komputer()">Laboratorium Komputer</button>
+            <div style="display: none" id="showhide_laboratorium_komputer">
+                    @foreach ($maps as $item)
+                        @if ($item->gedung == 'Laboratorium Komputer')
+                        <li class="list-item inside gambargedung" data-img="{{ $item->gambar }}">{{ $item->lantai }} <img id="mapsimg" src="{{ asset('foto_maps/foreign.png') }}"></li>
+            @endif
+            @endforeach
+            </div>
+
             `)
-                        // <a href="{{ url('maps/dekanat_fakultas_teknik/dekanat_fakultas_teknik_lantai1') }}" class="list-item inside" id="lantai1" style="display: none">Lantai 1 <img id="mapsimg" src="{{ asset('foto_maps/foreign.png') }}"></a>
-                        // <a href="{{ url('maps/dekanat_fakultas_teknik/dekanat_fakultas_teknik_lantai2') }}" class="list-item inside" id="lantai2" style="display: none">Lantai 2 <img id="mapsimg" src="{{ asset('foto_maps/foreign.png') }}"></a>
-                        // <a href="{{ url('maps/dekanat_fakultas_teknik/dekanat_fakultas_teknik_lantai3') }}" class="list-item inside" id="lantai3" style="display: none">Lantai 3 <img id="mapsimg" src="{{ asset('foto_maps/foreign.png') }}"></a>
-                        // <a href="{{ url('maps/dekanat_fakultas_teknik/dekanat_fakultas_teknik_lantai4') }}" class="list-item inside" id="lantai4" style="display: none">Lantai 4 <img id="mapsimg" src="{{ asset('foto_maps/foreign.png') }}"></a>
-                        // <a href="{{ url('maps/dekanat_fakultas_teknik/dekanat_fakultas_teknik_lantai5') }}" class="list-item inside" id="lantai5" style="display: none">Lantai 5 <img id="mapsimg" src="{{ asset('foto_maps/foreign.png') }}"></a>
+
                         .addTo(map);
-                    document.getElementById('fly_dekanat_baru').addEventListener('click', () => {
+                    var gambargedung = document.getElementsByClassName("gambargedung");
+                    gambargedung.forEach(el => {
+                        el.addEventListener('click', () => {
+                            var image = el.dataset.img;
+                            var baseUrl = "{{ asset('foto_maps/') }}";
+                            var imgSrc = baseUrl + '/' + image;
+                            document.getElementById("gambarmap").src = imgSrc;
+                            var modalgambar = new bootstrap.Modal(document.getElementById(
+                                "modalgambar"), {});
+                            modalgambar.show();
+                            // console.log(image);
+
+                        });
+                    });
+                    document.getElementById('fly_dekanat_lama').addEventListener('click', () => {
+                        map.fitBounds([
+                            [110.440383, -7.051447],
+                            [110.440383, -7.051447],
+                        ]);
+                    });
+                    document.getElementById('fly_laboratorium_komputer').addEventListener('click', () => {
                         map.fitBounds([
                             [110.440383, -7.051447],
                             [110.440383, -7.051447],
@@ -4048,6 +4080,30 @@
             //dekanat baru
             function floor_dekanat_baru() {
                 var showhideDekanatFakultas = document.getElementById("showhide_dekanat_fakultas");
+
+                if (showhideDekanatFakultas.style.display === "none") {
+                    showhideDekanatFakultas.style.display = "block";
+
+                } else {
+                    showhideDekanatFakultas.style.display = "none";
+                }
+            }
+
+            //dekanat lama
+            function floor_dekanat_lama() {
+                var showhideDekanatFakultas = document.getElementById("showhide_dekanat_fakultas_lama");
+
+                if (showhideDekanatFakultas.style.display === "none") {
+                    showhideDekanatFakultas.style.display = "block";
+
+                } else {
+                    showhideDekanatFakultas.style.display = "none";
+                }
+            }
+
+            //gedung Tekkom baru
+            function floor_laboratorium_komputer() {
+                var showhideDekanatFakultas = document.getElementById("showhide_laboratorium_komputer");
 
                 if (showhideDekanatFakultas.style.display === "none") {
                     showhideDekanatFakultas.style.display = "block";
