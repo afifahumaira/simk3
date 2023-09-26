@@ -2746,20 +2746,20 @@
                 map.on('click', 'gedung_dekanat_lama', (e) => {
                     new mapboxgl.Popup()
                         .setLngLat(e.lngLat)
-                        .setHTML(`<h1>Dekanat Fakultas Teknik Lama</h1>
+                        .setHTML(`<h1>Dekanat Fakultas Teknik Lama (Teknik Geodesi & Teknik Komputer)</h1>
                         <button id="fly_dekanat_lama" class="list-item inside" onclick="floor_dekanat_lama()">Lantai Dekanat Fakultas Teknik La</button>
-            <div style="display: none" id="showhide_dekanat_fakultas_lama">
-                @foreach ($maps as $item)
-                @if ($item->gedung == 'Dekanat Fakultas Teknik Lama')
-                <li class="list-item inside gambargedung" data-img="{{ $item->gambar }}">{{ $item->lantai }} <img id="mapsimg" src="{{ asset('foto_maps/foreign.png') }}"></li>
-                @endif
-                @endforeach
-                </div>
+                        <div style="display: none" id="showhide_dekanat_fakultas_lama">
+        @foreach ($maps as $item)
+            @if ($item->gedung == 'Dekanat Fakultas Teknik Lama')
+            <a href="{{ route('maps.detail', $item->id) }}" class="list-item inside">{{ $item->lantai }} <img id="mapsimg" src="{{ asset('foto_maps/foreign.png') }}"></a>
+            @endif
+        @endforeach
+    </div>
              <button id="fly_laboratorium_komputer" class="list-item inside" onclick="floor_laboratorium_komputer()">Laboratorium Komputer</button>
             <div style="display: none" id="showhide_laboratorium_komputer">
                     @foreach ($maps as $item)
                         @if ($item->gedung == 'Laboratorium Komputer')
-                        <li class="list-item inside gambargedung" data-img="{{ $item->gambar }}">{{ $item->lantai }} <img id="mapsimg" src="{{ asset('foto_maps/foreign.png') }}"></li>
+                        <a href="{{ route('maps.detail', $item->id) }}" class="list-item inside">{{ $item->lantai }} <img id="mapsimg" src="{{ asset('foto_maps/foreign.png') }}"></a>
             @endif
             @endforeach
             </div>

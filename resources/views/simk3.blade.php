@@ -3517,9 +3517,9 @@
     map.on('click', 'gedung_dekanat_lama', (e) => {
     new mapboxgl.Popup()
     .setLngLat(e.lngLat)
-    .setHTML(`<h1> Gedung Dekanat Fakultas Teknik Lama</h1>
+    .setHTML(`<h1> Gedung Dekanat Fakultas Teknik Lama (Teknik Geodesi & Teknik Komputer)</h1>
     <button id="fly_dekanat_lama" class="list-item inside" onclick="floor_dekanat_lama()">Lantai Dekanat Fakultas
-        Teknik Lama</button>
+        Teknik Lama </button>
     <div style="display: none" id="showhide_dekanat_fakultas_lama">
         @foreach ($maps as $item)
             @if ($item->gedung == 'Dekanat Fakultas Teknik Lama')
