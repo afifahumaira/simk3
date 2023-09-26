@@ -87,7 +87,7 @@
                                             <select name="departemen_id" class="form-select fs-6 w-100"
                                                 data-control="select2" data-hide-search="true" data-placeholder="Lokasi">
                                                 @foreach ($departments as $dep)
-                                                    <option value="{{ $dep->id }}">{{ $dep->name }}</option>
+                                                    <option value="{{ $dep->id }}" {{ old('departemen_id') == $dep->id ? 'selected' : '' }}>{{ $dep->name }}</option>
                                                 @endforeach
                                             </select>
                                         </div>
@@ -97,7 +97,7 @@
                                         <label class="col-form-label">Lokasi Rinci</label>
                                         <div class=" w-100">
                                             <input type="text" class="form-control" name="lokasi_rinci" id="lokasi_rinci"
-                                                value="">
+                                                value="{{ old('lokasi_rinci', request()->input('lokasi_rinci'))}}">
                                         </div>
                                     </div>
 
@@ -107,13 +107,13 @@
                                             <select name="jenis_insiden" class="form-select fs-6 w-100"
                                                 data-control="select2" data-hide-search="true"
                                                 data-placeholder="Jenis Insiden">
-                                                <option value="Pingsan">Pingsan</option>
-                                                <option value="Serangan Jantung">Serangan Jantung</option>
-                                                <option value="Asma">Asma</option>
-                                                <option value="Pendarahan">Pendarahan</option>
-                                                <option value="Keracunan">Keracunan</option>
-                                                <option value="Cidera">Cidera</option>
-                                                <option value="Lainnya">Lainnya</option>
+                                                <option value="Pingsan" {{ old('jenis_insiden') == Pingsan ? 'selected' : '' }}>Pingsan</option>
+                                                <option value="Serangan Jantung" {{ old('jenis_insiden') == Serangan Jantung ? 'selected' : '' }}>Serangan Jantung</option>
+                                                <option value="Asma" {{ old('jenis_insiden') == Asma ? 'selected' : '' }}>Asma</option>
+                                                <option value="Pendarahan" {{ old('jenis_insiden') == Pendarahan ? 'selected' : '' }}>Pendarahan</option>
+                                                <option value="Keracunan" {{ old('jenis_insiden') == Keracunan ? 'selected' : '' }}>Keracunan</option>
+                                                <option value="Cidera" {{ old('jenis_insiden') == Cidera ? 'selected' : '' }}>Cidera</option>
+                                                <option value="Lainnya" {{ old('jenis_insiden') == Lainnya ? 'selected' : '' }}>Lainnya</option>
                                             </select>
                                         </div>
                                     </div>
@@ -121,7 +121,7 @@
                                     <div class="ps-3 pe-5">
                                         <label class="col-form-label">Kronologi Kejadian</label>
                                         <div class=" w-100">
-                                            <textarea rows="3" class="form-control" name="kronologi" id="kronologi"></textarea>
+                                            <textarea rows="3" class="form-control" name="kronologi" id="kronologi" value="{{ old('kronologi', request()->input('kronologi'))}}"></textarea>
                                         </div>
                                     </div>
 
@@ -129,7 +129,7 @@
                                         <label class="col-form-label">Penyebab Insiden</label>
                                         <div class=" w-100">
                                             <input type="text" class="form-control" name="penyebab_insiden"
-                                                id="penyebab_insiden" value="">
+                                                id="penyebab_insiden" value="{{ old('penyebab_insiden', request()->input('penyebab_insiden'))}}">
                                         </div>
                                     </div>
 
@@ -168,14 +168,14 @@
                                 <div class="ps-3 pe-5">
                                     <label class="col-form-label">Nama Pelapor</label>
                                     <div class=" w-100">
-                                        <input type="text" class="form-control" name="nama_pelapor">
+                                        <input type="text" class="form-control" name="nama_pelapor" >
                                     </div>
                                 </div>
 
                                 <div class="ps-3 pe-5">
                                     <label for="inputEmail3" class="col-form-label">Email Pelapor</label>
                                     <div class=" w-100">
-                                        <input type="email" class="form-control" name="email_pelapor">
+                                        <input type="email" class="form-control" name="email_pelapor" >
                                     </div>
                                 </div>
 
@@ -183,7 +183,7 @@
                                     <label for="inputNomertelepon3" class="col-form-label">No. Telp
                                         Pelapor</label>
                                     <div class=" w-100">
-                                        <input type="number" class="form-control" name="nomer_telepon_pelapor">
+                                        <input type="number" class="form-control" name="nomer_telepon_pelapor" >
                                     </div>
                                 </div>
 
@@ -219,7 +219,7 @@
                                 <div class="ps-3 pe-5">
                                     <label class="col-form-label">Nama Korban</label>
                                     <div class=" w-100">
-                                        <input type="text" class="form-control" name="nama_korban">
+                                        <input type="text" class="form-control" name="nama_korban" value="nama_korban">
 
                                     </div>
                                 </div>
