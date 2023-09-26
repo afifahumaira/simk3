@@ -73,10 +73,10 @@
                                         <div class=" w-100">
                                             <select name="departemen_id" class="form-select fs-6 w-100"
                                                 data-control="select2" data-hide-search="true"
-                                                data-placeholder="Pilih Departemen">
+                                                data-placeholder="Pilih Departemen" >
                                                 <option value="">Pilih Departemen</option>
                                                 @foreach ($departments as $dep)
-                                                    <option value="{{ $dep->id }}">{{ $dep->name }}</option>
+                                                    <option value="{{ $dep->id }}" {{ old('departemen_id') == $dep->id ? 'selected' : '' }}>{{ $dep->name }}</option>
                                                 @endforeach
                                             </select>
                                         </div>
@@ -85,10 +85,10 @@
                                     <div class="ps-3 pe-5">
                                         <label for="location_id" class="form-label">Pilih Lokasi:</label>
                                         <select id="location_id" name="location_id" class="form-select"
-                                            data-control="select2">
+                                            data-control="select2" >
                                             <option value="">Pilih Lokasi</option>
                                             @foreach ($location as $loc)
-                                                <option value="{{ $loc->id }}">{{ $loc->name }}</option>
+                                                <option value="{{ $loc->id }}" {{ old('location_id') == $loc->id ? 'selected' : '' }}>{{ $loc->name }}</option>
                                             @endforeach
                                         </select>
                                     </div>
@@ -97,11 +97,11 @@
                                         <div class="ps-3 pe-5 ">
                                             <label for="activitie_id" class="form-label">Pilih Aktifitas:</label>
                                             <select id="activitie_id" name="activitie" class="form-select"
-                                                data-control="select2">
+                                                data-control="select2" >
                                                 <option value="">Pilih Aktifitas
                                                 </option>
                                                 @foreach ($activitie as $act)
-                                                    <option value="{{ $act->name }}">{{ $act->name }}</option>
+                                                    <option value="{{ $act->name }}" {{ old('activitie') == $act->name ? 'selected' : '' }}>{{ $act->name }}</option>
                                                 @endforeach
                                             </select>
                                         </div>
@@ -112,11 +112,11 @@
                                             <label for="hazard_id" class="form-label">Pilih
                                                 Hazard:</label>
                                             <select id="hazard_id" name="hazard" class="form-select"
-                                                data-control="select2">
+                                                data-control="select2" >
                                                 <option value="">Pilih Hazard
                                                 </option>
                                                 @foreach ($hazard as $haz)
-                                                    <option value="{{ $haz->name }}">{{ $haz->name }}</option>
+                                                    <option value="{{ $haz->name }}" {{ old('hazard') == $haz->name ? 'selected' : '' }}>{{ $haz->name }}</option>
                                                 @endforeach
                                             </select>
                                         </div>
@@ -127,11 +127,11 @@
                                             <label for="risk_id" class="form-label">Pilih
                                                 Risiko:</label>
                                             <select id="risk_id" name="risk" class="form-select"
-                                                data-control="select2">
+                                                data-control="select2" >
                                                 <option value="">Pilih Risiko
                                                 </option>
                                                 @foreach ($risk as $ris)
-                                                    <option value="{{ $ris->name }}">{{ $ris->name }}</option>
+                                                    <option value="{{ $ris->name }}" {{ old('risk') == $ris->name ? 'selected' : '' }}>{{ $ris->name }}</option>
                                                 @endforeach
                                             </select>
                                         </div>
@@ -144,11 +144,11 @@
                                             <select class="form-select fs-6 w-100" data-control="select2"
                                                 data-hide-search="true" data-placeholder="N/A"
                                                 style="--bs-link-hover-color-rgb: 25, 135, 84;" name="kesesuaian"
-                                                id="kesesuaian" style="font-family: 'Inter';" required>
+                                                id="kesesuaian" style="font-family: 'Inter';" >
                                                 <option value="">- Pilih -</option>
-                                                <option value="1">Yes</option>
-                                                <option value="2">No</option>
-                                                <option value="3">Not Applicable</option>
+                                                <option value="1" {{ old('kesesuaian') == 1 ? 'selected' : '' }}>Yes</option>
+                                                <option value="2" {{ old('kesesuaian') == 2 ? 'selected' : '' }}>No</option>
+                                                <option value="3" {{ old('kesesuaian') == 3 ? 'selected' : '' }}>Not Applicable</option>
                                             </select>
                                         </div>
                                     </div>
@@ -159,11 +159,11 @@
                                             <select class="form-select fs-6 w-100" data-control="select2"
                                                 data-hide-search="true" data-placeholder="Normal"
                                                 style="--bs-link-hover-color-rgb: 25, 135, 84;" name="kondisi"
-                                                id="kondisi" style="font-family: 'Inter';" required>
+                                                id="kondisi" style="font-family: 'Inter';" >
                                                 <option value="">- Pilih -</option>
-                                                <option value="1">Normal </option>
-                                                <option value="2">Not Normal</option>
-                                                <option value="3"> Emergency</option>
+                                                <option value="1" {{ old('kondisi') == 1 ? 'selected' : '' }}>Normal </option>
+                                                <option value="2" {{ old('kondisi') == 2 ? 'selected' : '' }}>Not Normal</option>
+                                                <option value="3" {{ old('kondisi') == 3 ? 'selected' : '' }}> Emergency</option>
                                             </select>
                                         </div>
                                     </div>
@@ -172,7 +172,7 @@
                                         <label class="col-form-label">Pengendalian</label>
                                         <div class=" w-100">
                                             <input type="text" class="form-control" name="kendali" id="kendali"
-                                                value="">
+                                                value="{{ old('kendali', request()->input('kendali'))}}">
                                         </div>
                                     </div>
 
@@ -180,32 +180,31 @@
                                         <label class="col-form-label" for="select1">Keparahan Risko
                                             (severity) Saat Ini</label>
                                         <select class="form-control" id="current_severity" onchange="risk_rating()"
-                                            name="current_severity" data-control="select2" data-hide-search="true"
-                                            required
+                                            name="current_severity" data-control="select2" data-hide-search="true"                                            
                                             data-placeholder="Pilih Keparahan Risiko
-                                    (severity)">
+                                    (severity)" >
                                             <option value="" selected disabled>Pilih
                                                 Keparahan
                                                 (severity)</option>
-                                            <option value="1">
+                                            <option value="1" {{ old('current_severity') == 1 ? 'selected' : '' }}>
                                                 Tergores, sayatan kecil, kerugian dalam rupiah
                                                 sebesar
                                                 Rp 1.000.000,-
                                             </option>
-                                            <option value="3">Cidera menyebabkan absen
+                                            <option value="3" {{ old('current_severity') == 3 ? 'selected' : '' }}>Cidera menyebabkan absen
                                                 maksimal 3
                                                 hari, kerugian
                                                 dalam rupiah sebesar Rp 10.000.000,-</option>
-                                            <option value="7">Cidera menyebabkan absen
+                                            <option value="7" {{ old('current_severity') == 7 ? 'selected' : '' }}>Cidera menyebabkan absen
                                                 lebih dari
                                                 3 hari, kerugian
                                                 dalam rupiah sebesar Rp 50.000.000,-</option>
-                                            <option value="15">
+                                            <option value="15" {{ old('current_severity') == 15 ? 'selected' : '' }}>
                                                 Cacat sementara, butuh rawat inap, kerugian
                                                 dalam rupiah
                                                 sebesar Rp
                                                 100.000.000,-</option>
-                                            <option value="40">
+                                            <option value="40" {{ old('current_severity') == 40 ? 'selected' : '' }}>
                                                 Cidera serius atau sampai kematian, kerugian
                                                 dalam
                                                 rupiah sebesar Rp
@@ -217,21 +216,20 @@
                                         <label class="col-form-label">Paparan Rsiko
                                             (Exposure) Saat Ini</label>
                                         <select class="form-control" id="current_exposure" onchange="risk_rating()"
-                                            name="current_exposure" data-control="select2" data-hide-search="true"
-                                            required
-                                            data-placeholder="Pilih Paparan Risiko (Exposure)">
+                                            name="current_exposure" data-control="select2" data-hide-search="true"                                            
+                                            data-placeholder="Pilih Paparan Risiko (Exposure)" >
                                             <option value="" selected disabled>Pilih
                                                 Paparan
                                                 (Exposure)</option>
-                                            <option value="0.5"> 1 kali dalam setahun
+                                            <option value="0.5" {{ old('current_exposure') == 0.5 ? 'selected' : '' }}> 1 kali dalam setahun
                                             </option>
-                                            <option value="1">Beberapa kali dalam setahun
+                                            <option value="1" {{ old('current_exposure') == 1 ? 'selected' : '' }}>Beberapa kali dalam setahun
                                             </option>
-                                            <option value="2">1 kali sebulan</option>
-                                            <option value="3">1 kali dalam seminggu
+                                            <option value="2" {{ old('current_exposure') == 2 ? 'selected' : '' }}>1 kali sebulan</option>
+                                            <option value="3" {{ old('current_exposure') == 3 ? 'selected' : '' }}>1 kali dalam seminggu
                                             </option>
-                                            <option value="6">1 kali dalam sehari</option>
-                                            <option value="10">Berkelanjutan</option>
+                                            <option value="6" {{ old('current_exposure') == 6 ? 'selected' : '' }}>1 kali dalam sehari</option>
+                                            <option value="10" {{ old('current_exposure') == 10 ? 'selected' : '' }}>Berkelanjutan</option>
                                         </select>
                                     </div>
 
@@ -240,19 +238,19 @@
                                             Terjadi Saat Ini(Probability)</label>
                                         <select class="form-control" onchange="risk_rating()" id="current_probability"
                                             name="current_probability" data-control="select2" data-hide-search="true"
-                                            required data-placeholder="Pilih Kemungkinan Risiko Terjadi (Probability)">
+                                            data-placeholder="Pilih Kemungkinan Risiko Terjadi (Probability)" >
                                             <option value="" selected disabled>Pilih Kemungkinan Terjadi (Probability)</option>
-                                            <option value="1">
+                                            <option value="1" {{ old('current_probability') == 1 ? 'selected' : '' }}>
                                                 Kejadian yang secara teori hanya mungkin terjadi
                                             </option>
-                                            <option value="3">mungkin terjadi sekali dalam
+                                            <option value="3" {{ old('current_probability') == 3 ? 'selected' : '' }}>mungkin terjadi sekali dalam
                                                 10
                                                 tahun</option>
-                                            <option value="6">Kejadian yang jarang tetapi
+                                            <option value="6" {{ old('current_probability') == 6 ? 'selected' : '' }}>Kejadian yang jarang tetapi
                                                 dapat
                                                 sesekali terjadi
                                             </option>
-                                            <option value="10">
+                                            <option value="10" {{ old('current_probability') == 10 ? 'selected' : '' }}>
                                                 Peristiwa berulang setidaknya sekali dalam
                                                 setahun
                                             </option>
@@ -263,7 +261,7 @@
                                         <label class="col-form-label">Tingkat Risiko Saat Ini</label>
                                         <div class=" w-100">
                                             <input type="text" class="form-control" name=""
-                                                id="current_risk_rating" value="" readonly disabled>
+                                                id="current_risk_rating" value="{{ old('current_risk_rating', request()->input('current_risk_rating'))}}" readonly disabled>
                                             <input type="hidden" name="current_risk_rating" id="current_risk_rating1">
                                         </div>
                                     </div>
@@ -277,6 +275,11 @@
                                                 style="--bs-link-hover-color-rgb: 25, 135, 84;" name=""
                                                 id="current_risk_category"
                                                 style="font-family: Arial, Helvetica, sans-serif;" required disabled>
+                                                <option value="1" {{ old('current_risk_category') == 1 ? 'selected' : ''}}>Slight</option>
+                                                <option value="2" {{ old('current_risk_category') == 2 ? 'selected' : ''}}>Low</option>
+                                                <option value="3" {{ old('current_risk_category') == 3 ? 'selected' : ''}}>Medium</option>
+                                                <option value="4" {{ old('current_risk_category') == 4 ? 'selected' : ''}}>High</option>
+                                                <option value="5" {{ old('current_risk_category') == 5 ? 'selected' : ''}}>Very High</option>
                                             </select>
                                             <input type="hidden" name="current_risk_category"
                                                 id="current_risk_category1">
@@ -286,7 +289,7 @@
                                         <label class="col-form-label">Penyebab Utama</label>
                                         <div class=" w-100">
                                             <input type="text" class="form-control" name="penyebab" id="penyebab"
-                                                value="">
+                                                value="{{ old('penyebab', request()->input('penyebab'))}}">
                                         </div>
                                     </div>
 
@@ -294,7 +297,7 @@
                                         <label class="col-form-label">Usulan</label>
                                         <div class=" w-100">
                                             <input type="text" class="form-control" name="usulan" id="usulan"
-                                                value="">
+                                                value="{{ old('usulan', request()->input('usulan'))}}">
                                         </div>
                                     </div>
 
@@ -302,7 +305,7 @@
                                         <label class="col-form-label">Formulir yang Dibutuhkan</label>
                                         <div class=" w-100">
                                             <input type="text" class="form-control" name="form_diperlukan"
-                                                id="form_diperlukan" value="">
+                                                id="form_diperlukan" value="{{ old('form_diperlukan', request()->input('form_diperlukan'))}}">
                                         </div>
                                     </div>
 
@@ -310,7 +313,7 @@
                                         <label class="col-form-label">SOP</label>
                                         <div class=" w-100">
                                             <input type="text" class="form-control" name="sop" id="sop"
-                                                value="">
+                                                value="{{ old('sop', request()->input('sop'))}}">
                                         </div>
                                     </div>
 
@@ -318,31 +321,29 @@
                                         <label class="col-form-label">Keparahan
                                             (severity) Residual</label>
                                         <select class="form-control" onchange="risk_residual()" id="residual_severity"
-                                            name="residual_severity" data-control="select2" data-hide-search="true"
-                                            required
-                                            data-placeholder="Keparahan
-                                    (severity)">
+                                            name="residual_severity" data-control="select2" data-hide-search="true"                                            
+                                            data-placeholder="Keparahan (severity)">
                                             <option value="" selected disable>Keparahan
                                                 (severity)</option>
-                                            <option value="1">
+                                            <option value="1" {{ old('residual_severity') == 1 ? 'selected' : '' }}>
                                                 Tergores, sayatan kecil, kerugian dalam rupiah
                                                 sebesar
                                                 Rp 1.000.000,-
                                             </option>
-                                            <option value="3">Cidera menyebabkan absen
+                                            <option value="3" {{ old('residual_severity') == 3 ? 'selected' : '' }}>Cidera menyebabkan absen
                                                 maksimal 3
                                                 hari, kerugian
                                                 dalam rupiah sebesar Rp 10.000.000,-</option>
-                                            <option value="7">Cidera menyebabkan absen
+                                            <option value="7" {{ old('residual_severity') == 7 ? 'selected' : '' }}>Cidera menyebabkan absen
                                                 lebih dari
                                                 3 hari, kerugian
                                                 dalam rupiah sebesar Rp 50.000.000,-</option>
-                                            <option value="15">
+                                            <option value="15" {{ old('residual_severity') == 15 ? 'selected' : '' }}>
                                                 Cacat sementara, butuh rawat inap, kerugian
                                                 dalam rupiah
                                                 sebesar Rp
                                                 100.000.000,-</option>
-                                            <option value="40">
+                                            <option value="40" {{ old('residual_severity') == 40 ? 'selected' : '' }}>
                                                 Cidera serius atau sampai kematian, kerugian
                                                 dalam
                                                 rupiah sebesar Rp
@@ -354,44 +355,40 @@
                                         <label class="col-form-label">Paparan Risiko
                                             (Exposure) Residual</label>
                                         <select class="form-control" onchange="risk_residual()" id="residual_exposure"
-                                            name="residual_exposure" data-control="select2" data-hide-search="true"
-                                            required
-                                            data-placeholder="Paparan
-                                    (Exposure)">
+                                            name="residual_exposure" data-control="select2" data-hide-search="true"                                            
+                                            data-placeholder="Paparan (Exposure)">
                                             <option value="" selected disable>Paparan
                                                 (Exposure)</option>
-                                            <option value="0.5"> 1 kali dalam setahun
+                                            <option value="0.5" {{ old('residual_exposure') == 0.5 ? 'selected' : '' }}> 1 kali dalam setahun
                                             </option>
-                                            <option value="1">Beberapa kali dalam setahun
+                                            <option value="1" {{ old('residual_exposure') == 1 ? 'selected' : '' }}>Beberapa kali dalam setahun
                                             </option>
-                                            <option value="2">1 kali sebulan</option>
-                                            <option value="3">1 kali dalam seminggu
+                                            <option value="2" {{ old('residual_exposure') == 2 ? 'selected' : '' }}>1 kali sebulan</option>
+                                            <option value="3" {{ old('residual_exposure') == 3 ? 'selected' : '' }}>1 kali dalam seminggu
                                             </option>
-                                            <option value="6">1 kali dalam sehari</option>
-                                            <option value="10">Berkelanjutan</option>
+                                            <option value="6" {{ old('residual_exposure') == 6 ? 'selected' : '' }}>1 kali dalam sehari</option>
+                                            <option value="10" {{ old('residual_exposure') == 10 ? 'selected' : '' }}>Berkelanjutan</option>
                                         </select>
                                     </div>
                                     <div class="ps-3 pe-5">
                                         <label class="col-form-label">Kemungkinan Risiko
                                             Terjadi (Probability) Residual</label>
                                         <select class="form-control" id="residual_probability" onchange="risk_residual()"
-                                            name="residual_probability" data-control="select2" data-hide-search="true"
-                                            required
-                                            data-placeholder="Kemungkinan
-                                    Terjadi (Probability)">
+                                            name="residual_probability" data-control="select2" data-hide-search="true"                                            
+                                            data-placeholder="Kemungkinan Terjadi (Probability)">
                                             <option value="" selected disable>Kemungkinan
                                                 Terjadi (Probability)</option>
-                                            <option value="1">
+                                            <option value="1" {{ old('residual_probability') == 1 ? 'selected' : '' }}>
                                                 Kejadian yang secara teori hanya mungkin terjadi
                                             </option>
-                                            <option value="3">mungkin terjadi sekali dalam
+                                            <option value="3" {{ old('residual_probability') == 3 ? 'selected' : '' }}>mungkin terjadi sekali dalam
                                                 10
                                                 tahun</option>
-                                            <option value="6">Kejadian yang jarang tetapi
+                                            <option value="6" {{ old('residual_probability') == 6 ? 'selected' : '' }}>Kejadian yang jarang tetapi
                                                 dapat
                                                 sesekali terjadi
                                             </option>
-                                            <option value="10">
+                                            <option value="10" {{ old('residual_probability') == 10 ? 'selected' : '' }}>
                                                 Peristiwa berulang setidaknya sekali dalam
                                                 setahun
                                             </option>
@@ -402,7 +399,7 @@
                                         <label class="col-form-label">Tingkat Risiko Residual</label>
                                         <div class=" w-100">
                                             <input type="text" class="form-control" name=""
-                                                id="residual_risk_rating" value="" readonly disabled>
+                                                id="residual_risk_rating" value="{{ old('residual_risk_rating', request()->input('residual_risk_rating'))}}" readonly disabled>
                                             <input type="hidden" name="residual_risk_rating" id="residual_risk_rating1">
                                         </div>
                                     </div>
@@ -415,9 +412,11 @@
                                                 style="--bs-link-hover-color-rgb: 25, 135, 84;" name=""
                                                 id="residual_risk_category"
                                                 style="font-family: Arial, Helvetica, sans-serif;" required disabled>
-                                                {{-- <option value="1" >Slight</option>
-                                                <option value="2" >Mak Berat Ga Kuat</option> --}}
-                                                {{-- <option value="" id="opt_residual_cat" selected></option> --}}
+                                                <option value="1" {{ old('residual_risk_category') == 1 ? 'selected' : ''}}>Slight</option>
+                                                <option value="2" {{ old('residual_risk_category') == 2 ? 'selected' : ''}}>Low</option>
+                                                <option value="3" {{ old('residual_risk_category') == 3 ? 'selected' : ''}}>Medium</option>
+                                                <option value="4" {{ old('residual_risk_category') == 4 ? 'selected' : ''}}>High</option>
+                                                <option value="5" {{ old('residual_risk_category') == 5 ? 'selected' : ''}}>Very High</option>
                                             </select>
                                             <input type="hidden" name="residual_risk_category"
                                                 id="residual_risk_category1">
@@ -428,7 +427,7 @@
                                         <label class="col-form-label">Penanggung Jawab </label>
                                         <div class=" w-100">
                                             <input type="text" class="form-control" name="penanggung_jawab"
-                                                id="penanggung_jawab" value="">
+                                                id="penanggung_jawab" value="{{ old('penanggung_jawab', request()->input('penanggung_jawab'))}}">
                                         </div>
                                     </div>
 
@@ -436,7 +435,7 @@
                                         <label class="col-form-label">Status</label>
                                         <div class=" w-100">
                                             <input type="text" class="form-control" name="status" id="status"
-                                                value="">
+                                                value="{{ old('status', request()->input('status'))}}">
                                         </div>
                                     </div>
 
@@ -504,6 +503,8 @@
 
 @section('customscript')
     <script src="{{ asset('plugins/custom/fslightbox/fslightbox.bundle.js') }}"></script>
+    
+
     <script>
         $(document).ready(function() {
             $(".tanggalPicker").flatpickr({
