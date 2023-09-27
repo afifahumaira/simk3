@@ -2755,6 +2755,16 @@
             @endif
         @endforeach
     </div>
+
+            <button id="fly_teknik_komputer" class="list-item inside" onclick="floor_teknik_komputer()">Gedung Teknik Komputer</button>
+                            <div style="display: none" id="showhide_teknik_komputer">
+                                @foreach ($maps as $item)
+                                    @if ($item->gedung == 'Teknik Komputer')
+                                    <a href="{{ route('maps.detail', $item->id) }}" class="list-item inside">{{ $item->lantai }} <img id="mapsimg" src="{{ asset('foto_maps/foreign.png') }}"></a>
+            @endif
+                                @endforeach
+                            </div>
+
              <button id="fly_laboratorium_komputer" class="list-item inside" onclick="floor_laboratorium_komputer()">Laboratorium Komputer</button>
             <div style="display: none" id="showhide_laboratorium_komputer">
                     @foreach ($maps as $item)
@@ -2782,6 +2792,12 @@
                         });
                     });
                     document.getElementById('fly_dekanat_lama').addEventListener('click', () => {
+                        map.fitBounds([
+                            [110.440383, -7.051447],
+                            [110.440383, -7.051447],
+                        ]);
+                    });
+                    document.getElementById('fly_teknik_komputer').addEventListener('click', () => {
                         map.fitBounds([
                             [110.440383, -7.051447],
                             [110.440383, -7.051447],
@@ -4092,6 +4108,18 @@
             //dekanat lama
             function floor_dekanat_lama() {
                 var showhideDekanatFakultas = document.getElementById("showhide_dekanat_fakultas_lama");
+
+                if (showhideDekanatFakultas.style.display === "none") {
+                    showhideDekanatFakultas.style.display = "block";
+
+                } else {
+                    showhideDekanatFakultas.style.display = "none";
+                }
+            }
+
+            //gedung Tekkom 
+            function floor_teknik_komputer() {
+                var showhideDekanatFakultas = document.getElementById("showhide_teknik_komputer");
 
                 if (showhideDekanatFakultas.style.display === "none") {
                     showhideDekanatFakultas.style.display = "block";
