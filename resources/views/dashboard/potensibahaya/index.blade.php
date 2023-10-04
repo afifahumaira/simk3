@@ -1,6 +1,4 @@
 @extends ('layouts.layout')
-
-
 @section('content')
     <div class="page-title d-flex flex-column gap-1 mx-5 my-5  ">
         <div class="card m-5">
@@ -10,44 +8,37 @@
                 <!--begin::Main wrapper-->
                 <div id="kt_docs_search_handler_basic" class="mt-3" data-kt-search-keypress="true"
                     data-kt-search-min-length="2" data-kt-search-enter="true" data-kt-search-layout="inline">
-
                     <!--begin::Input Form-->
                     <form data-kt-search-element="form" class="w-100 position-relative mb-5 shadow rounded"
                         autocomplete="off">
                         <!--begin::Hidden input(Added to disable form autocomplete)-->
                         <input type="hidden" />
                         <!--end::Hidden input-->
-
                         <!--begin::Icon-->
                         <i
                             class="ki-duotone ki-magnifier fs-2 fs-lg-1 text-gray-500 position-absolute top-50 ms-5 translate-middle-y"><span
                                 class="path1"></span><span class="path2"></span></i>
                         <!--begin::Svg Icon | path: magnifier-->
                         <!--end::Icon-->
-
                         <!--begin::Input-->
                         <input type="text" class="form-control form-control-lg form-control-solid px-15" name="search"
                             value="" placeholder="Search " data-kt-search-element="input" />
                         <!--end::Input-->
-
                         <!--begin::Spinner-->
                         <span class="position-absolute top-50 end-0 translate-middle-y lh-0 d-none me-5"
                             data-kt-search-element="spinner">
                             <span class="spinner-border h-15px w-15px align-middle text-gray-400"></span>
                         </span>
                         <!--end::Spinner-->
-
                         <!--begin::Reset-->
                         <span
                             class="btn btn-flush btn-active-color-primary position-absolute top-50 end-0 translate-middle-y lh-0 me-5 d-none"
                             data-kt-search-element="clear">
-
                             <!--begin::Svg Icon | path: cross-->
                         </span>
                         <!--end::Reset-->
                     </form>
                     <!--end::Form-->
-
                     <!--begin::Wrapper-->
                     <!--end::Wrapper-->
                 </div>
@@ -70,7 +61,6 @@
                                     {{ request()->has('filter') ? (request()->filter == 3 ? 'selected' : false) : '' }}>
                                     Tuntas
                                 </option>
-
                             </select>
                         </div>
                     </div>
@@ -81,15 +71,6 @@
             </div>
             <!--begin::Content container-->
             <div class="card-body">
-                {{-- @if ($errors->any())
-                    <div class="alert alert-danger">
-                        <ul>
-                            @foreach ($errors->all() as $error)
-                                <li>{{ $error }}</li>
-                            @endforeach
-                        </ul>
-                    </div>
-                @endif --}}
                 <div class="table-responsive">
                     <table class="table table-rounded table-bordered">
                         <thead>
@@ -99,10 +80,10 @@
                                 <th scope="col">Tanggal lapor</th>
                                 <th scope="col">Nama Pelapor</th>
                                 <th scope="col">Lokasi Kejadian</th>
-                                <th scope="col" class="col-1">Departemen</th>
+                                <th scope="col" class="col-2">Departemen</th>
                                 <th scope="col" class="col-1">Status</th>
                                 @if (auth()->user()->hak_akses == 'Pimpinan')
-                                    <th scope="col" class="col-2">Ubah Status</th>
+                                    <th scope="col">Ubah Status</th>
                                 @endif
                                 @if (auth()->user()->hak_akses == 'Admin' ||
                                         auth()->user()->hak_akses == 'P2K3' ||
@@ -241,7 +222,6 @@
                                             </button>
                                         </td>
                                     @endif
-
                                     @if (auth()->user()->hak_akses == 'Pimpinan')
                                         <td>
                                             <a href="{{ route('potensibahaya.lihat', $data['id']) }}" type="button"
@@ -253,17 +233,15 @@
                                                 <i
                                                     class="bi bi-trash text-dark d-flex justify-content-center align-items-center"></i>
                                             </button>
-                                        </td>
+                                        </td>                                                    
                                     @endif
                                 </tr>
-
                                 <!-- Delete modal -->
                                 <div class="modal fade" id="deleteModal{{ $data->id }}" tabindex="-1"
                                     role="dialog" aria-labelledby="deleteModalLabel{{ $data->id }}"
                                     data-bs-backdrop="static" aria-labelledby="staticBackdropLabel" aria-hidden="true">
                                     <div class="modal-dialog modal-dialog-centered" role="document">
                                         <div class="modal-content">
-
                                             <div class="modal-body mt-5 d-flex justify-content-center align-items-center">
                                                 <h2 class="mt-5 text-center"
                                                     style="color: #16243D; font-size: 20px font-weight:700">
@@ -288,7 +266,6 @@
                                     </div>
                                 </div>
                             @endforeach
-
                         </tbody>
                     </table>
                 </div>
@@ -313,7 +290,6 @@
                             {{-- </h2>
                         </div>
                         <div class="modal-footer d-flex justify-content-center border-0">
-                            @csrf
                             <button type="submit"
                                 class="btn btn-success btn-sm text-white d-flex justify-content-center align-items-center text-center rounded-1 "
                                 style="background: #29CC6A;  font-size:14px; ">Ya, simpan
@@ -324,7 +300,6 @@
                             {{-- <button type="button"
                                 class="btn btn-secondary btn-sm text-center d-flex align-items-center rounded-1"
                                 data-bs-dismiss="modal" style=" font-size:14px; ">Tidak</button>
-
                         </div>
                     </div>
                 </div>
@@ -338,7 +313,6 @@
         </div>
     </div>
 @stop
-
 @section('customscript')
     <script>
         $(document).on("click", "#update", function() {
@@ -357,22 +331,17 @@
             $("#resiko_bahaya").val(resiko_bahaya);
             $("#usulan_perbaikan").val(usulan_perbaikan);
         });
-
         $(document).ready(function() {
             // Get the select filter element
             var selectFilter = $("#filter");
-
             // Get the current URL
             var currentUrl = window.location.href;
-
             // Bind an event handler to the change event of the select filter
             selectFilter.on("change", function() {
-
                 const selectedValue = selectFilter.val();
                 const currentURL = window.location.href;
                 const url = new URL(currentURL);
                 const params = new URLSearchParams(url.search);
-
                 // Check if the "filter" parameter already exists
                 if (params.has('filter')) {
                     // Update the existing "filter" parameter with the selected value
@@ -381,10 +350,8 @@
                     // If "filter" parameter doesn't exist, add it
                     params.append('filter', selectedValue);
                 }
-
                 // Set the updated query parameters back to the URL object
                 url.search = params.toString();
-
                 // Redirect to the updated URL, which will reload the page
                 window.location.href = url.toString();
             });

@@ -267,52 +267,53 @@ class PotensibahayaController extends Controller
     }
 
     public function update($id, Request $request) {
-       // $request->validate([
-         //   'p2k3' => 'required',
-         // 'status' => 'required',
-       // ]);
-
-       Potensibahaya::find($id)->update([
-        'p2k3_id' => $request->p2k3_id,
-        'status' => $request->status,
-        'id' => $request->id,
-        'departemen_id' => $request->departemen_id,
-        'lokasi' => $request->lokasi,
-        'potensi_bahaya' => $request->potensi_bahaya,
-        'resiko_bahaya' => $request->resiko_bahaya,
-        'usulan_perbaikan' => $request->usulan_perbaikan,
-       ]);
-
-       if ($request->status == 2) {
-        $data = InvestigasiPotensi::create([
-            'p2k3' => $request->p2k3_id,
-            'potensibahaya_id' => $request->id,
-            'departemen_id' => $request->departemen_id,
-            'lokasi' => $request->lokasi,
-            'potensi_bahaya' => $request->potensi_bahaya,
-            'risiko' => $request->resiko_bahaya,
-            //'usulan' => $request->usulan_perbaikan,
-            'status' => $request->status,
+        // $request->validate([
+          //   'p2k3' => 'required',
+          // 'status' => 'required',
+        // ]);
+ 
+        Potensibahaya::find($id)->update([
+         'p2k3_id' => $request->p2k3_id,
+         'status' => $request->status,
+         'id' => $request->id,
+         'departemen_id' => $request->departemen_id,
+         'lokasi' => $request->lokasi,
+         'potensi_bahaya' => $request->potensi_bahaya,
+         'resiko_bahaya' => $request->resiko_bahaya,
+         'usulan_perbaikan' => $request->usulan_perbaikan,
         ]);
-        Alert::success('Berhasil', 'Data Akan di Investigasi!')->iconHtml('<i class="bi bi-person-check"></i>')->hideCloseButton();
-        return redirect()->route('potensibahaya.index');
-       }
-
-       if ($request->status == 3) {
-        $data = Potensibahaya::find($id);
-        $data->delete();
-        
-        Alert::success('Berhasil', 'Investigasi telah selesai')->iconHtml('<i class="bi bi-person-check"></i>')->hideCloseButton();
-        return redirect()->route('potensibahaya.index');
+ 
+        if ($request->status == 2) {
+         $data = InvestigasiPotensi::create([
+             'p2k3' => $request->p2k3_id,
+             'potensibahaya_id' => $request->id,
+             'departemen_id' => $request->departemen_id,
+             'lokasi' => $request->lokasi,
+             'potensi_bahaya' => $request->potensi_bahaya,
+             'risiko' => $request->resiko_bahaya,
+             //'usulan' => $request->usulan_perbaikan,
+             'status' => $request->status,
+         ]);
+         Alert::success('Berhasil', 'Data Akan di Investigasi!')->iconHtml('<i class="bi bi-person-check"></i>')->hideCloseButton();
+         return redirect()->route('potensibahaya.index');
         }
-
-        Alert::success('Berhasil', 'Data Laporan berhasil diperbaharui!')->iconHtml('<i class="bi bi-person-check"></i>')->hideCloseButton();
-        return redirect()->route('potensibahaya.index');
-    }
+ 
+        if ($request->status == 3) {
+         $data = Potensibahaya::find($id);
+         $data->delete();
+ 
+         Alert::success('Berhasil', 'Investigasi telah selesai')->iconHtml('<i class="bi bi-person-check"></i>')->hideCloseButton();
+         return redirect()->route('potensibahaya.index');
+         }
+ 
+         Alert::success('Berhasil', 'Data Laporan berhasil diperbaharui!')->iconHtml('<i class="bi bi-person-check"></i>')->hideCloseButton();
+         return redirect()->route('potensibahaya.index');
+     }
 
     public function potensibahaya() {
-        $kode= PotensiBahaya::generateCode();
-        return view('Frntend_simk3.potensibahayas', compact('kode'));
+        $kode = PotensiBahaya::generateCode();
+        $departemen = Departemen::all();
+        return view('Frntend_simk3.potensibahayas', compact('kode', 'departemen'));
     }
 
     public function simpan(Request $request) {
@@ -323,9 +324,13 @@ class PotensibahayaController extends Controller
             'nip_nim' => 'required',
             'nomer_telepon_pelapor' => 'required',
             'waktu_kejadian' => 'required',
+            'kategori_pelapor' => 'required',
             'institusi' => 'required',
             'tujuan' => 'required',
+            'departemen_id' => 'required',
+            'unit_civitas_akademika_box' => 'required',
             'lokasi' => 'required',
+            'potensi_bahaya' => 'required',
             'deskripsi_potensi_bahaya' => 'required',
             'resiko_bahaya' => 'required',
             'usulan_perbaikan' => 'required',
@@ -361,6 +366,7 @@ class PotensibahayaController extends Controller
             'kategori_pelapor' => $request->kategori_pelapor,
             'institusi' => $request->institusi,
             'tujuan' => $request->tujuan,
+            'departemen_id' => $request->departemen_id,
             'unit_civitas_akademika_box' => $request->unit_civitas_akademika_box,
             'lokasi' => $request->lokasi,
             'potensi_bahaya' => $request->potensi_bahaya,

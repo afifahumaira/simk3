@@ -209,8 +209,10 @@
         $(document).on("click", "#update", function() {
             var p2k3_id = $(this).attr('data-bs-p2k3_id');
             var status = $(this).attr('data-bs-status');
+            
             $("#p2k3_id").val(p2k3_id).setAttribute('selected', 'selected');
             $("#status").val(status).setAttribute('selected', 'selected');
+            
 
         });
 

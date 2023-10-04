@@ -295,6 +295,11 @@ class HirarcController extends Controller
         public function save(Request $request) {
             
             $validatedData = $request->validate([
+                'departemen_id' => 'required',
+                'location_id' => 'required',
+                'activitie' => 'required',
+                'hazard' => 'required',
+                'risk' => 'required',
                 'kesesuaian' => 'required',
                 'kondisi' => 'required',
                 //'kendali' => 'required',
@@ -407,7 +412,7 @@ class HirarcController extends Controller
             // dd("aa");
             
             Alert::success('Berhasil', 'Data HIRARC berhasil diperbaharui!')->iconHtml('<i class="bi bi-person-check fs-3x"></i>')->hideCloseButton();
-            return redirect()->route('hirarc.lihat-hirarc');
+            return redirect()->route('hirarc.lihat', $request->departemen_id);
     
         }
 

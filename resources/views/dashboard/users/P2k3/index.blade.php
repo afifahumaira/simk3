@@ -55,8 +55,8 @@
                     <!--end::Wrapper-->
                 </div>
                 <!--end::Main wrapper-->
-                <a href="{{ route('p2k3.tambah') }}" type="button" class="btn btn-primary btn-sm"
-                    style="background: #233EAE">Tambah Data +</a>
+                {{-- <a href="{{ route('p2k3.tambah') }}" type="button" class="btn btn-primary btn-sm"
+                    style="background: #233EAE">Tambah Data +</a> --}}
                 <!--end::Title-->
             </div>
             <!--begin::Content container-->

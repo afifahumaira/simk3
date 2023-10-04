@@ -189,7 +189,7 @@
                             </ul>
                         </li>
 
-                        <li><a class="nav-link scrollto" href="#dokumen">Maps</a></li>
+                        <li><a class="nav-link scrollto" href="#map">Maps</a></li>
                         {{-- <li><a class="nav-link scrollto" href="#team">Team P2K3</a></li> --}}
                         <li><a class="nav-link scrollto" href="#footer">Kontak</a></li>
                         <li>

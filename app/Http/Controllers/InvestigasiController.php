@@ -147,6 +147,7 @@ class InvestigasiController extends Controller
             'penyebab_dasar' => $request->penyebab_dasar,
             'tenggat_waktu' => $request->tenggat_waktu,
             'tindakan' => $request->tindakan,
+            'status' => $request->status,
         ]);
 
         if ($request->status == 3) {

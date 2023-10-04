@@ -49,10 +49,10 @@
                             </select>
                         </div>
                     </div>
-                    <a href="{{ route('laporan-insiden.tambah') }}" class="btn btn-sm btn-primary"
+                    {{-- <a href="{{ route('laporan-insiden.tambah') }}" class="btn btn-sm btn-primary"
                         style="background: #233EAE">
                         Tambah Data +
-                    </a>
+                    </a> --}}
                 </div>
             </div>
             <div class="card-body">

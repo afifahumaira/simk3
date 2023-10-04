@@ -107,13 +107,13 @@
                                             <select name="jenis_insiden" class="form-select fs-6 w-100"
                                                 data-control="select2" data-hide-search="true"
                                                 data-placeholder="Jenis Insiden">
-                                                <option value="Pingsan" {{ old('jenis_insiden') == Pingsan ? 'selected' : '' }}>Pingsan</option>
-                                                <option value="Serangan Jantung" {{ old('jenis_insiden') == Serangan Jantung ? 'selected' : '' }}>Serangan Jantung</option>
-                                                <option value="Asma" {{ old('jenis_insiden') == Asma ? 'selected' : '' }}>Asma</option>
-                                                <option value="Pendarahan" {{ old('jenis_insiden') == Pendarahan ? 'selected' : '' }}>Pendarahan</option>
-                                                <option value="Keracunan" {{ old('jenis_insiden') == Keracunan ? 'selected' : '' }}>Keracunan</option>
-                                                <option value="Cidera" {{ old('jenis_insiden') == Cidera ? 'selected' : '' }}>Cidera</option>
-                                                <option value="Lainnya" {{ old('jenis_insiden') == Lainnya ? 'selected' : '' }}>Lainnya</option>
+                                                <option value="Pingsan" {{ old('jenis_insiden') == "Pingsan" ? 'selected' : '' }}>Pingsan</option>
+                                                <option value="Serangan Jantung" {{ old('jenis_insiden') == "Serangan Jantung" ? 'selected' : '' }}>Serangan Jantung</option>
+                                                <option value="Asma" {{ old('jenis_insiden') == "Asma" ? 'selected' : '' }}>Asma</option>
+                                                <option value="Pendarahan" {{ old('jenis_insiden') == "Pendarahan" ? 'selected' : '' }}>Pendarahan</option>
+                                                <option value="Keracunan" {{ old('jenis_insiden') == "Keracunan" ? 'selected' : '' }}>Keracunan</option>
+                                                <option value="Cidera" {{ old('jenis_insiden') == "Cidera" ? 'selected' : '' }}>Cidera</option>
+                                                <option value="Lainnya" {{ old('jenis_insiden') == "Lainnya" ? 'selected' : '' }}>Lainnya</option>
                                             </select>
                                         </div>
                                     </div>
@@ -168,14 +168,14 @@
                                 <div class="ps-3 pe-5">
                                     <label class="col-form-label">Nama Pelapor</label>
                                     <div class=" w-100">
-                                        <input type="text" class="form-control" name="nama_pelapor" >
+                                        <input type="text" class="form-control" name="nama_pelapor" value="{{ old('nama_pelapor', request()->input('nama_pelapor'))}}">
                                     </div>
                                 </div>
 
                                 <div class="ps-3 pe-5">
                                     <label for="inputEmail3" class="col-form-label">Email Pelapor</label>
                                     <div class=" w-100">
-                                        <input type="email" class="form-control" name="email_pelapor" >
+                                        <input type="email" class="form-control" name="email_pelapor" value="{{ old('email_pelapor', request()->input('email_pelapor'))}}">
                                     </div>
                                 </div>
 
@@ -183,7 +183,7 @@
                                     <label for="inputNomertelepon3" class="col-form-label">No. Telp
                                         Pelapor</label>
                                     <div class=" w-100">
-                                        <input type="number" class="form-control" name="nomer_telepon_pelapor" >
+                                        <input type="number" class="form-control" name="nomer_telepon_pelapor" value="{{ old('nomor_telepon_pelapor', request()->input('nomor_telepon_pelapor'))}}">
                                     </div>
                                 </div>
 
@@ -219,7 +219,7 @@
                                 <div class="ps-3 pe-5">
                                     <label class="col-form-label">Nama Korban</label>
                                     <div class=" w-100">
-                                        <input type="text" class="form-control" name="nama_korban" value="nama_korban">
+                                        <input type="text" class="form-control" name="nama_korban" value="{{ old('nama_korban', request()->input('nama_korban'))}}">
 
                                     </div>
                                 </div>
@@ -227,7 +227,7 @@
                                 <div class="ps-3 pe-5">
                                     <label for="inputEmail3" class="col-form-label">Email Korban</label>
                                     <div class=" w-100">
-                                        <input type="email" class="form-control" name="email_korban">
+                                        <input type="email" class="form-control" name="email_korban" value="{{ old('email_korban', request()->input('email_korban'))}}">
 
                                     </div>
                                 </div>
@@ -236,7 +236,7 @@
                                     <label for="inputNomertelepon3" class="col-form-label">No. Telp
                                         Korban</label>
                                     <div class=" w-100">
-                                        <input type="number" class="form-control" name="nomer_telepon_korban">
+                                        <input type="number" class="form-control" name="nomer_telepon_korban" value="{{ old('nomor_telepon_korban', request()->input('nomor_telepon_korban'))}}">
                                     </div>
                                 </div>
 

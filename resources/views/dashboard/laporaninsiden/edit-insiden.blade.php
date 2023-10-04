@@ -111,8 +111,8 @@
                                     </div>
 
                                     <div class="ps-3 pe-5">
-                                        <label class="col-form-label">Waktu Kejadian</label>
-                                        <div class=" w-100">
+                                        <label class="col-sm-2 col-form-label">Waktu Kejadian</label>
+                                        <div class="col-sm-10 w-100">
                                             <input type="date" id="date" name="waktu_kejadian"
                                                 class="form-control tanggalPicker" value="{{ $lap->waktu_kejadian }}"
                                                 placeholder="dd/mm/yyyy" max="<?php echo date('Y-m-d'); ?>">

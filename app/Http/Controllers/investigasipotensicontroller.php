@@ -145,7 +145,16 @@ class InvestigasiPotensiController extends Controller
             'usulan' => $request->usulan,
             'tenggat_waktu' => $request->tenggat_waktu,
             'tindakan' => $request->tindakan,
+            'status' => $request->status,
         ]);
+
+        if ($request->status == 3) {
+            $data = InvestigasiPotensi::find($id);
+            $data->delete();
+            
+            Alert::success('Berhasil', 'Investigasi selesai')->iconHtml('<i class="bi bi-person-check fs-3x"></i>')->hideCloseButton();
+            return redirect()->route('daftarinvestigasi.index');
+        }
 
         Alert::success('Berhasil', 'Data Investigasi berhasil diperbaharui!')->iconHtml('<i class="bi bi-person-check fs-3x"></i>')->hideCloseButton();
         return redirect()->route('investigasipotensi.index');

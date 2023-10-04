@@ -250,14 +250,14 @@
                                     <label for="inputUnit" class="col-sm-2 col-form-label">Deskripsi Potensi
                                         Bahaya</label>
                                     <div class="col-sm-10 w-100">
-                                        <textarea class="form-control" id="kronologi" name="deskripsi_potensi_bahaya"></textarea>
+                                        <textarea class="form-control" id="kronologi" name="deskripsi_potensi_bahaya" value="{{ old('deskripsi_potensi_bahaya', request()->input('deskripsi_potensi_bahaya'))}}"></textarea>
                                     </div>
                                 </div>
                                 <div class="ps-3 pe-5">
                                     <label for="inputUnit" class="col-sm-2 col-form-label">Resiko
                                         Bahaya</label>
                                     <div class="col-sm-10 w-100">
-                                        <input type="text" class="form-control " name="resiko_bahaya" value="resiko_bahaya">
+                                        <input type="text" class="form-control " name="resiko_bahaya" value="{{ old('resiko_bahaya', request()->input('resiko_bahaya'))}}">
                                     </div>
                                 </div>
 
@@ -265,7 +265,7 @@
                                     <label for="inputUnit" class="col-sm-2 col-form-label">Usulan
                                         Perbaikan</label>
                                     <div class="col-sm-10 w-100">
-                                        <textarea class="form-control" id="kronologi" name="usulan_perbaikan"></textarea>
+                                        <textarea class="form-control" id="kronologi" name="usulan_perbaikan" value="{{ old('usulan_perbaikan', request()->input('usulan_perbaikan'))}}"></textarea>
                                     </div>
                                 </div>
                                 <div class="ps-3 pe-5">

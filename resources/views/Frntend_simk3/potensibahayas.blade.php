@@ -176,7 +176,7 @@
                                         <label class="col-sm-2 col-form-label">Tanggal Kejadian</label>
                                         <div class="col-sm-10 w-100">
                                             <input type="date" id="date" class="form-control tanggalPicker"
-                                                name="waktu_kejadian">
+                                                name="waktu_kejadian" placeholder="dd/mm/yyyy" max="<?php echo date('Y-m-d'); ?>">
 
                                         </div>
                                     </div>
@@ -227,6 +227,19 @@
                                     <div class="col-sm-10 w-100">
                                         <input type="text" class="form-control" name="tujuan">
 
+                                    </div>
+                                </div>
+
+                                <div class="ps-3 pe-5">
+                                    <label class="col-form-label">Departemen</label>
+                                    <div class=" w-100">
+                                        <select name="departemen_id" class="form-select fs-6 w-100"
+                                            data-control="select2" data-hide-search="true"
+                                            data-placeholder="departemen_id">
+                                            @foreach ($departemen as $dep)
+                                                <option value="{{ $dep->id }}" {{ old('departemen_id') == $dep->id ? 'selected' : '' }}>{{ $dep->name }}</option>
+                                            @endforeach
+                                        </select>
                                     </div>
                                 </div>
                             </div>
@@ -415,7 +428,23 @@
     }
 </style>
 
+<script>
+    $(function() {
+            var dtToday = new Date();
 
+            var month = dtToday.getMonth() + 1;
+            var day = dtToday.getDate();
+            var year = dtToday.getFullYear();
+
+            if (month < 10)
+                month = '0' + month.toString();
+            if (day < 10)
+                day = '0' + day.toString();
+
+            var maxDate = year + '-' + month + '-' + day;
+            $('#txtDate').attr('max', maxDate);
+        });
+</script>
 <!-- Vendor JS Files -->
 <script src="{{ asset('vendor/Arsha/assets/vendor/aos/aos.js') }}"></script>
 <script src="{{ asset('vendor/Arsha/assets/vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
