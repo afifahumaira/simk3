@@ -86,28 +86,31 @@
                                             class="bi bi-trash text-dark d-flex justify-content-center align-items-center"></i></button>
                                     <div class="modal fade" id="deletemas<?= $data['id'] ?>" tabindex="-1" role="dialog"
                                         aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                        <div class="modal-dialog" role="document">
+                                        <div class="modal-dialog modal-dialog-centered" role="document">
                                             <div class="modal-content">
-                                                <div class="modal-header">
-                                                    <h5 class="modal-title">Delete dokumen</h5>
-                                                    <button type="button" class="close" data-bs-dismiss="modal"
-                                                        aria-label="Close">
-                                                        <span aria-hidden="true">&times;</span>
-                                                    </button>
+
+                                                <div
+                                                    class="modal-body mt-5 d-flex justify-content-center align-items-center">
+
+                                                    <form method="POST"
+                                                        action="{{ route('daftardokumen.destroy', $data['id']) }}">
+                                                        @csrf
+                                                        <h2 class="mt-5 text-center"
+                                                            style="color: #16243D; font-size: 20px font-weight:700">
+                                                            Yakin data
+                                                            ingin dihapus?
+                                                        </h2>
                                                 </div>
-                                                <div class="modal-body">
-                                                    <div class="col-md-6">
-                                                        <form method="POST"
-                                                            action="{{ route('daftardokumen.destroy', $data['id']) }}">
-                                                            @csrf
-                                                            <h6>Apakah Anda Yakin?</h6>
-                                                            <input type="submit" class="btn btn-success" value="Okay"
-                                                                name="delete"></input>
-                                                            <button type="button" class="btn btn-secondary"
-                                                                data-bs-dismiss="modal">Close</button>
-                                                        </form>
-                                                    </div>
+                                                <div class="modal-footer d-flex justify-content-center border-0">
+                                                    <button type="submit"
+                                                        class="btn btn-success text-white d-flex justify-content-center align-items-center text-center rounded-1"
+                                                        style="width:76px; height:31px; background: #29CC6A;">Ya</button>
+                                                    <button type="button"
+                                                        class="btn btn-secondary text-center d-flex align-items-center rounded-1"
+                                                        data-bs-dismiss="modal"
+                                                        style="width:76px; height:31px; ">Tidak</button>
                                                 </div>
+                                                </form>
                                             </div>
                                         </div>
                                     </div>
