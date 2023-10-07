@@ -45,12 +45,12 @@
                     @endif --}}
                 </tr>
 
-                <tr>
+                {{-- <tr>
 
                     <th>Foto Profil</th>
                     <td><img src="{{ asset('berkas/' . $data->avatar) }}" style="width:auto; height:55px;" class="rounded"></td>
 
-                </tr>
+                </tr> --}}
                 </tbody>
 
                     {{-- <tr>

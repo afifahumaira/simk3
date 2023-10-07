@@ -7,7 +7,7 @@
             class="app-content flex-column-fluid rounded bg-light  mb-20 px-5 shadow"style="box-shadow: 2px 4px 20px 2px rgba(0, 0, 0, 0.1);">
             <div class="app-toolbar-wrapper d-flex flex-stack flex-wrap gap-4 w-100 mb-5 px-5 border-bottom border-5">
                 <!--begin::Page title-->
-                <h2>Detail User P2K3</h2>
+                <h2>Detail Users</h2>
                 <!--begin::Main wrapper-->
 
                 <!--end::Main wrapper-->
@@ -17,38 +17,43 @@
             </div>
             <!--begin::Content container-->
             <table class="table table-bordered border-secondary rounded-5 px-3 py-3 mb-5 shadow">
-
                 <tbody>
-                    <tr>
+                <tr>
 
-                        <th>Nama</th>
-                        <td>{{$data->nama}}</td>
+                    <th>Nama</th>
+                    <td>{{$data->nama}}</td>
 
-                    </tr>
-                    <tr>
-                        <th>Email</th>
-                        <td>{{$data->user->email}}</td>
+                </tr>                
+                <tr>
+                    <th>Jabatan</th>
+                    <td>{{$data->jabatan}}</td>
 
-                    </tr>
-                    <tr>
-                        <th>Jabatan</th>
-                        <td>{{$data->user->hak_akses}}</td>
+                </tr>
+                <tr>
 
-                    </tr>
-                    <tr>
+                    <th>Departemen</th>
+                    @if($data->departemen_id != null)
+                    <td>{{$data->departemen->name}}</td>
+                    @endif
+                    {{-- @if ($data->p2k3 != null)
+                    <td>{{$data->p2k3->departemen}}</td>
+                    @endif --}}
+                </tr>
 
-                        <th>Departemen</th>
-                        <td>{{$data->departemen?->name}}</td>
+                {{-- <tr>
 
-                    </tr>
+                    <th>Foto Profil</th>
+                    <td><img src="{{ asset('berkas/' . $data->avatar) }}" style="width:auto; height:55px;" class="rounded"></td>
 
-                    <tr>
-
-                        <th>Foto Profil</th>
-                        <td><img src="{{asset('/berkas/'. $data->avatar)}}" class="rounded"></td>
-
-                    </tr>
+                </tr> --}}
                 </tbody>
+
+                    {{-- <tr>
+
+                <th>Foto Benda</th>
+                <td><img src="https://laravel.com/img/logomark.min.svg" class="rounded"></td>
+
+              </tr> --}}
             </table>
 
             <!--end::Content container-->

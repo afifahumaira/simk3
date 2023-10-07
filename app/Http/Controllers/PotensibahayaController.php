@@ -266,13 +266,13 @@ class PotensibahayaController extends Controller
         return redirect()->route('potensibahaya.index');
     }
 
-    public function update($id, Request $request) {
+    public function update( Request $request) {
         // $request->validate([
           //   'p2k3' => 'required',
           // 'status' => 'required',
         // ]);
- 
-        Potensibahaya::find($id)->update([
+            
+        Potensibahaya::find($request->id)->update([
          'p2k3_id' => $request->p2k3_id,
          'status' => $request->status,
          'id' => $request->id,
@@ -290,16 +290,15 @@ class PotensibahayaController extends Controller
              'departemen_id' => $request->departemen_id,
              'lokasi' => $request->lokasi,
              'potensi_bahaya' => $request->potensi_bahaya,
-             'risiko' => $request->resiko_bahaya,
-             //'usulan' => $request->usulan_perbaikan,
+             'risiko' => $request->resiko_bahaya,                          
              'status' => $request->status,
          ]);
          Alert::success('Berhasil', 'Data Akan di Investigasi!')->iconHtml('<i class="bi bi-person-check"></i>')->hideCloseButton();
-         return redirect()->route('potensibahaya.index');
+         return redirect()->route('investigasipotensi.index');
         }
  
-        if ($request->status == 3) {
-         $data = Potensibahaya::find($id);
+        elseif ($request->status == 3) {
+         $data = Potensibahaya::find($request->id);
          $data->delete();
  
          Alert::success('Berhasil', 'Investigasi telah selesai')->iconHtml('<i class="bi bi-person-check"></i>')->hideCloseButton();
