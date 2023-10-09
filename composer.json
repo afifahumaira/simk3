@@ -67,7 +67,10 @@
     "minimum-stability": "dev",
     "prefer-stable": true,
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> fe49e0967b9771cdd7ac1d28f857bd32f9da664f
     "provide": {
         "ext-grpc": "*"
     }

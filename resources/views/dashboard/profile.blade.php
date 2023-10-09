@@ -67,7 +67,7 @@
                                             value="{{ Auth::user()->email }}">
                                     </div>
                                     <div class="mb-3">
-                                        <label class="form-labels">Password Terbaru</label>
+                                        <label class="form-labels">Password Terbaru* (Wajib Di Isi)</label>
                                         <input type="password" class="form-control" name="password" id="password">
                                     </div>
                                 </div>

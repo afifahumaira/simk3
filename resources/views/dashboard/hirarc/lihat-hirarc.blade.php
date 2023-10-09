@@ -56,7 +56,7 @@
 
                         <tr>
                             <th>Departemen</th>
-                            <td>{{ $hirarcs->first()->departemen->name }}</td>
+                            <td>{{ $hirarcs->first()->departemen?->name }}</td>
 
 
                         </tr>

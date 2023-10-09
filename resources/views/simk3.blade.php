@@ -189,7 +189,7 @@
                             </ul>
                         </li>
 
-                        <li><a class="nav-link scrollto" href="#dokumen">Maps</a></li>
+                        <li><a class="nav-link scrollto" href="#map">Maps</a></li>
                         {{-- <li><a class="nav-link scrollto" href="#team">Team P2K3</a></li> --}}
                         <li><a class="nav-link scrollto" href="#footer">Kontak</a></li>
                         <li>
@@ -1035,14 +1035,25 @@
             <div style="display: none" id="showhide_kapal">
             @foreach ($maps as $item)
             @if ($item->gedung == 'Teknik Perkapalan')
-            <a href="{{ route('maps.detail', $item->id) }}" class="list-item inside">{{ $item->lantai }} <img id="mapsimg" src="{{ asset('foto_maps/foreign.png') }}"></a>
-            @endif
-            @endforeach
-            </div>
-
-            `)
+            <li class="list-item inside gambargedung" data-img="{{ $item->gambar }}">{{ $item->lantai }} <img id="mapsimg" src="{{ asset('foto_maps/foreign.png') }}"></li>
+                                    @endif
+                                @endforeach
+                            </div>
+                        `)
 
                         .addTo(map);
+                        var gambargedung=document.getElementsByClassName("gambargedung");
+                        gambargedung.forEach(el=>{
+                            el.addEventListener('click', ()=>{
+                                var image = el.dataset.img;
+                                var baseUrl = "{{ asset('foto_maps/') }}";
+                                var imgSrc = baseUrl + '/' + image;
+                                document.getElementById("gambarmap").src = imgSrc;
+                                var modalgambar = new bootstrap.Modal(document.getElementById("modalgambar"), {});
+                                modalgambar.show();
+                                // console.log(image);
+                            });
+                        });
                     document.getElementById('fly_kapal').addEventListener('click', () => {
                         map.fitBounds([
                             [110.439917, -
@@ -1157,12 +1168,25 @@
                 <div style="display: none" id="showhide_industri">
                 @foreach ($maps as $item)
                 @if ($item->gedung == 'Teknik Industri')
-                <a href="{{ route('maps.detail', $item->id) }}" class="list-item inside">{{ $item->lantai }} <img id="mapsimg" src="{{ asset('foto_maps/foreign.png') }}"></a>
-                @endif
-                @endforeach
-                </div>
-            `)
+                <li class="list-item inside gambargedung" data-img="{{ $item->gambar }}">{{ $item->lantai }} <img id="mapsimg" src="{{ asset('foto_maps/foreign.png') }}"></li>
+                                    @endif
+                                @endforeach
+                            </div>
+                        `)
+
                         .addTo(map);
+                        var gambargedung=document.getElementsByClassName("gambargedung");
+                        gambargedung.forEach(el=>{
+                            el.addEventListener('click', ()=>{
+                                var image = el.dataset.img;
+                                var baseUrl = "{{ asset('foto_maps/') }}";
+                                var imgSrc = baseUrl + '/' + image;
+                                document.getElementById("gambarmap").src = imgSrc;
+                                var modalgambar = new bootstrap.Modal(document.getElementById("modalgambar"), {});
+                                modalgambar.show();
+                                // console.log(image);
+                            });
+                        });
                     document.getElementById('fly_industri').addEventListener('click', () => {
                         map.fitBounds([
                             [110.44142729810034, -
@@ -1300,12 +1324,25 @@
             <div style="display: none" id="showhide_arsitektur_gedung_a">
             @foreach ($maps as $item)
             @if ($item->gedung == 'Teknik Arsitektur Gedung A')
-            <a href="{{ route('maps.detail', $item->id) }}" class="list-item inside">{{ $item->lantai }} <img id="mapsimg" src="{{ asset('foto_maps/foreign.png') }}"></a>
-            @endif
-            @endforeach
-            </div>
-            `)
+            <li class="list-item inside gambargedung" data-img="{{ $item->gambar }}">{{ $item->lantai }} <img id="mapsimg" src="{{ asset('foto_maps/foreign.png') }}"></li>
+                                    @endif
+                                @endforeach
+                            </div>
+                        `)
+
                         .addTo(map);
+                        var gambargedung=document.getElementsByClassName("gambargedung");
+                        gambargedung.forEach(el=>{
+                            el.addEventListener('click', ()=>{
+                                var image = el.dataset.img;
+                                var baseUrl = "{{ asset('foto_maps/') }}";
+                                var imgSrc = baseUrl + '/' + image;
+                                document.getElementById("gambarmap").src = imgSrc;
+                                var modalgambar = new bootstrap.Modal(document.getElementById("modalgambar"), {});
+                                modalgambar.show();
+                                // console.log(image);
+                            });
+                        });
                     document.getElementById('fly_arsitektur_gedung_a').addEventListener('click', () => {
                         map.fitBounds([
                             [110.4386441622901, -
@@ -1422,12 +1459,25 @@
             <div style="display: none" id="showhide_arsitektur_gedung_b">
             @foreach ($maps as $item)
             @if ($item->gedung == 'Teknik Arsitektur Gedung B')
-            <a href="{{ route('maps.detail', $item->id) }}" class="list-item inside">{{ $item->lantai }} <img id="mapsimg" src="{{ asset('foto_maps/foreign.png') }}"></a>
-            @endif
-            @endforeach
-            </div>
-            `)
+            <li class="list-item inside gambargedung" data-img="{{ $item->gambar }}">{{ $item->lantai }} <img id="mapsimg" src="{{ asset('foto_maps/foreign.png') }}"></li>
+                                    @endif
+                                @endforeach
+                            </div>
+                        `)
+
                         .addTo(map);
+                        var gambargedung=document.getElementsByClassName("gambargedung");
+                        gambargedung.forEach(el=>{
+                            el.addEventListener('click', ()=>{
+                                var image = el.dataset.img;
+                                var baseUrl = "{{ asset('foto_maps/') }}";
+                                var imgSrc = baseUrl + '/' + image;
+                                document.getElementById("gambarmap").src = imgSrc;
+                                var modalgambar = new bootstrap.Modal(document.getElementById("modalgambar"), {});
+                                modalgambar.show();
+                                // console.log(image);
+                            });
+                        });
                     document.getElementById('fly_arsitektur_gedung_b').addEventListener('click', () => {
                         map.fitBounds([
                             [110.43841081010825, -
@@ -1539,12 +1589,25 @@
             <div style="display: none" id="showhide_arsitektur_gedung_c">
             @foreach ($maps as $item)
             @if ($item->gedung == 'Teknik Arsitektur Gedung C')
-            <a href="{{ route('maps.detail', $item->id) }}" class="list-item inside">{{ $item->lantai }} <img id="mapsimg" src="{{ asset('foto_maps/foreign.png') }}"></a>
-            @endif
-            @endforeach
-            </div>
-            `)
+            <li class="list-item inside gambargedung" data-img="{{ $item->gambar }}">{{ $item->lantai }} <img id="mapsimg" src="{{ asset('foto_maps/foreign.png') }}"></li>
+                                    @endif
+                                @endforeach
+                            </div>
+                        `)
+
                         .addTo(map);
+                        var gambargedung=document.getElementsByClassName("gambargedung");
+                        gambargedung.forEach(el=>{
+                            el.addEventListener('click', ()=>{
+                                var image = el.dataset.img;
+                                var baseUrl = "{{ asset('foto_maps/') }}";
+                                var imgSrc = baseUrl + '/' + image;
+                                document.getElementById("gambarmap").src = imgSrc;
+                                var modalgambar = new bootstrap.Modal(document.getElementById("modalgambar"), {});
+                                modalgambar.show();
+                                // console.log(image);
+                            });
+                        });
                     document.getElementById('fly_arsitektur_gedung_c').addEventListener('click', () => {
                         map.fitBounds([
                             [110.4381446991714, -
@@ -1655,17 +1718,25 @@
             <div style="display: none" id="showhide_arsitektur_gedung_d">
             @foreach ($maps as $item)
             @if ($item->gedung == 'Teknik Arsitektur Gedung D')
-            <a href="{{ route('maps.detail', $item->id) }}" class="list-item inside">{{ $item->lantai }} <img id="mapsimg" src="{{ asset('foto_maps/foreign.png') }}"></a>
-            @endif
-            @endforeach
-            </div>
-            `)
-                        // <h1>Teknik Arsitektur Gedung D</h1>
-                        // <button id="fly_arsitektur_gedung_d" class="list-item inside" onclick="floor_arsitektur_gedung_d()">Lantai Teknik Arsitektur Gedung D</button>
-                        //   <a href="{{ url('maps/teknik_arsitektur/gedung_d/teknik_arsitektur_lantai1') }}" class="list-item inside" id="lantai1" style="display: none">Lantai 1 <img id="mapsimg" src="{{ asset('foto_maps/foreign.png') }}"></a>
-                        //   <a href="{{ url('maps/teknik_arsitektur/gedung_d/teknik_arsitektur_lantai2') }}" class="list-item inside" id="lantai2" style="display: none">Lantai 2 <img id="mapsimg" src="{{ asset('foto_maps/foreign.png') }}"></a>
-                        //   <a href="{{ url('maps/teknik_arsitektur/gedung_d/teknik_arsitektur_lantai3') }}" class="list-item inside" id="lantai3" style="display: none">Lantai 3 <img id="mapsimg" src="{{ asset('foto_maps/foreign.png') }}"></a>
+            <li class="list-item inside gambargedung" data-img="{{ $item->gambar }}">{{ $item->lantai }} <img id="mapsimg" src="{{ asset('foto_maps/foreign.png') }}"></li>
+                                    @endif
+                                @endforeach
+                            </div>
+                        `)
+
                         .addTo(map);
+                        var gambargedung=document.getElementsByClassName("gambargedung");
+                        gambargedung.forEach(el=>{
+                            el.addEventListener('click', ()=>{
+                                var image = el.dataset.img;
+                                var baseUrl = "{{ asset('foto_maps/') }}";
+                                var imgSrc = baseUrl + '/' + image;
+                                document.getElementById("gambarmap").src = imgSrc;
+                                var modalgambar = new bootstrap.Modal(document.getElementById("modalgambar"), {});
+                                modalgambar.show();
+                                // console.log(image);
+                            });
+                        });
                     document.getElementById('fly_arsitektur_gedung_d').addEventListener('click', () => {
                         map.fitBounds([
                             [110.43800338887097, -
@@ -1785,12 +1856,25 @@
             <div style="display: none" id="showhide_dekanat_fakultas">
             @foreach ($maps as $item)
             @if ($item->gedung == 'Dekanat Fakultas Teknik')
-            <a href="{{ route('maps.detail', $item->id) }}" class="list-item inside">{{ $item->lantai }} <img id="mapsimg" src="{{ asset('foto_maps/foreign.png') }}"></a>
-            @endif
-            @endforeach
-            </div>
-            `)
+            <li class="list-item inside gambargedung" data-img="{{ $item->gambar }}">{{ $item->lantai }} <img id="mapsimg" src="{{ asset('foto_maps/foreign.png') }}"></li>
+                                    @endif
+                                @endforeach
+                            </div>
+                        `)
+
                         .addTo(map);
+                        var gambargedung=document.getElementsByClassName("gambargedung");
+                        gambargedung.forEach(el=>{
+                            el.addEventListener('click', ()=>{
+                                var image = el.dataset.img;
+                                var baseUrl = "{{ asset('foto_maps/') }}";
+                                var imgSrc = baseUrl + '/' + image;
+                                document.getElementById("gambarmap").src = imgSrc;
+                                var modalgambar = new bootstrap.Modal(document.getElementById("modalgambar"), {});
+                                modalgambar.show();
+                                // console.log(image);
+                            });
+                        });
                     document.getElementById('fly_dekanat_baru').addEventListener('click', () => {
                         map.fitBounds([
                             [110.43858712094622, -
@@ -1911,12 +1995,25 @@
                 <div style="display: none" id="showhide_kimia_a">
                 @foreach ($maps as $item)
                 @if ($item->gedung == 'Teknik Kimia Gedung A')
-                <a href="{{ route('maps.detail', $item->id) }}" class="list-item inside">{{ $item->lantai }} <img id="mapsimg" src="{{ asset('foto_maps/foreign.png') }}"></a>
-                @endif
-                @endforeach
-                </div>
-            `)
+                <li class="list-item inside gambargedung" data-img="{{ $item->gambar }}">{{ $item->lantai }} <img id="mapsimg" src="{{ asset('foto_maps/foreign.png') }}"></li>
+                                    @endif
+                                @endforeach
+                            </div>
+                        `)
+
                         .addTo(map);
+                        var gambargedung=document.getElementsByClassName("gambargedung");
+                        gambargedung.forEach(el=>{
+                            el.addEventListener('click', ()=>{
+                                var image = el.dataset.img;
+                                var baseUrl = "{{ asset('foto_maps/') }}";
+                                var imgSrc = baseUrl + '/' + image;
+                                document.getElementById("gambarmap").src = imgSrc;
+                                var modalgambar = new bootstrap.Modal(document.getElementById("modalgambar"), {});
+                                modalgambar.show();
+                                // console.log(image);
+                            });
+                        });
                     document.getElementById('fly_kimia_a').addEventListener('click', () => {
                         map.fitBounds([
                             [110.44117489871748, -
@@ -2027,12 +2124,25 @@
                 <div style="display: none" id="showhide_kimia_b">
                 @foreach ($maps as $item)
                 @if ($item->gedung == 'Teknik Kimia Gedung B')
-                <a href="{{ route('maps.detail', $item->id) }}" class="list-item inside">{{ $item->lantai }} <img id="mapsimg" src="{{ asset('foto_maps/foreign.png') }}"></a>
-                @endif
-                @endforeach
-                </div>
-            `)
+                <li class="list-item inside gambargedung" data-img="{{ $item->gambar }}">{{ $item->lantai }} <img id="mapsimg" src="{{ asset('foto_maps/foreign.png') }}"></li>
+                                    @endif
+                                @endforeach
+                            </div>
+                        `)
+
                         .addTo(map);
+                        var gambargedung=document.getElementsByClassName("gambargedung");
+                        gambargedung.forEach(el=>{
+                            el.addEventListener('click', ()=>{
+                                var image = el.dataset.img;
+                                var baseUrl = "{{ asset('foto_maps/') }}";
+                                var imgSrc = baseUrl + '/' + image;
+                                document.getElementById("gambarmap").src = imgSrc;
+                                var modalgambar = new bootstrap.Modal(document.getElementById("modalgambar"), {});
+                                modalgambar.show();
+                                // console.log(image);
+                            });
+                        });
                     document.getElementById('fly_kimia_b').addEventListener('click', () => {
                         map.fitBounds([
                             [110.44116759587276, -
@@ -2159,12 +2269,25 @@
                 <div style="display: none" id="showhide_kimia_c">
                 @foreach ($maps as $item)
                 @if ($item->gedung == 'Teknik Kimia Gedung C')
-                <a href="{{ route('maps.detail', $item->id) }}" class="list-item inside">{{ $item->lantai }} <img id="mapsimg" src="{{ asset('foto_maps/foreign.png') }}"></a>
-                @endif
-                @endforeach
-                </div>
-            `)
+                <li class="list-item inside gambargedung" data-img="{{ $item->gambar }}">{{ $item->lantai }} <img id="mapsimg" src="{{ asset('foto_maps/foreign.png') }}"></li>
+                                    @endif
+                                @endforeach
+                            </div>
+                        `)
+
                         .addTo(map);
+                        var gambargedung=document.getElementsByClassName("gambargedung");
+                        gambargedung.forEach(el=>{
+                            el.addEventListener('click', ()=>{
+                                var image = el.dataset.img;
+                                var baseUrl = "{{ asset('foto_maps/') }}";
+                                var imgSrc = baseUrl + '/' + image;
+                                document.getElementById("gambarmap").src = imgSrc;
+                                var modalgambar = new bootstrap.Modal(document.getElementById("modalgambar"), {});
+                                modalgambar.show();
+                                // console.log(image);
+                            });
+                        });
                     document.getElementById('fly_kimia_c').addEventListener('click', () => {
                         map.fitBounds([
                             [110.44095459933877, -
@@ -2267,12 +2390,25 @@
                 <div style="display: none" id="showhide_lab_pengolahlimbah">
                 @foreach ($maps as $item)
                 @if ($item->gedung == 'Laboratorium Pengolahan Limbah (Teknik Kimia)')
-                <a href="{{ route('maps.detail', $item->id) }}" class="list-item inside">{{ $item->lantai }} <img id="mapsimg" src="{{ asset('foto_maps/foreign.png') }}"></a>
-                @endif
-                @endforeach
-                </div>
-            `)
+                <li class="list-item inside gambargedung" data-img="{{ $item->gambar }}">{{ $item->lantai }} <img id="mapsimg" src="{{ asset('foto_maps/foreign.png') }}"></li>
+                                    @endif
+                                @endforeach
+                            </div>
+                        `)
+
                         .addTo(map);
+                        var gambargedung=document.getElementsByClassName("gambargedung");
+                        gambargedung.forEach(el=>{
+                            el.addEventListener('click', ()=>{
+                                var image = el.dataset.img;
+                                var baseUrl = "{{ asset('foto_maps/') }}";
+                                var imgSrc = baseUrl + '/' + image;
+                                document.getElementById("gambarmap").src = imgSrc;
+                                var modalgambar = new bootstrap.Modal(document.getElementById("modalgambar"), {});
+                                modalgambar.show();
+                                // console.log(image);
+                            });
+                        });
                     document.getElementById('fly_lab_pengolahlimbah').addEventListener('click', () => {
                         map.fitBounds([
                             [110.44119894162314, -
@@ -2380,12 +2516,25 @@
                 <div style="display: none" id="showhide_lab_kimiadasar">
                 @foreach ($maps as $item)
                 @if ($item->gedung == 'Laboratorium Kimia Dasar (Teknik Kimia)')
-                <a href="{{ route('maps.detail', $item->id) }}" class="list-item inside">{{ $item->lantai }} <img id="mapsimg" src="{{ asset('foto_maps/foreign.png') }}"></a>
-                @endif
-                @endforeach
-                </div>
-            `)
+                <li class="list-item inside gambargedung" data-img="{{ $item->gambar }}">{{ $item->lantai }} <img id="mapsimg" src="{{ asset('foto_maps/foreign.png') }}"></li>
+                                    @endif
+                                @endforeach
+                            </div>
+                        `)
+
                         .addTo(map);
+                        var gambargedung=document.getElementsByClassName("gambargedung");
+                        gambargedung.forEach(el=>{
+                            el.addEventListener('click', ()=>{
+                                var image = el.dataset.img;
+                                var baseUrl = "{{ asset('foto_maps/') }}";
+                                var imgSrc = baseUrl + '/' + image;
+                                document.getElementById("gambarmap").src = imgSrc;
+                                var modalgambar = new bootstrap.Modal(document.getElementById("modalgambar"), {});
+                                modalgambar.show();
+                                // console.log(image);
+                            });
+                        });
                     document.getElementById('fly_lab_kimiadasar').addEventListener('click', () => {
                         map.fitBounds([
                             [110.44114990151887, -
@@ -2538,12 +2687,25 @@
                     <div style="display: none" id="showhide_gkb">
                     @foreach ($maps as $item)
                     @if ($item->gedung == 'Gedung Kuliah Bersama')
-                    <a href="{{ route('maps.detail', $item->id) }}" class="list-item inside">{{ $item->lantai }} <img id="mapsimg" src="{{ asset('foto_maps/foreign.png') }}"></a>
-                    @endif
-                    @endforeach
-                    </div>
-            `)
+                    <li class="list-item inside gambargedung" data-img="{{ $item->gambar }}">{{ $item->lantai }} <img id="mapsimg" src="{{ asset('foto_maps/foreign.png') }}"></li>
+                                    @endif
+                                @endforeach
+                            </div>
+                        `)
+
                         .addTo(map);
+                        var gambargedung=document.getElementsByClassName("gambargedung");
+                        gambargedung.forEach(el=>{
+                            el.addEventListener('click', ()=>{
+                                var image = el.dataset.img;
+                                var baseUrl = "{{ asset('foto_maps/') }}";
+                                var imgSrc = baseUrl + '/' + image;
+                                document.getElementById("gambarmap").src = imgSrc;
+                                var modalgambar = new bootstrap.Modal(document.getElementById("modalgambar"), {});
+                                modalgambar.show();
+                                // console.log(image);
+                            });
+                        });
                     document.getElementById('fly_gkb').addEventListener('click', () => {
                         map.fitBounds([
                             [110.44027707962385, -
@@ -2698,12 +2860,25 @@
             <div style="display: none" id="showhide_elektro_gedung_a">
             @foreach ($maps as $item)
             @if ($item->gedung == 'Teknik Elektro Gedung A')
-            <a href="{{ route('maps.detail', $item->id) }}" class="list-item inside">{{ $item->lantai }} <img id="mapsimg" src="{{ asset('foto_maps/foreign.png') }}"></a>
-            @endif
-            @endforeach
-            </div>
-            `)
+            <li class="list-item inside gambargedung" data-img="{{ $item->gambar }}">{{ $item->lantai }} <img id="mapsimg" src="{{ asset('foto_maps/foreign.png') }}"></li>
+                                    @endif
+                                @endforeach
+                            </div>
+                        `)
+
                         .addTo(map);
+                        var gambargedung=document.getElementsByClassName("gambargedung");
+                        gambargedung.forEach(el=>{
+                            el.addEventListener('click', ()=>{
+                                var image = el.dataset.img;
+                                var baseUrl = "{{ asset('foto_maps/') }}";
+                                var imgSrc = baseUrl + '/' + image;
+                                document.getElementById("gambarmap").src = imgSrc;
+                                var modalgambar = new bootstrap.Modal(document.getElementById("modalgambar"), {});
+                                modalgambar.show();
+                                // console.log(image);
+                            });
+                        });
                     document.getElementById('fly_teknik_elektro_a').addEventListener('click', () => {
                         map.fitBounds([
                             [110.44004933265097, -7.0498219866558145],
@@ -2810,12 +2985,25 @@
             <div style="display: none" id="showhide_elektro_gedung_b">
             @foreach ($maps as $item)
             @if ($item->gedung == 'Teknik Elektro Gedung B')
-            <a href="{{ route('maps.detail', $item->id) }}" class="list-item inside">{{ $item->lantai }} <img id="mapsimg" src="{{ asset('foto_maps/foreign.png') }}"></a>
-            @endif
-            @endforeach
-            </div>
-            `)
+            <li class="list-item inside gambargedung" data-img="{{ $item->gambar }}">{{ $item->lantai }} <img id="mapsimg" src="{{ asset('foto_maps/foreign.png') }}"></li>
+                                    @endif
+                                @endforeach
+                            </div>
+                        `)
+
                         .addTo(map);
+                        var gambargedung=document.getElementsByClassName("gambargedung");
+                        gambargedung.forEach(el=>{
+                            el.addEventListener('click', ()=>{
+                                var image = el.dataset.img;
+                                var baseUrl = "{{ asset('foto_maps/') }}";
+                                var imgSrc = baseUrl + '/' + image;
+                                document.getElementById("gambarmap").src = imgSrc;
+                                var modalgambar = new bootstrap.Modal(document.getElementById("modalgambar"), {});
+                                modalgambar.show();
+                                // console.log(image);
+                            });
+                        });
                     document.getElementById('fly_elektro_b').addEventListener('click', () => {
                         map.fitBounds([
                             [110.4394286925247, -7.050242198492015],
@@ -2923,12 +3111,25 @@
             <div style="display: none" id="showhide_pwk_a">
             @foreach ($maps as $item)
             @if ($item->gedung == 'PWK Gedung A')
-            <a href="{{ route('maps.detail', $item->id) }}" class="list-item inside">{{ $item->lantai }} <img id="mapsimg" src="{{ asset('foto_maps/foreign.png') }}"></a>
-            @endif
-            @endforeach
-            </div>
-            `)
+            <li class="list-item inside gambargedung" data-img="{{ $item->gambar }}">{{ $item->lantai }} <img id="mapsimg" src="{{ asset('foto_maps/foreign.png') }}"></li>
+                                    @endif
+                                @endforeach
+                            </div>
+                        `)
+
                         .addTo(map);
+                        var gambargedung=document.getElementsByClassName("gambargedung");
+                        gambargedung.forEach(el=>{
+                            el.addEventListener('click', ()=>{
+                                var image = el.dataset.img;
+                                var baseUrl = "{{ asset('foto_maps/') }}";
+                                var imgSrc = baseUrl + '/' + image;
+                                document.getElementById("gambarmap").src = imgSrc;
+                                var modalgambar = new bootstrap.Modal(document.getElementById("modalgambar"), {});
+                                modalgambar.show();
+                                // console.log(image);
+                            });
+                        });
                     document.getElementById('fly_teknik_pwk_a').addEventListener('click', () => {
                         map.fitBounds([
                             [110.43908010875005, -7.051365712079983],
@@ -3034,12 +3235,25 @@
             <div style="display: none" id="showhide_pwk_b">
             @foreach ($maps as $item)
             @if ($item->gedung == 'PWK Gedung B')
-            <a href="{{ route('maps.detail', $item->id) }}" class="list-item inside">{{ $item->lantai }} <img id="mapsimg" src="{{ asset('foto_maps/foreign.png') }}"></a>
-            @endif
-            @endforeach
-            </div>
-            `)
+            <li class="list-item inside gambargedung" data-img="{{ $item->gambar }}">{{ $item->lantai }} <img id="mapsimg" src="{{ asset('foto_maps/foreign.png') }}"></li>
+                                    @endif
+                                @endforeach
+                            </div>
+                        `)
+
                         .addTo(map);
+                        var gambargedung=document.getElementsByClassName("gambargedung");
+                        gambargedung.forEach(el=>{
+                            el.addEventListener('click', ()=>{
+                                var image = el.dataset.img;
+                                var baseUrl = "{{ asset('foto_maps/') }}";
+                                var imgSrc = baseUrl + '/' + image;
+                                document.getElementById("gambarmap").src = imgSrc;
+                                var modalgambar = new bootstrap.Modal(document.getElementById("modalgambar"), {});
+                                modalgambar.show();
+                                // console.log(image);
+                            });
+                        });
                     document.getElementById('fly_teknik_pwk_b').addEventListener('click', () => {
                         map.fitBounds([
                             [110.43894070804863, -7.050990200424679],
@@ -3475,12 +3689,25 @@
                 <div style="display: none" id="showhide_geologi">
                     @foreach ($maps as $item)
                         @if ($item->gedung == 'Teknik Geologi')
-                        <a href="{{ route('maps.detail', $item->id) }}" class="list-item inside">{{ $item->lantai }} <img id="mapsimg" src="{{ asset('foto_maps/foreign.png') }}"></a>
-                        @endif
-                        @endforeach
-                </div>
-                `)
+                        <li class="list-item inside gambargedung" data-img="{{ $item->gambar }}">{{ $item->lantai }} <img id="mapsimg" src="{{ asset('foto_maps/foreign.png') }}"></li>
+                                    @endif
+                                @endforeach
+                            </div>
+                        `)
+
                         .addTo(map);
+                        var gambargedung=document.getElementsByClassName("gambargedung");
+                        gambargedung.forEach(el=>{
+                            el.addEventListener('click', ()=>{
+                                var image = el.dataset.img;
+                                var baseUrl = "{{ asset('foto_maps/') }}";
+                                var imgSrc = baseUrl + '/' + image;
+                                document.getElementById("gambarmap").src = imgSrc;
+                                var modalgambar = new bootstrap.Modal(document.getElementById("modalgambar"), {});
+                                modalgambar.show();
+                                // console.log(image);
+                            });
+                        });
                     document.getElementById('fly_teknik_geologi').addEventListener('click', () => {
                         map.fitBounds([
                             [110.43941696833167, -7.052399838697005],
@@ -3581,12 +3808,25 @@
                     <div style="display: none" id="showhide_sipil_a">
                     @foreach ($maps as $item)
                     @if ($item->gedung == 'Teknik Sipil Gedung A')
-                    <a href="{{ route('maps.detail', $item->id) }}" class="list-item inside">{{ $item->lantai }} <img id="mapsimg" src="{{ asset('foto_maps/foreign.png') }}"></a>
-                    @endif
-                    @endforeach
-                    </div>
-                `)
+                    <li class="list-item inside gambargedung" data-img="{{ $item->gambar }}">{{ $item->lantai }} <img id="mapsimg" src="{{ asset('foto_maps/foreign.png') }}"></li>
+                                    @endif
+                                @endforeach
+                            </div>
+                        `)
+
                         .addTo(map);
+                        var gambargedung=document.getElementsByClassName("gambargedung");
+                        gambargedung.forEach(el=>{
+                            el.addEventListener('click', ()=>{
+                                var image = el.dataset.img;
+                                var baseUrl = "{{ asset('foto_maps/') }}";
+                                var imgSrc = baseUrl + '/' + image;
+                                document.getElementById("gambarmap").src = imgSrc;
+                                var modalgambar = new bootstrap.Modal(document.getElementById("modalgambar"), {});
+                                modalgambar.show();
+                                // console.log(image);
+                            });
+                        });
                     document.getElementById('fly_teknik_sipil_gedung_A').addEventListener('click', () => {
                         map.fitBounds([
                             [110.4389737422591, -7.053156466583636],
@@ -3732,12 +3972,25 @@
                     <div style="display: none" id="showhide_sipil_b_dan_c">
                     @foreach ($maps as $item)
                     @if ($item->gedung == 'Teknik Sipil Gedung B dan C')
-                    <a href="{{ route('maps.detail', $item->id) }}" class="list-item inside">{{ $item->lantai }} <img id="mapsimg" src="{{ asset('foto_maps/foreign.png') }}"></a>
-                    @endif
-                    @endforeach
-                    </div>
-                `)
+                    <li class="list-item inside gambargedung" data-img="{{ $item->gambar }}">{{ $item->lantai }} <img id="mapsimg" src="{{ asset('foto_maps/foreign.png') }}"></li>
+                                    @endif
+                                @endforeach
+                            </div>
+                        `)
+
                         .addTo(map);
+                        var gambargedung=document.getElementsByClassName("gambargedung");
+                        gambargedung.forEach(el=>{
+                            el.addEventListener('click', ()=>{
+                                var image = el.dataset.img;
+                                var baseUrl = "{{ asset('foto_maps/') }}";
+                                var imgSrc = baseUrl + '/' + image;
+                                document.getElementById("gambarmap").src = imgSrc;
+                                var modalgambar = new bootstrap.Modal(document.getElementById("modalgambar"), {});
+                                modalgambar.show();
+                                // console.log(image);
+                            });
+                        });
                     document.getElementById('fly_teknik_sipil_gedung_B_C').addEventListener('click', () => {
                         map.fitBounds([
                             [110.4389486382442, -7.052902339286147],
@@ -3883,12 +4136,25 @@
                     <div style="display: none" id="showhide_sipil_d">
                     @foreach ($maps as $item)
                     @if ($item->gedung == 'Teknik Sipil Gedung D')
-                    <a href="{{ route('maps.detail', $item->id) }}" class="list-item inside">{{ $item->lantai }} <img id="mapsimg" src="{{ asset('foto_maps/foreign.png') }}"></a>
-                    @endif
-                    @endforeach
-                    </div>
-                `)
+                    <li class="list-item inside gambargedung" data-img="{{ $item->gambar }}">{{ $item->lantai }} <img id="mapsimg" src="{{ asset('foto_maps/foreign.png') }}"></li>
+                                    @endif
+                                @endforeach
+                            </div>
+                        `)
+
                         .addTo(map);
+                        var gambargedung=document.getElementsByClassName("gambargedung");
+                        gambargedung.forEach(el=>{
+                            el.addEventListener('click', ()=>{
+                                var image = el.dataset.img;
+                                var baseUrl = "{{ asset('foto_maps/') }}";
+                                var imgSrc = baseUrl + '/' + image;
+                                document.getElementById("gambarmap").src = imgSrc;
+                                var modalgambar = new bootstrap.Modal(document.getElementById("modalgambar"), {});
+                                modalgambar.show();
+                                // console.log(image);
+                            });
+                        });
                     document.getElementById('fly_teknik_sipil_gedung_D').addEventListener('click', () => {
                         map.fitBounds([
                             [110.43865877325648, -7.052453990326003],
@@ -4010,12 +4276,25 @@
                     <div style="display: none" id="showhide_sipil_e">
                     @foreach ($maps as $item)
                     @if ($item->gedung == 'Teknik Sipil Gedung E')
-                    <a href="{{ route('maps.detail', $item->id) }}" class="list-item inside">{{ $item->lantai }} <img id="mapsimg" src="{{ asset('foto_maps/foreign.png') }}"></a>
-                    @endif
-                    @endforeach
-                    </div>
-                `)
+                    <li class="list-item inside gambargedung" data-img="{{ $item->gambar }}">{{ $item->lantai }} <img id="mapsimg" src="{{ asset('foto_maps/foreign.png') }}"></li>
+                                    @endif
+                                @endforeach
+                            </div>
+                        `)
+
                         .addTo(map);
+                        var gambargedung=document.getElementsByClassName("gambargedung");
+                        gambargedung.forEach(el=>{
+                            el.addEventListener('click', ()=>{
+                                var image = el.dataset.img;
+                                var baseUrl = "{{ asset('foto_maps/') }}";
+                                var imgSrc = baseUrl + '/' + image;
+                                document.getElementById("gambarmap").src = imgSrc;
+                                var modalgambar = new bootstrap.Modal(document.getElementById("modalgambar"), {});
+                                modalgambar.show();
+                                // console.log(image);
+                            });
+                        });
                     document.getElementById('fly_teknik_sipil_gedung_E').addEventListener('click', () => {
                         map.fitBounds([
                             [110.43907038987942, -7.052238426206088],
@@ -4130,12 +4409,25 @@
                     <div style="display: none" id="showhide_mesin_a">
                     @foreach ($maps as $item)
                     @if ($item->gedung == 'Teknik Mesin Gedung A')
-                    <a href="{{ route('maps.detail', $item->id) }}" class="list-item inside">{{ $item->lantai }} <img id="mapsimg" src="{{ asset('foto_maps/foreign.png') }}"></a>
-                    @endif
-                    @endforeach
-                    </div>
-                `)
+                    <li class="list-item inside gambargedung" data-img="{{ $item->gambar }}">{{ $item->lantai }} <img id="mapsimg" src="{{ asset('foto_maps/foreign.png') }}"></li>
+                                    @endif
+                                @endforeach
+                            </div>
+                        `)
+
                         .addTo(map);
+                        var gambargedung=document.getElementsByClassName("gambargedung");
+                        gambargedung.forEach(el=>{
+                            el.addEventListener('click', ()=>{
+                                var image = el.dataset.img;
+                                var baseUrl = "{{ asset('foto_maps/') }}";
+                                var imgSrc = baseUrl + '/' + image;
+                                document.getElementById("gambarmap").src = imgSrc;
+                                var modalgambar = new bootstrap.Modal(document.getElementById("modalgambar"), {});
+                                modalgambar.show();
+                                // console.log(image);
+                            });
+                        });
                     document.getElementById('fly_teknik_mesin_gedung_A').addEventListener('click', () => {
                         map.fitBounds([
                             [110.44177127094258, -7.050239844922089],
@@ -4252,12 +4544,25 @@
                     <div style="display: none" id="showhide_mesin_b">
                     @foreach ($maps as $item)
                     @if ($item->gedung == 'Teknik Mesin Gedung B')
-                    <a href="{{ route('maps.detail', $item->id) }}" class="list-item inside">{{ $item->lantai }} <img id="mapsimg" src="{{ asset('foto_maps/foreign.png') }}"></a>
-                    @endif
-                    @endforeach
-                    </div>
-                `)
+                    <li class="list-item inside gambargedung" data-img="{{ $item->gambar }}">{{ $item->lantai }} <img id="mapsimg" src="{{ asset('foto_maps/foreign.png') }}"></li>
+                                    @endif
+                                @endforeach
+                            </div>
+                        `)
+
                         .addTo(map);
+                        var gambargedung=document.getElementsByClassName("gambargedung");
+                        gambargedung.forEach(el=>{
+                            el.addEventListener('click', ()=>{
+                                var image = el.dataset.img;
+                                var baseUrl = "{{ asset('foto_maps/') }}";
+                                var imgSrc = baseUrl + '/' + image;
+                                document.getElementById("gambarmap").src = imgSrc;
+                                var modalgambar = new bootstrap.Modal(document.getElementById("modalgambar"), {});
+                                modalgambar.show();
+                                // console.log(image);
+                            });
+                        });
                     document.getElementById('fly_teknik_mesin_gedung_B').addEventListener('click', () => {
                         map.fitBounds([
                             [110.44163009984413, -7.050571560893417],
@@ -4378,12 +4683,25 @@
                     <div style="display: none" id="showhide_mesin_b">
                     @foreach ($maps as $item)
                     @if ($item->gedung == 'Laboratorium Tribologi (Teknik Mesin)')
-                    <a href="{{ route('maps.detail', $item->id) }}" class="list-item inside">{{ $item->lantai }} <img id="mapsimg" src="{{ asset('foto_maps/foreign.png') }}"></a>
-                    @endif
-                    @endforeach
-                    </div>
-                `)
+                    <li class="list-item inside gambargedung" data-img="{{ $item->gambar }}">{{ $item->lantai }} <img id="mapsimg" src="{{ asset('foto_maps/foreign.png') }}"></li>
+                                    @endif
+                                @endforeach
+                            </div>
+                        `)
+
                         .addTo(map);
+                        var gambargedung=document.getElementsByClassName("gambargedung");
+                        gambargedung.forEach(el=>{
+                            el.addEventListener('click', ()=>{
+                                var image = el.dataset.img;
+                                var baseUrl = "{{ asset('foto_maps/') }}";
+                                var imgSrc = baseUrl + '/' + image;
+                                document.getElementById("gambarmap").src = imgSrc;
+                                var modalgambar = new bootstrap.Modal(document.getElementById("modalgambar"), {});
+                                modalgambar.show();
+                                // console.log(image);
+                            });
+                        });
                     document.getElementById('fly_teknik_mesin_lab_tribologi').addEventListener('click', () => {
                         map.fitBounds([
                             [110.44101456559252, -7.049959859169121],
@@ -4481,12 +4799,25 @@
                     <div style="display: none" id="showhide_mesin_b">
                     @foreach ($maps as $item)
                     @if ($item->gedung == 'Gedung Laboratorium Teknik Mesin')
-                    <a href="{{ route('maps.detail', $item->id) }}" class="list-item inside">{{ $item->lantai }} <img id="mapsimg" src="{{ asset('foto_maps/foreign.png') }}"></a>
-                    @endif
-                    @endforeach
-                    </div>
-                `)
+                    <li class="list-item inside gambargedung" data-img="{{ $item->gambar }}">{{ $item->lantai }} <img id="mapsimg" src="{{ asset('foto_maps/foreign.png') }}"></li>
+                                    @endif
+                                @endforeach
+                            </div>
+                        `)
+
                         .addTo(map);
+                        var gambargedung=document.getElementsByClassName("gambargedung");
+                        gambargedung.forEach(el=>{
+                            el.addEventListener('click', ()=>{
+                                var image = el.dataset.img;
+                                var baseUrl = "{{ asset('foto_maps/') }}";
+                                var imgSrc = baseUrl + '/' + image;
+                                document.getElementById("gambarmap").src = imgSrc;
+                                var modalgambar = new bootstrap.Modal(document.getElementById("modalgambar"), {});
+                                modalgambar.show();
+                                // console.log(image);
+                            });
+                        });
                     document.getElementById('fly_teknik_mesin_laboratorium').addEventListener('click', () => {
                         map.fitBounds([
                             [110.44133599457797, -7.05018662794177],

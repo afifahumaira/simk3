@@ -203,7 +203,7 @@ class HirarcController extends Controller
         ->get();
         $lokasi_ids=Hirarc::where('departemen_id', $departemen_id )->pluck('location_id')->unique()->toArray();
         // @dd($lokasi_ids);
-        $locations=Location::whereIn('id', $lokasi_ids )->get();
+        $locations=Location_masters::whereIn('id', $lokasi_ids )->get();
         // dd($hirarcs);
         $locCount=[];
         $actCount=[];
@@ -295,6 +295,11 @@ class HirarcController extends Controller
         public function save(Request $request) {
             
             $validatedData = $request->validate([
+                'departemen_id' => 'required',
+                'location_id' => 'required',
+                'activitie' => 'required',
+                'hazard' => 'required',
+                'risk' => 'required',
                 'kesesuaian' => 'required',
                 'kondisi' => 'required',
                 //'kendali' => 'required',
@@ -303,7 +308,7 @@ class HirarcController extends Controller
                 'current_probability' => 'required',
                 'current_risk_rating' => 'required',
                 'current_risk_category' => 'required',
-                'penyebab' => 'required',
+                //'penyebab' => 'required',
                 'usulan' => 'required',
                 //'form_diperlukan' => 'required',
                 //'sop' => 'required',
@@ -312,7 +317,7 @@ class HirarcController extends Controller
                 'residual_probability' => 'required',
                 'residual_risk_rating' => 'required',
                 'residual_risk_category' => 'required',
-                'penanggung_jawab' => 'required',
+                //'penanggung_jawab' => 'required',
                 'status' => 'required',
             ]);
     
@@ -326,7 +331,7 @@ class HirarcController extends Controller
                 'risk' => $request->risk,
                 'kesesuaian'      => $request->kesesuaian,
                 'kondisi'      => $request->kondisi,
-                //'kendali'      => $request->kendali,
+                'kendali'      => $request->kendali,
                 'current_severity'      => $request->current_severity,
                 'current_exposure'      => $request->current_exposure,
                 'current_probability'      => $request->current_probability,
@@ -334,8 +339,8 @@ class HirarcController extends Controller
                 'current_risk_category'      => $request->current_risk_category,
                 'penyebab'      => $request->penyebab,
                 'usulan'      => $request->usulan,
-                //'form_diperlukan'      => $request->form_diperlukan,
-                //'sop'      => $request->sop,
+                'form_diperlukan'      => $request->form_diperlukan,
+                'sop'      => $request->sop,
                 'residual_severity'      => $request->residual_severity,
                 'residual_exposure'      => $request->residual_exposure,
                 'residual_probability'      => $request->residual_probability,
@@ -380,9 +385,11 @@ class HirarcController extends Controller
 
             Hirarc::find($id)->update([
                // $validatedData
-                // 'activity'      => $request->activity,
-                // 'hazard'      => $request->hazard,
-                // 'risk'      => $request->risk,
+                'departemen_id' => $request->departemen_id,
+                'location_id' => $request->location_id,
+                'activity'      => $request->activity,
+                'hazard'      => $request->hazard,
+                'risk'      => $request->risk,
                 'kesesuaian'      => $request->kesesuaian,
                 'kondisi'      => $request->kondisi,
                 'kendali'      => $request->kendali,
@@ -407,7 +414,7 @@ class HirarcController extends Controller
             // dd("aa");
             
             Alert::success('Berhasil', 'Data HIRARC berhasil diperbaharui!')->iconHtml('<i class="bi bi-person-check fs-3x"></i>')->hideCloseButton();
-            return redirect()->route('hirarc.lihat-hirarc');
+            return redirect()->route('hirarc.lihat', $request->departemen_id);
     
         }
 

@@ -275,6 +275,7 @@
                                                 style="--bs-link-hover-color-rgb: 25, 135, 84;" name=""
                                                 id="current_risk_category"
                                                 style="font-family: Arial, Helvetica, sans-serif;" required disabled>
+                                                <option value=""></option>
                                                 <option value="1" {{ old('current_risk_category') == 1 ? 'selected' : ''}}>Slight</option>
                                                 <option value="2" {{ old('current_risk_category') == 2 ? 'selected' : ''}}>Low</option>
                                                 <option value="3" {{ old('current_risk_category') == 3 ? 'selected' : ''}}>Medium</option>
@@ -399,7 +400,7 @@
                                         <label class="col-form-label">Tingkat Risiko Residual</label>
                                         <div class=" w-100">
                                             <input type="text" class="form-control" name=""
-                                                id="residual_risk_rating" value="{{ old('residual_risk_rating', request()->input('residual_risk_rating'))}}" readonly disabled>
+                                                id="residual_risk_rating" value="{{ old('residual_risk_rating', request()->input('residual_risk_rating1'))}}" readonly disabled>
                                             <input type="hidden" name="residual_risk_rating" id="residual_risk_rating1">
                                         </div>
                                     </div>
@@ -412,11 +413,12 @@
                                                 style="--bs-link-hover-color-rgb: 25, 135, 84;" name=""
                                                 id="residual_risk_category"
                                                 style="font-family: Arial, Helvetica, sans-serif;" required disabled>
-                                                <option value="1" {{ old('residual_risk_category') == 1 ? 'selected' : ''}}>Slight</option>
-                                                <option value="2" {{ old('residual_risk_category') == 2 ? 'selected' : ''}}>Low</option>
-                                                <option value="3" {{ old('residual_risk_category') == 3 ? 'selected' : ''}}>Medium</option>
-                                                <option value="4" {{ old('residual_risk_category') == 4 ? 'selected' : ''}}>High</option>
-                                                <option value="5" {{ old('residual_risk_category') == 5 ? 'selected' : ''}}>Very High</option>
+                                                <option value=""></option>
+                                                <option value="1" {{ old('residual_risk_category1') == 1 ? 'selected' : ''}}>Slight</option>
+                                                <option value="2" {{ old('residual_risk_category1') == 2 ? 'selected' : ''}}>Low</option>
+                                                <option value="3" {{ old('residual_risk_category1') == 3 ? 'selected' : ''}}>Medium</option>
+                                                <option value="4" {{ old('residual_risk_category1') == 4 ? 'selected' : ''}}>High</option>
+                                                <option value="5" {{ old('residual_risk_category1') == 5 ? 'selected' : ''}}>Very High</option>
                                             </select>
                                             <input type="hidden" name="residual_risk_category"
                                                 id="residual_risk_category1">

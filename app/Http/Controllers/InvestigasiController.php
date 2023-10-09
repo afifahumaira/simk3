@@ -100,6 +100,7 @@ class InvestigasiController extends Controller
             'p2k3_id' => 'required',
             'laporinsiden_id' => 'required',
             'departemen_id' => 'required',
+            'lokasi' => 'required',
             'kategori' => 'required',
             'penyebab_langsung' => 'required',
             'penyebab_tidak_langsung' => 'required',
@@ -112,6 +113,7 @@ class InvestigasiController extends Controller
             'p2k3_id' => $request->p2k3_id,
             'laporinsiden_id' => $request->laporinsiden_id,
             'departemen_id' => $request->departemen_id,
+            'lokasi' => $request->lokasi,
             'kategori' => $request->kategori,
             'penyebab_langsung' => $request->penyebab_langsung,
             'penyebab_tidak_langsung' => $request->penyebab_tidak_langsung,
@@ -141,12 +143,14 @@ class InvestigasiController extends Controller
             'p2k3_id' => $request->p2k3_id,
             'laporinsiden_id' => $request->laporinsiden_id,
             'departemen_id' => $request->departemen_id,
+            'lokasi' => $request->lokasi,
             'kategori' => $request->kategori,
             'penyebab_langsung' => $request->penyebab_langsung,
             'penyebab_tidak_langsung' => $request->penyebab_tidak_langsung,
             'penyebab_dasar' => $request->penyebab_dasar,
             'tenggat_waktu' => $request->tenggat_waktu,
             'tindakan' => $request->tindakan,
+            'status' => $request->status,
         ]);
 
         if ($request->status == 3) {

@@ -62,7 +62,7 @@
                             <tr>
                                 <th scope="col" class="text-center">No</th>
                                 <th scope="col">Kategori</th>
-                                {{-- <th scope="col">Nama Pelapor</th> --}}
+                                <th scope="col">Departemen</th>
                                 <th scope="col">Lokasi Kejadian</th>
                                 {{-- <th scope="col">Tenggat Waktu</th> --}}
                                 <th scope="col">Penanggung Jawab</th>
@@ -78,6 +78,7 @@
                                     <td>
                                         {{ $investigasi->departemen?->name }}
                                     </td>
+                                    <td>{{ $investigasi->lokasi }}</td>
                                     {{-- <td>{{ $investigasi->tenggat_waktu ? $investigasi->tenggat_waktu->translatedFormat('d F Y') : '' }}</td> --}}
                                     <td>{{ $investigasi->p2k3->nama }}</td>
 
@@ -133,7 +134,7 @@
                             <tr>
                                 <th scope="col" class="text-center">No</th>
                                 <th scope="col"class="3">Kategori</th>
-                                {{-- <th scope="col">Nama Pelapor</th> --}}
+                                <th scope="col">Departemen</th>
                                 <th scope="col"class="3">Lokasi Kejadian</th>
                                 {{-- <th scope="col">Tenggat Waktu</th> --}}
                                 <th scope="col"class="4">Penanggung Jawab</th>
@@ -151,8 +152,9 @@
                                     <td>
                                         {{ $investigasi->departemen?->name }}
                                     </td>
+                                    <td>{{ $investigasi->lokasi }}</td> 
                                     {{-- <td>{{ $investigasi->tenggat_waktu ? $investigasi->tenggat_waktu->translatedFormat('d F Y') : '' }}</td> --}}
-                                    <td>
+                                    <td>                                          
                                         {{ $investigasi->p2k3->nama }}
                                     </td>
 
@@ -209,8 +211,10 @@
         $(document).on("click", "#update", function() {
             var p2k3_id = $(this).attr('data-bs-p2k3_id');
             var status = $(this).attr('data-bs-status');
+            
             $("#p2k3_id").val(p2k3_id).setAttribute('selected', 'selected');
             $("#status").val(status).setAttribute('selected', 'selected');
+            
 
         });
 

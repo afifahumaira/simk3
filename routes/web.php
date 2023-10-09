@@ -72,7 +72,7 @@ Route::group(['middleware' => ['auth']], function() {
         Route::get('ubah/{id}', [LaporanInsidenController::class, 'ubah'])->name('ubah');
         Route::get('k3departemen', [LaporanInsidenController::class, 'k3dep'])->name('k3dep');
         Route::get('melihat/{id}', [LaporanInsidenController::class, 'melihat'])->name('melihat');
-        Route::put('edit/{id}', [LaporanInsidenController::class, 'edit'])->name('edit');
+        Route::put('edit', [LaporanInsidenController::class, 'edit'])->name('edit');
         Route::post('insert', [LaporanInsidenController::class, 'insert'])->name('insert');
         Route::put('update/{id}', [LaporanInsidenController::class, 'update'])->name('update');
         Route::post('delete/{id}', [LaporanInsidenController::class, 'delete'])->name('delete');
@@ -118,7 +118,7 @@ Route::group(['middleware' => ['auth']], function() {
         Route::get('edit/{id}', [PotensibahayaController::class, 'edit'])->name('edit');
         Route::post('delete/{id}', [PotensibahayaController::class, 'delete'])->name('delete');
         Route::put('edit/{id}', [PotensibahayaController::class, 'editstore'])->name('editstore');
-        Route::put('update/{id}', [PotensibahayaController::class, 'update'])->name('update');
+        Route::put('update', [PotensibahayaController::class, 'update'])->name('update');
         Route::get('k3departemen', [PotensibahayaController::class, 'k3dep'])->name('k3dep');
         Route::get('melihat/{id}', [PotensibahayaController::class, 'melihat'])->name('melihat');
     });
@@ -173,10 +173,10 @@ Route::group(['middleware' => ['auth']], function() {
     // Users
     //  // // 7. P2K3 // // //
     Route::prefix('users/p2k3')->name('p2k3.')->group(function(){
-        Route::get('/', [P2k3Controller::class, 'index'])->name('index');
-        Route::get('lihat/{id}', [P2k3Controller::class, 'lihat'])->name('lihat');
+        Route::get('/', [P2k3Controller::class, 'index'])->name('index');        
         Route::get('tambah', [P2k3Controller::class, 'tambah'])->name('tambah');
         Route::post('simpan', [P2k3Controller::class, 'simpan'])->name('simpan');
+        Route::get('lihat/{id}', [P2k3Controller::class, 'lihat'])->name('lihat');
         Route::get('edit/{id}', [P2k3Controller::class, 'edit'])->name('edit');
         Route::post('update/{id}', [P2k3Controller::class, 'update'])->name('update');
         Route::post('hapus/{id}', [P2k3Controller::class, 'hapus'])->name('hapus');

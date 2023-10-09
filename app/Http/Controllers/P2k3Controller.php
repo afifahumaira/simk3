@@ -116,9 +116,10 @@ class P2k3Controller extends Controller
         }
     }
 
-    public function lihat($id) {
-        $data = P2k3::find($id);
-        $departemen = Departemen::findorFail($id);
+    public function lihat($id) {                
+        $data = P2k3::where('id', $id)->first();
+        $departemen = Departemen::where('id', $id)->first();
+        
         return view('dashboard.users.P2k3.lihat-p2k3', compact('data', 'departemen'));
     }
 

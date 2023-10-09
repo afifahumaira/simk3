@@ -102,7 +102,7 @@
                                                 data-hide-search="true" data-placeholder="Aktifitas">
                                                 @foreach ($activitie as $act)
                                                     <option value="{{ $act->name }}"
-                                                        {{ $hirarc->activitie == $act->id ? 'selected' : '' }}>
+                                                        {{ $hirarc->activity == $act->name ? 'selected' : '' }}>
                                                         {{ $act->name }}</option>
                                                 @endforeach
                                             </select>
@@ -116,7 +116,7 @@
                                                 data-hide-search="true" data-placeholder="Hazard">
                                                 @foreach ($hazard as $hazard)
                                                     <option value="{{ $hazard->name }}"
-                                                        {{ $hirarc->hazard == $hazard->id ? 'selected' : '' }}>
+                                                        {{ $hirarc->hazard == $hazard->name ? 'selected' : '' }}>
                                                         {{ $hazard->name }}</option>
                                                 @endforeach
                                             </select>
@@ -130,7 +130,7 @@
                                                 data-hide-search="true" data-placeholder="Resiko">
                                                 @foreach ($risk as $risk)
                                                     <option value="{{ $risk->name }}"
-                                                        {{ $hirarc->risk == $risk->id ? 'selected' : '' }}>
+                                                        {{ $hirarc->risk == $risk->name ? 'selected' : '' }}>
                                                         {{ $risk->name }}</option>
                                                 @endforeach
                                             </select>

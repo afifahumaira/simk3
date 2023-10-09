@@ -23,7 +23,7 @@
                       </div> --}}
                                 <div class="modal-body mt-5 d-flex justify-content-center align-items-center">
                                     <h2 class="mt-5 text-center" style="color: #16243D; font-size: 20px; font-weight:700">
-                                        keluar dari tambah data?
+                                        keluar dari ubah data?
                                         <p class="mb-0 mt-2 text-center "
                                             style="color: #DC3545; font-weight:400; font-size:14px"> data yang dimasukkan
                                             belum tersimpan </p>
@@ -130,47 +130,24 @@
                                     <div class="ps-3 pe-5">
                                         <label class="col-sm-2 col-form-label">Departemen</label>
                                         <div class="col-sm-10 w-100">
-                                            <select class="form-select fs-6 w-100" data-control="select2"
-                                                data-hide-search="true" data-placeholder="Departemen"
-                                                style="--bs-link-hover-color-rgb: 25, 135, 84;" id="departemen_id"
-                                                style="font-family: 'Inter';" name="departemen_id">
-                                                <option value="">- Pilih -</option>
-                                                <option value="1" {{ $data->departemen_id == 1 ? 'selected' : '' }}>
-                                                    Teknik Sipil</option>
-                                                <option value="2" {{ $data->departemen_id == 2 ? 'selected' : '' }}>
-                                                    Teknik Arsitektur</option>
-                                                <option value="3" {{ $data->departemen_id == 3 ? 'selected' : '' }}>
-                                                    Teknik Kimia</option>
-                                                <option value="4" {{ $data->departemen_id == 4 ? 'selected' : '' }}>
-                                                    Teknik Perencanaan Wilayah dan Kota</option>
-                                                <option value="5" {{ $data->departemen_id == 5 ? 'selected' : '' }}>
-                                                    Teknik Mesin</option>
-                                                <option value="6" {{ $data->departemen_id == 6 ? 'selected' : '' }}>
-                                                    Teknik Elektro</option>
-                                                <option value="7" {{ $data->departemen_id == 7 ? 'selected' : '' }}>
-                                                    Teknik Industri</option>
-                                                <option value="8" {{ $data->departemen_id == 8 ? 'selected' : '' }}>
-                                                    Teknik Lingkungan</option>
-                                                <option value="9" {{ $data->departemen_id == 9 ? 'selected' : '' }}>
-                                                    Teknik Perkapalan</option>
-                                                <option value="10" {{ $data->departemen_id == 10 ? 'selected' : '' }}>
-                                                    Teknik Geologi</option>
-                                                <option value="11" {{ $data->departemen_id == 11 ? 'selected' : '' }}>
-                                                    Teknik Geodesi</option>
-                                                <option value="12" {{ $data->departemen_id == 12 ? 'selected' : '' }}>
-                                                    Teknik Komputer</option>
-                                                <option value="13" {{ $data->departemen_id == 13 ? 'selected' : '' }}>
-                                                    Dekanat FT</option>
-                                            </select>
+                                            <select name="departemen_id" class="form-select fs-6 w-100"
+                                                    data-control="select2" data-hide-search="true"
+                                                    data-placeholder="departemen_id">
+                                                    @foreach ($departemen as $dep)
+                                                        <option value="{{ $dep->id }}"
+                                                            {{ $data->departemen_id == $dep->id ? 'selected' : '' }}>
+                                                            {{ $dep->name }}</option>
+                                                    @endforeach
+                                                </select>
 
                                         </div>
                                     </div>
-                                    <div class="ps-3 pe-5">
+                                    {{-- <div class="ps-3 pe-5">
                                         <label class="col-sm-2 col-form-label">Foto Profil</label>
                                         <div class="col-sm-10 w-100">
                                             <input type="file" class="form-control" name="avatar" id="avatar">
                                         </div>
-                                    </div>
+                                    </div> --}}
                                     <div class=" d-flex justify-content-center">
                                         <button type="submit"
                                             class="btn btn-success text-white d-flex justify-content-center align-items-center "

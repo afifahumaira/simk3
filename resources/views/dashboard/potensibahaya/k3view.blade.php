@@ -91,6 +91,7 @@
                                 <th scope="col">Tanggal lapor</th>
                                 <th scope="col" class="col-3">Nama Pelapor</th>
                                 <th scope="col" class="col-3">Lokasi Kejadian</th>
+                                <th scope="col" class="col-3">Departemen</th>
                                 <th scope="col" class="col-1">Status</th>
                                 <th scope="col" class="col-0">Action</th>
 
@@ -105,6 +106,7 @@
                                     <td>{{ $data->waktu_kejadian }}</td>
                                     <td>{{ $data->nama_pelapor }}</td>
                                     <td>{{ $data->lokasi }}</td>
+                                    <td>{{ $data->departemen?->name }}</td>
                                     <td align="center" class="pt-5">
                                         @if ($data->status == '1')
                                             <a href=""

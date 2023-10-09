@@ -132,7 +132,8 @@
                                     <label class="col-form-label">Waktu Kejadian</label>
                                     <div class=" w-100">
                                         <input type="date" id="date" name="waktu_kejadian"
-                                            class="form-control tanggalPicker" placeholder="dd/mm/yyyy">
+                                            class="form-control tanggalPicker" placeholder="dd/mm/yyyy"
+                                            max="<?php echo date('Y-m-d'); ?>">
                                     </div>
                                 </div>
 
@@ -389,6 +390,23 @@
     }
 </style>
 
+<script>
+    $(function() {
+            var dtToday = new Date();
+
+            var month = dtToday.getMonth() + 1;
+            var day = dtToday.getDate();
+            var year = dtToday.getFullYear();
+
+            if (month < 10)
+                month = '0' + month.toString();
+            if (day < 10)
+                day = '0' + day.toString();
+
+            var maxDate = year + '-' + month + '-' + day;
+            $('#txtDate').attr('max', maxDate);
+        });
+</script>
 <!-- Vendor JS Files -->
 <script src="{{ asset('vendor/Arsha/assets/vendor/aos/aos.js') }}"></script>
 <script src="{{ asset('vendor/Arsha/assets/vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>

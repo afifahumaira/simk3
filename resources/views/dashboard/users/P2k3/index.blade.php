@@ -55,8 +55,8 @@
                     <!--end::Wrapper-->
                 </div>
                 <!--end::Main wrapper-->
-                <a href="{{ route('p2k3.tambah') }}" type="button" class="btn btn-primary btn-sm"
-                    style="background: #233EAE">Tambah Data +</a>
+                {{-- <a href="{{ route('p2k3.tambah') }}" type="button" class="btn btn-primary btn-sm"
+                    style="background: #233EAE">Tambah Data +</a> --}}
                 <!--end::Title-->
             </div>
             <!--begin::Content container-->
@@ -94,8 +94,9 @@
                                     auth()->user()->hak_akses == 'P2K3' ||
                                     auth()->user()->hak_akses == 'K3 Departemen' ||
                                     auth()->user()->hak_akses == 'Pimpinan')
-                                <td style="text-align: center;"><a href="{{ route('p2k3.lihat', $data->id) }}"
-                                        type="button" class="btn  btn-sm bg-warning " style="width:20px;"><i
+                                <td style="text-align: center;">
+                                    <a href="{{ route('p2k3.lihat', $data->id) }}" type="button" 
+                                        class="btn  btn-sm bg-warning " style="width:20px;"><i
                                             class="bi bi-eye text-dark d-flex justify-content-center align-items-center"></i></a>
                                     <a href="{{ route('p2k3.edit', $data->id) }}" type="button"
                                         class="btn  btn-sm bg-primary" style="width:20px;"><i

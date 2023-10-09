@@ -47,6 +47,6 @@ class P2k3 extends Model
 
     public function potensibahaya()
     {
-        return $this->hasMany(Potensibahaya::class, 'p2k3_id');
+        return $this->hasMany(Potensibahaya::class, 'p2k3');
     }
 }

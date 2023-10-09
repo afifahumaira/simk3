@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use App\Models\User;
 use App\Models\P2k3;
+use App\Models\Departemen;
 use App\Http\Controllers\P2k3Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
@@ -29,7 +30,8 @@ class UserController extends Controller
 
     public function edit($id) {
         $data = User::find($id);
-        return view('dashboard.users.user.edit-user', compact('data'));
+        $departemen = Departemen::all();
+        return view('dashboard.users.user.edit-user', compact('data', 'departemen'));
     }
 
     public function update(Request $request, $id) {
