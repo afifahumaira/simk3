@@ -62,7 +62,7 @@
                         <thead>
                             <tr>
                                 <th scope="col" class="text-center">No</th>
-                                {{-- <th scope="col">Departemen</th> --}}
+                                <th scope="col">Departemen</th>
                                 <th scope="col">Lokasi Potensi Bahaya</th>
                                 <th scope="col">Potensi Bahaya</th>
                                 <th scope="col">Penanggung Jawab</th>
@@ -73,11 +73,11 @@
                             @foreach ($investigasis as $investigasi)
                                 <tr>
                                     <td scope="row" class="text-center">{{ $loop->iteration }}</td>
-                                    {{-- <td>{{ $investigasi->departemen->name }}</td> --}}
+                                    <td>{{ $investigasi->departemen->name }}</td>
                                     <td>{{ $investigasi->lokasi }}</td>
                                     <td>{{ $investigasi->potensi_bahaya }}</td>
                                     <td>
-                                        {{ $investigasi->p2k3_data->nama }}
+                                        {{ $investigasi->p2k3_data?->nama }}
                                     </td>
 
                                     <td>

@@ -95,9 +95,10 @@ class InvestigasiPotensiController extends Controller
 
     public function simpan(Request $request) {
         $request->validate([
-            'p2k3_id' => 'required',
+            'p2k3' => 'required',
             'laporinsiden_id' => 'required',
             'departemen_id' => 'required',
+            'lokasi' => 'required',
             'kategori' => 'required',
             'penyebab_langsung' => 'required',
             'penyebab_tidak_langsung' => 'required',
@@ -107,9 +108,10 @@ class InvestigasiPotensiController extends Controller
         ]);
 
         InvestigasiPotensi::create([
-            'p2k3_id' => $request->p2k3_id,
+            'p2k3' => $request->p2k3,
             'laporinsiden_id' => $request->laporinsiden_id,
             'departemen_id' => $request->departemen_id,
+            'lokasi' => $request->lokasi,
             'kategori' => $request->kategori,
             'penyebab_langsung' => $request->penyebab_langsung,
             'penyebab_tidak_langsung' => $request->penyebab_tidak_langsung,
@@ -136,9 +138,9 @@ class InvestigasiPotensiController extends Controller
         // ]);
 
         InvestigasiPotensi::find($id)->update([
-            //'p2k3_id' => $request->p2k3_id,
+            'p2k3' => $request->p2k3,
             'potensibahaya_id' => $request->potensibahaya_id,
-            //'departemen_id' => $request->departemen_id,
+            'departemen_id' => $request->departemen_id,
             'lokasi' => $request->lokasi,
             'potensi_bahaya' => $request->potensi_bahaya,
             'risiko' => $request->risiko,

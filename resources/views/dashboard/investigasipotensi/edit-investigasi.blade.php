@@ -122,12 +122,10 @@
                                         </div>
                                     </div>
                                     <div class="ps-3 pe-5">
-                                        <label class="col-form-label ">Lokasi</label>
-                                        <div class=" w-100">
-                                            <div class="form-group label-floating is-empty is-focused">
-                                                <input class="form-control bg-secondary" name="lokasi" id="lokasi"
-                                                    value="{{ $investigasi->lokasi }}">
-                                            </div>
+                                        <label class="col-sm-2 col-form-label">Lokasi</label>
+                                        <div class="col-sm-10 w-100">
+                                            <input type="text" class="form-control" name="lokasi" id="lokasi"
+                                                value="{{ $investigasi->lokasi }}">
                                         </div>
                                     </div>
                                     <div class="ps-3 pe-5">
@@ -157,7 +155,7 @@
                                         <label class="col-sm-2 col-form-label">Tindakan</label>
                                         <div class="col-sm-10 w-100">
                                             <input type="text" class="form-control" name="tindakan" id="tindakan"
-                                                value="{{ $investigasi->tenggat_waktu }}">
+                                                value="{{ $investigasi->tindakan}}">
 
                                         </div>
                                     </div>
@@ -165,8 +163,14 @@
                                         <label class="col-sm-2 col-form-label ">P2K3</label>
                                         <div class="col-sm-10 w-100">
                                             <div class="form-group label-floating is-empty is-focused">
-                                                <input class="form-control bg-secondary" name="p2k3" id="p2k3"
-                                                    value="{{ $investigasi->p2k3_data->nama }}" readonly>
+                                                <select name="p2k3" class="form-select fs-6 w-100" data-control="select2"
+                                                    data-hide-search="true" data-placeholder="P2K3" required>
+                                                    @foreach ($p2k3s as $p2k3)
+                                                        <option value="{{ $p2k3->id }}"
+                                                            {{ $investigasi->p2k3 == $p2k3->id ? 'selected' : '' }}>
+                                                            {{ $p2k3->nama != '' ? $p2k3->nama : 'Pilih P2K3' }}</option>
+                                                    @endforeach
+                                                </select>
                                             </div>
                                         </div>
                                     </div>
@@ -188,9 +192,9 @@
                                     <div class="ps-3 pe-5">
                                         <label class="col-sm-2 col-form-label">Tenggat Waktu</label>
                                         <div class="col-sm-10 w-100">
-                                            <input type="text" class="form-control" name="tenggat_waktu"
-                                                id="tenggat_waktu" value="{{ $investigasi->tenggat_waktu }}">
-
+                                            <input type="date" id="" name="tenggat_waktu"
+                                                class="form-control tanggalPicker" value="{{ $investigasi->tenggat_waktu }}"
+                                                placeholder="dd/mm/yyyy" min="<?php echo date('Y-m-d'); ?>">
                                         </div>
                                     </div>
 
@@ -273,13 +277,13 @@
             @section('customscript')
                 <script src="{{ asset('plugins/custom/fslightbox/fslightbox.bundle.js') }}"></script>
                 <script>
-                    $(document).ready(function() {
-                        $(".tanggalPicker").flatpickr({
-                            altInput: true,
-                            altFormat: "d F Y",
-                            dateFormat: "Y-m-d",
-                            locale: "id"
-                        });
-                    });
+                    // $(document).ready(function() {
+                    //     $(".tanggalPicker").flatpickr({
+                    //         altInput: true,
+                    //         altFormat: "d F Y",
+                    //         dateFormat: "Y-m-d",
+                    //         locale: "id"
+                    //     });
+                    // });
                 </script>
             @stop

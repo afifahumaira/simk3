@@ -309,16 +309,16 @@ class HirarcController extends Controller
                 'current_risk_rating' => 'required',
                 'current_risk_category' => 'required',
                 //'penyebab' => 'required',
-                'usulan' => 'required',
+                //'usulan' => 'required',
                 //'form_diperlukan' => 'required',
                 //'sop' => 'required',
-                'residual_severity' => 'required',
-                'residual_exposure' => 'required',
-                'residual_probability' => 'required',
-                'residual_risk_rating' => 'required',
-                'residual_risk_category' => 'required',
+                //'residual_severity' => 'required',
+                //'residual_exposure' => 'required',
+                //'residual_probability' => 'required',
+                //'residual_risk_rating' => 'required',
+                //'residual_risk_category' => 'required',
                 //'penanggung_jawab' => 'required',
-                'status' => 'required',
+                //'status' => 'required',
             ]);
     
             $hirarc = Hirarc::create([

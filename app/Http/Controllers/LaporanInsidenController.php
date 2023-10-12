@@ -302,12 +302,12 @@ class LaporanInsidenController extends Controller
     public function delete($id) {
 
         $lap = Laporinsiden::find($id);
-        if (Storage::exists('public/laporan_insiden/gambarkejadian/'. $lap->gambar)) {
-            Storage::delete('public/laporan_insiden/gambarkejadian/'. $lap->gambar);
-        }
-        if (Storage::exists('public/laporan_insiden/tanda_pengenal/'. $lap->tanda_pengenal)) {
-            Storage::delete('public/laporan_insiden/tanda_pengenal/'. $lap->tanda_pengenal);
-        }
+        // if (Storage::exists('public/laporan_insiden/gambarkejadian/'. $lap->gambar)) {
+        //     Storage::delete('public/laporan_insiden/gambarkejadian/'. $lap->gambar);
+        // }
+        // if (Storage::exists('public/laporan_insiden/tanda_pengenal/'. $lap->tanda_pengenal)) {
+        //     Storage::delete('public/laporan_insiden/tanda_pengenal/'. $lap->tanda_pengenal);
+        // }
         $lap->delete();
 
         Alert::success('Berhasil', 'Data Laporan Insiden berhasil dihapus!')->iconHtml('<i class="bi bi-person-check fs-3x"></i>')->hideCloseButton();

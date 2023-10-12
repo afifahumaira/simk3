@@ -187,25 +187,27 @@
                                     (severity)">
                                     <option value="{{ $hirarc->current_severity }}" selected disable>{{ $hirarc->current_severity }}</option>
                                             <option value="1">
-                                                Tergores, sayatan kecil, kerugian dalam rupiah
+                                                [1] Tergores, sayatan kecil, kerugian dalam rupiah
                                                 sebesar
                                                 Rp 1.000.000,-
                                             </option>
-                                            <option value="3">Cidera menyebabkan absen
+                                            <option value="3">
+                                                [3] Cidera menyebabkan absen
                                                 maksimal 3
                                                 hari, kerugian
                                                 dalam rupiah sebesar Rp 10.000.000,-</option>
-                                            <option value="7">Cidera menyebabkan absen
+                                            <option value="7">
+                                                [7] Cidera menyebabkan absen
                                                 lebih dari
                                                 3 hari, kerugian
                                                 dalam rupiah sebesar Rp 50.000.000,-</option>
                                             <option value="15">
-                                                Cacat sementara, butuh rawat inap, kerugian
+                                                [15] Cacat sementara, butuh rawat inap, kerugian
                                                 dalam rupiah
                                                 sebesar Rp
                                                 100.000.000,-</option>
                                             <option value="40">
-                                                Cidera serius atau sampai kematian, kerugian
+                                                [40] Cidera serius atau sampai kematian, kerugian
                                                 dalam
                                                 rupiah sebesar Rp
                                                 1.000.000.000,-</option>
@@ -220,15 +222,15 @@
                                             required
                                             data-placeholder="Pilih Paparan Risiko (Exposure)">
                                             <option value="{{ $hirarc->current_exposure }}" selected disable>{{ $hirarc->current_exposure }}</option>
-                                            <option value="0.5"> 1 kali dalam setahun
+                                            <option value="0.5">[0.5] 1 kali dalam setahun
                                             </option>
-                                            <option value="1">Beberapa kali dalam setahun
+                                            <option value="1">[1] Beberapa kali dalam setahun
                                             </option>
-                                            <option value="2">1 kali sebulan</option>
-                                            <option value="3">1 kali dalam seminggu
+                                            <option value="2">[2] 1 kali sebulan</option>
+                                            <option value="3">[3] 1 kali dalam seminggu
                                             </option>
-                                            <option value="6">1 kali dalam sehari</option>
-                                            <option value="10">Berkelanjutan</option>
+                                            <option value="6">[6] 1 kali dalam sehari</option>
+                                            <option value="10">[10] Berkelanjutan</option>
                                         </select>
                                     </div>
 
@@ -240,15 +242,15 @@
                                             required data-placeholder="Pilih Kemungkinan Risiko Terjadi (Probability)">                                            
                                             <option value="{{ $hirarc->current_probability }}" selected disable>{{ $hirarc->current_probability }}</option>
                                             <option value="1" >
-                                                Kejadian yang secara teori hanya mungkin terjadi
+                                                [1] Kejadian yang secara teori hanya mungkin terjadi
                                             </option>
                                             <option value="3" >
-                                                mungkin terjadi sekali dalam 10 tahun</option>
+                                                [3] mungkin terjadi sekali dalam 10 tahun</option>
                                             <option value="6" >
-                                                Kejadian yang jarang tetapi dapat sesekali terjadi
+                                                [6] Kejadian yang jarang tetapi dapat sesekali terjadi
                                             </option>
                                             <option value="10" >
-                                                Peristiwa berulang setidaknya sekali dalam setahun
+                                                [10] Peristiwa berulang setidaknya sekali dalam setahun
                                             </option>
                                         </select>
                                     </div>
@@ -320,25 +322,27 @@
                                     (severity)">
                                             <option value="{{ $hirarc->residual_severity }}" selected disable>{{ $hirarc->residual_severity }}</option>
                                             <option value="1">
-                                                Tergores, sayatan kecil, kerugian dalam rupiah
+                                                [1] Tergores, sayatan kecil, kerugian dalam rupiah
                                                 sebesar
                                                 Rp 1.000.000,-
                                             </option>
-                                            <option value="3">Cidera menyebabkan absen
+                                            <option value="3">
+                                                [3] Cidera menyebabkan absen
                                                 maksimal 3
                                                 hari, kerugian
                                                 dalam rupiah sebesar Rp 10.000.000,-</option>
-                                            <option value="7">Cidera menyebabkan absen
+                                            <option value="7">
+                                                [7] Cidera menyebabkan absen
                                                 lebih dari
                                                 3 hari, kerugian
                                                 dalam rupiah sebesar Rp 50.000.000,-</option>
                                             <option value="15">
-                                                Cacat sementara, butuh rawat inap, kerugian
+                                                [15] Cacat sementara, butuh rawat inap, kerugian
                                                 dalam rupiah
                                                 sebesar Rp
                                                 100.000.000,-</option>
                                             <option value="40">
-                                                Cidera serius atau sampai kematian, kerugian
+                                                [40] Cidera serius atau sampai kematian, kerugian
                                                 dalam
                                                 rupiah sebesar Rp
                                                 1.000.000.000,-</option>
@@ -354,15 +358,15 @@
                                             data-placeholder="Paparan
                                     (Exposure)">
                                             <option value="{{ $hirarc->residual_exposure }}" selected disable>{{ $hirarc->residual_exposure }}</option>
-                                            <option value="0.5"> 1 kali dalam setahun
+                                            <option value="0.5">[0.5] 1 kali dalam setahun
                                             </option>
-                                            <option value="1">Beberapa kali dalam setahun
+                                            <option value="1">[1] Beberapa kali dalam setahun
                                             </option>
-                                            <option value="2">1 kali sebulan</option>
-                                            <option value="3">1 kali dalam seminggu
+                                            <option value="2">[2] 1 kali sebulan</option>
+                                            <option value="3">[3] 1 kali dalam seminggu
                                             </option>
-                                            <option value="6">1 kali dalam sehari</option>
-                                            <option value="10">Berkelanjutan</option>
+                                            <option value="6">[6] 1 kali dalam sehari</option>
+                                            <option value="10">[10] Berkelanjutan</option>
                                         </select>
                                     </div>
                                     <div class="ps-3 pe-5">
@@ -375,17 +379,19 @@
                                     Terjadi (Probability)">
                                             <option value="{{ $hirarc->residual_probability }}" selected disable>{{ $hirarc->residual_probability }}</option>
                                             <option value="1">
-                                                Kejadian yang secara teori hanya mungkin terjadi
+                                                [1] Kejadian yang secara teori hanya mungkin terjadi
                                             </option>
-                                            <option value="3">mungkin terjadi sekali dalam
+                                            <option value="3">
+                                                [3] Mungkin terjadi sekali dalam
                                                 10
                                                 tahun</option>
-                                            <option value="6">Kejadian yang jarang tetapi
+                                            <option value="6">
+                                                [6] Kejadian yang jarang tetapi
                                                 dapat
                                                 sesekali terjadi
                                             </option>
                                             <option value="10">
-                                                Peristiwa berulang setidaknya sekali dalam
+                                                [10] Peristiwa berulang setidaknya sekali dalam
                                                 setahun
                                             </option>
                                         </select>
