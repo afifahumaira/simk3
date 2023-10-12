@@ -25,7 +25,7 @@ class LaporanInsidenController extends Controller
     public function index(Request $request){
         $p2k3s = P2k3::all();
         $laporaninsidens = Laporinsiden::with(['p2k3', 'departemen'])
-        ->whereNot('status', '2')
+        // ->whereNot('status', '2')
         ->when($request->has('filter'), function($query) use($request){
            if($request->filter !=''){
             $query->where('status', $request->filter);

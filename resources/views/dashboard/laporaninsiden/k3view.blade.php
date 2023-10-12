@@ -161,7 +161,7 @@
                                             data-control="select2" data-hide-search="true" data-placeholder="status">
                                             <option value="2">Investigasi
                                             </option>
-                                            <option value="3">Sukses
+                                            <option value="3">Tuntas
                                             </option>
                                         </select>
                                     </div>

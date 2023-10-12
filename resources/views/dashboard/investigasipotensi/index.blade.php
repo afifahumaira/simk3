@@ -201,7 +201,7 @@
                                                                         data-placeholder="status">
                                                                         <option value="2">Investigasi
                                                                         </option>
-                                                                        <option value="3">Sukses
+                                                                        <option value="3">Tuntas
                                                                         </option>
                                                                     </select>
                                                                 </div>

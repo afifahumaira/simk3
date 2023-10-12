@@ -61,10 +61,10 @@
             <table class="table table-bordered border-secondary px-3 py-3 mb-5 shadow ">
                 <thead px-3>
                     <tr>
-                        <th scope="col" class="text-center">No</th>
+                        <th scope="col" class="text-center col-1">No</th>
                         <th scope="col">Departemen</th>
-                        <th scope="col" class="col-4">Lokasi</th>
-                        <th scope="col">Tanggal Lapor</th>
+                        {{-- <th scope="col" class="col-4">Lokasi</th>
+                        <th scope="col">Tanggal Lapor</th> --}}
                         <th scope="col" class="col-1">Action</th>
                     </tr>
                 </thead>
@@ -81,25 +81,25 @@
                             <td scope="row" class="text-center">
                                 {{ ($hirarcs->currentpage() - 1) * $hirarcs->perpage() + $loop->index + 1 }}</td>
 
-                            @if (!isset($printedDept[$hirarc->departemen_id]))
+                            {{-- @if (!isset($printedDept[$hirarc->departemen_id]))
                                 <td rowspan="{{ $deptCount[$hirarc->departemen_id] }}">
                                     {{ $hirarc->departemen->name }}
                                 </td>
                                 @php
                                     $printedDept[$hirarc->departemen_id] = true;
                                 @endphp
-                            @endif
-                            {{-- <td>{{ $hirarc->departemen?->name }}</td>
-                            <td>{{ $hirarc->location?->name }}</td> --}}
-                            @if (!isset($printedLoc[$hirarc->departemen_id][$hirarc->location_id]))
+                            @endif --}}
+                            <td>{{ $hirarc->departemen?->name }}</td>
+                            {{-- <td>{{ $hirarc->location?->name }}</td> --}}
+                            {{-- @if (!isset($printedLoc[$hirarc->departemen_id][$hirarc->location_id]))
                                 <td rowspan="{{ $locCount[$hirarc->departemen_id][$hirarc->location_id] }}">
                                     {{ $hirarc->location->name }}
                                 </td>
                                 @php
                                     $printedLoc[$hirarc->departemen_id][$hirarc->location_id] = true;
                                 @endphp
-                            @endif
-                            <td>{{ $hirarc->created_at ? $hirarc->created_at->translatedFormat('d F Y') : '' }}</td>
+                            @endif --}}
+                            {{-- <td>{{ $hirarc->created_at ? $hirarc->created_at->translatedFormat('d F Y') : '' }}</td> --}}
 
                             <td align="center">
                                 <a href="{{ route('hirarc.lihat', $hirarc->departemen_id) }}" type="button"

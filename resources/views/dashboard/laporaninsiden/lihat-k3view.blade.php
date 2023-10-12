@@ -28,7 +28,7 @@
                             @elseif ($lap->status == '2')
                                 <button type="button" class="btn btn-primary btn-sm py-2">Investigasi</button>
                             @elseif ($lap->status == '3')
-                                <button type="button" class="btn btn-success btn-sm py-2">Sukses</button>
+                                <button type="button" class="btn btn-success btn-sm py-2">Tuntas</button>
                             @endif
                         </td>
                     </tr>
