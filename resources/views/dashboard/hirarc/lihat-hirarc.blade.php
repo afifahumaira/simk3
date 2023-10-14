@@ -112,8 +112,8 @@
                             @endphp
                             @foreach ($hirarcs as $hirarc)
                                 <tr>
-                                    <td align="center"> <a href="{{ route('hirarc.edit', $hirarc->id) }}" type="button"
-                                            class="btn  btn-sm bg-primary my-2" style="width:20px;"><i
+                                    <td align="center"> <a href="{{ route('hirarc.editDetail', $hirarc->id) }}"
+                                            type="button" class="btn  btn-sm bg-primary my-2" style="width:20px;"><i
                                                 class="bi bi-pencil-square text-dark d-flex justify-content-center align-items-center"></i></a>
                                         <button type="button" class="btn  btn-sm my-2"
                                             style="width:20px; background:#DC3545" data-bs-toggle="modal"

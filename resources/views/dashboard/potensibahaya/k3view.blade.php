@@ -88,11 +88,19 @@
                             <tr>
                                 <th scope="col" class="text-center">No</th>
                                 <th scope="col">Kode Potensi Bahaya</th>
-                                <th scope="col">Tanggal lapor</th>
-                                <th scope="col" class="col-3">Nama Pelapor</th>
-                                <th scope="col" class="col-3">Lokasi Kejadian</th>
-                                <th scope="col" class="col-3">Departemen</th>
-                                <th scope="col" class="col-1">Status</th>
+                                <th scope="col" class=" d-flex justify-content-between">Tanggal lapor
+                                    <div><a class="mx-1"
+                                            href="{{ route('potensibahaya.k3dep', ['sort' => 'waktu_kejadian', 'order' => 'asc']) }}"><i
+                                                class="bi bi-arrow-up text-black"></i></a>
+                                        <a class="px-1"
+                                            href="{{ route('potensibahaya.k3dep', ['sort' => 'waktu_kejadian', 'order' => 'desc']) }}"><i
+                                                class="bi bi-arrow-down text-black"></i></a>
+                                    </div>
+                                </th>
+                                <th scope="col" class="">Nama Pelapor</th>
+                                <th scope="col" class="">Lokasi Kejadian</th>
+                                <th scope="col" class="">Departemen</th>
+                                <th scope="col" class="">Status</th>
                                 <th scope="col" class="col-0">Action</th>
 
                             </tr>
@@ -165,7 +173,8 @@
                                                 </form>
                                                 <button type="button"
                                                     class="btn btn-secondary text-center d-flex align-items-center rounded-1"
-                                                    data-bs-dismiss="modal" style="width:76px; height:31px; ">Tidak</button>
+                                                    data-bs-dismiss="modal"
+                                                    style="width:76px; height:31px; ">Tidak</button>
                                             </div>
                                         </div>
                                     </div>

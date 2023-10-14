@@ -26,8 +26,14 @@ class InvestigasiPotensiController extends Controller
             $query->where('departemen_id', auth()->user()->departemen_id);
         })
         ->where(function($query) use($request){
-            $query->where('potensi_bahaya', 'LIKE', '%'.$request->search.'%');
-        })
+                $searchTerm = $request->search;
+                
+                $query->whereHas('departemen', function ($subquery) use ($searchTerm) {
+                    $subquery->where('name', 'LIKE', '%' . $searchTerm . '%');
+                    })
+            ->orWhere ('lokasi', 'LIKE', '%'.$request->search.'%')
+            ->orWhere('potensi_bahaya', 'LIKE', '%'.$request->search.'%');
+            })
         ->paginate(10);
 
         return view('dashboard.investigasipotensi.index')
@@ -48,11 +54,14 @@ class InvestigasiPotensiController extends Controller
              $query->where('status', $request->filter);
             }
          })
-        // ->when (auth()->user()->hak_akses=='K3 Departemen', function ($query){
-        //     $query->where('departemen_id', auth()->user()->departemen_id);
-        // })
-        ->where(function($query) use($request){
-            $query->where('potensi_bahaya', 'LIKE', '%'.$request->search.'%');
+         ->where(function($query) use($request){
+            $searchTerm = $request->search;
+            
+            $query->whereHas('departemen', function ($subquery) use ($searchTerm) {
+                $subquery->where('name', 'LIKE', '%' . $searchTerm . '%');
+                })
+        ->orWhere ('lokasi', 'LIKE', '%'.$request->search.'%')
+        ->orWhere('potensi_bahaya', 'LIKE', '%'.$request->search.'%');
         })
         ->paginate(10);
 

@@ -49,7 +49,7 @@
                         <div class="w-0 ">
                             <select name="filter" id="filter" class="form-select fs-6 w-100 shadow"
                                 data-control="select2" data-hide-search="true">
-                                <option value="">Status</option>
+                                <option value="">Semua status</option>
                                 <option value="1"
                                     {{ request()->has('filter') ? (request()->filter == 1 ? 'selected' : false) : '' }}>
                                     Pending</option>
@@ -77,7 +77,16 @@
                             <tr>
                                 <th scope="col" class="text-center">No</th>
                                 <th scope="col" class="">Kode Potensi Bahaya</th>
-                                <th scope="col">Tanggal lapor</th>
+                                <th scope="col"class="d-flex justify-content-between">Tanggal lapor <div><a class="mx-1"
+                                            href="{{ route('potensibahaya.index', ['sort' => 'waktu_kejadian', 'order' => 'asc']) }}"><i
+                                                class="bi bi-arrow-up text-black"></i></a>
+                                        <a class="px-1"
+                                            href="{{ route('potensibahaya.index', ['sort' => 'waktu_kejadian', 'order' => 'desc']) }}"><i
+                                                class="bi bi-arrow-down text-black"></i></a>
+                                    </div>
+                                </th>
+                                <th scope="col">Nama Pelapor</th>
+                                <th scope="col">Lokasi Kejadian</th>
                                 <th scope="col" class="col-2">Departemen</th>
                                 <th scope="col">Lokasi Kejadian</th>                                
                                 <th scope="col">Nama Pelapor</th>

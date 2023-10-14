@@ -37,11 +37,20 @@ class PotensibahayaController extends Controller
             $query->where('departemen_id', auth()->user()->departemen_id);
         })
         ->where(function($query) use($request){        
-            $query-> where('nama_pelapor', 'LIKE', '%'.$request->search.'%')
+            $searchTerm = $request->search;
+            // Use a subquery to filter based on department name
+            $query->whereHas('departemen', function ($subquery) use ($searchTerm) {
+            $subquery->where('name', 'LIKE', '%' . $searchTerm . '%');
+            })
+            ->orWhere('nama_pelapor', 'LIKE', '%'.$request->search.'%')
             ->orWhere('lokasi', 'LIKE', '%'.$request->search.'%')
             ->orWhere('waktu_kejadian', 'LIKE', '%'.$request->search.'%');
-    })
-        ->paginate(10);
+    });
+    if ($request->has('sort') && $request->has('order')) {
+        $datas->orderBy($request->sort, $request->order);
+    };
+    $datas = $datas
+    ->paginate(10);
         
         return view('dashboard.potensibahaya.index', compact('datas', 'p2k3s'));
         
@@ -60,11 +69,20 @@ class PotensibahayaController extends Controller
         //     $query->where('departemen_id', auth()->user()->departemen_id);
         // })
         ->where(function($query) use($request){        
-            $query-> where('nama_pelapor', 'LIKE', '%'.$request->search.'%')
+            $searchTerm = $request->search;
+            // Use a subquery to filter based on department name
+            $query->whereHas('departemen', function ($subquery) use ($searchTerm) {
+            $subquery->where('name', 'LIKE', '%' . $searchTerm . '%');
+            })
+            ->orWhere('nama_pelapor', 'LIKE', '%'.$request->search.'%')
             ->orWhere('lokasi', 'LIKE', '%'.$request->search.'%')
             ->orWhere('waktu_kejadian', 'LIKE', '%'.$request->search.'%');
-    })
-        ->paginate(10);
+    });
+    if ($request->has('sort') && $request->has('order')) {
+        $datas->orderBy($request->sort, $request->order);
+    };
+    $datas = $datas
+    ->paginate(10);
         
         return view('dashboard.potensibahaya.k3view', compact('datas'));
         
