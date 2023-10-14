@@ -84,12 +84,11 @@
                                         href="{{ route('laporan-insiden.index', ['sort' => 'waktu_kejadian', 'order' => 'desc']) }}"><i
                                             class="bi bi-arrow-down text-black"></i></a>
                                 </th>
-                                <th scope="col">Nama Pelapor</th>
+
                                 <th scope="col">Lokasi Kejadian</th>
-                                <th scope="col" class="col-2">Departemen</th>
-                                <th scope="col">Lokasi Kejadian</th>
+                                <th scope="col" class="">Departemen</th>
                                 <th scope="col">Nama Pelapor</th>
-                                <th scope="col" class="col-1">Status</th>
+                                <th scope="col" class="">Status</th>
                                 @if (auth()->user()->hak_akses == 'Pimpinan')
                                     <th scope="col" class="">Ubah Status</th>
                                 @endif

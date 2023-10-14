@@ -85,9 +85,8 @@
                                                 class="bi bi-arrow-down text-black"></i></a>
                                     </div>
                                 </th>
-                                <th scope="col">Nama Pelapor</th>
-                                <th scope="col">Lokasi Kejadian</th>
-                                <th scope="col" class="col-2">Departemen</th>
+
+                                <th scope="col" class="">Departemen</th>
                                 <th scope="col">Lokasi Kejadian</th>
                                 <th scope="col">Nama Pelapor</th>
                                 <th scope="col" class="col-1">Status</th>
