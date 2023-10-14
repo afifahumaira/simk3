@@ -211,9 +211,8 @@
                                                                             </option>
                                                                             <option value="2">Investigasi
                                                                             </option>
-                                                                            <<<<<<< HEAD {{-- <option value="3">Tuntas
-                                                                            </option> --}}=======>>>>>>>
-                                                                                724ced453ba1837848562a7d43f3c4676886eb49
+                                                                            {{-- <option value="3">Tuntas
+                                                                            </option> --}}
                                                                         </select>
                                                                     </div>
                                                                 </div>
