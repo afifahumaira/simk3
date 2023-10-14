@@ -31,11 +31,12 @@ use GPBMetadata\Google\Cloud\Location\Locations;
 class HirarcController extends Controller
 {
     public function index(Request $request){
-
-        $hirarcs = Hirarc::with(['departemen', 'user', 'location'])
+        
+        $hirarcs = Hirarc::with(['departemen'])
     ->when(auth()->user()->hak_akses == 'K3 Departemen', function ($query) {
         $query->where('departemen_id', auth()->user()->departemen_id);
     })
+    
     ->where(function ($query) use ($request) {
         $searchTerm = $request->search;
 
@@ -64,29 +65,30 @@ class HirarcController extends Controller
         // ->orderBy('created_at')
         // ->paginate(10);
         
-        $locCount=[];
-        $deptCount = [];
+        // $locCount=[];
+        // $deptCount = [];
         // $printedDept = [];
         // dd($departemenCount);
         
-        foreach ($hirarcs as $hir) {
+        // foreach ($hirarcs as $hir) {
             
-            if (!isset($deptCount[$hir->departemen_id])) {
-                $deptCount[$hir->departemen_id] = 0;
-            }
-            $deptCount[$hir->departemen_id]++;
+        //     if (!isset($deptCount[$hir->departemen_id])) {
+        //         $deptCount[$hir->departemen_id] = 0;
+        //     }
+        //     $deptCount[$hir->departemen_id]++;
 
-            if (!isset($locCount[$hir->departemen_id][$hir->location_id])) {
-                $locCount[$hir->departemen_id][$hir->location_id] = 0;
-            }
-            $locCount[$hir->departemen_id][$hir->location_id]++;
-        } 
+        //     if (!isset($locCount[$hir->departemen_id][$hir->location_id])) {
+        //         $locCount[$hir->departemen_id][$hir->location_id] = 0;
+        //     }
+        //     $locCount[$hir->departemen_id][$hir->location_id]++;
+        // } 
         
 
         return view('dashboard.hirarc.index')
-            ->with('hirarcs',$hirarcs)
-            ->with('deptCount',$deptCount)
-            ->with('locCount',$locCount);
+            
+            ->with('hirarcs',$hirarcs);
+            // ->with('deptCount',$deptCount)
+            // ->with('locCount',$locCount);
     }
 
     // public function index(){

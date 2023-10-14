@@ -156,7 +156,6 @@
                                         <div class="col-sm-10 w-100">
                                             <input type="text" class="form-control" name="tindakan" id="tindakan"
                                                 value="{{ $investigasi->tindakan}}">
-
                                         </div>
                                     </div>
                                     <div class="ps-3 pe-5">
@@ -173,30 +172,16 @@
                                                 </select>
                                             </div>
                                         </div>
-                                    </div>
-                                    {{-- <div class="ps-3 pe-5">
-                                            <label class="col-form-label">P2K3</label>
-                                            <div class=" w-100">
-                                                <div class="form-group label-floating is-empty is-focused">
-                                                    <select name="p2k3_id" class="form-select fs-6 w-100" data-control="select2"
-                                                        data-hide-search="true" data-placeholder="P2K3" required>
-                                                        @foreach ($p2k3s as $p2k3)
-                                                            <option value="{{ $p2k3->id }}"
-                                                                {{ $investigasi->p2k3_id == $p2k3->id ? 'selected' : '' }}>
-                                                                {{ $p2k3->nama != '' ? $p2k3->nama : 'Pilih P2K3' }}</option>
-                                                        @endforeach
-                                                    </select>
-                                                </div>
+                                    </div>                                    
+                                        <div class="ps-3 pe-5">
+                                            <label class="col-sm-2 col-form-label">Tenggat Waktu</label>
+                                            <div class="col-sm-10 w-100">
+                                                <input type="date" id="date" name="tenggat_waktu"
+                                                    class="form-control tanggalPicker" value="{{ $investigasi->tenggat_waktu }}"
+                                                    placeholder="dd/mm/yyyy" min="<?php echo date('Y-m-d'); ?>">
+    
                                             </div>
-                                        </div> --}}
-                                    <div class="ps-3 pe-5">
-                                        <label class="col-sm-2 col-form-label">Tenggat Waktu</label>
-                                        <div class="col-sm-10 w-100">
-                                            <input type="date" id="" name="tenggat_waktu"
-                                                class="form-control tanggalPicker" value="{{ $investigasi->tenggat_waktu }}"
-                                                placeholder="dd/mm/yyyy" min="<?php echo date('Y-m-d'); ?>">
                                         </div>
-                                    </div>
 
                                     {{-- <div class="ps-3 pe-5">
                                                 <label for="inputEmail3" class="col-sm-2 col-form-label">Tindakan</label>
@@ -277,13 +262,20 @@
             @section('customscript')
                 <script src="{{ asset('plugins/custom/fslightbox/fslightbox.bundle.js') }}"></script>
                 <script>
-                    // $(document).ready(function() {
-                    //     $(".tanggalPicker").flatpickr({
-                    //         altInput: true,
-                    //         altFormat: "d F Y",
-                    //         dateFormat: "Y-m-d",
-                    //         locale: "id"
-                    //     });
-                    // });
+                    $(function() {
+            var dtToday = new Date();
+
+            var month = dtToday.getMonth() + 1;
+            var day = dtToday.getDate();
+            var year = dtToday.getFullYear();
+
+            if (month < 10)
+                month = '0' + month.toString();
+            if (day < 10)
+                day = '0' + day.toString();
+
+            var maxDate = year + '-' + month + '-' + day;
+            $('#txtDate').attr('max', maxDate);
+        });
                 </script>
             @stop

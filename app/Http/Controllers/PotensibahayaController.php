@@ -245,7 +245,7 @@ class PotensibahayaController extends Controller
         if($request->status == 2 ) {
             $data = InvestigasiPotensi::create([
                 'p2k3' => $request->p2k3_id,
-                'potensibahaya_id' => $request->id,
+                'potensibahaya_id' => $request->kode_potensibahaya,
                 'departemen_id' => $request->departemen_id,
                 'lokasi' => $request->lokasi,
                 'potensi_bahaya' => $request->potensi_bahaya,
@@ -253,14 +253,14 @@ class PotensibahayaController extends Controller
                 'usulan' => $request->usulan_perbaikan,
             ]);
             Alert::success('Berhasil', 'Data Akan di Investigasi!')->iconHtml('<i class="bi bi-person-check fs-3x"></i>')->hideCloseButton();
-            return redirect()->route('potensibahaya.index');
-        }
-        elseif ($request->status == 3) {
-            $data = PotensiBahaya::find($id);
-            $data->delete();
+            return redirect()->route('investigasipotensi.index');
+        // }
+        // elseif ($request->status == 3) {
+        //     $data = PotensiBahaya::find($id);
+        //     $data->delete();
 
-        Alert::success('Berhasil', 'Data Telah Ditangani')->iconHtml('<i class="bi bi-person-check fs-3x"></i>')->hideCloseButton();
-        return redirect()->route('potensibahaya.index');
+        // Alert::success('Berhasil', 'Data Telah Ditangani')->iconHtml('<i class="bi bi-person-check fs-3x"></i>')->hideCloseButton();
+        // return redirect()->route('potensibahaya.index');
         }
         Alert::success('Berhasil', 'Data Potensi Bahaya berhasil diperbaharui!')->iconHtml('<i class="bi bi-person-check fs-3x"></i>')->hideCloseButton();
         return redirect()->route('potensibahaya.index');
@@ -271,11 +271,12 @@ class PotensibahayaController extends Controller
           //   'p2k3' => 'required',
           // 'status' => 'required',
         // ]);
-            
+        //    dd($request);
         Potensibahaya::find($request->id)->update([
          'p2k3_id' => $request->p2k3_id,
          'status' => $request->status,
          'id' => $request->id,
+         'kode_potensibahaya' => $request->kode_potensibahaya,
          'departemen_id' => $request->departemen_id,
          'lokasi' => $request->lokasi,
          'potensi_bahaya' => $request->potensi_bahaya,
@@ -286,7 +287,7 @@ class PotensibahayaController extends Controller
         if ($request->status == 2) {
          $data = InvestigasiPotensi::create([
              'p2k3' => $request->p2k3_id,
-             'potensibahaya_id' => $request->id,
+             'potensibahaya_id' => $request->kode_potensibahaya,
              'departemen_id' => $request->departemen_id,
              'lokasi' => $request->lokasi,
              'potensi_bahaya' => $request->potensi_bahaya,
@@ -297,13 +298,13 @@ class PotensibahayaController extends Controller
          return redirect()->route('investigasipotensi.index');
         }
  
-        elseif ($request->status == 3) {
-         $data = Potensibahaya::find($request->id);
-         $data->delete();
+        // elseif ($request->status == 3) {
+        //  $data = Potensibahaya::find($request->id);
+        //  $data->delete();
  
-         Alert::success('Berhasil', 'Investigasi telah selesai')->iconHtml('<i class="bi bi-person-check"></i>')->hideCloseButton();
-         return redirect()->route('potensibahaya.index');
-         }
+        //  Alert::success('Berhasil', 'Investigasi telah selesai')->iconHtml('<i class="bi bi-person-check"></i>')->hideCloseButton();
+        //  return redirect()->route('potensibahaya.index');
+        //  }
  
          Alert::success('Berhasil', 'Data Laporan berhasil diperbaharui!')->iconHtml('<i class="bi bi-person-check"></i>')->hideCloseButton();
          return redirect()->route('potensibahaya.index');

@@ -20,6 +20,10 @@
             <table class="table table-bordered border-secondary rounded-5 px-3 py-3 mb-5 shadow">
                 <tbody>
                     <tr>
+                        <th style="width: 40%">Kode Lapor Potensi Bahaya</th>
+                        <td>{{ $investigasi->potensibahaya_id }}</td>
+                    </tr>
+                    <tr>
                         <th style="width: 40%">Departemen</th>
                         <td>{{ $investigasi->departemen->name }}</td>
                     </tr>

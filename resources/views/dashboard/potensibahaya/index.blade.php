@@ -78,9 +78,9 @@
                                 <th scope="col" class="text-center">No</th>
                                 <th scope="col" class="">Kode Potensi Bahaya</th>
                                 <th scope="col">Tanggal lapor</th>
-                                <th scope="col">Nama Pelapor</th>
-                                <th scope="col">Lokasi Kejadian</th>
                                 <th scope="col" class="col-2">Departemen</th>
+                                <th scope="col">Lokasi Kejadian</th>                                
+                                <th scope="col">Nama Pelapor</th>
                                 <th scope="col" class="col-1">Status</th>
                                 @if (auth()->user()->hak_akses == 'Pimpinan')
                                     <th scope="col">Ubah Status</th>
@@ -100,9 +100,9 @@
                                         {{ ($datas->currentpage() - 1) * $datas->perpage() + $loop->index + 1 }}</td>
                                     <td>{{ $data->kode_potensibahaya }}</td>
                                     <td>{{ $data->waktu_kejadian }}</td>
-                                    <td>{{ $data->nama_pelapor }}</td>
-                                    <td>{{ $data->lokasi }}</td>
                                     <td>{{ $data->departemen->name }}</td>
+                                    <td>{{ $data->lokasi }}</td>                                    
+                                    <td>{{ $data->nama_pelapor }}</td>
                                     <td align="center" class="pt-5">
                                         @if ($data->status == '1')
                                             <a href=""
@@ -123,8 +123,11 @@
                                     @if (auth()->user()->hak_akses == 'Pimpinan')
                                         <td class="d-flex justify-content-center">
                                             <button id="update" class="btn btn-primary btn-sm" data-bs-toggle="modal"
-                                                data-bs-target="#editmodal" data-bs-p2k3="{{ $data->p2k3_id }}"
-                                                data-bs-status="{{ $data->status }}" data-bs-id="{{ $data->id }}"
+                                                data-bs-target="#editmodal" 
+                                                data-bs-p2k3="{{ $data->p2k3_id }}"
+                                                data-bs-status="{{ $data->status }}" 
+                                                data-bs-id="{{ $data->id }}" 
+                                                data-bs-kode_potensibahaya="{{ $data->kode_potensibahaya }}"
                                                 data-bs-departemen_id="{{ $data->departemen_id }}"
                                                 data-bs-lokasi="{{ $data->lokasi }}"
                                                 data-bs-potensi_bahaya="{{ $data->potensi_bahaya }}"
@@ -174,6 +177,7 @@
                                                                 </div>
                                                             </div>
                                                             <input type="hidden" name="id" id="id">
+                                                            <input type="hidden" name="kode_potensibahaya" id="kode_potensibahaya">
                                                             <input type="hidden" name="departemen_id"
                                                                 id="departemen_id">
                                                             <input type="hidden" name="lokasi" id="lokasi">
@@ -196,8 +200,7 @@
                                                                             <option value=""></option>
                                                                             <option value="2">Investigasi
                                                                             </option>
-                                                                            <option value="3">Tuntas
-                                                                            </option>
+                                                                            
                                                                         </select>
                                                                     </div>
                                                                 </div>
@@ -333,6 +336,7 @@
             var p2k3_id = $(this).attr('data-bs-p2k3_id');
             var status = $(this).attr('data-bs-status');
             var id = $(this).attr('data-bs-id');
+            var kode_potensibahaya = $(this).attr('data-bs-kode_potensibahaya');
             var departemen_id = $(this).attr('data-bs-departemen_id');
             var lokasi = $(this).attr('data-bs-lokasi');
             var potensi_bahaya = $(this).attr('data-bs-potensi_bahaya');
@@ -341,6 +345,7 @@
             //$("#p2k3_id").val(p2k3_id).setAttribute('selected', 'selected');
             //$("#status").val(status).setAttribute('selected', 'selected');
             $("#id").val(id);
+            $("#kode_potensibahaya").val(kode_potensibahaya);
             $("#departemen_id").val(departemen_id);
             $("#lokasi").val(lokasi);
             $("#potensi_bahaya").val(potensi_bahaya);
