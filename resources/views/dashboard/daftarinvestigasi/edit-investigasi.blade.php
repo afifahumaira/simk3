@@ -185,7 +185,7 @@
                                 <label class="col-sm-2 col-form-label">Tindakan</label>
                                 <div class="col-sm-10 w-100">
                                     <input type="text" class="form-control" name="tindakan" id="tindakan"
-                                        value="{{ $investigasi->tenggat_waktu }}">
+                                        value="{{ $investigasi->tindakan }}">
                                 </div>
                             </div>
 

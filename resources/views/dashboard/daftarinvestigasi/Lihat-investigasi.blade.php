@@ -18,19 +18,26 @@
             </div>
             <!--begin::Content container-->
             <table class="table table-bordered border-secondary rounded-5 px-3 py-3 mb-5 shadow">
-                <tbody>
+                <tbody>                 
                     <tr>
-                        <th style="width: 40%">P2K3</th>
-                        <td>{{ $investigasi->p2k3?->nama }}</td>
+                        <th style="width: 40%">Kode Lapor Insiden</th>
+                        <td>{{ $investigasi->laporinsiden_id }}</td>
+                    </tr>                    
+                    <tr>
+                        <th style="width: 40%">Departemen</th>
+                        <td>{{ $investigasi->departemen?->name }}</td>
+                    </tr>
+                    <tr>
+                        <th style="width: 40%">Lokasi</th>
+                        <td>{{ $investigasi->lokasi }}</td>
                     </tr>
                     <tr>
                         <th style="width: 40%">Kategori</th>
                         <td>{{ $investigasi->kategori }}</td>
                     </tr>
-                    
                     <tr>
-                        <th style="width: 40%">Lokasi Kejadian</th>
-                        <td>{{ $investigasi->departemen?->name }}</td>
+                        <th style="width: 40%">Penyebab Dasar</th>
+                        <td>{{ $investigasi->penyebab_dasar }}</td>
                     </tr>
                     <tr>
                         <th style="width: 40%">Penyebab Langsung</th>
@@ -39,19 +46,20 @@
                     <tr>
                         <th style="width: 40%">Penyebab Tidak Langsung</th>
                         <td>{{ $investigasi->penyebab_tidak_langsung }}</td>
-                    </tr>
-                    <tr>
-                        <th style="width: 40%">Penyebab Dasar</th>
-                        <td>{{ $investigasi->penyebab_dasar }}</td>
-                    </tr>
-                    <tr>
-                        <th style="width: 40%">Tenggat Waktu</th>
-                        <td>{{ $investigasi->tenggat_waktu ? $investigasi->tenggat_waktu->translatedFormat('d F Y') : '' }}</td>
-                    </tr>
+                    </tr> 
                     <tr>
                         <th style="width: 40%">Tindakan</th>
                         <td>{{ $investigasi->tindakan }}</td>
                     </tr>
+                    <tr>
+                        <th style="width: 40%">P2K3</th>
+                        <td>{{ $investigasi->p2k3?->nama }}</td>
+                    </tr>                   
+                    <tr>
+                        <th style="width: 40%">Tenggat Waktu</th>
+                        <td>{{ $investigasi->tenggat_waktu ? $investigasi->tenggat_waktu->translatedFormat('d F Y') : '' }}</td>
+                    </tr>
+                    
                     
                 </tbody>
             </table>

@@ -87,6 +87,8 @@
                                 <th scope="col">Nama Pelapor</th>
                                 <th scope="col">Lokasi Kejadian</th>
                                 <th scope="col" class="col-2">Departemen</th>
+                                <th scope="col">Lokasi Kejadian</th>
+                                <th scope="col">Nama Pelapor</th>
                                 <th scope="col" class="col-1">Status</th>
                                 @if (auth()->user()->hak_akses == 'Pimpinan')
                                     <th scope="col" class="">Ubah Status</th>
@@ -108,10 +110,9 @@
                                     <td>{{ $lap->kode_laporinsiden }}</td>
                                     <td>{{ $lap->waktu_kejadian ? $lap->waktu_kejadian->translatedFormat('d F Y') : '' }}
                                     </td>
-                                    <td>{{ $lap->nama_pelapor }}</td>
                                     <td>{{ $lap->lokasi_rinci }}</td>
                                     <td>{{ $lap->departemen->name }}</td>
-
+                                    <td>{{ $lap->nama_pelapor }}</td>
                                     <td align="center" class="pt-5">
                                         @if ($lap->status == '1')
                                             <a href=""
@@ -135,6 +136,7 @@
                                                 data-bs-toggle="modal" data-bs-target="#editmodal"
                                                 data-bs-p2k3_id="{{ $lap->p2k3_id }}" data-bs-status="{{ $lap->status }}"
                                                 data-bs-id="{{ $lap->id }}"
+                                                data-bs-kode_laporinsiden="{{ $lap->kode_laporinsiden }}"
                                                 data-bs-departemen_id="{{ $lap->departemen_id }}"
                                                 data-bs-lokasi_rinci="{{ $lap->lokasi_rinci }}"
                                                 data-bs-jenis_insiden="{{ $lap->jenis_insiden }}"
@@ -184,6 +186,8 @@
                                                                 </div>
                                                             </div>
                                                             <input type="hidden" name="id" id="id">
+                                                            <input type="hidden" name="kode_laporinsiden"
+                                                                id="kode_laporinsiden">
                                                             <input type="hidden" name="departemen_id"
                                                                 id="departemen_id">
                                                             <input type="hidden" name="lokasi_rinci" id="lokasi_rinci">
@@ -207,8 +211,9 @@
                                                                             </option>
                                                                             <option value="2">Investigasi
                                                                             </option>
-                                                                            {{-- <option value="3">Tuntas
-                                                                            </option> --}}
+                                                                            <<<<<<< HEAD {{-- <option value="3">Tuntas
+                                                                            </option> --}}=======>>>>>>>
+                                                                                724ced453ba1837848562a7d43f3c4676886eb49
                                                                         </select>
                                                                     </div>
                                                                 </div>
@@ -344,6 +349,7 @@
             var p2k3_id = $(this).attr('data-bs-p2k3_id');
             var status = $(this).attr('data-bs-status');
             var id = $(this).attr('data-bs-id');
+            var kode_laporinsiden = $(this).attr('data-bs-kode_laporinsiden');
             var departemen_id = $(this).attr('data-bs-departemen_id');
             var lokasi_rinci = $(this).attr('data-bs-lokasi_rinci');
             var jenis_insiden = $(this).attr('data-bs-jenis_insiden');
@@ -351,6 +357,7 @@
             //$("#p2k3_id").val(p2k3_id).setAttribute('selected', 'selected');
             //$("#status").val(status).setAttribute('selected', 'selected');
             $("#id").val(id);
+            $("#kode_laporinsiden").val(kode_laporinsiden);
             $("#departemen_id").val(departemen_id);
             $("#lokasi_rinci").val(lokasi_rinci);
             $("#jenis_insiden").val(jenis_insiden);
