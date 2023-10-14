@@ -131,7 +131,7 @@
                                     </td>
                                     @if (auth()->user()->hak_akses == 'Pimpinan')
                                         <td class="d-flex justify-content-center">
-                                            <button id="update" class="btn btn-primary btn-sm px-4 py-2"
+                                            <button id="update" class="btn btn-primary btn-sm px-3 py-2"
                                                 data-bs-toggle="modal" data-bs-target="#editmodal"
                                                 data-bs-p2k3_id="{{ $lap->p2k3_id }}" data-bs-status="{{ $lap->status }}"
                                                 data-bs-id="{{ $lap->id }}"
@@ -201,12 +201,14 @@
                                                                             class="form-select fs-6 w-100"
                                                                             data-control="select2" data-hide-search="true"
                                                                             data-placeholder="status">
-                                                                            <option value="">Status Investigas
+                                                                            <option value="">Status Investigasi
+                                                                            </option>
+                                                                            <option value="1">Pending
                                                                             </option>
                                                                             <option value="2">Investigasi
                                                                             </option>
-                                                                            <option value="3">Tuntas
-                                                                            </option>
+                                                                            {{-- <option value="3">Tuntas
+                                                                            </option> --}}
                                                                         </select>
                                                                     </div>
                                                                 </div>

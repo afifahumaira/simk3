@@ -129,14 +129,16 @@
                                     </td>
                                     @if (auth()->user()->hak_akses == 'Pimpinan')
                                         <td class="d-flex justify-content-center">
-                                            <button id="update" class="btn btn-primary btn-sm" data-bs-toggle="modal"
-                                                data-bs-target="#editmodal" data-bs-p2k3="{{ $data->p2k3_id }}"
-                                                data-bs-status="{{ $data->status }}" data-bs-id="{{ $data->id }}"
+                                            <button id="update" class="btn btn-primary btn-sm px-3 py-2"
+                                                data-bs-toggle="modal" data-bs-target="#editmodal"
+                                                data-bs-p2k3="{{ $data->p2k3_id }}" data-bs-status="{{ $data->status }}"
+                                                data-bs-id="{{ $data->id }}"
                                                 data-bs-departemen_id="{{ $data->departemen_id }}"
                                                 data-bs-lokasi="{{ $data->lokasi }}"
                                                 data-bs-potensi_bahaya="{{ $data->potensi_bahaya }}"
                                                 data-bs-resiko_bahaya="{{ $data->resiko_bahaya }}"
-                                                data-bs-usulan_perbaikan="{{ $data->usulan_perbaikan }}">
+                                                data-bs-usulan_perbaikan="{{ $data->usulan_perbaikan }}"
+                                                style="font-size: 16px">
                                                 Ubah Status
 
                                                 {{-- {{ $investigasi->p2k3 }} --}}
@@ -200,10 +202,11 @@
                                                                             class="form-select fs-6 w-100"
                                                                             data-control="select2" data-hide-search="true"
                                                                             data-placeholder="status">
-                                                                            <option value=""></option>
-                                                                            <option value="2">Investigasi
+                                                                            <option value="">Status Investigasi
                                                                             </option>
-                                                                            <option value="3">Tuntas
+                                                                            <option value="1">Pending
+                                                                            </option>
+                                                                            <option value="2">Investigasi
                                                                             </option>
                                                                         </select>
                                                                     </div>
