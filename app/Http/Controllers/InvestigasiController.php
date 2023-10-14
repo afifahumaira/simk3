@@ -28,7 +28,13 @@ class InvestigasiController extends Controller
             $query->where('departemen_id', auth()->user()->departemen_id);
         })
         ->where(function($query) use($request){
-            $query->where('kategori', 'LIKE', '%'.$request->search.'%');
+            $searchTerm = $request->search;
+            
+            $query->whereHas('departemen', function ($subquery) use ($searchTerm) {
+                $subquery->where('name', 'LIKE', '%' . $searchTerm . '%');
+                })
+        ->orWhere ('lokasi', 'LIKE', '%'.$request->search.'%')
+        ->orWhere('kategori', 'LIKE', '%'.$request->search.'%');
         })
         ->paginate(10);        
                     
@@ -54,7 +60,13 @@ class InvestigasiController extends Controller
         //     $query->where('departemen_id', auth()->user()->departemen_id);
         // })
         ->where(function($query) use($request){
-            $query->where('kategori', 'LIKE', '%'.$request->search.'%');
+            $searchTerm = $request->search;
+            
+            $query->whereHas('departemen', function ($subquery) use ($searchTerm) {
+                $subquery->where('name', 'LIKE', '%' . $searchTerm . '%');
+                })
+        ->orWhere ('lokasi', 'LIKE', '%'.$request->search.'%')
+        ->orWhere('kategori', 'LIKE', '%'.$request->search.'%');
         })
         ->paginate(10);        
                     

@@ -62,7 +62,14 @@
                             <tr class="fw-semibold border-bottom-2 border-gray-200">
                                 <th>No</th>
                                 <th scope="col" class="col-1">Kode Insiden Lapor</th>
-                                <th>Waktu Kejadian</th>
+                                <th scope="col"class="d-flex justify-content-between">Tanggal lapor <div><a class="mx-1"
+                                            href="{{ route('laporan-insiden.k3dep', ['sort' => 'waktu_kejadian', 'order' => 'asc']) }}"><i
+                                                class="bi bi-arrow-up text-black"></i></a>
+                                        <a class="px-1"
+                                            href="{{ route('laporan-insiden.k3dep', ['sort' => 'waktu_kejadian', 'order' => 'desc']) }}"><i
+                                                class="bi bi-arrow-down text-black"></i></a>
+                                    </div>
+                                </th>
                                 <th>Lokasi</th>
                                 <th scope="col">Departemen</th>
                                 <th>Nama Pelapor</th>

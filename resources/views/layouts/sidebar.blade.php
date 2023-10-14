@@ -265,66 +265,6 @@
             @endif
             {{-- End View Admin --}}
 
-            {{-- View pengguna --}}
-            @if (auth()->user()->hak_akses == 'Pengguna')
-                <div class=" menu-item here show menu-accordion ">
-                    <!--begin:Menu link-->
-                    <a href="{{ route('dashboard') }}"
-                        class="menu-link {{ Request::is('dashboard') ? 'active' : '' }} ">
-                        <span class="menu-icon">
-                            <i class="bi bi-speedometer2 fs-3 "></i>
-                        </span>
-                        <span class="menu-title ">Dashboards</span>
-
-                    </a>
-                </div>
-                <div class="menu-item here show menu-accordion">
-                    <!--begin:Menu link-->
-                    <a href="{{ route('laporan-insiden.index') }}"
-                        class="menu-link {{ Request::is('laporan-insiden') ? 'active' : '' }}">
-                        <span class="menu-icon ">
-                            <i class="bi bi-clipboard-check-fill  fs-3"></i>
-                        </span>
-                        <span class="menu-title ">Daftar Lapor Insiden</span>
-
-                    </a>
-                </div>
-                <div class="menu-item here show menu-accordion">
-                    <!--begin:Menu link-->
-                    <a href="{{ route('potensibahaya.index') }}"
-                        class="menu-link {{ Request::is('potensibahaya') ? 'active' : '' }}">
-                        <span class="menu-icon">
-                            <i class="bi bi-exclamation-octagon  fs-3"></i>
-                        </span>
-                        <span class="menu-title ">Daftar Lapor Potensi Bahaya</span>
-
-                    </a>
-                </div>
-                <!--begin:Menu item-->
-
-                <!--end:Menu item-->
-                <div class="menu-item here show menu-accordion">
-                    <!--begin:Menu link-->
-                    <a href="{{ route('maps.index') }}" class="menu-link {{ Request::is('maps') ? 'active' : '' }}">
-                        <span class="menu-icon">
-                            <i class="bi bi-map  fs-3 "></i>
-                        </span>
-                        <span class="menu-title ">Maps</span>
-                    </a>
-                </div>
-                <div class="menu-item here show menu-accordion">
-                    <!--begin:Menu link-->
-                    <a href="{{ route('simk3.index') }}"
-                        class="menu-link {{ Request::is('simk3') ? 'active' : '' }}">
-                        <span class="menu-icon">
-                            <i class="bi bi-house-door  fs-3"></i>
-                        </span>
-                        <span class="menu-title ">Back Home</span>
-                    </a>
-                </div>
-            @endif
-            {{-- End View Pengguna --}}
-
             {{-- View P2K3 --}}
             @if (auth()->user()->hak_akses == 'P2K3' ||
                     auth()->user()->hak_akses == 'K3 Departemen' ||
@@ -503,7 +443,7 @@
                     <div class="menu-item here show menu-accordion">
                         <!--begin:Menu link-->
                         <a href="{{ route('laporan-insiden.index') }}"
-                            class="menu-link {{ Request::is('laporan-inside') ? 'active' : '' }}">
+                            class="menu-link {{ Request::is('laporan-insiden') ? 'active' : '' }}">
                             <span class="menu-icon ">
                                 <i class="bi bi-clipboard-check-fill  fs-3"></i>
                             </span>
@@ -521,7 +461,7 @@
                             <span class="menu-icon">
                                 <i class="bi bi-exclamation-octagon  fs-3"></i>
                             </span>
-                            <span class="menu-title ">Daftar Lapor Potensi Bahaya</span>
+                            <span class="menu-title ">Daftar Laporan Potensi Bahaya</span>
 
                         </a>
                     </div>
@@ -660,6 +600,65 @@
             @endif
             {{-- End View P2K3 --}}
 
+            {{-- View pengguna --}}
+            @if (auth()->user()->hak_akses == 'Pengguna')
+                <div class=" menu-item here show menu-accordion ">
+                    <!--begin:Menu link-->
+                    <a href="{{ route('dashboard') }}"
+                        class="menu-link {{ Request::is('dashboard') ? 'active' : '' }} ">
+                        <span class="menu-icon">
+                            <i class="bi bi-speedometer2 fs-3 "></i>
+                        </span>
+                        <span class="menu-title ">Dashboards</span>
+
+                    </a>
+                </div>
+                <div class="menu-item here show menu-accordion">
+                    <!--begin:Menu link-->
+                    <a href="{{ route('laporan-insiden.index') }}"
+                        class="menu-link {{ Request::is('laporan-insiden') ? 'active' : '' }}">
+                        <span class="menu-icon ">
+                            <i class="bi bi-clipboard-check-fill  fs-3"></i>
+                        </span>
+                        <span class="menu-title ">Daftar Laporan Insiden</span>
+
+                    </a>
+                </div>
+                <div class="menu-item here show menu-accordion">
+                    <!--begin:Menu link-->
+                    <a href="{{ route('potensibahaya.index') }}"
+                        class="menu-link {{ Request::is('potensibahaya') ? 'active' : '' }}">
+                        <span class="menu-icon">
+                            <i class="bi bi-exclamation-octagon  fs-3"></i>
+                        </span>
+                        <span class="menu-title ">Daftar Laporan Potensi Bahaya</span>
+
+                    </a>
+                </div>
+                <!--begin:Menu item-->
+
+                <!--end:Menu item-->
+                <div class="menu-item here show menu-accordion">
+                    <!--begin:Menu link-->
+                    <a href="{{ route('maps.index') }}" class="menu-link {{ Request::is('maps') ? 'active' : '' }}">
+                        <span class="menu-icon">
+                            <i class="bi bi-map  fs-3 "></i>
+                        </span>
+                        <span class="menu-title ">Maps</span>
+                    </a>
+                </div>
+                <div class="menu-item here show menu-accordion">
+                    <!--begin:Menu link-->
+                    <a href="{{ route('simk3.index') }}"
+                        class="menu-link {{ Request::is('simk3') ? 'active' : '' }}">
+                        <span class="menu-icon">
+                            <i class="bi bi-house-door  fs-3"></i>
+                        </span>
+                        <span class="menu-title ">Back Home</span>
+                    </a>
+                </div>
+            @endif
+            {{-- End View Pengguna --}}
 
 
             <!--end:Menu item-->

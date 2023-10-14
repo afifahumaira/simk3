@@ -81,9 +81,9 @@
                                                 <select name="status" class="form-select fs-6  w-100"
                                                     data-control="select2" data-hide-search="true" data-placeholder="Status"
                                                     id="status">
-                                                    <option value="1" {{ $data->status == 1 ? 'selected' : '' }}>
+                                                    {{-- <option value="1" {{ $data->status == 1 ? 'selected' : '' }}>
                                                         Pending
-                                                    </option>
+                                                    </option> --}}
                                                     <option value="2" {{ $data->status == 2 ? 'selected' : '' }}>
                                                         Investigasi
                                                     </option>
@@ -168,7 +168,7 @@
                                         </div>
                                     </div>
 
-                                    
+
                                     <div class="ps-3 pe-5">
                                         <label class="col-sm-2 col-form-label">Tanggal Kejadian</label>
                                         <div class="col-sm-10 w-100">
@@ -187,7 +187,8 @@
                                             <select class="form-select fs-6 w-100" data-control="select2"
                                                 data-hide-search="true" data-placeholder="- Pilih -"
                                                 style="--bs-link-hover-color-rgb: 25, 135, 84;" id=""
-                                                name="kategori_pelapor" style="font-family: Arial, Helvetica, sans-serif;">
+                                                name="kategori_pelapor"
+                                                style="font-family: Arial, Helvetica, sans-serif;">
                                                 <option value="">- Pilih -</option>
                                                 <option value="Dosen"
                                                     {{ $data->kategori_pelapor == 'Dosen' ? 'selected' : '' }}>
@@ -277,7 +278,8 @@
                                                     data-hide-search="true" data-placeholder="- Pilih -"
                                                     data-kt-placement="bottom"
                                                     style="--bs-link-hover-color-rgb: 25, 135, 84;" id=""
-                                                    name="unit_civitas_akademika_box" style="font-family: Arial, Helvetica, sans-serif;">
+                                                    name="unit_civitas_akademika_box"
+                                                    style="font-family: Arial, Helvetica, sans-serif;">
                                                     <option value="">- Pilih -</option>
                                                     <option value="Dosen"
                                                         {{ $data->unit_civitas_akademika_box == 'Dosen' ? 'selected' : '' }}>
@@ -315,7 +317,8 @@
                                                     data-hide-search="true" data-placeholder="- Pilih -"
                                                     data-kt-placement="bottom"
                                                     style="--bs-link-hover-color-rgb: 25, 135, 84;" id=""
-                                                    name="potensi_bahaya" style="font-family: Arial, Helvetica, sans-serif;">
+                                                    name="potensi_bahaya"
+                                                    style="font-family: Arial, Helvetica, sans-serif;">
                                                     <option value="">- Pilih -</option>
                                                     <option value="Fisik"
                                                         {{ $data->potensi_bahaya == 'Fisik' ? 'selected' : '' }}>Fisik
@@ -413,13 +416,12 @@
                                                 <div
                                                     class="modal-body mt-5 d-flex justify-content-center align-items-center">
                                                     <h2 class="mt-5 text-center"
-                                                        style="color: #16243D; font-size: 20px; font-weight:700">keluar
-                                                        dari
-                                                        edit
-                                                        data?
+                                                        style="color: #16243D; font-size: 20px font-weight:700">Reset data
+                                                        yang
+                                                        akan dimasukkan?
                                                         <p class="mb-0 mt-2 text-center "
-                                                            style="color: #DC3545; font-weight:400; font-size:14px">
-                                                            data yang
+                                                            style="color: #DC3545; font-weight:400; font-size:14px"> data
+                                                            yang
                                                             dimasukkan belum tersimpan </p>
                                                     </h2>
                                                 </div>
@@ -448,6 +450,7 @@
 @stop
 
 @section('customscript')
+    <script src="{{ asset('plugins/custom/fslightbox/fslightbox.bundle.js') }}"></script>
     <script>
         // $(document).ready(function() {
         //     $(".tanggalPicker").flatpickr({

@@ -35,12 +35,20 @@ class LaporanInsidenController extends Controller
             $query->where('departemen_id', auth()->user()->departemen_id);
         })
             ->where(function($query) use($request){
-                $query->where('kode_laporinsiden', 'LIKE', '%'.$request->search.'%')
+                $searchTerm = $request->search;
+            // Use a subquery to filter based on department name
+            $query->whereHas('departemen', function ($subquery) use ($searchTerm) {
+            $subquery->where('name', 'LIKE', '%' . $searchTerm . '%');
+            })
                 ->orWhere('lokasi_rinci', 'LIKE', '%'.$request->search.'%')
                 ->orWhere('nama_pelapor', 'LIKE', '%'.$request->search.'%')
                 ->orWhere('nama_korban', 'LIKE', '%'.$request->search.'%');
-            }) 
-            
+            }); 
+
+            if ($request->has('sort') && $request->has('order')) {
+                $laporaninsidens->orderBy($request->sort, $request->order);
+            };
+            $laporaninsidens = $laporaninsidens
             ->paginate(10);
         return view('dashboard.laporaninsiden.index')
             ->with('laporaninsidens',$laporaninsidens)
@@ -64,8 +72,12 @@ class LaporanInsidenController extends Controller
                 ->orWhere('lokasi_rinci', 'LIKE', '%'.$request->search.'%')
                 ->orWhere('nama_pelapor', 'LIKE', '%'.$request->search.'%')
                 ->orWhere('nama_korban', 'LIKE', '%'.$request->search.'%');
-            }) 
+            }); 
             
+            if ($request->has('sort') && $request->has('order')) {
+                $laporaninsidens->orderBy($request->sort, $request->order);
+            };
+            $laporaninsidens = $laporaninsidens
             ->paginate(10);
         return view('dashboard.laporaninsiden.k3view')
             ->with('laporaninsidens',$laporaninsidens);

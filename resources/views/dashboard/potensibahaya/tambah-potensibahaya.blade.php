@@ -81,7 +81,7 @@
                                     <label class="col-sm-2 col-form-label">Nama Pelapor</label>
                                     <div class="col-sm-10 w-100">
                                         <input type="text" class="form-control" name="nama_pelapor" id="nama_pelapor"
-                                            value="{{ old('nama_pelapor', request()->input('nama_pelapor'))}}">
+                                            value="{{ old('nama_pelapor', request()->input('nama_pelapor')) }}">
 
                                     </div>
                                 </div>
@@ -90,7 +90,7 @@
                                     <label for="inputEmail3" class="col-sm-2 col-form-label">Email Pelapor</label>
                                     <div class="col-sm-10 w-100">
                                         <input type="email" class="form-control" name="email_pelapor"
-                                            value="{{ old('email_pelapor', request()->input('email_pelapor'))}}">
+                                            value="{{ old('email_pelapor', request()->input('email_pelapor')) }}">
 
                                     </div>
                                 </div>
@@ -99,7 +99,7 @@
                                     <label for="inputNomertelepon3" class="col-sm-2 col-form-label">NIP/NIM</label>
                                     <div class="col-sm-10 w-100">
                                         <input type="number" class="form-control " name="nip_nim"
-                                            value="{{ old('nip_nim', request()->input('nip_nim'))}}">
+                                            value="{{ old('nip_nim', request()->input('nip_nim')) }}">
 
                                     </div>
                                 </div>
@@ -109,7 +109,7 @@
                                         Pelapor</label>
                                     <div class="col-sm-10 w-100">
                                         <input type="number" class="form-control " name="nomer_telepon_pelapor"
-                                            value="{{ old('nomor_telepon_pelapor', request()->input('nomor_telepon_pelapor'))}}">
+                                            value="{{ old('nomor_telepon_pelapor', request()->input('nomor_telepon_pelapor')) }}">
                                     </div>
                                 </div>
 
@@ -139,11 +139,19 @@
                                             style="--bs-link-hover-color-rgb: 25, 135, 84;" id=""
                                             name="kategori_pelapor" style="font-family: Arial, Helvetica, sans-serif;">
                                             <option value="">- Pilih -</option>
-                                            <option value="Dosen" {{ old('kategori_pelapor') == "Dosen" ? 'selected' : '' }}>Dosen</option>
-                                            <option value="Karyawan" {{ old('kategori_pelapor') == "Karyawan" ? 'selected' : '' }}>Karyawan</option>
-                                            <option value="Mahasiswa" {{ old('kategori_pelapor') == "Mahasiswa" ? 'selected' : '' }}>Mahasiswa</option>
-                                            <option value="Tamu" {{ old('kategori_pelapor') == "Tamu" ? 'selected' : '' }}>Tamu</option>
-                                            <option value="Lainnya" {{ old('kategori_palpor') == "Lainnya" ? 'selected' : '' }}>Lainnya</option>
+                                            <option value="Dosen"
+                                                {{ old('kategori_pelapor') == 'Dosen' ? 'selected' : '' }}>Dosen</option>
+                                            <option value="Karyawan"
+                                                {{ old('kategori_pelapor') == 'Karyawan' ? 'selected' : '' }}>Karyawan
+                                            </option>
+                                            <option value="Mahasiswa"
+                                                {{ old('kategori_pelapor') == 'Mahasiswa' ? 'selected' : '' }}>Mahasiswa
+                                            </option>
+                                            <option value="Tamu"
+                                                {{ old('kategori_pelapor') == 'Tamu' ? 'selected' : '' }}>Tamu</option>
+                                            <option value="Lainnya"
+                                                {{ old('kategori_palpor') == 'Lainnya' ? 'selected' : '' }}>Lainnya
+                                            </option>
                                         </select>
                                     </div>
                                 </div>
@@ -172,7 +180,8 @@
                                 <div class="ps-3 pe-5">
                                     <label for="inputEmail3" class="col-sm-2 col-form-label">Tujuan</label>
                                     <div class="col-sm-10 w-100">
-                                        <input type="text" class="form-control" name="tujuan" value="{{ old('tujuan', request()->input('tujuan'))}}">
+                                        <input type="text" class="form-control" name="tujuan"
+                                            value="{{ old('tujuan', request()->input('tujuan')) }}">
 
                                     </div>
                                 </div>
@@ -184,7 +193,9 @@
                                             data-control="select2" data-hide-search="true"
                                             data-placeholder="departemen_id">
                                             @foreach ($departemen as $dep)
-                                                <option value="{{ $dep->id }}" {{ old('departemen_id') == $dep->id ? 'selected' : '' }}>{{ $dep->name }}</option>
+                                                <option value="{{ $dep->id }}"
+                                                    {{ old('departemen_id') == $dep->id ? 'selected' : '' }}>
+                                                    {{ $dep->name }}</option>
                                             @endforeach
                                         </select>
                                     </div>
@@ -210,11 +221,21 @@
                                             id="" name="unit_civitas_akademika_box"
                                             style="font-family: Arial, Helvetica, sans-serif;">
                                             <option value="">- Pilih -</option>
-                                            <option value="Dosen" {{ old('unit_civitas_akademika_box') == "Dosen" ? 'selected' : '' }}>Dosen</option>
-                                            <option value="Karyawan" {{ old('unit_civitas_akademika_box') == "Karyawan" ? 'selected' : '' }}>Karyawan</option>
-                                            <option value="Mahasiswa" {{ old('unit_civitas_akademika_box') == "Mahasiswa" ? 'selected' : '' }}>Mahasiswa</option>
-                                            <option value="Tamu" {{ old('unit_civitas_akademika_box') == "Tamu" ? 'selected' : '' }}>Tamu</option>
-                                            <option value="Lainnya" {{ old('unit_civitas_akademika_box') == "Lainnya" ? 'selected' : '' }}>Lainnya</option>
+                                            <option value="Dosen"
+                                                {{ old('unit_civitas_akademika_box') == 'Dosen' ? 'selected' : '' }}>Dosen
+                                            </option>
+                                            <option value="Karyawan"
+                                                {{ old('unit_civitas_akademika_box') == 'Karyawan' ? 'selected' : '' }}>
+                                                Karyawan</option>
+                                            <option value="Mahasiswa"
+                                                {{ old('unit_civitas_akademika_box') == 'Mahasiswa' ? 'selected' : '' }}>
+                                                Mahasiswa</option>
+                                            <option value="Tamu"
+                                                {{ old('unit_civitas_akademika_box') == 'Tamu' ? 'selected' : '' }}>Tamu
+                                            </option>
+                                            <option value="Lainnya"
+                                                {{ old('unit_civitas_akademika_box') == 'Lainnya' ? 'selected' : '' }}>
+                                                Lainnya</option>
                                         </select>
 
                                     </div>
@@ -223,7 +244,8 @@
                                 <div class="ps-3 pe-5">
                                     <label for="inputEmail3" class="col-sm-2 col-form-label">Lokasi</label>
                                     <div class="col-sm-10 w-100">
-                                        <input type="text" class="form-control" name="lokasi" value="{{ old('lokasi', request()->input('lokasi'))}}">
+                                        <input type="text" class="form-control" name="lokasi"
+                                            value="{{ old('lokasi', request()->input('lokasi')) }}">
 
                                     </div>
                                 </div>
@@ -235,14 +257,24 @@
                                         <select class="form-select fs-6 w-100" data-control="select2"
                                             data-hide-search="true" data-placeholder="- Pilih -"
                                             data-kt-placement="bottom" style="--bs-link-hover-color-rgb: 25, 135, 84;"
-                                            id="" name="potensi_bahaya" style="font-family: Arial, Helvetica, sans-serif;">
+                                            id="" name="potensi_bahaya"
+                                            style="font-family: Arial, Helvetica, sans-serif;">
                                             <option value="">- Pilih -</option>
-                                            <option value="Fisik" {{ old('potensi_bahaya') == "Fisik" ? 'selected' : '' }}>Fisik</option>
-                                            <option value="Kimiawi" {{ old('potensi_bahaya') == "Kimiawi" ? 'selected' : '' }}>Kimiawi</option>
-                                            <option value="Biologis" {{ old('potensi_bahaya') == "Biologis" ? 'selected' : '' }}>Biologis</option>
-                                            <option value="Ergonomi" {{ old('potensi_bahaya') == "Ergonomi" ? 'selected' : '' }}>Ergonomi</option>
-                                            <option value="Psikologi" {{ old('potensi_bahaya') == "Psikologi" ? 'selected' : '' }}>Psikologi</option>
-                                            <option value="Lainnya" {{ old('potensi_bahaya') == "Lainnya" ? 'selected' : '' }}>Lainnya</option>
+                                            <option value="Fisik"
+                                                {{ old('potensi_bahaya') == 'Fisik' ? 'selected' : '' }}>Fisik</option>
+                                            <option value="Kimiawi"
+                                                {{ old('potensi_bahaya') == 'Kimiawi' ? 'selected' : '' }}>Kimiawi</option>
+                                            <option value="Biologis"
+                                                {{ old('potensi_bahaya') == 'Biologis' ? 'selected' : '' }}>Biologis
+                                            </option>
+                                            <option value="Ergonomi"
+                                                {{ old('potensi_bahaya') == 'Ergonomi' ? 'selected' : '' }}>Ergonomi
+                                            </option>
+                                            <option value="Psikologi"
+                                                {{ old('potensi_bahaya') == 'Psikologi' ? 'selected' : '' }}>Psikologi
+                                            </option>
+                                            <option value="Lainnya"
+                                                {{ old('potensi_bahaya') == 'Lainnya' ? 'selected' : '' }}>Lainnya</option>
                                         </select>
                                     </div>
                                 </div>
@@ -250,14 +282,16 @@
                                     <label for="inputUnit" class="col-sm-2 col-form-label">Deskripsi Potensi
                                         Bahaya</label>
                                     <div class="col-sm-10 w-100">
-                                        <textarea class="form-control" id="kronologi" name="deskripsi_potensi_bahaya" value="{{ old('deskripsi_potensi_bahaya', request()->input('deskripsi_potensi_bahaya'))}}"></textarea>
+                                        <textarea class="form-control" id="kronologi" name="deskripsi_potensi_bahaya"
+                                            value="{{ old('deskripsi_potensi_bahaya', request()->input('deskripsi_potensi_bahaya')) }}"></textarea>
                                     </div>
                                 </div>
                                 <div class="ps-3 pe-5">
                                     <label for="inputUnit" class="col-sm-2 col-form-label">Resiko
                                         Bahaya</label>
                                     <div class="col-sm-10 w-100">
-                                        <input type="text" class="form-control " name="resiko_bahaya" value="{{ old('resiko_bahaya', request()->input('resiko_bahaya'))}}">
+                                        <input type="text" class="form-control " name="resiko_bahaya"
+                                            value="{{ old('resiko_bahaya', request()->input('resiko_bahaya')) }}">
                                     </div>
                                 </div>
 
@@ -265,7 +299,8 @@
                                     <label for="inputUnit" class="col-sm-2 col-form-label">Usulan
                                         Perbaikan</label>
                                     <div class="col-sm-10 w-100">
-                                        <textarea class="form-control" id="kronologi" name="usulan_perbaikan" value="{{ old('usulan_perbaikan', request()->input('usulan_perbaikan'))}}"></textarea>
+                                        <textarea class="form-control" id="kronologi" name="usulan_perbaikan"
+                                            value="{{ old('usulan_perbaikan', request()->input('usulan_perbaikan')) }}"></textarea>
                                     </div>
                                 </div>
                                 <div class="ps-3 pe-5">
@@ -305,11 +340,10 @@
 
                                         <div class="modal-body mt-5 d-flex justify-content-center align-items-center">
                                             <h2 class="mt-5 text-center"
-                                                style="color: #16243D; font-size: 20px; font-weight:700">
-                                                Reset data yang akan di masukkan?
+                                                style="color: #16243D; font-size: 20px font-weight:700">Reset data yang
+                                                akan dimasukkan?
                                                 <p class="mb-0 mt-2 text-center "
-                                                    style="color: #DC3545; font-weight:400; font-size:14px">
-                                                    data yang
+                                                    style="color: #DC3545; font-weight:400; font-size:14px"> data yang
                                                     dimasukkan belum tersimpan </p>
                                             </h2>
                                         </div>
@@ -337,6 +371,7 @@
 @stop
 
 @section('customscript')
+    <script src="{{ asset('plugins/custom/fslightbox/fslightbox.bundle.js') }}"></script>
     <script>
         // $(document).ready(function() {
         //     $(".tanggalPicker").flatpickr({

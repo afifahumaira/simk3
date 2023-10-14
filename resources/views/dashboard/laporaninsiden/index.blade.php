@@ -49,7 +49,7 @@
                         <div class="w-0 ">
                             <select name="filter" id="filter" class="form-select fs-6 w-100 shadow"
                                 data-control="select2" data-hide-search="true">
-                                <option value="">Status</option>
+                                <option value="">Semua status</option>
                                 <option value="1"
                                     {{ request()->has('filter') ? (request()->filter == 1 ? 'selected' : false) : '' }}>
                                     Pending</option>
@@ -77,13 +77,19 @@
                             <tr>
                                 <th scope="col" class="text-center">No</th>
                                 <th scope="col" class="">Kode Laporan Insiden</th>
-                                <th scope="col">Tanggal lapor</th>
+                                <th scope="col" class="d-flex justify-content-between">Tanggal lapor <a
+                                        href="{{ route('laporan-insiden.index', ['sort' => 'waktu_kejadian', 'order' => 'asc']) }}"><i
+                                            class="bi bi-arrow-up text-black"></i></a>
+                                    <a
+                                        href="{{ route('laporan-insiden.index', ['sort' => 'waktu_kejadian', 'order' => 'desc']) }}"><i
+                                            class="bi bi-arrow-down text-black"></i></a>
+                                </th>
                                 <th scope="col">Nama Pelapor</th>
                                 <th scope="col">Lokasi Kejadian</th>
                                 <th scope="col" class="col-2">Departemen</th>
                                 <th scope="col" class="col-1">Status</th>
                                 @if (auth()->user()->hak_akses == 'Pimpinan')
-                                    <th scope="col">Ubah Status</th>
+                                    <th scope="col" class="">Ubah Status</th>
                                 @endif
                                 @if (auth()->user()->hak_akses == 'Admin' ||
                                         auth()->user()->hak_akses == 'P2K3' ||
@@ -102,9 +108,10 @@
                                     <td>{{ $lap->kode_laporinsiden }}</td>
                                     <td>{{ $lap->waktu_kejadian ? $lap->waktu_kejadian->translatedFormat('d F Y') : '' }}
                                     </td>
+                                    <td>{{ $lap->nama_pelapor }}</td>
                                     <td>{{ $lap->lokasi_rinci }}</td>
                                     <td>{{ $lap->departemen->name }}</td>
-                                    <td>{{ $lap->nama_pelapor }}</td>
+
                                     <td align="center" class="pt-5">
                                         @if ($lap->status == '1')
                                             <a href=""
@@ -124,13 +131,15 @@
                                     </td>
                                     @if (auth()->user()->hak_akses == 'Pimpinan')
                                         <td class="d-flex justify-content-center">
-                                            <button id="update" class="btn btn-primary btn-sm" data-bs-toggle="modal"
-                                                data-bs-target="#editmodal" data-bs-p2k3_id="{{ $lap->p2k3_id }}"
-                                                data-bs-status="{{ $lap->status }}" data-bs-id="{{ $lap->id }}"
+                                            <button id="update" class="btn btn-primary btn-sm px-4 py-2"
+                                                data-bs-toggle="modal" data-bs-target="#editmodal"
+                                                data-bs-p2k3_id="{{ $lap->p2k3_id }}" data-bs-status="{{ $lap->status }}"
+                                                data-bs-id="{{ $lap->id }}"
                                                 data-bs-departemen_id="{{ $lap->departemen_id }}"
                                                 data-bs-lokasi_rinci="{{ $lap->lokasi_rinci }}"
                                                 data-bs-jenis_insiden="{{ $lap->jenis_insiden }}"
-                                                data-bs-penyebab_insiden="{{ $lap->penyebab_insiden }}">
+                                                data-bs-penyebab_insiden="{{ $lap->penyebab_insiden }}"
+                                                style="font-size: 16px">
                                                 Ubah Status
 
                                                 {{-- {{ $investigasi->p2k3 }} --}}
@@ -192,7 +201,8 @@
                                                                             class="form-select fs-6 w-100"
                                                                             data-control="select2" data-hide-search="true"
                                                                             data-placeholder="status">
-                                                                            <option value=""></option>
+                                                                            <option value="">Status Investigas
+                                                                            </option>
                                                                             <option value="2">Investigasi
                                                                             </option>
                                                                             <option value="3">Tuntas

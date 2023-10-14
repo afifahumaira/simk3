@@ -9,7 +9,7 @@
                 <div class="app-toolbar-wrapper d-flex flex-stack flex-wrap gap-4 w-100 mb-5 px-5 border-bottom border-5">
                     <!--begin::Page title-->
                     <h2>Edit Data HIRARC</h2>
-                    <a href="{{ route('hirarc.index') }}" type="button"
+                    <a href="{{ route('hirarc.lihat', $hirarc->departemen_id) }}" type="button"
                         class="btn text-white btn-secondary btn-sm d-flex justify-content-center align-items-center mb-2"
                         data-bs-toggle="modal" data-bs-target="#staticBackdrop" style="background: #505050; width:90px"><i
                             class="bi bi-chevron-left text-white"></i>Kembali</a>
@@ -30,7 +30,7 @@
                                     </h2>
                                 </div>
                                 <div class="modal-footer d-flex justify-content-center border-0">
-                                    <a href="{{ route('hirarc.index') }}" type="button"
+                                    <a href="{{ route('hirarc.lihat', $hirarc->departemen_id) }}" type="button"
                                         class="btn btn-success text-white d-flex justify-content-center align-items-center text-center rounded-1"
                                         style="width:76px; height:31px; background: #29CC6A;">Ya</a>
                                     <button type="button"
@@ -49,7 +49,8 @@
                         <div class="card bg-light">
                             <div class="card-header d-flex align-items-center fs-3 fw-normal">
                                 <div class="pull-left">
-                                    <strong style="color: #16243D; font-family: Plus Jakarta Sans, sans-serif; font-size:16px;">Data
+                                    <strong
+                                        style="color: #16243D; font-family: Plus Jakarta Sans, sans-serif; font-size:16px;">Data
                                         HIRARC</strong>
                                 </div>
                             </div>
@@ -145,8 +146,10 @@
                                             <select class="form-select fs-6 w-100" data-control="select2"
                                                 data-hide-search="true" data-placeholder="N/A"
                                                 style="--bs-link-hover-color-rgb: 25, 135, 84;" name="kesesuaian"
-                                                id="kesesuaian" style="font-family: Arial, Helvetica, sans-serif;" required>
-                                                <option value="{{ $hirarc->kesesuaian }}">{{ $hirarc->kesesuaian }}</option>
+                                                id="kesesuaian" style="font-family: Arial, Helvetica, sans-serif;"
+                                                required>
+                                                <option value="{{ $hirarc->kesesuaian }}">{{ $hirarc->kesesuaian }}
+                                                </option>
                                                 <option value="1">Yes</option>
                                                 <option value="2">No</option>
                                                 <option value="3">Not Applicable</option>
@@ -160,8 +163,9 @@
                                             <select class="form-select fs-6 w-100" data-control="select2"
                                                 data-hide-search="true" data-placeholder="Normal"
                                                 style="--bs-link-hover-color-rgb: 25, 135, 84;" name="kondisi"
-                                                id="kondisi" style="font-family: Arial, Helvetica, sans-serif;" required>
-                                                <option value="{{ $hirarc->kondisi }}">{{$hirarc->kondisi}}</option>
+                                                id="kondisi" style="font-family: Arial, Helvetica, sans-serif;"
+                                                required>
+                                                <option value="{{ $hirarc->kondisi }}">{{ $hirarc->kondisi }}</option>
                                                 <option value="1">Normal </option>
                                                 <option value="2">Not Normal</option>
                                                 <option value="3"> Emergency</option>
@@ -185,7 +189,8 @@
                                             required
                                             data-placeholder="Pilih Keparahan Risiko
                                     (severity)">
-                                    <option value="{{ $hirarc->current_severity }}" selected disable>{{ $hirarc->current_severity }}</option>
+                                            <option value="{{ $hirarc->current_severity }}" selected disable>
+                                                {{ $hirarc->current_severity }}</option>
                                             <option value="1">
                                                 [1] Tergores, sayatan kecil, kerugian dalam rupiah
                                                 sebesar
@@ -219,9 +224,9 @@
                                             (Exposure) Saat Ini</label>
                                         <select class="form-control" id="current_exposure" onchange="risk_rating()"
                                             name="current_exposure" data-control="select2" data-hide-search="true"
-                                            required
-                                            data-placeholder="Pilih Paparan Risiko (Exposure)">
-                                            <option value="{{ $hirarc->current_exposure }}" selected disable>{{ $hirarc->current_exposure }}</option>
+                                            required data-placeholder="Pilih Paparan Risiko (Exposure)">
+                                            <option value="{{ $hirarc->current_exposure }}" selected disable>
+                                                {{ $hirarc->current_exposure }}</option>
                                             <option value="0.5">[0.5] 1 kali dalam setahun
                                             </option>
                                             <option value="1">[1] Beberapa kali dalam setahun
@@ -239,17 +244,18 @@
                                             Terjadi Saat Ini(Probability)</label>
                                         <select class="form-control" onchange="risk_rating()" id="current_probability"
                                             name="current_probability" data-control="select2" data-hide-search="true"
-                                            required data-placeholder="Pilih Kemungkinan Risiko Terjadi (Probability)">                                            
-                                            <option value="{{ $hirarc->current_probability }}" selected disable>{{ $hirarc->current_probability }}</option>
-                                            <option value="1" >
+                                            required data-placeholder="Pilih Kemungkinan Risiko Terjadi (Probability)">
+                                            <option value="{{ $hirarc->current_probability }}" selected disable>
+                                                {{ $hirarc->current_probability }}</option>
+                                            <option value="1">
                                                 [1] Kejadian yang secara teori hanya mungkin terjadi
                                             </option>
-                                            <option value="3" >
+                                            <option value="3">
                                                 [3] mungkin terjadi sekali dalam 10 tahun</option>
-                                            <option value="6" >
+                                            <option value="6">
                                                 [6] Kejadian yang jarang tetapi dapat sesekali terjadi
                                             </option>
-                                            <option value="10" >
+                                            <option value="10">
                                                 [10] Peristiwa berulang setidaknya sekali dalam setahun
                                             </option>
                                         </select>
@@ -273,8 +279,9 @@
                                                 style="--bs-link-hover-color-rgb: 25, 135, 84;"
                                                 name="current_risk_category" id="current_risk_category"
                                                 style="font-family: Arial, Helvetica, sans-serif;" required readonly>
-                                                <option value="{{ $hirarc->current_risk_category }}">{{ $hirarc->current_risk_category }}</option>
-                                                
+                                                <option value="{{ $hirarc->current_risk_category }}">
+                                                    {{ $hirarc->current_risk_category }}</option>
+
                                             </select>
                                         </div>
                                     </div>
@@ -320,7 +327,8 @@
                                             required
                                             data-placeholder="Keparahan
                                     (severity)">
-                                            <option value="{{ $hirarc->residual_severity }}" selected disable>{{ $hirarc->residual_severity }}</option>
+                                            <option value="{{ $hirarc->residual_severity }}" selected disable>
+                                                {{ $hirarc->residual_severity }}</option>
                                             <option value="1">
                                                 [1] Tergores, sayatan kecil, kerugian dalam rupiah
                                                 sebesar
@@ -357,7 +365,8 @@
                                             required
                                             data-placeholder="Paparan
                                     (Exposure)">
-                                            <option value="{{ $hirarc->residual_exposure }}" selected disable>{{ $hirarc->residual_exposure }}</option>
+                                            <option value="{{ $hirarc->residual_exposure }}" selected disable>
+                                                {{ $hirarc->residual_exposure }}</option>
                                             <option value="0.5">[0.5] 1 kali dalam setahun
                                             </option>
                                             <option value="1">[1] Beberapa kali dalam setahun
@@ -377,7 +386,8 @@
                                             required
                                             data-placeholder="Kemungkinan
                                     Terjadi (Probability)">
-                                            <option value="{{ $hirarc->residual_probability }}" selected disable>{{ $hirarc->residual_probability }}</option>
+                                            <option value="{{ $hirarc->residual_probability }}" selected disable>
+                                                {{ $hirarc->residual_probability }}</option>
                                             <option value="1">
                                                 [1] Kejadian yang secara teori hanya mungkin terjadi
                                             </option>
@@ -414,8 +424,9 @@
                                                 data-hide-search="true" data-placeholder="Pilih Kategori Risiko Residual"
                                                 style="--bs-link-hover-color-rgb: 25, 135, 84;"
                                                 name="residual_risk_category" id="residual_risk_category"
-                                                style="font-family: Arial, Helvetica, sans-serif;" required readonly>                                                
-                                                <option value="{{ $hirarc->current_risk_category }}">{{ $hirarc->current_risk_category }}</option>
+                                                style="font-family: Arial, Helvetica, sans-serif;" required readonly>
+                                                <option value="{{ $hirarc->current_risk_category }}">
+                                                    {{ $hirarc->current_risk_category }}</option>
                                             </select>
                                         </div>
                                     </div>
@@ -437,30 +448,22 @@
                                         </div>
                                     </div>
 
-                                    <div class="modal-footer d-flex justify-content-center border-0">
-                                        <div class=" d-flex justify-content-center">
-                                            <button type="submit" id="simpanHirarc"
-                                                class="btn btn-success text-white d-flex justify-content-center align-items-center "
-                                                style="background: #29CC6A; height: 38px; margin : 10px 20px 30px 20px; font-size:14px; border-radius: 5px;"
-                                                data-bs-target="#simpandata">Simpan
-                                                Data</button>
 
-                                            <a href="{{ route('hirarc.index') }}" type="submit"
-                                                class="btn btn-secondary text-white d-flex align-items-center justify-content-center"
-                                                data-bs-toggle="modal" data-bs-target="#resetform"
-                                                style="background: #868E96; margin : 10px 20px 30px 20px; width: 124.33px; height: 38px; font-size:14px; border-radius: 5px;">Reset</a>
-
-                                        </div>
-                                    </div>
-
-                                </form>
                             </div>
                         </div>
                     </div>
-                    {{-- <a href="{{ route('laporan-insiden.tambah') }}" type="submit"
+                    <div class="container d-flex justify-content-center">
+                        <div class=" d-flex justify-content-center">
+                            <button type="submit" id="simpanHirarc"
+                                class="btn btn-success text-white d-flex justify-content-center align-items-center "
+                                style="background: #29CC6A; height: 38px; margin : 10px 20px 30px 20px; font-size:14px; border-radius: 5px;"
+                                data-bs-target="#simpandata">Simpan
+                                Data</button>
+
+                            <a href="{{ route('hirarc.index') }}" type="submit"
                                 class="btn btn-secondary text-white d-flex align-items-center justify-content-center"
                                 data-bs-toggle="modal" data-bs-target="#resetform"
-                                style="background: #868E96; margin : 10px 20px 30px 20px; width: 124.33px;height: 38px; font-size:14px; border-radius: 5px;">Reset</a>
+                                style="background: #868E96; margin : 10px 20px 30px 20px; width: 124.33px; height: 38px; font-size:14px; border-radius: 5px;">Reset</a>
                             <div class="modal fade" id="resetform" data-bs-backdrop="static" data-bs-keyboard="false"
                                 tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
                                 <div class="modal-dialog modal-dialog-centered ">
@@ -468,15 +471,15 @@
 
                                         <div class="modal-body mt-5 d-flex justify-content-center align-items-center">
                                             <h2 class="mt-5 text-center"
-                                                style="color: #16243D; font-size: 20px font-weight:700">keluar dari tambah
-                                                data?
+                                                style="color: #16243D; font-size: 20px font-weight:700">Reset data yang
+                                                akan dimasukkan?
                                                 <p class="mb-0 mt-2 text-center "
                                                     style="color: #DC3545; font-weight:400; font-size:14px"> data yang
                                                     dimasukkan belum tersimpan </p>
                                             </h2>
                                         </div>
                                         <div class="modal-footer d-flex justify-content-center border-0">
-                                            <a href="{{ route('laporan-insiden.tambah') }}" type="button"
+                                            <a href="{{ route('hirarc.editDetail', $hirarc->id) }}" type="button"
                                                 class="btn btn-success text-white d-flex justify-content-center align-items-center text-center rounded-1"
                                                 style="width:76px; height:31px; background: #29CC6A;">Ya</a>
                                             <button type="button"
@@ -486,7 +489,9 @@
                                         </div>
                                     </div>
                                 </div>
-                            </div> --}}
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
             </form>
@@ -510,21 +515,21 @@
             });
         });
 
-        function risk_cat (value, text) {
+        function risk_cat(value, text) {
             var x = document.getElementById("current_risk_category");
             var option = document.createElement("option");
-            option.value= value;
-            option.text= text;
-            option.selected="selected";
+            option.value = value;
+            option.text = text;
+            option.selected = "selected";
             x.add(option);
         }
 
-        function residual_cat (value, text) {
+        function residual_cat(value, text) {
             var x = document.getElementById("residual_risk_category");
             var option = document.createElement("option");
-            option.value= value;
-            option.text= text;
-            option.selected="selected";
+            option.value = value;
+            option.text = text;
+            option.selected = "selected";
             x.add(option);
         }
 
@@ -536,15 +541,15 @@
             document.getElementById("current_risk_rating").value = risk_rating;
             var cat = document.getElementById("current_risk_category")
             if (risk_rating <= "20") {
-                risk_cat("1","Slight");
+                risk_cat("1", "Slight");
             } else if (risk_rating >= "21" && risk_rating <= "70") {
-                risk_cat("2","Low");
+                risk_cat("2", "Low");
             } else if (risk_rating >= "71" && risk_rating <= "200") {
-                risk_cat("3","Medium");
+                risk_cat("3", "Medium");
             } else if (risk_rating >= "201" && risk_rating <= "400") {
-                risk_cat("4","High");
+                risk_cat("4", "High");
             } else {
-                risk_cat("5","very High");
+                risk_cat("5", "very High");
             }
         }
 
@@ -556,15 +561,15 @@
             document.getElementById("residual_risk_rating").value = risk_rating;
             var cat = document.getElementById("residual_risk_category")
             if (risk_rating <= "20") {
-                residual_cat("1","Slight");
+                residual_cat("1", "Slight");
             } else if (risk_rating >= "21" && risk_rating <= "70") {
-                residual_cat("2","Low");
+                residual_cat("2", "Low");
             } else if (risk_rating >= "71" && risk_rating <= "200") {
-                residual_cat("3","Medium");
+                residual_cat("3", "Medium");
             } else if (risk_rating => "201" && risk_rating <= "400") {
-                residual_cat("4","High");
+                residual_cat("4", "High");
             } else {
-                residual_cat("5","Very High");
+                residual_cat("5", "Very High");
             }
         }
     </script>

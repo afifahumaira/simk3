@@ -31,75 +31,54 @@ use GPBMetadata\Google\Cloud\Location\Locations;
 class HirarcController extends Controller
 {
     public function index(Request $request){
-
+        
         $hirarcs = Hirarc::with(['departemen', 'user', 'location'])
-    ->when(auth()->user()->hak_akses == 'K3 Departemen', function ($query) {
-        $query->where('departemen_id', auth()->user()->departemen_id);
-    })
-    ->where(function ($query) use ($request) {
-        $searchTerm = $request->search;
-
-        // Use a subquery to filter based on department name
-        $query->whereHas('departemen', function ($subquery) use ($searchTerm) {
-            $subquery->where('name', 'LIKE', '%' . $searchTerm . '%');
+        
+        ->when(auth()->user()->hak_akses == 'K3 Departemen', function ($query) {
+            $query->where('departemen_id', auth()->user()->departemen_id);
         })
+        
+        ->where(function ($query) use ($request) {
+            $searchTerm = $request->search;
+        // Use a subquery to filter based on department name
+            $query->whereHas('departemen', function ($subquery) use ($searchTerm) {
+            $subquery->where('name', 'LIKE', '%' . $searchTerm . '%');
+            })
         ->orWhere('location_id', 'LIKE', '%' . $searchTerm . '%');
-    })
+        })
     ->orderBy('departemen_id')
     ->orderBy('location_id')
     ->orderBy('created_at')
     ->paginate(10);
-
-       
-        // $hirarcs = Hirarc::with(['departemen', 'user', 'location'])
-        // ->when (auth()->user()->hak_akses=='K3 Departemen', function ($query){
-        //     $query->where('departemen_id', auth()->user()->departemen_id);
-        // })
-        // ->where(function($query) use($request){
-        //     $query->where('departemen_id', 'LIKE', '%'.$request->search.'%');
-        //     $query->where('location_id', 'LIKE', '%'.$request->search.'%');
-        // })
-        // ->orderBy('departemen_id')
-        // ->orderBy ('location_id')
-        // ->orderBy('created_at')
-        // ->paginate(10);
-        
-        $locCount=[];
-        $deptCount = [];
-        // $printedDept = [];
-        // dd($departemenCount);
-        
-        foreach ($hirarcs as $hir) {
-            
-            if (!isset($deptCount[$hir->departemen_id])) {
-                $deptCount[$hir->departemen_id] = 0;
-            }
-            $deptCount[$hir->departemen_id]++;
-
-            if (!isset($locCount[$hir->departemen_id][$hir->location_id])) {
-                $locCount[$hir->departemen_id][$hir->location_id] = 0;
-            }
-            $locCount[$hir->departemen_id][$hir->location_id]++;
-        } 
-        
-
-        return view('dashboard.hirarc.index')
-            ->with('hirarcs',$hirarcs)
-            ->with('deptCount',$deptCount)
-            ->with('locCount',$locCount);
+    return view('dashboard.hirarc.index')
+            ->with('hirarcs',$hirarcs);
+            // ->with('deptCount',$deptCount)
+            // ->with('locCount',$locCount);
     }
-
-    // public function index(){
-    //     $hirarcs = Hirarc::with(['departemen', 'user', 'location'])
-    //     ->when (auth()->user()->hak_akses=='K3 Departemen', function ($query){
-    //         $query->where('departemen_id', auth()->user()->departemen_id);
-    //     })
+       
+        
+        
+        // $locCount=[];
+        // $deptCount = [];
+        
+        
+        // foreach ($hirarcs as $hir) {
             
-    //     ->paginate(10);
-                
-    //     return view('dashboard.hirarc.index')
-    //         ->with('hirarcs',$hirarcs);
-    // }
+        //     if (!isset($deptCount[$hir->departemen_id])) {
+        //         $deptCount[$hir->departemen_id] = 0;
+        //     }
+        //     $deptCount[$hir->departemen_id]++;
+
+        //     if (!isset($locCount[$hir->departemen_id][$hir->location_id])) {
+        //         $locCount[$hir->departemen_id][$hir->location_id] = 0;
+        //     }
+        //     $locCount[$hir->departemen_id][$hir->location_id]++;
+        // } 
+        
+
+        
+
+    
 
     public function tambahDetail($id = null) {
         $departments = Departemen::all();
@@ -232,18 +211,7 @@ class HirarcController extends Controller
         
     }
 
-//     public function testlihat(){
-//         $activities = Activitie::first();
-//         // dd($activities->lokasi);
-//         // $location = Location::whereIn('id', json_decode($activities->lokasi))->get();
-//         $lokasi_id = array_map('intval', explode(',', $activities->lokasi));
-// $location = Location::whereIn('id', $lokasi_id)->get();
-// dd
-        
-//         // $activities = Activitie::whereRaw("FIND_IN_SET($id, lokasi)")->paginate(10);
-//         // dd($activities);
-//         return view('dashboard.hirarc.testlihat', compact('activities'));
-//     }
+
 
     public function detail($id_hirarc){
         $hirarc = Hirarc::where('id_hirarc', $id_hirarc)->first();
@@ -274,19 +242,7 @@ class HirarcController extends Controller
             
         ]);
 
-        // foreach  ($request->hazard as $key => $hazard){
-        //     Hirarc::update([
-        //     'hazard' => $hazard[$key],
-        //     'risk' => $request->risk[$key],
-        //     ]);
-        // }
-
-    //    for($i = 0; $i < count($request->hazard); $i++) {
-    //        Hirarc::create([             
-    //            'hazard' => $request->hazard[$i],
-    //            'risk' => $request->risk[$i],
-    //        ]);
-    //    }
+        
 
         Alert::success('Berhasil', 'Data Hirarc berhasil disimpan!')->iconHtml('<i class="bi bi-person-check fs-3x"></i>')->hideCloseButton();
         return redirect()->route('hirarc.tambah', $hirarc->id);
