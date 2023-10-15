@@ -83,12 +83,11 @@
                                     <a
                                         href="{{ route('laporan-insiden.index', ['sort' => 'waktu_kejadian', 'order' => 'desc']) }}"><i
                                             class="bi bi-arrow-down text-black"></i></a>
-                                </th>                            
-                                
-                                <th scope="col" class="col-2">Departemen</th>
+                                </th>
+                                <th scope="col" class="">Departemen</th>
                                 <th scope="col">Lokasi Kejadian</th>                                
                                 <th scope="col">Nama Pelapor</th>
-                                <th scope="col" class="col-1">Status</th>
+                                <th scope="col" class="">Status</th>
                                 @if (auth()->user()->hak_akses == 'Pimpinan')
                                     <th scope="col" class="">Ubah Status</th>
                                 @endif
@@ -130,10 +129,9 @@
                                     </td>
                                     @if (auth()->user()->hak_akses == 'Pimpinan')
                                         <td class="d-flex justify-content-center">
-                                            <button id="update" class="btn btn-primary btn-sm" data-bs-toggle="modal"
-                                                data-bs-target="#editmodal" 
-                                                data-bs-p2k3_id="{{ $lap->p2k3_id }}"
-                                                data-bs-status="{{ $lap->status }}" 
+                                            <button id="update" class="btn btn-primary btn-sm px-3 py-2"
+                                                data-bs-toggle="modal" data-bs-target="#editmodal"
+                                                data-bs-p2k3_id="{{ $lap->p2k3_id }}" data-bs-status="{{ $lap->status }}"
                                                 data-bs-id="{{ $lap->id }}"
                                                 data-bs-kode_laporinsiden="{{ $lap->kode_laporinsiden }}"
                                                 data-bs-departemen_id="{{ $lap->departemen_id }}"
@@ -185,7 +183,8 @@
                                                                 </div>
                                                             </div>
                                                             <input type="hidden" name="id" id="id">
-                                                            <input type="hidden" name="kode_laporinsiden" id="kode_laporinsiden">
+                                                            <input type="hidden" name="kode_laporinsiden"
+                                                                id="kode_laporinsiden">
                                                             <input type="hidden" name="departemen_id"
                                                                 id="departemen_id">
                                                             <input type="hidden" name="lokasi_rinci" id="lokasi_rinci">
@@ -203,11 +202,14 @@
                                                                             class="form-select fs-6 w-100"
                                                                             data-control="select2" data-hide-search="true"
                                                                             data-placeholder="status">
-                                                                            <option value="">Status Investigas
+                                                                            <option value="">Status Investigasi
+                                                                            </option>
+                                                                            <option value="1">Pending
                                                                             </option>
                                                                             <option value="2">Investigasi
                                                                             </option>
-                                                                            
+                                                                            {{-- <option value="3">Tuntas
+                                                                            </option> --}}
                                                                         </select>
                                                                     </div>
                                                                 </div>

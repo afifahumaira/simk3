@@ -85,9 +85,9 @@
                                                 class="bi bi-arrow-down text-black"></i></a>
                                     </div>
                                 </th>
-                                
-                                <th scope="col" class="col-2">Departemen</th>
-                                <th scope="col">Lokasi Kejadian</th>                                
+
+                                <th scope="col" class="">Departemen</th>
+                                <th scope="col">Lokasi Kejadian</th>
                                 <th scope="col">Nama Pelapor</th>
                                 <th scope="col" class="col-1">Status</th>
                                 @if (auth()->user()->hak_akses == 'Pimpinan')
@@ -109,7 +109,7 @@
                                     <td>{{ $data->kode_potensibahaya }}</td>
                                     <td>{{ $data->waktu_kejadian}}</td>
                                     <td>{{ $data->departemen->name }}</td>
-                                    <td>{{ $data->lokasi }}</td>                                    
+                                    <td>{{ $data->lokasi }}</td>
                                     <td>{{ $data->nama_pelapor }}</td>
                                     <td align="center" class="pt-5">
                                         @if ($data->status == '1')
@@ -130,17 +130,17 @@
                                     </td>
                                     @if (auth()->user()->hak_akses == 'Pimpinan')
                                         <td class="d-flex justify-content-center">
-                                            <button id="update" class="btn btn-primary btn-sm" data-bs-toggle="modal"
-                                                data-bs-target="#editmodal" 
-                                                data-bs-p2k3="{{ $data->p2k3_id }}"
-                                                data-bs-status="{{ $data->status }}" 
-                                                data-bs-id="{{ $data->id }}" 
+                                            <button id="update" class="btn btn-primary btn-sm px-3 py-2"
+                                                data-bs-toggle="modal" data-bs-target="#editmodal"
+                                                data-bs-p2k3="{{ $data->p2k3_id }}" data-bs-status="{{ $data->status }}"
+                                                data-bs-id="{{ $data->id }}"
                                                 data-bs-kode_potensibahaya="{{ $data->kode_potensibahaya }}"
                                                 data-bs-departemen_id="{{ $data->departemen_id }}"
                                                 data-bs-lokasi="{{ $data->lokasi }}"
                                                 data-bs-potensi_bahaya="{{ $data->potensi_bahaya }}"
                                                 data-bs-resiko_bahaya="{{ $data->resiko_bahaya }}"
-                                                data-bs-usulan_perbaikan="{{ $data->usulan_perbaikan }}">
+                                                data-bs-usulan_perbaikan="{{ $data->usulan_perbaikan }}"
+                                                style="font-size: 16px">
                                                 Ubah Status
 
                                                 {{-- {{ $investigasi->p2k3 }} --}}
@@ -185,7 +185,8 @@
                                                                 </div>
                                                             </div>
                                                             <input type="hidden" name="id" id="id">
-                                                            <input type="hidden" name="kode_potensibahaya" id="kode_potensibahaya">
+                                                            <input type="hidden" name="kode_potensibahaya"
+                                                                id="kode_potensibahaya">
                                                             <input type="hidden" name="departemen_id"
                                                                 id="departemen_id">
                                                             <input type="hidden" name="lokasi" id="lokasi">
@@ -205,10 +206,12 @@
                                                                             class="form-select fs-6 w-100"
                                                                             data-control="select2" data-hide-search="true"
                                                                             data-placeholder="status">
-                                                                            <option value=""></option>
+                                                                            <option value="">Status Investigasi
+                                                                            </option>
+                                                                            <option value="1">Pending
+                                                                            </option>
                                                                             <option value="2">Investigasi
                                                                             </option>
-                                                                            
                                                                         </select>
                                                                     </div>
                                                                 </div>
