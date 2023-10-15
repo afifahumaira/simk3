@@ -165,13 +165,22 @@ class InvestigasiController extends Controller
             'status' => $request->status,
         ]);
 
-        if ($request->status == 3) {
-            $data = Investigasi::find($id);
-            $data->delete();
-            
-            Alert::success('Berhasil', 'Investigasi selesai')->iconHtml('<i class="bi bi-person-check fs-3x"></i>')->hideCloseButton();
-            return redirect()->route('daftarinvestigasi.index');
+        if($request->status == 3) {
+            $data = Laporinsiden::updated([
+                'p2k3_id' => $request->p2k3_id,
+                'status' => $request->status,
+            ]);
+            Alert::success('Berhasil', 'Data Investigasi berhasil diperbaharui!')->iconHtml('<i class="bi bi-person-check fs-3x"></i>')->hideCloseButton();
+            return redirect()->route('investigasipotensi.index');
         }
+
+        // if ($request->status == 3) {
+        //     $data = Investigasi::find($id);
+        //     $data->delete();
+            
+        //     Alert::success('Berhasil', 'Investigasi selesai')->iconHtml('<i class="bi bi-person-check fs-3x"></i>')->hideCloseButton();
+        //     return redirect()->route('daftarinvestigasi.index');
+        // }
 
         Alert::success('Berhasil', 'Data Investigasi berhasil diperbaharui!')->iconHtml('<i class="bi bi-person-check fs-3x"></i>')->hideCloseButton();
         return redirect()->route('daftarinvestigasi.index');
@@ -188,13 +197,13 @@ class InvestigasiController extends Controller
             'status' => $request->status,
         ]);
 
-        if ($request->status == 3) {
-            $data = Investigasi::find($id);
-            $data->delete();
+        // if ($request->status == 3) {
+        //     $data = Investigasi::find($id);
+        //     $data->delete();
             
-            Alert::success('Berhasil', 'Investigasi selesai')->iconHtml('<i class="bi bi-person-check fs-3x"></i>')->hideCloseButton();
-            return redirect()->route('daftarinvestigasi.index');
-        }
+        //     Alert::success('Berhasil', 'Investigasi selesai')->iconHtml('<i class="bi bi-person-check fs-3x"></i>')->hideCloseButton();
+        //     return redirect()->route('daftarinvestigasi.index');
+        // }
 
         Alert::success('Berhasil', 'Data Investigasi berhasil diperbaharui!')->iconHtml('<i class="bi bi-person-check fs-3x"></i>')->hideCloseButton();
         return redirect()->route('daftarinvestigasi.index');

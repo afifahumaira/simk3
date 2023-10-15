@@ -177,7 +177,7 @@
                                 <label class="col-sm-2 col-form-label">Tenggat Waktu</label>
                                 <div class="col-sm-10 w-100">
                                     <input type="date" id="date" name="tenggat_waktu"
-                                        class="form-control tanggalPicker" value="{{ $investigasi->tenggat_waktu }}"
+                                        class="form-control tanggalPicker" value="<?php echo date('Y-m-d',strtotime($investigasi["tenggat_waktu"])) ?>"
                                         placeholder="dd/mm/yyyy" min="<?php echo date('Y-m-d'); ?>">
                                 </div>
                             </div>
@@ -239,7 +239,7 @@
                                         </h2>
                                     </div>
                                     <div class="modal-footer pt-0 d-flex justify-content-center border-0">
-                                        <a href="{{ route('daftarinvestigasi.ubah', $investigasi->id) }}" type="button"
+                                        <a href="{{ route('daftarinvestigasi.edit', $investigasi->id) }}" type="button"
                                             class="btn btn-success text-white d-flex justify-content-center align-items-center text-center rounded-1"
                                             style="width:76px; height:31px; background: #29CC6A;">Ya</a>
                                         <button type="button"

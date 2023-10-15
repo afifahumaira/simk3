@@ -159,6 +159,15 @@ class InvestigasiPotensiController extends Controller
             'status' => $request->status,
         ]);
 
+        if($request->status == 3) {
+            $data = Potensibahaya::updated([
+                'p2k3_id' => $request->p2k3,
+                'status' => $request->status,
+            ]);
+            Alert::success('Berhasil', 'Data Investigasi berhasil diperbaharui!')->iconHtml('<i class="bi bi-person-check fs-3x"></i>')->hideCloseButton();
+            return redirect()->route('investigasipotensi.index');
+        }
+
         // if ($request->status == 3) {
         //     $data = InvestigasiPotensi::find($id);
         //     $data->delete();
@@ -191,7 +200,7 @@ class InvestigasiPotensiController extends Controller
         // }
 
         Alert::success('Berhasil', 'Data Investigasi berhasil diperbaharui!')->iconHtml('<i class="bi bi-person-check fs-3x"></i>')->hideCloseButton();
-        return redirect()->route('daftarinvestigasi.index');
+        return redirect()->route('investigasi.index');
     }
 
     public function delete($id) {

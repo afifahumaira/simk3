@@ -192,7 +192,7 @@ class LaporanInsidenController extends Controller
             'nomer_telepon_pelapor' => 'required',
             //'unit_pelapor' => 'required',
         ]);
-
+       
         $gambarName = '';
         if($request->hasFile('gambar')) {
             $gambar = $request->file('gambar');

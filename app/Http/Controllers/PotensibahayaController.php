@@ -189,7 +189,7 @@ class PotensibahayaController extends Controller
     }
 
     public function edit($id) {
-        $data = PotensiBahaya::find($id);
+        $data = PotensiBahaya::findorFail($id);
         $p2k3s = P2k3::all();
         $departemen = Departemen::all();
         return view('dashboard.potensibahaya.edit-potensibahaya', compact('data', 'p2k3s', 'departemen'));
