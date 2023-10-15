@@ -30,9 +30,10 @@ use GPBMetadata\Google\Cloud\Location\Locations;
 
 class HirarcController extends Controller
 {
-    public function index(Request $request){
+    public function index( Request $request){
         
-        $hirarcs = Hirarc::with(['departemen', 'user', 'location'])
+        $hirarcs = Hirarc::first()
+        ->groupBy('departemen_id')
         
         ->when(auth()->user()->hak_akses == 'K3 Departemen', function ($query) {
             $query->where('departemen_id', auth()->user()->departemen_id);
@@ -46,9 +47,7 @@ class HirarcController extends Controller
             })
         ->orWhere('location_id', 'LIKE', '%' . $searchTerm . '%');
         })
-    ->orderBy('departemen_id')
-    ->orderBy('location_id')
-    ->orderBy('created_at')
+    ->orderBy('departemen_id')    
     ->paginate(10);
     return view('dashboard.hirarc.index')
             ->with('hirarcs',$hirarcs);

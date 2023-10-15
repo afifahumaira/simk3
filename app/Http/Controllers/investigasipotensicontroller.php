@@ -17,6 +17,7 @@ class InvestigasiPotensiController extends Controller
         $departemen = Departemen::all();
         $p2k3s = P2k3::all();
         $investigasis = InvestigasiPotensi::with(['p2k3_data', 'departemen', 'potensibahaya'])
+        ->whereNot('status', '3')
         ->when($request->has('filter'), function($query) use($request){
             if($request->filter !=''){
              $query->where('status', $request->filter);
@@ -133,7 +134,7 @@ class InvestigasiPotensiController extends Controller
         return redirect()->route('investigasipotensi.index');
     }
 
-    public function update($id, Request $request) {
+    public function update($potensibahaya_id, Request $request) {
         // $request->validate([
         //     'p2k3_id' => 'required',
         //     'laporinsiden_id' => 'required',
@@ -146,7 +147,7 @@ class InvestigasiPotensiController extends Controller
         //     'tindakan' => 'required',
         // ]);
 
-        InvestigasiPotensi::find($id)->update([
+        InvestigasiPotensi::where('potensibahaya_id', $potensibahaya_id)->update([
             'p2k3' => $request->p2k3,
             'potensibahaya_id' => $request->potensibahaya_id,
             'departemen_id' => $request->departemen_id,
@@ -158,18 +159,15 @@ class InvestigasiPotensiController extends Controller
             'tindakan' => $request->tindakan,
             'status' => $request->status,
         ]);
-
-        if($request->status == 3) {
-            $data = Potensibahaya::updated([
-                'p2k3_id' => $request->p2k3,
-                'status' => $request->status,
-            ]);
-            Alert::success('Berhasil', 'Data Investigasi berhasil diperbaharui!')->iconHtml('<i class="bi bi-person-check fs-3x"></i>')->hideCloseButton();
-            return redirect()->route('investigasipotensi.index');
-        }
-
+        
+            Potensibahaya::where('kode_potensibahaya', $potensibahaya_id)->update ([
+            'p2k3_id' => $request->p2k3,
+            'status' => $request->status,
+           
+        ]);
+    
         // if ($request->status == 3) {
-        //     $data = InvestigasiPotensi::find($id);
+        //     $data = InvestigasiPotensi::find($potensibahaya_id);
         //     $data->delete();
             
         //     Alert::success('Berhasil', 'Investigasi selesai')->iconHtml('<i class="bi bi-person-check fs-3x"></i>')->hideCloseButton();
@@ -180,13 +178,13 @@ class InvestigasiPotensiController extends Controller
         return redirect()->route('investigasipotensi.index');
     }
 
-    public function edit($id, Request $request) {
+    public function edit($potensibahaya_id, Request $request) {
         // $request->validate([
         //     'p2k3_id' => 'required',
         //     'status' => 'required',
         // ]);
 
-        InvestigasiPotensi::find($id)->update([
+        InvestigasiPotensi::where('potensibahaya_id',$potensibahaya_id)->update([
             'p2k3' => $request->p2k3,
             'status' => $request->status,
         ]);

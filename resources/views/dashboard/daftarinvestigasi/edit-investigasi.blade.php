@@ -64,7 +64,7 @@
                                 </div>
                             @endif
                             <form class="lh-lg" method="POST"
-                                action="{{ route('daftarinvestigasi.update', $investigasi->id) }}"
+                                action="{{ route('daftarinvestigasi.update', $investigasi->laporinsiden_id) }}"
                                 enctype="multipart/form-data">
                                 @csrf
                                 @method('PUT')
@@ -215,11 +215,11 @@
                             style="background: #29CC6A;height: 45px; margin : 10px 20px 30px 20px; font-size:14px; border-radius: 5px;">Simpan
                             Data</button>
 
-                        <a href="{{ route('daftarinvestigasi.index') }}" type="submit"
+                        {{-- <a href="{{ route('daftarinvestigasi.index') }}" type="submit"
                             class="btn btn-primary text-white d-flex align-items-center justify-content-center"
                             data-bs-toggle="modal" data-bs-target="#tuntasInves"
                             style=" margin : 10px 20px 30px 20px; width: 124.33px;height: 45px; font-size:14px; border-radius: 5px;">Tuntaskan
-                            Investigasi</a>
+                            Investigasi</a> --}}
                         {{-- Modal Tuntaskan Invest --}}
                         <div class="modal fade" id="tuntasInves" data-bs-backdrop="static" data-bs-keyboard="false"
                             tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">

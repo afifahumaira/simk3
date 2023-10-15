@@ -25,7 +25,7 @@ class Potensibahaya extends Model
 
     public function investigasipotensi()
     {
-        return $this->hasMany(InvestigasiPotensi::class);
+        return $this->belongsTo(InvestigasiPotensi::class);
     }
 
     public static function generateCode()
