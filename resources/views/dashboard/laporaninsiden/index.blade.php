@@ -1,4 +1,6 @@
 @extends ('layouts.layout')
+
+
 @section('content')
     <div class="page-title d-flex flex-column gap-1 mx-5 my-5  ">
         <div class="card m-5">
@@ -6,7 +8,7 @@
                 <!--begin::Page title-->
                 <h2>Data Laporan Insiden</h2>
                 <!--begin::Main wrapper-->
-                <div id="kt_docs_search_handler_basic" class="mt-3" data-kt-search-keypress="true"
+                <div id="kt_docs_search_handler_basic" class="mt-3 " data-kt-search-keypress="true"
                     data-kt-search-min-length="2" data-kt-search-enter="true" data-kt-search-layout="inline">
                     <!--begin::Input Form-->
                     <form data-kt-search-element="form" class="w-100 position-relative mb-5 shadow rounded"
@@ -21,8 +23,8 @@
                         <!--begin::Svg Icon | path: magnifier-->
                         <!--end::Icon-->
                         <!--begin::Input-->
-                        <input type="text" class="form-control form-control-lg form-control-solid px-15" name="search"
-                            value="" placeholder="Search " data-kt-search-element="input" />
+                        <input type="text" class="form-control fs-4 form-control-lg form-control-solid px-15"
+                            name="search" value="" placeholder="Search " data-kt-search-element="input" />
                         <!--end::Input-->
                         <!--begin::Spinner-->
                         <span class="position-absolute top-50 end-0 translate-middle-y lh-0 d-none me-5"
@@ -47,10 +49,10 @@
                     <div class="ps-3 pe-5  ">
                         {{-- <label class="col-form-label pe-4">Status :</label> --}}
                         <div class="w-0 ">
-                            <select name="filter" id="filter" class="form-select fs-6 w-100 shadow"
-                                data-control="select2" data-hide-search="true">
+                            <select name="filter" id="filter" class="form-select fs-4 w-100 shadow"
+                                data-control="select2" data-hide-search="true" style="">
                                 <option value="">Semua status</option>
-                                <option value="1"
+                                <option value="1" class=" fs-4 "
                                     {{ request()->has('filter') ? (request()->filter == 1 ? 'selected' : false) : '' }}>
                                     Pending</option>
                                 <option value="2"
@@ -65,7 +67,7 @@
                         </div>
                     </div>
                     <a href="{{ route('laporan-insiden.tambah') }}" type="button" class="btn btn-primary btn-sm mb-0"
-                        style="background: #233EAE">Tambah Data +</a>
+                        style="background: #233EAE; font-size: 16px">Tambah Data +</a>
                 </div>
                 <!--end::Title-->
             </div>
