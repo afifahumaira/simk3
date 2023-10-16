@@ -107,7 +107,7 @@
                                     <td scope="row" class="text-center">
                                         {{ ($datas->currentpage() - 1) * $datas->perpage() + $loop->index + 1 }}</td>
                                     <td>{{ $data->kode_potensibahaya }}</td>
-                                    <td>{{ $data->waktu_kejadian }}</td>
+                                    <td>{{ $data->waktu_kejadian}}</td>
                                     <td>{{ $data->departemen->name }}</td>
                                     <td>{{ $data->lokasi }}</td>
                                     <td>{{ $data->nama_pelapor }}</td>

@@ -192,7 +192,7 @@ class LaporanInsidenController extends Controller
             'nomer_telepon_pelapor' => 'required',
             //'unit_pelapor' => 'required',
         ]);
-
+       
         $gambarName = '';
         if($request->hasFile('gambar')) {
             $gambar = $request->file('gambar');
@@ -246,12 +246,13 @@ class LaporanInsidenController extends Controller
                 'p2k3_id' => $request->p2k3_id,
                 'laporinsiden_id' => $request->kode_laporinsiden,
                 'departemen_id' => $request->departemen_id,
+                'lokasi' => $request->lokasi_rinci,
                 'kategori' => $request->jenis_insiden,
                 'penyebab_dasar' =>$request->penyebab_insiden,
                 'status' => $request->status                
             ]);      
             Alert::success('Berhasil', 'Data Laporan Insiden berhasil diperbaharui!')->iconHtml('<i class="bi bi-person-check fs-3x"></i>')->hideCloseButton();
-            return redirect()->route('laporan-insiden.index'); 
+            return redirect()->route('daftarinvestigasi.index'); 
 
             // if ($data) {
             //     $inves = Laporinsiden::find($id);

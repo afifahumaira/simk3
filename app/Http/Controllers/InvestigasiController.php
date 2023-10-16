@@ -19,6 +19,7 @@ class InvestigasiController extends Controller
         $departemen = Departemen::all();
         $p2k3s = P2k3::all();
         $investigasis = Investigasi::with(['p2k3', 'departemen', 'laporinsiden'])
+        ->whereNot('status', '3')
         ->when($request->has('filter'), function($query) use($request){
             if($request->filter !=''){
              $query->where('status', $request->filter);
@@ -138,7 +139,7 @@ class InvestigasiController extends Controller
         return redirect()->route('daftarinvestigasi.index');
     }
 
-    public function update($id, Request $request) {
+    public function update($laporinsiden_id, Request $request) {
         // $request->validate([
         //     'p2k3_id' => 'required',
         //     'laporinsiden_id' => 'required',
@@ -150,8 +151,8 @@ class InvestigasiController extends Controller
         //     'tenggat_waktu' => 'required',
         //     'tindakan' => 'required',
         // ]);
-
-        Investigasi::find($id)->update([
+            //dd($laporinsiden_id);
+        Investigasi::where('laporinsiden_id', $laporinsiden_id)->update([
             'p2k3_id' => $request->p2k3_id,
             'laporinsiden_id' => $request->laporinsiden_id,
             'departemen_id' => $request->departemen_id,
@@ -165,13 +166,18 @@ class InvestigasiController extends Controller
             'status' => $request->status,
         ]);
 
-        if ($request->status == 3) {
-            $data = Investigasi::find($id);
-            $data->delete();
+        Laporinsiden::where('kode_laporinsiden', $laporinsiden_id)->update ([
+            'p2k3_id' => $request->p2k3_id,
+            'status' => $request->status,
+        ]);
+
+        // if ($request->status == 3) {
+        //     $data = Investigasi::find($laporinsiden_id);
+        //     $data->delete();
             
-            Alert::success('Berhasil', 'Investigasi selesai')->iconHtml('<i class="bi bi-person-check fs-3x"></i>')->hideCloseButton();
-            return redirect()->route('daftarinvestigasi.index');
-        }
+        //     Alert::success('Berhasil', 'Investigasi selesai')->iconHtml('<i class="bi bi-person-check fs-3x"></i>')->hideCloseButton();
+        //     return redirect()->route('daftarinvestigasi.index');
+        // }
 
         Alert::success('Berhasil', 'Data Investigasi berhasil diperbaharui!')->iconHtml('<i class="bi bi-person-check fs-3x"></i>')->hideCloseButton();
         return redirect()->route('daftarinvestigasi.index');
@@ -188,13 +194,13 @@ class InvestigasiController extends Controller
             'status' => $request->status,
         ]);
 
-        if ($request->status == 3) {
-            $data = Investigasi::find($id);
-            $data->delete();
+        // if ($request->status == 3) {
+        //     $data = Investigasi::find($id);
+        //     $data->delete();
             
-            Alert::success('Berhasil', 'Investigasi selesai')->iconHtml('<i class="bi bi-person-check fs-3x"></i>')->hideCloseButton();
-            return redirect()->route('daftarinvestigasi.index');
-        }
+        //     Alert::success('Berhasil', 'Investigasi selesai')->iconHtml('<i class="bi bi-person-check fs-3x"></i>')->hideCloseButton();
+        //     return redirect()->route('daftarinvestigasi.index');
+        // }
 
         Alert::success('Berhasil', 'Data Investigasi berhasil diperbaharui!')->iconHtml('<i class="bi bi-person-check fs-3x"></i>')->hideCloseButton();
         return redirect()->route('daftarinvestigasi.index');

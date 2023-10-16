@@ -86,9 +86,8 @@
                                         href="{{ route('laporan-insiden.index', ['sort' => 'waktu_kejadian', 'order' => 'desc']) }}"><i
                                             class="bi bi-arrow-down text-black"></i></a>
                                 </th>
-
-                                <th scope="col">Lokasi Kejadian</th>
                                 <th scope="col" class="">Departemen</th>
+                                <th scope="col">Lokasi Kejadian</th>                                
                                 <th scope="col">Nama Pelapor</th>
                                 <th scope="col" class="">Status</th>
                                 @if (auth()->user()->hak_akses == 'Pimpinan')
@@ -109,10 +108,9 @@
                                         {{ ($laporaninsidens->currentpage() - 1) * $laporaninsidens->perpage() + $loop->index + 1 }}
                                     </td>
                                     <td>{{ $lap->kode_laporinsiden }}</td>
-                                    <td>{{ $lap->waktu_kejadian ? $lap->waktu_kejadian->translatedFormat('d F Y') : '' }}
-                                    </td>
-                                    <td>{{ $lap->lokasi_rinci }}</td>
+                                    <td>{{ $lap->waktu_kejadian ? $lap->waktu_kejadian->translatedFormat('d F Y') : '' }}                                    </td>
                                     <td>{{ $lap->departemen->name }}</td>
+                                    <td>{{ $lap->lokasi_rinci }}</td>                                    
                                     <td>{{ $lap->nama_pelapor }}</td>
                                     <td align="center" class="pt-5">
                                         @if ($lap->status == '1')

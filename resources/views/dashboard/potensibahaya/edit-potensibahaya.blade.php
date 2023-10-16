@@ -174,7 +174,7 @@
                                         <div class="col-sm-10 w-100">
                                             <input type="date" id="date" name="waktu_kejadian"
                                                 class="form-control tanggalPicker" value="{{ $data->waktu_kejadian }}"
-                                                placeholder="dd/mm/yyyy" max="<?php echo date('Y-m-d'); ?>">
+                                                placeholder="mm/dd/yyyy" max="<?php echo date('Y-m-d'); ?>">
 
                                         </div>
                                     </div>
