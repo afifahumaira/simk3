@@ -58,8 +58,8 @@
                         <form method="POST" action="{{ route('login') }}">
                             @csrf
                             <div class="form-group mb-3">
-                                <input id="inputEmail" type="email" name="email" :value="old('email')" required
-                                    autofocus placeholder="Email address" required="" autofocus=""
+                                <input id="inputUserame" type="name" name="name" :value="old('name')" required
+                                    autofocus placeholder="Username" required="" autofocus=""
                                     class="form-control border border-1 shadow-sm px-4">
                             </div>
                             <div class="form-group mb-3">
