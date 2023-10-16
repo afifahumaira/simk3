@@ -11,7 +11,7 @@
                     <h2>Resiko</h2>
                     <a href="{{ route('risiko.index', $id) }}" type="button"
                         class="btn  btn-sm btn-primary d-flex justify-content-center align-items-center mb-2"
-                        data-bs-toggle="modal" data-bs-target="#staticBackdrop" style="background: #233EAE; width:90px"><i
+                        data-bs-toggle="modal" data-bs-target="#staticBackdrop" style="background: #505050; "><i
                             class="bi bi-chevron-left"></i>Kembali</a>
                     <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false"
                         tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
@@ -51,11 +51,12 @@
                                 <div class="mb-3">
                                     <label for="name" class="col-sm-2 col-form-label">Resiko</label>
                                     <div class="col-sm-10 w-100">
-                                        <input type="text" class="form-control" name="name" value="{{ $risk->name }}">
+                                        <input type="text" class="form-control" name="name"
+                                            value="{{ $risk->name }}">
                                     </div>
                                 </div>
 
-                                
+
                             </div>
                         </div>
 
@@ -63,7 +64,8 @@
                             <div class=" d-flex justify-content-center">
                                 <button type="submit"
                                     class="btn btn-success text-white d-flex justify-content-center align-items-center "
-                                    style="background: #29CC6A;height: 38px; margin : 10px 20px 30px 20px; font-size:14px; border-radius: 5px;">Simpan Data</button>
+                                    style="background: #29CC6A;height: 38px; margin : 10px 20px 30px 20px; font-size:14px; border-radius: 5px;">Simpan
+                                    Data</button>
                                 {{-- <a href="{{ route('risiko.edit', ['id' => $id, 'id_risk' => $risk->id]) }}" type="submit"
                                     class="btn btn-secondary text-white d-flex align-items-center justify-content-center"
                                     data-bs-toggle="modal" data-bs-target="#resetform"
@@ -90,27 +92,26 @@
                                                     data-bs-dismiss="modal" style="width:76px; height:31px; ">Tidak</button>
 
                                             </div> --}}
-                                        </div>
-                                    </div>
-                                </div>
                             </div>
                         </div>
-                    </form>
                 </div>
             </div>
-            <!--end::Content container-->
-
         </div>
+        </form>
+    </div>
+    </div>
+    <!--end::Content container-->
+
+    </div>
     </div>
 @stop
 
 @section('customscript')
-<script>
-    $(document).ready(function() {
-        $('#risks').select2({
-            closeOnSelect: false
+    <script>
+        $(document).ready(function() {
+            $('#risks').select2({
+                closeOnSelect: false
+            });
         });
-    });
-</script>
+    </script>
 @stop
-

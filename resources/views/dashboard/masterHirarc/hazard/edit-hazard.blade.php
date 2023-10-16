@@ -11,7 +11,7 @@
                     <h2>Hazard</h2>
                     <a href="{{ route('hazard.index') }}" type="button"
                         class="btn  btn-sm btn-primary d-flex justify-content-center align-items-center mb-2"
-                        data-bs-toggle="modal" data-bs-target="#staticBackdrop" style="background: #233EAE; width:90px"><i
+                        data-bs-toggle="modal" data-bs-target="#staticBackdrop" style="background: #505050; "><i
                             class="bi bi-chevron-left"></i>Kembali</a>
                     <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false"
                         tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
@@ -55,48 +55,55 @@
                                 <div class="mb-3">
                                     <label for="name" class="col-sm-2 col-form-label">Hazard</label>
                                     <div class="col-sm-10 w-100">
-                                        <input type="text" class="form-control" name="name" value="{{ $hzd->name }}">
+                                        <input type="text" class="form-control" name="name"
+                                            value="{{ $hzd->name }}">
                                     </div>
                                 </div>
 
-                               
 
-                        <div class="container d-flex justify-content-center">
-                            <div class=" d-flex justify-content-center">
-                                <button type="submit"
-                                    class="btn btn-success text-white d-flex justify-content-center align-items-center "
-                                    style="background: #29CC6A;height: 38px; margin : 10px 20px 30px 20px; font-size:14px; border-radius: 5px;">Simpan Data</button>
-                                <a href="{{ route('hazard.edit',  $hzd->id) }}" type="submit"
-                                    class="btn btn-secondary text-white d-flex align-items-center justify-content-center"
-                                    data-bs-toggle="modal" data-bs-target="#resetform"
-                                    style="background: #868E96; margin : 10px 20px 30px 20px; width: 124.33px;height: 38px; font-size:14px; border-radius: 5px;">Reset</a>
-                                <div class="modal fade" id="resetform" data-bs-backdrop="static" data-bs-keyboard="false"
-                                    tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-                                    <div class="modal-dialog modal-dialog-centered ">
-                                        <div class="modal-content">
-                                            <div class="modal-body mt-5 d-flex justify-content-center align-items-center">
-                                                <h2 class="mt-5 text-center"
-                                                    style="color: #16243D; font-size: 20px font-weight:700">keluar dari tambah
-                                                    data?
-                                                    <p class="mb-0 mt-2 text-center "
-                                                        style="color: #DC3545; font-weight:400; font-size:14px"> data yang
-                                                        dimasukkan belum tersimpan </p>
-                                                </h2>
-                                            </div>
-                                            <div class="modal-footer d-flex justify-content-center border-0">
-                                                <a href="{{ route('hazard.edit', $hzd->id) }}" type="button"
-                                                    class="btn btn-success text-white d-flex justify-content-center align-items-center text-center rounded-1"
-                                                    style="width:76px; height:31px; background: #29CC6A;">Ya</a>
-                                                <button type="button"
-                                                    class="btn btn-secondary text-center d-flex align-items-center rounded-1"
-                                                    data-bs-dismiss="modal" style="width:76px; height:31px; ">Tidak</button>
 
+                                <div class="container d-flex justify-content-center">
+                                    <div class=" d-flex justify-content-center">
+                                        <button type="submit"
+                                            class="btn btn-success text-white d-flex justify-content-center align-items-center "
+                                            style="background: #29CC6A;height: 38px; margin : 10px 20px 30px 20px; font-size:14px; border-radius: 5px;">Simpan
+                                            Data</button>
+                                        <a href="{{ route('hazard.edit', $hzd->id) }}" type="submit"
+                                            class="btn btn-secondary text-white d-flex align-items-center justify-content-center"
+                                            data-bs-toggle="modal" data-bs-target="#resetform"
+                                            style="background: #868E96; margin : 10px 20px 30px 20px; width: 124.33px;height: 38px; font-size:14px; border-radius: 5px;">Reset</a>
+                                        <div class="modal fade" id="resetform" data-bs-backdrop="static"
+                                            data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel"
+                                            aria-hidden="true">
+                                            <div class="modal-dialog modal-dialog-centered ">
+                                                <div class="modal-content">
+                                                    <div
+                                                        class="modal-body mt-5 d-flex justify-content-center align-items-center">
+                                                        <h2 class="mt-5 text-center"
+                                                            style="color: #16243D; font-size: 20px font-weight:700">keluar
+                                                            dari tambah
+                                                            data?
+                                                            <p class="mb-0 mt-2 text-center "
+                                                                style="color: #DC3545; font-weight:400; font-size:14px">
+                                                                data yang
+                                                                dimasukkan belum tersimpan </p>
+                                                        </h2>
+                                                    </div>
+                                                    <div class="modal-footer d-flex justify-content-center border-0">
+                                                        <a href="{{ route('hazard.edit', $hzd->id) }}" type="button"
+                                                            class="btn btn-success text-white d-flex justify-content-center align-items-center text-center rounded-1"
+                                                            style="width:76px; height:31px; background: #29CC6A;">Ya</a>
+                                                        <button type="button"
+                                                            class="btn btn-secondary text-center d-flex align-items-center rounded-1"
+                                                            data-bs-dismiss="modal"
+                                                            style="width:76px; height:31px; ">Tidak</button>
+
+                                                    </div>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                        </div>
                     </form>
                 </div>
             </div>
@@ -107,12 +114,11 @@
 @stop
 
 @section('customscript')
-<script>
-    $(document).ready(function() {
-        $('#hazard').select2({
-            closeOnSelect: false
+    <script>
+        $(document).ready(function() {
+            $('#hazard').select2({
+                closeOnSelect: false
+            });
         });
-    });
-</script>
+    </script>
 @stop
-

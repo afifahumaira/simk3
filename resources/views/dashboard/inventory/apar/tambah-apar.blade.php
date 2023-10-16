@@ -11,7 +11,7 @@
                     <h2>Data Inventory APAR</h2>
                     <a href="{{ route('apar.index') }}" type="button"
                         class="btn  btn-sm btn-primary d-flex justify-content-center align-items-center mb-2"
-                        data-bs-toggle="modal" data-bs-target="#staticBackdrop" style="background: #233EAE; width:90px"><i
+                        data-bs-toggle="modal" data-bs-target="#staticBackdrop" style="background: #233EAE; "><i
                             class="bi bi-chevron-left"></i>Kembali</a>
                     <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false"
                         tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
@@ -53,8 +53,9 @@
                                 </div>
                             </div>
                             <div class="card-body">
-                                <form class="lh-lg" method="POST" id="aparForm" enctype="multipart/form-data" action="{{route ('apar.insert')}}">
-                                   @csrf
+                                <form class="lh-lg" method="POST" id="aparForm" enctype="multipart/form-data"
+                                    action="{{ route('apar.insert') }}">
+                                    @csrf
                                     <div class="ps-3 pe-5">
                                         <label class="col-sm-2 col-form-label ">Kode ID</label>
                                         <div class="col-sm-10 w-100">
@@ -68,7 +69,8 @@
                                     <div class="ps-3 pe-5">
                                         <label class="col-sm-2 col-form-label">Nama Benda</label>
                                         <div class="col-sm-10 w-100">
-                                            <input type="text" class="form-control" name="name" id="name" required>
+                                            <input type="text" class="form-control" name="name" id="name"
+                                                required>
                                         </div>
                                     </div>
 
@@ -127,7 +129,8 @@
                                     <div class="ps-3 pe-5">
                                         <label class="col-sm-2 col-form-label">Tanggal Kadaluwarsa</label>
                                         <div class="col-sm-10 w-100">
-                                            <input type="datetime-local" name="tanggal_kadaluwarsa" class="form-control" required>
+                                            <input type="datetime-local" name="tanggal_kadaluwarsa" class="form-control"
+                                                required>
                                         </div>
                                     </div>
 
@@ -151,7 +154,8 @@
                                     <div class="ps-3 pe-5">
                                         <label class="col-sm-2 col-form-label">Foto Barang</label>
                                         <div class="col-sm-10 w-100">
-                                            <input type="file" class="form-control" name="gambar" id="gambar" required>
+                                            <input type="file" class="form-control" name="gambar" id="gambar"
+                                                required>
 
                                         </div>
                                     </div>
@@ -159,10 +163,11 @@
                                         <button type="submit"
                                             class="btn btn-success text-white d-flex justify-content-center align-items-center "
                                             style="background: #29CC6A;
-                        height: 38px; margin : 10px 20px 30px 20px; font-size:14px; border-radius: 5px;">Simpan Data</button>
-                                         <a
-                                         class="btn btn-secondary text-white d-flex align-items-center justify-content-center" onclick="reset()"
-                                         style="background: #868E96; margin : 10px 20px 30px 20px; width: 124.33px;
+                        height: 38px; margin : 10px 20px 30px 20px; font-size:14px; border-radius: 5px;">Simpan
+                                            Data</button>
+                                        <a class="btn btn-secondary text-white d-flex align-items-center justify-content-center"
+                                            onclick="reset()"
+                                            style="background: #868E96; margin : 10px 20px 30px 20px; width: 124.33px;
                      height: 38px; font-size:14px; border-radius: 5px;">Reset</a>
                                     </div>
                                 </form>
@@ -209,9 +214,7 @@
 
 
 <script>
-    function reset(){
+    function reset() {
         document.getElementById("aparForm").reset();
     }
 </script>
-
-

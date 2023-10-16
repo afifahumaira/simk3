@@ -11,7 +11,7 @@
                     <h2>Edit Data Lapor Insiden</h2>
                     <a href="{{ route('laporan-insiden.index') }}" type="button"
                         class="btn text-white btn-secondary btn-sm d-flex justify-content-center align-items-center mb-2"
-                        data-bs-toggle="modal" data-bs-target="#staticBackdrop" style="background: #505050; width:90px"><i
+                        data-bs-toggle="modal" data-bs-target="#staticBackdrop" style="background: #505050; "><i
                             class="bi bi-chevron-left text-white"></i>Kembali</a>
                     <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false"
                         tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
@@ -80,7 +80,7 @@
                                                     <option value="2" {{ $lap->status == 2 ? 'selected' : '' }}>
                                                         Investigasi
                                                     </option>
-                                                    <option value="3" {{ $lap->status == 3 ? 'selected' : '' }}>Sukses
+                                                    <option value="3" {{ $lap->status == 3 ? 'selected' : '' }}>Tuntas
                                                     </option>
                                                 </select>
                                             </div>
@@ -115,7 +115,7 @@
                                         <label class="col-sm-2 col-form-label">Tanggal Kejadian</label>
                                         <div class="col-sm-10 w-100">
                                             <input type="date" id="waktu_kejadian" name="waktu_kejadian"
-                                                class="form-control tanggalPicker" value="<?php echo date('Y-m-d',strtotime($lap["waktu_kejadian"])) ?>"
+                                                class="form-control tanggalPicker" value="<?php echo date('Y-m-d', strtotime($lap['waktu_kejadian'])); ?>"
                                                 placeholder="mm/dd/yyyy" max="<?php echo date('Y-m-d'); ?>">
 
                                         </div>

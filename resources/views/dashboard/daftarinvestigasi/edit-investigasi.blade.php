@@ -11,7 +11,7 @@
                     <h2>Edit Data Investigasi Laporan Insiden</h2>
                     <a href="{{ route('daftarinvestigasi.index') }}" type="button"
                         class="btn text-white btn-secondary btn-sm d-flex justify-content-center align-items-center mb-2"
-                        data-bs-toggle="modal" data-bs-target="#staticBackdrop" style="background: #505050; width:90px"><i
+                        data-bs-toggle="modal" data-bs-target="#staticBackdrop" style="background: #505050; "><i
                             class="bi bi-chevron-left text-white"></i>Kembali</a>
                     <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false"
                         tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
@@ -91,23 +91,7 @@
                                             value="{{ $investigasi->laporinsiden_id }}" readonly>
                                     </div>
                                 </div>
-                                <div class="ps-3 pe-5">
-                                    <label class="col-form-label">Status</label>
-                                    <div class="w-100">
-                                        <div class="form-group label-floating is-empty is-focused">
-                                            <select name="status" class="form-select fs-6  w-100" data-control="select2"
-                                                data-hide-search="true" data-placeholder="Status" id="status">
 
-                                                <option value="2" {{ $investigasi->status == 2 ? 'selected' : '' }}>
-                                                    Investigasi
-                                                </option>
-                                                <option value="3" {{ $investigasi->status == 3 ? 'selected' : '' }}>
-                                                    Tuntas
-                                                </option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                </div>
                                 <div class="ps-3 pe-5">
                                     <label class="col-form-label">Departemen</label>
                                     <div class=" w-100">
@@ -177,7 +161,7 @@
                                 <label class="col-sm-2 col-form-label">Tenggat Waktu</label>
                                 <div class="col-sm-10 w-100">
                                     <input type="date" id="date" name="tenggat_waktu"
-                                        class="form-control tanggalPicker" value="<?php echo date('Y-m-d',strtotime($investigasi["tenggat_waktu"])) ?>"
+                                        class="form-control tanggalPicker" value="<?php echo date('Y-m-d', strtotime($investigasi['tenggat_waktu'])); ?>"
                                         placeholder="dd/mm/yyyy" min="<?php echo date('Y-m-d'); ?>">
                                 </div>
                             </div>
@@ -186,6 +170,24 @@
                                 <div class="col-sm-10 w-100">
                                     <input type="text" class="form-control" name="tindakan" id="tindakan"
                                         value="{{ $investigasi->tindakan }}">
+                                </div>
+                            </div>
+
+                            <div class="ps-3 pe-5">
+                                <label class="col-form-label">Status</label>
+                                <div class="w-100">
+                                    <div class="form-group label-floating is-empty is-focused">
+                                        <select name="status" class="form-select fs-6  w-100" data-control="select2"
+                                            data-hide-search="true" data-placeholder="Status" id="status">
+
+                                            <option value="2" {{ $investigasi->status == 2 ? 'selected' : '' }}>
+                                                Investigasi
+                                            </option>
+                                            <option value="3" {{ $investigasi->status == 3 ? 'selected' : '' }}>
+                                                Tuntas
+                                            </option>
+                                        </select>
+                                    </div>
                                 </div>
                             </div>
 
@@ -210,7 +212,7 @@
 
                 <div class="container d-flex justify-content-center">
                     <div class=" d-flex justify-content-center">
-                        <button type="submit"
+                        <button type="submit" id="simpanData"
                             class="btn btn-success text-white d-flex justify-content-center align-items-center "
                             style="background: #29CC6A;height: 45px; margin : 10px 20px 30px 20px; font-size:14px; border-radius: 5px;">Simpan
                             Data</button>
@@ -298,14 +300,20 @@
 
 @section('customscript')
     <script src="{{ asset('plugins/custom/fslightbox/fslightbox.bundle.js') }}"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script>
-        // $(document).ready(function() {
-        //     $(".tanggalPicker").flatpickr({
-        //         altInput: true,
-        //         altFormat: "d F Y",
-        //         dateFormat: "Y-m-d",
-        //         locale: "id"
-        //     });
-        // });
+        $(document).ready(function() {
+            $('#status').on('change', function() {
+                if ($(this).val() === '3') {
+                    $('#simpanData').prop('type', 'button');
+                    $('#simpanData').attr('data-bs-toggle', 'modal');
+                    $('#simpanData').attr('data-bs-target', '#tuntasInves');
+                } else {
+                    $('#simpanData').prop('type', 'submit');
+                    $('#simpanData').removeAttr('data-bs-toggle');
+                    $('#simpanData').removeAttr('data-bs-target');
+                }
+            });
+        });
     </script>
 @stop

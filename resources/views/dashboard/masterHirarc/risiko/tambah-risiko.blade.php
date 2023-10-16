@@ -11,7 +11,7 @@
                     <h2>Risiko</h2>
                     <a href="{{ route('risiko.index') }}" type="button"
                         class="btn  btn-sm btn-primary d-flex justify-content-center align-items-center mb-2"
-                        data-bs-toggle="modal" data-bs-target="#staticBackdrop" style="background: #233EAE; width:90px"><i
+                        data-bs-toggle="modal" data-bs-target="#staticBackdrop" style="background: #505050; "><i
                             class="bi bi-chevron-left"></i>Kembali</a>
                     <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false"
                         tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
@@ -59,7 +59,7 @@
                                     </div>
                                 </div>
 
-                                
+
                             </div>
                         </div>
 
@@ -67,7 +67,8 @@
                             <div class=" d-flex justify-content-center">
                                 <button type="submit"
                                     class="btn btn-success text-white d-flex justify-content-center align-items-center "
-                                    style="background: #29CC6A;height: 38px; margin : 10px 20px 30px 20px; font-size:14px; border-radius: 5px;">Simpan Data</button>
+                                    style="background: #29CC6A;height: 38px; margin : 10px 20px 30px 20px; font-size:14px; border-radius: 5px;">Simpan
+                                    Data</button>
                                 <a href="{{ route('risiko.tambah') }}" type="submit"
                                     class="btn btn-secondary text-white d-flex align-items-center justify-content-center"
                                     data-bs-toggle="modal" data-bs-target="#resetform"
@@ -78,7 +79,8 @@
                                         <div class="modal-content">
                                             <div class="modal-body mt-5 d-flex justify-content-center align-items-center">
                                                 <h2 class="mt-5 text-center"
-                                                    style="color: #16243D; font-size: 20px font-weight:700">keluar dari tambah
+                                                    style="color: #16243D; font-size: 20px font-weight:700">keluar dari
+                                                    tambah
                                                     data?
                                                     <p class="mb-0 mt-2 text-center "
                                                         style="color: #DC3545; font-weight:400; font-size:14px"> data yang
@@ -109,11 +111,11 @@
 @stop
 
 @section('customscript')
-<script>
-    $(document).ready(function() {
-        $('#risks').select2({
-            closeOnSelect: false
+    <script>
+        $(document).ready(function() {
+            $('#risks').select2({
+                closeOnSelect: false
+            });
         });
-    });
-</script>
+    </script>
 @stop

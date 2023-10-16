@@ -13,8 +13,8 @@
                         <h2>Tambah Data Potensi Bahaya</h2>
                         <a href="{{ route('potensibahaya.index') }}" type="button"
                             class="btn text-white btn-sm btn-secondary d-flex justify-content-center align-items-center mb-2"
-                            data-bs-toggle="modal" data-bs-target="#staticBackdrop"
-                            style="background: #505050; width:90px"><i class="bi bi-chevron-left text-white"></i>Kembali</a>
+                            data-bs-toggle="modal" data-bs-target="#staticBackdrop" style="background: #505050; "><i
+                                class="bi bi-chevron-left text-white"></i>Kembali</a>
                         <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false"
                             tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
                             <div class="modal-dialog modal-dialog-centered ">

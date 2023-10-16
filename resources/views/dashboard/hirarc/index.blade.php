@@ -28,7 +28,7 @@
 
                         <!--begin::Input-->
                         <input type="text" class="form-control form-control-lg form-control-solid px-15" name="search"
-                            value="" placeholder="Search " data-kt-search-element="input" />
+                            value="" placeholder="Search " data-kt-search-element="input" style="font-size: 16px;" />
                         <!--end::Input-->
 
                         <!--begin::Spinner-->
@@ -72,7 +72,7 @@
                     @php
                         $printedDept = [];
                         $printedLoc = [];
-                        
+
                     @endphp
 
                     @foreach ($hirarcs as $hirarc)

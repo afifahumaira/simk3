@@ -59,7 +59,8 @@
                     <a href="{{ route('simk3.index') }}" type="button"
                         class="btn text-white btn-sm btn-secondary d-flex justify-content-center align-items-center mb-2"
                         data-bs-toggle="modal" data-bs-target="#staticBackdrop"
-                        style="background: #505050; width:90px"><i class="bi bi-chevron-left text-white"></i>Kembali</a>
+                        style="background: #505050; font-size: 16px !important; "><i
+                            class="bi bi-chevron-left text-white"></i>Kembali</a>
                     <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false"
                         tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
                         <div class="modal-dialog modal-dialog-centered ">
@@ -99,7 +100,8 @@
                     <div class="card rounded-3">
                         <div class="card-header d-flex align-items-center fs-3 fw-normal">
                             <div class="pull-left">
-                                <strong style="color: #16243D; font-family: Plus Jakarta Sans, sans-serif; font-size:16px;">Data
+                                <strong
+                                    style="color: #16243D; font-family: Plus Jakarta Sans, sans-serif; font-size:16px;">Data
                                     Potensi Bahaya</strong>
                             </div>
                         </div>
@@ -176,7 +178,8 @@
                                         <label class="col-sm-2 col-form-label">Tanggal Kejadian</label>
                                         <div class="col-sm-10 w-100">
                                             <input type="date" id="date" class="form-control tanggalPicker"
-                                                name="waktu_kejadian" placeholder="dd/mm/yyyy" max="<?php echo date('Y-m-d'); ?>">
+                                                name="waktu_kejadian" placeholder="dd/mm/yyyy"
+                                                max="<?php echo date('Y-m-d'); ?>">
 
                                         </div>
                                     </div>
@@ -237,7 +240,9 @@
                                             data-control="select2" data-hide-search="true"
                                             data-placeholder="departemen_id">
                                             @foreach ($departemen as $dep)
-                                                <option value="{{ $dep->id }}" {{ old('departemen_id') == $dep->id ? 'selected' : '' }}>{{ $dep->name }}</option>
+                                                <option value="{{ $dep->id }}"
+                                                    {{ old('departemen_id') == $dep->id ? 'selected' : '' }}>
+                                                    {{ $dep->name }}</option>
                                             @endforeach
                                         </select>
                                     </div>
@@ -430,20 +435,20 @@
 
 <script>
     $(function() {
-            var dtToday = new Date();
+        var dtToday = new Date();
 
-            var month = dtToday.getMonth() + 1;
-            var day = dtToday.getDate();
-            var year = dtToday.getFullYear();
+        var month = dtToday.getMonth() + 1;
+        var day = dtToday.getDate();
+        var year = dtToday.getFullYear();
 
-            if (month < 10)
-                month = '0' + month.toString();
-            if (day < 10)
-                day = '0' + day.toString();
+        if (month < 10)
+            month = '0' + month.toString();
+        if (day < 10)
+            day = '0' + day.toString();
 
-            var maxDate = year + '-' + month + '-' + day;
-            $('#txtDate').attr('max', maxDate);
-        });
+        var maxDate = year + '-' + month + '-' + day;
+        $('#txtDate').attr('max', maxDate);
+    });
 </script>
 <!-- Vendor JS Files -->
 <script src="{{ asset('vendor/Arsha/assets/vendor/aos/aos.js') }}"></script>

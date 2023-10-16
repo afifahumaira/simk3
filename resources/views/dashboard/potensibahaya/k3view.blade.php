@@ -56,7 +56,7 @@
                     <div class="ps-3 pe-5  ">
                         {{-- <label class="col-form-label pe-4">Status :</label> --}}
                         <div class="w-0 ">
-                            <select name="filter" id="filter" class="form-select fs-6 w-100 shadow"
+                            <select name="filter" id="filter" class="form-select fs-4 w-100 shadow"
                                 data-control="select2" data-hide-search="true">
                                 <option value="">Status</option>
                                 <option value="1"

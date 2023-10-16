@@ -11,7 +11,7 @@
                     <h2>Data User</h2>
                     <a href="{{ route('user.index') }}" type="button"
                         class="btn  btn-sm btn-secondary text-white d-flex justify-content-center align-items-center mb-2"
-                        data-bs-toggle="modal" data-bs-target="#staticBackdrop" style="background: #505050; width:90px"><i
+                        data-bs-toggle="modal" data-bs-target="#staticBackdrop" style="background: #505050; "><i
                             class="bi bi-chevron-left text-white"></i>Kembali</a>
                     <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false"
                         tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
@@ -131,14 +131,14 @@
                                         <label class="col-sm-2 col-form-label">Departemen</label>
                                         <div class="col-sm-10 w-100">
                                             <select name="departemen_id" class="form-select fs-6 w-100"
-                                                    data-control="select2" data-hide-search="true"
-                                                    data-placeholder="departemen_id">
-                                                    @foreach ($departemen as $dep)
-                                                        <option value="{{ $dep->id }}"
-                                                            {{ $data->departemen_id == $dep->id ? 'selected' : '' }}>
-                                                            {{ $dep->name }}</option>
-                                                    @endforeach
-                                                </select>
+                                                data-control="select2" data-hide-search="true"
+                                                data-placeholder="departemen_id">
+                                                @foreach ($departemen as $dep)
+                                                    <option value="{{ $dep->id }}"
+                                                        {{ $data->departemen_id == $dep->id ? 'selected' : '' }}>
+                                                        {{ $dep->name }}</option>
+                                                @endforeach
+                                            </select>
 
                                         </div>
                                     </div>
@@ -153,8 +153,8 @@
                                             class="btn btn-success text-white d-flex justify-content-center align-items-center "
                                             style="background: #29CC6A;
         height: 38px; margin : 10px 20px 30px 20px; font-size:14px; border-radius: 5px;"
-                                            data-bs-toggle="modal" data-bs-target="#simpandata"
-                                            onclick="showDiv()">Simpan Data</button>
+                                            data-bs-toggle="modal" data-bs-target="#simpandata" onclick="showDiv()">Simpan
+                                            Data</button>
                                         <a href="{{ route('user.edit', $data->id) }}" type="submit"
                                             class="btn btn-secondary text-white d-flex align-items-center justify-content-center"
                                             data-bs-toggle="modal" data-bs-target="#resetform"

@@ -1,5 +1,15 @@
 @extends ('layouts.layout')
 
+@section('custom-css')
+    <style>
+        .page-title,
+        .page-title .app-toolbar-wrapper button,
+        .page-title .modal .modal-body,
+        .page-title .modal .modal-body form input {
+            font-size: 16px !important;
+        }
+    </style>
+@stop
 @section('content')
     <div class="page-title d-flex flex-column gap-1 mx-5 my-5  ">
 
@@ -13,10 +23,10 @@
                 <!--end::Main wrapper-->
                 <div>
                     <a href="{{ route('dashboard') }}" type="button" class="btn btn-secondary text-white btn-sm mb-2 mr-2"
-                        style="background: #505050"><i class="bi bi-chevron-left text-white"></i>Kembali</a>
+                        style="background: #505050"><i class="bi bi-chevron-left text-white mb-1"></i>Kembali</a>
                     <button data-bs-toggle="modal" data-bs-target="#exampleModalCenter"
                         class="btn btn-secondary bg-primary text-white btn-sm mb-2"><i
-                            class="bi bi-pencil-square text-white fs-5 mb-1"></i>Edit Profile</button>
+                            class="bi bi-pencil-square text-white  mb-1"></i>Edit Profile</button>
                 </div>
                 <!--end::Title-->
             </div>
@@ -47,7 +57,7 @@
                 <div class="modal-dialog modal-dialog-centered">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLongTitle">Ubah Data Profile</h5>
+                            <h2 class="modal-title" id="exampleModalLongTitle">Ubah Data Profile</h2>
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
                         <div class="modal-body">
@@ -61,7 +71,7 @@
                                         <input type="text" class="form-control" name="name" id="name"
                                             value="{{ Auth::user()->name }}">
                                     </div>
-                                    <div class="mb-3">
+                                    <div class="my-5">
                                         <label class="form-labels">Email</label>
                                         <input type="text" class="form-control" name="email" id="email"
                                             value="{{ Auth::user()->email }}">

@@ -59,7 +59,8 @@
                     <a href="{{ route('simk3.index') }}" type="button"
                         class="btn text-white btn-sm btn-secondary d-flex justify-content-center align-items-center mb-2"
                         data-bs-toggle="modal" data-bs-target="#staticBackdrop"
-                        style="background: #505050; width:90px"><i class="bi bi-chevron-left text-white"></i>Kembali</a>
+                        style="background: #505050; font-size: 16px !important; "><i
+                            class="bi bi-chevron-left text-white"></i>Kembali</a>
                     <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false"
                         tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
                         <div class="modal-dialog modal-dialog-centered ">
@@ -99,7 +100,8 @@
                     <div class="card rounded-3">
                         <div class="card-header d-flex align-items-center fs-3 fw-normal">
                             <div class="pull-left">
-                                <strong style="color: #16243D; font-family: Plus Jakarta Sans, sans-serifa Sans,asans-srrifa Sans, sans-serif; font-size:16px;">Data
+                                <strong
+                                    style="color: #16243D; font-family: Plus Jakarta Sans, sans-serifa Sans,asans-srrifa Sans, sans-serif; font-size:16px;">Data
                                     Kejadian</strong>
                             </div>
                         </div>
@@ -216,7 +218,8 @@
                         <div class="card rounded-3">
                             <div class="card-header d-flex align-items-center fs-3 fw-normal">
                                 <div class="pull-left">
-                                    <strong style="color: #16243D; font-family: Plus Jakarta Sans, sans-serifa Sans,asans-srrifa Sans, sans-serif; font-size:16px;">Data
+                                    <strong
+                                        style="color: #16243D; font-family: Plus Jakarta Sans, sans-serifa Sans,asans-srrifa Sans, sans-serif; font-size:16px;">Data
                                         Pelapor</strong>
                                 </div>
                             </div>
@@ -265,7 +268,8 @@
                         <div class="card rounded-3">
                             <div class="card-header d-flex align-items-center fs-3 fw-normal">
                                 <div class="pull-left">
-                                    <strong style="color: #16243D; font-family: Plus Jakarta Sans, sans-serifa Sans,asans-srrifa Sans, sans-serif; font-size:16px;">Data
+                                    <strong
+                                        style="color: #16243D; font-family: Plus Jakarta Sans, sans-serifa Sans,asans-srrifa Sans, sans-serif; font-size:16px;">Data
                                         Korban
                                         <span style="color:#fc0000">(Apabila tidak mengetahui data korban dapat
                                             dikosongkan)
@@ -355,7 +359,7 @@
 <style>
     strong {
         font-weight: bold !important;
-        font-family: Plus Jakarta Sans, sans-serifa Sans,asans-srrifa Sans, sans-serif !important;
+        font-family: Plus Jakarta Sans, sans-serifa Sans, asans-srrifa Sans, sans-serif !important;
         font-size: 16px;
     }
 
@@ -388,24 +392,28 @@
     .card:hover {
         box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
     }
+
+    .contet .card-header .card-toolbar a {
+        font-size: 16px !important;
+    }
 </style>
 
 <script>
     $(function() {
-            var dtToday = new Date();
+        var dtToday = new Date();
 
-            var month = dtToday.getMonth() + 1;
-            var day = dtToday.getDate();
-            var year = dtToday.getFullYear();
+        var month = dtToday.getMonth() + 1;
+        var day = dtToday.getDate();
+        var year = dtToday.getFullYear();
 
-            if (month < 10)
-                month = '0' + month.toString();
-            if (day < 10)
-                day = '0' + day.toString();
+        if (month < 10)
+            month = '0' + month.toString();
+        if (day < 10)
+            day = '0' + day.toString();
 
-            var maxDate = year + '-' + month + '-' + day;
-            $('#txtDate').attr('max', maxDate);
-        });
+        var maxDate = year + '-' + month + '-' + day;
+        $('#txtDate').attr('max', maxDate);
+    });
 </script>
 <!-- Vendor JS Files -->
 <script src="{{ asset('vendor/Arsha/assets/vendor/aos/aos.js') }}"></script>

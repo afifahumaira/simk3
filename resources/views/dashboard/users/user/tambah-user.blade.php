@@ -11,7 +11,7 @@
                     <h2>Data User</h2>
                     <a href="{{ route('user.index') }}" type="button"
                         class="btn  btn-sm btn-secondary text-white d-flex justify-content-center align-items-center mb-2"
-                        style="background: #505050; width:90px"><i class="bi bi-chevron-left text-white"></i>Kembali</a>
+                        style="background: #505050; "><i class="bi bi-chevron-left text-white"></i>Kembali</a>
                 </div>
                 <div class="page-title  gap-1 mx-5 my-5  ">
                     <div id="kt_app_content"

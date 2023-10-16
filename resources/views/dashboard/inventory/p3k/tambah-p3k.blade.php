@@ -11,7 +11,7 @@
                     <h2>Data Inventory P3K</h2>
                     <a href="{{ route('p3k.index') }}" type="button"
                         class="btn  btn-sm btn-secondary text-white d-flex justify-content-center align-items-center mb-2"
-                        data-bs-toggle="modal" data-bs-target="#staticBackdrop" style="background: #505050; width:90px"><i
+                        data-bs-toggle="modal" data-bs-target="#staticBackdrop" style="background: #505050; "><i
                             class="bi bi-chevron-left text-white"></i>Kembali</a>
                     <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false"
                         tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
@@ -52,7 +52,8 @@
                                 </div>
                             </div>
                             <div class="card-body">
-                                <form class="lh-lg" method="POST" id="p3kForm" enctype="multipart/form-data" action="{{route ('p3k.insert')}}">
+                                <form class="lh-lg" method="POST" id="p3kForm" enctype="multipart/form-data"
+                                    action="{{ route('p3k.insert') }}">
                                     @csrf
                                     <div class="ps-3 pe-5">
                                         <label class="col-sm-2 col-form-label ">Kode ID</label>
@@ -67,8 +68,7 @@
                                     <div class="ps-3 pe-5">
                                         <label class="col-sm-2 col-form-label">Nama Benda</label>
                                         <div class="col-sm-10 w-100">
-                                            <input type="text" class="form-control" name="name"
-                                                value="">
+                                            <input type="text" class="form-control" name="name" value="">
 
                                         </div>
                                     </div>
@@ -77,8 +77,8 @@
                                         <label class="col-sm-2 col-form-label ">Tipe</label>
                                         <div class="col-sm-10 w-100">
                                             <div class="form-group label-floating is-empty is-focused">
-                                                <input class="form-control bg-secondary" name="tipe"
-                                                     value="P3K" readonly>
+                                                <input class="form-control bg-secondary" name="tipe" value="P3K"
+                                                    readonly>
                                             </div>
                                         </div>
                                     </div>
@@ -117,7 +117,8 @@
                                     <div class="ps-3 pe-5">
                                         <label class="col-sm-2 col-form-label">Tanggal Pergantian Alat P3K</label>
                                         <div class="col-sm-10 w-100">
-                                            <input type="date" id="date" class="form-control tanggalPicker" name="tanggal_kadaluwarsa">
+                                            <input type="date" id="date" class="form-control tanggalPicker"
+                                                name="tanggal_kadaluwarsa">
                                         </div>
                                     </div>
 
@@ -149,10 +150,11 @@
                                         <button type="submit"
                                             class="btn btn-success text-white d-flex justify-content-center align-items-center "
                                             style="background: #29CC6A;
-                        height: 38px; margin : 10px 20px 30px 20px; font-size:14px; border-radius: 5px;">Simpan Data</button>
-                                         <a
-                                         class="btn btn-secondary text-white d-flex align-items-center justify-content-center" onclick="reset()"
-                                         style="background: #868E96; margin : 10px 20px 30px 20px; width: 124.33px;
+                        height: 38px; margin : 10px 20px 30px 20px; font-size:14px; border-radius: 5px;">Simpan
+                                            Data</button>
+                                        <a class="btn btn-secondary text-white d-flex align-items-center justify-content-center"
+                                            onclick="reset()"
+                                            style="background: #868E96; margin : 10px 20px 30px 20px; width: 124.33px;
                      height: 38px; font-size:14px; border-radius: 5px;">Reset</a>
                                     </div>
                                 </form>
@@ -177,9 +179,9 @@
                 locale: "id"
             });
         });
-        function reset(){
+
+        function reset() {
             document.getElementById("p3kForm").reset();
         }
     </script>
 @stop
-

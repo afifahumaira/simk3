@@ -11,7 +11,7 @@
                     <h2>Data Inventory P3K</h2>
                     <a href="{{ route('p3k.index') }}" type="button"
                         class="btn  btn-sm btn-secondary text-white d-flex justify-content-center align-items-center mb-2"
-                        data-bs-toggle="modal" data-bs-target="#staticBackdrop" style="background: #505050; width:90px"><i
+                        data-bs-toggle="modal" data-bs-target="#staticBackdrop" style="background: #505050; "><i
                             class="bi bi-chevron-left text-white"></i>Kembali</a>
                     <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false"
                         tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
@@ -53,7 +53,8 @@
                                 </div>
                             </div>
                             <div class="card-body">
-                                <form class="lh-lg" action="{{route ('p3k.update', $data->id)}}" enctype="multipart/form-data" method="post">
+                                <form class="lh-lg" action="{{ route('p3k.update', $data->id) }}"
+                                    enctype="multipart/form-data" method="post">
                                     @csrf
                                     <div class="ps-3 pe-5">
                                         <label class="col-sm-2 col-form-label ">Kode ID</label>
@@ -69,7 +70,7 @@
                                         <label class="col-sm-2 col-form-label">Nama Benda</label>
                                         <div class="col-sm-10 w-100">
                                             <input type="text" class="form-control" name="name" id="name"
-                                                value="{{$data->name}}">
+                                                value="{{ $data->name }}">
 
                                         </div>
                                     </div>
@@ -93,7 +94,9 @@
                                                 style="font-family: 'Inter';" name="departemen_id">
                                                 <option value="">- Pilih -</option>
                                                 @foreach ($departments as $dep)
-                                                    <option value="{{ $dep->id }}" {{ $data->departemen_id == $dep->id ? 'selected' : '' }}>{{ $dep->name }}</option>
+                                                    <option value="{{ $dep->id }}"
+                                                        {{ $data->departemen_id == $dep->id ? 'selected' : '' }}>
+                                                        {{ $dep->name }}</option>
                                                 @endforeach
                                             </select>
 
@@ -103,15 +106,17 @@
                                     <div class="ps-3 pe-5">
                                         <label for="inputNomertelepon3" class="col-sm-2 col-form-label">Lokasi</label>
                                         <div class="col-sm-10 w-100">
-                                            <input type="text" class="form-control " name="lokasi" value="{{$data->lokasi}}">
+                                            <input type="text" class="form-control " name="lokasi"
+                                                value="{{ $data->lokasi }}">
                                         </div>
                                     </div>
 
                                     <div class="ps-3 pe-5">
                                         <label class="col-sm-2 col-form-label">Tanggal Pergantian Alat P3K</label>
                                         <div class="col-sm-10 w-100">
-                                            <input type="text" id="date" name="tanggal_kadaluwarsa" class="form-control bg-secondary"
-                                                readonly value="{{$data->tanggal_kadaluwarsa}}">
+                                            <input type="text" id="date" name="tanggal_kadaluwarsa"
+                                                class="form-control bg-secondary" readonly
+                                                value="{{ $data->tanggal_kadaluwarsa }}">
 
                                         </div>
                                     </div>
@@ -125,10 +130,17 @@
                                                 style="--bs-link-hover-color-rgb: 25, 135, 84;" id=""
                                                 style="font-family: 'Inter';" name="kondisi">
                                                 <option value="">- Pilih -</option>
-                                                <option value="Baik" {{$data->kondisi == "Baik" ? 'selected' : ''}}>Baik</option>
-                                                <option value="Kurang Baik" {{$data->kondisi == "Kurang Baik" ? 'selected' : ''}}>Kurang Baik</option>
-                                                <option value="Barang Kosong" {{$data->kondisi == "Barang Kosong" ? 'selected' : ''}}>Barang Kosong</option>
-                                                <option value="Kadaluwarsa" {{$data->kondisi == "Kadaluwarsa" ? 'selected' : ''}}>Kadaluwarsa</option>
+                                                <option value="Baik" {{ $data->kondisi == 'Baik' ? 'selected' : '' }}>
+                                                    Baik</option>
+                                                <option value="Kurang Baik"
+                                                    {{ $data->kondisi == 'Kurang Baik' ? 'selected' : '' }}>Kurang Baik
+                                                </option>
+                                                <option value="Barang Kosong"
+                                                    {{ $data->kondisi == 'Barang Kosong' ? 'selected' : '' }}>Barang Kosong
+                                                </option>
+                                                <option value="Kadaluwarsa"
+                                                    {{ $data->kondisi == 'Kadaluwarsa' ? 'selected' : '' }}>Kadaluwarsa
+                                                </option>
                                             </select>
 
                                         </div>
@@ -136,23 +148,26 @@
                                     <div class="ps-3 pe-5">
                                         <label for="inputfotokejadian" class="col-form-label">Foto Barang</label>
                                         <div class=" w-100">
-                                            <a class="d-block overlay" data-fslightbox="lightbox-basic" href="{{ asset('berkas/'. $data->gambar) }}">
+                                            <a class="d-block overlay" data-fslightbox="lightbox-basic"
+                                                href="{{ asset('berkas/' . $data->gambar) }}">
                                                 <div class="overlay-wrapper bgi-no-repeat bgi-position-center bgi-size-cover card-rounded min-h-175px"
-                                                    style="background-image:url('{{ asset('berkas/'. $data->gambar) }}')">
+                                                    style="background-image:url('{{ asset('berkas/' . $data->gambar) }}')">
                                                 </div>
                                                 <div class="overlay-layer card-rounded bg-dark bg-opacity-25 shadow">
                                                     <i class="bi bi-eye-fill text-white fs-3x"></i>
                                                 </div>
                                             </a>
                                             <input type="hidden" class="form-control" value="{{ $data->gambar }}">
-                                            <input type="file" class="form-control mt-3" name="gambar" accept="image/png, image/jpeg">
+                                            <input type="file" class="form-control mt-3" name="gambar"
+                                                accept="image/png, image/jpeg">
                                         </div>
                                     </div>
                                     <div class=" d-flex justify-content-center">
                                         <button type="submit"
                                             class="btn btn-success text-white d-flex justify-content-center align-items-center "
                                             style="background: #29CC6A;
-                        height: 38px; margin : 10px 20px 30px 20px; font-size:14px; border-radius: 5px;">Simpan Data</button>
+                        height: 38px; margin : 10px 20px 30px 20px; font-size:14px; border-radius: 5px;">Simpan
+                                            Data</button>
                                     </div>
                                 </form>
                             </div>

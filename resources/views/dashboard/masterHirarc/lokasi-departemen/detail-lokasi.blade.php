@@ -55,7 +55,7 @@
                 <!--end::Main wrapper-->
                 <a href="{{ route('lokasimaster.index') }}" type="button"
                     class="btn  btn-sm btn-primary d-flex justify-content-center align-items-center mb-2"
-                    style="background: #233EAE; width:90px"><i class="bi bi-chevron-left"></i>Kembali</a>
+                    style="background: #505050; "><i class="bi bi-chevron-left"></i>Kembali</a>
 
                 <!--end::Title-->
             </div>
@@ -72,23 +72,27 @@
                 <tbody>
                     @foreach ($locations as $loc)
                         <tr>
-                            <td scope="row" class="text-center">{{ ($locations->currentpage()-1) * $locations ->perpage() + $loop->index + 1 }}</td>
+                            <td scope="row" class="text-center">
+                                {{ ($locations->currentpage() - 1) * $locations->perpage() + $loop->index + 1 }}</td>
                             <td>{{ $loc->departemen->name }}</td>
                             <td>{{ $loc->name }}</td>
                             <td>
                                 <a href="{{ route('lokasimaster.edit', $loc->id) }}" type="button"
-                                    class="btn btn-sm btn-primary px-4"><i
-                                        class="bi bi-pencil-square pe-0"></i></a>
-                                <button type="button" class="btn btn-danger btn-sm px-4" data-bs-toggle="modal" data-bs-target="#deleteForm{{ $loc->id }}"><i class="bi bi-trash pe-0"></i></button>
+                                    class="btn btn-sm btn-primary px-4"><i class="bi bi-pencil-square pe-0"></i></a>
+                                <button type="button" class="btn btn-danger btn-sm px-4" data-bs-toggle="modal"
+                                    data-bs-target="#deleteForm{{ $loc->id }}"><i
+                                        class="bi bi-trash pe-0"></i></button>
 
-                                <div class="modal fade" id="deleteForm{{ $loc->id }}" data-bs-backdrop="static" data-bs-keyboard="false"
-                                tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                                <div class="modal fade" id="deleteForm{{ $loc->id }}" data-bs-backdrop="static"
+                                    data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel"
+                                    aria-hidden="true">
                                     <div class="modal-dialog modal-dialog-centered ">
                                         <div class="modal-content">
 
                                             <form method="POST" action="{{ route('lokasimaster.delete', $loc->id) }}">
                                                 @csrf
-                                                <div class="modal-body mt-5 d-flex justify-content-center align-items-center">
+                                                <div
+                                                    class="modal-body mt-5 d-flex justify-content-center align-items-center">
                                                     <h2 class="mt-5 text-center"
                                                         style="color: #16243D; font-size: 20px font-weight:700">Yakin data
                                                         ingin dihapus?
@@ -127,8 +131,7 @@
                             <a href="{" type="button"
                                 class="btn btn-success text-white d-flex justify-content-center align-items-center text-center rounded-1"
                                 style="width:76px; height:31px; background: #29CC6A;">Ya</a>
-                            <button type="button"
-                                class="btn btn-secondary text-center d-flex align-items-center rounded-1"
+                            <button type="button" class="btn btn-secondary text-center d-flex align-items-center rounded-1"
                                 data-bs-dismiss="modal" style="width:76px; height:31px; ">Tidak</button>
 
                         </div>

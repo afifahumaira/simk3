@@ -107,6 +107,12 @@ License: For each use you must have a valid license purchased only from above li
             background-color: #DC3545 !Important;
             border: solid 1px #DC3545;
         }
+
+        .card-header .card-toolbar a,
+        .card-header #kt_docs_search_handler_basic input,
+        .app-content .app-toolbar-wrapper a {
+            font-size: 16px !important;
+        }
     </style>
     @yield ('custom-css')
 

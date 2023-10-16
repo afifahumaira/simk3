@@ -8,10 +8,11 @@
                 class="app-content  rounded bg-light  mb-20 px-5 shadow"style="box-shadow: 2px 4px 20px 2px rgba(0, 0, 0, 0.1);">
                 <div class="app-toolbar-wrapper d-flex flex-stack flex-wrap gap-4 w-100 mb-5 px-5 border-bottom border-5">
                     <!--begin::Page title-->
-                    <h2 style="color: #16243D; font-family: Plus Jakarta Sans, sans-serif; font-size:16px;">Tambah Data Lapor Insiden</h2>
+                    <h2 style="color: #16243D; font-family: Plus Jakarta Sans, sans-serif; font-size:16px;">Tambah Data Lapor
+                        Insiden</h2>
                     <a href="{{ route('laporan-insiden.index') }}" type="button"
                         class="btn text-white btn-sm btn-secondary d-flex justify-content-center align-items-center mb-2"
-                        style="background: #505050; width:90px" data-bs-toggle="modal" data-bs-target="#staticBackdrop"><i
+                        style="background: #505050; " data-bs-toggle="modal" data-bs-target="#staticBackdrop"><i
                             class="bi bi-chevron-left text-white"></i>Kembali</a>
                     <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false"
                         tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
@@ -45,7 +46,8 @@
                         <div class="card bg-light">
                             <div class="card-header d-flex align-items-center fs-3 fw-normal">
                                 <div class="pull-left">
-                                    <strong style="color: #16243D; font-family: Plus Jakarta Sans, sans-serif; font-size:16px;">Data
+                                    <strong
+                                        style="color: #16243D; font-family: Plus Jakarta Sans, sans-serif; font-size:16px;">Data
                                         Kejadian</strong>
                                 </div>
                             </div>
@@ -87,7 +89,9 @@
                                             <select name="departemen_id" class="form-select fs-6 w-100"
                                                 data-control="select2" data-hide-search="true" data-placeholder="Lokasi">
                                                 @foreach ($departments as $dep)
-                                                    <option value="{{ $dep->id }}" {{ old('departemen_id') == $dep->id ? 'selected' : '' }}>{{ $dep->name }}</option>
+                                                    <option value="{{ $dep->id }}"
+                                                        {{ old('departemen_id') == $dep->id ? 'selected' : '' }}>
+                                                        {{ $dep->name }}</option>
                                                 @endforeach
                                             </select>
                                         </div>
@@ -97,7 +101,7 @@
                                         <label class="col-form-label">Lokasi Rinci</label>
                                         <div class=" w-100">
                                             <input type="text" class="form-control" name="lokasi_rinci" id="lokasi_rinci"
-                                                value="{{ old('lokasi_rinci', request()->input('lokasi_rinci'))}}">
+                                                value="{{ old('lokasi_rinci', request()->input('lokasi_rinci')) }}">
                                         </div>
                                     </div>
 
@@ -107,13 +111,26 @@
                                             <select name="jenis_insiden" class="form-select fs-6 w-100"
                                                 data-control="select2" data-hide-search="true"
                                                 data-placeholder="Jenis Insiden">
-                                                <option value="Pingsan" {{ old('jenis_insiden') == "Pingsan" ? 'selected' : '' }}>Pingsan</option>
-                                                <option value="Serangan Jantung" {{ old('jenis_insiden') == "Serangan Jantung" ? 'selected' : '' }}>Serangan Jantung</option>
-                                                <option value="Asma" {{ old('jenis_insiden') == "Asma" ? 'selected' : '' }}>Asma</option>
-                                                <option value="Pendarahan" {{ old('jenis_insiden') == "Pendarahan" ? 'selected' : '' }}>Pendarahan</option>
-                                                <option value="Keracunan" {{ old('jenis_insiden') == "Keracunan" ? 'selected' : '' }}>Keracunan</option>
-                                                <option value="Cidera" {{ old('jenis_insiden') == "Cidera" ? 'selected' : '' }}>Cidera</option>
-                                                <option value="Lainnya" {{ old('jenis_insiden') == "Lainnya" ? 'selected' : '' }}>Lainnya</option>
+                                                <option value="Pingsan"
+                                                    {{ old('jenis_insiden') == 'Pingsan' ? 'selected' : '' }}>Pingsan
+                                                </option>
+                                                <option value="Serangan Jantung"
+                                                    {{ old('jenis_insiden') == 'Serangan Jantung' ? 'selected' : '' }}>
+                                                    Serangan Jantung</option>
+                                                <option value="Asma"
+                                                    {{ old('jenis_insiden') == 'Asma' ? 'selected' : '' }}>Asma</option>
+                                                <option value="Pendarahan"
+                                                    {{ old('jenis_insiden') == 'Pendarahan' ? 'selected' : '' }}>Pendarahan
+                                                </option>
+                                                <option value="Keracunan"
+                                                    {{ old('jenis_insiden') == 'Keracunan' ? 'selected' : '' }}>Keracunan
+                                                </option>
+                                                <option value="Cidera"
+                                                    {{ old('jenis_insiden') == 'Cidera' ? 'selected' : '' }}>Cidera
+                                                </option>
+                                                <option value="Lainnya"
+                                                    {{ old('jenis_insiden') == 'Lainnya' ? 'selected' : '' }}>Lainnya
+                                                </option>
                                             </select>
                                         </div>
                                     </div>
@@ -121,7 +138,8 @@
                                     <div class="ps-3 pe-5">
                                         <label class="col-form-label">Kronologi Kejadian</label>
                                         <div class=" w-100">
-                                            <textarea rows="3" class="form-control" name="kronologi" id="kronologi" value="{{ old('kronologi', request()->input('kronologi'))}}"></textarea>
+                                            <textarea rows="3" class="form-control" name="kronologi" id="kronologi"
+                                                value="{{ old('kronologi', request()->input('kronologi')) }}"></textarea>
                                         </div>
                                     </div>
 
@@ -129,7 +147,8 @@
                                         <label class="col-form-label">Penyebab Insiden</label>
                                         <div class=" w-100">
                                             <input type="text" class="form-control" name="penyebab_insiden"
-                                                id="penyebab_insiden" value="{{ old('penyebab_insiden', request()->input('penyebab_insiden'))}}">
+                                                id="penyebab_insiden"
+                                                value="{{ old('penyebab_insiden', request()->input('penyebab_insiden')) }}">
                                         </div>
                                     </div>
 
@@ -160,7 +179,8 @@
                         <div class="card">
                             <div class="card-header d-flex align-items-center fs-3 fw-normal">
                                 <div class="pull-left">
-                                    <strong style="color: #16243D; font-family: Plus Jakarta Sans, sans-serif; font-size:16px;">Data
+                                    <strong
+                                        style="color: #16243D; font-family: Plus Jakarta Sans, sans-serif; font-size:16px;">Data
                                         Pelapor</strong>
                                 </div>
                             </div>
@@ -168,14 +188,16 @@
                                 <div class="ps-3 pe-5">
                                     <label class="col-form-label">Nama Pelapor</label>
                                     <div class=" w-100">
-                                        <input type="text" class="form-control" name="nama_pelapor" value="{{ old('nama_pelapor', request()->input('nama_pelapor'))}}">
+                                        <input type="text" class="form-control" name="nama_pelapor"
+                                            value="{{ old('nama_pelapor', request()->input('nama_pelapor')) }}">
                                     </div>
                                 </div>
 
                                 <div class="ps-3 pe-5">
                                     <label for="inputEmail3" class="col-form-label">Email Pelapor</label>
                                     <div class=" w-100">
-                                        <input type="email" class="form-control" name="email_pelapor" value="{{ old('email_pelapor', request()->input('email_pelapor'))}}">
+                                        <input type="email" class="form-control" name="email_pelapor"
+                                            value="{{ old('email_pelapor', request()->input('email_pelapor')) }}">
                                     </div>
                                 </div>
 
@@ -183,7 +205,8 @@
                                     <label for="inputNomertelepon3" class="col-form-label">No. Telp
                                         Pelapor</label>
                                     <div class=" w-100">
-                                        <input type="number" class="form-control" name="nomer_telepon_pelapor" value="{{ old('nomor_telepon_pelapor', request()->input('nomor_telepon_pelapor'))}}">
+                                        <input type="number" class="form-control" name="nomer_telepon_pelapor"
+                                            value="{{ old('nomor_telepon_pelapor', request()->input('nomor_telepon_pelapor')) }}">
                                     </div>
                                 </div>
 
@@ -209,7 +232,9 @@
                         <div class="card">
                             <div class="card-header d-flex align-items-center fs-3 fw-normal">
                                 <div class="pull-left">
-                                    <strong style="color: #16243D; font-family: Plus Jakarta Sans, sans-serif; font-size:16px;">Data Korban
+                                    <strong
+                                        style="color: #16243D; font-family: Plus Jakarta Sans, sans-serif; font-size:16px;">Data
+                                        Korban
                                         <span style="color:#fc0000">(Apabila tidak mengetahui data korban dapat
                                             dikosongkan)
                                         </span></strong>
@@ -219,7 +244,8 @@
                                 <div class="ps-3 pe-5">
                                     <label class="col-form-label">Nama Korban</label>
                                     <div class=" w-100">
-                                        <input type="text" class="form-control" name="nama_korban" value="{{ old('nama_korban', request()->input('nama_korban'))}}">
+                                        <input type="text" class="form-control" name="nama_korban"
+                                            value="{{ old('nama_korban', request()->input('nama_korban')) }}">
 
                                     </div>
                                 </div>
@@ -227,7 +253,8 @@
                                 <div class="ps-3 pe-5">
                                     <label for="inputEmail3" class="col-form-label">Email Korban</label>
                                     <div class=" w-100">
-                                        <input type="email" class="form-control" name="email_korban" value="{{ old('email_korban', request()->input('email_korban'))}}">
+                                        <input type="email" class="form-control" name="email_korban"
+                                            value="{{ old('email_korban', request()->input('email_korban')) }}">
 
                                     </div>
                                 </div>
@@ -236,7 +263,8 @@
                                     <label for="inputNomertelepon3" class="col-form-label">No. Telp
                                         Korban</label>
                                     <div class=" w-100">
-                                        <input type="number" class="form-control" name="nomer_telepon_korban" value="{{ old('nomor_telepon_korban', request()->input('nomor_telepon_korban'))}}">
+                                        <input type="number" class="form-control" name="nomer_telepon_korban"
+                                            value="{{ old('nomor_telepon_korban', request()->input('nomor_telepon_korban')) }}">
                                     </div>
                                 </div>
 

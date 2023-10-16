@@ -11,7 +11,7 @@
                     <h2>HIRARC</h2>
                     <a href="{{ route('hirarc.tambah') }}" type="button"
                         class="btn text-white btn-sm btn-secondary d-flex justify-content-center align-items-center mb-2"
-                        data-bs-toggle="modal" data-bs-target="#staticBackdrop" style="background: #505050; width:90px"><i
+                        data-bs-toggle="modal" data-bs-target="#staticBackdrop" style="background: #505050; "><i
                             class="bi bi-chevron-left text-white"></i>Kembali</a>
                     <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false"
                         tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
@@ -121,7 +121,7 @@
                                         <label class="col-sm-2 col-form-label">Kendali</label>
                                         <div class="col-sm-10 w-100">
                                             <input type="text" class="form-control" name="kendali" id="kendali"
-                                            value="">
+                                                value="">
                                         </div>
                                     </div>
 
@@ -150,7 +150,7 @@
                                                                 data-bs-dismiss="modal" aria-label="Close"></button>
                                                         </div>
                                                         <form method="POST" action="">
-                                                            
+
                                                             @csrf
                                                             <div class="modal-body">
                                                                 <div class="form-group my-5">
@@ -283,7 +283,7 @@
                                         <label class="col-sm-2 col-form-label">Penyebab Utama</label>
                                         <div class="col-sm-10 w-100">
                                             <input type="text" class="form-control" name="penyebab" id="penyebab"
-                                            value="">
+                                                value="">
                                         </div>
                                     </div>
 
@@ -309,7 +309,7 @@
                                             diperlukan</label>
                                         <div class="col-sm-10 w-100">
                                             <input type="text" class="form-control" name="sop" id="sop"
-                                            value="">
+                                                value="">
                                         </div>
                                     </div>
 
@@ -338,7 +338,7 @@
                                                                 data-bs-dismiss="modal" aria-label="Close"></button>
                                                         </div>
                                                         <form method="POST" action="">
-                                                            
+
                                                             @csrf
                                                             <div class="modal-body">
                                                                 <div class="form-group my-5">
