@@ -172,7 +172,23 @@
                                         value="{{ $investigasi->tindakan }}">
                                 </div>
                             </div>
-
+                            
+                            <div class="ps-3 pe-5">
+                                <label class="col-sm-2 col-form-label ">P2K3</label>
+                                <div class="col-sm-10 w-100">
+                                    <div class="form-group label-floating is-empty is-focused">
+                                        <select name="p2k3_id" class="form-select fs-6 w-100" data-control="select2"
+                                            data-hide-search="true" data-placeholder="P2K3" required>
+                                            @foreach ($p2k3s as $p2k3)
+                                                <option value="{{ $p2k3->id }}"
+                                                    {{ $investigasi->p2k3_id == $p2k3->id ? 'selected' : '' }}>
+                                                    {{ $p2k3->nama != '' ? $p2k3->nama : 'Pilih P2K3' }}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            
                             <div class="ps-3 pe-5">
                                 <label class="col-form-label">Status</label>
                                 <div class="w-100">
@@ -191,21 +207,6 @@
                                 </div>
                             </div>
 
-                            <div class="ps-3 pe-5">
-                                <label class="col-sm-2 col-form-label ">P2K3</label>
-                                <div class="col-sm-10 w-100">
-                                    <div class="form-group label-floating is-empty is-focused">
-                                        <select name="p2k3_id" class="form-select fs-6 w-100" data-control="select2"
-                                            data-hide-search="true" data-placeholder="P2K3" required>
-                                            @foreach ($p2k3s as $p2k3)
-                                                <option value="{{ $p2k3->id }}"
-                                                    {{ $investigasi->p2k3_id == $p2k3->id ? 'selected' : '' }}>
-                                                    {{ $p2k3->nama != '' ? $p2k3->nama : 'Pilih P2K3' }}</option>
-                                            @endforeach
-                                        </select>
-                                    </div>
-                                </div>
-                            </div>
                         </div>
                     </div>
                 </div>
@@ -241,9 +242,10 @@
                                         </h2>
                                     </div>
                                     <div class="modal-footer pt-0 d-flex justify-content-center border-0">
-                                        <a href="{{ route('daftarinvestigasi.edit', $investigasi->id) }}" type="button"
-                                            class="btn btn-success text-white d-flex justify-content-center align-items-center text-center rounded-1"
-                                            style="width:76px; height:31px; background: #29CC6A;">Ya</a>
+                                        <button type="submit" id="simpanData"
+                                        class="btn btn-success text-white d-flex justify-content-center align-items-center "
+                                        style="background: #29CC6A;width:76px; height:31px;">Ya
+                                        </button>
                                         <button type="button"
                                             class="btn btn-secondary text-center d-flex align-items-center rounded-1"
                                             data-bs-dismiss="modal" style="width:76px; height:31px; ">Tidak</button>

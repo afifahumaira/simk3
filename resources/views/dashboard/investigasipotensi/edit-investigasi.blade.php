@@ -127,26 +127,7 @@
                                                 value="{{ $investigasi->tindakan }}">
                                         </div>
                                     </div>
-
-                                    <div class="ps-3 pe-5">
-                                        <label class="col-form-label">Status</label>
-                                        <div class="w-100">
-                                            <div class="form-group label-floating is-empty is-focused">
-                                                <select name="status" class="form-select fs-6  w-100"
-                                                    data-control="select2" data-hide-search="true"
-                                                    data-placeholder="Status" id="status">
-
-                                                    <option value="2"
-                                                        {{ $investigasi->status == 2 ? 'selected' : '' }}>Investigasi
-                                                    </option>
-                                                    <option value="3"
-                                                        {{ $investigasi->status == 3 ? 'selected' : '' }}>Tuntas
-                                                    </option>
-                                                </select>
-                                            </div>
-                                        </div>
-                                    </div>
-
+                                   
                                     <div class="ps-3 pe-5">
                                         <label class="col-sm-2 col-form-label ">P2K3</label>
                                         <div class="col-sm-10 w-100">
@@ -170,6 +151,25 @@
                                                 class="form-control tanggalPicker" value="<?php echo date('Y-m-d', strtotime($investigasi['tenggat_waktu'])); ?>"
                                                 placeholder="dd/mm/yyyy" min="<?php echo date('Y-m-d'); ?>">
 
+                                        </div>
+                                    </div>
+
+                                    <div class="ps-3 pe-5">
+                                        <label class="col-form-label">Status</label>
+                                        <div class="w-100">
+                                            <div class="form-group label-floating is-empty is-focused">
+                                                <select name="status" class="form-select fs-6  w-100"
+                                                    data-control="select2" data-hide-search="true"
+                                                    data-placeholder="Status" id="status">
+
+                                                    <option value="2"
+                                                        {{ $investigasi->status == 2 ? 'selected' : '' }}>Investigasi
+                                                    </option>
+                                                    <option value="3"
+                                                        {{ $investigasi->status == 3 ? 'selected' : '' }}>Tuntas
+                                                    </option>
+                                                </select>
+                                            </div>
                                         </div>
                                     </div>
 
@@ -229,10 +229,10 @@
                                             </h2>
                                         </div>
                                         <div class="modal-footer pt-0 d-flex justify-content-center border-0">
-                                            <a href="{{ route('daftarinvestigasi.update', $investigasi->potensibahaya_id) }}"
-                                                type="submit"
-                                                class="btn btn-success text-white d-flex justify-content-center align-items-center text-center rounded-1"
-                                                style="width:76px; height:31px; background: #29CC6A;">Ya</a>
+                                            <button type="submit" id="simpanData"
+                                class="btn btn-success text-white d-flex justify-content-center align-items-center "
+                                style="background: #29CC6A;width:76px; height:31px;">Ya
+                                </button>
                                             <button type="button"
                                                 class="btn btn-secondary text-center d-flex align-items-center rounded-1"
                                                 data-bs-dismiss="modal" style="width:76px; height:31px; ">Tidak</button>

@@ -251,7 +251,7 @@ class HirarcController extends Controller
             
             $validatedData = $request->validate([
                 'departemen_id' => 'required',
-                'location_id' => 'required',
+                //'location_id' => 'required',
                 'activitie' => 'required',
                 'hazard' => 'required',
                 'risk' => 'required',
