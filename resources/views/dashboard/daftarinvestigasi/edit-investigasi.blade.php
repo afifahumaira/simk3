@@ -172,7 +172,7 @@
                                         value="{{ $investigasi->tindakan }}">
                                 </div>
                             </div>
-                            
+
                             <div class="ps-3 pe-5">
                                 <label class="col-sm-2 col-form-label ">P2K3</label>
                                 <div class="col-sm-10 w-100">
@@ -188,9 +188,13 @@
                                     </div>
                                 </div>
                             </div>
-                            
+                        </div>
+                    </div>
+
+                    <div class="card mt-10">
+                        <div class="card-body pt-5">
                             <div class="ps-3 pe-5">
-                                <label class="col-form-label">Status</label>
+                                <label class="col-form-label">Status Investigasi</label>
                                 <div class="w-100">
                                     <div class="form-group label-floating is-empty is-focused">
                                         <select name="status" class="form-select fs-6  w-100" data-control="select2"
@@ -243,8 +247,8 @@
                                     </div>
                                     <div class="modal-footer pt-0 d-flex justify-content-center border-0">
                                         <button type="submit" id="simpanData"
-                                        class="btn btn-success text-white d-flex justify-content-center align-items-center "
-                                        style="background: #29CC6A;width:76px; height:31px;">Ya
+                                            class="btn btn-success text-white d-flex justify-content-center align-items-center "
+                                            style="background: #29CC6A;width:76px; height:31px;">Ya
                                         </button>
                                         <button type="button"
                                             class="btn btn-secondary text-center d-flex align-items-center rounded-1"

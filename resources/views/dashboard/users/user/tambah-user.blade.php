@@ -62,6 +62,17 @@
                                     </div>
 
                                     <div class="ps-3 pe-5">
+                                        <label class="col-sm-2 col-form-label ">Password</label>
+                                        <div class="col-sm-10 w-100">
+                                            <div class="form-group label-floating is-empty is-focused">
+                                                <input id="password" type="password" placeholder="Password" name="password"
+                                                    required autocomplete="new-password" class="form-control ">
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+                                    <div class="ps-3 pe-5">
                                         <label class="col-sm-2 col-form-label">Role</label>
                                         <div class="col-sm-10 w-100">
                                             <select class="form-select fs-6 w-100" data-control="select2"
@@ -121,7 +132,7 @@
                     <div class="container d-flex justify-content-center">
                         <div>
                             <button type="submit" class="btn btn-success">Simpan Data</button>
-                            <a style="margin: 30px" href="{{ route('tambahinsiden.index') }}" class="btn btn-secondary"
+                            <a style="margin: 30px" href="{{ route('user.tambah') }}" class="btn btn-secondary"
                                 type="reset"> Reset
                             </a>
                         </div>
