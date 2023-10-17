@@ -77,7 +77,8 @@
                             <tr>
                                 <th scope="col" class="text-center">No</th>
                                 <th scope="col" class="">Kode Potensi Bahaya</th>
-                                <th scope="col"class="d-flex justify-content-between">Tanggal lapor <div><a class="mx-1"
+                                <th scope="col"class="d-flex justify-content-between">Tanggal lapor <div><a
+                                            class="mx-1"
                                             href="{{ route('potensibahaya.index', ['sort' => 'waktu_kejadian', 'order' => 'asc']) }}"><i
                                                 class="bi bi-arrow-up text-black"></i></a>
                                         <a class="px-1"
@@ -91,7 +92,7 @@
                                 <th scope="col">Nama Pelapor</th>
                                 <th scope="col" class="col-1">Status</th>
                                 @if (auth()->user()->hak_akses == 'Pimpinan')
-                                    <th scope="col">Ubah Status</th>
+                                    <th scope="col" class="">Ubah Status</th>
                                 @endif
                                 @if (auth()->user()->hak_akses == 'Admin' ||
                                         auth()->user()->hak_akses == 'P2K3' ||

@@ -28,6 +28,10 @@ class UserController extends Controller
         return redirect('/user');
     }
 
+    public function tambah() {
+        return view('dashboard.users.user.tambah-user');
+    }
+
     public function edit($id) {
         $data = User::find($id);
         $departemen = Departemen::all();

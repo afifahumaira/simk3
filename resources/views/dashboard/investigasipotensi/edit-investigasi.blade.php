@@ -45,8 +45,7 @@
                 <div class="page-title  gap-1 mx-5 my-5  ">
                     <div id="kt_app_content"
                         class="app-content flex-column-fluid rounded bg-light  mb-20 px-5 shadow"style="box-shadow: 2px 4px 20px 2px rgba(0, 0, 0, 0.1);">
-
-                        <div class="card bg-light">
+                        <div class="card ">
                             <div class="card-header d-flex align-items-center fs-3 fw-normal">
                                 <div class="pull-left">
                                     <strong
@@ -127,7 +126,7 @@
                                                 value="{{ $investigasi->tindakan }}">
                                         </div>
                                     </div>
-                                   
+
                                     <div class="ps-3 pe-5">
                                         <label class="col-sm-2 col-form-label ">P2K3</label>
                                         <div class="col-sm-10 w-100">
@@ -152,28 +151,11 @@
                                                 placeholder="dd/mm/yyyy" min="<?php echo date('Y-m-d'); ?>">
 
                                         </div>
-                                    </div>
 
-                                    <div class="ps-3 pe-5">
-                                        <label class="col-form-label">Status</label>
-                                        <div class="w-100">
-                                            <div class="form-group label-floating is-empty is-focused">
-                                                <select name="status" class="form-select fs-6  w-100"
-                                                    data-control="select2" data-hide-search="true"
-                                                    data-placeholder="Status" id="status">
 
-                                                    <option value="2"
-                                                        {{ $investigasi->status == 2 ? 'selected' : '' }}>Investigasi
-                                                    </option>
-                                                    <option value="3"
-                                                        {{ $investigasi->status == 3 ? 'selected' : '' }}>Tuntas
-                                                    </option>
-                                                </select>
-                                            </div>
-                                        </div>
-                                    </div>
 
-                                    {{-- <div class="ps-3 pe-5">
+
+                                        {{-- <div class="ps-3 pe-5">
                                                 <label for="inputEmail3" class="col-sm-2 col-form-label">Tindakan</label>
                                                 <div class="col-sm-10 w-100">
                                                     <input type="text" class="form-control"
@@ -191,9 +173,34 @@
                                                             readonly>
                                                     </div>
                                                 </div> --}}
+                                    </div>
+                            </div>
+                        </div>
+
+                        <div class="card  mt-10">
+                            <div class="card-body pt-5">
+                                <div class="ps-3 pe-5">
+                                    <label class="col-form-label">Status Investigasi</label>
+                                    <div class="w-100">
+                                        <div class="form-group label-floating is-empty is-focused">
+                                            <select name="status" class="form-select fs-6  w-100" data-control="select2"
+                                                data-hide-search="true" data-placeholder="Status" id="status">
+
+                                                <option value="2" {{ $investigasi->status == 2 ? 'selected' : '' }}>
+                                                    Investigasi
+                                                </option>
+                                                <option value="3" {{ $investigasi->status == 3 ? 'selected' : '' }}>
+                                                    Tuntas
+                                                </option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+
                             </div>
                         </div>
                     </div>
+
                     <!--end::Content container-->
                     <div class="container d-flex justify-content-center">
                         <div class=" d-flex justify-content-center">
@@ -230,9 +237,9 @@
                                         </div>
                                         <div class="modal-footer pt-0 d-flex justify-content-center border-0">
                                             <button type="submit" id="simpanData"
-                                class="btn btn-success text-white d-flex justify-content-center align-items-center "
-                                style="background: #29CC6A;width:76px; height:31px;">Ya
-                                </button>
+                                                class="btn btn-success text-white d-flex justify-content-center align-items-center "
+                                                style="background: #29CC6A;width:76px; height:31px;">Ya
+                                            </button>
                                             <button type="button"
                                                 class="btn btn-secondary text-center d-flex align-items-center rounded-1"
                                                 data-bs-dismiss="modal" style="width:76px; height:31px; ">Tidak</button>

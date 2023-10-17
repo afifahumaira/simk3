@@ -79,15 +79,17 @@
                             <tr>
                                 <th scope="col" class="text-center">No</th>
                                 <th scope="col" class="">Kode Laporan Insiden</th>
-                                <th scope="col" class="d-flex justify-content-between">Tanggal lapor <a
-                                        href="{{ route('laporan-insiden.index', ['sort' => 'waktu_kejadian', 'order' => 'asc']) }}"><i
-                                            class="bi bi-arrow-up text-black"></i></a>
-                                    <a
-                                        href="{{ route('laporan-insiden.index', ['sort' => 'waktu_kejadian', 'order' => 'desc']) }}"><i
-                                            class="bi bi-arrow-down text-black"></i></a>
+                                <th scope="col" class="d-flex justify-content-between">Tanggal lapor
+                                    <div><a
+                                            href="{{ route('laporan-insiden.index', ['sort' => 'waktu_kejadian', 'order' => 'asc']) }}"><i
+                                                class="bi bi-arrow-up text-black"></i></a>
+                                        <a
+                                            href="{{ route('laporan-insiden.index', ['sort' => 'waktu_kejadian', 'order' => 'desc']) }}"><i
+                                                class="bi bi-arrow-down text-black"></i></a>
+                                    </div>
                                 </th>
                                 <th scope="col" class="">Departemen</th>
-                                <th scope="col">Lokasi Kejadian</th>                                
+                                <th scope="col">Lokasi Kejadian</th>
                                 <th scope="col">Nama Pelapor</th>
                                 <th scope="col" class="">Status</th>
                                 @if (auth()->user()->hak_akses == 'Pimpinan')
@@ -108,9 +110,10 @@
                                         {{ ($laporaninsidens->currentpage() - 1) * $laporaninsidens->perpage() + $loop->index + 1 }}
                                     </td>
                                     <td>{{ $lap->kode_laporinsiden }}</td>
-                                    <td>{{ $lap->waktu_kejadian ? $lap->waktu_kejadian->translatedFormat('d F Y') : '' }}                                    </td>
+                                    <td>{{ $lap->waktu_kejadian ? $lap->waktu_kejadian->translatedFormat('d F Y') : '' }}
+                                    </td>
                                     <td>{{ $lap->departemen->name }}</td>
-                                    <td>{{ $lap->lokasi_rinci }}</td>                                    
+                                    <td>{{ $lap->lokasi_rinci }}</td>
                                     <td>{{ $lap->nama_pelapor }}</td>
                                     <td align="center" class="pt-5">
                                         @if ($lap->status == '1')

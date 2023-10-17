@@ -25,7 +25,7 @@
                     <a href="{{ route('dashboard') }}" type="button" class="btn btn-secondary text-white btn-sm mb-2 mr-2"
                         style="background: #505050"><i class="bi bi-chevron-left text-white mb-1"></i>Kembali</a>
                     <button data-bs-toggle="modal" data-bs-target="#exampleModalCenter"
-                        class="btn btn-secondary bg-primary text-white btn-sm mb-2"><i
+                        class="btn btn-primary bg-primary text-white btn-sm mb-2"><i
                             class="bi bi-pencil-square text-white  mb-1"></i>Edit Profile</button>
                 </div>
                 <!--end::Title-->
