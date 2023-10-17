@@ -187,6 +187,7 @@ Route::group(['middleware' => ['auth']], function() {
         Route::get('/', [UserController::class, 'index'])->name('index');
         Route::get('lihat/{id}', [UserController::class, 'lihat'])->name('lihat');
         Route::get('tambah', [UserController::class, 'tambah'])->name('tambah');
+        Route::put('save', [UserController::class, 'save'])->name('save');
         Route::post('hapus/{id}', [UserController::class, 'hapus'])->name('hapus');
         Route::get('edit/{id}', [UserController::class, 'edit'])->name('edit');
         Route::post('update/{id}', [UserController::class, 'update'])->name('update');

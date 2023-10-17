@@ -25,6 +25,12 @@
 
                 </tr>
                 <tr>
+
+                    <th>Username</th>
+                    <td>{{$data->username}}</td>
+
+                </tr>
+                <tr>
                     <th>Email</th>
                     <td>{{$data->email}}</td>
 

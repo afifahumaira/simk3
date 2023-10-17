@@ -63,7 +63,12 @@
                             @csrf
                             <div class="form-group mb-3">
                                 <input id="name" name="name" required="" autofocus="" type="text"
-                                    placeholder="Nama Pengguna" name="name" :value="old('Nama Pengguna')" required
+                                    placeholder="Nama Pengguna" name="name" :value="old('name')" required
+                                    autofocus class="form-control border-0 shadow-sm px-4">
+                            </div>
+                            <div class="form-group mb-3">
+                                <input id="username" name="username" required="" autofocus="" type="text"
+                                    placeholder="Username" name="username" :value="old('username')" required
                                     autofocus class="form-control border-0 shadow-sm px-4">
                             </div>
                             <div class="form-group mb-3">

@@ -20,6 +20,7 @@ class ProfileController extends Controller
         $data = User::find($request->id);
         $validatedData = $request->validate([
             'name' => 'required',
+            'username' => 'required',
             'email' => 'required',
             'password' => 'required'
         ]);

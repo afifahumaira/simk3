@@ -58,7 +58,7 @@
                         <form method="POST" action="{{ route('login') }}">
                             @csrf
                             <div class="form-group mb-3">
-                                <input id="inputUserame" type="name" name="name" :value="old('name')" required
+                                <input id="inputUserame" type="username" name="username" :value="old('username')" required
                                     autofocus placeholder="Username" required="" autofocus=""
                                     class="form-control border border-1 shadow-sm px-4">
                             </div>

@@ -22,11 +22,12 @@ class User extends Authenticatable
     protected $fillable = [
         //'id',
         'name',
-        //'hak_akses',
+        'username',
+        'hak_akses',
         //'avatar',
         'email',
         'password',
-        //'departemen_id',
+        'departemen_id',
     ];
 
     /**
@@ -51,12 +52,7 @@ class User extends Authenticatable
     public function departemen()
     {
         return $this->belongsTo(Departemen::class);
-    }
-
-    // public function apar()
-    // {
-    //     return $this->hasOne(Apar::class, 'user_id');
-    // }
+    }  
 
     public function p2k3()
     {

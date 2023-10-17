@@ -16,6 +16,7 @@ use RealRashid\SweetAlert\Facades\Alert;
 class UserController extends Controller
 {
     public function index(Request $request) {
+        
         $datas = User::with([ 'p2k3', 'departemen'])
         ->where('name', 'LIKE', '%'.$request->search.'%')
         ->paginate(10);
@@ -28,8 +29,30 @@ class UserController extends Controller
         return redirect('/user');
     }
 
-    public function tambah() {
-        return view('dashboard.users.user.tambah-user');
+    public function tambah() {        
+        $departemen = Departemen::all();
+        return view('dashboard.users.user.tambah-user', compact( 'departemen'));
+    }    
+
+    public function save(Request $request) {
+        $validateData = $request->validate([
+            'name' => 'required',
+            'username' => 'required',
+            'email' => 'required',
+            'password' => 'required',
+        ]);
+        User::create([
+            $validateData,
+            'name' => $request->name,
+            'username' => $request->username,
+            'email' => $request->email,
+            'password' => Hash::make($request->password),
+            'hak_akses' => $request->hak_akses,
+            'departemen_id' => $request->departemen_id,
+        ]);
+    
+    Alert::success('Berhasil', 'Data Berhasil Ditambahkan!')->iconHtml('<i class="bi-person-check fs-3x"></i>')->hideCloseButton();
+    return redirect()->route('user.index');
     }
 
     public function edit($id) {

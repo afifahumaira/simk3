@@ -39,6 +39,10 @@
                         <td> {{ Auth::user()->name }}</td>
                     </tr>
                     <tr>
+                        <th class="">Username</th>
+                        <td> {{ Auth::user()->username }}</td>
+                    </tr>
+                    <tr>
                         <th class="">Email</th>
                         <td>{{ Auth::user()->email }}</td>
                     </tr>
@@ -70,6 +74,11 @@
                                         <label class="form-labels">Nama</label>
                                         <input type="text" class="form-control" name="name" id="name"
                                             value="{{ Auth::user()->name }}">
+                                    </div>
+                                    <div class="mb-3">
+                                        <label class="form-labels">Username</label>
+                                        <input type="text" class="form-control" name="username" id="username"
+                                            value="{{ Auth::user()->username }}">
                                     </div>
                                     <div class="my-5">
                                         <label class="form-labels">Email</label>

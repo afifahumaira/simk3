@@ -148,7 +148,7 @@
                                         <div class="col-sm-10 w-100">
                                             <input type="date" id="date" name="tenggat_waktu"
                                                 class="form-control tanggalPicker" value="<?php echo date('Y-m-d', strtotime($investigasi['tenggat_waktu'])); ?>"
-                                                placeholder="dd/mm/yyyy" min="<?php echo date('Y-m-d'); ?>">
+                                                placeholder="dd/mm/yyyy">
 
                                         </div>
 

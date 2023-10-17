@@ -83,11 +83,21 @@
                                     </div> --}}
 
                                     <div class="ps-3 pe-5">
+                                        <label class="col-form-label ">Nama Pengguna</label>
+                                        <div class=" w-100">
+                                            <div class="form-group label-floating is-empty is-focused">
+                                                <input class="form-control" name="name" id="name"
+                                                    value="{{ $data->name }}" >
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="ps-3 pe-5">
                                         <label class="col-form-label ">Username</label>
                                         <div class=" w-100">
                                             <div class="form-group label-floating is-empty is-focused">
-                                                <input class="form-control bg-secondary" name="name" id="name"
-                                                    value="{{ $data->name }}" readonly>
+                                                <input class="form-control bg-secondary" name="username" id="username"
+                                                    value="{{ $data->username }}" readonly>
                                             </div>
                                         </div>
                                     </div>
