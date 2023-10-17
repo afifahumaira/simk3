@@ -97,7 +97,7 @@
                                         auth()->user()->hak_akses == 'P2K3' ||
                                         auth()->user()->hak_akses == 'K3 Departemen' ||
                                         auth()->user()->hak_akses == 'Pimpinan')
-                                    <th scope="col">Action</th>
+                                    <th scope="col" class="col-2">Action</th>
                                 @endif
                             </tr>
                         </thead>
