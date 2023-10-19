@@ -5,9 +5,8 @@
 
         <div class="page-title d-flex flex-column gap-1 mx-5 my-5  ">
 
-            <div id="kt_app_content"
-                class="app-content flex-column-fluid rounded bg-light  mb-20 px-5 shadow"style="box-shadow: 2px 4px 20px 2px rgba(0, 0, 0, 0.1);">
-                <div class="app-toolbar-wrapper d-flex flex-stack flex-wrap gap-4 w-100 mb-5 px-5 border-bottom border-5">
+            <div class="card m-5">
+                <div class="card-header py-5 shadow-sm d-flex justify-content-between align-items-center">
                     <!--begin::Page title-->
                     <h2>Dokumen</h2>
                     <!--begin::Main wrapper-->
@@ -15,7 +14,7 @@
                         data-kt-search-enter="true" data-kt-search-layout="inline">
 
                         <!--begin::Input Form-->
-                        <form data-kt-search-element="form" class="w-100 position-relative mb-5 shadow rounded"
+                        <form data-kt-search-element="form" class="w-100 position-relative  shadow rounded"
                             autocomplete="off">
                             <!--begin::Hidden input(Added to disable form autocomplete)-->
                             <input type="hidden" />
@@ -56,71 +55,75 @@
                     </div>
                     <!--end::Main wrapper-->
                     <a href="{{ route('daftardokumen.tambah') }}" type="button" class="btn btn-primary btn-sm"
-                        style="background: #233EAE">Tambah Doc +</a>
+                        style="background: #233EAE; font-size:16px;">Tambah Doc +</a>
                     <!--end::Title-->
                 </div>
                 <!--begin::Content container-->
-                <table class="table table-bordered border-secondary px-3 py-3 mb-5 shadow">
-                    <thead px-3>
-                        <tr>
-                            <th scope="col" class="text-center">No</th>
-                            <th scope="col">Nama File</th>
-                            <th scope="col">File</th>
-                            <th scope="col">Action</th>
-                        </tr>
-                    </thead>
-                    @foreach ($datas as $data)
-                        <tbody>
+                <div class="card-body">
+                    <table class="table table-bordered border-secondary px-3 py-3 mb-5 shadow">
+                        <thead px-3>
                             <tr>
-                                <th scope="row" class="text-center">{{ ++$index }}</th>
-                                <td>{{ $data->name_file }}</td>
-                                <td><a href="{{ '/berkas/' . $data->file }}"
-                                        target="_blank"class="text-decoration-underline">{{ '/berkas/' . $data->file }}</a>
-                                </td>
-                                <td>
-                                    <a href="{{ route('daftardokumen.ubah', $data['id']) }}" type="button"
-                                        class="btn  btn-sm bg-primary" style="width:20px;"><i
-                                            class="bi bi-pencil-square text-dark d-flex justify-content-center align-items-center"></i></a>
-                                    <button type="button" class="btn  btn-sm" style="width:20px; background:#DC3545"
-                                        data-bs-toggle="modal" data-bs-target="#deletemas<?= $data['id'] ?>"><i
-                                            class="bi bi-trash text-dark d-flex justify-content-center align-items-center"></i></button>
-                                    <div class="modal fade" id="deletemas<?= $data['id'] ?>" tabindex="-1" role="dialog"
-                                        aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                        <div class="modal-dialog modal-dialog-centered" role="document">
-                                            <div class="modal-content">
+                                <th scope="col" class="text-center">No</th>
+                                <th scope="col">Nama File</th>
+                                <th scope="col">File</th>
+                                <th scope="col">Action</th>
+                            </tr>
+                        </thead>
+                        @foreach ($datas as $data)
+                            <tbody>
+                                <tr>
+                                    <th scope="row" class="text-center">{{ ++$index }}</th>
+                                    <td>{{ $data->name_file }}</td>
+                                    <td><a href="{{ '/berkas/' . $data->file }}"
+                                            target="_blank"class="text-decoration-underline">{{ '/berkas/' . $data->file }}</a>
+                                    </td>
+                                    <td>
+                                        <a href="{{ route('daftardokumen.ubah', $data['id']) }}" type="button"
+                                            class="btn  btn-sm bg-primary" style="width:20px;"><i
+                                                class="bi bi-pencil-square text-dark d-flex justify-content-center align-items-center"></i></a>
+                                        <button type="button" class="btn  btn-sm" style="width:20px; background:#DC3545"
+                                            data-bs-toggle="modal" data-bs-target="#deletemas<?= $data['id'] ?>"><i
+                                                class="bi bi-trash text-dark d-flex justify-content-center align-items-center"></i></button>
+                                        <div class="modal fade" id="deletemas<?= $data['id'] ?>" tabindex="-1"
+                                            role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                            <div class="modal-dialog modal-dialog-centered" role="document">
+                                                <div class="modal-content">
 
-                                                <div
-                                                    class="modal-body mt-5 d-flex justify-content-center align-items-center">
+                                                    <div
+                                                        class="modal-body mt-5 d-flex justify-content-center align-items-center">
 
-                                                    <form method="POST"
-                                                        action="{{ route('daftardokumen.destroy', $data['id']) }}">
-                                                        @csrf
-                                                        <h2 class="mt-5 text-center"
-                                                            style="color: #16243D; font-size: 20px font-weight:700">
-                                                            Yakin data
-                                                            ingin dihapus?
-                                                        </h2>
+                                                        <form method="POST"
+                                                            action="{{ route('daftardokumen.destroy', $data['id']) }}">
+                                                            @csrf
+                                                            <h2 class="mt-5 text-center"
+                                                                style="color: #16243D; font-size: 20px font-weight:700">
+                                                                Yakin data
+                                                                ingin dihapus?
+                                                            </h2>
+                                                    </div>
+                                                    <div class="modal-footer d-flex justify-content-center border-0">
+                                                        <button type="submit"
+                                                            class="btn btn-success text-white d-flex justify-content-center align-items-center text-center rounded-1"
+                                                            style="width:76px; height:31px; background: #29CC6A;">Ya</button>
+                                                        <button type="button"
+                                                            class="btn btn-secondary text-center d-flex align-items-center rounded-1"
+                                                            data-bs-dismiss="modal"
+                                                            style="width:76px; height:31px; ">Tidak</button>
+                                                    </div>
+                                                    </form>
                                                 </div>
-                                                <div class="modal-footer d-flex justify-content-center border-0">
-                                                    <button type="submit"
-                                                        class="btn btn-success text-white d-flex justify-content-center align-items-center text-center rounded-1"
-                                                        style="width:76px; height:31px; background: #29CC6A;">Ya</button>
-                                                    <button type="button"
-                                                        class="btn btn-secondary text-center d-flex align-items-center rounded-1"
-                                                        data-bs-dismiss="modal"
-                                                        style="width:76px; height:31px; ">Tidak</button>
-                                                </div>
-                                                </form>
                                             </div>
                                         </div>
-                                    </div>
-                                </td>
-                            </tr>
-                    @endforeach
-                    </tbody>
-                </table>
+                                    </td>
+                                </tr>
+                        @endforeach
+                        </tbody>
+                    </table>
+                </div>
+                <div class="card-footer">
+                    {{ $datas->links('pagination::customb5') }}
+                </div>
 
-                {{ $datas->links('pagination::customb5') }}
 
                 <!--end::Content container-->
             </div>

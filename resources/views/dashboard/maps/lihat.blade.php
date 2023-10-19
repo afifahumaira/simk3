@@ -3,9 +3,8 @@
 @section('content')
     <div class="page-title d-flex flex-column gap-1 mx-5 my-5  ">
 
-        <div id="kt_app_content"
-            class="app-content flex-column-fluid rounded bg-light  mb-20 px-5 shadow"style="box-shadow: 2px 4px 20px 2px rgba(0, 0, 0, 0.1);">
-            <div class="app-toolbar-wrapper d-flex flex-stack flex-wrap gap-4 w-100 mb-5 px-5 border-bottom border-5">
+        <div class="card m-5">
+            <div class="card-header py-5 shadow-sm d-flex justify-content-between align-items-center">
                 <!--begin::Page title-->
                 <h2>Data Maps Teknik</h2>
                 <!--begin::Main wrapper-->
@@ -13,8 +12,7 @@
                     data-kt-search-enter="true" data-kt-search-layout="inline">
 
                     <!--begin::Input Form-->
-                    <form data-kt-search-element="form" class="w-100 position-relative mb-5 shadow rounded"
-                        autocomplete="off">
+                    <form data-kt-search-element="form" class="w-100 position-relative  shadow rounded" autocomplete="off">
                         <!--begin::Hidden input(Added to disable form autocomplete)-->
                         <input type="hidden" />
                         <!--end::Hidden input-->
@@ -54,73 +52,82 @@
                 </div>
                 <!--end::Main wrapper-->
                 <div>
-                    <a href="{{ route('maps.tambah') }}" type="button"
-                        class="btn btn-primary btn-sm mb-2 me-1" style="background: #233EAE">Tambah Data +</a>
+                    <a href="{{ route('maps.tambah') }}" type="button" class="btn btn-primary btn-sm mb-2 me-1"
+                        style="background: #233EAE">Tambah Data +</a>
                     <a href="{{ route('maps.index') }} " type="button" class="btn text-white btn-secondary btn-sm mb-2"
                         style="background: #505050"><i class="bi bi-chevron-left text-white"></i>Kembali</a>
                 </div>
                 <!--end::Title-->
             </div>
             <!--begin::Content container-->
-            <table class="table table-bordered border-secondary px-3 py-3 mb-5 shadow">
-                <thead px-3>
-                    <tr>
-                        <th scope="col" class="text-center">No</th>
-                        <th scope="col"class="w-50 ">Gedung</th>
-                        <th scope="col" class="w-25 ">Lantai</th>
-                        <th scope="col">Action</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @foreach ($maps as $map)
+            <div class="card-body">
+                <table class="table table-bordered border-secondary px-3 py-3 mb-5 shadow">
+                    <thead px-3>
                         <tr>
-                            <td scope="row" class="text-center">{{ ($maps->currentpage()-1) * $maps ->perpage() + $loop->index + 1 }}</td>
-                            <td>{{ $map->gedung }}</td>
-                            <td>{{ $map->lantai }}</td>
-                            <td>
-                                <a href="{{ route('maps.detail', $map->id) }}"
-                                type="button" class="btn  btn-sm bg-warning " style="width:20px;"><i
-                                    class="bi bi-eye text-dark d-flex justify-content-center align-items-center"></i></a>
-                                <a href="{{ route('maps.edit', $map->id) }}" type="button" class="btn  btn-sm bg-primary"
-                                    style="width:20px;"><i
-                                        class="bi bi-pencil-square text-dark d-flex justify-content-center align-items-center"></i></a>
-                                        <button type="button" class="btn  btn-sm" style="width:20px; background:#DC3545" data-bs-toggle="modal" data-bs-target="#deleteForm{{ $map->id }}"><i
+                            <th scope="col" class="text-center">No</th>
+                            <th scope="col"class="w-50 ">Gedung</th>
+                            <th scope="col" class="w-25 ">Lantai</th>
+                            <th scope="col">Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach ($maps as $map)
+                            <tr>
+                                <td scope="row" class="text-center">
+                                    {{ ($maps->currentpage() - 1) * $maps->perpage() + $loop->index + 1 }}</td>
+                                <td>{{ $map->gedung }}</td>
+                                <td>{{ $map->lantai }}</td>
+                                <td>
+                                    <a href="{{ route('maps.detail', $map->id) }}" type="button"
+                                        class="btn  btn-sm bg-warning " style="width:20px;"><i
+                                            class="bi bi-eye text-dark d-flex justify-content-center align-items-center"></i></a>
+                                    <a href="{{ route('maps.edit', $map->id) }}" type="button"
+                                        class="btn  btn-sm bg-primary" style="width:20px;"><i
+                                            class="bi bi-pencil-square text-dark d-flex justify-content-center align-items-center"></i></a>
+                                    <button type="button" class="btn  btn-sm" style="width:20px; background:#DC3545"
+                                        data-bs-toggle="modal" data-bs-target="#deleteForm{{ $map->id }}"><i
                                             class="bi bi-trash text-dark d-flex justify-content-center align-items-center"></i></button>
 
-                                <div class="modal fade" id="deleteForm{{ $map->id }}" data-bs-backdrop="static" data-bs-keyboard="false"
-                                tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-                                    <div class="modal-dialog modal-dialog-centered ">
-                                        <div class="modal-content">
+                                    <div class="modal fade" id="deleteForm{{ $map->id }}" data-bs-backdrop="static"
+                                        data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel"
+                                        aria-hidden="true">
+                                        <div class="modal-dialog modal-dialog-centered ">
+                                            <div class="modal-content">
 
-                                            <form method="POST" action="{{ route('maps.delete', $map->id) }}">
-                                                @csrf
-                                                <div class="modal-body mt-5 d-flex justify-content-center align-items-center">
-                                                    <h2 class="mt-5 text-center"
-                                                        style="color: #16243D; font-size: 20px font-weight:700">Yakin data
-                                                        ingin dihapus?
-                                                    </h2>
-                                                </div>
-                                                <div class="modal-footer d-flex justify-content-center border-0">
-                                                    <button type="submit"
-                                                        class="btn btn-success text-white d-flex justify-content-center align-items-center text-center rounded-1"
-                                                        style="width:76px; height:31px; background: #29CC6A;">Ya</button>
-                                                    <button type="button"
-                                                        class="btn btn-secondary text-center d-flex align-items-center rounded-1"
-                                                        data-bs-dismiss="modal"
-                                                        style="width:76px; height:31px; ">Tidak</button>
-                                                </div>
-                                            </form>
+                                                <form method="POST" action="{{ route('maps.delete', $map->id) }}">
+                                                    @csrf
+                                                    <div
+                                                        class="modal-body mt-5 d-flex justify-content-center align-items-center">
+                                                        <h2 class="mt-5 text-center"
+                                                            style="color: #16243D; font-size: 20px font-weight:700">Yakin
+                                                            data
+                                                            ingin dihapus?
+                                                        </h2>
+                                                    </div>
+                                                    <div class="modal-footer d-flex justify-content-center border-0">
+                                                        <button type="submit"
+                                                            class="btn btn-success text-white d-flex justify-content-center align-items-center text-center rounded-1"
+                                                            style="width:76px; height:31px; background: #29CC6A;">Ya</button>
+                                                        <button type="button"
+                                                            class="btn btn-secondary text-center d-flex align-items-center rounded-1"
+                                                            data-bs-dismiss="modal"
+                                                            style="width:76px; height:31px; ">Tidak</button>
+                                                    </div>
+                                                </form>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                            </td>
-                        </tr>
-                    @endforeach
-                </tbody>
-            </table>
+                                </td>
+                            </tr>
+                        @endforeach
+                    </tbody>
+                </table>
+            </div>
 
+            <div class="card-footer">
+                {{ $maps->links('pagination::customb5') }}
+            </div>
 
-            {{ $maps->links('pagination::customb5') }}
             <!--end::Content container-->
         </div>
     </div>
