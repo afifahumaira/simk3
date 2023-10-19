@@ -81,7 +81,8 @@
                                             <iframe src="{{ asset('/laraview/#../berkas/' . $data->file) }}" width="100%"
                                                 height="600px"></iframe>
                                             {{-- <embed src="{{asset('/laraview/#../berkas/'.$data->file)}}" type="application/pdf" width="100%" height="600px" /> --}}
-                                            <input type="file" class="form-control" name="file" id="file">
+                                            <input type="file" accept=".pdf,.docx" class="form-control" name="file"
+                                                id="file">
                                         </div>
                                     </div>
 
