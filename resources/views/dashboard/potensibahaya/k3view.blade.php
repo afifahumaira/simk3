@@ -4,16 +4,15 @@
 @section('content')
     <div class="page-title d-flex flex-column gap-1 mx-5 my-5  ">
         <div class="card m-5">
-            <div class="card-header shadow-sm d-flex justify-content-between align-items-center">
+            <div class="card-header py-3 shadow-sm d-flex justify-content-between align-items-center">
                 <!--begin::Page title-->
                 <h2>Data Laporan Potensi Bahaya</h2>
                 <!--begin::Main wrapper-->
-                <div id="kt_docs_search_handler_basic" class="mt-3" data-kt-search-keypress="true"
+                <div id="kt_docs_search_handler_basic" class="" data-kt-search-keypress="true"
                     data-kt-search-min-length="2" data-kt-search-enter="true" data-kt-search-layout="inline">
 
                     <!--begin::Input Form-->
-                    <form data-kt-search-element="form" class="w-100 position-relative mb-5 shadow rounded"
-                        autocomplete="off">
+                    <form data-kt-search-element="form" class="w-100 position-relative shadow rounded" autocomplete="off">
                         <!--begin::Hidden input(Added to disable form autocomplete)-->
                         <input type="hidden" />
                         <!--end::Hidden input-->

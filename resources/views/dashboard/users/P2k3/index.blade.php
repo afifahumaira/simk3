@@ -3,10 +3,8 @@
 @section('content')
     <div class="page-title d-flex flex-column gap-1 mx-5 my-5  ">
 
-        <div id="kt_app_content"
-            class="app-content flex-column-fluid rounded bg-light  mb-20 px-5 shadow"style="box-shadow: 2px 4px 20px 2px rgba(0, 0, 0, 0.1);">
-
-            <div class="app-toolbar-wrapper d-flex flex-stack flex-wrap gap-4 w-100 mb-5 px-5 border-bottom border-5">
+        <div class="card m-5">
+            <div class="card-header py-5 shadow-sm d-flex justify-content-between align-items-center">
                 <!--begin::Page title-->
                 <h2>Data User P2K3</h2>
 
@@ -15,8 +13,7 @@
                     data-kt-search-enter="true" data-kt-search-layout="inline">
 
                     <!--begin::Input Form-->
-                    <form data-kt-search-element="form" class="w-100 position-relative mb-5 shadow rounded"
-                        autocomplete="off">
+                    <form data-kt-search-element="form" class="w-100 position-relative shadow rounded" autocomplete="off">
                         <!--begin::Hidden input(Added to disable form autocomplete)-->
                         <input type="hidden" />
                         <!--end::Hidden input-->
@@ -60,86 +57,90 @@
                 <!--end::Title-->
             </div>
             <!--begin::Content container-->
-            <table class="table table-bordered border-secondary px-3 py-3 mb-5 shadow">
-                <thead px-3>
-                    <tr>
-                        <th scope="col" class="text-center">NO</th>
-                        <th scope="col">Nama</th>
-                        {{-- <th scope="col">Email</th> --}}
-                        <th scope="col">Jabatan</th>
-                        {{-- <th scope="col">Departemen</th> --}}
-                        {{-- <th scope="col">Foto Profil</th> --}}
-                        @if (auth()->user()->hak_akses == 'Admin' ||
-                                auth()->user()->hak_akses == 'P2K3' ||
-                                auth()->user()->hak_akses == 'K3 Departemen' ||
-                                auth()->user()->hak_akses == 'Pimpinan')
-                            <th scope="col" class="col-2">Action</th>
-                        @endif
-                    </tr>
-                </thead>
-                <tbody>
-                    @foreach ($datas as $data)
+            <div class="card-body">
+                <table class="table table-bordered border-secondary px-3 py-3 mb-5 shadow">
+                    <thead px-3>
                         <tr>
-                            <td scope="row" class="text-center">
-                                {{ ($datas->currentpage() - 1) * $datas->perpage() + $loop->index + 1 }}</td>
-                            <td>{{ $data->nama }}</td>
-                            {{-- <td>
-                                {{ $data->user->email }}
-                            </td> --}}
-                            <td>{{ $data->jabatan }}</td>
-                            {{-- <td>{{$data->departemen?->name}}</td> --}}
-                            {{-- <td class="d-flex justify-content-center"><img src="{{ asset('berkas/' . $data->avatar) }}"
-                                    class="rounded-4" style="width:auto; height:55px;"></td> --}}
+                            <th scope="col" class="text-center">NO</th>
+                            <th scope="col">Nama</th>
+                            {{-- <th scope="col">Email</th> --}}
+                            <th scope="col">Jabatan</th>
+                            {{-- <th scope="col">Departemen</th> --}}
+                            {{-- <th scope="col">Foto Profil</th> --}}
                             @if (auth()->user()->hak_akses == 'Admin' ||
                                     auth()->user()->hak_akses == 'P2K3' ||
                                     auth()->user()->hak_akses == 'K3 Departemen' ||
                                     auth()->user()->hak_akses == 'Pimpinan')
-                                <td style="text-align: center;">
-                                    <a href="{{ route('p2k3.lihat', $data->id) }}" type="button" 
-                                        class="btn  btn-sm bg-warning " style="width:20px;"><i
-                                            class="bi bi-eye text-dark d-flex justify-content-center align-items-center"></i></a>
-                                    <a href="{{ route('p2k3.edit', $data->id) }}" type="button"
-                                        class="btn  btn-sm bg-primary" style="width:20px;"><i
-                                            class="bi bi-pencil-square text-dark d-flex justify-content-center align-items-center"></i></a>
-                                    <button type="button" class="btn btn-sm" style="width: 20px; background: #DC3545"
-                                        data-bs-toggle="modal" data-bs-target="#deleteModal{{ $data->id }}">
-                                        <i
-                                            class="bi bi-trash text-dark d-flex justify-content-center align-items-center"></i>
-                                    </button>
-                                </td>
+                                <th scope="col" class="col-2">Action</th>
                             @endif
                         </tr>
-                        <div class="modal fade" id="deleteModal{{ $data->id }}" tabindex="-1" role="dialog"
-                            aria-labelledby="deleteModalLabel{{ $data->id }}" data-bs-backdrop="static"
-                            aria-labelledby="staticBackdropLabel" aria-hidden="true">
-                            <div class="modal-dialog modal-dialog-centered" role="document">
-                                <div class="modal-content">
-                                    <div class="modal-body mt-5 d-flex justify-content-center align-items-center">
-                                        <h2 class="mt-5 text-center"
-                                            style="color: #16243D; font-size: 20px font-weight:700">
-                                            Yakin data
-                                            ingin dihapus?
-                                        </h2>
-                                    </div>
-                                    <div class="modal-footer d-flex justify-content-center border-0">
-                                        <form action="{{ route('p2k3.hapus', $data->id) }}" method="POST">
-                                            @csrf
-                                            <button type="submit"
-                                                class="btn btn-success text-white d-flex justify-content-center align-items-center text-center rounded-1"
-                                                style="width:76px; height:31px; background: #29CC6A;">Ya</button>
-                                        </form>
-                                        <button type="button"
-                                            class="btn btn-secondary text-center d-flex align-items-center rounded-1"
-                                            data-bs-dismiss="modal" style="width:76px; height:31px; ">Tidak</button>
+                    </thead>
+                    <tbody>
+                        @foreach ($datas as $data)
+                            <tr>
+                                <td scope="row" class="text-center">
+                                    {{ ($datas->currentpage() - 1) * $datas->perpage() + $loop->index + 1 }}</td>
+                                <td>{{ $data->nama }}</td>
+                                {{-- <td>
+                                {{ $data->user->email }}
+                            </td> --}}
+                                <td>{{ $data->jabatan }}</td>
+                                {{-- <td>{{$data->departemen?->name}}</td> --}}
+                                {{-- <td class="d-flex justify-content-center"><img src="{{ asset('berkas/' . $data->avatar) }}"
+                                    class="rounded-4" style="width:auto; height:55px;"></td> --}}
+                                @if (auth()->user()->hak_akses == 'Admin' ||
+                                        auth()->user()->hak_akses == 'P2K3' ||
+                                        auth()->user()->hak_akses == 'K3 Departemen' ||
+                                        auth()->user()->hak_akses == 'Pimpinan')
+                                    <td style="text-align: center;">
+                                        <a href="{{ route('p2k3.lihat', $data->id) }}" type="button"
+                                            class="btn  btn-sm bg-warning " style="width:20px;"><i
+                                                class="bi bi-eye text-dark d-flex justify-content-center align-items-center"></i></a>
+                                        <a href="{{ route('p2k3.edit', $data->id) }}" type="button"
+                                            class="btn  btn-sm bg-primary" style="width:20px;"><i
+                                                class="bi bi-pencil-square text-dark d-flex justify-content-center align-items-center"></i></a>
+                                        <button type="button" class="btn btn-sm" style="width: 20px; background: #DC3545"
+                                            data-bs-toggle="modal" data-bs-target="#deleteModal{{ $data->id }}">
+                                            <i
+                                                class="bi bi-trash text-dark d-flex justify-content-center align-items-center"></i>
+                                        </button>
+                                    </td>
+                                @endif
+                            </tr>
+                            <div class="modal fade" id="deleteModal{{ $data->id }}" tabindex="-1" role="dialog"
+                                aria-labelledby="deleteModalLabel{{ $data->id }}" data-bs-backdrop="static"
+                                aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                                <div class="modal-dialog modal-dialog-centered" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-body mt-5 d-flex justify-content-center align-items-center">
+                                            <h2 class="mt-5 text-center"
+                                                style="color: #16243D; font-size: 20px font-weight:700">
+                                                Yakin data
+                                                ingin dihapus?
+                                            </h2>
+                                        </div>
+                                        <div class="modal-footer d-flex justify-content-center border-0">
+                                            <form action="{{ route('p2k3.hapus', $data->id) }}" method="POST">
+                                                @csrf
+                                                <button type="submit"
+                                                    class="btn btn-success text-white d-flex justify-content-center align-items-center text-center rounded-1"
+                                                    style="width:76px; height:31px; background: #29CC6A;">Ya</button>
+                                            </form>
+                                            <button type="button"
+                                                class="btn btn-secondary text-center d-flex align-items-center rounded-1"
+                                                data-bs-dismiss="modal" style="width:76px; height:31px; ">Tidak</button>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                    @endforeach
-                </tbody>
-            </table>
+                        @endforeach
+                    </tbody>
+                </table>
+            </div>
 
-            {{ $datas->links('pagination::customb5') }}
+            <div class="card-footer">
+                {{ $datas->links('pagination::customb5') }}
+            </div>
 
         </div>
     </div>
@@ -200,15 +201,15 @@
         }
 
         /* .team .member span::after {
-                                                                                      content: "";
-                                                                                      position: absolute;
-                                                                                      display: block;
-                                                                                      width: 50px;
-                                                                                      height: 1px;
-                                                                                      background: #cbd6e9;
-                                                                                      bottom: 0;
-                                                                                      left: 0;
-                                                                                    } */
+                                                                                                      content: "";
+                                                                                                      position: absolute;
+                                                                                                      display: block;
+                                                                                                      width: 50px;
+                                                                                                      height: 1px;
+                                                                                                      background: #cbd6e9;
+                                                                                                      bottom: 0;
+                                                                                                      left: 0;
+                                                                                                    } */
 
         .team .member p {
             /* margin: 10px 0 0 0; */

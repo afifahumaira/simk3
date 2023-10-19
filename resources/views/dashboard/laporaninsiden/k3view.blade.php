@@ -3,8 +3,9 @@
 @section('content')
     <div class="page-title d-flex flex-column gap-1 mx-5 my-5  ">
         <div class="card m-5">
-            <div class="card-header shadow-sm d-flex align-items-center">
-                <h3 class="card-title fw-bold fs-2">Daftar Laporan Insiden</h3>
+            <div class="card-header py-3 shadow-sm d-flex justify-content-between align-items-center">
+                <!--begin::Page title-->
+                <h2 class="card-title fw-bold ">Daftar Laporan Insiden</h2>
 
                 <div id="kt_docs_search_handler_basic" class="mt-1" data-kt-search-keypress="true"
                     data-kt-search-min-length="2" data-kt-search-enter="true" data-kt-search-layout="inline">
@@ -62,7 +63,8 @@
                             <tr class="fw-semibold border-bottom-2 border-gray-200">
                                 <th>No</th>
                                 <th scope="col" class="col-1">Kode Insiden Lapor</th>
-                                <th scope="col"class="d-flex justify-content-between">Tanggal lapor <div><a class="mx-1"
+                                <th scope="col"class="d-flex justify-content-between">Tanggal lapor <div><a
+                                            class="mx-1"
                                             href="{{ route('laporan-insiden.k3dep', ['sort' => 'waktu_kejadian', 'order' => 'asc']) }}"><i
                                                 class="bi bi-arrow-up text-black"></i></a>
                                         <a class="px-1"

@@ -56,8 +56,9 @@
                                 <div class="mb-3">
                                     <label class="col-form-label">Pilih Departemen</label>
                                     <div class=" w-100">
-                                        <select name="departemen_id" id="departemen_id" class="form-select fs-6 w-100" data-control="select2"
-                                            data-hide-search="true" data-placeholder="Pilih Departemen">
+                                        <select name="departemen_id" id="departemen_id" class="form-select fs-6 w-100"
+                                            data-control="select2" data-hide-search="true"
+                                            data-placeholder="Pilih Departemen">
                                             <option value="">Pilih Departemen</option>
                                             @foreach ($departemen as $dep)
                                                 <option value="{{ $dep->id }}">{{ $dep->name }}</option>
@@ -65,9 +66,6 @@
                                         </select>
                                     </div>
                                 </div>
-                            </div>
-
-                            <div class="card-body">
                                 <div class="mb-3">
                                     <label for="inputNomertelepon3" class="col-sm-2 col-form-label required">Lokasi</label>
                                     <div class="col-sm-10 w-100">
@@ -75,6 +73,7 @@
                                     </div>
                                 </div>
                             </div>
+
                         </div>
 
                         <div class="container d-flex justify-content-center">

@@ -13,12 +13,12 @@ class LokasiMasterController extends Controller
     public function index(Request $request) {
         $departemens = Departemen::all();
         $locations = Location::where('name', 'LIKE', '%'.$request->search.'%')
-        // ->when($request->has('filter'), function($query) use($request){
-        //     if($request->filter !=''){
-        //      $query->where('departemen_id', $request->filter);
-        //     }
-        //  })
-        ->paginate(10);      
+        ->when($request->has('filter'), function($query) use($request){
+            if($request->filter !=''){
+             $query->where('departemen_id', $request->filter);
+            }
+         })
+        ->paginate(10);
             
         return view('dashboard.masterHirarc.lokasi-departemen.index', compact('locations'));
     }

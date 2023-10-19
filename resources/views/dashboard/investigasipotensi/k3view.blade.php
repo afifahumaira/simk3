@@ -1,71 +1,75 @@
 @extends ('layouts.layout')
 
 @section('content')
-    <div class="card m-5">
-        <div class="card-header shadow-sm">
-            <h3 class="card-title fw-bold fs-2">Daftar Investigasi Laporan Potensi Bahaya</h3>
-            <div class="card-toolbar">
-                <div id="kt_docs_search_handler_basic" class="mt-3" data-kt-search-keypress="true"
-                    data-kt-search-min-length="2" data-kt-search-enter="true" data-kt-search-layout="inline">
-                    <form data-kt-search-element="form" class="w-100 position-relative shadow-sm rounded"
-                        autocomplete="off">
-                        <input type="hidden" />
-                        <i
-                            class="ki-duotone ki-magnifier fs-3 fs-lg-2 text-gray-500 position-absolute top-50 ms-5 translate-middle-y"><span
-                                class="path1"></span><span class="path2"></span></i>
-                        <input type="text" class="form-control form-control-solid px-15 bg-white" name="search"
-                            value="" placeholder="Search " data-kt-search-element="input" />
-                        <span class="position-absolute top-50 end-0 translate-middle-y lh-0 d-none me-5"
-                            data-kt-search-element="spinner">
-                            <span class="spinner-border h-15px w-15px align-middle text-gray-400"></span>
-                        </span>
-                        <span
-                            class="btn btn-flush btn-active-color-primary position-absolute top-50 end-0 translate-middle-y lh-0 me-5 d-none"
-                            data-kt-search-element="clear">
-                        </span>
-                    </form>
+    <div class="page-title d-flex flex-column gap-1 mx-5 my-5  ">
+
+        <div class="card m-5">
+            <div class="card-header py-3 shadow-sm d-flex justify-content-between align-items-center">
+                <!--begin::Page title-->
+                <h2 class="card-title fw-bold ">Daftar Investigasi Laporan Potensi Bahaya</h2>
+                <div class="card-toolbar">
+                    <div id="kt_docs_search_handler_basic" class="mt-3" data-kt-search-keypress="true"
+                        data-kt-search-min-length="2" data-kt-search-enter="true" data-kt-search-layout="inline">
+                        <form data-kt-search-element="form" class="w-100 position-relative shadow-sm rounded"
+                            autocomplete="off">
+                            <input type="hidden" />
+                            <i
+                                class="ki-duotone ki-magnifier fs-3 fs-lg-2 text-gray-500 position-absolute top-50 ms-5 translate-middle-y"><span
+                                    class="path1"></span><span class="path2"></span></i>
+                            <input type="text" class="form-control form-control-solid px-15 bg-white" name="search"
+                                value="" placeholder="Search " data-kt-search-element="input" />
+                            <span class="position-absolute top-50 end-0 translate-middle-y lh-0 d-none me-5"
+                                data-kt-search-element="spinner">
+                                <span class="spinner-border h-15px w-15px align-middle text-gray-400"></span>
+                            </span>
+                            <span
+                                class="btn btn-flush btn-active-color-primary position-absolute top-50 end-0 translate-middle-y lh-0 me-5 d-none"
+                                data-kt-search-element="clear">
+                            </span>
+                        </form>
+                    </div>
+                </div>
+
+            </div>
+            <div class="card-body">
+                <div class="">
+
+                    <table class="table table-rounded table-bordered">
+                        <thead>
+                            <tr>
+                                <th scope="col" class="text-center">No</th>
+                                <th scope="col">Departemen</th>
+                                <th scope="col">Lokasi Potensi Bahaya</th>
+                                <th scope="col">Potensi Bahaya</th>
+                                <th scope="col">Penanggung Jawab</th>
+                                <th scope="col">Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach ($investigasis as $investigasi)
+                                <tr>
+                                    <td scope="row" class="text-center">{{ $loop->iteration }}</td>
+                                    <td>{{ $investigasi->departemen->name }}</td>
+                                    <td>{{ $investigasi->lokasi }}</td>
+                                    <td>{{ $investigasi->potensi_bahaya }}</td>
+                                    <td>{{ $investigasi->p2k3_data->nama }}</td>
+
+                                    <td>
+                                        <a href="{{ route('investigasipotensi.melihat', $investigasi->id) }}" type="button"
+                                            class="btn btn-sm btn-warning px-4"><i class="bi bi-eye text-dark pe-0"></i></a>
+
+                                    </td>
+                                </tr>
+                            @endforeach
+                        </tbody>
+                    </table>
+
+
                 </div>
             </div>
-
-        </div>
-        <div class="card-body">
-            <div class="">
-
-                <table class="table table-rounded table-bordered">
-                    <thead>
-                        <tr>
-                            <th scope="col" class="text-center">No</th>
-                            <th scope="col">Departemen</th>
-                            <th scope="col">Lokasi Potensi Bahaya</th>
-                            <th scope="col">Potensi Bahaya</th>
-                            <th scope="col">Penanggung Jawab</th>
-                            <th scope="col">Action</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        @foreach ($investigasis as $investigasi)
-                            <tr>
-                                <td scope="row" class="text-center">{{ $loop->iteration }}</td>
-                                <td>{{ $investigasi->departemen->name }}</td>
-                                <td>{{ $investigasi->lokasi }}</td>
-                                <td>{{ $investigasi->potensi_bahaya }}</td>
-                                <td>{{ $investigasi->p2k3_data->nama }}</td>
-
-                                <td>
-                                    <a href="{{ route('investigasipotensi.melihat', $investigasi->id) }}" type="button"
-                                        class="btn btn-sm btn-warning px-4"><i class="bi bi-eye text-dark pe-0"></i></a>
-
-                                </td>
-                            </tr>
-                        @endforeach
-                    </tbody>
-                </table>
-
-
+            <div class="card-footer">
+                {{ $investigasis->links('pagination::customb5') }}
             </div>
-        </div>
-        <div class="card-footer">
-            {{ $investigasis->links('pagination::customb5') }}
         </div>
     </div>
 @stop
