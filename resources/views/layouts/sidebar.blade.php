@@ -531,8 +531,78 @@
                 <!--end:Menu item-->
 
                 <!--end:Menu item-->
+                @if (auth()->user()->hak_akses == 'P2K3' ||
+                    auth()->user()->hak_akses == 'K3 Departemen')
+                <!--begin:Menu item-->
+                <div data-kt-menu-trigger="click" class="menu-item menu-accordion">
+                    <!--begin:Menu link-->
+                    <span class="menu-link">
+                        <span class="menu-icon">
+                            <i class="bi bi-database-add  fs-3"></i>
+                        </span>
+                        <span class="menu-title ">Data Master</span>
+                        <span class="menu-arrow"></span>
+                    </span>
+                    <!--end:Menu link-->
+                    <!--begin:Menu sub-->
+                    <div class="menu-sub menu-sub-accordion">
+                        <!--begin:Menu item-->
+                        <div class="menu-item menu-accordion">
+                            <!--begin:Menu link-->
+                            <a href="{{ route('lokasimaster.index') }}"
+                                class="menu-link {{ Request::is('lokasimaster') ? 'active' : '' }}">
+                                <span class="menu-bullet">
+                                    <i class="bi bi-pin-map  fs-3 "></i>
+                                </span>
+                                <span class="menu-title ">Lokasi</span>
+                                <!-- <span class="menu-arrow"></span> -->
+                            </a>
+                            <!--end:Menu link-->
+                        </div>
+                        <!--end:Menu item-->
+                        <!--begin:Menu item-->
+                        <div class="menu-item menu-accordion">
+                            <!--begin:Menu link-->
+                            <a href="{{ route('aktifitasmaster.index') }}"
+                                class="menu-link {{ Request::is('aktifitasmaster') ? 'active' : '' }}">
+                                <span class="menu-bullet">
+                                    <i class="bi bi-activity  fs-3"></i>
+                                </span>
+                                <span class="menu-title ">Aktifitas</span>
+                                <!-- <span class="menu-arrow"></span> -->
+                            </a>
+                            <!--end:Menu link-->
+                        </div>
 
-
+                        <div class="menu-item menu-accordion">
+                            <!--begin:Menu link-->
+                            <a href="{{ route('hazard.index') }}"
+                                class="menu-link {{ Request::is('hazard') ? 'active' : '' }}">
+                                <span class="menu-bullet">
+                                    <i class="bi bi-exclamation-octagon  fs-3"></i>
+                                </span>
+                                <span class="menu-title ">Hazard</span>
+                                <!-- <span class="menu-arrow"></span> -->
+                            </a>
+                            <!--end:Menu link-->
+                        </div>
+                        <div class="menu-item menu-accordion">
+                            <!--begin:Menu link-->
+                            <a href="{{ route('risiko.index') }}"
+                                class="menu-link {{ Request::is('risiko') ? 'active' : '' }}">
+                                <span class="menu-bullet">
+                                    <i class="bi bi-exclamation-triangle  fs-3"></i>
+                                </span>
+                                <span class="menu-title ">Risiko</span>
+                                <!-- <span class="menu-arrow"></span> -->
+                            </a>
+                            <!--end:Menu link-->
+                        </div>
+                    </div>
+                    <!--end:Menu sub-->
+                </div>
+                @endif
+                
                 <!--begin:Menu item-->
                 <div class="menu-item here show menu-accordion">
                     <!--begin:Menu link-->

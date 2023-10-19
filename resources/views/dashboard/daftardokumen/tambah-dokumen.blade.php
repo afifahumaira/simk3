@@ -75,10 +75,10 @@
                                     </div>
 
                                     <div class="ps-3 pe-5">
-                                        <label class="col-sm-2 col-form-label">File (Harus Dalam PDF)</label>
+                                        <label class="col-sm-2 col-form-label">File (.doc, .docx, .pdf, .jpg, .png)</label>
                                         <div class="col-sm-10 w-100">
                                             <input type="file" class="form-control" name="file" id="file"
-                                                required>
+                                                accept=".doc,.docx,.pdf,.jpg,.png" required>
                                         </div>
                                     </div>
 

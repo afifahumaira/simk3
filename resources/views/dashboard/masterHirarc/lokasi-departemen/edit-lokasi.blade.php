@@ -53,15 +53,27 @@
                             </div>
                             <div class="card-body">
                                 <div class="mb-3">
+                                    <label class="col-form-label">Departemen</label>
+                                        <div class=" w-100">
+                                            <select name="departemen_id" class="form-select fs-6 w-100"
+                                                data-control="select2" data-hide-search="true"
+                                                data-placeholder="Departemen">
+                                                @foreach ($departemen as $dep)
+                                                    <option value="{{ $dep->id }}"
+                                                        {{ $loc->departemen_id == $dep->id ? 'selected' : '' }}>
+                                                        {{ $dep->name }}</option>
+                                                @endforeach
+                                            </select>
+                                        </div>
+                                </div>
+                            
+                                <div class="mb-3">
                                     <label for="name" class="col-sm-2 col-form-label">Lokasi</label>
                                     <div class="col-sm-10 w-100">
                                         <input type="text" class="form-control" name="name"
                                             value="{{ $loc->name }}">
                                     </div>
                                 </div>
-
-
-
                                 <div class="container d-flex justify-content-center">
                                     <div class=" d-flex justify-content-center">
                                         <button type="submit"

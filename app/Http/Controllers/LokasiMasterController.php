@@ -11,42 +11,45 @@ use Alert;
 class LokasiMasterController extends Controller
 {
     public function index(Request $request) {
-        $locations = Location_masters::where('name', 'LIKE', '%'.$request->search.'%')
+        $departemens = Departemen::all();
+        $locations = Location::where('name', 'LIKE', '%'.$request->search.'%')
         ->paginate(10);
             
         return view('dashboard.masterHirarc.lokasi-departemen.index', compact('locations'));
     }
 
     public function tambah() {
-        $locations = Location_masters::all();
+        $departemen = Departemen::all();
+        $locations = Location::all();
         // $departemens=Departemen::all();
 
-        return view('dashboard.masterHirarc.lokasi-departemen.tambah-lokasi', compact('locations'));
+        return view('dashboard.masterHirarc.lokasi-departemen.tambah-lokasi', compact('locations', 'departemen'));
         // ->with('departemens',$departemens);
     }
 
     public function edit($id) {
-        $loc = Location_masters::findOrFail($id);
+        $departemen = Departemen::all();
+        $loc = Location::findOrFail($id);
         
-        return view('dashboard.masterHirarc.lokasi-departemen.edit-lokasi', compact('loc'))
+        return view('dashboard.masterHirarc.lokasi-departemen.edit-lokasi', compact('loc', 'departemen'))
         ->with('id', $loc);
     }
 
-    public function detail($id, Request $request) {
-        $locations = Location_masters::where('id_lokasi', $id)
-        ->where('name', 'LIKE', '%'.$request->search.'%')
-        ->paginate(10);
-        return view('dashboard.masterHirarc.lokasi-departemen.detail-lokasi', compact('locations'));
-    }
+    // public function detail($id, Request $request) {
+    //     $locations = Location::where('id_lokasi', $id)
+    //     ->where('name', 'LIKE', '%'.$request->search.'%')
+    //     ->paginate(10);
+    //     return view('dashboard.masterHirarc.lokasi-departemen.detail-lokasi', compact('locations'));
+    // }
 
     public function simpan(Request $request) {
         $request->validate([
-            
+            'departemen_id' => 'required',
             'name' => 'required'
         ]);
 
-        Location_masters::create([
-            
+        Location::create([
+            'departemen_id' => $request->departemen_id,
             'name' => $request->name,
         ]);
 
@@ -56,11 +59,12 @@ class LokasiMasterController extends Controller
 
     public function update($id, Request $request) {
         $request->validate([
+            'departemen_id' => 'required',
             'name' => 'required'
         ]);
 
-        Location_masters::find($id)->update([
-            
+        Location::find($id)->update([
+            'departemen_id' => $request->departemen_id,
             'name' => $request->name,
         ]);
 
@@ -69,7 +73,7 @@ class LokasiMasterController extends Controller
     }
 
     public function delete($id) {
-        $locations = Location_masters::find($id);
+        $locations = Location::find($id);
         $locations->delete();
 
         Alert::success('Berhasil', 'Data Lokasi berhasil dihapus!')->iconHtml('<i class="bi bi-person-check fs-3x"></i>')->hideCloseButton();

@@ -22,7 +22,8 @@ class ProfileController extends Controller
             'name' => 'required',
             'username' => 'required',
             'email' => 'required',
-            'password' => 'required'
+            'password' => 'required',
+            'password_confirmation' => 'reuqired'
         ]);
         $validatedData['password'] = Hash::make($validatedData['password']);
         $succes = $data->update($validatedData);

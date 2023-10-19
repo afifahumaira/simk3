@@ -89,6 +89,10 @@
                                         <label class="form-labels">Password Terbaru* (Wajib Di Isi)</label>
                                         <input type="password" class="form-control" name="password" id="password">
                                     </div>
+                                    <div class="mb-3">
+                                        <label class="form-labels">Konfirmasi Password Terbaru</label>
+                                        <input type="password" class="form-control" name="password_confirmation" id="password_confirmation">
+                                    </div>
                                 </div>
                                 <div class="modal-footer">
                                     <button type="reset" style="background: #505050" class="btn text-white"

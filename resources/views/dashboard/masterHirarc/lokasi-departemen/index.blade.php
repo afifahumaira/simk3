@@ -63,16 +63,19 @@
                     <tr>
 
                         <th scope="col" class="text-center">No</th>
+                        <th scope="col" class="">Departemen</th>
                         <th scope="col" class="">Lokasi</th>
                         <th scope="col" class="col-1">Action</th>
                     </tr>
                 </thead>
                 <tbody>
+
                     @foreach ($locations as $loc)
                         <tr>
                             <td scope="row" class="text-center">
                                 {{ ($locations->currentpage() - 1) * $locations->perpage() + $loop->index + 1 }}</td>
-
+                            
+                            <td>{{ $loc->departemen->name }}</td>    
                             <td>{{ $loc->name }}</td>
                             <td>
                                 <a href="{{ route('lokasimaster.edit', $loc->id) }}" type="button"
