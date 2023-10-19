@@ -33,7 +33,7 @@ class Simk3Controller extends Controller
 
         $chart =  ['bulan' => $bulan, 'jumlah' => $jumlah];
         $data = [
-            'jumlah_hirarc' => Hirarc::with(['departemen', 'user', 'location'])->get()->count(),
+            'jumlah_hirarc' => Hirarc::groupBy('departemen_id')->get()->count(),
             'jumlah_investigasi' => Investigasi::get()->count(),
             'jumlah_potensi_bahaya' => PotensiBahaya::get()->count(),
             'jumlah_insiden' => Laporinsiden::get()->count(),

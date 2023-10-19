@@ -119,7 +119,7 @@
                                                 data-hide-search="true" data-placeholder="-Pilih-" name="hak_akses"
                                                 style="--bs-link-hover-color-rgb: 25, 135, 84;" id="hak_akses"
                                                 style="font-family: 'Inter';">
-                                                <option value="">- Pilih -</option>
+                                                <option value="{{ $data->hak_akses }}">- Pilih -</option>
                                                 <option value="Admin" {{ $data->hak_akses == '1' ? 'selected' : '' }}>
                                                     Admin </option>
                                                 <option value="Pimpinan" {{ $data->hak_akses == '2' ? 'selected' : '' }}>
@@ -152,6 +152,7 @@
 
                                         </div>
                                     </div>
+                                    
                                     {{-- <div class="ps-3 pe-5">
                                         <label class="col-sm-2 col-form-label">Foto Profil</label>
                                         <div class="col-sm-10 w-100">
@@ -159,7 +160,7 @@
                                         </div>
                                     </div> --}}
 
-
+                                </form>
                             </div>
                         </div>
                     </div>
@@ -167,8 +168,7 @@
                     <div class=" d-flex justify-content-center">
                         <button type="submit"
                             class="btn btn-success text-white d-flex justify-content-center align-items-center "
-                            style="background: #29CC6A;
-height: 38px; margin : 10px 20px 30px 20px; font-size:14px; border-radius: 5px;"
+                            style="background: #29CC6A; height: 38px; margin : 10px 20px 30px 20px; font-size:14px; border-radius: 5px;"
                             data-bs-toggle="modal" data-bs-target="#simpandata" onclick="showDiv()">Simpan
                             Data</button>
                         <a href="{{ route('user.edit', $data->id) }}" type="submit"
@@ -208,12 +208,12 @@ height: 38px; margin : 10px 20px 30px 20px; font-size:14px; border-radius: 5px;"
                             </div>
                         </div>
 
-                        <a href="{{ route('user.edit', $data->id) }}" type="submit"
+                        <button 
                             class="btn btn-secondary text-white d-flex align-items-center justify-content-center"
                             data-bs-toggle="modal" data-bs-target="#resetpw"
                             style="background: #868E96; margin : 10px 20px 30px 20px;  height: 38px; font-size:14px; border-radius: 5px;">Reset
-                            Password</a>
-                        <div class="modal fade" id="resetpw" data-bs-backdrop="static" data-bs-keyboard="false"
+                            Password</button>
+                        <div class="modal fade" role="dialog" id="resetpw" data-bs-backdrop="static" data-bs-keyboard="false"
                             tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
                             <div class="modal-dialog modal-dialog-centered ">
                                 <div class="modal-content">
@@ -231,12 +231,17 @@ height: 38px; margin : 10px 20px 30px 20px; font-size:14px; border-radius: 5px;"
                                         </h2>
                                     </div>
                                     <div class="modal-footer d-flex justify-content-center border-0">
-                                        <a href="{{ route('user.edit', $data->id) }}" type="button"
-                                            class="btn btn-success text-white d-flex justify-content-center align-items-center text-center rounded-1"
-                                            style="width:76px; height:31px; background: #29CC6A;">Ya</a>
-                                        <button type="button"
-                                            class="btn btn-secondary text-center d-flex align-items-center rounded-1"
+                                        <form action="{{ route('user.reset', $data->id) }}" method="post">
+                                            @csrf
+                                            <div class="d-flex justify-content-between">
+                                            <button type="submit"  
+                                            class="btn btn-success text-white d-flex justify-content-center align-items-center text-center rounded-1 pr-2" 
+                                            style="width:76px; height:31px; background: #29CC6A;">Ya</button>
+                                            <button type="button"  data-bs-dismiss="modal" class="btn btn-secondary text-center d-flex align-items-center rounded-1 pl-2"
                                             data-bs-dismiss="modal" style="width:76px; height:31px; ">Tidak</button>
+                                            </div>                                            
+                                            {{-- <input type="hidden" value=""> --}}
+                                        </form>                                       
 
                                     </div>
                                 </div>

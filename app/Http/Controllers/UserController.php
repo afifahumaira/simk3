@@ -89,6 +89,17 @@ class UserController extends Controller
         
     }
 
+    public function reset( $id) {
+        //dd($request);
+        $password = "password"; 
+        User::where('id', $id)->update([
+            'password' => Hash::make($password),
+            
+        ]);
+        Alert::success('Berhasil', 'Password Berhasil Direset!')->iconHtml('<i class="bi-person-check fs-3x"></i>')->hideCloseButton();
+            return redirect()->route('user.index');
+    }
+
     public function lihat($id) {
         $data = User::where('id', $id)->first();
         return view('dashboard.users.user.lihat-user', compact('data'));

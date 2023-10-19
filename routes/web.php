@@ -191,6 +191,7 @@ Route::group(['middleware' => ['auth']], function() {
         Route::post('hapus/{id}', [UserController::class, 'hapus'])->name('hapus');
         Route::get('edit/{id}', [UserController::class, 'edit'])->name('edit');
         Route::post('update/{id}', [UserController::class, 'update'])->name('update');
+        Route::post('reset/{id}', [UserController::class, 'reset'])->name('reset');
     });
 
     // Inspeksi
