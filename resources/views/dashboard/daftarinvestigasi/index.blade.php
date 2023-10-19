@@ -61,7 +61,7 @@
                         <thead>
                             <tr>
                                 <th scope="col" class="text-center">No</th>
-                                <th scope="col">insiden id</th>
+                                <th scope="col" class="">Kode Laporan Insiden</th>
                                 <th scope="col">Kategori</th>
                                 <th scope="col">Departemen</th>
                                 <th scope="col">Lokasi Kejadian</th>

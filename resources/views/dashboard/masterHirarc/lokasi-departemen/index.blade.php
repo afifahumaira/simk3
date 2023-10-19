@@ -53,8 +53,36 @@
                     <!--end::Wrapper-->
                 </div>
                 <!--end::Main wrapper-->
-                <a href="{{ route('lokasimaster.tambah') }}" type="button" class="btn btn-primary btn-sm"
-                    style="background: #233EAE">Tambah Data +</a>
+                <div class="card-toolbar d-flex">
+                    <div class="ps-3 pe-5  ">
+                        {{-- <label class="col-form-label pe-4">Status :</label> --}}
+                        <div class="w-0 ">
+                            <select name="filter" id="filter" class="form-select fs-4 w-100 shadow"
+                                data-control="select2" data-hide-search="true" style="">
+                                <option value="">Semua status</option>
+                                <option value="1" class=" fs-4 "
+                                    {{ request()->has('filter') ? (request()->filter == 1 ? 'selected' : false) : '' }}>
+                                    Pending</option>
+                                <option value="2"
+                                    {{ request()->has('filter') ? (request()->filter == 2 ? 'selected' : false) : '' }}>
+                                    Ditindak
+                                    lanjuti</option>
+                                <option value="3"
+                                    {{ request()->has('filter') ? (request()->filter == 3 ? 'selected' : false) : '' }}>
+                                    Tuntas
+                                </option>
+                                <option value="4"
+                                    {{ request()->has('filter') ? (request()->filter == 3 ? 'selected' : false) : '' }}>
+                                    Perencanaan Wilayah dan Kota
+                                </option>
+                            </select>
+                        </div>
+                    </div>
+                    <a href="{{ route('lokasimaster.tambah') }}" type="button"
+                        class="btn btn-primary btn-sm d-flex align-items-center" style="background: #233EAE">Tambah Data
+                        +</a>
+                </div>
+
                 <!--end::Title-->
             </div>
             <!--begin::Content container-->
@@ -123,4 +151,35 @@
             <!--end::Content container-->
         </div>
     </div>
+@stop
+
+@section('customscript')
+    <script>
+        $(document).ready(function() {
+            // Get the select filter element
+            var selectFilter = $("#filter");
+            // Get the current URL
+            var currentUrl = window.location.href;
+            // Bind an event handler to the change event of the select filter
+            selectFilter.on("change", function() {
+                const selectedValue = selectFilter.val();
+                const currentURL = window.location.href;
+                const url = new URL(currentURL);
+                const params = new URLSearchParams(url.search);
+                // Check if the "filter" parameter already exists
+                if (params.has('filter')) {
+                    // Update the existing "filter" parameter with the selected value
+                    params.set('filter', selectedValue);
+                } else {
+                    // If "filter" parameter doesn't exist, add it
+                    params.append('filter', selectedValue);
+                }
+                // Set the updated query parameters back to the URL object
+                url.search = params.toString();
+                // Redirect to the updated URL, which will reload the page
+                window.location.href = url.toString();
+            });
+        });
+    </script>
+
 @stop

@@ -62,6 +62,7 @@
                         <thead>
                             <tr>
                                 <th scope="col" class="text-center">No</th>
+                                <th scope="col" class="">Kode Laporan Potensi Bahaya</th>
                                 <th scope="col">Departemen</th>
                                 <th scope="col">Lokasi Potensi Bahaya</th>
                                 <th scope="col">Potensi Bahaya</th>
@@ -73,6 +74,7 @@
                             @foreach ($investigasis as $investigasi)
                                 <tr>
                                     <td scope="row" class="text-center">{{ $loop->iteration }}</td>
+                                    <td>{{ $investigasi->potensibahaya_id }}</td>
                                     <td>{{ $investigasi->departemen->name }}</td>
                                     <td>{{ $investigasi->lokasi }}</td>
                                     <td>{{ $investigasi->potensi_bahaya }}</td>
