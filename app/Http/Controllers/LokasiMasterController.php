@@ -12,6 +12,11 @@ class LokasiMasterController extends Controller
 {
     public function index(Request $request) {
         $locations = Location_masters::where('name', 'LIKE', '%'.$request->search.'%')
+        // ->when($request->has('filter'), function($query) use($request){
+        //     if($request->filter !=''){
+        //      $query->where('departemen', $request->filter);
+        //     }
+        //  })
         ->paginate(10);
             
         return view('dashboard.masterHirarc.lokasi-departemen.index', compact('locations'));

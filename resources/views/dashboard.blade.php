@@ -100,7 +100,7 @@
                                                     {{ $data['jumlah_insiden_tindaklanjut'] }}
                                                 </div>
                                                 <div class="col-lg-6 ps-0 text-end">
-                                                    <i class="bi bi-clipboard-x text-black fs-2hx"></i>
+                                                    <i class="bi bi-clipboard2-data text-black fs-2hx"></i>
                                                 </div>
                                             </div>
                                         </div>
@@ -115,7 +115,7 @@
                                                     {{ $data['jumlah_insiden_sukses'] }}
                                                 </div>
                                                 <div class="col-lg-6 ps-0 text-end">
-                                                    <i class="bi bi-clipboard-x text-black fs-2hx"></i>
+                                                    <i class="bi bi-clipboard2-check text-black fs-2hx"></i>
                                                 </div>
                                             </div>
                                         </div>
@@ -167,7 +167,7 @@
                                                     {{ $data['jumlah_potensi_bahaya_tindaklanjut'] }}
                                                 </div>
                                                 <div class="col-lg-6 ps-0 text-end">
-                                                    <i class="bi bi-clipboard-x text-black fs-2hx"></i>
+                                                    <i class="bi bi-clipboard2-data text-black fs-2hx"></i>
                                                 </div>
                                             </div>
                                         </div>
@@ -182,7 +182,7 @@
                                                     {{ $data['jumlah_potensi_bahaya_sukses'] }}
                                                 </div>
                                                 <div class="col-lg-6 ps-0 text-end">
-                                                    <i class="bi bi-clipboard-x text-black fs-2hx"></i>
+                                                    <i class="bi bi-clipboard2-check text-black fs-2hx"></i>
                                                 </div>
                                             </div>
                                         </div>
@@ -210,7 +210,7 @@
                                             dilaporkan pengguna</span>
                                     </div>
                                     <div class="pt-2 mt-2 fs-black">
-                                        <ul style="list-style-type:circle; font-size:18px" class=" ps-0 mt-1">
+                                        <ul style="list-style-type:none; font-size:18px" class=" ps-0 mt-1">
                                             <li
                                                 class=" d-flex justify-content-between align-items-center rounded-2 px-4 py-3 ">
                                                 Lapor Insiden
@@ -225,11 +225,14 @@
                                                     class="card-title d-flex align-items-center my-0 rounded-3 px-3">{{ $data['jumlah_potensi_bahaya'] }}</span>
                                             </li>
 
-                                            <li
-                                                class=" d-flex justify-content-between align-items-center rounded-2 px-4 py-3">
-                                                Hirarc
-                                                <span
-                                                    class="card-title d-flex align-items-center my-0 rounded-3 px-3">{{ $data['jumlah_hirarc'] }}</span>
+                                            <li class="px-4 py-3">
+                                                <div class=" d-flex justify-content-between align-items-center rounded-2 ">
+                                                    <p>
+                                                        Hirarc</p>
+                                                    <span
+                                                        class="card-title d-flex align-items-center my-0 rounded-3 px-3">{{ $data['jumlah_hirarc'] }}</span>
+                                                </div>
+                                                <p class="text-end" style="font-size:12px">Jumlah Departemen</p>
                                             </li>
                                         </ul>
 
@@ -281,7 +284,7 @@
                                                     {{ $data['jumlah_insiden_tindaklanjut'] }}
                                                 </div>
                                                 <div class="col-lg-6 ps-0 text-end">
-                                                    <i class="bi bi-clipboard-x text-black fs-2hx"></i>
+                                                    <i class="bi bi-clipboard2-data text-black fs-2hx"></i>
                                                 </div>
                                             </div>
                                         </div>
@@ -296,7 +299,7 @@
                                                     {{ $data['jumlah_insiden_sukses'] }}
                                                 </div>
                                                 <div class="col-lg-6 ps-0 text-end">
-                                                    <i class="bi bi-clipboard-x text-black fs-2hx"></i>
+                                                    <i class="bi bi-clipboard2-check text-black fs-2hx"></i>
                                                 </div>
                                             </div>
                                         </div>
@@ -348,7 +351,7 @@
                                                     {{ $data['jumlah_potensi_bahaya_tindaklanjut'] }}
                                                 </div>
                                                 <div class="col-lg-6 ps-0 text-end">
-                                                    <i class="bi bi-clipboard-x text-black fs-2hx"></i>
+                                                    <i class="bi bi-clipboard2-data text-black fs-2hx"></i>
                                                 </div>
                                             </div>
                                         </div>
@@ -363,7 +366,7 @@
                                                     {{ $data['jumlah_potensi_bahaya_sukses'] }}
                                                 </div>
                                                 <div class="col-lg-6 ps-0 text-end">
-                                                    <i class="bi bi-clipboard-x text-black fs-2hx"></i>
+                                                    <i class="bi bi-clipboard2-check text-black fs-2hx"></i>
                                                 </div>
                                             </div>
                                         </div>

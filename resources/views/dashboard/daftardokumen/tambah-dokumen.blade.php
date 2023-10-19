@@ -77,8 +77,8 @@
                                     <div class="ps-3 pe-5">
                                         <label class="col-sm-2 col-form-label">File (Harus Dalam PDF)</label>
                                         <div class="col-sm-10 w-100">
-                                            <input type="file" class="form-control" name="file" id="file"
-                                                required>
+                                            <input type="file" accept=".pdf,.docx" class="form-control" name="file"
+                                                id="file" required>
                                         </div>
                                     </div>
 

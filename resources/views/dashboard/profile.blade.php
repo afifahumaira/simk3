@@ -75,7 +75,7 @@
                                         <input type="text" class="form-control" name="name" id="name"
                                             value="{{ Auth::user()->name }}">
                                     </div>
-                                    <div class="mb-3">
+                                    <div class="my-5">
                                         <label class="form-labels">Username</label>
                                         <input type="text" class="form-control" name="username" id="username"
                                             value="{{ Auth::user()->username }}">
@@ -85,10 +85,17 @@
                                         <input type="text" class="form-control" name="email" id="email"
                                             value="{{ Auth::user()->email }}">
                                     </div>
-                                    <div class="mb-3">
-                                        <label class="form-labels">Password Terbaru* (Wajib Di Isi)</label>
+                                    <div class="my-5">
+                                        <label class="form-labels">Password Terbaru</label>
                                         <input type="password" class="form-control" name="password" id="password">
                                     </div>
+
+                                    <div class="mb-3">
+                                        <label class="form-labels">Konfirmasi Password</label>
+                                        <input id="password_confirmation" type="password" name="password_confirmation"
+                                            placeholder="Konfirmasi Password" required="" class="form-control ">
+                                    </div>
+
                                 </div>
                                 <div class="modal-footer">
                                     <button type="reset" style="background: #505050" class="btn text-white"
