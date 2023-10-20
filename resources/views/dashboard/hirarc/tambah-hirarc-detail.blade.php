@@ -72,7 +72,7 @@
                                                 data-placeholder="Pilih Departemen">
                                                 <option value="">Pilih Departemen</option>
                                                 @foreach ($departments as $dep)
-                                                    <option value="{{ $dep->id }}"
+                                                    <option value="{{ $dep->id }}" 
                                                         {{ old('departemen_id') == $dep->id ? 'selected' : '' }}>
                                                         {{ $dep->name }}</option>
                                                 @endforeach
@@ -85,7 +85,7 @@
                                             data-control="select2">
                                             <option value="">Pilih Lokasi</option>
                                             @foreach ($location as $loc)
-                                                <option value="{{ $loc->id }}"
+                                                <option value="{{ $loc->id }}" 
                                                     {{ old('location_id') == $loc->id ? 'selected' : '' }}>
                                                     {{ $loc->name }}</option>
                                             @endforeach
