@@ -28,66 +28,70 @@
                     </div>
                 </div>
                 <div class="card-toolbar d-flex">
-                    <div class="ps-3 pe-5  ">
-                        {{-- <label class="col-form-label pe-4">Status :</label> --}}
-                        <div class="w-0 ">
-                            <select name="filter" id="filter" class="form-select fs-4 w-100 shadow"
-                                data-control="select2" data-hide-search="true" style="">
-                                <option value="">Semua Departemen</option>
-                                <option value="1" class=" fs-4 "
-                                    {{ request()->has('filter') ? (request()->filter == 1 ? 'selected' : false) : '' }}>
-                                    Teknik Sipil</option>
-                                <option value="2"
-                                    {{ request()->has('filter') ? (request()->filter == 2 ? 'selected' : false) : '' }}>
-                                    Arsitektur</option>
-                                <option value="3"
-                                    {{ request()->has('filter') ? (request()->filter == 3 ? 'selected' : false) : '' }}>
-                                    Teknik Kimia
-                                </option>
-                                <option value="4"
-                                    {{ request()->has('filter') ? (request()->filter == 4 ? 'selected' : false) : '' }}>
-                                    Perencanaan Wilayah dan Kota
-                                </option>
-                                <option value="5"
-                                    {{ request()->has('filter') ? (request()->filter == 5 ? 'selected' : false) : '' }}>
-                                    Teknik Mesin
-                                </option>
-                                <option value="6"
-                                    {{ request()->has('filter') ? (request()->filter == 6 ? 'selected' : false) : '' }}>
-                                    Teknik Elektro
-                                </option>
-                                <option value="7"
-                                    {{ request()->has('filter') ? (request()->filter == 7 ? 'selected' : false) : '' }}>
-                                    Teknik Idustri
-                                </option>
-                                <option value="8"
-                                    {{ request()->has('filter') ? (request()->filter == 8 ? 'selected' : false) : '' }}>
-                                    Teknik Lingkungan
-                                </option>
-                                <option value="9"
-                                    {{ request()->has('filter') ? (request()->filter == 9 ? 'selected' : false) : '' }}>
-                                    Teknik Perkapalan
-                                </option>
-                                <option value="10"
-                                    {{ request()->has('filter') ? (request()->filter == 10 ? 'selected' : false) : '' }}>
-                                    Teknik Geologi
-                                </option>
-                                <option value="11"
-                                    {{ request()->has('filter') ? (request()->filter == 11 ? 'selected' : false) : '' }}>
-                                    Teknik Geodesi
-                                </option>
-                                <option value="12"
-                                    {{ request()->has('filter') ? (request()->filter == 12 ? 'selected' : false) : '' }}>
-                                    Teknik Komputer
-                                </option>
-                                <option value="13"
-                                    {{ request()->has('filter') ? (request()->filter == 13 ? 'selected' : false) : '' }}>
-                                    Dekanat
-                                </option>
+                    @if (auth()->user()->hak_akses == 'Admin' ||
+                            auth()->user()->hak_akses == 'P2K3' ||
+                            auth()->user()->hak_akses == 'Pimpinan')
+                        <div class="ps-3 pe-5  ">
+                            {{-- <label class="col-form-label pe-4">Status :</label> --}}
+                            <div class="w-0 ">
+                                <select name="filter" id="filter" class="form-select fs-4 w-100 shadow"
+                                    data-control="select2" data-hide-search="true" style="">
+                                    <option value="">Semua Departemen</option>
+                                    <option value="1" class=" fs-4 "
+                                        {{ request()->has('filter') ? (request()->filter == 1 ? 'selected' : false) : '' }}>
+                                        Teknik Sipil</option>
+                                    <option value="2"
+                                        {{ request()->has('filter') ? (request()->filter == 2 ? 'selected' : false) : '' }}>
+                                        Arsitektur</option>
+                                    <option value="3"
+                                        {{ request()->has('filter') ? (request()->filter == 3 ? 'selected' : false) : '' }}>
+                                        Teknik Kimia
+                                    </option>
+                                    <option value="4"
+                                        {{ request()->has('filter') ? (request()->filter == 4 ? 'selected' : false) : '' }}>
+                                        Perencanaan Wilayah dan Kota
+                                    </option>
+                                    <option value="5"
+                                        {{ request()->has('filter') ? (request()->filter == 5 ? 'selected' : false) : '' }}>
+                                        Teknik Mesin
+                                    </option>
+                                    <option value="6"
+                                        {{ request()->has('filter') ? (request()->filter == 6 ? 'selected' : false) : '' }}>
+                                        Teknik Elektro
+                                    </option>
+                                    <option value="7"
+                                        {{ request()->has('filter') ? (request()->filter == 7 ? 'selected' : false) : '' }}>
+                                        Teknik Idustri
+                                    </option>
+                                    <option value="8"
+                                        {{ request()->has('filter') ? (request()->filter == 8 ? 'selected' : false) : '' }}>
+                                        Teknik Lingkungan
+                                    </option>
+                                    <option value="9"
+                                        {{ request()->has('filter') ? (request()->filter == 9 ? 'selected' : false) : '' }}>
+                                        Teknik Perkapalan
+                                    </option>
+                                    <option value="10"
+                                        {{ request()->has('filter') ? (request()->filter == 10 ? 'selected' : false) : '' }}>
+                                        Teknik Geologi
+                                    </option>
+                                    <option value="11"
+                                        {{ request()->has('filter') ? (request()->filter == 11 ? 'selected' : false) : '' }}>
+                                        Teknik Geodesi
+                                    </option>
+                                    <option value="12"
+                                        {{ request()->has('filter') ? (request()->filter == 12 ? 'selected' : false) : '' }}>
+                                        Teknik Komputer
+                                    </option>
+                                    <option value="13"
+                                        {{ request()->has('filter') ? (request()->filter == 13 ? 'selected' : false) : '' }}>
+                                        Dekanat
+                                    </option>
 
-                            </select>
+                                </select>
+                            </div>
                         </div>
-                    </div>
+                    @endif
                     <a href="{{ route('lokasimaster.tambah') }}" type="button"
                         class="btn btn-primary btn-sm d-flex align-items-center"
                         style="background: #233EAE; font-size:16px">Tambah Data
