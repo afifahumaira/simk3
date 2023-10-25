@@ -160,7 +160,7 @@
                                         </div>
                                     </div> --}}
 
-                                </form>
+                                {{-- </form> --}}
                             </div>
                         </div>
                     </div>
@@ -204,6 +204,7 @@
                                             data-bs-dismiss="modal" style="width:76px; height:31px; ">Tidak</button>
 
                                     </div>
+                                    </form>
                                 </div>
                             </div>
                         </div>

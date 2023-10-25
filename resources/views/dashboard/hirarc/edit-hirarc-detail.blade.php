@@ -88,8 +88,8 @@
                                             <select name="location_id" class="form-select fs-6 w-100" data-control="select2"
                                                 data-hide-search="true" data-placeholder="Lokasi">
                                                 @foreach ($locations as $loc)
-                                                    <option value="{{ $loc->id }}"
-                                                        {{ $hirarc->location_id == $loc->id ? 'selected' : '' }}>
+                                                    <option value="{{ $loc->departemen_id }}"
+                                                        {{ $hirarc->location_id == $loc->departemen_id ? 'selected' : '' }}>
                                                         {{ $loc->name }}</option>
                                                 @endforeach
                                             </select>
