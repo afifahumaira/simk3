@@ -160,7 +160,7 @@
                                         </div>
                                     </div> --}}
 
-                                {{-- </form> --}}
+                                    {{-- </form> --}}
                             </div>
                         </div>
                     </div>
@@ -209,9 +209,9 @@
                             </div>
                         </div>
 
-                        <button class="btn btn-secondary text-white d-flex align-items-center justify-content-center"
+                        <button class="btn btn-danger text-white d-flex align-items-center justify-content-center"
                             data-bs-toggle="modal" data-bs-target="#resetpw"
-                            style="background: #868E96; margin : 10px 20px 30px 20px;  height: 38px; font-size:14px; border-radius: 5px;">Reset
+                            style="background: #DC3545; margin : 10px 20px 30px 20px;  height: 38px; font-size:14px; border-radius: 5px;">Reset
                             Password</button>
                         <div class="modal fade" role="dialog" id="resetpw" data-bs-backdrop="static"
                             data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel"

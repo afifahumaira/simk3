@@ -232,7 +232,7 @@
                                                     <span
                                                         class="card-title d-flex align-items-center my-0 rounded-3 px-3">{{ $data['jumlah_hirarc'] }}</span>
                                                 </div>
-                                                <p class="text-end" style="font-size:12px"> Departemen</p>
+                                                <p class="text-end mb-0" style="font-size:12px"> Departemen</p>
                                             </li>
                                         </ul>
 
@@ -251,7 +251,7 @@
                                             insiden yang dilaporkan pengguna</span>
                                     </div>
 
-                                    <div class="pt-5 pb-0 d-flex align-items-end">
+                                    <div class="pt-7 pb-0 d-flex align-items-end">
                                         <span class="card-title mb-0"
                                             style="font-size:18px; font-weight:bold;">{{ $data['jumlah_insiden'] }}
                                             Laporan</span>
@@ -318,7 +318,7 @@
                                             potensi bahaya <br> yang dilaporkan pengguna</span>
                                     </div>
 
-                                    <div class="pt-2 pb-0 d-flex align-items-end">
+                                    <div class="pt-4 pb-0 d-flex align-items-end">
                                         <span class="card-title mb-0"
                                             style="font-size:18px; font-weight:bold;">{{ $data['jumlah_potensi_bahaya'] }}
                                             Laporan</span>
