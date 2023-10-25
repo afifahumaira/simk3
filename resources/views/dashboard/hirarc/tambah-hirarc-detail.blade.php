@@ -67,28 +67,25 @@
                                     <div class="ps-3 pe-5">
                                         <label class="col-form-label">Pilih Departemen</label>
                                         <div class=" w-100">
-                                            <select name="departemen_id" class="form-select fs-6 w-100"
+                                            <select name="departemen_id" id="departemen_id" class="form-select fs-6 w-100"
                                                 data-control="select2" data-hide-search="true"
                                                 data-placeholder="Pilih Departemen">
                                                 <option value="">Pilih Departemen</option>
+                                                {{-- @foreach ($departments as $dep)
+                                                    <option value="{{ $dep->id }}" @if ($hirarc->count() > 0) @if($dep->id == $hirarc->departemen_id) selected @endif @endif>{{ $dep->name }}</option>
+                                                @endforeach --}}
                                                 @foreach ($departments as $dep)
-                                                    <option value="{{ $dep->id }}"
-                                                        {{ old('departemen_id') == $dep->id ? 'selected' : '' }}>
-                                                        {{ $dep->name }}</option>
+                                                    <option value="{{ $dep->id }}" 
+                                                        {{ old('departemen_id') == $dep->name ? 'selected' : '' }}
+                                                        >{{ $dep->name }}</option>
                                                 @endforeach
                                             </select>
                                         </div>
                                     </div>
                                     <div class="ps-3 pe-5">
                                         <label for="location_id" class="form-label">Pilih Lokasi:</label>
-                                        <select id="location_id" name="location_id" class="form-select"
-                                            data-control="select2">
-                                            <option value="">Pilih Lokasi</option>
-                                            @foreach ($location as $loc)
-                                                <option value="{{ $loc->id }}"
-                                                    {{ old('location_id') == $loc->id ? 'selected' : '' }}>
-                                                    {{ $loc->name }}</option>
-                                            @endforeach
+                                        <select id="location_id" name="location_id" class="form-select">
+                                            
                                         </select>
                                     </div>
                                     <div id="additionalForm">
@@ -625,5 +622,31 @@
                 residual_cat("5", "Very High");
             }
         }
+    </script>
+    <script>
+        $('#departemen_id').on('change', function () {
+        var id = this.value;
+        var locationSelect = $('#location_id');
+        var url = '{{ route("hirarc.location") }}' + "?id=" +id;
+        console.log(url);
+        $.ajax({
+            url: url,
+            type: "GET",         
+            dataType: "json",
+            success: function (data) {
+                console.log(data);
+                locationSelect.empty();
+                $.each(data.loct, function (index, location) {
+                    locationSelect.append($('<option>', {
+                        value: location.id,
+                        text: location.name
+                    }));
+                });
+            },
+            error: function(xhr, status, error) {
+                console.log("AJAX Error: " + error);
+            }
+        });
+    });
     </script>
 @stop

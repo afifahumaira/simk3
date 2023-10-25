@@ -20,6 +20,7 @@ use Illuminate\Routing\HirarcController as BaseController;
 use Hash;
 //use Validator;
 use Alert;
+use Auth;
 use App\Models\Activitie_master;
 use App\Models\Control;
 use App\Models\Hirarc_postrating;
@@ -53,10 +54,7 @@ class HirarcController extends Controller
             ->with('hirarcs',$hirarcs);
             // ->with('deptCount',$deptCount)
             // ->with('locCount',$locCount);
-    }
-       
-        
-        
+    }      
         // $locCount=[];
         // $deptCount = [];
         
@@ -74,60 +72,56 @@ class HirarcController extends Controller
         //     $locCount[$hir->departemen_id][$hir->location_id]++;
         // } 
         
+    public function location(Request $request){
 
-        
+        return response()->json([
 
-    
+            'loct' => Location::where('departemen_id', $request->id)->get()
 
-    public function tambahDetail($id = null) {
-        $departments = Departemen::all();
-        $locations = Location_masters::all();
+        ]);
+
+    }
+    public function tambahDetail( $id = null) {               
+        $locations = Location::all();
         $activities = Activitie_master::all();
         $hazards = Hazard::all();
         $risks = Risk::all();
-
         $hrcs = Hirarc::all();
-
         $hirarc = collect();
         if($id != null) {
             $hirarc = Hirarc::find($id);
         }
 
-        $controls = Control::all();
+        $controls = Control::all();        
+        
+        if(!Auth::user()->departemen_id == null) {
+            $departments = Departemen::where('id', auth()->user()->departemen_id)                
+                ->get();            
+            }       
+        else {
+            $departments = Departemen::all();
 
+        }      
+                
         return view('dashboard.hirarc.tambah-hirarc-detail')
                 ->with('hirarc', $hirarc)
-                ->with('location', $locations)
+                ->with('locations', $locations)
                 ->with('departments', $departments)
                 ->with('activitie', $activities)
                 ->with('hazard', $hazards)
                 ->with('risk', $risks)
                 ->with('hirarc', $hrcs)
                 ->with('control', $controls);
-                
-    }
+        }       
 
-    // public function tambahDetail($id = null) {
-    //     $hirarc = Hirarc::where('id',$id)->find($id);
-    //     $hazards = Hazard::where('id',$id)->get();
-    //     $risks = Risk::where('id',$id)->get();
-        
 
-    //     return view('dashboard.hirarc.tambah-hirarc-detail')
-    //             ->with('hirarc', $hirarc)
-    //             ->with('id', $id)
-    //             ->with('hazard', $hazards)
-    //             ->with('risk', $risks);
-                
-                
-    // }
-
+    
     public function edit($id) {
         
         $hirarc = Hirarc::with(['departemen', 'activitie', 'location', 'hazard', 'risk'])->find($id);
         //$controls = Control::all();
         $activitie = Activitie_master::all();
-        $locations = Location_masters::all();
+        $locations = Location::all();
         $departments = Departemen::all();
         $hazards = Hazard::all();
         $risks = Risk::all();
@@ -143,7 +137,7 @@ class HirarcController extends Controller
         // dd($id);
         $departments = Departemen::all();
         $hirarc = Hirarc::where('id',$id)->find($id);
-        $locations = Location_masters::all();
+        $locations = Location::all();
         $activities = Activitie_master::all();
         $hazards = Hazard::all();
         $risks = Risk::all();
@@ -181,7 +175,7 @@ class HirarcController extends Controller
         ->get();
         $lokasi_ids=Hirarc::where('departemen_id', $departemen_id )->pluck('location_id')->unique()->toArray();
         // @dd($lokasi_ids);
-        $locations=Location_masters::whereIn('id', $lokasi_ids )->get();
+        $locations=Location::whereIn('id', $lokasi_ids )->get();
         // dd($hirarcs);
         $locCount=[];
         $actCount=[];
