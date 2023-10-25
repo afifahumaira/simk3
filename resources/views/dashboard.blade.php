@@ -232,7 +232,7 @@
                                                     <span
                                                         class="card-title d-flex align-items-center my-0 rounded-3 px-3">{{ $data['jumlah_hirarc'] }}</span>
                                                 </div>
-                                                <p class="text-end" style="font-size:12px">Jumlah Departemen</p>
+                                                <p class="text-end" style="font-size:12px"> Departemen</p>
                                             </li>
                                         </ul>
 

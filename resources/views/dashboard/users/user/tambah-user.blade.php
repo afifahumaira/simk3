@@ -33,14 +33,15 @@
                                         </ul>
                                     </div>
                                 @endif
-                                <form class="lh-lg" action="{{ route('user.save') }}" method="post" enctype="multipart/form-data">
+                                <form class="lh-lg" action="{{ route('user.save') }}" method="post"
+                                    enctype="multipart/form-data">
                                     @csrf
                                     @method('put')
                                     <div class="ps-3 pe-5">
                                         <label class="col-sm-2 col-form-label">Nama</label>
                                         <div class="col-sm-10 w-100">
-                                            <input type="text" class="form-control" placeholder="Nama Pengguna" name="name" id="name"
-                                                value="">
+                                            <input type="text" class="form-control" placeholder="Nama Pengguna"
+                                                name="name" id="name" value="">
 
                                         </div>
                                     </div>
@@ -48,8 +49,8 @@
                                     <div class="ps-3 pe-5">
                                         <label class="col-sm-2 col-form-label">Username</label>
                                         <div class="col-sm-10 w-100">
-                                            <input type="text" class="form-control" placeholder="Username" name="username" id="username"
-                                                value="">
+                                            <input type="text" class="form-control" placeholder="Username"
+                                                name="username" id="username" value="">
 
                                         </div>
                                     </div>
@@ -58,9 +59,9 @@
                                         <label class="col-sm-2 col-form-label ">Email</label>
                                         <div class="col-sm-10 w-100">
                                             <div class="form-group label-floating is-empty is-focused">
-                                                <input id="email" type="email" type="email" placeholder="Email" name="email"
-                                                :value="old('email')" required autofocus=""
-                                                class="form-control border-0 shadow-sm px-4">
+                                                <input id="email" type="email" type="email" placeholder="Email"
+                                                    name="email" :value="old('email')" required autofocus=""
+                                                    class="form-control border-0 shadow-sm px-4">
                                             </div>
                                         </div>
                                     </div>
@@ -81,8 +82,8 @@
                                         <div class="col-sm-10 w-100">
                                             <select class="form-select fs-6 w-100" data-control="select2"
                                                 data-hide-search="true" data-placeholder="-Pilih-"
-                                                style="--bs-link-hover-color-rgb: 25, 135, 84;" name="hak_akses" id="hak_akses"
-                                                style="font-family: Arial, Helvetica, sans-serif;">
+                                                style="--bs-link-hover-color-rgb: 25, 135, 84;" name="hak_akses"
+                                                id="hak_akses" style="font-family: Arial, Helvetica, sans-serif;">
                                                 <option value="">- Pilih -</option>
                                                 <option value="Admin">Admin </option>
                                                 <option value="Pimpinan">Pimpinan </option>

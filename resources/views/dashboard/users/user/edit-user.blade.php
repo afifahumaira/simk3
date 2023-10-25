@@ -152,7 +152,7 @@
 
                                         </div>
                                     </div>
-                                    
+
                                     {{-- <div class="ps-3 pe-5">
                                         <label class="col-sm-2 col-form-label">Foto Profil</label>
                                         <div class="col-sm-10 w-100">
@@ -208,13 +208,13 @@
                             </div>
                         </div>
 
-                        <button 
-                            class="btn btn-secondary text-white d-flex align-items-center justify-content-center"
+                        <button class="btn btn-secondary text-white d-flex align-items-center justify-content-center"
                             data-bs-toggle="modal" data-bs-target="#resetpw"
                             style="background: #868E96; margin : 10px 20px 30px 20px;  height: 38px; font-size:14px; border-radius: 5px;">Reset
                             Password</button>
-                        <div class="modal fade" role="dialog" id="resetpw" data-bs-backdrop="static" data-bs-keyboard="false"
-                            tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                        <div class="modal fade" role="dialog" id="resetpw" data-bs-backdrop="static"
+                            data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel"
+                            aria-hidden="true">
                             <div class="modal-dialog modal-dialog-centered ">
                                 <div class="modal-content">
                                     {{-- <div class="modal-header">
@@ -234,14 +234,16 @@
                                         <form action="{{ route('user.reset', $data->id) }}" method="post">
                                             @csrf
                                             <div class="d-flex justify-content-between">
-                                            <button type="submit"  
-                                            class="btn btn-success text-white d-flex justify-content-center align-items-center text-center rounded-1 pr-2" 
-                                            style="width:76px; height:31px; background: #29CC6A;">Ya</button>
-                                            <button type="button"  data-bs-dismiss="modal" class="btn btn-secondary text-center d-flex align-items-center rounded-1 pl-2"
-                                            data-bs-dismiss="modal" style="width:76px; height:31px; ">Tidak</button>
-                                            </div>                                            
+                                                <button type="submit"
+                                                    class="btn btn-success text-white d-flex justify-content-center align-items-center text-center rounded-1 pr-2"
+                                                    style="width:76px; height:31px; background: #29CC6A;">Ya</button>
+                                                <button type="button" data-bs-dismiss="modal"
+                                                    class="btn btn-secondary text-center d-flex align-items-center rounded-1 pl-2"
+                                                    data-bs-dismiss="modal"
+                                                    style="width:76px; height:31px; ">Tidak</button>
+                                            </div>
                                             {{-- <input type="hidden" value=""> --}}
-                                        </form>                                       
+                                        </form>
 
                                     </div>
                                 </div>
