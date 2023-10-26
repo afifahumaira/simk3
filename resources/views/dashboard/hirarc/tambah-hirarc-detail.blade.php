@@ -7,7 +7,7 @@
                 class="app-content  rounded bg-light  mb-20 px-5 shadow"style="box-shadow: 2px 4px 20px 2px rgba(0, 0, 0, 0.1);">
                 <div class="app-toolbar-wrapper d-flex flex-stack flex-wrap gap-4 w-100 mb-5 px-5 border-bottom border-5">
                     <!--begin::Page title-->
-                    <h2>Tambah Data HIRARC</h2>
+                    <h2>Tambah Data HIRARDC</h2>
                     <a href="{{ route('hirarc.index') }}" type="button"
                         class="btn text-white btn-secondary btn-sm d-flex justify-content-center align-items-center mb-2"
                         data-bs-toggle="modal" data-bs-target="#staticBackdrop" style="background: #505050; "><i
@@ -22,7 +22,7 @@
                                     </div> --}}
                                 <div class="modal-body mt-5 d-flex justify-content-center align-items-center">
                                     <h2 class="mt-5 text-center" style="color: #16243D; font-size: 20px font-weight:700">
-                                        keluar dari edit data?
+                                        keluar dari tambah data?
                                         <p class="mb-0 mt-2 text-center "
                                             style="color: #DC3545; font-weight:400; font-size:14px"> data yang dimasukkan
                                             belum tersimpan </p>
@@ -48,7 +48,7 @@
                                 <div class="pull-left">
                                     <strong
                                         style="color: #16243D; font-family: Plus Jakarta Sans, sans-serif; font-size:16px;">Data
-                                        HIRARC</strong>
+                                        HIRADC</strong>
                                 </div>
                             </div>
                             <div class="card-body">
@@ -70,10 +70,7 @@
                                             <select name="departemen_id" id="departemen_id" class="form-select fs-6 w-100"
                                                 data-control="select2" data-hide-search="true"
                                                 data-placeholder="Pilih Departemen">
-                                                <option value="">Pilih Departemen</option>
-                                                {{-- @foreach ($departments as $dep)
-                                                    <option value="{{ $dep->id }}" @if ($hirarc->count() > 0) @if($dep->id == $hirarc->departemen_id) selected @endif @endif>{{ $dep->name }}</option>
-                                                @endforeach --}}
+                                                <option value="">Pilih Departemen</option>                                                
                                                 @foreach ($departments as $dep)
                                                     <option value="{{ $dep->id }}" 
                                                         {{ old('departemen_id') == $dep->name ? 'selected' : '' }}
@@ -84,7 +81,7 @@
                                     </div>
                                     <div class="ps-3 pe-5">
                                         <label for="location_id" class="form-label">Pilih Lokasi:</label>
-                                        <select id="location_id" name="location_id" class="form-select">
+                                        <select id="location_id" name="location_id" class="form-select" >
                                             
                                         </select>
                                     </div>
@@ -178,8 +175,8 @@
                                         </div>
                                     </div>
                                     <div class="ps-3 pe-5">
-                                        <label class="col-form-label" for="select1">Keparahan Risko
-                                            (severity) Saat Ini</label>
+                                        <label class="col-form-label d-flex" for="select1">Keparahan Risiko
+                                             Saat Ini <p class="ms-1" style="font-style: italic"> (Severity)</p></label>
                                         <select class="form-control" id="current_severity" onchange="risk_rating()"
                                             name="current_severity" data-control="select2" data-hide-search="true"
                                             data-placeholder="Pilih Keparahan Risiko
@@ -215,8 +212,8 @@
                                         </select>
                                     </div>
                                     <div class="ps-3 pe-5">
-                                        <label class="col-form-label">Paparan Rsiko
-                                            (Exposure) Saat Ini</label>
+                                        <label class="col-form-label d-flex">Paparan Risiko
+                                             Saat Ini <p class="ms-1" style="font-style: italic"> (Exposure)</p></label>
                                         <select class="form-control" id="current_exposure" onchange="risk_rating()"
                                             name="current_exposure" data-control="select2" data-hide-search="true"
                                             data-placeholder="Pilih Paparan Risiko (Exposure)">
@@ -241,8 +238,8 @@
                                         </select>
                                     </div>
                                     <div class="ps-3 pe-5">
-                                        <label class="col-form-label">Kemungkinan Risiko
-                                            Terjadi Saat Ini(Probability)</label>
+                                        <label class="col-form-label d-flex">Kemungkinan Risiko
+                                            Terjadi Saat Ini <p class="ms-1" style="font-style: italic"> (Probability)</p></label>
                                         <select class="form-control" onchange="risk_rating()" id="current_probability"
                                             name="current_probability" data-control="select2" data-hide-search="true"
                                             data-placeholder="Pilih Kemungkinan Risiko Terjadi (Probability)">
@@ -338,13 +335,13 @@
                                         </div>
                                     </div>
                                     <div class="ps-3 pe-5">
-                                        <label class="col-form-label">Keparahan
-                                            (severity) Residual</label>
+                                        <label class="col-form-label d-flex">Keparahan
+                                             Residual <p class=" ms-1" style="font-style: italic">(Severity)</p></label>
                                         <select class="form-control" onchange="risk_residual()" id="residual_severity"
                                             name="residual_severity" data-control="select2" data-hide-search="true"
-                                            data-placeholder="Keparahan (severity)">
+                                            data-placeholder="Keparahan (Severity)">
                                             <option value="" selected disable>Keparahan
-                                                (severity)</option>
+                                                <p class="ms-1" style="font-style: italic" >(Severity)</p></option>
                                             <option value="1" {{ old('residual_severity') == 1 ? 'selected' : '' }}>
                                                 [1] Tergores, sayatan kecil, kerugian dalam rupiah
                                                 sebesar
@@ -373,8 +370,8 @@
                                         </select>
                                     </div>
                                     <div class="ps-3 pe-5">
-                                        <label class="col-form-label">Paparan Risiko
-                                            (Exposure) Residual</label>
+                                        <label class="col-form-label d-flex">Paparan Risiko
+                                             Residual <p class=" ms-1" style="font-style: italic">(Exposure)</p></label>
                                         <select class="form-control" onchange="risk_residual()" id="residual_exposure"
                                             name="residual_exposure" data-control="select2" data-hide-search="true"
                                             data-placeholder="Paparan (Exposure)">
@@ -399,8 +396,8 @@
                                         </select>
                                     </div>
                                     <div class="ps-3 pe-5">
-                                        <label class="col-form-label">Kemungkinan Risiko
-                                            Terjadi (Probability) Residual</label>
+                                        <label class="col-form-label d-flex">Kemungkinan Risiko
+                                            Terjadi  Residual <p class=" ms-1" style="font-style: italic">(Probability)</p></label>
                                         <select class="form-control" id="residual_probability" onchange="risk_residual()"
                                             name="residual_probability" data-control="select2" data-hide-search="true"
                                             data-placeholder="Kemungkinan Terjadi (Probability)">

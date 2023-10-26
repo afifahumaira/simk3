@@ -6,7 +6,13 @@
         <div class="card m-5">
             <div class="card-header py-5 shadow-sm d-flex justify-content-between align-items-center">
                 <!--begin::Page title-->
-                <h2 class="card-title fw-bold ">HIRARC</h2>
+                <div>
+
+                    <h2 class="card-title mb-0 fw-bold d-flex ">HIRARDC
+                    </h2>
+                        <p class="mb-0" style="font-size:16px;">(Hazard Identification Risk Assessment Risk Determination Control)</p>
+                    
+                </div>
                 <!--begin::Main wrapper-->
                 <div id="kt_docs_search_handler_basic" class="my-auto" data-kt-search-keypress="true"
                     data-kt-search-min-length="2" data-kt-search-enter="true" data-kt-search-layout="inline">

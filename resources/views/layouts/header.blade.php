@@ -63,8 +63,8 @@
                             <div class="fw-bold d-flex align-items-center fs-4" style="font-family: Plus Jakarta Sans, sans-serif;">
                                 Selamat datang, {{ auth()->user()->name }}
                             </div>
-                            <a href="#" class="fw-semibold text-muted fs-7"
-                                style="font-family: Helvetica, sans-serif;">{{ auth()->user()->hak_akses }}</a>
+                            <a href="#" class="fw-semibold text-muted"
+                                style="font-family: Plus Jakarta Sans, sans-serif; font-size:14px;">{{ auth()->user()->hak_akses }}</a>
                         </div>
                         <!--end::Username-->
                     </div>
