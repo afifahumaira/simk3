@@ -72,12 +72,12 @@
                                                 data-placeholder="Pilih Departemen">
                                                 <option value="">Pilih Departemen</option>
                                                 {{-- @foreach ($departments as $dep)
-                                                    <option value="{{ $dep->id }}" @if ($hirarc->count() > 0) @if($dep->id == $hirarc->departemen_id) selected @endif @endif>{{ $dep->name }}</option>
+                                                    <option value="{{ $dep->id }}" @if ($hirarc->count() > 0) @if ($dep->id == $hirarc->departemen_id) selected @endif @endif>{{ $dep->name }}</option>
                                                 @endforeach --}}
                                                 @foreach ($departments as $dep)
-                                                    <option value="{{ $dep->id }}" 
-                                                        {{ old('departemen_id') == $dep->name ? 'selected' : '' }}
-                                                        >{{ $dep->name }}</option>
+                                                    <option value="{{ $dep->id }}"
+                                                        {{ old('departemen_id') == $dep->name ? 'selected' : '' }}>
+                                                        {{ $dep->name }}</option>
                                                 @endforeach
                                             </select>
                                         </div>
@@ -85,7 +85,8 @@
                                     <div class="ps-3 pe-5">
                                         <label for="location_id" class="form-label">Pilih Lokasi:</label>
                                         <select id="location_id" name="location_id" class="form-select">
-                                            
+                                            <option value="">Pilih Departemen terlebih dahulu
+                                            </option>
                                         </select>
                                     </div>
                                     <div id="additionalForm">
@@ -624,29 +625,29 @@
         }
     </script>
     <script>
-        $('#departemen_id').on('change', function () {
-        var id = this.value;
-        var locationSelect = $('#location_id');
-        var url = '{{ route("hirarc.location") }}' + "?id=" +id;
-        console.log(url);
-        $.ajax({
-            url: url,
-            type: "GET",         
-            dataType: "json",
-            success: function (data) {
-                console.log(data);
-                locationSelect.empty();
-                $.each(data.loct, function (index, location) {
-                    locationSelect.append($('<option>', {
-                        value: location.id,
-                        text: location.name
-                    }));
-                });
-            },
-            error: function(xhr, status, error) {
-                console.log("AJAX Error: " + error);
-            }
+        $('#departemen_id').on('change', function() {
+            var id = this.value;
+            var locationSelect = $('#location_id');
+            var url = '{{ route('hirarc.location') }}' + "?id=" + id;
+            console.log(url);
+            $.ajax({
+                url: url,
+                type: "GET",
+                dataType: "json",
+                success: function(data) {
+                    console.log(data);
+                    locationSelect.empty();
+                    $.each(data.loct, function(index, location) {
+                        locationSelect.append($('<option>', {
+                            value: location.id,
+                            text: location.name
+                        }));
+                    });
+                },
+                error: function(xhr, status, error) {
+                    console.log("AJAX Error: " + error);
+                }
+            });
         });
-    });
     </script>
 @stop
