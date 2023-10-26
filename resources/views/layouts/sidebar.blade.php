@@ -104,7 +104,7 @@
                         <span class="menu-icon">
                             <i class="bi bi-diagram-2  fs-3"></i>
                         </span>
-                        <span class="menu-title ">Hirarc</span>
+                        <span class="menu-title ">HIRARDC</span>
 
                     </a>
                 </div>
