@@ -115,19 +115,19 @@
                                 <td>{{ $lap->departemen->name }}</td>
                                 <td>{{ $lap->lokasi_rinci }}</td>
                                 <td>{{ $lap->nama_pelapor }}</td>
-                                <td align="center" class="pt-5">
+                                <td class="pt-5">
                                     @if ($lap->status == '1')
                                         <a href=""
-                                            class="text-center fw-bold  text-danger border border-2 rounded-2 border-danger py-1 px-4 "
+                                            class=" fw-bold  text-danger border border-2 rounded-2 border-danger py-1 px-4 "
                                             style=" cursor: default !important;">
                                             Pending</a>
                                     @elseif ($lap->status == '2')
                                         <a href="#"
-                                            class="text-center fw-bold  text-warning border border-2 rounded-2 border-warning  px-4 py-1"
+                                            class=" fw-bold  text-warning border border-2 rounded-2 border-warning  px-4 py-1"
                                             style=" cursor: default !important;">Ditindaklanjuti</a>
                                     @elseif ($lap->status == '3')
                                         <a href=""
-                                            class="text-center fw-bold  text-success border border-2 rounded-2 border-success mx-10 px-4 py-1"
+                                            class=" fw-bold  text-success border border-2 rounded-2 border-success  px-4 py-1"
                                             style=" cursor: default !important;">
                                             Tuntas</a>
                                     @endif

@@ -62,7 +62,7 @@
                         <thead>
                             <tr class="fw-semibold border-bottom-2 border-gray-200">
                                 <th>No</th>
-                                <th scope="col" class="col-1">Kode Insiden Lapor</th>
+                                <th scope="col" class="">Kode Insiden Lapor</th>
                                 <th scope="col"class="d-flex justify-content-between">Tanggal lapor <div><a
                                             class="mx-1"
                                             href="{{ route('laporan-insiden.k3dep', ['sort' => 'waktu_kejadian', 'order' => 'asc']) }}"><i
@@ -95,27 +95,27 @@
                                     <td>{{ $lap->nama_pelapor }}</td>
                                     {{-- <td>{{ $lap->nama_korban }}</td> --}}
                                     <td>{{ $lap->p2k3 ? $lap->p2k3->nama : '' }}</td>
-                                    <td {align="center" class="pt-5">
+                                    <td class="pt-5">
                                         @if ($lap->status == '1')
                                             <a href=""
-                                                class="text-center fw-bold  text-danger border border-2 rounded-2 border-danger px-5 py-1"
+                                                class=" fw-bold  text-danger border border-2 rounded-2 border-danger px-5 py-1"
                                                 style=" cursor: default !important;">
                                                 Pending</a>
                                         @elseif ($lap->status == '2')
-                                            <a class="text-center fw-bold  text-warning border border-2 rounded-2 border-warning py-2 px-4"
+                                            <a class=" fw-bold  text-warning border border-2 rounded-2 border-warning py-2 px-4"
                                                 style=" cursor: default !important;">
                                                 Ditindaklanjuti</a>
                                             {{-- @if (auth()->user()->hak_akses == 'Admin' || auth()->user()->hak_akses == 'P2K3' || auth()->user()->hak_akses == 'K3 Departemen' || auth()->user()->hak_akses == 'Pimpinan')
                                                 <a href="{{ route('daftarinvestigasi.tambah', $lap->id) }}"
-                                                    class="text-center fw-bold  text-warning border border-2 rounded-2 border-warning py-1 px-4"
+                                                    class=" fw-bold  text-warning border border-2 rounded-2 border-warning py-1 px-4"
                                                     style=" cursor: default !important;">Ditindaklanjuti</a>
                                             @else
-                                                <a class="text-center fw-bold  text-warning border border-2 rounded-2 border-warning py-2 px-4"
+                                                <a class=" fw-bold  text-warning border border-2 rounded-2 border-warning py-2 px-4"
                                                     style=" cursor: default !important;">
                                                     Ditindaklanjuti</a>
                                             @endif --}}
                                         @elseif ($lap->status == '3')
-                                            <a class="text-center fw-bold  text-success border border-2 rounded-2 border-success px-5 py-1"
+                                            <a class=" fw-bold  text-success border border-2 rounded-2 border-success px-5 py-1"
                                                 style=" cursor: default !important;">
                                                 Tuntas </a>
                                         @endif

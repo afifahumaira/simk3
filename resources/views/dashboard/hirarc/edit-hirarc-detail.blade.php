@@ -182,13 +182,14 @@
                                     </div>
 
                                     <div class="ps-3 pe-5">
-                                        <label class="col-form-label" for="select1">Keparahan Risko
-                                            (severity) Saat Ini</label>
+                                        <label class="col-form-label d-flex" for="select1">Keparahan Risko
+                                            Saat Ini <p class="ms-1 mb-0" style="font-style: italic"> (Severity)</p>
+                                        </label>
                                         <select class="form-control" id="current_severity" onchange="risk_rating()"
                                             name="current_severity" data-control="select2" data-hide-search="true"
                                             required
                                             data-placeholder="Pilih Keparahan Risiko
-                                    (severity)">
+                                    (Severity)">
                                             <option value="{{ $hirarc->current_severity }}" selected disable>
                                                 {{ $hirarc->current_severity }}</option>
                                             <option value="1">
@@ -220,8 +221,9 @@
                                     </div>
 
                                     <div class="ps-3 pe-5">
-                                        <label class="col-form-label">Paparan Rsiko
-                                            (Exposure) Saat Ini</label>
+                                        <label class="col-form-label d-flex">Paparan Rsiko
+                                            Saat Ini <p class="ms-1 mb-0" style="font-style: italic"> (Exposure)</p>
+                                        </label>
                                         <select class="form-control" id="current_exposure" onchange="risk_rating()"
                                             name="current_exposure" data-control="select2" data-hide-search="true"
                                             required data-placeholder="Pilih Paparan Risiko (Exposure)">
@@ -240,8 +242,9 @@
                                     </div>
 
                                     <div class="ps-3 pe-5">
-                                        <label class="col-form-label">Kemungkinan Risiko
-                                            Terjadi Saat Ini(Probability)</label>
+                                        <label class="col-form-label d-flex">Kemungkinan Risiko
+                                            Terjadi Saat Ini <p class="ms-1 mb-0" style="font-style: italic">
+                                                (Probability)</p></label>
                                         <select class="form-control" onchange="risk_rating()" id="current_probability"
                                             name="current_probability" data-control="select2" data-hide-search="true"
                                             required data-placeholder="Pilih Kemungkinan Risiko Terjadi (Probability)">
@@ -320,13 +323,14 @@
                                     </div>
 
                                     <div class="ps-3 pe-5">
-                                        <label class="col-form-label">Keparahan
-                                            (severity) Residual</label>
+                                        <label class="col-form-label d-flex">Keparahan
+                                            Residual <p class="ms-1 mb-0" style="font-style: italic">
+                                                (Severity)</p></label>
                                         <select class="form-control" onchange="risk_residual()" id="residual_severity"
                                             name="residual_severity" data-control="select2" data-hide-search="true"
                                             required
                                             data-placeholder="Keparahan
-                                    (severity)">
+                                    (Severity)">
                                             <option value="{{ $hirarc->residual_severity }}" selected disable>
                                                 {{ $hirarc->residual_severity }}</option>
                                             <option value="1">
@@ -358,8 +362,9 @@
                                     </div>
 
                                     <div class="ps-3 pe-5">
-                                        <label class="col-form-label">Paparan Risiko
-                                            (Exposure) Residual</label>
+                                        <label class="col-form-label d-flex">Paparan Risiko Residual <p class="ms-1 mb-0"
+                                                style="font-style: italic">
+                                                (Exposure)</p></label>
                                         <select class="form-control" onchange="risk_residual()" id="residual_exposure"
                                             name="residual_exposure" data-control="select2" data-hide-search="true"
                                             required
@@ -379,8 +384,9 @@
                                         </select>
                                     </div>
                                     <div class="ps-3 pe-5">
-                                        <label class="col-form-label">Kemungkinan Risiko
-                                            Terjadi (Probability) Residual</label>
+                                        <label class="col-form-label d-flex">Kemungkinan Risiko
+                                            Terjadi Residual <p class="ms-1 mb-0" style="font-style: italic">
+                                                (Probability)</p></label>
                                         <select class="form-control" id="residual_probability" onchange="risk_residual()"
                                             name="residual_probability" data-control="select2" data-hide-search="true"
                                             required
@@ -573,5 +579,5 @@
             }
         }
     </script>
-    
+
 @stop

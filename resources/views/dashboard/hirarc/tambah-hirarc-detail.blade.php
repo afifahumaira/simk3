@@ -81,7 +81,8 @@
                                     </div>
                                     <div class="ps-3 pe-5">
                                         <label for="location_id" class="form-label">Pilih Lokasi:</label>
-                                        <select id="location_id" name="location_id" class="form-select">
+                                        <select id="location_id" name="location_id" class="form-select"
+                                            data-placeholder="Pilih Departemen Terlebih Dahulu">
 
                                         </select>
                                     </div>
@@ -176,7 +177,8 @@
                                     </div>
                                     <div class="ps-3 pe-5">
                                         <label class="col-form-label d-flex" for="select1">Keparahan Risiko
-                                            Saat Ini <p class="ms-1" style="font-style: italic"> (Severity)</p></label>
+                                            Saat Ini <p class="ms-1 mb-0" style="font-style: italic"> (Severity)</p>
+                                            </label>
                                         <select class="form-control" id="current_severity" onchange="risk_rating()"
                                             name="current_severity" data-control="select2" data-hide-search="true"
                                             data-placeholder="Pilih Keparahan Risiko
@@ -213,7 +215,8 @@
                                     </div>
                                     <div class="ps-3 pe-5">
                                         <label class="col-form-label d-flex">Paparan Risiko
-                                            Saat Ini <p class="ms-1" style="font-style: italic"> (Exposure)</p></label>
+                                            Saat Ini <p class="ms-1 mb-0" style="font-style: italic"> (Exposure)</p>
+                                            </label>
                                         <select class="form-control" id="current_exposure" onchange="risk_rating()"
                                             name="current_exposure" data-control="select2" data-hide-search="true"
                                             data-placeholder="Pilih Paparan Risiko (Exposure)">
@@ -239,7 +242,8 @@
                                     </div>
                                     <div class="ps-3 pe-5">
                                         <label class="col-form-label d-flex">Kemungkinan Risiko
-                                            Terjadi Saat Ini <p class="ms-1" style="font-style: italic"> (Probability)
+                                            Terjadi Saat Ini <p class="ms-1 mb-0" style="font-style: italic">
+                                                (Probability)
                                             </p></label>
                                         <select class="form-control" onchange="risk_rating()" id="current_probability"
                                             name="current_probability" data-control="select2" data-hide-search="true"
@@ -342,7 +346,7 @@
                                             name="residual_severity" data-control="select2" data-hide-search="true"
                                             data-placeholder="Keparahan (Severity)">
                                             <option value="" selected disable>Keparahan
-                                                <p class="ms-1" style="font-style: italic">(Severity)</p>
+                                                <p class="ms-1 mb-0" style="font-style: italic">(Severity)</p>
                                             </option>
                                             <option value="1" {{ old('residual_severity') == 1 ? 'selected' : '' }}>
                                                 [1] Tergores, sayatan kecil, kerugian dalam rupiah
@@ -373,7 +377,8 @@
                                     </div>
                                     <div class="ps-3 pe-5">
                                         <label class="col-form-label d-flex">Paparan Risiko
-                                            Residual <p class=" ms-1" style="font-style: italic">(Exposure)</p></label>
+                                            Residual <p class="ms-1 mb-0" style="font-style: italic">(Exposure)</p>
+                                            </label>
                                         <select class="form-control" onchange="risk_residual()" id="residual_exposure"
                                             name="residual_exposure" data-control="select2" data-hide-search="true"
                                             data-placeholder="Paparan (Exposure)">
@@ -399,7 +404,7 @@
                                     </div>
                                     <div class="ps-3 pe-5">
                                         <label class="col-form-label d-flex">Kemungkinan Risiko
-                                            Terjadi Residual <p class=" ms-1" style="font-style: italic">(Probability)
+                                            Terjadi Residual <p class="ms-1 mb-0" style="font-style: italic">(Probability)
                                             </p></label>
                                         <select class="form-control" id="residual_probability" onchange="risk_residual()"
                                             name="residual_probability" data-control="select2" data-hide-search="true"
