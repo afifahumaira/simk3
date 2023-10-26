@@ -8,7 +8,7 @@
                 class="app-content  rounded bg-light  mb-20 px-5 shadow"style="box-shadow: 2px 4px 20px 2px rgba(0, 0, 0, 0.1);">
                 <div class="app-toolbar-wrapper d-flex flex-stack flex-wrap gap-4 w-100 mb-5 px-5 border-bottom border-5">
                     <!--begin::Page title-->
-                    <h2>Edit Data HIRARC</h2>
+                    <h2>Edit Data HIRADC</h2>
                     <a href="{{ route('hirarc.lihat', $hirarc->departemen_id) }}" type="button"
                         class="btn text-white btn-secondary btn-sm d-flex justify-content-center align-items-center mb-2"
                         data-bs-toggle="modal" data-bs-target="#staticBackdrop" style="background: #505050; "><i
@@ -51,7 +51,7 @@
                                 <div class="pull-left">
                                     <strong
                                         style="color: #16243D; font-family: Plus Jakarta Sans, sans-serif; font-size:16px;">Data
-                                        HIRARC</strong>
+                                        HIRARDC</strong>
                                 </div>
                             </div>
                             <div class="card-body">
@@ -573,4 +573,5 @@
             }
         }
     </script>
+    
 @stop

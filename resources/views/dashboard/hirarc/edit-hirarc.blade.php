@@ -8,7 +8,7 @@
                 class="app-content  rounded bg-light  mb-20 px-5 shadow"style="box-shadow: 2px 4px 20px 2px rgba(0, 0, 0, 0.1);">
                 <div class="app-toolbar-wrapper d-flex flex-stack flex-wrap gap-4 w-100 mb-5 px-5 border-bottom border-5">
                     <!--begin::Page title-->
-                    <h2>HIRARC</h2>
+                    <h2>HIRARDC</h2>
                     <a href="{{ route('hirarc.index') }}" type="button"
                         class="btn text-white btn-sm btn-secondary d-flex justify-content-center align-items-center mb-2"
                         data-bs-toggle="modal" data-bs-target="#staticBackdrop" style="background: #505050; "><i
@@ -45,7 +45,7 @@
                         <div class="card ">
                             <div class="card-header d-flex align-items-center fs-3 fw-normal">
                                 <div class="pull-left">
-                                    <strong>Ubah Data HIRARC</strong>
+                                    <strong>Ubah Data HIRARDC</strong>
                                 </div>
                             </div>
                             <div class="card-body">
