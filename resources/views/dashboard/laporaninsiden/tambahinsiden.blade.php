@@ -146,8 +146,7 @@
                                     <div class="ps-3 pe-5">
                                         <label class="col-form-label">Penyebab Insiden</label>
                                         <div class=" w-100">
-                                            <input type="text" class="form-control" name="penyebab_insiden"
-                                                id="penyebab_insiden"
+                                            <input type="text" class="form-control" name="penyebab_insiden" id="penyebab_insiden"
                                                 value="{{ old('penyebab_insiden', request()->input('penyebab_insiden')) }}">
                                         </div>
                                     </div>
