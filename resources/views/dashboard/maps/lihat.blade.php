@@ -53,9 +53,10 @@
                 <!--end::Main wrapper-->
                 <div>
                     <a href="{{ route('maps.tambah') }}" type="button" class="btn btn-primary btn-sm mb-2 me-1"
-                        style="background: #233EAE">Tambah Data +</a>
+                        style="font-size: 16px; background: #233EAE">Tambah Data +</a>
                     <a href="{{ route('maps.index') }} " type="button" class="btn text-white btn-secondary btn-sm mb-2"
-                        style="background: #505050"><i class="bi bi-chevron-left text-white"></i>Kembali</a>
+                        style="font-size: 16px; background: #505050"><i
+                            class="bi bi-chevron-left text-white"></i>Kembali</a>
                 </div>
                 <!--end::Title-->
             </div>

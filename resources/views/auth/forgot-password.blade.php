@@ -46,6 +46,15 @@
                             <p style="color: #B9B9B9">Masukkan email anda untuk mendapatkan instruksi
                                 selanjutnya.</p>
                         </div>
+                        @if ($errors->any())
+                            <div class="alert alert-danger">
+                                <ul>
+                                    @foreach ($errors->all() as $error)
+                                        <li>{{ $error }}</li>
+                                    @endforeach
+                                </ul>
+                            </div>
+                        @endif
                         <form method="POST" action="{{ route('password.email') }}">
                             @csrf
                             <div class="form-group mb-3">
