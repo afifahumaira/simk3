@@ -99,7 +99,7 @@ class PotensibahayaController extends Controller
         $request->validate([
             'nama_pelapor' => 'required',
             'email_pelapor' => 'required',
-            'nip_nim' => 'required',
+            //'nip_nim' => 'required',
             'nomer_telepon_pelapor' => 'required',
             'waktu_kejadian' => 'required',
             'institusi' => 'required',
