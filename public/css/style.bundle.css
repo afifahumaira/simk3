@@ -54754,12 +54754,12 @@ body,
     color: var(--bs-gray-800);
 }
 .app-sidebar .menu > .menu-item.here > .menu-link .menu-title {
-    color: var(--bs-gray-800);
+    color: #505675;
 }
 .app-sidebar .menu > .menu-item.here > .menu-link .menu-icon,
 .app-sidebar .menu > .menu-item.here > .menu-link .menu-icon .svg-icon,
 .app-sidebar .menu > .menu-item.here > .menu-link .menu-icon i {
-    color: var(--bs-gray-600);
+    color: #505675;
 }
 .app-sidebar .menu > .menu-item.here > .menu-link .menu-bullet .bullet {
     background-color: var(--bs-gray-400);
