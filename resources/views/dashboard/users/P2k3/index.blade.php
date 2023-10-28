@@ -65,7 +65,7 @@
                             <th scope="col" class="col-5">Nama</th>
                             {{-- <th scope="col">Email</th> --}}
                             @if (auth()->user()->hak_akses == 'Admin')
-                                <th scope="col" class="">Jabatan</th>
+                                <th scope="col">Jabatan</th>
                             @endif
                             @if (auth()->user()->hak_akses == 'P2K3' ||
                                     auth()->user()->hak_akses == 'K3 Departemen' ||
@@ -210,15 +210,15 @@
         }
 
         /* .team .member span::after {
-                                                                                                                                                                          content: "";
-                                                                                                                                                                          position: absolute;
-                                                                                                                                                                          display: block;
-                                                                                                                                                                          width: 50px;
-                                                                                                                                                                          height: 1px;
-                                                                                                                                                                          background: #cbd6e9;
-                                                                                                                                                                          bottom: 0;
-                                                                                                                                                                          left: 0;
-                                                                                                                                                                        } */
+                                                                                                                                                                              content: "";
+                                                                                                                                                                              position: absolute;
+                                                                                                                                                                              display: block;
+                                                                                                                                                                              width: 50px;
+                                                                                                                                                                              height: 1px;
+                                                                                                                                                                              background: #cbd6e9;
+                                                                                                                                                                              bottom: 0;
+                                                                                                                                                                              left: 0;
+                                                                                                                                                                            } */
 
         .team .member p {
             /* margin: 10px 0 0 0; */
