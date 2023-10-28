@@ -531,6 +531,36 @@
                 <!--end:Menu item-->
 
                 <!--begin:Menu item-->
+                <div data-kt-menu-trigger="click" class="menu-item menu-accordion">
+                    <!--begin:Menu link-->
+                    <span class="menu-link">
+                        <span class="menu-icon">
+                            <i class="bi bi-people  fs-3"></i>
+                        </span>
+                        <span class="menu-title ">Users</span>
+                        <span class="menu-arrow"></span>
+                    </span>
+                    <!--end:Menu link-->
+                    <!--begin:Menu sub-->
+                    <div class="menu-sub menu-sub-accordion">
+                        <!--begin:Menu item-->
+                        <div class="menu-item menu-accordion">
+                            <!--begin:Menu link-->
+                            <a href="{{ route('p2k3.index') }}"
+                                class="menu-link {{ Request::is('p2k3') ? 'active' : '' }}">
+                                <span class="menu-bullet">
+                                    <i class="bi bi-person-fill  fs-3"></i>
+                                </span>
+                                <span class="menu-title ">P2K3</span>
+                                <!-- <span class="menu-arrow"></span> -->
+                            </a>
+                            <!--end:Menu link-->
+                        </div>
+                        <!--end:Menu item-->
+
+                    </div>
+                    <!--end:Menu sub-->
+                </div>
 
                 <!--end:Menu item-->
                 @if (auth()->user()->hak_akses == 'P2K3' || auth()->user()->hak_akses == 'K3 Departemen')
@@ -626,36 +656,7 @@
                         <span class="menu-title ">Daftar Dokumen</span>
                     </a>
                 </div>
-                <div data-kt-menu-trigger="click" class="menu-item menu-accordion">
-                    <!--begin:Menu link-->
-                    <span class="menu-link">
-                        <span class="menu-icon">
-                            <i class="bi bi-people  fs-3"></i>
-                        </span>
-                        <span class="menu-title ">Users</span>
-                        <span class="menu-arrow"></span>
-                    </span>
-                    <!--end:Menu link-->
-                    <!--begin:Menu sub-->
-                    <div class="menu-sub menu-sub-accordion">
-                        <!--begin:Menu item-->
-                        <div class="menu-item menu-accordion">
-                            <!--begin:Menu link-->
-                            <a href="{{ route('p2k3.index') }}"
-                                class="menu-link {{ Request::is('p2k3') ? 'active' : '' }}">
-                                <span class="menu-bullet">
-                                    <i class="bi bi-person-fill  fs-3"></i>
-                                </span>
-                                <span class="menu-title ">P2K3</span>
-                                <!-- <span class="menu-arrow"></span> -->
-                            </a>
-                            <!--end:Menu link-->
-                        </div>
-                        <!--end:Menu item-->
 
-                    </div>
-                    <!--end:Menu sub-->
-                </div>
                 <!--end:Menu item-->
                 <!--begin:Menu item-->
                 <div class="menu-item here show menu-accordion">

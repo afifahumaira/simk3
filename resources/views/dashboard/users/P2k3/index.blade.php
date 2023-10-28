@@ -61,18 +61,22 @@
                 <table class="table table-bordered border-secondary px-3 py-3 mb-5 shadow">
                     <thead px-3>
                         <tr>
-                            <th scope="col" class="text-center">NO</th>
-                            <th scope="col">Nama</th>
+                            <th scope="col" class="text-center col-1">NO</th>
+                            <th scope="col" class="col-5">Nama</th>
                             {{-- <th scope="col">Email</th> --}}
-                            <th scope="col">Jabatan</th>
-                            {{-- <th scope="col">Departemen</th> --}}
-                            {{-- <th scope="col">Foto Profil</th> --}}
-                            @if (auth()->user()->hak_akses == 'Admin' ||
-                                    auth()->user()->hak_akses == 'P2K3' ||
+                            @if (auth()->user()->hak_akses == 'Admin')
+                                <th scope="col" class="">Jabatan</th>
+                            @endif
+                            @if (auth()->user()->hak_akses == 'P2K3' ||
                                     auth()->user()->hak_akses == 'K3 Departemen' ||
                                     auth()->user()->hak_akses == 'Pimpinan')
-                                <th scope="col" class="col-2">Action</th>
+                                <th scope="col" class="col-5">Jabatan</th>
                             @endif
+                            {{-- <th scope="col">Departemen</th> --}}
+                            {{-- <th scope="col">Foto Profil</th> --}}
+
+                            <th scope="col" class="col-2">Action</th>
+
                         </tr>
                     </thead>
                     <tbody>
@@ -88,10 +92,7 @@
                                 {{-- <td>{{$data->departemen?->name}}</td> --}}
                                 {{-- <td class="d-flex justify-content-center"><img src="{{ asset('berkas/' . $data->avatar) }}"
                                     class="rounded-4" style="width:auto; height:55px;"></td> --}}
-                                @if (auth()->user()->hak_akses == 'Admin' ||
-                                        auth()->user()->hak_akses == 'P2K3' ||
-                                        auth()->user()->hak_akses == 'K3 Departemen' ||
-                                        auth()->user()->hak_akses == 'Pimpinan')
+                                @if (auth()->user()->hak_akses == 'Admin')
                                     <td style="text-align: center;">
                                         <a href="{{ route('p2k3.lihat', $data->id) }}" type="button"
                                             class="btn  btn-sm bg-warning " style="width:20px;"><i
@@ -104,6 +105,14 @@
                                             <i
                                                 class="bi bi-trash text-dark d-flex justify-content-center align-items-center"></i>
                                         </button>
+                                    </td>
+                                @endif
+                                @if (auth()->user()->hak_akses == 'P2K3' || auth()->user()->hak_akses == 'K3 Departemen')
+                                    <td style="text-align: center;">
+                                        <a href="{{ route('p2k3.lihat', $data->id) }}" type="button"
+                                            class="btn  btn-sm bg-warning " style="width:20px;"><i
+                                                class="bi bi-eye text-dark d-flex justify-content-center align-items-center"></i></a>
+
                                     </td>
                                 @endif
                             </tr>
@@ -201,15 +210,15 @@
         }
 
         /* .team .member span::after {
-                                                                                                      content: "";
-                                                                                                      position: absolute;
-                                                                                                      display: block;
-                                                                                                      width: 50px;
-                                                                                                      height: 1px;
-                                                                                                      background: #cbd6e9;
-                                                                                                      bottom: 0;
-                                                                                                      left: 0;
-                                                                                                    } */
+                                                                                                                                                                          content: "";
+                                                                                                                                                                          position: absolute;
+                                                                                                                                                                          display: block;
+                                                                                                                                                                          width: 50px;
+                                                                                                                                                                          height: 1px;
+                                                                                                                                                                          background: #cbd6e9;
+                                                                                                                                                                          bottom: 0;
+                                                                                                                                                                          left: 0;
+                                                                                                                                                                        } */
 
         .team .member p {
             /* margin: 10px 0 0 0; */
