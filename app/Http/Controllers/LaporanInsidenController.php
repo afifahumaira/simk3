@@ -329,8 +329,8 @@ class LaporanInsidenController extends Controller
     }
 
     public function laporaninsiden(){
-        $departments = Departemen::all();
         $kode = Laporinsiden::generateCode();
+        $departments = Departemen::all();        
 
         return view('Frntend_simk3.laporaninsidens')
                 ->with('kode', $kode)

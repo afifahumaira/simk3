@@ -67,10 +67,10 @@
                                     <input id="customCheck1" type="checkbox" checked class="custom-control-input">
                                     <label for="customCheck1" class="custom-control-label">Remember password</label>
                                 </div> -->
-                                    <div class="text-center d-flex justify-content-end mt-4">
+                                    {{-- <div class="text-center d-flex justify-content-end mt-4">
                                         <p><a href="f-psswrd.html" class="font-italic text-muted">
                                                 <u>Lupa password?</u></a></p>
-                                    </div>
+                                    </div> --}}
                                     <button type="submit"
                                         class="btn btn-primary btn-block text-uppercase mb-2 mt-3 shadow-sm d-flex justify-content-center align-items-center mx-auto">
                                         MASUK </button>

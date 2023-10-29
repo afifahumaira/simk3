@@ -115,29 +115,30 @@
                                 </ul>
                             </div>
                         @endif
-
-                        <div class="card-body">
-                            <form class="lh-lg" action="{{ route('save') }}" method="POST"
-                                enctype="multipart/form-data">
-                                @csrf
-                                <div class="ps-3 pe-5">
-                                    <label class="col-form-label ">Kode Lapor Insiden</label>
-                                    <div class=" w-100">
-                                        <div class="form-group label-floating is-empty is-focused">
-                                            <input class="form-control bg-secondary" name="kode_laporinsiden"
-                                                id="kode_laporinsiden" value="{{ $kode }}" readonly>
-                                        </div>
+                        <form class="lh-lg" action="{{ route('save') }}" method="POST"
+                        enctype="multipart/form-data">
+                        @csrf
+                        <div class="card-body">                            
+                            <div class="ps-3 pe-5">
+                                <label class="col-sm-2 col-form-label ">Kode Lapor Insiden</label>
+                                <div class="col-sm-10 w-100">
+                                    <div class="form-group  label-floating is-empty is-focused">
+                                        <input class="form-control bg-secondary" name="kode_laporinsiden"
+                                            id="kode_laporinsiden" value="{{ $kode }}" readonly>
                                     </div>
                                 </div>
+                            </div>
 
                                 <div class="ps-3 pe-5">
-                                    <label class="col-form-label">Waktu Kejadian</label>
-                                    <div class=" w-100">
-                                        <input type="date" id="date" name="waktu_kejadian"
-                                            class="form-control tanggalPicker" placeholder="dd/mm/yyyy"
+                                    <label class="col-sm-2 col-form-label">Waktu Kejadian</label>
+                                    <div class="col-sm-10 w-100">
+                                        <input type="date" id="date" class="form-control tanggalPicker"
+                                            name="waktu_kejadian" placeholder="dd/mm/yyyy"
                                             max="<?php echo date('Y-m-d'); ?>">
+
                                     </div>
                                 </div>
+
 
                                 <div class="ps-3 pe-5">
                                     <label class="col-form-label">Lokasi</label>
