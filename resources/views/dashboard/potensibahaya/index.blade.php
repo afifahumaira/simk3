@@ -210,7 +210,7 @@
                                                                             </option>
                                                                             <option value="1">Pending
                                                                             </option>
-                                                                            <option value="2">Investigasi
+                                                                            <option value="2">Ditindaklanjuti
                                                                             </option>
                                                                         </select>
                                                                     </div>
