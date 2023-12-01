@@ -116,25 +116,24 @@
                             </div>
                         @endif
                         <form class="lh-lg" action="{{ route('save') }}" method="POST"
-                        enctype="multipart/form-data">
-                        @csrf
-                        <div class="card-body">                            
-                            <div class="ps-3 pe-5">
-                                <label class="col-sm-2 col-form-label ">Kode Lapor Insiden</label>
-                                <div class="col-sm-10 w-100">
-                                    <div class="form-group  label-floating is-empty is-focused">
-                                        <input class="form-control bg-secondary" name="kode_laporinsiden"
-                                            id="kode_laporinsiden" value="{{ $kode }}" readonly>
+                            enctype="multipart/form-data">
+                            @csrf
+                            <div class="card-body">
+                                <div class="ps-3 pe-5">
+                                    <label class="col-sm-2 col-form-label ">Kode Lapor Insiden</label>
+                                    <div class="col-sm-10 w-100">
+                                        <div class="form-group  label-floating is-empty is-focused">
+                                            <input class="form-control bg-secondary" name="kode_laporinsiden"
+                                                id="kode_laporinsiden" value="{{ $kode }}" readonly>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
 
                                 <div class="ps-3 pe-5">
                                     <label class="col-sm-2 col-form-label">Waktu Kejadian</label>
                                     <div class="col-sm-10 w-100">
                                         <input type="date" id="date" class="form-control tanggalPicker"
-                                            name="waktu_kejadian" placeholder="dd/mm/yyyy"
-                                            max="<?php echo date('Y-m-d'); ?>">
+                                            name="waktu_kejadian" placeholder="dd/mm/yyyy" max="<?php echo date('Y-m-d'); ?>">
 
                                     </div>
                                 </div>
@@ -158,7 +157,8 @@
                                     <label class="col-form-label">Lokasi Rinci</label>
                                     <div class=" w-100">
                                         <input type="text" class="form-control" name="lokasi_rinci"
-                                            id="lokasi_rinci" value="{{ old('lokasi_rinci', request()->input('lokasi_rinci')) }}">
+                                            id="lokasi_rinci"
+                                            value="{{ old('lokasi_rinci', request()->input('lokasi_rinci')) }}">
                                     </div>
                                 </div>
 
@@ -169,19 +169,25 @@
                                             data-control="select2" data-hide-search="true"
                                             data-placeholder="Jenis Insiden">
                                             <option value="Pingsan"
-                                            {{ old('jenis_insiden') == 'Pingsan' ? 'selected' : '' }}>Pingsan</option>
+                                                {{ old('jenis_insiden') == 'Pingsan' ? 'selected' : '' }}>Pingsan
+                                            </option>
                                             <option value="Serangan Jantung"
-                                            {{ old('jenis_insiden') == 'Serangan Jantung' ? 'selected' : '' }}>Serangan Jantung</option>
+                                                {{ old('jenis_insiden') == 'Serangan Jantung' ? 'selected' : '' }}>
+                                                Serangan Jantung</option>
                                             <option value="Asma"
-                                            {{ old('jenis_insiden') == 'Asma' ? 'selected' : '' }}>Asma</option>
+                                                {{ old('jenis_insiden') == 'Asma' ? 'selected' : '' }}>Asma</option>
                                             <option value="Pendarahan"
-                                            {{ old('jenis_insiden') == 'Pendarahan' ? 'selected' : '' }}>Pendarahan</option>
+                                                {{ old('jenis_insiden') == 'Pendarahan' ? 'selected' : '' }}>Pendarahan
+                                            </option>
                                             <option value="Keracunan"
-                                            {{ old('jenis_insiden') == 'Keracunan' ? 'selected' : '' }}>Keracunan</option>
+                                                {{ old('jenis_insiden') == 'Keracunan' ? 'selected' : '' }}>Keracunan
+                                            </option>
                                             <option value="Cidera"
-                                            {{ old('jenis_insiden') == 'Cidera' ? 'selected' : '' }}>Cidera</option>
+                                                {{ old('jenis_insiden') == 'Cidera' ? 'selected' : '' }}>Cidera
+                                            </option>
                                             <option value="Lainnya"
-                                            {{ old('jenis_insiden') == 'Lainnya' ? 'selected' : '' }}>Lainnya</option>
+                                                {{ old('jenis_insiden') == 'Lainnya' ? 'selected' : '' }}>Lainnya
+                                            </option>
                                         </select>
                                     </div>
                                 </div>
@@ -190,7 +196,7 @@
                                     <label class="col-form-label">Kronologi Kejadian</label>
                                     <div class=" w-100">
                                         <textarea rows="3" class="form-control" name="kronologi" id="kronologi"
-                                        value="{{ old('kronologi', request()->input('kronologi')) }}"></textarea>
+                                            value="{{ old('kronologi', request()->input('kronologi')) }}"></textarea>
                                     </div>
                                 </div>
 
@@ -198,7 +204,8 @@
                                     <label class="col-form-label">Penyebab Insiden</label>
                                     <div class=" w-100">
                                         <input type="text" class="form-control" name="penyebab_insiden"
-                                            id="penyebab_insiden" value="{{ old('penyebab_insiden', request()->input('penyebab_insiden')) }}">
+                                            id="penyebab_insiden"
+                                            value="{{ old('penyebab_insiden', request()->input('penyebab_insiden')) }}">
                                     </div>
                                 </div>
 
@@ -219,7 +226,7 @@
                                         </div>
                                     </div>
                                 </div>
-                        </div>
+                            </div>
                     </div>
 
 
@@ -239,7 +246,7 @@
                                     <label class="col-form-label">Nama Pelapor</label>
                                     <div class=" w-100">
                                         <input type="text" class="form-control" name="nama_pelapor"
-                                        value="{{ old('nama_pelapor', request()->input('nama_pelapor')) }}" >
+                                            value="{{ old('nama_pelapor', request()->input('nama_pelapor')) }}">
                                     </div>
                                 </div>
 
@@ -247,7 +254,7 @@
                                     <label for="inputEmail3" class="col-form-label">Email Pelapor</label>
                                     <div class=" w-100">
                                         <input type="email" class="form-control" name="email_pelapor"
-                                        value="{{ old('email_pelapor', request()->input('email_pelapor')) }}" >
+                                            value="{{ old('email_pelapor', request()->input('email_pelapor')) }}">
                                     </div>
                                 </div>
 
@@ -256,7 +263,7 @@
                                         Pelapor</label>
                                     <div class=" w-100">
                                         <input type="number" class="form-control" name="nomer_telepon_pelapor"
-                                        value="{{ old('nomor_telepon_pelapor', request()->input('nomor_telepon_pelapor')) }}" >
+                                            value="{{ old('nomor_telepon_pelapor', request()->input('nomor_telepon_pelapor')) }}">
                                     </div>
                                 </div>
 
@@ -295,7 +302,7 @@
                                     <label class="col-form-label">Nama Korban</label>
                                     <div class=" w-100">
                                         <input type="text" class="form-control" name="nama_korban"
-                                        value="{{ old('nama_korban', request()->input('nama_korban')) }}" >
+                                            value="{{ old('nama_korban', request()->input('nama_korban')) }}">
 
                                     </div>
                                 </div>
@@ -304,7 +311,7 @@
                                     <label for="inputEmail3" class="col-form-label">Email Korban</label>
                                     <div class=" w-100">
                                         <input type="email" class="form-control" name="email_korban"
-                                        value="{{ old('email_korban', request()->input('email_korban')) }}" >
+                                            value="{{ old('email_korban', request()->input('email_korban')) }}">
 
                                     </div>
                                 </div>
@@ -314,7 +321,7 @@
                                         Korban</label>
                                     <div class=" w-100">
                                         <input type="number" class="form-control" name="nomer_telepon_korban"
-                                        value="{{ old('nomor_telepon_korban', request()->input('nomor_telepon_korban')) }}" >
+                                            value="{{ old('nomor_telepon_korban', request()->input('nomor_telepon_korban')) }}">
                                     </div>
                                 </div>
 
@@ -386,7 +393,7 @@
         font-weight: bold;
     }
 
-    .contet {
+    .content {
         background-color: #fdf7e5;
     }
 

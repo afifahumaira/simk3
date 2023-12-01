@@ -626,9 +626,10 @@
                                     </div>
                                 </div>
                                 <div id="kt_apexcharts_3" style="height: 350px"></div> --}}
-                                
-                                <div class="px-5 mx-5">                                   
-                                </div>                                
+
+                                <div class="px-5 mx-5">
+                                    <canvas id="myChart"></canvas>
+                                </div>
                             </div>
                         </div>
 

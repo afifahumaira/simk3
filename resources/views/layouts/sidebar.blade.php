@@ -224,6 +224,18 @@
                             </a>
                             <!--end:Menu link-->
                         </div>
+                        <div class="menu-item menu-accordion">
+                            <!--begin:Menu link-->
+                            <a href="{{ route('departemenmaster.index') }}"
+                                class="menu-link {{ Request::is('departemenmaster') ? 'active' : '' }}">
+                                <span class="menu-bullet">
+                                    <i class="bi bi-building  fs-3"></i>
+                                </span>
+                                <span class="menu-title ">Departemen</span>
+                                <!-- <span class="menu-arrow"></span> -->
+                            </a>
+                            <!--end:Menu link-->
+                        </div>
                     </div>
                     <!--end:Menu sub-->
                 </div>
@@ -617,6 +629,7 @@
                                 </a>
                                 <!--end:Menu link-->
                             </div>
+
                             <div class="menu-item menu-accordion">
                                 <!--begin:Menu link-->
                                 <a href="{{ route('risiko.index') }}"
@@ -625,6 +638,18 @@
                                         <i class="bi bi-exclamation-triangle  fs-3"></i>
                                     </span>
                                     <span class="menu-title ">Risiko</span>
+                                    <!-- <span class="menu-arrow"></span> -->
+                                </a>
+                                <!--end:Menu link-->
+                            </div>
+                            <div class="menu-item menu-accordion">
+                                <!--begin:Menu link-->
+                                <a href="{{ route('departemenmaster.index') }}"
+                                    class="menu-link {{ Request::is('departemenmaster') ? 'active' : '' }}">
+                                    <span class="menu-bullet">
+                                        <i class="bi bi-building  fs-3"></i>
+                                    </span>
+                                    <span class="menu-title ">Departemen</span>
                                     <!-- <span class="menu-arrow"></span> -->
                                 </a>
                                 <!--end:Menu link-->

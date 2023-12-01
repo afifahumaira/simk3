@@ -22,6 +22,7 @@ use App\Http\Controllers\InvestigasiPotensiController as ControllersInvestigasiP
 use App\Http\Controllers\MapsController;
 use App\Http\Controllers\RisikoController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\DepartemenmasterController;
 // use App\Http\Controllers\Lihat_InsidenController;
 use Illuminate\Support\Facades\Route;
 // use RealRashid\SweetAlert\Facades\Alert;
@@ -291,6 +292,17 @@ Route::group(['middleware' => ['auth']], function() {
         Route::post('update/{id}', [RisikoController::class, 'update'])->name('update');
         Route::post('delete/{id}', [RisikoController::class, 'delete'])->name('delete');
     });
+});
+
+    // 16. Departemen
+    Route::prefix('departemenmaster')->name('departemenmaster.')->group(function(){
+        Route::get('/', [DepartemenmasterController::class, 'index'])->name('index');
+        Route::get('tambah', [DepartemenmasterController::class, 'tambah'])->name('tambah');
+        Route::get('edit/{id}', [DepartemenmasterController::class, 'edit'])->name('edit');
+        // Route::get('detail/{id}', [DepartemenmasterController::class, 'detail'])->name('detail');
+        Route::post('update/{id}', [DepartemenmasterController::class, 'update'])->name('update');
+        Route::post('delete/{id}', [DepartemenmasterController::class, 'delete'])->name('delete');
+        Route::post('simpan', [DepartemenmasterController::class, 'simpan'])->name('simpan');
 });
 
 

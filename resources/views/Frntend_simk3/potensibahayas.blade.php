@@ -408,7 +408,7 @@
         font-weight: bold;
     }
 
-    .contet {
+    .content {
         background-color: #fdf7e5;
     }
 
