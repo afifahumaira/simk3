@@ -141,9 +141,7 @@
                                     <th scope="col">Departemen</th>
                                     <th scope="col">Lokasi Potensi Bahaya</th>
                                     <th scope="col">Potensi Bahaya</th>
-                                    <th scope="col">Penanggung Jawab</th>
-                                    {{-- <th scope="col">Status</th>
-                                <th scope="col">Ubah Status</th> --}}
+                                    <th scope="col">Penanggung Jawab</th>                                    
                                     <th scope="col">Action</th>
                                 </tr>
                             </thead>

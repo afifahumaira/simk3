@@ -49,29 +49,27 @@
                         </thead>
                         <tbody>
 
-                            @foreach ($locations as $loc)
+                            @foreach ($departemen as $dep)
                                 <tr>
                                     <td scope="row" class="text-center">
-                                        {{ ($locations->currentpage() - 1) * $locations->perpage() + $loop->index + 1 }}
+                                        {{ ($departemen->currentpage() - 1) * $departemen->perpage() + $loop->index + 1 }}
                                     </td>
-
-                                    {{-- <td>{{ $loc->departemen->name }}</td> --}}
-                                    <td>{{ $loc->name }}</td>
+                                    <td>{{ $dep->name }}</td>
                                     <td>
-                                        <a href="{{ route('departemenmaster.edit', $loc->id) }}" type="button"
+                                        <a href="{{ route('departemenmaster.edit', $dep->id) }}" type="button"
                                             class="btn btn-sm btn-primary px-4"><i class="bi bi-pencil-square pe-0"></i></a>
                                         <button type="button" class="btn btn-danger btn-sm px-4" data-bs-toggle="modal"
-                                            data-bs-target="#deleteForm{{ $loc->id }}"><i
+                                            data-bs-target="#deleteForm{{ $dep->id }}"><i
                                                 class="bi bi-trash pe-0"></i></button>
 
-                                        <div class="modal fade" id="deleteForm{{ $loc->id }}" data-bs-backdrop="static"
+                                        <div class="modal fade" id="deleteForm{{ $dep->id }}" data-bs-backdrop="static"
                                             data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel"
                                             aria-hidden="true">
                                             <div class="modal-dialog modal-dialog-centered ">
                                                 <div class="modal-content">
 
                                                     <form method="POST"
-                                                        action="{{ route('departemenmaster.delete', $loc->id) }}">
+                                                        action="{{ route('departemenmaster.delete', $dep->id) }}">
                                                         @csrf
                                                         <div
                                                             class="modal-body mt-5 d-flex justify-content-center align-items-center">
@@ -103,7 +101,7 @@
                 </div>
             </div>
             <div class="card-footer">
-                {{ $locations->links('pagination::customb5') }}
+                {{ $departemen->links('pagination::customb5') }}
             </div>
         </div>
     </div>

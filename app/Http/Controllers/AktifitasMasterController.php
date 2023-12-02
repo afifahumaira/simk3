@@ -29,12 +29,6 @@ class AktifitasMasterController extends Controller
         ->with('id', $act);
     }
 
-    // public function detail($id) {
-    //     $act = Activitie_master::find($id);
-        
-    //     return view('dashboard.masterHirarc.aktifitas.detail-aktifitas', compact( 'id'));
-    // }
-
     public function simpan(Request $request) {
         $request->validate([
             'name' => 'required',

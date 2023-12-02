@@ -294,7 +294,7 @@ Route::group(['middleware' => ['auth']], function() {
     });
 });
 
-    // 16. Departemen
+    // 17. Departemen
     Route::prefix('departemenmaster')->name('departemenmaster.')->group(function(){
         Route::get('/', [DepartemenmasterController::class, 'index'])->name('index');
         Route::get('tambah', [DepartemenmasterController::class, 'tambah'])->name('tambah');

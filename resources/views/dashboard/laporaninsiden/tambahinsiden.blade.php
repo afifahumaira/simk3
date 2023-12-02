@@ -2,7 +2,8 @@
 
 @section('content')
     <div class="page-title d-flex flex-column gap-1 mx-5 my-5  ">
-
+        <form class="lh-lg" method="POST" action="{{ route('laporan-insiden.insert') }}" enctype="multipart/form-data">
+            @csrf
         <div class="page-title d-flex flex-column  gap-1 mx-5 my-5  ">
             <div id="kt_app_content"
                 class="app-content  rounded bg-light  mb-20 px-5 shadow"style="box-shadow: 2px 4px 20px 2px rgba(0, 0, 0, 0.1);">
@@ -60,10 +61,7 @@
                                             @endforeach
                                         </ul>
                                     </div>
-                                @endif
-                                <form class="lh-lg" method="POST" action="{{ route('laporan-insiden.insert') }}"
-                                    enctype="multipart/form-data">
-                                    @csrf
+                                @endif                                
                                     <div class="ps-3 pe-5">
                                         <label class="col-form-label ">Kode Lapor Insiden</label>
                                         <div class=" w-100">

@@ -11,29 +11,22 @@ use Alert;
 class DepartemenmasterController extends Controller
 {
     public function index(Request $request) {
-        $locations = Departemen::with(['location'])
-            ->where('name', 'LIKE', '%'.$request->search.'%')
+        $departemen = Departemen::where('name', 'LIKE', '%'.$request->search.'%')
             ->paginate(10);
-        return view('dashboard.masterHirarc.departemen-master.index', compact('locations'));
+        return view('dashboard.masterHirarc.departemen-master.index', compact('departemen'));
     }
 
     public function tambah() {
-        $hazards = Hazard::paginate(10);
-        return view('dashboard.masterHirarc.departemen-master.tambah-departemen', compact('hazards'));
+        $departemen = Departemen::paginate(10);
+        return view('dashboard.masterHirarc.departemen-master.tambah-departemen', compact('departemen'));
     }
 
     public function edit($id) {
-        $hzd = Hazard::find($id);
+        $dep = Departemen::find($id);
         
-        return view('dashboard.masterHirarc.departemen-master.edit-departemen', compact('hzd'))
-        ->with('id', $hzd);
+        return view('dashboard.masterHirarc.departemen-master.edit-departemen', compact('dep'))
+        ->with('id', $dep);
     }
-
-    // public function detail($id) {
-    //     $hzd = Hazard::find($id);
-        
-    //     return view('dashboard.masterHirarc.hazard.detail-hazard', compact('hzd'));
-    // }
 
     public function simpan(Request $request) {
         $request->validate([
@@ -41,14 +34,12 @@ class DepartemenmasterController extends Controller
             
         ]);
 
-        //$acts = implode(',', $request->hazard);
-
-        Hazard::create([
+        Departemen::create([
             
             'name' => $request->name,
         ]);
 
-        Alert::success('Berhasil', 'Data Hazard berhasil disimpan!')->iconHtml('<i class="bi bi-person-check fs-3x"></i>')->hideCloseButton();
+        Alert::success('Berhasil', 'Data Departemen berhasil disimpan!')->iconHtml('<i class="bi bi-person-check fs-3x"></i>')->hideCloseButton();
         return redirect()->route('departemenmaster.index');
     }
 
@@ -58,20 +49,20 @@ class DepartemenmasterController extends Controller
             
         ]);
 
-        Hazard::find($id)->update([
+        Departemen::find($id)->update([
             
             'name' => $request->name,
         ]);
 
-        Alert::success('Berhasil', 'Data Hazard berhasil diperbaharui!')->iconHtml('<i class="bi bi-person-check fs-3x"></i>')->hideCloseButton();
+        Alert::success('Berhasil', 'Data Departemen berhasil diperbaharui!')->iconHtml('<i class="bi bi-person-check fs-3x"></i>')->hideCloseButton();
         return redirect()->route('departemenmaster.index');
     }
 
     public function delete($id) {
-        $hazards = Hazard::find($id);
-        $hazards->delete();
+        $departemen = Departemen::find($id);
+        $departemen->delete();
 
-        Alert::success('Berhasil', 'Data Hazard berhasil dihapus!')->iconHtml('<i class="bi bi-person-check fs-3x"></i>')->hideCloseButton();
+        Alert::success('Berhasil', 'Data Departemen berhasil dihapus!')->iconHtml('<i class="bi bi-person-check fs-3x"></i>')->hideCloseButton();
         return redirect()->route('departemenmaster.index', $id);
     }
 
