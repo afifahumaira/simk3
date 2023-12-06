@@ -21,7 +21,8 @@ class LokasiMasterController extends Controller
         ->when(auth()->user()->hak_akses == 'K3 Departemen', function ($query) {
             $query->where('departemen_id', auth()->user()->departemen_id);
         })
-        ->paginate(10);
+        ->paginate(10)
+        ->appends($request->all());
             
         return view('dashboard.masterHirarc.lokasi-departemen.index', compact('locations'));
     }

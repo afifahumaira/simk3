@@ -49,7 +49,8 @@ class LaporanInsidenController extends Controller
                 $laporaninsidens->orderBy($request->sort, $request->order);
             };
             $laporaninsidens = $laporaninsidens
-            ->paginate(10);
+            ->paginate(10)
+            ->appends($request->all());
         return view('dashboard.laporaninsiden.index')
             ->with('laporaninsidens',$laporaninsidens)
             ->with('p2k3s', $p2k3s);

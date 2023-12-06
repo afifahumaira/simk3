@@ -50,7 +50,8 @@ class PotensibahayaController extends Controller
         $datas->orderBy($request->sort, $request->order);
     };
     $datas = $datas
-    ->paginate(10);
+    ->paginate(10)
+    ->appends($request->all());
         
         return view('dashboard.potensibahaya.index', compact('datas', 'p2k3s'));
         
