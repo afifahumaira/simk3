@@ -228,7 +228,7 @@
                                             <li class="px-4 py-3">
                                                 <div class=" d-flex justify-content-between align-items-center rounded-2 ">
                                                     <p>
-                                                        HIRARDC</p>
+                                                        HIRADC</p>
                                                     <span
                                                         class="card-title d-flex align-items-center my-0 rounded-3 px-3">{{ $data['jumlah_hirarc'] }}</span>
                                                 </div>

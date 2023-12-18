@@ -104,7 +104,7 @@
                         <span class="menu-icon">
                             <i class="bi bi-diagram-2  fs-3"></i>
                         </span>
-                        <span class="menu-title ">HIRARDC</span>
+                        <span class="menu-title ">HIRADC</span>
 
                     </a>
                 </div>
@@ -536,7 +536,7 @@
                         <span class="menu-icon">
                             <i class="bi bi-diagram-2  fs-3"></i>
                         </span>
-                        <span class="menu-title ">HIRARDC</span>
+                        <span class="menu-title ">HIRADC</span>
 
                     </a>
                 </div>

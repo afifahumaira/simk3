@@ -8,9 +8,9 @@
                 <!--begin::Page title-->
                 <div>
 
-                    <h2 class="card-title mb-0 fw-bold d-flex ">HIRARDC
+                    <h2 class="card-title mb-0 fw-bold d-flex ">HIRADC
                     </h2>
-                        <p class="mb-0" style="font-size:16px;">(Hazard Identification Risk Assessment Risk Determination Control)</p>
+                        <p class="mb-0" style="font-size:16px;">(Hazard Identification Risk Assessment And Determination Control)</p>
                     
                 </div>
                 <!--begin::Main wrapper-->

@@ -81,13 +81,13 @@ class InvestigasiPotensiController extends Controller
 
     public function lihat($id) {
         $investigasi = InvestigasiPotensi::where('id',$id)->first();
-        return view('dashboard.investigasipotensi.Lihat-investigasi', compact('investigasi'));
+        return view('dashboard.investigasipotensi.lihat-investigasi', compact('investigasi'));
                 
     }
 
     public function melihat($id) {
         $investigasi = InvestigasiPotensi::where('id',$id)->first();
-        return view('dashboard.investigasipotensi.Lihat-k3view', compact('investigasi'));
+        return view('dashboard.investigasipotensi.lihat-k3view', compact('investigasi'));
                 
     }
 

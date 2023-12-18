@@ -7,7 +7,7 @@
             class="app-content flex-column-fluid rounded bg-light  mb-20 px-5 shadow"style="box-shadow: 2px 4px 20px 2px rgba(0, 0, 0, 0.1);">
             <div class="app-toolbar-wrapper d-flex flex-stack flex-wrap gap-4 w-100 mb-5 px-5 border-bottom border-5 ">
                 <!--begin::Page title-->
-                <h2>HIRARC</h2>
+                <h2>HIRADC</h2>
                 <!--begin::Main wrapper-->
                 <div id="kt_docs_search_handler_basic" data-kt-search-keypress="true" data-kt-search-min-length="2"
                     data-kt-search-enter="true" data-kt-search-layout="inline">

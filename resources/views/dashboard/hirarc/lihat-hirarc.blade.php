@@ -35,7 +35,7 @@
             class="app-content  rounded bg-light  mb-20 px-5 shadow"style="box-shadow: 2px 4px 20px 2px rgba(0, 0, 0, 0.1);">
             <div class="app-toolbar-wrapper d-flex flex-stack flex-wrap gap-4 w-100 mb-5 px-5 border-bottom border-5">
                 <!--begin::Page title-->
-                <h2>Detail Data HIRARDC</h2>
+                <h2>Detail Data HIRADC</h2>
                 <!--begin::Main wrapper-->
 
                 <!--end::Main wrapper-->
